@@ -52,10 +52,39 @@ dev.off()
 ggsave("richness_plot.pdf", plot = p)
 
 
-
+#######################################################################
 # metadatos... tres tablas... maiz/chile/tomate
 # 
+library("phyloseq")
+library("ggplot2")
+library("edgeR")
+library("DESeq2")
+library("pheatmap")
+library("RColorBrewer")
+library("stringr")
+library("tidyverse")
+library("vegan")
 
+solena <- import_biom("/home/camila/GIT/Tesis_Maestria/solena/biom/solena_maiz.biom")
+solena
 
+solena@tax_table@.Data <- substring(solena@tax_table@.Data, 4)
+colnames(solena@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
+colnames(solena@otu_table@.Data) <- substring(sample_names(solena), 3)
 
+colnames(solena@otu_table@.Data) <- substring(sample_names(solena), 15)
 
+# Cargar los metadatos de solena en una tabla.
+met.sol <- read.csv2("/home/camila/GIT/Tesis_Maestria/solena/fastp_metadat.csv",
+                     header =  TRUE, row.names = 1, sep = ",")
+rownames(met.sol) <- substring(rownames(met.sol),first = 13)
+# se trabaja solo con una muestra de los datos
+met.sol <- sample_data(met.sol)
+
+solena<- merge_phyloseq(solena, met.sol)
+solena
+
+# Profundidad de los datos
+dep.sol <- data.frame(Samples = as.factor(colnames(solena@otu_table@.Data)),
+                      Reads = sample_sums(solena),
+                      Cultivo = as.factor(solena@sam_data@.Data[[3]]))
