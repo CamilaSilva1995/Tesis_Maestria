@@ -1,4 +1,6 @@
 ### Crear archivos .biom 
+## https://github.com/carpentries-incubator/metagenomics
+## https://carpentries-incubator.github.io/metagenomics/
 # en la carpeta solena, delosmeta datos tomamos solo los de tomate
 # grep Tomate fastp_metadat.csv -> vemos solo los de tomate
 # grep Tomate fastp_metadat.csv | cut -d "," -f 1 > tomate.txt -> se filtra solo por tomate, la primera fila "nombre" y lo guardamos en un .txt
