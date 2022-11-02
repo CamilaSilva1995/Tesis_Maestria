@@ -1,13 +1,13 @@
+## Análisis de potencia para datos de microbioma
 ##cargamos la tabla de abundancia
 
-abund_table = read.csv("ALSG93AGenus.csv",row.names=1, check.names=FALSE)
-abund_table_t<-t(abund_table)
+abund_table = read.csv("fastp_metadat.csv",row.names=1, check.names=FALSE)
 
 ##calculamos la diversidad Shannon 
 library(vegan)
 #Se usa la funcion diversidad del paquete vegan para calcular el indice Shannon
-#Se realiza el dataframe del indice de Shannnon
-H<-diversity(abund_table_t, "shannon")
+#Se realiza el dataframe del indice de Shannon
+H<-diversity(abund_table, "shannon")
 df_H<-data.frame(sample=names(H),value=H,measure=rep("Shannon", length(H)))
 #Se obtiene la informacion agrupada para los datps de la muestra
 df_H$Group <- with(df_H, ifelse(as.factor(sample)%in% c("A11-28F","A12-28F",

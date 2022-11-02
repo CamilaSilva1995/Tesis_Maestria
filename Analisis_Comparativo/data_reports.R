@@ -1,6 +1,9 @@
-#https://carpentries-incubator.github.io/metagenomics/07-Diversity-tackled-with-R/index.html
+### https://carpentries-incubator.github.io/metagenomics/
+
+
+
 getwd()
-setwd("/home/betterlab/GIT/Tesis_Maestria/Analisis_Comparativo/reports")
+#setwd("/home/betterlab/GIT/Tesis_Maestria/Analisis_Comparativo/reports")
 
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
