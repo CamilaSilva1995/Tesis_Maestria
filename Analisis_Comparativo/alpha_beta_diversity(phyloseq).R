@@ -120,7 +120,7 @@ ggsave("betadiversity_maiz_plot.pdf", plot = p2_maiz)
 
 ###################################################################
 
-merged_metagenomes_chile <- import_biom("/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/chile.biom")
+merged_metagenomes_chile <- import_biom("/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/chilecamila.biom")
 class(merged_metagenomes_chile)
 
 ### metagenoma rizosfera del chile
