@@ -115,7 +115,7 @@ pdf("betadiversity_maiz_plot.pdf")
 p2_maiz <- plot_ordination(physeq = percentages_maiz, ordination = meta_ord_maiz) 
 # cierra el archivo pdf
 dev.off() 
-ggsave("betadiversity_maiz_plot.pdf", plot = p2)
+ggsave("betadiversity_maiz_plot.pdf", plot = p2_maiz)
 
 ### Ravisar el mismo procedimiento con el paquete "VEGAN" 
 
