@@ -58,11 +58,11 @@ ggsave("alphadiversity_tomate_plot.pdf", plot = p_tomate)
 # trasformamos latabla deabuncandia a porcentajes
 percentages_tomate <- transform_sample_counts(merged_metagenomes_tomate, function(x) x*100 / sum(x) )
 
-meta_ord <- ordinate(physeq = percentages_tomate, method = "NMDS", 
+meta_ord_tomate <- ordinate(physeq = percentages_tomate, method = "NMDS", 
                      distance = "bray")
 
 pdf("betadiversity_tomate_plot.pdf") 
-p2_tomate <- plot_ordination(physeq = percentages_tomates, ordination = meta_ord) 
+p2_tomate <- plot_ordination(physeq = percentages_tomate, ordination = meta_ord_tomate) 
 # cierra el archivo pdf
 dev.off() 
 ggsave("betadiversity_tomate_plot.pdf", plot = p2_tomate)
@@ -73,49 +73,49 @@ ggsave("betadiversity_tomate_plot.pdf", plot = p2_tomate)
 ###################################################################
 ### Repetir todo con el maiz y el chile ###
 
-merged_metagenomes_maiz <- import_biom("/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/camila.biom")
-class(merged_metagenomes)
+merged_metagenomes_maiz <- import_biom("/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/maizcamila.biom")
+class(merged_metagenomes_maiz)
 
-### metagenoma rizosfera del tomate
+### metagenoma rizosfera del maiz
 
 # vemos cuantos reads tenemos de cada muestra
-sample_sums(merged_metagenomes)
+sample_sums(merged_metagenomes_maiz)
 
 ## vemos la tabla de clasificacion taxonomica
-View(merged_metagenomes@tax_table@.Data)
+View(merged_metagenomes_maiz@tax_table@.Data)
 # se remueven catarteres inecesarios
-merged_metagenomes@tax_table@.Data <- substring(merged_metagenomes@tax_table@.Data, 4)
+merged_metagenomes_maiz@tax_table@.Data <- substring(merged_metagenomes_maiz@tax_table@.Data, 4)
 # renombramos las columnas 
-colnames(merged_metagenomes@tax_table@.Data)<- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
+colnames(merged_metagenomes_maiz@tax_table@.Data)<- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 # para saber cuantos phylum diferentes hay
-unique(merged_metagenomes@tax_table@.Data[,"Phylum"])
+unique(merged_metagenomes_maiz@tax_table@.Data[,"Phylum"])
 
 
 ## vemos la tabla de abundancia taxonomica 
-View(merged_metagenomes@otu_table@.Data)
+View(merged_metagenomes_maiz@otu_table@.Data)
 
-summary(merged_metagenomes@otu_table@.Data)
+summary(merged_metagenomes_maiz@otu_table@.Data)
 
 # visualizar la diversidad (Alpha)
-pdf("alphadiversity_tomate_plot.pdf") 
-p <- plot_richness(physeq = merged_metagenomes, 
+pdf("alphadiversity_maiz_plot.pdf") 
+p_maiz<- plot_richness(physeq = merged_metagenomes_maiz, 
                    measures = c("Observed","Chao1","Shannon")) 
 # cierra el archivo pdf
 dev.off() 
-ggsave("alphadiversity_tomate_plot.pdf", plot = p)
+ggsave("alphadiversity_maiz_plot.pdf", plot = p_maiz)
 
 # visualizar la diversidad (Beta)
 # trasformamos latabla deabuncandia a porcentajes
-percentages <- transform_sample_counts(merged_metagenomes, function(x) x*100 / sum(x) )
+percentages_maiz <- transform_sample_counts(merged_metagenomes_maiz, function(x) x*100 / sum(x) )
 
-meta_ord <- ordinate(physeq = percentages, method = "NMDS", 
+meta_ord_maiz <- ordinate(physeq = percentages_maiz, method = "NMDS", 
                      distance = "bray")
 
-pdf("betadiversity_tomate_plot.pdf") 
-p2 <- plot_ordination(physeq = percentages, ordination = meta_ord) 
+pdf("betadiversity_maiz_plot.pdf") 
+p2_maiz <- plot_ordination(physeq = percentages_maiz, ordination = meta_ord_maiz) 
 # cierra el archivo pdf
 dev.off() 
-ggsave("betadiversity_tomate_plot.pdf", plot = p2)
+ggsave("betadiversity_maiz_plot.pdf", plot = p2)
 
 ### Ravisar el mismo procedimiento con el paquete "VEGAN" 
 
