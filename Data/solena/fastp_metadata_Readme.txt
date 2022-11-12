@@ -1,0 +1,12 @@
+"Reads_B"=Total Reads Before trimming
+"Reads_A"=Total Reads After trimming
+"Reads_diff"=Percentage difference between After/Be
+"Q30_B"=Percentage of Reads having Quality above 30 Before trimming
+"Q30_A"=Percentage of Reads having Quality above 30 After trimming
+"LowQual"=Total Low Quality Reads trimmed by quality control
+"N_reads"=Total Reads trimmed by quality control having Ns
+"too_short"=Total Reads trimmed having length > 100 by quality control
+"Duplication"=Duplication rate,
+"LengthR1"=Mean Read length R1 After trimming
+"LengthR2"=Mean Read length R2 After trimming
+"Classified"=Percentage of classified reads by Kraken2 using the PlusPF index (https://benlangmead.github.io/aws-indexes/k2)
