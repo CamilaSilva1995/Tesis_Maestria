@@ -1,0 +1,1 @@
+kraken-biom 1ayWM2CHIPOOB100705.report oAVVM2CHIPOOB051360.report 3xfYM2CHIPOOA051365.report jYxWM2CHIPOOB051110.report hoQoM2CHIPOOA051115.report eBCjM2CHIPOOBXX1180.report j1iWM2CHIPOOBXX1561.report --fmt json -o chilecamila.biom
