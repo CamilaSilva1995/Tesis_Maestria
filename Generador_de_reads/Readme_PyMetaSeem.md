@@ -1,4 +1,4 @@
-# CAMISIM
+
 #### Crear un archivo de genomas como CAMISIM, dado el documento 'ejemplo.fasta'
 1. lectura de archivo texto
  * Leer el .fasta de los contigs del genoma 
