@@ -1,9 +1,0 @@
-# Proyecto_metagenomica
-
-
-
-
-
-
-
-
