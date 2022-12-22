@@ -1,7 +1,7 @@
 # Generador de reads
 Este código crea lecturas de metagenomas a partir de genomas  
-Autora: Camila Silva  
-Documentación: Jazmin Chacón   
+## Autora: Camila Silva  
+## Documentación: Jazmin Chacón   
 
 #### Crear un archivo de genomas como CAMISIM, dado el documento 'ejemplo.fasta'
 1. lectura de archivo texto
