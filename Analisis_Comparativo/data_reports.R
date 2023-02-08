@@ -3,7 +3,7 @@
 
 
 getwd()
-#setwd("/home/betterlab/GIT/Tesis_Maestria/Analisis_Comparativo/reports")
+setwd("/home/betterlab/GIT/Tesis_Maestria/Analisis_Comparativo/reports")
 
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
