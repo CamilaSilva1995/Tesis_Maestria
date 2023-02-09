@@ -58,12 +58,17 @@ def get_full_lineages(otus):
         otus.remove(2)
 
     for entrie in otus:
-        lineage = ncbi.get_lineage(entrie)                  #returns list of lineage taxids
-        names = ncbi.get_taxid_translator(lineage).values() #returns dict in which the taxids of the lineage list become the keys (int) and the translations the values. Error if there is a 0 
-        all_names = ";".join(names)
+        lineage = ncbi.get_lineage(entrie)               
+        names = ncbi.get_taxid_translator(lineage)
+        names_ordered = []
+        for l in lineage:
+            names_ordered.append(names[l])
+        
+        all_names = ";".join(names_ordered)
         lineages.update({entrie: all_names})
     
     return lineages
+    
 
 def add_lineages(DFfusion):
     kaiju_lineages = get_full_lineages(list(DFfusion['tax_ID_kaiju'].dropna()))
