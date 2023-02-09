@@ -101,7 +101,12 @@ def consensus(lineages_df):
 
             l.append(';'.join(lineage_intersection))
         else:
-            l.append(np.nan)
+            if item[0] != '':
+                l.append(item[0])
+            elif item[1] != '':
+                l.append(item[1])
+            else:
+                l.append(np.nan)
         
     lineages_df['consensus'] = l
     return lineages_df
