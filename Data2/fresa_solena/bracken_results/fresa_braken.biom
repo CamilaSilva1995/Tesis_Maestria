@@ -1,1 +1,0 @@
-{"id": "None","format": "Biological Observation Matrix 1.0.0","format_url": "http://biom-format.org","generated_by": "kraken-biom v1.2.0 (http://github.com/smdabdoub/kraken-biom)","date": "2023-02-03T18:23:26.767761","matrix_element_type": "int","shape": [0, 0],"type": "OTU table","matrix_type": "sparse","data": [],"rows": [],"columns": []}

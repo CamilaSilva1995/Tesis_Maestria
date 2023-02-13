@@ -2,15 +2,15 @@
 
 
 
-getwd()
-setwd("/home/betterlab/GIT/Tesis_Maestria/Analisis_Comparativo/reports")
-
-
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  +     install.packages("BiocManager")
-BiocManager::install("phyloseq") 
-
-install.packages(c("ggplot2", "readr", "patchwork"))
+# getwd()
+# setwd("/home/betterlab/GIT/Tesis_Maestria/Analisis_Comparativo/reports")
+# 
+# 
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#   +     install.packages("BiocManager")
+# BiocManager::install("phyloseq") 
+# 
+# install.packages(c("ggplot2", "readr", "patchwork"))
 
 library("phyloseq")
 library("ggplot2")
