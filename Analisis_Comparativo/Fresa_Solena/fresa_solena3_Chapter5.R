@@ -1,36 +1,45 @@
-## Análisis de potencia para datos de microbioma
+## ANALISIS DE POTENCIA - PRUEBA DE HIPOTESIS
+
+library("phyloseq")
+library("ggplot2")
+library("vegan")
+library("RColorBrewer")
+library("dplyr")
+library("plyr")
+
 ##cargamos la tabla de abundancia
+setwd("/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena")
+fresa_kraken <- import_biom("fresa_kraken.biom")
+colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
+fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
+colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table@.Data),1,6)
+metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
+fresa_kraken@sam_data <- sample_data(metadata_fresa)
+fresa_kraken@sam_data$Sample<-row.names(fresa_kraken@sam_data)
+colnames(fresa_kraken@sam_data)<-c('Treatment','Samples')
+samples_to_remove <- c("MP2079","MP2080","MP2088","MP2109","MP2137")
+fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_remove), fresa_kraken)
+percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
+## podemos hacer un data.frame uniendo toda la informacion del objeto phyloseq
+df <- psmelt(fresa_kraken_fil)
 
-abund_table = read.csv("fastp_metadat.csv",row.names=1, check.names=FALSE)
+OTU <- fresa_kraken_fil@otu_table@.Data
+SAM <- fresa_kraken_fil@sam_data
+OTU_SAM <-merge(OTU,SAM)
+OTU_SAM <-t(OTU_SAM)
+## UNIR TABLA DE ABUNDANCIAS CON METADATA DE SANOS Y ENFERMOS
 
-##calculamos la diversidad Shannon 
-library(vegan)
-#Se usa la funcion diversidad del paquete vegan para calcular el indice Shannon
-#Se realiza el dataframe del indice de Shannon
-H<-diversity(abund_table, "shannon")
-df_H<-data.frame(sample=names(H),value=H,measure=rep("Shannon", length(H)))
-#Se obtiene la informacion agrupada para los datps de la muestra
-df_H$Group <- with(df_H, ifelse(as.factor(sample)%in% c("A11-28F","A12-28F",
-                                                        "A13-28F","A14-28F","A15-28F","A16-28F"),c("G93m1"), 
-                                ifelse(as.factor(sample)%in% c("A21-28F","A22-28F","A23-28F","A24-28F",
-                                                               "A25-28F","A26-28F"),c("WTm1"),
-                                       ifelse(as.factor(sample)%in% c("C11-28F","C12-28F","C13-28F"),c("G93m4"),
-                                              ifelse(as.factor(sample)%in% c("C21-28F","C22-28F","C23-28F"),
-                                                     c("WTm4"),ifelse(as.factor(sample)%in% c("B11-28F",
-                                                                                              "B12-28F","B13-28F","B14-28F","B15-28F","D11-28F",
-                                                                                              "D12-28F","D13-28F","D14-28F"),c("BUm3to3.5"),
-                                                                      c("NOBUm3to3.5")))))))
+## Calculamos la diversidad Shannon 
 
-df_H
-#El conjunto de datos incluye datos de muestra de los meses 1, 3, 3,5 y 4. 
-#Nos interesa en las comparaciones del tratamiento frente al no tratamiento 
-#durante los meses 3 y 3,5. Así que los datos de 3 a 3,5 meses como se indica a
-#continuación:
-library(dplyr)
-df_H_G6 <- select(df_H, Group,value)
-df_H_G93BUm3 <- filter(df_H_G6,Group=="BUm3to3.5"|Group=="NOBUm3to3.5")
-df_H_G93BUm3
-library(ggplot2)
+## Se usa la funcion diversidad del paquete vegan para calcular el indice Shannon
+## Se realiza el dataframe del indice de Shannon
+Shannon_OTU_SAM <- diversity(OTU_SAM, "shannon")
+Shannon_OTU_df <- data.frame(sample=names(Shannon_OTU),value=Shannon_OTU,measure=rep("Shannon", length(Shannon_OTU)))
+
+
+
+
+
 #dividir la trama en múltiples paneles
 p<-ggplot(df_H_G93BUm3, aes(x=value))+
   geom_histogram(color="black",fill="black")+
@@ -39,7 +48,7 @@ ggsave("paneles.png", plot = p)
 
 #Calcular la media de cada grupo
 #calcular la diversidad promedio de Shannon de cada grupo usando el paquete Plyr
-library(plyr)
+##  GRUPOS SANOS VS. ENFERMOS 
 mu <- ddply(df_H_G93BUm3, "Group", summarise, grp.mean=mean(value))
 head(mu)
 #agrega las lineas de la media
