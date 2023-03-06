@@ -1,0 +1,11 @@
+#Organism_Name	Assembly	porcentaje	num_reads	Name_file
+Listeria monocytogenes	GCA_018604225.1	0,12	1200000	GCF_018604225.1_ASM1860422v1_genomic.fna
+Pseudomonas aeruginosa	GCA_013201115.1	0,12	1200000	GCF_013201115.1_ASM1320111v1_genomic.fna
+Bacillus subtilis BEST7613	GCA_000328745.1	0,12	1200000	GCA_000328745.1_ASM32874v1_genomic.fna
+Escherichia coli O157	GCA_001650295.1	0,12	1200000	GCF_001650295.1_ASM165029v1_genomic.fna
+Salmonella enterica	GCA_024364905.1	0,12	1200000	GCF_024364905.1_ASM2436490v1_genomic.fna
+Limosilactobacillus fermentum	GCA_022819245.1	0,12	1200000	GCF_022819245.1_ASM2281924v1_genomic.fna
+Enterococcus faecalis	GCA_006494835.1	0,12	1200000	GCF_006494835.1_ASM649483v1_genomic.fna
+Staphylococcus aureus	GCA_002895385.1	0,12	1200000	GCF_002895385.1_ASM289538v1_genomic.fna
+Saccharomyces cerevisiae	GCA_021172205.1	0,02	200000	GCA_021172205.1_ASM2117220v1_genomic.fna
+Cryptococcus neoformans	GCA_023650535.1	0,02	200000	GCA_023650535.1_ASM2365053v1_genomic.fna
