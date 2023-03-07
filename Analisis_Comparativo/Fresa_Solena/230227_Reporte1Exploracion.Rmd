@@ -2,7 +2,9 @@
 title: "Diversidades alfa y beta en datos metagenomicos de shotgun de fresa"
 author: "Camila Silva"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -17,13 +19,13 @@ Los datos fueron entregados en una carpeta de drive <https://drive.google.com/dr
 
 En el equipo local
 ```{bash}
-# $ scp Downloads/kraken_results-20230203T201634Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena
+# $ scp Downloads/kraken_results-20230203T201634Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data/fresa_solena
 #  camila@132.248.196.39's password: 
 #  kraken_results-20230203T201634Z-001.zip         100%   12MB   2.2MB/s   00:05    
-# $ scp Downloads/fastp_results-20230203T175936Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena
+# $ scp Downloads/fastp_results-20230203T175936Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data/fresa_solena
 #  camila@132.248.196.39's password: 
 #  fastp_results-20230203T175936Z-001.zip          100% 2728KB   2.1MB/s   00:01  
-# $ scp Downloads/bracken_results-20230203T203724Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena
+# $ scp Downloads/bracken_results-20230203T203724Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data/fresa_solena
 #  camila@132.248.196.39's password: 
 #  bracken_results-20230203T203724Z-001.zip        100% 3798KB   2.4MB/s   00:01
 ```
@@ -77,7 +79,7 @@ library("RColorBrewer")
 Importamos los datos kraken en un archivo biom
 
 ```{r}
-setwd("/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena")
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena")
 fresa_kraken <- import_biom("fresa_kraken.biom")
 class(fresa_kraken) # objeto phyloseq
 ```
@@ -96,7 +98,7 @@ Queremos cortar la parte inicial nombres, ya que aparecen,por ejemplo: "B__Bacte
 substring(). Este comando ayuda a extraer o reemplazar caracteres en un vector.
 ```{r}
 fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
-View(fresa_kraken@tax_table@.Data)
+#View(fresa_kraken@tax_table@.Data)
 ```
 Queremos ver la tabla de OTUs, esta tabla contiene las abundancias de los otus de cada muestra
 ```{r}
@@ -105,7 +107,7 @@ Queremos ver la tabla de OTUs, esta tabla contiene las abundancias de los otus d
 Queremos cortar los nombres de las muestras para que coincida con los metadatos 
 ```{r}
 colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table@.Data),1,6)
-View(fresa_kraken@otu_table@.Data)
+#View(fresa_kraken@otu_table@.Data)
 ```
 
 ### Cargar los metadatos 
@@ -126,7 +128,7 @@ se deben ver cuales son y quitarlas del archivo de metadatos
 
 Eliminamos las dos muestras que no estaban en nuestra otu_table y cargamos los metadatos
 ```{r}
-metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
+metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
 #metadata_fresa <- sample_data(metadata_fresa)
 ```
 luego hacemos que los metadatos pertenezcan al objeto phyloseq en la seccion de **sam_data**
@@ -137,7 +139,7 @@ Creamos una columna extra en sam_data por necesidad de funcionamiento de mas ade
 ```{r}
 fresa_kraken@sam_data$Sample<-row.names(fresa_kraken@sam_data)
 colnames(fresa_kraken@sam_data)<-c('Treatment','Samples')
-View(fresa_kraken)
+#View(fresa_kraken)
 ```
 
 ## Ahora tenemos tambien la tabla de datos de calidad (fastp_kraken_summary), 
@@ -324,12 +326,12 @@ Queremos explorar nuestras muestras a diferentes niveles taxonómicos específic
 ## A nivel de Kingdom
 ```{r}
 percentages_glom_kingdom <- tax_glom(percentages_fil, taxrank = 'Kingdom')
-#View(percentages_glom_kingdom@tax_table@.Data)
+##View(percentages_glom_kingdom@tax_table@.Data)
 ```
 ## A nivel de Phylum
 ```{r}
 percentages_glom_phylum <- tax_glom(percentages_fil, taxrank = 'Phylum')
-#View(percentages_glom_phylum@tax_table@.Data)
+##View(percentages_glom_phylum@tax_table@.Data)
 ```
 Creamos un dataframe con los porcentajes de phylum
 ```{r}

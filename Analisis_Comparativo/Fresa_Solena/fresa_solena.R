@@ -3,15 +3,15 @@
 ## para poderlos usar en el servidor, se descargaron en mi maquina local y luego los pase por ssh al servido 
 
 ## Local
-# $ scp Downloads/kraken_results-20230203T201634Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena
+# $ scp Downloads/kraken_results-20230203T201634Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data/fresa_solena
 # $ camila@132.248.196.39's password: 
 # $ kraken_results-20230203T201634Z-001.zip         100%   12MB   2.2MB/s   00:05    
 
-# $ scp Downloads/fastp_results-20230203T175936Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena
+# $ scp Downloads/fastp_results-20230203T175936Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data/fresa_solena
 # $ camila@132.248.196.39's password: 
 # $ fastp_results-20230203T175936Z-001.zip          100% 2728KB   2.1MB/s   00:01    
 
-# $ scp Downloads/bracken_results-20230203T203724Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena
+# $ scp Downloads/bracken_results-20230203T203724Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data/fresa_solena
 # $ camila@132.248.196.39's password: 
 # $ bracken_results-20230203T203724Z-001.zip        100% 3798KB   2.4MB/s   00:01
 
@@ -45,7 +45,7 @@ library("pbkrtest")
 library("kableExtra")
 library("RColorBrewer")
 ## Debemos especificarle a R en que directorio estamos trabajando
-setwd("/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena")
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena")
 
 ## Datos kraken
 ## importamos los datos kraken del archivo biom, usando la herramienta de phyloseq **impor_biom**
@@ -84,7 +84,7 @@ colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table
 ## ELIMINAR LOS DATOS QUE SOBRAN DE LOS METADATOS
 ### LO HICEA MANO... REVISAR COMO HACERLO EN BASH
 ## eliminamos las dos muestras que no estaban en nuestra otu_table y cargamos los metadatos
-metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data2/fresa_solena/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
+metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
 #metadata_fresa <- sample_data(metadata_fresa)
 ## luego hacemos que los metadatos pertenezcan al objeto phyloseq en la seccion de **sam_data**
 fresa_kraken@sam_data <- sample_data(metadata_fresa) 

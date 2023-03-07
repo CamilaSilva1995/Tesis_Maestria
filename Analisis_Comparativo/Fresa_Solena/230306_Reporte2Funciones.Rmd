@@ -1,4 +1,21 @@
-## CREAR UNA FUNCION QUE GRAFIQUE TODAS LAS OPCIONES
+---
+title: "230306_Reporte1Exploracion"
+author: "Camila Silva"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+reporte 
+
+```{r funciones}
 
 library("phyloseq")
 library("ggplot2")
@@ -6,10 +23,15 @@ library("vegan")
 library("RColorBrewer")
 library("stringi")
 
+```
+
+### Cargado de datos originales 
+
+```{r}
+
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena")
 outpath = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img"
 
-### Cargado de datos originales 
 fresa_kraken <- import_biom("fresa_kraken.biom")
 colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
@@ -23,19 +45,26 @@ fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_r
 percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
 percentages_df <- psmelt(percentages_fil)
 
+```
+
 ## Subconjunto de "Eukaryota"
+```{r}
 merge_Eukaryota<-subset_taxa(fresa_kraken_fil,Kingdom=="Eukaryota")
+```
+
 ## Subconjunto de "Bacteria"
+```{r}
 merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
+```
 
+# Funciones 
+Crea los subconjuntos de datos
+ input
+       phy phyliseq total
+       tax rango al que queremos recortar
+ output
 
-##########Funciones 
-##Crea los subconjuntos de datos 
-## input
-##       phy phyliseq total
-##       tax rango al que queremos recortar
-## output
-
+```{r}
 glomToGraph<-function(phy,tax){
   ## creamos el subconjunto dependiendo del linaje taxonomico deseado
   glom <- tax_glom(phy, taxrank = tax)
@@ -44,10 +73,12 @@ glomToGraph<-function(phy,tax){
   percentages_df <- psmelt(percentages)
   return(list(glom,percentages,percentages_df))
 }
-#-----------------------------------------------------------------
+```
+ 
 ## Graficar abundancias stackbar
 
-# input entra el percentages_df 
+input entra el percentages_df  
+```{r}
 Abundance_barras <- function(phy,tax,attribute,abundance_percentage){
   ##Podemos llamar a la funcion que crea los glom ??
   Data <- glomToGraph(phy,tax)
@@ -67,10 +98,10 @@ Abundance_barras <- function(phy,tax,attribute,abundance_percentage){
     theme(text = element_text(size = 5),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
   return(list(plot_barras,plot_percentages))
 }
+```
 
-
-#-----------------------------------------
-#GRaficar betadiversity
+## Graficar betadiversity
+```{r}
 Beta_diversity <- function(phy,tax,attribute,distance){
   ##Podemos llamar a la funcion que crea los glom ??
   Data <- glomToGraph(phy,tax)
@@ -83,7 +114,10 @@ Beta_diversity <- function(phy,tax,attribute,distance){
     geom_text(mapping = aes(label = colnames(phy@otu_table@.Data)), size = 3, vjust = 1.5)
   return(plot_beta)
 }
+```
 
+## Graficar alphadiversity
+```{r}
 Alpha_diversity <- function(phy,tax,attribute){
   ##Podemos llamar a la funcion que crea los glom ??
   Data <- glomToGraph(phy,tax)
@@ -95,38 +129,40 @@ Alpha_diversity <- function(phy,tax,attribute){
   #ggsave("DiversidadAlfa_tax_fil.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
   return(plot_alpha)
 }
+```
 
-###################################################################3
-#### main program 
-####################################################################3
+
+
 
 #-----------Eukarya by Phylum 
 
-#glomToGraph(merge_Eukaryota,'Phylum') 
+```{r}
 Barras_Phylum <- Abundance_barras(merge_Eukaryota,'Phylum' , 'Treatment', 10.0)
 Barras_Phylum[1] # normal
 Barras_Phylum[2]
 # ggsave("Barras_Phylum_Eukaryotanew.png", plot = last_plot(), path = outpath , width = 30, height = 15, dpi = 300, units = "cm")
+```
+
+```{r}
 Beta_diversity(merge_Eukaryota , 'Phylum' , 'Treatment', 'bray')
+```
 
+```{r}
 Alpha_diversity(merge_Eukaryota , 'Phylum' , 'Treatment')
-
+```
 
 #-----------Eukarya by Species 
-
-Barras_Phylum <- Abundance_barras(merge_Eukaryota,'Species' , 'Treatment', 10.0)
-Barras_Phylum[1] 
-Barras_Phylum[2]
-
+```{r}
+Barras_Species <- Abundance_barras(merge_Eukaryota,'Species','Treatment',10.0)
+Barras_Species[1] 
+Barras_Species[2]
+```
 #-----------Bacteria by Species
-
-Barras_Phylum <- Abundance_barras(merge_Bacteria,'Species' , 'Treatment', 10.0)
-Barras_Phylum[1] 
-Barras_Phylum[2]
-
-
-
-
+```{r}
+Barras_Species <- Abundance_barras(merge_Bacteria,'Species','Treatment',10.0)
+Barras_Species[1] 
+Barras_Species[2]
+```
 
 
 
