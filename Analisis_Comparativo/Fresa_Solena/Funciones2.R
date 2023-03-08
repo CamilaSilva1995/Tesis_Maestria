@@ -49,24 +49,41 @@ glomToGraph<-function(phy,tax){
 
 # input entra el percentages_df 
 Abundance_barras <- function(phy,tax,attribute,abundance_percentage){
-  ##Podemos llamar a la funcion que crea los glom ??
+  ##llamar funcion de datos 
   Data <- glomToGraph(phy,tax)
   glom <- Data[[1]] #phyloseq
   percentages <- Data[[2]] #phyloseq
   percentages_df <- Data[[3]] # dataframe
   ## Graficamos para cada subconjunto las barras de abundancia
-  plot_barras <- ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill=tax ,color = attribute)) + 
+  plot_barras <- ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill=tax ,color=attribute)) + 
+    scale_colour_manual(values=c('white','black')) +
     geom_bar(aes(), stat="identity", position="stack") +
-    theme(text = element_text(size = 5),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+    labs(title = "Abundance", x='Sample', y='Abundance', color = tax) +
+    theme(legend.position = "bottom",
+          legend.title = element_text(face = "bold"),
+          text = element_text(size=12),
+          axis.text.x = element_text(angle=90, size=12, hjust=1, vjust=0.5))
   
   percentages_df$tax<-percentages_df[,ncol(percentages_df)]
   percentages_df$tax[percentages_df$Abundance < abundance_percentage] <- "abundance_percentage"
   percentages_df$tax <- as.factor(percentages_df$tax)
-  plot_percentages <- ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='tax' ,color = attribute))+
+  plot_percentages <- ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='tax' ,color=attribute))+
+    scale_colour_manual(values=c('white','black')) +
     geom_bar(aes(), stat="identity", position="stack") +
-    theme(text = element_text(size = 5),axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+    labs(title = "Abundance", x='Sample', y='Abundance', color = tax) +
+    theme(legend.position = "bottom",
+          legend.title = element_text(face = "bold"),
+          text = element_text(size=12),
+          axis.text.x = element_text(angle=90, size=12, hjust=1, vjust=0.5))
   return(list(plot_barras,plot_percentages))
 }
+
+Barras <- Abundance_barras(merge_Bacteria, 'Genus' , 'Treatment', 10.0)
+Barras[1] # normal
+Barras[2]
+
+
+
 
 
 #-----------------------------------------
