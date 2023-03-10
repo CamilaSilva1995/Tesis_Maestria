@@ -59,11 +59,15 @@ Abundance_barras <- function(phy,tax,attribute,abundance_percentage){
     scale_colour_manual(values=c('white','black')) +
     geom_bar(aes(), stat="identity", position="stack") +
     labs(title = "Abundance", x='Sample', y='Abundance', color = tax) +
-    theme(legend.position = "bottom",
-          legend.title = element_text(face = "bold"),
+    theme(legend.key.size = unit(0.2, "cm"),
+          legend.key.width = unit(0.25,"cm"),
+          #legend.position = "bottom",
+          legend.direction = "horizontal",
+          legend.title=element_text(size=8, face = "bold"),
+          legend.text=element_text(size=6),
           text = element_text(size=12),
-          axis.text.x = element_text(angle=90, size=12, hjust=1, vjust=0.5))
-  
+          axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+  ## http://rstudio-pubs-static.s3.amazonaws.com/499981_974af3e09dc14adfad95797f7aedcbcb.html
   percentages_df$tax<-percentages_df[,ncol(percentages_df)]
   percentages_df$tax[percentages_df$Abundance < abundance_percentage] <- "abundance_percentage"
   percentages_df$tax <- as.factor(percentages_df$tax)
@@ -71,20 +75,16 @@ Abundance_barras <- function(phy,tax,attribute,abundance_percentage){
     scale_colour_manual(values=c('white','black')) +
     geom_bar(aes(), stat="identity", position="stack") +
     labs(title = "Abundance", x='Sample', y='Abundance', color = tax) +
-    theme(legend.position = "bottom",
-          legend.title = element_text(face = "bold"),
+    theme(legend.key.size = unit(0.3, "cm"),
+          legend.key.width = unit(0.5,"cm"),
+          #legend.position = "bottom",
+          legend.direction = "horizontal",
+          legend.title=element_text(size=10, face = "bold"),
+          legend.text=element_text(size=8),
           text = element_text(size=12),
-          axis.text.x = element_text(angle=90, size=12, hjust=1, vjust=0.5))
+          axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
   return(list(plot_barras,plot_percentages))
 }
-
-Barras <- Abundance_barras(merge_Bacteria, 'Genus' , 'Treatment', 10.0)
-Barras[1] # normal
-Barras[2]
-
-
-
-
 
 #-----------------------------------------
 #GRaficar betadiversity

@@ -1,4 +1,7 @@
 ### DIVERSIDADES CON TODO EL CONJUNTO DE DATOS  Y LOS DATOS FILTRADOS POR CALIDAD
+
+#### https://carpentries-lab.github.io/metagenomics-analysis/
+
 ## Los datos fueron entregados en una carpeta de drive...
 ## para poderlos usar en el servidor, se descargaron en mi maquina local y luego los pase por ssh al servido 
 
@@ -34,6 +37,7 @@ getwd()
 ## Ahora liego de instalar las librerias, necesitamos llamarlas a la sesion de R en la que se va a trabajar.
 library("phyloseq") 
 ## Phyloseq es un paquete de Bioconductor (Open Source Software For Bioinformatics) para la manipulación y análisis (herramienta para importar, guardar, analizar y visualizar) de datos metagenómicos generados por metodologías de secuenciación de alto rendimiento. 
+## http://www.castrolab.org/isme/biodiversity/biodiversity.html#introduccion-a-phyloseq
 library("ggplot2") #
 library("igraph")
 library("readr")
@@ -164,7 +168,11 @@ head(percentages@otu_table@.Data)
 percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
 head(percentages_fil@otu_table@.Data)
 
-## Ahora ya es posibleuna buena comparacion de abundancias dadas por porcentajes con indices beta 
+
+###  Calcular la distancia Bray-Curtis entre muestras 
+#phyloseq::distance(percentages_fil, method = "bray")
+
+## Ahora ya es posible una buena comparacion de abundancias dadas por porcentajes con indices beta 
 
 ## Diversidad Beta
 ## La diversidad beta mide la diferencia entre dos o mas entornos. Se puede medir con métricas como la disimilitud de Bray-Curtis, la distancia Jaccard o la distancia UniFrac.

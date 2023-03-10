@@ -1,5 +1,8 @@
 ### REDES
-
+### Redes simples
+### https://haydeeperuyero.github.io/Analisis_datos_microbioma_Eq4/Chapter7/Chapter7-html
+### Redes de Coocurrencia
+### http://www.castrolab.org/isme/microbial_networks/microbial_networks.html#workshop
 library("phyloseq")
 library("ggplot2")
 library("igraph")
@@ -43,7 +46,3 @@ plot_net(fresa_kraken_fil, maxdist = 0.5, color = "Treatment", shape="Treatment"
 
 
 
-## TENEMOS ARBOL FILOGENETICO???
-physeq <- prune_taxa(taxa_names(fresa_kraken_fil)[1:50], fresa_kraken_fil)
-plot_tree(physeq, ladderize = "left", color = "Treatment") 
-phy_tree(fresa_kraken_fil)
