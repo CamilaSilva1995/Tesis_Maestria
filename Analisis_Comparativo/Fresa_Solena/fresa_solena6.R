@@ -32,8 +32,8 @@ merge_Eukaryota<-subset_taxa(fresa_kraken_fil,Kingdom=="Eukaryota")
 merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
 
 ## Aglomeramos Fusarium
-glom <- tax_glom(merge_Eukaryota, taxrank = 'Genus')
-glom_Fusarium <- subset_taxa(glom, Genus == 'Fusarium')
+#glom <- tax_glom(merge_Eukaryota, taxrank = 'Genus')
+glom_Fusarium <- subset_taxa(merge_Eukaryota, Genus == 'Fusarium')
 
 ## se calcula diversidad alfa con el glom de fusarium 
 plot_alpha_Fusarium <- plot_richness(physeq = glom_Fusarium, measures = c("Observed","Chao1","Shannon","simpson"),x = 'Treatment', color = 'Treatment') 
@@ -44,17 +44,14 @@ plot_alpha_Fusarium
 percentages_Fusarium <- transform_sample_counts(glom_Fusarium, function(x) x*100 / sum(x) )
 percentages_Fusarium_df <- psmelt(percentages_Fusarium)
 meta_ord_Fusarium <- ordinate(physeq = percentages_Fusarium, method = "NMDS", distance = 'bray') 
-plot_bet_Fusariuma <- plot_ordination(physeq = percentages_Fusarium, ordination = meta_ord_Fusarium, color = 'Treatment') +
-  geom_text(mapping = aes(label = colnames(phy@otu_table@.Data)), size = 3, vjust = 1.5)
+plot_beta_Fusarium <- plot_ordination(physeq = percentages_Fusarium, ordination = meta_ord_Fusarium, color = 'Treatment') +
+  geom_text(mapping = aes(label = colnames(glom_Fusarium@otu_table@.Data)), size = 3, vjust = 1.5)
 plot_beta_Fusarium
-
-
-
 
 ## Aglomeramos Actinobacteria
 #Actinobacteria
-glom <- tax_glom(merge_Bacteria, taxrank = 'Phylum')
-glom_Actinobacteria <- subset_taxa(glom, Phylum == 'Actinobacteria')
+#glom <- tax_glom(merge_Bacteria, taxrank = 'Phylum')
+glom_Actinobacteria <- subset_taxa(merge_Bacteria, Phylum == 'Actinobacteria')
 
 ## se calcula diversidad alfa con el glom de Actinobacteria 
 plot_alpha_Actinobacteria <- plot_richness(physeq = glom_Actinobacteria, measures = c("Observed","Chao1","Shannon","simpson"),x = 'Treatment', color = 'Treatment') 
@@ -65,8 +62,8 @@ plot_alpha_Actinobacteria
 percentages_Actinobacteria <- transform_sample_counts(glom_Actinobacteria, function(x) x*100 / sum(x) )
 percentages_Actinobacteria_df <- psmelt(percentages_Actinobacteria)
 meta_ord_Actinobacteria <- ordinate(physeq = percentages_Actinobacteria, method = "NMDS", distance = 'bray') 
-plot_bet_Actinobacteriaa <- plot_ordination(physeq = percentages_Actinobacteria, ordination = meta_ord_Actinobacteria, color = 'Treatment') +
-  geom_text(mapping = aes(label = colnames(phy@otu_table@.Data)), size = 3, vjust = 1.5)
+plot_beta_Actinobacteria <- plot_ordination(physeq = percentages_Actinobacteria, ordination = meta_ord_Actinobacteria, color = 'Treatment') +
+  geom_text(mapping = aes(label = colnames(glom_Actinobacteria@otu_table@.Data)), size = 3, vjust = 1.5)
 plot_beta_Actinobacteria
 
 

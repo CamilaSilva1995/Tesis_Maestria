@@ -26,7 +26,7 @@ fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_r
 percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
 percentages_df <- psmelt(percentages_fil)
 
-H<-diversity(percentages_df, "shannon")
+#H<-diversity(percentages_df, "shannon")
 
 ## Subconjunto de "Eukaryota"
 merge_Eukaryota<-subset_taxa(fresa_kraken_fil,Kingdom=="Eukaryota")
@@ -62,11 +62,8 @@ Alpha_diversity <- function(phy,tax,attribute){
   percentages_df <- Data[[3]]
   ## Alfa diversidad
   plot_alpha <- plot_richness(physeq = glom, measures = c("Observed","Chao1","Shannon","simpson"),x = attribute, color = attribute) 
-  #ggsave("DiversidadAlfa_tax_fil.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
   return(plot_alpha)
 }
-
-
 
 
 
