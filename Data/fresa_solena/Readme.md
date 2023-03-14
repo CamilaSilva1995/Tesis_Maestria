@@ -31,3 +31,30 @@ $ kraken-biom kraken_results/* --fmt json -o fresa_kraken.biom
 ```
 
 
+## Modificando los datos para poder usar  las herramientas de redes:
+
+Alnitak
+132.248.196.39:5000
+Calcula los vecinos de un taxon,
+Se debe subir:
+1. TaxID
+2. Documento .BIOM cortado por nivel taxonomico del taxon escojido
+Entrega matrizde correlaciones filtrada porel taxon de interes
+
+MicNet
+132.248.196.39:8501
+Conda MicNet -env
+Se requiere:
+Documento BIOM en formato csv, esto es posible usando la terminal de la siguiente manerfa 
+```{bash}
+$ biom convert -i fresa_kraken.biom -o fresa_kraken.tsv --to-tsv
+$ sed 's/\t/,/g' fresa_kraken.tsv > fresa_kraken.csv
+```
+1. UMAP -> Cluster
+2. Sparcc -> Matrizde correlacion
+3. Network ->Pidelos documentos generados en los dos anteriores pasos
+
+
+MicNet crea la red de coocurrencia completa, entregando lamatrizde correlaciones.
+Usa normalizacion de Dirichlet
+
