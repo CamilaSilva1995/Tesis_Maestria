@@ -1,0 +1,83 @@
+---
+title: "230313_Reporte3PruebasdeHipotesis"
+author: "Camila Silva"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library("phyloseq")
+library("ggplot2")
+library("vegan")
+#library("BiodiversityR") 
+library("RColorBrewer")
+library("stringi")
+library("dplyr")
+library("plyr")
+```
+
+```{r}
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_paper")
+
+### Cargado de datos originales 
+fresa_kraken <- import_biom("fresa_paper.biom")
+colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
+fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
+colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table@.Data),1,6)
+
+# percentages <- transform_sample_counts(fresa_kraken, function(x) x*100 / sum(x) )
+# percentages_df <- psmelt(percentages)
+```
+
+# PRUEBA DE HIPOTESIS
+
+```{r}
+
+OTU <- fresa_kraken@otu_table@.Data
+SAM <- fresa_kraken@sam_data
+
+## UNIR TABLA DE ABUNDANCIAS CON METADATA DE SANOS Y ENFERMOS
+
+## Calculamos la diversidad Shannon 
+
+## Se usa la funcion diversidad del paquete vegan para calcular el indice Shannon
+## Se realiza el dataframe del indice de Shannon
+OTU <- t(OTU)
+Shannon_OTU <- diversity(OTU, "shannon")
+Shannon_OTU_df <- data.frame(sample=names(Shannon_OTU),value=Shannon_OTU,measure=rep("Shannon", length(Shannon_OTU)))
+total <-cbind(Shannon_OTU_df,SAM)
+
+#mesiapor grupos
+mu <- ddply(total, summarise, grp.mean=mean(value))
+
+p<-ggplot(total, aes(x=value))+
+  geom_histogram(color="pink",fill="black")+
+  facet_grid(Treatment ~ .)
+p+geom_vline(data=mu, aes(xintercept=grp.mean, color="red"),
+             linetype="dashed")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,542 @@
+---
+title: "Diversidades alfa y beta en datos metagenomicos de shotgun de fresa"
+author: "Camila Silva"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Pre-procesamiento de los datos
+
+## DIVERSIDADES CON TODO EL CONJUNTO DE DATOS  Y LOS DATOS FILTRADOS POR CALIDAD
+
+Estos datos estan publicos, y fueron tomados del articulo "https://link.springer.com/article/10.1007/s00284-020-01948-x", para llegar a una recreación del estudio que hacen en dicho articulo. por lo tanto se procedio a descargar los datos de NCBI, usando "SRA tools" con (fasta_dump), obteniendo asi los archivos .fasta de las muestras seleccionadas.
+
+Luego para llegar a las tablas de abundancia se debe pasar por Qiime (dad y greengenes), ya que estos datos son de 16S.
+
+Para datos shotgun espreferible usar kraken, pero para estos datos probamos corriendo kraken (kraken2) para obtener los .report.
+
+Con estas lineas corremos kraken para cada una de las muestras: (/files/kraken/db_kraken2 aqui la base de datos de kraken)
+
+```{bash}
+# kraken2 --db /files/kraken/db_kraken2 -threads 14 --paired SRR8413967_1.fastq SRR8413967_2.fastq --output reports_fresa/SRR8413967.kraken --report reports_fresa/SRR8413967.report
+```
+
+Luego con estas lineas creamos el archivo .biom:
+
+```{bash}
+# kraken-biom SRR8413967.report  SRR8413968.report  SRR8413969.report  SRR8413970.report --fmt json -o fresa_paper.biom
+```
+Todo esto activando el ambiente metagenomics previamente (conda activate metagenomics)
+
+
+```{r installPhyloseq}
+getwd()
+
+# if (!requireNamespace("BiocManager", quietly = TRUE))
+#   +     install.packages("BiocManager")
+# BiocManager::install("phyloseq") 
+
+# install.packages(c("ggplot2", "readr", "patchwork"))
+```
+
+Phyloseq es un paquete de Bioconductor (Open Source Software For Bioinformatics) para la manipulación y análisis (herramienta para importar, guardar, analizar y visualizar) de datos metagenómicos generados por metodologías de secuenciación de alto rendimiento. 
+
+```{r Packages}
+library("phyloseq") 
+library("ggplot2") 
+library("igraph")
+library("readr")
+library("patchwork")
+library("vegan")
+library("GUniFrac")
+library("pbkrtest")
+#library("BiodiversityR")
+library("kableExtra")
+library("RColorBrewer")
+```
+
+## Datos kraken
+Importamos los datos kraken en un archivo biom
+
+```{r DataLoaded}
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_paper")
+fresa_kraken <- import_biom("fresa_paper.biom")
+class(fresa_kraken) # objeto phyloseq
+```
+
+Queremos acceder a los datos que contiene nuestro objeto phyloseq **fresa_kraken**
+
+Primero la tabla de taxonomia
+```{r tax}
+#fresa_kraken@tax_table@.Data)
+```
+Cambiamos los nombres de las columnas a los niveles taxonomicos
+```{r taxcolnames}
+colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
+```
+Queremos cortar la parte inicial nombres, ya que aparecen,por ejemplo: "B__Bacteria" y queremos que solo se vea "Bacteria"
+substring(). Este comando ayuda a extraer o reemplazar caracteres en un vector.
+```{r B__}
+fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
+#View(fresa_kraken@tax_table@.Data)
+```
+Queremos ver la tabla de OTUs, esta tabla contiene las abundancias de los otus de cada muestra
+```{r otu}
+#fresa_kraken@otu_table@.Data
+```
+Queremos cortar los nombres de las muestras para que coincida con los metadatos 
+```{r otucolnames}
+colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table@.Data),1,6)
+#View(fresa_kraken@otu_table@.Data)
+```
+
+# NO TENEMOS METADATA PARA ESOTOS DATOS 
+
+
+## Diversidad Alfa
+Esta representa la riqueza de las muestras, es decir el numero de especies diferentes en ese ambiente o la abundancia de especies en ese ambiente. Paramedier esta divercidad se tienen diferentes indices de medida, entre ellos losindices Shannon,Simpson, Chao1, entre otros.
+```{r index}
+index = estimate_richness(fresa_kraken)
+```
+podemos ver una representación visual de la diversidad dentro de las muestras
+esta diversidad la podemos ver por muestra,
+
+```{r plorAlphaDiversity}
+plot_richness(physeq = fresa_kraken, measures = c("Observed","Chao1","Shannon","simpson")) 
+```
+pero ya que queremos diferenciar entre plantas sanas y enfermas, tomamos estos dos conjuntos por ceparado para mostrar la diversidad
+```{r plorAlphaDiversitySanoVSnoSano}
+plot_richness(physeq = fresa_kraken, measures = c("Observed","Chao1","Shannon","simpson"),x = "Treatment", color = "Treatment") 
+```
+comparando entre los datos en crudo,y los datos filtrados por calidad
+```{r plorAlphaDiversitySanoVSnoSanoFIL}
+plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson"),x = "Treatment", color = "Treatment") 
+```
+
+## Shannon
+##
+## Simpson
+##
+## Chao1
+##
+
+
+
+
+
+
+
+Aqui podemos ver cuantos reads tenemos por muestra
+```{r}
+sample_sums(fresa_kraken)
+```
+
+y con **summary** podemos darnos una idea dela uniformidad de los datos, ya que podemos ver datos estadisticos como elmaximo, el minimo y la media
+```{r}
+summary(fresa_kraken@otu_table@.Data)
+```
+
+Con el siguiente comando podemos ver si tenemos muestras no identificadas taxonomicamente, esto se puede ver identificando los espacios en blanco ("") en los diferentes niveles taxonomicos.
+
+podemos ver los **TRUE** de cada nivel taxonomico,por ejemplo a nivel de "Phylum" tenemos solo 2 sin clasificar, y a nivel de "Specie" tenemos 1099 sin clasificar
+
+##### ESTO ES LO QUE QUEREMOS COMPARAR CON LAS SALIDAS DE BRACKEN, YA QUE PROMETE HACER UNA REASISGNACION DE TODO LO QUE QUEDE SIN CLASIFICAR CON KRAKEN
+
+Queremos convertir las abundancias absolutas a relativas, Calculamos las abundancias relativas con la funcion, tanto de los datos originales como delos filtrados
+ 
+```{r}
+percentages <- transform_sample_counts(fresa_kraken, function(x) x*100 / sum(x) )
+head(percentages@otu_table@.Data)
+```
+
+
+Ahora ya es posibleuna buena comparacion de abundancias dadas por porcentajes con indices beta 
+
+
+## Diversidad Beta
+La diversidad beta mide la diferencia entre dos o mas entornos. Se puede medir con métricas como la disimilitud de Bray-Curtis, la distancia Jaccard o la distancia UniFrac.
+
+Mide que tan similares o diferentes son un par de especies, muestras o conjuntos de muestras.
+aqui podemos ver una lista de distancias disponibles, que Phyloseq puede usar
+```{r}
+distanceMethodList 
+```
+
+Siendo las siguientes las mas usadas:
++ Disimilitud de Bray-Curtis
+
++ Distancia Jaccard
+
++ UniFrac
+
+
+```{r}
+#vegdist(meta_ord_fil,"bray")# usa la libreria Vegan,  REVISAR COMO FUNCIONA PARA IMPRIMIR LA TABLA
+```
+
+Usamos "ordinate" para asignar las distancias entre muestras,usando "Bray-Curtis", ya que es una de las metricas mas completas y mayormente utilizadas para medir la diversidad beta
+
+Hay diferentes formas de trazar y mostrar los resultados de dicho análisis. Entre otros, se utilizan ampliamente los análisis PCA, PCoA o NMDS.
+```{r}
+meta_ord <- ordinate(physeq = percentages, method = "NMDS", distance = "bray")   
+```
+
+```{r}
+meta_ord_fil <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "bray") 
+```
+Ademas lo queremos diferenciar por color entre plantas sanas y enfermas,
+```{r}
+plot_ordination(physeq = percentages, ordination = meta_ord, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+
+```{r}
+plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Treatment") +
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+
+En este gráfico NMDS, cada punto representa la abundancia combinada de todas sus OTU. No se puiede ver una diferencia entre los conjuntos de muestras de plantas sanas y muestras enfermas, por lo tanto:
+Probaremos varias distancias ya con los datos filtrados podemos ver varios ejemplos y llegar  a la posibilidad que se diferencien un poco los dos conjuntos de datos
+
+
+## Usando 
+```{r}
+meta_ord_fil_2 <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "jsd")
+plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil_2, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+## Usando 
+```{r}
+meta_ord_fil_3 <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "euclidean")
+plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil_3, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+## Usando 
+```{r}
+meta_ord_fil_4 <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "jaccard")
+plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil_4, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+## Usando 
+```{r}
+meta_ord_fil_5 <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "manhattan")
+plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil_5, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+Con ninguna distancia vemos una diferenciacion clara, por lo que lo veremos por los distintos niveles taxonomicos 
+
+# AHORA QUEREMOS VER DIFERENCIAS ENTRE DIFERENTES NIVELES TAXONOMICOS
+
+
+De aqui en adelante solo trabajaremos con los datos filtrados, 
+
+## Grafico de barras de abundancia 
+Trazando las muestras en el eje x y las abundancias en el eje y
+Los valores de abundancia para cada OTUen cada muestra se apilan en el orden de mayor a menor, separados por una fina línea horizontal.
+```{r}
+plot_bar(fresa_kraken_fil,fill="Treatment")
+```
+
+```{r}
+plot_bar(percentages_fil,fill="Treatment")
+```
+Queremos explorar nuestras muestras a diferentes niveles taxonómicos específicos  
+## A nivel de Kingdom
+```{r}
+percentages_glom_kingdom <- tax_glom(percentages_fil, taxrank = 'Kingdom')
+##View(percentages_glom_kingdom@tax_table@.Data)
+```
+## A nivel de Phylum
+```{r}
+percentages_glom_phylum <- tax_glom(percentages_fil, taxrank = 'Phylum')
+##View(percentages_glom_phylum@tax_table@.Data)
+```
+Creamos un dataframe con los porcentajes de phylum
+```{r}
+percentages_df_phylum <- psmelt(percentages_glom_phylum)
+str(percentages_df_phylum)
+```
+
+```{r}
+absolute_glom_phylum <- tax_glom(physeq = fresa_kraken_fil, taxrank = "Phylum")
+absolute_df_phylum <- psmelt(absolute_glom_phylum)
+str(absolute_df_phylum)
+```
+```{r}
+absolute_df_phylum$Phylum <- as.factor(absolute_df_phylum$Phylum)
+phylum_colors_abs <- colorRampPalette(brewer.pal(8,"Dark2")) (length(levels(absolute_df_phylum$Phylum)))
+```
+
+```{r}
+absolute_plot <- ggplot(data= absolute_df_phylum, aes(x=Sample, y=Abundance, fill=Phylum))+ 
+  geom_bar(aes(), stat="identity", position="stack")+
+  scale_fill_manual(values = phylum_colors_abs)
+```
+
+```{r}
+percentages_df_phylum$Phylum <- as.factor(percentages_df_phylum$Phylum)
+phylum_colors_rel<- colorRampPalette(brewer.pal(8,"Dark2")) (length(levels(percentages_df_phylum$Phylum)))
+relative_plot <- ggplot(data=percentages_df_phylum, aes(x=Sample, y=Abundance, fill=Phylum))+ 
+  geom_bar(aes(), stat="identity", position="stack")+
+  scale_fill_manual(values = phylum_colors_rel)
+
+absolute_plot
+relative_plot
+```
+
+Usaremos un comando llamado unique() para explorar cuántos filos y reinos tenemos. 
+```{r}
+unique(fresa_kraken_fil@tax_table@.Data[,"Kingdom"])
+```
+```{r}
+unique(fresa_kraken_fil@tax_table@.Data[,"Phylum"])
+```
+con esto podemos ver cuantos "Eukaryota" tenemos en "Kingdom"
+```{r}
+sum(fresa_kraken_fil@tax_table@.Data[,"Kingdom"] == "Eukaryota")
+```
+y cuantos "Bacteria"
+```{r}
+sum(fresa_kraken_fil@tax_table@.Data[,"Kingdom"] == "Bacteria")
+```
+
+## Diversidad Beta
+
+veremos aqui solo el reino Eucariota
+```{r}
+merge_Eukaryota<-subset_taxa(fresa_kraken_fil,Kingdom=="Eukaryota")
+```
+sacamos  las abundancias relativas 
+```{r}
+percentages_Eukaryota <- transform_sample_counts(merge_Eukaryota, function(x) x*100 / sum(x) )
+percentages_Eukaryota_df <- psmelt(percentages_Eukaryota)
+```
+### beta diversidad de Eukaryota
+```{r}
+meta_ord_Eukaryota <- ordinate(physeq = percentages_Eukaryota, method = "NMDS", distance = "bray")  
+plot_ordination(physeq = percentages_Eukaryota, ordination = meta_ord_Eukaryota, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+## Eukaryota por Phylum
+```{r}
+ggplot(data= percentages_Eukaryota_df, aes(x=Sample, y=Abundance, fill=Phylum))+ 
+  geom_bar(aes(), stat="identity", position="stack") +
+  theme(text = element_text(size = 5),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+```{r}
+merge_Eukaryota_Phylum<-tax_glom(merge_Eukaryota,taxrank="Phylum")
+```
+sacamos  las abundancias relativas 
+```{r}
+percentages_Eukaryota_Phylum <- transform_sample_counts(merge_Eukaryota_Phylum, function(x) x*100 / sum(x) )
+percentages_Eukaryota_Phylum_df <- psmelt(percentages_Eukaryota_Phylum)
+meta_ord_Eukaryota_Phylum <- ordinate(physeq = percentages_Eukaryota_Phylum, method = "NMDS", distance = "bray")  
+plot_ordination(physeq = percentages_Eukaryota_Phylum, ordination = meta_ord_Eukaryota_Phylum, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5) 
+```
+## Eukaryota por Family
+```{r}
+ggplot(data= percentages_Eukaryota_df, aes(x=Sample, y=Abundance, fill=Family))+ 
+  geom_bar(aes(), stat="identity", position="stack")  +
+  theme(text = element_text(size = 5),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+```{r}
+merge_Eukaryota_Family<-tax_glom(merge_Eukaryota,taxrank="Family")
+```
+sacamos  las abundancias relativas 
+```{r}
+percentages_Eukaryota_Family <- transform_sample_counts(merge_Eukaryota_Family, function(x) x*100 / sum(x) )
+percentages_Eukaryota_Family_df <- psmelt(percentages_Eukaryota_Family)
+meta_ord_Eukaryota_Family <- ordinate(physeq = percentages_Eukaryota_Family, method = "NMDS", distance = "bray")  
+plot_ordination(physeq = percentages_Eukaryota_Family, ordination = meta_ord_Eukaryota_Family, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+## Eukaryota por Genus
+```{r}
+ggplot(data= percentages_Eukaryota_df, aes(x=Sample, y=Abundance, fill=Genus))+ 
+         geom_bar(aes(), stat="identity", position="stack") +
+  theme(text = element_text(size = 5),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+
+```{r}
+merge_Eukaryota_Genus<-tax_glom(merge_Eukaryota,taxrank="Genus")
+```
+sacamos  las abundancias relativas 
+```{r}
+percentages_Eukaryota_Genus <- transform_sample_counts(merge_Eukaryota_Genus, function(x) x*100 / sum(x) )
+percentages_Eukaryota_Genus_df <- psmelt(percentages_Eukaryota_Genus)
+meta_ord_Eukaryota_Genus <- ordinate(physeq = percentages_Eukaryota_Genus, method = "NMDS", distance = "bray")  
+plot_ordination(physeq = percentages_Eukaryota_Genus, ordination = meta_ord_Eukaryota_Genus, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+tomando diferentes porcentajes de abundancia
+```{r}
+percentages_Eukaryota_Genus_df$Genus[percentages_Eukaryota_Genus_df$Abundance < 10.0] <- "Genus < 0.5% abund." #no deja poner ningun numero diferente a 0.5%
+percentages_Eukaryota_Genus_df$Genus <- as.factor(percentages_Eukaryota_Genus_df$Genus)
+
+genus_colors_rel <- colorRampPalette(brewer.pal(8,"Dark2")) (length(levels(percentages_Eukaryota_Genus_df$Genus)))
+relative_plot <- ggplot(data=percentages_Eukaryota_Genus_df, aes(x=Sample, y=Abundance, fill=Genus ,color = Treatment))+ 
+  geom_bar(aes(), stat="identity", position="stack") +
+  scale_fill_manual(values = phylum_colors_rel) +
+  theme(text = element_text(size = 5),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+relative_plot
+```
+
+```{r}
+relative_plot <- ggplot(data=percentages_Eukaryota_Genus_df, aes(x=Sample, y=Abundance, fill=Genus))+ 
+  geom_bar(aes(), stat="identity", position="stack") +
+  scale_fill_manual(values = phylum_colors_rel) +
+  theme(text = element_text(size = 5),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+relative_plot
+```
+
+sacando la beta diversidad con aglomerado de 10%
+```{r}
+meta_ord_Eukaryota_Genus <- ordinate(physeq = percentages_Eukaryota_Genus, method = "NMDS", distance = "bray")  
+plot_ordination(physeq = percentages_Eukaryota_Genus, ordination = meta_ord_Eukaryota_Genus, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+
+
+## Veremos aqui solo el reino Bacteriano
+```{r}
+merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
+```
+sacamos  las abundancias relativas 
+```{r}
+percentages_Bacteria <- transform_sample_counts(merge_Bacteria, function(x) x*100 / sum(x) )
+percentages_Bacteria_df <- psmelt(percentages_Bacteria)
+```
+beta diversidad de Bacteria
+```{r}
+meta_ord_Bacteria <- ordinate(physeq = percentages_Bacteria, method = "NMDS", distance = "bray")   
+plot_ordination(physeq = percentages_Bacteria, ordination = meta_ord_Bacteria, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+## Bacterias por Phylum
+```{r}
+ggplot(data= percentages_Bacteria_df, aes(x=Sample, y=Abundance, fill=Phylum))+ 
+  geom_bar(aes(), stat="identity", position="stack") +
+  theme(text = element_text(size = 5),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+```{r}
+merge_Bacteria_Phylum<-tax_glom(merge_Bacteria,taxrank="Phylum")
+```
+sacamos  las abundancias relativas 
+```{r}
+percentages_Bacteria_Phylum <- transform_sample_counts(merge_Bacteria_Phylum, function(x) x*100 / sum(x) )
+percentages_Bacteria_Phylum_df <- psmelt(percentages_Bacteria_Phylum)
+meta_ord_Bacteria_Phylum <- ordinate(physeq = percentages_Bacteria_Phylum, method = "NMDS", distance = "bray")  
+plot_ordination(physeq = percentages_Bacteria_Phylum, ordination = meta_ord_Bacteria_Phylum, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+## Bacterias por Family
+```{r}
+ggplot(data= percentages_Bacteria_df, aes(x=Sample, y=Abundance, fill=Family))+ 
+  geom_bar(aes(), stat="identity", position="stack") +
+  theme(text = element_text(size = 5),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+```{r}
+merge_Bacteria_Family<-tax_glom(merge_Bacteria,taxrank="Family")
+```
+## sacamos  las abundancias relativas 
+```{r}
+percentages_Bacteria_Family <- transform_sample_counts(merge_Bacteria_Family, function(x) x*100 / sum(x) )
+percentages_Bacteria_Family_df <- psmelt(percentages_Bacteria_Family)
+meta_ord_Bacteria_Family <- ordinate(physeq = percentages_Bacteria_Family, method = "NMDS", distance = "bray")  
+plot_ordination(physeq = percentages_Bacteria_Family, ordination = meta_ord_Bacteria_Family, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+## Bacterias por Genero
+```{r}
+ggplot(data= percentages_Bacteria_df, aes(x=Sample, y=Abundance, fill=Genus))+ 
+  geom_bar(aes(), stat="identity", position="stack") +
+  theme(text = element_text(size = 5),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
+```{r}
+merge_Bacteria_Genus<-tax_glom(merge_Bacteria,taxrank="Genus")
+```
+sacamos  las abundancias relativas 
+```{r}
+percentages_Bacteria_Genus <- transform_sample_counts(merge_Bacteria_Genus, function(x) x*100 / sum(x) )
+percentages_Bacteria_Genus_df <- psmelt(percentages_Bacteria_Genus)
+meta_ord_Bacteria_Genus <- ordinate(physeq = percentages_Bacteria_Genus, method = "NMDS", distance = "bray")  
+plot_ordination(physeq = percentages_Bacteria_Genus, ordination = meta_ord_Bacteria_Genus, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+
+```
+
+tomando diferentes porcentajes de abundancia
+```{r}
+percentages_Bacteria_Genus_df$Genus[percentages_Bacteria_Genus_df$Abundance < 10.0] <- "Genus < 0.5% abund." #no deja poner ningun numero diferente a 0.5%
+percentages_Bacteria_Genus_df$Genus <- as.factor(percentages_Bacteria_Genus_df$Genus)
+
+genus_colors_rel <- colorRampPalette(brewer.pal(8,"Dark2")) (length(levels(percentages_Bacteria_Genus_df$Genus)))
+relative_plot <- ggplot(data=percentages_Bacteria_Genus_df, aes(x=Sample, y=Abundance, fill=Genus ,color = Treatment))+ 
+  geom_bar(aes(), stat="identity", position="stack") +
+  scale_fill_manual(values = genus_colors_rel) +
+  theme(text = element_text(size = 5),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+relative_plot
+```
+
+```{r}
+relative_plot <- ggplot(data=percentages_Bacteria_Genus_df, aes(x=Sample, y=Abundance, fill=Genus)) + 
+  geom_bar(aes(), stat="identity", position="stack") +
+  scale_fill_manual(values = genus_colors_rel) +
+  theme(text = element_text(size = 5),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+relative_plot
+```
+
+sacando la beta diversidad con aglomerado de 10%
+```{r}
+meta_ord_Bacteria_Genus <- ordinate(physeq = percentages_Bacteria_Genus, method = "NMDS", distance = "bray")  
+plot_ordination(physeq = percentages_Bacteria_Genus, ordination = meta_ord_Bacteria_Genus, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
+
+#### REDES
+
+podemos hacer un data.frame uniendo toda la informacion del objeto phyloseq
+```{r}
+df <- psmelt(fresa_kraken_fil)
+```
+Hay dos funciones en el paquete phyloseq para trazar la red del microbioma usando “ggplot2”: plot_network() y plot_net()
+
+Se crean un grafo basado en igraph, basado en el método de distancia por defecto, Jaccard y una distancia máxima entre nodos conectados de 0,8. El “Treatment” se utiliza para los mapeos de color y forma para visualizar la estructura de las muestras
+
+Hacemos una gráfica a partir de el objeto phyloseq
+```{r}
+ig <- make_network(fresa_kraken_fil, max.dist=0.8)
+```
+### Graficamos
+```{r}
+plot_network(ig, fresa_kraken_fil, color="Treatment", shape="Treatment")
+```
+ 
+Los siguientes códigos crean una red basada en una distancia máxima entre los nodos conectados de 0,5
+
+Graficamos sin necesidad de hacer el objeto anterior
+```{r}
+plot_net(fresa_kraken_fil, maxdist = 0.5, color = "Treatment", shape="Treatment")
+```
+
+
+
+
