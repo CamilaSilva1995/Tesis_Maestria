@@ -36,10 +36,23 @@ $ kraken-biom kraken_results/* --fmt json -o fresa_kraken.biom
 Alnitak
 132.248.196.39:5000
 Calcula los vecinos de un taxon,
+```{r}
+# tomamos un subconjunto cortado a nivel de genero, objeto phyloseq
+Genus_glom <- tax_glom(fresa_kraken_fil, taxrank = 'Genus')
+# se pasa a dataframe
+Genus_glom_df = Genus_glom@otu_table
+# se guarda como csv
+write.csv(Genus_glom_df, "/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/fresa_genus.csv")
+```
+Se tuvo que corre un lugar de losnombre delascolumnas,ya quegeneraba un error al tratar de convertir ese archivo tsv a .BIOM
+```{bash}
+$ biom convert -i fresa_genus.tsv -o freas_genus.biom --table-type="OTU table" --to-json
+```
 Se debe subir:
 1. TaxID
 2. Documento .BIOM cortado por nivel taxonomico del taxon escojido
-Entrega matrizde correlaciones filtrada porel taxon de interes
+Entrega matriz de correlaciones filtrada porel taxon de interes
+
 
 MicNet
 132.248.196.39:8501
