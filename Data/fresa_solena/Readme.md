@@ -33,8 +33,10 @@ $ kraken-biom kraken_results/* --fmt json -o fresa_kraken.biom
 
 ## Modificando los datos para poder usar  las herramientas de redes:
 
-Alnitak
+### Alnitak
+
 132.248.196.39:5000
+
 Calcula los vecinos de un taxon,
 ```{r}
 # tomamos un subconjunto cortado a nivel de genero, objeto phyloseq
@@ -54,9 +56,12 @@ Se debe subir:
 Entrega matriz de correlaciones filtrada porel taxon de interes
 
 
-MicNet
+### MicNet
+
 132.248.196.39:8501
+
 Conda MicNet -env
+
 Se requiere:
 Documento BIOM en formato csv, esto es posible usando la terminal de la siguiente manerfa 
 ```{bash}
