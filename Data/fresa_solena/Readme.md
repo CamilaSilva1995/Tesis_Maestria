@@ -57,9 +57,12 @@ Entrega matriz de correlaciones filtrada porel taxon de interes
 
 Output:
 * 20230314-1_raw_network.csv
+
 Que sólo reporta las correlaciones con el género que se le pone y de esas, sólo si pasan los umbrales de:
+
 * Corrección > 0.7 y
 * Bray Curtis< 0.3
+
 Que cumpla estas condiciones tomando a nivel de genero con taxon principal Fusarium (5506) tenemos: taxon2 (5125,57161,37994,5141)
 
 
