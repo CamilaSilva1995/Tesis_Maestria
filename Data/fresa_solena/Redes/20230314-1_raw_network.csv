@@ -1,0 +1,5 @@
+taxon1,taxon2,Spearman Correlation,Bray Curtis Dissimilarity,P-pvalue Spearman,P-pvalue Bray Curtis,P-adjusted pvalue Spearman,P-adjusted pvalue Bray Curtis,B-pvalue Spearman,B-pvalue Bray Curtis,B-adjusted pvalue Spearman,B-adjusted pvalue Bray Curtis
+5506,5125,0.775,0.130,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000
+5506,57161,0.822,0.169,0.000,0.000,0.000,0.000,0.000,0.002,0.000,0.002
+5506,37994,0.716,0.118,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000
+5506,5141,0.818,0.133,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000
