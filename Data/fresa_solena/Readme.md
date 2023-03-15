@@ -37,7 +37,7 @@ $ kraken-biom kraken_results/* --fmt json -o fresa_kraken.biom
 
 132.248.196.39:5000
 
-Calcula los vecinos de un taxon,
+Calcula los vecinos de un taxon, (taxón de interes con dos metricas)
 ```{r}
 # tomamos un subconjunto cortado a nivel de genero, objeto phyloseq
 Genus_glom <- tax_glom(fresa_kraken_fil, taxrank = 'Genus')
@@ -54,6 +54,13 @@ Se debe subir:
 1. TaxID
 2. Documento .BIOM cortado por nivel taxonomico del taxon escojido
 Entrega matriz de correlaciones filtrada porel taxon de interes
+
+Output:
+* 20230314-1_raw_network.csv
+Que sólo reporta las correlaciones con el género que se le pone y de esas, sólo si pasan los umbrales de:
+* Corrección > 0.7 y
+* Bray Curtis< 0.3
+Que cumpla estas condiciones tomando a nivel de genero con taxon principal Fusarium (5506) tenemos: taxon2 (5125,57161,37994,5141)
 
 
 ### MicNet
@@ -76,3 +83,9 @@ $ sed 's/\t/,/g' fresa_kraken.tsv > fresa_kraken.csv
 MicNet crea la red de coocurrencia completa, entregando lamatrizde correlaciones.
 Usa normalizacion de Dirichlet
 
+Output:
+Se obtienen 
+
+* Output_UMAP_HDBSCAN.csv
+* SparCC_Output.csv
+* 
