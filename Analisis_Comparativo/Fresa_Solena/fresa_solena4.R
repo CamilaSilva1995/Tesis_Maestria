@@ -38,7 +38,7 @@ plot_network(ig, fresa_kraken_fil, color="Treatment", shape="Treatment")
 ## Graficamos sin necesidad de hacer el objeto anterior
 plot_net(fresa_kraken_fil, maxdist = 0.5, color = "Treatment", shape="Treatment")
 
-
+# REDES DE COOCURRENCIA
 
 
 
