@@ -1,0 +1,14 @@
+ 50.00	2	2	U	0	unclassified
+ 50.00	2	0	R	1	root
+ 50.00	2	0	R1	131567	  cellular organisms
+ 50.00	2	0	D	2	    Bacteria
+ 50.00	2	0	P	1224	      Proteobacteria
+ 25.00	1	0	C	1236	        Gammaproteobacteria
+ 25.00	1	0	O	72274	          Pseudomonadales
+ 25.00	1	0	F	135621	            Pseudomonadaceae
+ 25.00	1	1	G	286	              Pseudomonas
+ 25.00	1	0	C	28216	        Betaproteobacteria
+ 25.00	1	0	O	80840	          Burkholderiales
+ 25.00	1	0	F	119060	            Burkholderiaceae
+ 25.00	1	0	G	93217	              Pandoraea
+ 25.00	1	1	S	93222	                Pandoraea sputorum
