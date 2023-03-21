@@ -2,7 +2,11 @@ Estos datos estan publicos, y fueron tomados del articulo "(https://link.springe
 
 Luego para llegar a las tablas de abundancia se debe pasar por Qiime (dad y greengenes), ya que estos datos son de 16S.
 
-Para datos shotgun espreferible usar kraken, pero para estos datos probamos corriendo kraken (kraken2) para obtener los .report.
+Con referencia de el articulo y los datos encontrados en NCBI sobre las muestras usadas se creo el archivo de metadatos.
+
+
+
+Para datos shotgun es preferible usar kraken, pero para estos datos probamos corriendo kraken (kraken2) para obtener los .report.
 
 Con estas lineas corremos kraken para cada una de las muestras: (/files/kraken/db_kraken2 aqui la base de datos de kraken)
 
