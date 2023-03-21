@@ -1,0 +1,36 @@
+name	taxonomy_id	taxonomy_lvl	kraken_assigned_reads	added_reads	new_est_reads	fraction_total_reads
+Actinobacteria	201174	P	7093969	287687	7381656	0.55795
+Firmicutes	1239	P	122407	35356	157763	0.01192
+Deinococcus-Thermus	1297	P	38195	1557	39752	0.00300
+Cyanobacteria	1117	P	32926	812	33738	0.00255
+Chloroflexi	200795	P	22564	313	22877	0.00173
+Armatimonadetes	67819	P	1850	10	1860	0.00014
+Tenericutes	544448	P	597	73	670	0.00005
+Proteobacteria	1224	P	4709971	303175	5013146	0.37893
+Planctomycetes	203682	P	249399	3363	252762	0.01911
+Verrucomicrobia	74201	P	25641	688	26329	0.00199
+Kiritimatiellaeota	134625	P	1048	666	1714	0.00013
+Chlamydiae	204428	P	337	10	347	0.00003
+Candidatus Omnitrophica	67812	P	220	0	220	0.00002
+Bacteroidetes	976	P	77339	1595	78934	0.00597
+Chlorobi	1090	P	3055	98	3153	0.00024
+Balneolaeota	1936987	P	199	14	213	0.00002
+Ignavibacteriae	1134404	P	166	3	169	0.00001
+Gemmatimonadetes	142182	P	39234	2220	41454	0.00313
+Fibrobacteres	65842	P	137	2	139	0.00001
+Acidobacteria	57723	P	80065	1805	81870	0.00619
+Nitrospirae	40117	P	5184	76	5260	0.00040
+Spirochaetes	203691	P	3359	204	3563	0.00027
+Synergistetes	508458	P	3040	265	3305	0.00025
+Candidatus Bipolaricaulota	67810	P	610	24	634	0.00005
+Candidatus Saccharibacteria	95818	P	170	50	220	0.00002
+Thermotogae	200918	P	697	45	742	0.00006
+Aquificae	200783	P	394	4	398	0.00003
+Thermodesulfobacteria	200940	P	361	7	368	0.00003
+Fusobacteria	32066	P	326	62	388	0.00003
+Deferribacteres	200930	P	261	8	269	0.00002
+Chrysiogenetes	200938	P	253	112	365	0.00003
+Calditrichaeota	1930617	P	206	1	207	0.00002
+Ascomycota	4890	P	60014	610	60624	0.00458
+Basidiomycota	5204	P	6052	143	6195	0.00047
+Oomycota	4762	P	7700	893	8593	0.00065
