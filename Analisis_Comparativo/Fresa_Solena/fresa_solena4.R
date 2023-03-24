@@ -3,6 +3,12 @@
 ### https://haydeeperuyero.github.io/Analisis_datos_microbioma_Eq4/Chapter7/Chapter7-html
 ### Redes de Coocurrencia
 ### http://www.castrolab.org/isme/microbial_networks/microbial_networks.html#workshop
+### http://www.castrolab.org/isme/microbial_networks/microbial_networks.html#comau
+### http://www.aic.uva.es/cuentapalabras/colocaci%C3%B3n-coocurrencia-y-redes-l%C3%A9xicas.html
+
+
+### Gephi
+
 library("phyloseq")
 library("ggplot2")
 library("igraph")

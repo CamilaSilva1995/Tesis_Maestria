@@ -1,5 +1,7 @@
 ## ANALISIS DE POTENCIA - PRUEBA DE HIPOTESIS
 
+### https://fhernanb.github.io/Manual-de-R/ph.html
+
 library("phyloseq")
 library("ggplot2")
 library("vegan")
