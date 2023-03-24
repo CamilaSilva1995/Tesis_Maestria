@@ -65,6 +65,7 @@ Que sólo reporta las correlaciones con el género que se le pone y de esas, só
 
 Que cumpla estas condiciones tomando a nivel de genero con taxon principal Fusarium (5506) tenemos: taxon2 (5125,57161,37994,5141)
 
+Se usa Gephi para la visualizacion de estos datos
 
 ### MicNet
 
