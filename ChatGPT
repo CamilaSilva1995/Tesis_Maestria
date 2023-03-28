@@ -1,6 +1,6 @@
 ChatGPT
 
-23/03/22 10:41:01 
+23/03/22
 
 La diversidad alfa es una medida de la diversidad de especies dentro de un área o unidad espacial específica. Se refiere a la cantidad de especies diferentes que se encuentran en una sola comunidad o hábitat, sin considerar la diversidad entre diferentes comunidades o hábitats.
 
@@ -34,16 +34,32 @@ Referencias:
 
 
 
-##########################
+##############################################
 Clase 23/03/23
 Idea-> se puede queitar elelemento (especie ,genero... etc),por que nonos dice mucho y revizar los analisis paraelresto de los datos 
 Sacar OTUs significativos en las muestras... diferenciando entre enfermos y sanos   
 
 
 
+##############################################
+23/03/27
 
+La beta diversidad es un término utilizado en ecología para describir la variación en la diversidad biológica entre diferentes sitios o áreas. Se refiere a la diferencia en las especies o comunidades que se encuentran en diferentes lugares o ecosistemas.
 
+La beta diversidad puede ser medida de diferentes maneras, dependiendo del enfoque y de los datos disponibles. Algunas medidas comunes incluyen la distancia de Jaccard, la distancia de Bray-Curtis y la distancia de Whittaker. Estas medidas evalúan la similitud entre las especies que se encuentran en diferentes áreas.
 
+La beta diversidad puede ser influenciada por una variedad de factores, incluyendo la geografía, el clima, la disponibilidad de recursos y la perturbación del ecosistema. Una mayor beta diversidad puede indicar una mayor variabilidad en los recursos y hábitats disponibles, lo que puede llevar a una mayor diversidad de especies. Por otro lado, una baja beta diversidad puede indicar una homogeneización en los recursos y hábitats, lo que puede llevar a una menor diversidad de especies
+
+A continuación se presenta una tabla que resume algunos de los índices de beta diversidad más comúnmente utilizados, junto con una breve descripción de cada uno y sus diferencias:
+
+Índice	Descripción	Referencia
+Distancia de Jaccard	Mide la proporción de especies que son comunes entre dos sitios, en relación con el total de especies encontradas en ambos sitios.	Jaccard, P. (1901). Étude comparative de la distribution florale dans une portion des Alpes et des Jura. Bulletin de la Société Vaudoise des Sciences Naturelles, 37, 547-579.
+Distancia de Bray-Curtis	Mide la similitud entre dos sitios en términos de las especies que comparten, ponderando la abundancia de cada especie en cada sitio.	Bray, J. R., & Curtis, J. T. (1957). An ordination of the upland forest communities of southern Wisconsin. Ecological Monographs, 27, 325-349.
+Distancia de Whittaker	Mide la similitud entre dos sitios en términos de su composición de especies, considerando tanto la presencia como la abundancia de las especies.	Whittaker, R. H. (1960). Vegetation of the Siskiyou Mountains, Oregon and California. Ecological Monographs, 30, 279-338.
+Índice de Simpson	Mide la probabilidad de que dos individuos seleccionados al azar en diferentes sitios sean de especies diferentes.	Simpson, E. H. (1949). Measurement of diversity. Nature, 163, 688.
+Índice de Shannon	Mide la cantidad de información contenida en la distribución de especies entre diferentes sitios, ponderando la abundancia de cada especie.	Shannon, C. E. (1948). A mathematical theory of communication. Bell System Technical Journal, 27, 379-423.
+
+Es importante tener en cuenta que cada índice se basa en supuestos y consideraciones diferentes, y que pueden ser más apropiados para diferentes tipos de datos o preguntas de investigación. Además, existen muchos otros índices de beta diversidad disponibles en la literatura, y la elección de un índice en particular dependerá del contexto y los objetivos del análisis.
 
 
 
