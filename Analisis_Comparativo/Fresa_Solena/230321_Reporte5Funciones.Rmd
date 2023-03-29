@@ -17,6 +17,7 @@ library("ggplot2")
 #library("vegan")
 library("RColorBrewer")
 library("stringi")
+library(forcats)
 
 ```
 
@@ -24,7 +25,7 @@ library("stringi")
 
 ```{r DataLoaded}
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data_all")
-fresa_kraken <- import_biom("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data_all/fresa_kraken_all.biom")
+fresa_kraken <- import_biom("fresa_kraken_all.biom")
 class(fresa_kraken)
 ## como tenemos diferencias de longitud en los nombres de las muestras, al cortar los nombres, quedan los datos nuevos con un punto al final, lo  cual para ciertos procedimientos a R no le gusta, por lo tanto a continuacion reemplazamos el punto por una X y asi no tener inconvenientes mas adelante 
 ## usando lalibreria stringi
@@ -88,37 +89,6 @@ glomToGraph<-function(phy,tax){
 }
 ```
  
- 
- 
-```{r CrearGlomEukarya}
-datos<-glomToGraph(merge_Eukaryota,'Phylum')
-percentages_df<-datos[[3]]
-length(percentages_df$Sample)
-
-percentages_df<-percentages_df[order(percentages_df$Category, percentages_df$Sample),]
-head(percentages_df)
-
-```
-
-
-```{r}
-p<-ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='Phylum' ,color='Category'))  +
-  scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
-  geom_bar(aes(), stat="identity", position="stack") +
-  #scale_x_discrete(limits = rev(levels(percentages_df$Category))) +
-  labs(title = "Abundance", x='Sample', y='Abundance', color = 'Category') +
-  theme(legend.key.size = unit(0.2, "cm"),
-        legend.key.width = unit(0.25,"cm"),
-        legend.position = "bottom",
-        legend.direction = "horizontal",
-        legend.title=element_text(size=8, face = "bold"),
-        legend.text=element_text(size=6),
-        text = element_text(size=12),
-        axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
-
-```
-
-
 ## Graficar abundancias stackbar
 
 input entra el percentages_df  
