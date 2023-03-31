@@ -3,7 +3,8 @@ library("ggplot2")
 #library("vegan")
 library("RColorBrewer")
 library("stringi")
-library(forcats)
+library("forcats")
+library("dplyr")
 
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data_all")
 fresa_kraken <- import_biom("fresa_kraken_all.biom")
@@ -15,12 +16,8 @@ sample_names(fresa_kraken)<-stri_replace_all_regex(sample_names(fresa_kraken),'\
 colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 ## quitar los primeros caracteres de los nombres del tax_table
 fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
-## recortar los nombres de las muestras
-#colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table@.Data),1,6)
 ## cargar los metadatos
 metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data_all/metadata.csv",header =  TRUE, row.names = 1, sep = ",")
-#rownames(metadata_fresa) <- sample_names(fresa_kraken)
-#rownames(metadata_fresa) <- metadata_fresa$
 
 #metadata_fresa
 ## unir los metadatos al objeto phyloseq
@@ -66,11 +63,12 @@ percentages_df<-percentages_df[order(percentages_df$Category,percentages_df$Samp
 #x$name <- factor(x$name, levels = x$name[order(x$val)])
 #percentages_df$Sample <- factor(percentages_df$Sample, levels =percentages_df$Sample[order(percentages_df$Sample)])
 
-
+percentages_df %>% mutate(Category = factor(Category, levels = c("cropHealthy","cropWilted","nearCrop", "forestDegraded","uncultivatedLand")))
+  
 ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='Phylum' ,color='Category'))  +
   scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
   geom_bar(aes(), stat="identity", position="stack") +
-  scale_x_discrete(limits = rev(levels(percentages_df$Category))) +
+  #scale_x_discrete(limits = rev(levels(percentages_df$Category))) +
   labs(title = "Abundance", x='Sample', y='Abundance', color = 'Category') +
   theme(legend.key.size = unit(0.2, "cm"),
         legend.key.width = unit(0.25,"cm"),
@@ -91,13 +89,62 @@ ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='Phylum' 
 
 
 
-
-
-
-
-
-
-
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# head(percentages_df)
+# #La función rbind en R, abreviatura de row-bind , se puede usar para combinar vectores, matrices y marcos de datos por filas.
+# little<-rbind(percentages_df[1:8,],percentages_df[277:280,],percentages_df[237:244,],percentages_df[213:216,])
+# unique(little$Sample)
+# little
+# #MP2047 debe ser blanco
+# #MP2048 debe ser blanco   
+# #P3029 debe ser cyan
+# #P3358 debe ser cyan poco verde (7.13)
+# #P3066 debe ser negro de verde (9.2)  (no puede ser)
+# #P3399 debe ser negro                 (no puede ser)
+# # Salen ordenados de acuerdo a sample alfabeticamente
+# ggplot(data=little, aes_string(x=('Sample'), y='Abundance', fill='Phylum', colour='Category' ))+
+#   scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
+#   geom_bar(aes(), stat="identity", position="stack") 
+# 
+# # Agregar una nueva etiqueta
+# ### Tarea Camila, generar un vector ordenado alfabéticamente con
+# ## identificadores consecutivos, 
+# # ¿Cuántas veces se repite cada id? ¿por qué? 
+# # Por que debo de ordenar primero 
+# little<-little[order(little$Category,little$Sample),]
+# 
+# newname<-c("A01","A01","A01","A01","A02","A02","A02","A02",
+#            "A03","A03","A03","A03","A04","A04","A04","A04",
+#            "A05","A05","A05","A05","A06","A06","A06","A06")
+# 
+# # Que hago aqui
+# #se esta creando un nuevo nombre con orden alfanumerico con el anterior vector hecho a mano 
+# little$new<-paste(newname, little$Sample, sep="_")
+# 
+# ggplot(data=little, aes_string(x=('new'), y='Abundance', fill='Phylum',colour='Category' )) +
+#   scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
+#   geom_bar(aes(), stat="identity", position="stack") +
+#   scale_x_discrete(limits = rev(levels(percentages_df$Category))) +
+#   labs(title = "Abundance", x='Sample', y='Abundance', color = 'Category') +
+#   theme(legend.key.size = unit(0.2, "cm"),
+#         legend.key.width = unit(0.25,"cm"),
+#         legend.position = "bottom",
+#         legend.direction = "horizontal",
+#         legend.title=element_text(size=8, face = "bold"),
+#         legend.text=element_text(size=6),
+#         text = element_text(size=12),
+#         axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+# 
+# 
+# 
 
 
 

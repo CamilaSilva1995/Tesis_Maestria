@@ -23,14 +23,14 @@ library("plyr")
 ```
 
 ```{r}
-setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena")
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
 outpath = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img"
 ### Cargado de datos originales 
 fresa_kraken <- import_biom("fresa_kraken.biom")
 colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
 colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table@.Data),1,6)
-metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
+metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
 fresa_kraken@sam_data <- sample_data(metadata_fresa)
 fresa_kraken@sam_data$Sample<-row.names(fresa_kraken@sam_data)
 colnames(fresa_kraken@sam_data)<-c('Treatment','Samples')
@@ -113,7 +113,7 @@ Shannon_OTU <- diversity(OTU, "shannon")
 Shannon_OTU_df <- data.frame(sample=names(Shannon_OTU),value=Shannon_OTU,measure=rep("Shannon", length(Shannon_OTU)))
 total <-cbind(Shannon_OTU_df,SAM)
 
-#mesiapor grupos
+# media por grupos
 mu <- ddply(total, "Treatment", summarise, grp.mean=mean(value))
 
 p<-ggplot(total, aes(x=value))+
