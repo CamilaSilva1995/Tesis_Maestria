@@ -1,0 +1,314 @@
+---
+title: "230322_Reporte5"
+author: "Camila Silva"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r Packages}
+
+library("phyloseq")
+library("ggplot2")
+#library("vegan")
+library("RColorBrewer")
+library("stringi")
+library(forcats)
+
+```
+
+### Cargado de datos originales 
+
+```{r DataLoaded}
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data_all")
+fresa_kraken <- import_biom("fresa_kraken_all.biom")
+class(fresa_kraken)
+## como tenemos diferencias de longitud en los nombres de las muestras, al cortar los nombres, quedan los datos nuevos con un punto al final, lo  cual para ciertos procedimientos a R no le gusta, por lo tanto a continuacion reemplazamos el punto por una X y asi no tener inconvenientes mas adelante 
+## usando lalibreria stringi
+sample_names(fresa_kraken)<-stri_replace_all_regex(sample_names(fresa_kraken),'\\.kraken2.report','')
+## renombrar las columnas del tax_table
+colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
+## quitar los primeros caracteres de los nombres del tax_table
+fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
+## recortar los nombres de las muestras
+#colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table@.Data),1,6)
+## cargar los metadatos
+metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data_all/metadata.csv",header =  TRUE, row.names = 1, sep = ",")
+#rownames(metadata_fresa) <- sample_names(fresa_kraken)
+#rownames(metadata_fresa) <- metadata_fresa$
+
+#metadata_fresa
+## unir los metadatos al objeto phyloseq
+fresa_kraken@sam_data <- sample_data(metadata_fresa) 
+```
+
+```{r filtroCalidad}
+# filtro de calidad 
+samples_to_remove <- c("MP2079","MP2080","MP2088","MP2109","MP2137")
+samples<-!(sample_names(fresa_kraken) %in% samples_to_remove)
+names(samples)<-as.character(sample_names(fresa_kraken))
+fresa_kraken_fil <- prune_samples(samples, fresa_kraken) 
+nsamples(fresa_kraken) # 85
+nsamples(fresa_kraken_fil) # 80
+ 
+```
+
+## Subconjunto de "Eukaryota"
+```{r MergeEukaryota}
+merge_Eukaryota<-subset_taxa(fresa_kraken_fil,Kingdom=="Eukaryota")
+```
+
+## Subconjunto de "Bacteria"
+```{r MergeBacteria}
+merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
+```
+
+
+
+
+# Funciones 
+Crea los subconjuntos de datos
+ input
+       phy phyliseq total
+       tax rango al que queremos recortar
+ output
+
+```{r FunctionGlom}
+glomToGraph<-function(phy,tax){
+  ## creamos el subconjunto dependiendo del linaje taxonomico deseado
+  glom <- tax_glom(phy, taxrank = tax)
+  ## sacamos los porcentajes
+  percentages <- transform_sample_counts(glom, function(x) x*100 / sum(x) )
+  percentages_df <- psmelt(percentages)
+  #return(nsamples(percentages_df))
+  return(list(glom,percentages,percentages_df))
+}
+```
+ 
+## Graficar abundancias stackbar
+
+input entra el percentages_df  
+```{r FunctionPlotAbundances}
+Abundance_barras <- function(phy,tax,attribute,abundance_percentage){
+  ##llamar funcion de datos 
+  Data <- glomToGraph(phy,tax)
+  glom <- Data[[1]] #phyloseq
+  percentages <- Data[[2]] #phyloseq
+  percentages_df <- Data[[3]] # dataframe
+  ## Graficamos para cada subconjunto las barras de abundancia
+  
+  ## SORT HISTOGRAM
+  ## x$ord <- factor( x$ord , levels = c( 'b' , 'a' , 'c' ) , ordered = TRUE )
+  # percentages_df@Category  <- factor(percentages_df@Category,levels=c('cropHealthy','cropWilted','nearCrop','uncultivatedLand','forestDegraded'),ordered = TRUE )
+  
+  percentages_df$Category  <- factor(percentages_df$Category,levels=c('cropHealthy','cropWilted','nearCrop','uncultivatedLand','forestDegraded'),ordered = TRUE )
+  
+  
+  plot_barras <- ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill=tax ,color=attribute)) +
+    scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
+    geom_bar(aes(), stat="identity", position="stack") +
+    labs(title = "Abundance", x='Sample', y='Abundance', color = tax) +
+    theme(legend.key.size = unit(0.2, "cm"),
+          legend.key.width = unit(0.25,"cm"),
+          legend.position = "bottom",
+          legend.direction = "horizontal",
+          legend.title=element_text(size=8, face = "bold"),
+          legend.text=element_text(size=6),
+          text = element_text(size=12),
+          axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+  percentages_df$tax<-percentages_df[,ncol(percentages_df)]
+  percentages_df$tax[percentages_df$Abundance < abundance_percentage] <- "abundance_percentage"
+  percentages_df$tax <- as.factor(percentages_df$tax)
+  plot_percentages <- ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='tax' ,color=attribute))+
+    scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
+    geom_bar(aes(), stat="identity", position="stack") +
+    labs(title = "Abundance", x='Sample', y='Abundance', color = tax) +
+    theme(legend.key.size = unit(0.3, "cm"),
+          legend.key.width = unit(0.5,"cm"),
+          legend.position = "bottom",
+          legend.direction = "horizontal",
+          legend.title=element_text(size=10, face = "bold"),
+          legend.text=element_text(size=8),
+          text = element_text(size=12),
+          axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+  return(list(plot_barras,plot_percentages))
+}
+```
+
+## Graficar betadiversity
+```{r FunctionPlotBetaDiversity}
+Beta_diversity <- function(phy,tax,attribute,distance){
+  Data <- glomToGraph(phy,tax)
+  glom <- Data[[1]]
+  #CREAR UN GLOM AL 10%
+  percentages <- Data[[2]]
+  percentages_df <- Data[[3]]
+  ## Beta diversidad 
+  meta_ord <- ordinate(physeq = percentages, method = "NMDS", distance = distance) 
+  plot_beta <- plot_ordination(physeq = percentages, ordination = meta_ord, color = attribute) +
+    geom_text(mapping = aes(label = colnames(phy@otu_table@.Data)), size = 3, vjust = 1.5)
+  return(plot_beta)
+}
+```
+
+## Graficar alphadiversity
+```{r FunctionPlotAlphaDiversity}
+Alpha_diversity <- function(phy,tax,attribute){
+  ## llamamos la funcion que crea los dataset
+  Data <- glomToGraph(phy,tax)
+  glom <- Data[[1]]
+  
+  percentages <- Data[[2]]
+  percentages_df <- Data[[3]]
+  ## Alfa diversidad
+  plot_alpha <- plot_richness(physeq = glom, measures = c("Observed","Chao1","Shannon","simpson"),x = attribute, color = attribute) 
+  return(plot_alpha)
+}
+```
+
+
+
+
+#-----------Eukarya by Phylum 
+```{r PlotEukaryaPhylum}
+Barras_Phylum <- Abundance_barras(merge_Eukaryota,'Phylum' , 'Category', 10.0)
+Barras_Phylum[1] # normal
+Barras_Phylum[2]
+
+```
+
+```{r PlotBetaDiversitytEukaryaPhylum}
+Beta_diversity(merge_Eukaryota , 'Phylum' , 'Category', 'bray')
+```
+
+```{r PlotAlphaDiversityEukaryaPhylum}
+Alpha_diversity(merge_Eukaryota , 'Phylum' , 'Category')
+```
+
+
+#-----------Eukarya by Family
+```{r PlotEukaryaFamily}
+Barras_Species <- Abundance_barras(merge_Eukaryota,'Family','Category',10.0)
+Barras_Species[1] 
+Barras_Species[2]
+```
+
+```{r PlotBetaDiversityEukaryaFamily}
+Beta_diversity(merge_Eukaryota , 'Family' , 'Category', 'bray')
+```
+
+```{r PlotAlphaDiversityEukaryaFamily}
+Alpha_diversity(merge_Eukaryota , 'Family' , 'Category')
+```
+
+#-----------Eukarya by Genero 
+```{r PlotEukaryaGenus}
+Barras_Species <- Abundance_barras(merge_Eukaryota,'Genus','Category',10.0)
+Barras_Species[1] 
+Barras_Species[2]
+```
+
+```{r PlotBetaDiversityEukaryaGenus}
+Beta_diversity(merge_Eukaryota , 'Genus' , 'Category', 'bray')
+```
+
+```{r PlotAlphaDiversityEukaryaGenus}
+Alpha_diversity(merge_Eukaryota , 'Genus' , 'Category')
+```
+
+
+```{r PlotBetaDiversityEukaryaGenus_C}
+Beta_diversity(merge_Eukaryota , 'Genus' , 'Category', 'bray')
+```
+
+
+
+
+
+#-----------Eukarya by Species 
+```{r PlotEukaryaSpecies}
+Barras_Species <- Abundance_barras(merge_Eukaryota,'Species','Category',10.0)
+Barras_Species[1] 
+Barras_Species[2]
+```
+
+```{r PlotBetaDiversityEukaryaSpecies}
+Beta_diversity(merge_Eukaryota , 'Species' , 'Category', 'bray')
+```
+
+```{r PlotAlphaDiversityEukaryaSpecies}
+Alpha_diversity(merge_Eukaryota , 'Species' , 'Category')
+```
+
+
+
+
+#-----------Bacteria by Phylum
+```{r PlotBacteriaPhylum}
+Barras_Species <- Abundance_barras(merge_Bacteria,'Phylum','Category',10.0)
+Barras_Species[1] 
+Barras_Species[2]
+```
+
+```{r PlotBetaDiversityBacteriaPhylum}
+Beta_diversity(merge_Bacteria , 'Phylum' , 'Category', 'bray')
+```
+
+```{r PlotAlphaDiversityBacteriaPhylum}
+Alpha_diversity(merge_Bacteria , 'Phylum' , 'Category')
+```
+
+#-----------Bacteria by Familia
+```{r PlotBacteriaFamily}
+Barras_Species <- Abundance_barras(merge_Bacteria,'Family','Category',10.0)
+Barras_Species[1] 
+Barras_Species[2]
+```
+
+```{r PlotBetaDiversityBacteriaFamily}
+Beta_diversity(merge_Bacteria , 'Family' , 'Category', 'bray')
+```
+
+```{r PlotAlphaDiversityBacteriaFamily}
+Alpha_diversity(merge_Bacteria , 'Family' , 'Category')
+```
+
+#-----------Bacteria by Genero 
+```{r PlotBacteriaGenus}
+Barras_Species <- Abundance_barras(merge_Bacteria,'Genus','Category',10.0)
+Barras_Species[1] 
+Barras_Species[2]
+```
+
+```{r PlotBetaDiversityBacteriaGenus}
+Beta_diversity(merge_Bacteria , 'Genus' , 'Category', 'bray')
+```
+
+```{r PlotAlphaDiversityBacteriaGenus}
+Alpha_diversity(merge_Bacteria , 'Genus' , 'Category')
+```
+
+#-----------Bacteria by Species 
+```{r PlotBacteriaSpecies}
+Barras_Species <- Abundance_barras(merge_Bacteria,'Species','Category',10.0)
+Barras_Species[1] 
+Barras_Species[2]
+```
+
+```{r PlotBetaDiversityBacteriaSpecies}
+Beta_diversity(merge_Bacteria , 'Species' , 'Category', 'bray')
+```
+
+```{r PlotAlphaDiversityBacteriaSpecies}
+Alpha_diversity(merge_Bacteria , 'Species' , 'Category')
+```
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+---
+title: "230313_Reporte3PruebasdeHipotesis"
+author: "Camila Silva"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# PRUEBA DE HIPOTESIS
+
+```{r}
+
+OTU <- fresa_kraken_fil@otu_table@.Data
+SAM <- fresa_kraken_fil@sam_data
+
+## UNIR TABLA DE ABUNDANCIAS CON METADATA DE SANOS Y ENFERMOS
+
+## Calculamos la diversidad Shannon 
+
+## Se usa la funcion diversidad del paquete vegan para calcular el indice Shannon
+## Se realiza el dataframe del indice de Shannon
+OTU <- t(OTU)
+Shannon_OTU <- diversity(OTU, "shannon")
+Shannon_OTU_df <- data.frame(sample=names(Shannon_OTU),value=Shannon_OTU,measure=rep("Shannon", length(Shannon_OTU)))
+total <-cbind(Shannon_OTU_df,SAM)
+
+# media por grupos
+mu <- ddply(total, "Treatment", summarise, grp.mean=mean(value))
+
+p<-ggplot(total, aes(x=value))+
+  geom_histogram(color="pink",fill="black")+
+  facet_grid(Treatment ~ .)
+p+geom_vline(data=mu, aes(xintercept=grp.mean, color="red"),
+             linetype="dashed")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
