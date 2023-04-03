@@ -67,7 +67,7 @@ percentages_df$Category<-as.factor(percentages_df$Category)
 
 percentages_df<-percentages_df[order(percentages_df$Category,percentages_df$Sample),]
 
-ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='Phylum' ,color='Category'))  +
+ggplot(data=percentages_df, aes_string(x='new_sample', y='Abundance', fill='Phylum' ,color='Category'))  +
   scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
   geom_bar(aes(), stat="identity", position="stack") +
   #scale_x_discrete(limits = rev(levels(percentages_df$Category))) +
@@ -91,7 +91,7 @@ percentages_df2<-read.csv2("/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo
 
 head(percentages_df2)
 #La función rbind en R, abreviatura de row-bind , se puede usar para combinar vectores, matrices y marcos de datos por filas.
-little<-rbind(percentages_df2[1:8,],percentages_df2[277:280,],percentages_df2[237:244,],percentages_df2[213:216,])
+little<-rbind(percentages_df2[1:7,],percentages_df2[277:280,],percentages_df2[237:244,],percentages_df2[213:216,])
 unique(little$Sample)
 little
 
@@ -110,23 +110,51 @@ ggplot(data=little, aes_string(x=('Sample'), y='Abundance', fill='Phylum', colou
 
 little<-little[order(little$Category,little$Sample),]
 
-#queremos crear una funcion que haga un nuevo vector de nombres con orden alfabetico
-new_name<-c()
-new<-c()
-for (i in 1:length(unique(little$Sample))){
-  n <- count(little[little$Sample==little$Sample[i],])
-  n <- as.integer(n)
-  for(j in 1:n){
-    new<-c(rep(i, n))
-    new<-paste('A0',new,sep="")
-    # print(n)
-    # print(new)
+
+
+crear_vector<-function(df,vec){
+  t<-(as.integer(log10(length(vec))))+1
+  i<-1
+  new_name<-c()
+  new<-c()
+  for (sample_i in unique(vec)){
+    n <- count(df[vec==sample_i,]) #numero de OTUs por muestra
+    n <- as.integer(n)
+    new <-c(rep(i, n))
+    m<-t-((as.integer(log10(i)))+1)
+    ceros<-paste((rep(0,m)),collapse = '')
+    new<-paste(paste('A',ceros,sep=""),new,sep = "")
+    # cat(i,as.integer(log10(i))+1,m,ceros,new,"\n")
+    new_name <- c(new_name,new)
+    i<-i+1
   }
-  new_name <- c(new_name,new)
-  # print(new_name)
+  new_vec<-paste(new_name, vec, sep="_")
+  return(new_vec)
 }
-little$new_sample<-paste(new_name, little$Sample, sep="_")
-little
+
+percentages_df$new_sample<-crear_vector(percentages_df,percentages_df$Sample)
+
+
+
+#queremos crear una funcion que haga un nuevo vector de nombres con orden alfabetico
+# new_name<-c()
+# new<-c()
+# for (i in 1:length(unique(little$Sample))){
+#   n <- count(little[little$Sample==little$Sample[i],])
+#   n <- as.integer(n)
+#   for(j in 1:n){
+#     new<-c(rep(i, n))
+#     new<-paste('A0',new,sep="")
+#     # print(n)
+#     # print(new)
+#   }
+#   new_name <- c(new_name,new)
+#   # print(new_name)
+# }
+# little$new_sample<-paste(new_name, little$Sample, sep="_")
+# little
+
+
 
 
 
