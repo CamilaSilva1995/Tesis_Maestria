@@ -1,5 +1,5 @@
 ---
-title: "Diversidades alfa y beta en datos metagenomicos de shotgun de fresa"
+title: "Diversidades alfa y beta en datos metagenomicos de shotgun de cultivo de fresa"
 author: "Camila Silva"
 date: "`r Sys.Date()`"
 output: pdf_document
@@ -9,13 +9,15 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Analisis exploratorio de datos
+
+Obtuvimos un conjunto de datos metagenómicos de cultivo de fresa, entregado por Solena. Con el objetivo de encontrar características diferenciadoras entre frutos sanos y enfermos, y para esto se realizo un análisis exploratorio de los datos.
+
 # Pre-procesamiento de los datos
 
-## DIVERSIDADES CON TODO EL CONJUNTO DE DATOS  Y LOS DATOS FILTRADOS POR CALIDAD
+Los datos fueron entregados en una carpeta de drive (<https://drive.google.com/drive/folders/1x0106TYUr54gfqE6uod3g5qN8DmA_Q5x>). Para poderlos usar en el servidor, se descargaron en una maquina local y luego se pasaron por **$ssh** al servidor.
 
-Los datos fueron entregados en una carpeta de drive <https://drive.google.com/drive/folders/1x0106TYUr54gfqE6uod3g5qN8DmA_Q5x>. Para poderlos usar en el servidor, se descargaron en mi maquina local y luego se pasaron por ssh al servidor.
-
-En el equipo local
+En el equipo local se realizaron los siguientes procedimientos para la descarga de los datos comprimidos y luego fueron enviados al servidor,
 ```{bash DataDownload}
 # $ scp Downloads/kraken_results-20230203T201634Z-001.zip camila@132.248.196.39:/home/camila/GIT/Tesis_Maestria/Data/fresa_solena
 #  camila@132.248.196.39's password: 
@@ -28,16 +30,15 @@ En el equipo local
 #  bracken_results-20230203T203724Z-001.zip        100% 3798KB   2.4MB/s   00:01
 ```
 
-En el servidor
+Ya teniendo los datos en el servidor, los descomprimimos,
 ```{bash DataUnzip}
 # $ unzip kraken_results-20230203T201634Z-001.zip 
 # $ unzip bracken_results-20230203T203724Z-001.zip 
 # $ unzip fastp_results-20230203T175936Z-001.zip
 ```
 
-Luego de tener las muestras Kraken y braken en el servidor con RStudio; es necesario generar el archivo **.biom**; para esto, se debe activar el ambiente de conda **metagenomis**, **kraken-biom** es un programa ampliamente utilizado para M a partir de la salida de kraken.
-
-Con esto se obtiene una matriz de abundancia a partir de los archivos de salida de Kraken, que permite el uso de el paquete Phyloseq en R, que nos permiten analizar la diversidad y la abundancia mediante la manipulación de datos de asignación taxonómica.
+Luego de tener las muestras Kraken y braken en el servidor con RStudio; es necesario generar el archivo **.BIOM**; para esto, se debe activar el ambiente de conda **metagenomis**;**kraken-biom** (Dabdoub, SM (2016). kraken-biom: Habilitación de la conversión de formato interoperativo para los resultados de Kraken (Versión 1.2) [Software]. Disponible en <https://github.com/smdabdoub/kraken-biom> .
+) es un programa ampliamente utilizado para hacer tablas en formato **BIOM** a partir de la salida de **kraken**. 
 
 ```{bash CondaActivate}
 # $ conda activate metagenomics
@@ -45,7 +46,7 @@ Con esto se obtiene una matriz de abundancia a partir de los archivos de salida 
 # $ kraken-biom kraken_results/* --fmt json -o fresa_kraken.biom
 ```
 
-
+Con esto se obtiene una matriz de abundancia a partir de los archivos de salida de Kraken, que permite el uso del paquete **Phyloseq** en R, que nos permiten analizar la diversidad y la abundancia mediante la manipulación de datos de asignación taxonómica.
 
 ```{r installPhyloseq}
 getwd()
@@ -67,50 +68,57 @@ library("readr")
 library("patchwork")
 library("vegan")
 library("GUniFrac")
-library("pbkrtest")
+#library("pbkrtest")
 #library("BiodiversityR")
 library("kableExtra")
 library("RColorBrewer")
 ```
 
 ## Datos kraken
-Importamos los datos kraken en un archivo biom
+Importamos los datos, salidas de kraken en un archivo BIOM. En R estos datos quedaran en un objeto Phyloseq, el cual puede contener: tabla de taxonomia, tabla de conteos, tabla de muestras o metadatos y el arbol filogenetico.
 
 ```{r DataLoaded}
-setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena")
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
 fresa_kraken <- import_biom("fresa_kraken.biom")
 class(fresa_kraken) # objeto phyloseq
 ```
+En este caso obtenemos solamente la tabla de abundancias o **otu_table** y la tabla de taxonomía, o **tax_table**.
 
 Queremos acceder a los datos que contiene nuestro objeto phyloseq **fresa_kraken**
 
-Primero la tabla de taxonomia
+Primero la tabla de taxonomia: en donde podemos ver los niveles taxonomicos existentes para cada OTU,
 ```{r tax}
-#fresa_kraken@tax_table@.Data)
+head(fresa_kraken@tax_table@.Data)
 ```
-Cambiamos los nombres de las columnas a los niveles taxonomicos
+Cambiamos los nombres de las columnas según los niveles taxonomicos.
+
 ```{r taxcolnames}
 colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 ```
-Queremos cortar la parte inicial nombres, ya que aparecen,por ejemplo: "B__Bacteria" y queremos que solo se vea "Bacteria"
-substring(). Este comando ayuda a extraer o reemplazar caracteres en un vector.
+
+Tambien cortaremos la parte inicial nombres, ya que aparecen, por ejemplo: "B__Bacteria" y queremos que solo se vea "Bacteria".
+
+El comando **substring()** nos ayuda a extraer o reemplazar caracteres a conveniencia.
+
 ```{r B__}
 fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
-#View(fresa_kraken@tax_table@.Data)
+head(fresa_kraken@tax_table@.Data)
 ```
-Queremos ver la tabla de OTUs, esta tabla contiene las abundancias de los otus de cada muestra
+Ahora queremos ver la tabla de OTUs, esta tabla contiene las abundancias de los OTUs para cada una de las muestras
+
 ```{r otu}
-#fresa_kraken@otu_table@.Data
+head(fresa_kraken@otu_table@.Data)
 ```
-Queremos cortar los nombres de las muestras para que coincida con los metadatos 
+Como los nombres de las muestras aparecen con el formato completo de los archivos **fasta**, cortamos los nombres de las muestras para que coincidan con los metadatos
+
 ```{r otucolnames}
 colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table@.Data),1,6)
-#View(fresa_kraken@otu_table@.Data)
+head(fresa_kraken@otu_table@.Data)
 ```
 
 ### Cargar los metadatos 
-Ya que hay un desface de dos muestras entre los metadatos y las muestras de la otu_table
-se deben ver cuales son y quitarlas del archivo de metadatos
+
+Revisando el archivo de metadatos, nos dimos cuenta que hay un desface de dos muestras entre los metadatos y las muestras de la otu_table, por los tanto se deben ver cuales son y quitarlas del archivo de metadatos, para que este coincida con nuestro objeto phyloseq
 
 ```{bash filtro}
 # $ ls kraken_results |cut -d'.' -f1 > lista_kraken.txt
@@ -125,226 +133,350 @@ se deben ver cuales son y quitarlas del archivo de metadatos
 ```
 
 Eliminamos las dos muestras que no estaban en nuestra otu_table y cargamos los metadatos
+
 ```{r metadata}
-metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
-#metadata_fresa <- sample_data(metadata_fresa)
+metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
 ```
+
 luego hacemos que los metadatos pertenezcan al objeto phyloseq en la seccion de **sam_data**
+
 ```{r samdata}
 fresa_kraken@sam_data <- sample_data(metadata_fresa) 
 ```
-Creamos una columna extra en sam_data por necesidad de funcionamiento de mas adelante
+
+Creamos una columna extra en **sam_data** por necesidad para el buen funcionamiento de nuestro análisis
+
 ```{r samcolnames}
 fresa_kraken@sam_data$Sample<-row.names(fresa_kraken@sam_data)
 colnames(fresa_kraken@sam_data)<-c('Treatment','Samples')
-#View(fresa_kraken)
+head(fresa_kraken@sam_data)
 ```
 
-## Ahora tenemos tambien la tabla de datos de calidad (fastp_kraken_summary), 
-para ver que muestra podemos eliminar de nuestro dataset, que no cumpla ciertos estandares de calidad
-+ ID de la muestra 
-+ Reads_B - Reads_Before -> total de reads crudos
-+ Reads_A - Reads_After -> total de reads despues del analisis de calidad
-+ Reads_diff -> diferencia en tre Reads_B y Reads_A 
-+ Q30_B -> porcentaje arriba de 30 (escala fred) antes del analisis de calidad 
-+ Q30_A -> porcentaje arriba de 30 (escala fred) despues del analisis de calidad
-+ LowQua -> reads de baja calidad
-+ N_reads -> readas que contienen N y se descartan
-+ too_short -> no pasan el tamaño minimo de calidad
-+ Duplication -> porcentaje de duplicados
-+ LengthR1 -> longitud promedio de los reads 
-+ LengthR2 -> longitud promedio de los reads 
-+ Classified -> porcentaje de clasificados del total despues del filtrado 
+## Filtro de calidad
 
-ejemplo muestra MD2055 -> contienen 97millones de reads antes del filtrado de calidad, y despues queda con 79millones
-filtro usado para eliminar muestras, que luego del filtrado de calidad contengan menos de 25millones de reads 
-los que nos da 5 muestras a eliminar (MP2079,MP2080,MP2088,MP2109,MP2137)
+Luego de una breve revisión de los datos, ya que se pueden observar muestras con conteos en ceros, como **MP2088**; se obtuvo por medio de Solena, una tabla que nos muestra la calidad de las muestras, (fastp_kraken_summary), para ver que muestra podemos eliminar de nuestro dataset, que no cumpla ciertos estandares de calidad.
 
-Eliminiar las muestras de baja calidad,usando filtro de menos de 25 millones de reads luegodel analisis de calidad
-se eliminan las muestras por su nombre
+Esta tabla contiene la siguiente información:
+
+- ID de la muestra 
+- Reads_B - Reads_Before -> total de reads crudos
+- Reads_A - Reads_After -> total de reads después del análisis de calidad
+- Reads_diff -> diferencia entre Reads_B y Reads_A 
+- Q30_B -> porcentaje arriba de 30 (escala fred) antes del análisis de calidad 
+- Q30_A -> porcentaje arriba de 30 (escala fred) después del análisis de calidad
+- LowQua -> reads de baja calidad
+- N_reads -> readas que contienen N y se descartan
+- too_short -> no pasan el tamaño minimo de calidad
+- Duplication -> porcentaje de duplicados
+- LengthR1 -> longitud promedio de los reads 
+- LengthR2 -> longitud promedio de los reads 
+- Classified -> porcentaje de clasificados del total despues del filtrado 
+
+Por ejemplo, la muestra MD2055 -> contiene 97 millones de reads antes del filtrado de calidad, y después queda con 79 millones. El filtro usado para eliminar muestras, es que luego del filtrado de calidad contengan menos de 25 millones de reads, los que nos da 5 muestras a eliminar (MP2079, MP2080, MP2088, MP2109, MP2137).
+
+Eliminamos las muestras de baja calidad, usando el filtro de menos de 25 millones de reads luego del análisis de calidad, procedemos a eliminar las muestras por su nombre como se muestra aquí
+
 ```{r removesamples}
 samples_to_remove <- c("MP2079","MP2080","MP2088","MP2109","MP2137")
 fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_remove), fresa_kraken)
 ```
+
 podemos comprobar el número de muestras antes y después del filtrado
+
 ```{r nsamples}
 nsamples(fresa_kraken) # 58
 nsamples(fresa_kraken_fil) # 53
 ```
 
-Queremos hacer un analisis de diversidad de nuestras muestras, para esto las dos metricas las usadas son: Diversidad Alfa y Beta
+Podemos hacer la cuenta de cuantas lecturas tenemos por muestra, asi es posible tambien ver la calidad de las diferentes muestras, 
 
-
-## Diversidad Alfa
-Esta representa la riqueza de las muestras, es decir el numero de especies diferentes en ese ambiente o la abundancia de especies en ese ambiente. Paramedier esta divercidad se tienen diferentes indices de medida, entre ellos losindices Shannon,Simpson, Chao1, entre otros.
-```{r index}
-index = estimate_richness(fresa_kraken_fil)
-```
-podemos ver una representación visual de la diversidad dentro de las muestras
-esta diversidad la podemos ver por muestra,
-
-```{r plorAlphaDiversity}
-plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson")) 
-```
-pero ya que queremos diferenciar entre plantas sanas y enfermas, tomamos estos dos conjuntos por ceparado para mostrar la diversidad
-```{r plorAlphaDiversitySanoVSnoSano}
-plot_richness(physeq = fresa_kraken, measures = c("Observed","Chao1","Shannon","simpson"),x = "Treatment", color = "Treatment") 
-```
-comparando entre los datos en crudo,y los datos filtrados por calidad
-```{r plorAlphaDiversitySanoVSnoSanoFIL}
-plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson"),x = "Treatment", color = "Treatment") 
-```
-
-## Shannon
-##
-## Simpson
-##
-## Chao1
-##
-
-
-
-
-
-
-
-Aqui podemos ver cuantos reads tenemos por muestra
-```{r}
+```{r sum}
 sample_sums(fresa_kraken)
 ```
 
-```{r}
+como podemos ver la muestra **MP2088** contiene solo 2 lecturas, y es por esto nos genera un problema al analizar los datos y es una de las muestras eliminadas por el filtro de calidad.
+
+```{r sum_fil}
 sample_sums(fresa_kraken_fil)
 ```
-y con **summary** podemos darnos una idea dela uniformidad de los datos, ya que podemos ver datos estadisticos como elmaximo, el minimo y la media
-```{r}
+
+y con **summary**, nos entrega un resumen general sobre las variables del data frame, con esto podemos darnos una idea de la uniformidad de los datos, ya que podemos ver datos estadisticos como mínimo, máximo, media, mediana, primer y tercer cuartil.
+
+```{r summary}
 summary(fresa_kraken@otu_table@.Data)
 ```
 
-```{r}
+```{r summary_fil}
 summary(fresa_kraken_fil@otu_table@.Data)
 ```
+
 Con el siguiente comando podemos ver si tenemos muestras no identificadas taxonomicamente, esto se puede ver identificando los espacios en blanco ("") en los diferentes niveles taxonomicos.
-```{r}
+
+```{r blankspaces}
 summary(fresa_kraken_fil@tax_table@.Data== "") 
 ```
-podemos ver los **TRUE** de cada nivel taxonomico,por ejemplo a nivel de "Phylum" tenemos solo 2 sin clasificar, y a nivel de "Specie" tenemos 1099 sin clasificar
 
-##### ESTO ES LO QUE QUEREMOS COMPARAR CON LAS SALIDAS DE BRACKEN, YA QUE PROMETE HACER UNA REASISGNACION DE TODO LO QUE QUEDE SIN CLASIFICAR CON KRAKEN
+podemos ver los **TRUE** de cada nivel taxonomico, por ejemplo a nivel de "Phylum" tenemos solo 2 sin clasificar, y a nivel de "Specie" tenemos 1099 sin clasificar.
 
-Queremos convertir las abundancias absolutas a relativas, Calculamos las abundancias relativas con la funcion, tanto de los datos originales como delos filtrados
+##### ***ESTO ES LO QUE QUEREMOS COMPARAR CON LAS SALIDAS DE BRACKEN, YA QUE PROMETE HACER UNA REASISGNACION DE TODO LO QUE QUEDE SIN CLASIFICAR CON KRAKEN***
+
+
+# DIVERSIDADES CON TODO EL CONJUNTO DE DATOS Y LOS DATOS FILTRADOS POR CALIDAD
+
+Queremos hacer un análisis de diversidad de nuestras muestras, para esto las dos metricas las usadas son: Diversidad Alfa y Beta.
+
+## Diversidad Alfa
+
+Esta representa la riqueza de las muestras, es decir el número de especies diferentes en ese ambiente o la abundancia de especies en ese ambiente. Para medir esta diversidad se tienen diferentes indices de medida, los cuales pueden representar cosas diferentes, en este caso usaremos los indices Shannon,Simpson, Chao1.
+
+### Chao1
+Es una medida de la riqueza de especies que estima la riqueza de especies en una comunidad. Es útil cuando la muestra es pequeña o la proporción de especies raras es alta. Este índice también es menos sensible a la presencia de especies raras que otros índices, lo que puede ser útil en estudios de conservación de especies raras. 
+
+$$S_{Chao1} = S_{Obs} + \frac{F_1×(F_1-1)}{F_2×(F_2+1)}$$
+Donde $S_{Obs}$ es el número de de especies observadas, $F_1$ y $F_2$ son el recuento de singletons y doubletons respectivamente. Nos muestra en recuento de singletons y doubletons respectivamente.
+
+### Shannon
+Estima la diversidad de especies considerando tanto la abundancia como la uniformidad de las especies en una comunidad. Este índice mide la incertidumbre asociada con la identificación de una especie seleccionada aleatoriamente. Cuanto mayor sea el índice de Shannon, mayor será la diversidad de especies en la comunidad.
+
+$$D_{SH}=\frac{1}{\sum_{i_1}^{S}{P_{i}^{2}}}$$
+Donde $S$ en el número total de especies en la comunidad, $P_i$ es la proporción de la comunidad representada por $OTU_i$
+
+### Simpson
+Es una medida de la dominancia relativa de una o unas pocas especies en una comunidad. Este índice mide la probabilidad de que dos individuos seleccionados aleatoriamente pertenezcan a la misma especie. Cuanto menor sea el índice de Simpson, mayor será la diversidad de especies en la comunidad.
+
+$$H=-\sum_{i_1}^{S}{P_{i}\ln(P_{i})}$$
+Donde $S$ es el número de OTU's y $P_i$ es la proporción de la comunidad representada por $OTU_i$.
+
+
+```{r index}
+index = estimate_richness(fresa_kraken_fil)
+index
+```
+
+Podemos ver una representación visual de la diversidad dentro de las muestras, esta diversidad la podemos ver por muestra, como esta a continuación, o como se mostrara mas adelante, dividiendo los datos por grupos.
+
+```{r plorAlphaDiversity}
+p<-plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson")) 
+p + geom_point(size=3, alpha=0.5) +
+    theme(axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+```
+El indice Chao1 nos muestra la riqueza de especies en una comunidad
+
+# QUE NOS MUESTRA LA FIGURA??
+
+Ya que queremos diferenciar entre plantas sanas y enfermas, tomamos estos dos conjuntos por separado para mostrar la diversidad,
+
+```{r plorAlphaDiversitySanoVSnoSano}
+p<-plot_richness(physeq = fresa_kraken, measures = c("Observed","Chao1","Shannon","simpson"),x = "Treatment", color = "Treatment") 
+p + geom_point(size=3, alpha=0.5) +
+    theme(axis.text.x = element_text(angle=90, size=9, hjust=1, vjust=0.5))
+```
+Comparando entre los datos en crudos y los datos filtrados por calidad,
+
+```{r plorAlphaDiversitySanoVSnoSanoFIL}
+p<-plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson"),x = "Treatment", color = "Treatment") 
+p + geom_point(size=3, alpha=0.5) +
+    theme(axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+```
+
+Se puede ver una gran diferencia al desechar muestras de poca calidad.
+
+# QUE NOS MUESTRA LA FIGURA??
+Ahora si podemos ver ***
+
+Ahora queremos convertir las abundancias absolutas (número de lecturas por OTU) a relativas (porcentajes de lecturas asignadas a un OTU dentro de una muestra), ya que nuestos metagenomas tienen diferentes tamaños, calculando las abundancias relativas con la funcion de phyloseq 'transform_sample', tanto de los datos originales como de los filtrados.
  
-```{r}
+```{r percentages}
 percentages <- transform_sample_counts(fresa_kraken, function(x) x*100 / sum(x) )
 head(percentages@otu_table@.Data)
 ```
 
-```{r}
+```{r percentages_fil}
 percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
 head(percentages_fil@otu_table@.Data)
 ```
-Ahora ya es posibleuna buena comparacion de abundancias dadas por porcentajes con indices beta 
-
+Ahora ya es posible una buena comparación de abundancias dadas por porcentajes con indices beta.
 
 ## Diversidad Beta
+
 La diversidad beta mide la diferencia entre dos o mas entornos. Se puede medir con métricas como la disimilitud de Bray-Curtis, la distancia Jaccard o la distancia UniFrac.
 
 Mide que tan similares o diferentes son un par de especies, muestras o conjuntos de muestras.
-aqui podemos ver una lista de distancias disponibles, que Phyloseq puede usar
-```{r}
+aqui podemos ver una lista de distancias disponibles, que Phyloseq puede usar.
+
+```{r distanceMethodList}
 distanceMethodList 
 ```
 
 Siendo las siguientes las mas usadas:
-+ Disimilitud de Bray-Curtis
 
-+ Distancia Jaccard
+### Disimilitud de Bray-Curtis
+Este índice de disimilitud se basa en la composición y la abundancia de las especies en diferentes sitios. Mide la similitud entre dos muestras o poblaciones, en terminos de las especies que comparten, ponderando la abundancia de cada especie en cada población.
+La fórmula del índice de disimilitud de Bray-Curtis es:
+$$d_{BC} = 1 - \frac{2S}{(S_{a} + S_{b})}$$
 
-+ UniFrac
+donde $d_{BC}$ es el índice de disimilitud de Bray-Curtis, $S$ es el número de especies compartidas entre las poblaciones $a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, respectivamente.
+
+### Distancia Jaccard
+Este índice de disimilitud se basa en la presencia o ausencia de especies en diferentes poblaciones. Compara la proporción de especies que son comunes entre dos poblaciones, en relación con el total de especies encontradas en ambas poblaciones. Este índice puede ser útil para comparar la diversidad de especies entre diferentes poblaciones o para evaluar la similitud de la composición de especies en diferentes comunidades. La fórmula del índice de disimilitud de Jaccard es:
+$$d_{JC} = 1 - \frac{S}{(S_{a} + S_{b}-S)}$$
+donde $d_{JC}$ es el índice de disimilitud de Jaccard, $S$ es el número de especies compartidas entre las poblaciones $a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, respectivamente.
+
+### Euclideana
+Esta distancia se utiliza comúnmente en el análisis de datos numéricos y se basa en la diferencia de las abundancias o proporciones de las diferentes especies en diferentes muestras. La distancia Euclidiana entre dos muestras es la raíz cuadrada de la suma de las diferencias cuadráticas entre las proporciones de cada especie en ambas muestras. 
+
+La distancia euclideana entre dos muestras $A$ y $B$ es:
+$$d_{euclidean} (A,B) = \sqrt{\sum(A_i - B_i)^2}$$
+Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente.
+
+La distancia Euclidiana es simétrica y satisface la desigualdad del triángulo, lo que significa que cumple con las propiedades de una verdadera distancia.
+
+### Manhattan
+Esta distancia también se utiliza en el análisis de datos numéricos y se basa en la diferencia de las abundancias o proporciones de las diferentes especies en diferentes muestras. La distancia de Manhattan entre dos muestras es la suma de las diferencias absolutas entre las proporciones de cada especie en ambas muestras.
+
+La fórmula de la distancia de Manhattan entre dos muestras $A$ y $B$ se calcula como:
+
+$$d_{Manhattan}(A, B) = \sum{|A_i - B_i|}$$
+
+Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente.
+
+Esta distancia también es simétrica y cumple con la desigualdad del triángulo.
+
+### Divergencia de Jensen-Shannon (JSD)
+Esta distancia se utiliza para comparar la similitud entre dos distribuciones de probabilidad. En el análisis de datos de diversidad, la distribución de probabilidad puede representar la proporción de diferentes especies en diferentes muestras. La distancia de JSD entre dos distribuciones de probabilidad se calcula como la raíz cuadrada de la divergencia de Kullback-Leibler entre las dos distribuciones, dividida por dos. 
+
+La fórmula de la distancia de JSD entre dos distribuciones de probabilidad $P$ y $Q$ se calcula como:
+
+$$d_{JSD}(P, Q) = \frac{\sqrt{(D_{KL}(P, M) + D_{KL}(Q, M))}}{2}$$
+
+Donde $D_{KL}(P, M)$ y $D_{KL}(Q, M)$ son las divergencias de Kullback-Leibler entre las distribuciones $P$ y $Q$ y la media $M$ de ambas distribuciones, respectivamente.
+
+Esta distancia es simétrica y también satisface la desigualdad del triángulo.
+
+### UniFrac
+Este índice de disimilitud se basa en la filogenia de las especies presentes en diferentes sitios. Compara la similitud entre dos sitios en términos de la diversidad filogenética de las especies, considerando la contribución relativa de cada rama del árbol filogenético. Este índice puede ser útil para evaluar la similitud de la evolución de las especies en diferentes comunidades o para comparar la estructura filogenética de diferentes comunidades. La fórmula del índice de disimilitud de Unifrac es más compleja que las de Bray-Curtis y Jaccard, y se basa en un análisis de la distribución de ramas filogenéticas únicas o compartidas entre los sitios.
 
 
-```{r}
+
+```{r vegdist}
 #vegdist(meta_ord_fil,"bray")# usa la libreria Vegan,  REVISAR COMO FUNCIONA PARA IMPRIMIR LA TABLA
 ```
 
-Usamos "ordinate" para asignar las distancias entre muestras,usando "Bray-Curtis", ya que es una de las metricas mas completas y mayormente utilizadas para medir la diversidad beta
+### Usando la distancia de Bray-Curtis
 
-Hay diferentes formas de trazar y mostrar los resultados de dicho análisis. Entre otros, se utilizan ampliamente los análisis PCA, PCoA o NMDS.
-```{r}
+Usamos "ordinate" para asignar las distancias entre muestras, usando "Bray-Curtis", ya que es una de las metricas mas completas y mayormente utilizadas para medir la diversidad beta
+
+Hay diferentes formas de trazar y mostrar los resultados de dicho análisis. Entre otros, se utilizan ampliamente los análisis PCA, PCoA o NMDS. En este caso usaremos NMDS (Non-metric Multidimensional Scaling), es una herramienta de análisis exploratorio de datos que se utiliza para visualizar la similitud o disimilitud de una colección de objetos (por ejemplo, especies, sitios, genes) en un espacio de baja dimensionalidad.
+
+Podemos ver la diversidad beta entre las muestras, tanto para los datos en crudo, 
+
+```{r ordinate}
 meta_ord <- ordinate(physeq = percentages, method = "NMDS", distance = "bray")   
 ```
 
-```{r}
+Como para los datos ya filtrados por calidad
+
+```{r ordinate_fil}
 meta_ord_fil <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "bray") 
 ```
-Ademas lo queremos diferenciar por color entre plantas sanas y enfermas,
-```{r}
+
+Ademas lo queremos diferenciar por color entre plantas sanas y enfermas, para los datos en crudo,
+
+```{r betadiversity}
 plot_ordination(physeq = percentages, ordination = meta_ord, color = "Treatment") + 
   geom_text(mapping = aes(label = colnames(fresa_kraken@otu_table@.Data)), size = 3, vjust = 1.5)
 ```
 
-```{r}
+Y para los datos ya filtrados por calidad,
+
+```{r betadiversity_fil}
 plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Treatment") +
   geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
 ```
 
-En este gráfico NMDS, cada punto representa la abundancia combinada de todas sus OTU. No se puiede ver una diferencia entre los conjuntos de muestras de plantas sanas y muestras enfermas, por lo tanto:
-Probaremos varias distancias ya con los datos filtrados podemos ver varios ejemplos y llegar  a la posibilidad que se diferencien un poco los dos conjuntos de datos
+En este gráfico NMDS, cada punto representa la abundancia combinada de todos sus OTU's. No se puede ver una diferencia entre los conjuntos de muestras de muestras sanas y muestras enfermas, por lo tanto:
+Probaremos varias distancias ya con los datos filtrados podemos ver varios ejemplos y llegar  a la posibilidad que se diferencien un poco los dos conjuntos de datos.
 
+### Usando la distancia Euclideana
 
-## Usando 
-```{r}
-meta_ord_fil_2 <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "jsd")
-plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil_2, color = "Treatment") + 
-  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
-```
-## Usando 
-```{r}
+```{r euclidean}
 meta_ord_fil_3 <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "euclidean")
 plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil_3, color = "Treatment") + 
   geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
 ```
-## Usando 
-```{r}
+
+### Usando la distancia de Jaccard
+
+```{r jaccard}
 meta_ord_fil_4 <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "jaccard")
 plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil_4, color = "Treatment") + 
   geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
 ```
-## Usando 
-```{r}
+
+### Usando la distancia Manhattan
+
+```{r manhattan}
 meta_ord_fil_5 <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "manhattan")
 plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil_5, color = "Treatment") + 
   geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
 ```
-Con ninguna distancia vemos una diferenciacion clara, por lo que lo veremos por los distintos niveles taxonomicos 
 
+### Usando la distancia de Divergencia de Jensen-Shannon (JSD)
 
-#### REDES
+```{r jsd}
+meta_ord_fil_2 <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "jsd")
+plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil_2, color = "Treatment") + 
+  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+```
 
-podemos hacer un data.frame uniendo toda la informacion del objeto phyloseq
+Con ninguna distancia vemos una diferenciacion clara, por lo que lo veremos por los distintos niveles taxonomicos mas adelante.
+
+## Grafico de barras de abundancia 
+
+Trazando las muestras en el eje x y las abundancias en el eje y. Podemos ver las abundancias absolutas de las muestras,
+
 ```{r}
+plot_bar(fresa_kraken_fil,fill="Treatment")
+```
+
+y las abundancias relativas,
+
+```{r}
+plot_bar(percentages_fil,fill="Treatment")
+```
+
+## REDES
+
+Para poder visualizar las redes de nuestros datos, podemos hacer un data.frame uniendo toda la informacion del objeto phyloseq.
+
+```{r psmelt}
 df <- psmelt(fresa_kraken_fil)
 ```
-Hay dos funciones en el paquete phyloseq para trazar la red del microbioma usando “ggplot2”: plot_network() y plot_net()
 
-Se crean un grafo basado en igraph, basado en el método de distancia por defecto, Jaccard y una distancia máxima entre nodos conectados de 0,8. El “Treatment” se utiliza para los mapeos de color y forma para visualizar la estructura de las muestras
+Hay dos funciones en el paquete phyloseq para trazar la red del microbioma usando “ggplot2”: plot_network() y plot_net().
 
-Hacemos una gráfica a partir de el objeto phyloseq
-```{r}
+Se crea un grafo basado en "igraph", basado en el método de distancia por defecto, Jaccard y una distancia máxima entre nodos conectados de 0,8. El “Treatment” se utiliza para los mapeos de color y forma para visualizar la estructura de las muestras.
+
+Hacemos un grafo a partir de el objeto phyloseq 
+
+```{r network}
 ig <- make_network(fresa_kraken_fil, max.dist=0.8)
 ```
-### Graficamos
-```{r}
+
+Y luego lo graficamos.
+
+```{r plot_network}
 plot_network(ig, fresa_kraken_fil, color="Treatment", shape="Treatment")
 ```
- 
-Los siguientes códigos crean una red basada en una distancia máxima entre los nodos conectados de 0,5
 
-Graficamos sin necesidad de hacer el objeto anterior
-```{r}
+En este grafo podemos ver la complejidad de los datos y las conexiones entre nuestras muestras.
+ 
+En comparacion con la función plot_network(), la nueva función plot_net() no requiere una llamada separada a la función make_network(), o un objeto igraph separado. Los siguientes códigos crean una red basada en una distancia máxima entre los nodos conectados de 0,5.
+
+```{r plot_net}
 plot_net(fresa_kraken_fil, maxdist = 0.5, color = "Treatment", shape="Treatment")
 ```
 
-
+En conclusion para esta observación general de los datos, no es posible ver una separacion entre muestras sanas y enfermas claramente con la diversidad beta,y con los graficos de barras y redes, no es posible identificar datos especiales, por lo que en el proximo reporte empezaremos a crear subconjuntos de los datos, como cortar a distintos niveles taxonomicos y separar por "Kingdom", y asi ver más detalladamente el comportamiento delos datos.
 
 

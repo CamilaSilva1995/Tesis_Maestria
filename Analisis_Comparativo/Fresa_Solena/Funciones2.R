@@ -137,7 +137,7 @@ ggsave("Alpha_Eukarya_Phylum.png", plot = Alpha_Eukarya_Phylum, path = "/home/ca
 Barras_Eukarya_Family <- Abundance_barras(merge_Eukaryota,'Family' , 'Treatment', 10.0)
 Barras_Eukarya_Family[[1]] # normal
 Barras_Eukarya_Family[[2]] # 10%
-ggsave("Barras_Eukarya_Family.svg", plot = Barras_Eukarya_Family[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Eukarya_Family.png", plot = Barras_Eukarya_Family[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 ggsave("Barras_Eukarya_Family_10.png", plot = Barras_Eukarya_Family[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Beta_Eukarya_Family<-Beta_diversity(merge_Eukaryota , 'Family' , 'Treatment', 'bray')

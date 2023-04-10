@@ -1,5 +1,5 @@
 ---
-title: "Diversidades alfa y beta en datos metagenomicos de shotgun de fresa"
+title: "Diversidades alfa y beta en datos metagenomicos de shotgun de cultivo de fresa, a diferentes niveles taxonomicos"
 author: "Camila Silva"
 date: "`r Sys.Date()`"
 output: pdf_document
@@ -9,8 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# AHORA QUEREMOS VER DIFERENCIAS ENTRE DIFERENTES NIVELES TAXONOMICOS
-
+# Observacion en diferentes niveles taxonomicos
 
 ```{r Packages}
 library("phyloseq") 
@@ -18,9 +17,9 @@ library("ggplot2")
 library("igraph")
 library("readr")
 library("patchwork")
-library("vegan")
+#library("vegan")
 library("GUniFrac")
-library("pbkrtest")
+#library("pbkrtest")
 #library("BiodiversityR")
 library("kableExtra")
 library("RColorBrewer")
@@ -48,103 +47,176 @@ percentages_df <- psmelt(percentages_fil)
 
 ```
 
+De aqui en adelante solo trabajaremos con los datos filtrados por calidad, ya que no vale lapena continuar con los datos que contiene  muestras en ceros, ya que esto altera las visualizaciones.
 
-De aqui en adelante solo trabajaremos con los datos filtrados, 
+Queremos explorar nuestras muestras a diferentes niveles taxonómicos específicos, empezando por una aglomeración de los datos a nivel de reino y filo, Para agrupar todas las OTU que tienen la misma taxonomía en un determinado rango taxonómico, utilizaremos la función ***tax_glom()***.
 
-## Grafico de barras de abundancia 
-Trazando las muestras en el eje x y las abundancias en el eje y
-Los valores de abundancia para cada OTUen cada muestra se apilan en el orden de mayor a menor, separados por una fina línea horizontal.
-```{r}
-plot_bar(fresa_kraken_fil,fill="Treatment")
-```
-
-```{r}
-plot_bar(percentages_fil,fill="Treatment")
-```
-Queremos explorar nuestras muestras a diferentes niveles taxonómicos específicos  
-## A nivel de Kingdom
-```{r}
+### A nivel de Kingdom
+```{r glom_kingdom}
 percentages_glom_kingdom <- tax_glom(percentages_fil, taxrank = 'Kingdom')
-##View(percentages_glom_kingdom@tax_table@.Data)
+percentages_glom_kingdom@tax_table@.Data
 ```
-## A nivel de Phylum
-```{r}
+
+En reino podemos ver que tenemos solamente dos grupos que son: Bacteria y Eucariota.
+
+### A nivel de Phylum
+```{r glom_phylum}
 percentages_glom_phylum <- tax_glom(percentages_fil, taxrank = 'Phylum')
-##View(percentages_glom_phylum@tax_table@.Data)
+percentages_glom_phylum@tax_table@.Data
 ```
-Creamos un dataframe con los porcentajes de phylum
-```{r}
+
+A nivel de filo, ya podemos ver mas variedad en nuestras muestras, teniendo como mayoria los filo pertenecientes a bacteria.
+
+Usaremos la función de phyloseq ***psmelt()***, que fusiona objetos de phyloseq en un data.frame para manipularlos con paquetes como ggplot2 y vegan. Con esta creamos un dataframe con los porcentajes de "phylum", este nos dará los porcentajes de cada OTU, perteneciente a cada muestra, a nivel taxonomico de filo.
+
+```{r percentages_df_phylum}
 percentages_df_phylum <- psmelt(percentages_glom_phylum)
 str(percentages_df_phylum)
+head(percentages_df_phylum)
 ```
 
-```{r}
+Ahora, creamos un data frame con los datos originales. Esta estructura nos ayudará a comparar la abundancia absoluta con la relativa 
+
+```{r absolute_glom_phylum}
 absolute_glom_phylum <- tax_glom(physeq = fresa_kraken_fil, taxrank = "Phylum")
 absolute_df_phylum <- psmelt(absolute_glom_phylum)
 str(absolute_df_phylum)
 ```
-```{r}
+
+```{r phylum_colors_abs}
 absolute_df_phylum$Phylum <- as.factor(absolute_df_phylum$Phylum)
 phylum_colors_abs <- colorRampPalette(brewer.pal(8,"Dark2")) (length(levels(absolute_df_phylum$Phylum)))
 ```
 
-```{r}
+```{r absolute_plot}
 absolute_plot <- ggplot(data= absolute_df_phylum, aes(x=Sample, y=Abundance, fill=Phylum))+ 
   geom_bar(aes(), stat="identity", position="stack")+
-  scale_fill_manual(values = phylum_colors_abs)
+  scale_fill_manual(values = phylum_colors_abs) +
+  labs(title = "Abundance", x='Sample', y='Abundance') +
+  theme(legend.key.size = unit(0.2, "cm"),
+        legend.key.width = unit(0.25,"cm"),
+        legend.position = "bottom",
+        legend.direction = "horizontal",
+        legend.title=element_text(size=8, face = "bold"),
+        legend.text=element_text(size=6),
+        text = element_text(size=12),
+        axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+
+absolute_plot
 ```
 
-```{r}
+```{r relative_plot}
 percentages_df_phylum$Phylum <- as.factor(percentages_df_phylum$Phylum)
 phylum_colors_rel<- colorRampPalette(brewer.pal(8,"Dark2")) (length(levels(percentages_df_phylum$Phylum)))
 relative_plot <- ggplot(data=percentages_df_phylum, aes(x=Sample, y=Abundance, fill=Phylum))+ 
   geom_bar(aes(), stat="identity", position="stack")+
-  scale_fill_manual(values = phylum_colors_rel)
+  scale_fill_manual(values = phylum_colors_rel) +
+  labs(title = "Abundance", x='Sample', y='Abundance') +
+  theme(legend.key.size = unit(0.2, "cm"),
+        legend.key.width = unit(0.25,"cm"),
+        legend.position = "bottom",
+        legend.direction = "horizontal",
+        legend.title=element_text(size=8, face = "bold"),
+        legend.text=element_text(size=6),
+        text = element_text(size=12),
+        axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
 
-absolute_plot
+
 relative_plot
 ```
 
-Usaremos un comando llamado unique() para explorar cuántos filos y reinos tenemos. 
-```{r}
+Podemos ver algunas diferencias entre los diferentes filo, sin embargo, se nota que tenemos demasiados taxones para distinguir adecuadamente el color de cada uno, a menos que se tenga una abundancia muy grande.
+
+Como nuestro objetivo es diferenciar entre muestras sanas y enfermas, le agregaremos una diferenciación entre la variable 'Treatment', con color blaco las muestras sanas y negras las muestras enfermas. 
+
+
+```{r Treatment}
+percentages_df_phylum$Phylum <- as.factor(percentages_df_phylum$Phylum)
+phylum_colors_rel<- colorRampPalette(brewer.pal(8,"Dark2")) (length(levels(percentages_df_phylum$Phylum)))
+relative_plot <- ggplot(data=percentages_df_phylum, aes(x=Sample, y=Abundance, fill=Phylum, color=Treatment))+ 
+  scale_colour_manual(values=c('white','black')) +
+  geom_bar(aes(), stat="identity", position="stack")+
+  scale_fill_manual(values = phylum_colors_rel) +
+  labs(title = "Abundance", x='Sample', y='Abundance') +
+  theme(legend.key.size = unit(0.2, "cm"),
+        legend.key.width = unit(0.25,"cm"),
+        legend.position = "bottom",
+        legend.direction = "horizontal",
+        legend.title=element_text(size=8, face = "bold"),
+        legend.text=element_text(size=6),
+        text = element_text(size=12),
+        axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+
+
+relative_plot
+```
+
+Igualmente tenemos demasiados taxones para ver una distinción entre las muestras, más adelante crearemos subconjuntos mas pequeños para tener una mejor observación de nuestros datos.
+
+Por otro lado, podemos usar un comando llamado "unique()" para explorar cuántos filos y reinos tenemos.
+
+```{r unique_kingdom}
 unique(fresa_kraken_fil@tax_table@.Data[,"Kingdom"])
 ```
-```{r}
+
+```{r unique_phylum}
 unique(fresa_kraken_fil@tax_table@.Data[,"Phylum"])
 ```
-con esto podemos ver cuantos "Eukaryota" tenemos en "Kingdom"
-```{r}
+Ahora, podemos ver cuantos "Eukaryota" tenemos en "Kingdom".
+
+```{r sum_eukaryota}
 sum(fresa_kraken_fil@tax_table@.Data[,"Kingdom"] == "Eukaryota")
 ```
 y cuantos "Bacteria"
-```{r}
+
+```{r sum_bacteria}
 sum(fresa_kraken_fil@tax_table@.Data[,"Kingdom"] == "Bacteria")
 ```
 
+Verificando así lo que notamos anteriormente con la observación de los subconjuntos aglomerados, tenemos mayor cantidad de muestras clasificadas como bacterias, que las clasificadas como eucariota.
+
 ## Diversidad Beta
 
-veremos aqui solo el reino Eucariota
-```{r}
+Como se menciono anteriormente el objetivo de este documento es explorar las visualizaciones de: barras, alfa diversidad y beta diversidad, para subconjuntos seleccionados de nuestros datos.
+
+Veremos aquí solo el reino Eucariota:
+
+```{r euk_merge}
 merge_Eukaryota<-subset_taxa(fresa_kraken_fil,Kingdom=="Eukaryota")
 ```
-sacamos  las abundancias relativas 
-```{r}
+
+sacamos  las abundancias relativas,
+```{r euk_percentages}
 percentages_Eukaryota <- transform_sample_counts(merge_Eukaryota, function(x) x*100 / sum(x) )
 percentages_Eukaryota_df <- psmelt(percentages_Eukaryota)
 ```
-### beta diversidad de Eukaryota
-```{r}
+
+### Beta diversidad de Eukaryota
+
+```{r euk_ordinate}
 meta_ord_Eukaryota <- ordinate(physeq = percentages_Eukaryota, method = "NMDS", distance = "bray")  
-plot_ordination(physeq = percentages_Eukaryota, ordination = meta_ord_Eukaryota, color = "Treatment") + 
+plot_ordination(physeq = percentages_Eukaryota, ordination = meta_ord_Eukaryota, color = "Treatment") +
   geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
 ```
+
+
 ## Eukaryota por Phylum
+
 ```{r}
-ggplot(data= percentages_Eukaryota_df, aes(x=Sample, y=Abundance, fill=Phylum))+ 
+ggplot(data= percentages_Eukaryota_df, aes(x=Sample, y=Abundance, fill=Phylum, color=Treatment)) + 
+  scale_colour_manual(values=c('white','black')) +
   geom_bar(aes(), stat="identity", position="stack") +
-  theme(text = element_text(size = 5),
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+    labs(title = "Abundance", x='Sample', y='Abundance', color = 'Phylum') +
+    theme(legend.key.size = unit(0.2, "cm"),
+          legend.key.width = unit(0.25,"cm"),
+          legend.position = "bottom",
+          legend.direction = "horizontal",
+          legend.title=element_text(size=8, face = "bold"),
+          legend.text=element_text(size=6),
+          text = element_text(size=12),
+          axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
 ```
+
 ```{r}
 merge_Eukaryota_Phylum<-tax_glom(merge_Eukaryota,taxrank="Phylum")
 ```
@@ -158,10 +230,18 @@ plot_ordination(physeq = percentages_Eukaryota_Phylum, ordination = meta_ord_Euk
 ```
 ## Eukaryota por Family
 ```{r}
-ggplot(data= percentages_Eukaryota_df, aes(x=Sample, y=Abundance, fill=Family))+ 
-  geom_bar(aes(), stat="identity", position="stack")  +
-  theme(text = element_text(size = 5),
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+ggplot(data= percentages_Eukaryota_df, aes(x=Sample, y=Abundance, fill=Family, color=Treatment)) + 
+  scale_colour_manual(values=c('white','black')) +
+  geom_bar(aes(), stat="identity", position="stack") +
+    labs(title = "Abundance", x='Sample', y='Abundance', color = 'Phylum') +
+    theme(legend.key.size = unit(0.2, "cm"),
+          legend.key.width = unit(0.25,"cm"),
+          legend.position = "bottom",
+          legend.direction = "horizontal",
+          legend.title=element_text(size=8, face = "bold"),
+          legend.text=element_text(size=6),
+          text = element_text(size=12),
+          axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
 ```
 ```{r}
 merge_Eukaryota_Family<-tax_glom(merge_Eukaryota,taxrank="Family")
