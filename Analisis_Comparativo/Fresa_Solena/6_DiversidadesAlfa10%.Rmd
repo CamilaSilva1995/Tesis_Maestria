@@ -9,7 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# DIVERSIDADES ALFA Y BETA FUSARIUM
+# DIVERSIDADES ALFA Y BETA al 10%
 
 ```{r}
 library("phyloseq")
@@ -23,14 +23,14 @@ library("plyr")
 ```
 
 ```{r}
-setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena")
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
 outpath = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img"
 ### Cargado de datos originales 
 fresa_kraken <- import_biom("fresa_kraken.biom")
 colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
 colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table@.Data),1,6)
-metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
+metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
 fresa_kraken@sam_data <- sample_data(metadata_fresa)
 fresa_kraken@sam_data$Sample<-row.names(fresa_kraken@sam_data)
 colnames(fresa_kraken@sam_data)<-c('Treatment','Samples')
@@ -48,97 +48,77 @@ merge_Eukaryota<-subset_taxa(fresa_kraken_fil,Kingdom=="Eukaryota")
 merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
 ```
 
-
-```{r}
-
-## Aglomeramos Fusarium
-#glom <- tax_glom(merge_Eukaryota, taxrank = 'Genus')
-glom_Fusarium <- subset_taxa(merge_Eukaryota, Genus == 'Fusarium')
-
-## se calcula diversidad alfa con el glom de fusarium 
-plot_alpha_Fusarium <- plot_richness(physeq = glom_Fusarium, measures = c("Observed","Chao1","Shannon","simpson"),x = 'Treatment', color = 'Treatment') 
-plot_alpha_Fusarium
-
-## se calcula la beta diversidad para Fusarium
-## sacamos los porcentajes
-percentages_Fusarium <- transform_sample_counts(glom_Fusarium, function(x) x*100 / sum(x) )
-percentages_Fusarium_df <- psmelt(percentages_Fusarium)
-meta_ord_Fusarium <- ordinate(physeq = percentages_Fusarium, method = "NMDS", distance = 'bray') 
-plot_beta_Fusarium <- plot_ordination(physeq = percentages_Fusarium, ordination = meta_ord_Fusarium, color = 'Treatment') +
-  geom_text(mapping = aes(label = colnames(glom_Fusarium@otu_table@.Data)), size = 3, vjust = 1.5)
-plot_beta_Fusarium
-
+```{r FunctionGlom}
+glomToGraph<-function(phy,tax){
+  ## creamos el subconjunto dependiendo del linaje taxonomico deseado
+  glom <- tax_glom(phy, taxrank = tax)
+  glom_df <- psmelt(glom)
+  ## sacamos los porcentajes
+  percentages <- transform_sample_counts(glom, function(x) x*100 / sum(x) )
+  percentages_df <- psmelt(percentages)
+  return(list(glom,glom_df,percentages,percentages_df))
+}
 ```
 
-
 ```{r}
-## Aglomeramos Actinobacteria
-#Actinobacteria
-#glom <- tax_glom(merge_Bacteria, taxrank = 'Phylum')
-glom_Actinobacteria <- subset_taxa(merge_Bacteria, Phylum == 'Actinobacteria')
-
-## se calcula diversidad alfa con el glom de Actinobacteria 
-plot_alpha_Actinobacteria <- plot_richness(physeq = glom_Actinobacteria, measures = c("Observed","Chao1","Shannon","simpson"),x = 'Treatment', color = 'Treatment') 
-plot_alpha_Actinobacteria
-
-## se calcula la beta diversidad para Actinobacteria
-## sacamos los porcentajes
-percentages_Actinobacteria <- transform_sample_counts(glom_Actinobacteria, function(x) x*100 / sum(x) )
-percentages_Actinobacteria_df <- psmelt(percentages_Actinobacteria)
-meta_ord_Actinobacteria <- ordinate(physeq = percentages_Actinobacteria, method = "NMDS", distance = 'bray') 
-plot_beta_Actinobacteria <- plot_ordination(physeq = percentages_Actinobacteria, ordination = meta_ord_Actinobacteria, color = 'Treatment') +
-  geom_text(mapping = aes(label = colnames(glom_Actinobacteria@otu_table@.Data)), size = 3, vjust = 1.5)
-plot_beta_Actinobacteria
-
-
+Data <- glomToGraph(merge_Eukaryota,'Genus')
+glom <- Data[[1]] # phyloseq
+glom_df <- Data[[2]] # dataframe
+percentages <- Data[[3]] # phyloseq
+percentages_df <- Data[[4]] # dataframe
 ```
 
-
-
-# PRUEBA DE HIPOTESIS
+```{r}
+glom_df2 <- glom_df[c(1,2,3)]
+head(glom_df2)
+```
+```{r}
+# queremos pasar de dataframe a table, para calcular el alfa diversidad
+df <- reshape(glom_df2, idvar = "Sample",v.names= c("Abundance"), timevar = "OTU", direction = "wide")
+rownames(df) <- df$Sample
+df <- select(df, -Sample)
+head(df)
+```
 
 ```{r}
-
-OTU <- fresa_kraken_fil@otu_table@.Data
-SAM <- fresa_kraken_fil@sam_data
-
-## UNIR TABLA DE ABUNDANCIAS CON METADATA DE SANOS Y ENFERMOS
-
 ## Calculamos la diversidad Shannon 
-
 ## Se usa la funcion diversidad del paquete vegan para calcular el indice Shannon
 ## Se realiza el dataframe del indice de Shannon
-OTU <- t(OTU)
-Shannon_OTU <- diversity(OTU, "shannon")
-Shannon_OTU_df <- data.frame(sample=names(Shannon_OTU),value=Shannon_OTU,measure=rep("Shannon", length(Shannon_OTU)))
-total <-cbind(Shannon_OTU_df,SAM)
 
-#mesiapor grupos
-mu <- ddply(total, "Treatment", summarise, grp.mean=mean(value))
+Chao1_OTU <- estimateR(glom_df2$Abundance)  
 
-p<-ggplot(total, aes(x=value))+
+Shannon_OTU <- diversity(df, "shannon")
+Shannon_OTU_df <- data.frame(Shannon=Shannon_OTU)
+
+Simp_OTU <- diversity(df, "simpson")
+Simp_OTU_df <- data.frame(Simpson=Simp_OTU)
+
+#unir con 
+total <-cbind(glom@sam_data,Shannon_OTU_df,Simp_OTU_df )
+```
+
+```{r}
+mu_Shannon <- ddply(total, "Treatment", summarise, grp.mean=mean(Shannon))
+
+p <- ggplot(total, aes(x=Shannon))+
   geom_histogram(color="pink",fill="black")+
   facet_grid(Treatment ~ .)
-p+geom_vline(data=mu, aes(xintercept=grp.mean, color="red"),
-             linetype="dashed")
+q <- p + geom_vline(data=mu_Shannon, aes(xintercept=grp.mean, color="red"),linetype="dashed")
 ```
 
 
+```{r}
+mu_Simp <- ddply(total, "Treatment", summarise, grp.mean=mean(Simpson))
+
+p2 <- ggplot(total, aes(x=Simpson))+
+  geom_histogram(color="pink",fill="black")+
+  facet_grid(Treatment ~ .)
+q2 <- p2 + geom_vline(data=mu_Simp, aes(xintercept=grp.mean, color="red"),linetype="dashed")
+
+```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```{r alpha_diversity}
+ggplot(total, aes(x=Treatment, y=Shannon, color=Treatment)) + geom_point(size=2)
+```
 

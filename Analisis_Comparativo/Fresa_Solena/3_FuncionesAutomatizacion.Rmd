@@ -94,7 +94,7 @@ Abundance_barras <- function(phy,tax,attribute,abundance_percentage){
           text = element_text(size=12),
           axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
   percentages_df$tax<-percentages_df[,ncol(percentages_df)]
-  percentages_df$tax[percentages_df$Abundance < abundance_percentage] <- "abundance_percentage"
+  percentages_df$tax[percentages_df$Abundance < abundance_percentage] <- "Others"
   percentages_df$tax <- as.factor(percentages_df$tax)
   plot_percentages <- ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='tax' ,color=attribute))+
     scale_colour_manual(values=c('white','black')) +
