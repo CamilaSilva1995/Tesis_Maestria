@@ -1,3 +1,5 @@
+## QUEREMOS GRAFICAR LOS 80 DATOS ORDENADOS POR GRUPOS
+
 library("phyloseq")
 library("ggplot2")
 #library("vegan")

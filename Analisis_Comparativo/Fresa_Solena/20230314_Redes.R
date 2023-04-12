@@ -7,8 +7,6 @@
 ### http://www.aic.uva.es/cuentapalabras/colocaci%C3%B3n-coocurrencia-y-redes-l%C3%A9xicas.html
 
 
-### Gephi
-
 library("phyloseq")
 library("ggplot2")
 library("igraph")
@@ -46,9 +44,41 @@ plot_net(fresa_kraken_fil, maxdist = 0.5, color = "Treatment", shape="Treatment"
 
 # REDES DE COOCURRENCIA
 
+#setwd("~/GIT/Tesis_Maestria/Data/fresa_solena/Data1/Redes")
+#20230314-1_raw_network -> (correlacion normalizada de -1 a 1, con fusarion como taxon clave)
+
+# crear exel de correlacion para 5506 - Fusarium, con los siguientes taxa:
+
+# 5125 - Hypocreales
+# 57161 - Fusarium decemcellulare
+# 37994 - Beauveria felina
+# 5141 - Neurospora crassa
+
+#ejemplo de los datos de correlacion para cada genero correlacionado con fusarium
+Fusarium <- c(1,2,3)
+
+Hypocreales <- c(4,5,6)
+
+cor(Fusarium,Hypocreales)
+
+plot(Fusarium,Hypocreales)
+
+# se puedem hacer pruebas de permutación y luego volver a calcular la correlacion
+Hypocreales_p <- c(6,5,4)
+
+cor(Fusarium,Hypocreales_p)
+
+# al desordenar los puntos se vuelve a calcular la correlacion, y si la muestra no es importante se pueden permutar las columnas y no ver cambios notorios
+
+# Prueba de Boostrap
+# Desordena aleatoreamente y se puede repetir el calculo de la correlacion
 
 
 
 
 
+
+
+### Gephi
+# se pueden vizualizar los resultados con gephi
 
