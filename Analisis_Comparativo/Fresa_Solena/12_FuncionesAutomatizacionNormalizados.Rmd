@@ -1,5 +1,5 @@
 ---
-title: "Funciones"
+title: "FuncionesNormalizado"
 author: "Camila Silva"
 date: "`r Sys.Date()`"
 output: pdf_document
@@ -42,14 +42,51 @@ percentages_df <- psmelt(percentages_fil)
 
 ```
 
+
+# Normalización de los datos
+
+Cada una de las funciones de normalización toma un objeto phloseq y devuelve un objeto physeq cuya tabla otu se transforma.
+
+## edgeRnorm
+Esta función escala datos NGS normalizados utilizando la función de normalización provista en edgeR.
+
+```{r normalization_method}
+edgeRnorm = function(phy, ...){
+  require("edgeR")
+  require("phyloseq")
+  if (!taxa_are_rows(phy)) {
+    phy <- t(phy) #transpone el objeto phyoseq
+  }
+  x = as(otu_table(phy), "matrix")
+  x = x + 1 
+  y = edgeR::DGEList(counts = x, remove.zeros = TRUE) 
+  z = edgeR::calcNormFactors(y, ...) 
+  if (!all(is.finite(z$samples$norm.factors))) {
+    stop("Something wrong with edgeR::calcNormFactors on this data, non-finite $norm.factors")
+  }
+  return(z)
+}
+z <- edgeRnorm(fresa_kraken_fil, method = "TMM")
+```
+
+unimos z con el resto del objeto phyloseq
+
+```{r}
+nor_fresa_kraken_fil <- merge_phyloseq(otu_table(z@.Data[[1]], taxa_are_rows = TRUE),
+                         tax_table(fresa_kraken_fil@tax_table@.Data),
+                         fresa_kraken_fil@sam_data)
+```
+
+
+
 ## Subconjunto de "Eukaryota"
 ```{r MergeEukaryota}
-merge_Eukaryota<-subset_taxa(fresa_kraken_fil,Kingdom=="Eukaryota")
+merge_Eukaryota<-subset_taxa(nor_fresa_kraken_fil,Kingdom=="Eukaryota")
 ```
 
 ## Subconjunto de "Bacteria"
 ```{r MergeBacteria}
-merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
+merge_Bacteria<-subset_taxa(nor_fresa_kraken_fil,Kingdom=="Bacteria")
 ```
 
 # Funciones 
