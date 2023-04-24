@@ -1,5 +1,5 @@
 ---
-title: "230322_Reporte5"
+title: "Analisis exploracion de datoscon 5 categotias (Total de datos)"
 author: "Camila Silva"
 date: "`r Sys.Date()`"
 output: pdf_document

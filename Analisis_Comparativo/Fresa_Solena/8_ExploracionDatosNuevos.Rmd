@@ -1,5 +1,5 @@
 ---
-title: "Diversidades alfa y beta en datos metagenomicos de shotgun de fresa"
+title: "Exploracion de datos por tipo de cultivo"
 author: "Camila Silva"
 date: "`r Sys.Date()`"
 output: pdf_document

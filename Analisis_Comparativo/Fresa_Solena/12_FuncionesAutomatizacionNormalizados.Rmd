@@ -1,5 +1,5 @@
 ---
-title: "FuncionesNormalizado"
+title: "Funciones con datos normalizados"
 author: "Camila Silva"
 date: "`r Sys.Date()`"
 output: pdf_document
@@ -11,19 +11,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ```{r Packages}
-
 library("phyloseq")
 library("ggplot2")
 library("vegan")
 library("RColorBrewer")
 library("stringi")
-
 ```
 
 ### Cargado de datos originales 
 
 ```{r DataLoaded}
-
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
 outpath = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img"
 
@@ -37,9 +34,6 @@ fresa_kraken@sam_data$Sample<-row.names(fresa_kraken@sam_data)
 colnames(fresa_kraken@sam_data)<-c('Treatment','Samples')
 samples_to_remove <- c("MP2079","MP2080","MP2088","MP2109","MP2137")
 fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_remove), fresa_kraken)
-percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
-percentages_df <- psmelt(percentages_fil)
-
 ```
 
 
@@ -77,6 +71,7 @@ nor_fresa_kraken_fil <- merge_phyloseq(otu_table(z@.Data[[1]], taxa_are_rows = T
                          fresa_kraken_fil@sam_data)
 ```
 
+Haciendo el mismo analisis del reporte 3 tomando los datos normalizados para poder realizar una comparación en los resultados.
 
 
 ## Subconjunto de "Eukaryota"

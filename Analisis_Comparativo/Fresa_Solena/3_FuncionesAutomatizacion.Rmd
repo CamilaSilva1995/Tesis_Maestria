@@ -1,5 +1,5 @@
 ---
-title: "Funciones"
+title: "Funciones automatizadas para visualizar las barras de abundancia, diversidades alfa y beta; a diferentes niveles taxonomicos"
 author: "Camila Silva"
 date: "`r Sys.Date()`"
 output: pdf_document
@@ -11,13 +11,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ```{r Packages}
-
 library("phyloseq")
 library("ggplot2")
 library("vegan")
 library("RColorBrewer")
 library("stringi")
-
 ```
 
 ### Cargado de datos originales 
@@ -37,9 +35,6 @@ fresa_kraken@sam_data$Sample<-row.names(fresa_kraken@sam_data)
 colnames(fresa_kraken@sam_data)<-c('Treatment','Samples')
 samples_to_remove <- c("MP2079","MP2080","MP2088","MP2109","MP2137")
 fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_remove), fresa_kraken)
-percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
-percentages_df <- psmelt(percentages_fil)
-
 ```
 
 ## Subconjunto de "Eukaryota"
@@ -53,11 +48,20 @@ merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
 ```
 
 # Funciones 
-Crea los subconjuntos de datos
+
+## glomToGraph
+
+Crea los subconjuntos de datos necesarios para más adelante
+
+
  input
-       phy phyliseq total
-       tax rango al que queremos recortar
+       phy <- es el objeto phyloseq base 
+       tax <- rango taxonomico al que queremos recortar
  output
+      glom <- objeto phyloseq ya recortado
+      percentages <- objeto phyloseq de porcentages sobre el glom
+      percentages_df <- data frame de porcentages sobre el glom
+ 
 
 ```{r FunctionGlom}
 glomToGraph<-function(phy,tax){
@@ -70,9 +74,9 @@ glomToGraph<-function(phy,tax){
 }
 ```
  
-## Graficar abundancias stackbar
+## Graficar abundancias (stackbar)
 
-input entra el percentages_df  
+
 ```{r FunctionPlotAbundances}
 Abundance_barras <- function(phy,tax,attribute,abundance_percentage){
   ##llamar funcion de datos 
@@ -112,7 +116,9 @@ Abundance_barras <- function(phy,tax,attribute,abundance_percentage){
 }
 ```
 
-## Graficar betadiversity
+
+## Graficar diversidad beta
+
 ```{r FunctionPlotBetaDiversity}
 Beta_diversity <- function(phy,tax,attribute,distance){
   Data <- glomToGraph(phy,tax)
@@ -128,7 +134,8 @@ Beta_diversity <- function(phy,tax,attribute,distance){
 }
 ```
 
-## Graficar alphadiversity
+## Graficar diversidad alfa
+
 ```{r FunctionPlotAlphaDiversity}
 Alpha_diversity <- function(phy,tax,attribute){
   ## llamamos la funcion que crea los dataset
@@ -143,10 +150,12 @@ Alpha_diversity <- function(phy,tax,attribute){
 }
 ```
 
+# Graficas
 
+Graficamos las barras de abundancia, las barras de abundancia aglomerando el 10% menos abundantes, alfa y beta diversidad para los siguientes niveles taxonomicos.
 
+##-----------Eukarya by Phylum 
 
-#-----------Eukarya by Phylum 
 ```{r PlotEukaryaPhylum}
 Barras_Phylum <- Abundance_barras(merge_Eukaryota,'Phylum' , 'Treatment', 10.0)
 Barras_Phylum[1] # normal
@@ -162,7 +171,7 @@ Beta_diversity(merge_Eukaryota , 'Phylum' , 'Treatment', 'bray')
 Alpha_diversity(merge_Eukaryota , 'Phylum' , 'Treatment')
 ```
 
-#-----------Eukarya by Family
+##-----------Eukarya by Family
 ```{r PlotEukaryaFamily}
 Barras_Species <- Abundance_barras(merge_Eukaryota,'Family','Treatment',10.0)
 Barras_Species[1] 
@@ -177,7 +186,7 @@ Beta_diversity(merge_Eukaryota , 'Family' , 'Treatment', 'bray')
 Alpha_diversity(merge_Eukaryota , 'Family' , 'Treatment')
 ```
 
-#-----------Eukarya by Genero 
+##-----------Eukarya by Genero 
 ```{r PlotEukaryaGenus}
 Barras_Species <- Abundance_barras(merge_Eukaryota,'Genus','Treatment',10.0)
 Barras_Species[1] 
@@ -192,7 +201,7 @@ Beta_diversity(merge_Eukaryota , 'Genus' , 'Treatment', 'bray')
 Alpha_diversity(merge_Eukaryota , 'Genus' , 'Treatment')
 ```
 
-#-----------Eukarya by Species 
+##-----------Eukarya by Species 
 ```{r PlotEukaryaSpecies}
 Barras_Species <- Abundance_barras(merge_Eukaryota,'Species','Treatment',10.0)
 Barras_Species[1] 
@@ -210,7 +219,7 @@ Alpha_diversity(merge_Eukaryota , 'Species' , 'Treatment')
 
 
 
-#-----------Bacteria by Phylum
+##-----------Bacteria by Phylum
 ```{r PlotBacteriaPhylum}
 Barras_Species <- Abundance_barras(merge_Bacteria,'Phylum','Treatment',10.0)
 Barras_Species[1] 
@@ -225,7 +234,7 @@ Beta_diversity(merge_Bacteria , 'Phylum' , 'Treatment', 'bray')
 Alpha_diversity(merge_Bacteria , 'Phylum' , 'Treatment')
 ```
 
-#-----------Bacteria by Familia
+##-----------Bacteria by Familia
 ```{r PlotBacteriaFamily}
 Barras_Species <- Abundance_barras(merge_Bacteria,'Family','Treatment',10.0)
 Barras_Species[1] 
@@ -240,7 +249,7 @@ Beta_diversity(merge_Bacteria , 'Family' , 'Treatment', 'bray')
 Alpha_diversity(merge_Bacteria , 'Family' , 'Treatment')
 ```
 
-#-----------Bacteria by Genero 
+##-----------Bacteria by Genero 
 ```{r PlotBacteriaGenus}
 Barras_Species <- Abundance_barras(merge_Bacteria,'Genus','Treatment',10.0)
 Barras_Species[1] 
@@ -255,7 +264,7 @@ Beta_diversity(merge_Bacteria , 'Genus' , 'Treatment', 'bray')
 Alpha_diversity(merge_Bacteria , 'Genus' , 'Treatment')
 ```
 
-#-----------Bacteria by Species 
+##-----------Bacteria by Species 
 ```{r PlotBacteriaSpecies}
 Barras_Species <- Abundance_barras(merge_Bacteria,'Species','Treatment',10.0)
 Barras_Species[1] 

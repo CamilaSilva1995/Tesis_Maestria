@@ -68,8 +68,6 @@ library("readr")
 library("patchwork")
 library("vegan")
 library("GUniFrac")
-#library("pbkrtest")
-#library("BiodiversityR")
 library("kableExtra")
 library("RColorBrewer")
 ```
@@ -216,9 +214,9 @@ Con el siguiente comando podemos ver si tenemos muestras no identificadas taxono
 summary(fresa_kraken_fil@tax_table@.Data== "") 
 ```
 
-podemos ver los **TRUE** de cada nivel taxonomico, por ejemplo a nivel de "Phylum" tenemos solo 2 sin clasificar, y a nivel de "Specie" tenemos 1099 sin clasificar.
+podemos ver los **TRUE** de cada nivel taxonomico, por ejemplo a nivel de "Phylum" tenemos solo 2 sin clasificar, y a nivel de "Species" tenemos 1099 sin clasificar.
 
-##### ***ESTO ES LO QUE QUEREMOS COMPARAR CON LAS SALIDAS DE BRACKEN, YA QUE PROMETE HACER UNA REASISGNACION DE TODO LO QUE QUEDE SIN CLASIFICAR CON KRAKEN***
+<!-- ##### ***ESTO ES LO QUE QUEREMOS COMPARAR CON LAS SALIDAS DE BRACKEN, YA QUE PROMETE HACER UNA REASISGNACION DE TODO LO QUE QUEDE SIN CLASIFICAR CON KRAKEN*** -->
 
 
 # DIVERSIDADES CON TODO EL CONJUNTO DE DATOS Y LOS DATOS FILTRADOS POR CALIDAD
@@ -262,7 +260,7 @@ p + geom_point(size=3, alpha=0.5) +
 ```
 El indice Chao1 nos muestra la riqueza de especies en una comunidad
 
-# QUE NOS MUESTRA LA FIGURA??
+<!-- # QUE NOS MUESTRA LA FIGURA?? -->
 
 Ya que queremos diferenciar entre plantas sanas y enfermas, tomamos estos dos conjuntos por separado para mostrar la diversidad,
 
@@ -281,8 +279,8 @@ p + geom_point(size=3, alpha=0.5) +
 
 Se puede ver una gran diferencia al desechar muestras de poca calidad.
 
-# QUE NOS MUESTRA LA FIGURA??
-Ahora si podemos ver ***
+<!-- # QUE NOS MUESTRA LA FIGURA?? -->
+<!-- Ahora si podemos ver *** -->
 
 Ahora queremos convertir las abundancias absolutas (número de lecturas por OTU) a relativas (porcentajes de lecturas asignadas a un OTU dentro de una muestra), ya que nuestos metagenomas tienen diferentes tamaños, calculando las abundancias relativas con la funcion de phyloseq 'transform_sample', tanto de los datos originales como de los filtrados.
  

@@ -1,5 +1,5 @@
 ---
-title: "230313_Reporte3PruebasdeHipotesis"
+title: "Diversidades alfa al 10%"
 author: "Camila Silva"
 date: "`r Sys.Date()`"
 output: pdf_document

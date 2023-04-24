@@ -19,8 +19,6 @@ library("readr")
 library("patchwork")
 library("vegan")
 library("GUniFrac")
-#library("pbkrtest")
-#library("BiodiversityR")
 library("kableExtra")
 library("RColorBrewer")
 ```
@@ -52,6 +50,7 @@ De aqui en adelante solo trabajaremos con los datos filtrados por calidad, ya qu
 Queremos explorar nuestras muestras a diferentes niveles taxonómicos específicos, empezando por una aglomeración de los datos a nivel de reino y filo, Para agrupar todas las OTU que tienen la misma taxonomía en un determinado rango taxonómico, utilizaremos la función ***tax_glom()***.
 
 ### A nivel de Kingdom
+
 ```{r glom_kingdom}
 percentages_glom_kingdom <- tax_glom(percentages_fil, taxrank = 'Kingdom')
 percentages_glom_kingdom@tax_table@.Data
@@ -60,6 +59,7 @@ percentages_glom_kingdom@tax_table@.Data
 En reino podemos ver que tenemos solamente dos grupos que son: Bacteria y Eucariota.
 
 ### A nivel de Phylum
+
 ```{r glom_phylum}
 percentages_glom_phylum <- tax_glom(percentages_fil, taxrank = 'Phylum')
 percentages_glom_phylum@tax_table@.Data

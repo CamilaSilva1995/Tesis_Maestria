@@ -111,18 +111,15 @@ El método "TMM" es una media recortada ponderada de los valores M, que compara 
 
 
 #https://github.com/umerijaz/microbiomeSeq
-
-
 ## Exprecion diferencial
-
 ## hacer dos normalizaciones, la anterior y rarefaccion
-## revisar ultima clase de leticia
+## revisar ultima clase de leticia (30) no esta la grabacion 
 ## abundancia de un taxon (Fusarium)
 ## 
 
 
 
-
+# Rarefacción
 
 
 
