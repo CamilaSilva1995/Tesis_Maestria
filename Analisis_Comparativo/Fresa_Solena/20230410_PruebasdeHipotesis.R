@@ -1,7 +1,6 @@
 library("phyloseq")
 library("ggplot2")
 library("vegan")
-#library("BiodiversityR") 
 library("RColorBrewer")
 library("stringi")
 library("dplyr")

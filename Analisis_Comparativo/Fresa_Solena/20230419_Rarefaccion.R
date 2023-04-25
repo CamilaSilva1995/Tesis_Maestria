@@ -60,11 +60,11 @@ mtext("b) Riqueza con rarefacción basada en individuos por parcela", side =3, c
 
 
 
+
 ####
 #La curva de rarefacción da la riqueza de especies anotadas es un gráfico, el
 #número total de anotaciones de especies distintas en función del número de
 #secuencias muestreadas.
-
 
 library("phyloseq")
 library("ggplot2")
@@ -73,11 +73,10 @@ library("RColorBrewer")
 library("stringi")
 library("dplyr")
 library("plyr")
-library("edgeR")
 
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
 outpath = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img"
-### Cargado de datos 
+### Cargado de datos originales 
 fresa_kraken <- import_biom("fresa_kraken.biom")
 colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
@@ -89,11 +88,75 @@ colnames(fresa_kraken@sam_data)<-c('Treatment','Samples')
 samples_to_remove <- c("MP2079","MP2080","MP2088","MP2109","MP2137")
 fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_remove), fresa_kraken)
 
+#percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
+#percentages_df <- psmelt(percentages_fil)
+
+fresa_kraken_fil_df <- psmelt(fresa_kraken_fil)
+
+## solo tomamos las columnas Sample, OTU y Abundance
+fresa_kraken_fil_df2 <- fresa_kraken_fil_df[c(1,2,3)]
 
 
+# queremos pasar de dataframe a table, para calcular el alfa diversidad
+dfss <- reshape(fresa_kraken_fil_df2, idvar = "Sample",v.names= c("Abundance"), timevar = "OTU", direction = "wide")
+rownames(dfss) <- dfss$Sample
+dfss <- select(dfss, -Sample)
+
+col<-specaccum(dfss, method = "collector")
+plot(col, xlab="Muestras", ylab="Abundancia", col="blue",ylim = c(8500,9000))
+points(col$richness, pch=19, col="darkblue")
+
+## Rarefaccion basada en individuos
+#Sumamos la abundancia de cada especie
+N <- colSums(dfss)
+#Hacemos un vector con los tamaños de muestra sobre los cuales haremos 
+#la interpolación. El dato final de este vector es el tamaño total de la 
+#muestra (sum(N))
+subs3 <- c(seq(500, 4000, by = 500), sum(N)) 
+#Ejecutamos la rarefacción
+rar3 <- rarefy(N, sample = subs3, se = T, MARG = 2)
+rar3
+# muestra la cantidad deespecies que se espera tener para diferentes tamaños de muestras
+
+## Rarefaccion basada en muestras
+#acomulacion de especies
+rand <- specaccum(dfss, method = "random", permutations=100)
+rand
+#vemos la acomulacion de otus encontrados dependiendo la cantidad de muestras
 
 
+### Rarefy (sanos y enfermos)
 
+Treatment <-split(fresa_kraken_fil_df,fresa_kraken_fil_df$Treatment)
+
+Healthy <-Treatment$healthy[c(1,2,3)]
+Wilted <-Treatment$wilted[c(1,2,3)]
+
+Healthy <- reshape(Healthy, idvar = "Sample",v.names= c("Abundance"), timevar = "OTU", direction = "wide")
+rownames(Healthy) <- Healthy$Sample
+Healthy <- select(Healthy, -Sample)
+Wilted <- reshape(Wilted, idvar = "Sample",v.names= c("Abundance"), timevar = "OTU", direction = "wide")
+rownames(Wilted) <- Wilted$Sample
+Wilted <- select(Wilted, -Sample)
+
+colH<-specaccum(Healthy, method = "collector")
+plot(colH, xlab="Muestras", ylab="Abundancia", col="blue",ylim = c(8500,9000))
+plotH + points(colH$richness, pch=19, col="darkblue")
+
+colW<-specaccum(Wilted, method = "collector")
+plot(colW, xlab="Muestras", ylab="Abundancia", col="blue",ylim = c(8500,9000))
+points(colW$richness, pch=19, col="darkblue")
+
+## Rarefaccion basada en individuos
+NH <- colSums(Healthy)
+subs3H <- c(seq(500, 4000, by = 500), sum(NH)) 
+rar3H <- rarefy(NH, sample = subs3H, se = T, MARG = 2)
+rar3H
+
+NW <- colSums(Wilted)
+subs3W <- c(seq(500, 4000, by = 500), sum(NW)) 
+rar3W <- rarefy(NW, sample = subs3W, se = T, MARG = 2)
+rar3W
 
 
 
