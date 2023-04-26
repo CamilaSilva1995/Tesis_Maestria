@@ -3,6 +3,14 @@
     <td>ro1</td>
       <td>row2</td>
   </tr>
+  
+    <tr>
+    <td>
+      [Results_img](falslo)</td>
+      <td>row2</td>
+  </tr>
+
+  
 </table>
 Results_img
 17-04
