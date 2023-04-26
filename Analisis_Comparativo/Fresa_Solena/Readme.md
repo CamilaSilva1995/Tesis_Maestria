@@ -4,7 +4,7 @@
       <td>row2</td>
   </tr>  
     <tr>
-    <td>[Results_img](falslo)</td>
+      <td><a href"direccion">Results_img</a></td>
       <td>row2</td>
   </tr>
 </table>
