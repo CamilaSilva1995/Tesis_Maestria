@@ -4,7 +4,7 @@
       <td>row2</td>
   </tr>  
     <tr>
-      <td><a href"direccion">Results_img</a></td>
+      <td><a href"https://github.com/CamilaSilva1995/Tesis_Maestria/tree/main/Analisis_Comparativo/Fresa_Solena/Results_img">Results_img</a></td>
       <td>row2</td>
   </tr>
 </table>
