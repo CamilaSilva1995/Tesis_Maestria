@@ -2,7 +2,7 @@ Obtuvimos datos metagenomicos de Solena, estos son datos de
 microrganismos en cultivos de fresa, para los cuales, inicialmente tenemos dos poblaciones, estas muestras estan etiquetadas como
 como sanos y enfermos
 
-Reportes
+## Scripts
 <table class="default">
   <tr>
     <th scope="row">Nombre</th>
@@ -42,31 +42,31 @@ Reportes
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230327_PruebasOrden.R">5 PruebasOrden</a></td>
-    <td>En este Scrip empezamos con un preprocesamiento de los datos</td>
+    <td>En este Scrip se realizo un reordenamiendo de las 5 categorias para poder visualizar mejor las graficas de barras.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230403_Actinobacteria.R">Actinobacteria</a></td>
-    <td>En este Scrip empezamos con un preprocesamiento de los datos</td>
+    <td>Aqui vemos las graficas de barras de abundania y beta diversidad para Actinobacteria como filo de interes.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230403_Oomycota%26Fusarium.R">Fusarium</a></td>
-    <td>En este Scrip empezamos con un preprocesamiento de los datos</td>
+    <td>Aqui vemos las graficas de barras de abundania y beta diversidad para Fusarium y Oomycota, como genero y filo de interes, respectivamente. </td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230410_PruebasdeHipotesis.R">Pruebas e Hipotesis</a></td>
-    <td>En este Scrip empezamos con un preprocesamiento de los datos</td>
+    <td>Primer exploración con pruebas de hipotesis</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230411_Preprocesamiento%26Normalizaci%C3%B3n.R">Preprocesamiento y Normalización</a></td>
-    <td>En este Scrip empezamos con un preprocesamiento de los datos</td>
+    <td>Se realizó una normalización usando el paquete de R, "edgeR"</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230419_Rarefaccion.R">Rarefaccion</a></td>
-    <td>Saturacion</td>
+    <td>Se realizó una rarefacción de saturación, la cual nos indica que tenemos la cantidad necesaria de muestras para continuer con el analisis de los datos.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230425_Rarefaccion(Normalizacion).R">Rarefaccion</a></td>
-    <td>Normalización</td>
+    <td>Se realizo una normalización tipo rarefacción.</td>
   </tr>
    <tr>
     <td><a href="">Rsss</a></td>
@@ -76,5 +76,6 @@ Reportes
 </table>
 
 
-Scripts
+## Reportes
+Luego los scripts mostrados en la tabla anterior se convierten en los siguientes reportes, en los cuales se ordenan y se explican un poco mas los procesos, y sus respectivos resultados.
 
