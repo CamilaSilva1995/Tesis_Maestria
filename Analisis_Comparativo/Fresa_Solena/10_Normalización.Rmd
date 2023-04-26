@@ -18,7 +18,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library("phyloseq")
 library("ggplot2")
 library("vegan")
-#library("BiodiversityR") 
 library("RColorBrewer")
 library("stringi")
 library("dplyr")
@@ -28,7 +27,6 @@ library("edgeR")
 
 ```{r DataLoaded}
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
-outpath = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img"
 ### Cargado de datos 
 fresa_kraken <- import_biom("fresa_kraken.biom")
 colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
@@ -101,6 +99,22 @@ nor_fresa_kraken_fil <- merge_phyloseq(otu_table(z@.Data[[1]], taxa_are_rows = T
 ```
 
 
+```{r CoverageNorm}
+dprof <- data.frame(Samples = colnames(nor_fresa_kraken_fil@otu_table@.Data),
+                    Reads = sample_sums(nor_fresa_kraken_fil),
+                    Treatment = nor_fresa_kraken_fil@sam_data@.Data[[1]])
+
+mu_Samples <- mean(dprof$Reads) 
+
+ggplot(data = dprof, mapping = aes(x = Samples, y = Reads))+
+  geom_bar(stat = "identity", aes( fill = Treatment)) +
+  geom_hline(yintercept=mu_Samples, color = "black", linetype="dashed", size=1.5) +
+  scale_fill_manual(values = c("cyan3","darkmagenta")) +
+  theme(text = element_text(size = 15),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
+```
+
 method="TMM"es la media recortada ponderada de los valores M (a la referencia)
 propuesta por Robinson y Oshlack (2010), donde los pesos son del método delta en
 datos binomiales. Si refColumnno se especifica, se utiliza la biblioteca cuyo
@@ -108,18 +122,37 @@ cuartil superior está más cerca del cuartil superior medio.
 
 El método "TMM" es una media recortada ponderada de los valores M, que compara los niveles de expresión génica entre dos grupos (un grupo de referencia y un grupo de prueba). El método fue propuesto por Robinson y Oshlack en 2010 y utiliza pesos delta para datos binomiales. Si no se especifica la "refColumn" (la columna de referencia), se utiliza la biblioteca cuyo cuartil superior está más cerca del cuartil superior medio. En términos más simples, el método TMM es una técnica estadística utilizada para comparar los niveles de expresión génica y utiliza pesos y cálculos específicos para hacerlo. La "refColumn" se refiere a la columna de datos que sirve como referencia para la comparación
 
+# Normalización Rarefacción
+
+#### rarefy in phyloseq
+```{r Rarefy}
+
+#fijamos la semilla
+fresa_kraken_rarefy <- rarefy_even_depth(fresa_kraken_fil, rngseed = 123, sample.size = min(sample_sums(fresa_kraken_fil)))
+
+## queremos ver laprofundidad de las muestras, luego de la rarefaccion
+dprof <- data.frame(Samples = colnames(fresa_kraken_rarefy@otu_table@.Data),
+                    Reads = sample_sums(fresa_kraken_rarefy),
+                    Treatment = fresa_kraken_rarefy@sam_data@.Data[[1]])
+
+mu_Samples <- mean(dprof$Reads) 
+
+ggplot(data = dprof, mapping = aes(x = Samples, y = Reads))+
+  geom_bar(stat = "identity", aes( fill = Treatment)) +
+  geom_hline(yintercept=mu_Samples, color = "black", linetype="dashed", size=1.5) +
+  scale_fill_manual(values = c("cyan3","darkmagenta")) +
+  theme(text = element_text(size = 15),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+```
 
 
-#https://github.com/umerijaz/microbiomeSeq
-## Exprecion diferencial
-## hacer dos normalizaciones, la anterior y rarefaccion
-## revisar ultima clase de leticia (30) no esta la grabacion 
-## abundancia de un taxon (Fusarium)
-## 
 
 
 
-# Rarefacción
+
+
+
+
 
 
 

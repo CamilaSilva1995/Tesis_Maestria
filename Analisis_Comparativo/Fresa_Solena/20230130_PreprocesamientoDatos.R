@@ -50,7 +50,7 @@ library("pbkrtest")
 library("kableExtra")
 library("RColorBrewer")
 ## Debemos especificarle a R en que directorio estamos trabajando
-setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena")
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
 
 ## Datos kraken
 ## importamos los datos kraken del archivo biom, usando la herramienta de phyloseq **impor_biom**

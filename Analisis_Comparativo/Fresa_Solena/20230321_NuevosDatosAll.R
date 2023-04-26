@@ -14,7 +14,7 @@ library("ggplot2")
 
 
 
-setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data2")
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data_all")
 fresa_kraken <- import_biom("fresa_kraken_all.biom")
 class(fresa_kraken)
 ## como tenemos diferencias de longitud en los nombres de las muestras, al cortar los nombres, quedan los datos nuevos con un punto al final, lo  cual para ciertos procedimientos a R no le gusta, por lo tanto a continuacion reemplazamos el punto por una X y asi no tener inconvenientes mas adelante 
@@ -27,7 +27,7 @@ fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
 ## recortar los nombres de las muestras
 colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table@.Data),1,6)
 ## cargar los metadatos
-metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data2/metadata.csv",header =  TRUE, row.names = 1, sep = ",")
+metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data_all/metadata.csv",header =  TRUE, row.names = 1, sep = ",")
 rownames(metadata_fresa) <- sample_names(fresa_kraken)
 ## unir los metadatos al objeto phyloseq
 fresa_kraken@sam_data <- sample_data(metadata_fresa) 

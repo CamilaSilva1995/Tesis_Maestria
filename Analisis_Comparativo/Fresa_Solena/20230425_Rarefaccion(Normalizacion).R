@@ -1,4 +1,5 @@
 ###https://cran.r-project.org/web/packages/Rarefy/vignettes/Rarefy_basics.html
+###
 
 library("phyloseq")
 library("ggplot2")
@@ -41,6 +42,7 @@ ggplot(data = dprof, mapping = aes(x = Samples, y = Reads))+
   scale_fill_manual(values = c("cyan3","darkmagenta")) +
   theme(text = element_text(size = 15),
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+
 
 ## luego dela rarefacción sacar los indices de diversidad alfa
 

@@ -1,4 +1,4 @@
-## DIVERSIDADES ALFA Y BETA FUSARIUM
+## DIVERSIDADES ALFA Y BETA ACTINOBACTERIA
 
 library("phyloseq")
 library("ggplot2")

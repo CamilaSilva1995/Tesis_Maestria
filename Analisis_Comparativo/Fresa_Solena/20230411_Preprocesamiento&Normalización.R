@@ -96,12 +96,18 @@ rm(z)
 
 
 
+#https://github.com/umerijaz/microbiomeSeq
+## Exprecion diferencial
+## hacer dos normalizaciones, la anterior y rarefaccion
+## revisar ultima clase de leticia (30) no esta la grabacion 
+## abundancia de un taxon (Fusarium)
+## 
 
 
 
 
 
-
+##Prueba de Hipotesis luego de la normalizacion 
 
 
 
