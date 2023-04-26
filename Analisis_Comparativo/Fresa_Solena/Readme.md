@@ -7,16 +7,16 @@ Reportes
     <th>Explicación</th>
   </tr>
   <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230130_PreprocesamientoDatos.R>Preprocesamiento de Datos</a></td>
-    <td>En este Scrip empezamos con un preprocesamiento de los datos </td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230213_DiversidadesAlfa%26Beta.R>Diversidades Alfa y Beta</a></td>
+    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230130_PreprocesamientoDatos.R">Preprocesamiento de Datos</a></td>
     <td>En este Scrip empezamos con un preprocesamiento de los datos</td>
   </tr>
   <tr>
-    <td>E 13 km/h</td>
-    <td>Soleado</td>
+    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230213_DiversidadesAlfa%26Beta.R">Diversidades Alfa y Beta</a></td>
+    <td>En este Scrip empezamos con un preprocesamiento de los datos</td>
+  </tr>
+<tr>
+    <td><a href="[https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230213_DiversidadesAlfa%26Beta.R](https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230220_Funciones.R)">Funciones</a></td>
+    <td>En este Scrip empezamos con un preprocesamiento de los datos</td>
   </tr>
 </table>
 
