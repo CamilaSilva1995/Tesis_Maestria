@@ -22,6 +22,40 @@ fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_r
 percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
 percentages_df <- psmelt(percentages_fil)
 
+
+OTU <- fresa_kraken_fil@otu_table@.Data
+SAM <- fresa_kraken_fil@sam_data
+
+## UNIR TABLA DE ABUNDANCIAS CON METADATA DE SANOS Y ENFERMOS
+
+## Calculamos la diversidad Shannon 
+
+## Se usa la funcion diversidad del paquete vegan para calcular el indice Shannon
+## Se realiza el dataframe del indice de Shannon
+OTU <- t(OTU)
+Shannon_OTU <- diversity(OTU, "shannon")
+Shannon_OTU_df <- data.frame(sample=names(Shannon_OTU),value=Shannon_OTU,measure=rep("Shannon", length(Shannon_OTU)))
+total <-cbind(Shannon_OTU_df,SAM)
+
+# media por grupos
+mu <- ddply(total, "Treatment", summarise, grp.mean=mean(value))
+
+p<-ggplot(total, aes(x=value))+
+  geom_histogram(color="pink",fill="black")+
+  facet_grid(Treatment ~ .)
+p+geom_vline(data=mu, aes(xintercept=grp.mean, color="red"),
+             linetype="dashed")
+
+ggplot(total, aes(x=Treatment, y=value, color=Treatment)) + geom_point(size=2)
+
+
+###EJEMPLO 10.14..PAG 524 DEL LIBRO DE ESTADISTICA
+# Prueba de medias para Shannon
+
+
+
+#################################################################################
+
 ## Subconjunto de "Eukaryota"
 merge_Eukaryota<-subset_taxa(fresa_kraken_fil,Kingdom=="Eukaryota")
 ## Subconjunto de "Bacteria"
@@ -37,6 +71,7 @@ glomToGraph<-function(phy,tax){
   return(list(glom,glom_df,percentages,percentages_df))
 }
 
+# PRUEBAS A NIVEL DE GENERO
 Data <- glomToGraph(merge_Eukaryota,'Genus')
 glom <- Data[[1]] # phyloseq
 glom_df <- Data[[2]] # dataframe
@@ -84,3 +119,5 @@ q2 <- p2 + geom_vline(data=mu_Simp, aes(xintercept=grp.mean, color="red"),linety
 
 
 ggplot(total, aes(x=Treatment, y=Shannon, color=Treatment)) + geom_point(size=2)
+
+

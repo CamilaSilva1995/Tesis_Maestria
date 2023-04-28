@@ -9,13 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
+```{r Packages}
 library("phyloseq")
 library("ggplot2")
 library("vegan")
@@ -25,7 +19,7 @@ library("dplyr")
 library("plyr")
 ```
 
-```{r}
+```{r Data}
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
 ### Cargado de datos originales 
 fresa_kraken <- import_biom("fresa_kraken.biom")
@@ -40,47 +34,64 @@ samples_to_remove <- c("MP2079","MP2080","MP2088","MP2109","MP2137")
 fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_remove), fresa_kraken)
 ```
 
+Pasamos los datos a un data frame
+
 ```{r}
-
 fresa_kraken_fil_df <- psmelt(fresa_kraken_fil)
+```
 
-## solo tomamos las columnas Sample, OTU y Abundance
+Tomamos las columnas Sample, OTU y Abundance, para crear un nuevo data frame mas pequeño, 
+
+```{r}
 fresa_kraken_fil_df2 <- fresa_kraken_fil_df[c(1,2,3)]
+```
 
+PAsamos nuestros datos de dataframe a table, para calcular el alfa diversidad
 
-# queremos pasar de dataframe a table, para calcular el alfa diversidad
+```{r}
 dfss <- reshape(fresa_kraken_fil_df2, idvar = "Sample",v.names= c("Abundance"), timevar = "OTU", direction = "wide")
 rownames(dfss) <- dfss$Sample
 dfss <- select(dfss, -Sample)
+```
 
+Ahora veremos la profundidad de nuestras muestras
+
+```{r}
 col<-specaccum(dfss, method = "collector")
 plot(col, xlab="Muestras", ylab="Abundancia", col="blue",ylim = c(8500,9000))
 points(col$richness, pch=19, col="darkblue")
-
-## Rarefaccion basada en individuos
-#Sumamos la abundancia de cada especie
-N <- colSums(dfss)
-#Hacemos un vector con los tamaños de muestra sobre los cuales haremos 
-#la interpolación. El dato final de este vector es el tamaño total de la 
-#muestra (sum(N))
-subs3 <- c(seq(500, 4000, by = 500), sum(N)) 
-#Ejecutamos la rarefacción
-rar3 <- rarefy(N, sample = subs3, se = T, MARG = 2)
-rar3
-# muestra la cantidad deespecies que se espera tener para diferentes tamaños de muestras
-
-## Rarefaccion basada en muestras
-#acomulacion de especies
-rand <- specaccum(dfss, method = "random", permutations=100)
-rand
-#vemos la acomulacion de otus encontrados dependiendo la cantidad de muestras
-
 ```
 
+## Rarefaccion basada en individuos
+Sumamos la abundancia de cada especie
+```{r}
+N <- colSums(dfss)
+```
+Hacemos un vector con los tamaños de muestra sobre los cuales haremos 
+la interpolación. El dato final de este vector es el tamaño total de la muestra (sum(N)).
+```{r}
+subs3 <- c(seq(500, 4000, by = 500), sum(N)) 
+```
+Ejecutamos la rarefacción
+```{r}
+rar3 <- rarefy(N, sample = subs3, se = T, MARG = 2)
+rar3
+```
+muestra la cantidad de especies que se espera tener para diferentes tamaños de muestras
+
+
+## Rarefaccion basada en muestras
+acomulacion de especies
 
 ```{r}
+rand <- specaccum(dfss, method = "random", permutations=100)
+rand
+```
+vemos la acomulacion de otus encontrados dependiendo la cantidad de muestras
+
 ### Rarefy (sanos y enfermos)
 
+```{r}
 Treatment <-split(fresa_kraken_fil_df,fresa_kraken_fil_df$Treatment)
 
 Healthy <-Treatment$healthy[c(1,2,3)]
@@ -102,10 +113,9 @@ plot(colW, xlab="Muestras", ylab="Abundancia", col="blue",ylim = c(8500,9000))
 points(colW$richness, pch=19, col="darkblue")
 ```
 
-
+## Rarefaccion basada en individuos
 
 ```{r}
-## Rarefaccion basada en individuos
 NH <- colSums(Healthy)
 subs3H <- c(seq(500, 4000, by = 500), sum(NH)) 
 rar3H <- rarefy(NH, sample = subs3H, se = T, MARG = 2)

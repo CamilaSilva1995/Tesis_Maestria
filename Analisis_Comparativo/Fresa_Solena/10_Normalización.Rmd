@@ -148,6 +148,11 @@ ggplot(data = dprof, mapping = aes(x = Samples, y = Reads))+
 
 
 
+VIendo los resultados de la rarefaccion
+
+
+
+
 
 
 
