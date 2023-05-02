@@ -62,3 +62,43 @@ plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Ca
 
 #####################################################################################################################
 
+## StackBar
+
+percentages_df <- psmelt(percentages_fil)
+
+#creamos una funcion que crea un vector ordenado por categoria de los datos
+crear_vector<-function(df,vec){
+  t<-(as.integer(log10(length(vec))))+1
+  i<-1
+  new_name<-c()
+  new<-c()
+  for (sample_i in unique(vec)){
+    n <- count(df[vec==sample_i,]) #número de OTUs por muestra
+    n <- as.integer(n)
+    new <-c(rep(i, n))
+    m<-t-((as.integer(log10(i)))+1)
+    ceros<-paste((rep(0,m)),collapse = '')
+    new<-paste(paste('A',ceros,sep=""),new,sep = "")
+    # cat(i,as.integer(log10(i))+1,m,ceros,new,"\n")
+    new_name <- c(new_name,new)
+    i<-i+1
+  }
+  new_vec<-paste(new_name, vec, sep="_")
+  return(new_vec)
+}
+
+percentages_df$new_sample<-crear_vector(percentages_df,percentages_df$Sample)
+
+ggplot(data=percentages_df, aes_string(x=('new_sample'), y='Abundance', fill='Phylum', colour='Category' ))+
+  scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
+  geom_bar(aes(), stat="identity", position="stack") +
+  labs(title = "Abundance", x='Sample', y='Abundance', color = 'Category') +
+  theme(legend.key.size = unit(0.2, "cm"),
+        legend.key.width = unit(0.25,"cm"),
+        legend.position = "bottom",
+        legend.direction = "horizontal",
+        legend.title=element_text(size=8, face = "bold"),
+        legend.text=element_text(size=6),
+        text = element_text(size=12),
+        axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+

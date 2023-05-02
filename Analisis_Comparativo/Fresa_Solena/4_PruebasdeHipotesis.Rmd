@@ -12,10 +12,10 @@ knitr::opts_chunk$set(echo = TRUE)
 # PRUEBA DE HIPOTESIS
 
 ```{r}
+library("rlang")
 library("phyloseq")
 library("ggplot2")
 library("vegan")
-#library("BiodiversityR") 
 library("RColorBrewer")
 library("stringi")
 library("dplyr")

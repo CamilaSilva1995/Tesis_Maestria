@@ -60,6 +60,7 @@ getwd()
 Phyloseq es un paquete de Bioconductor (Open Source Software For Bioinformatics) para la manipulación y análisis (herramienta para importar, guardar, analizar y visualizar) de datos metagenómicos generados por metodologías de secuenciación de alto rendimiento. 
 
 ```{r Packages}
+library("rlang")
 library("phyloseq") 
 library("ggplot2") 
 library("igraph")
@@ -68,7 +69,6 @@ library("patchwork")
 library("vegan")
 library("GUniFrac")
 library("pbkrtest")
-#library("BiodiversityR")
 library("kableExtra")
 library("RColorBrewer")
 ```
