@@ -15,7 +15,7 @@ library("ggplot2")
 
 
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data2")
-fresa_kraken <- import_biom("fresa_kraken_all.biom")
+fresa_kraken <- import_biom("fresa_kraken.biom")
 class(fresa_kraken)
 ## como tenemos diferencias de longitud en los nombres de las muestras, al cortar los nombres, quedan los datos nuevos con un punto al final, lo  cual para ciertos procedimientos a R no le gusta, por lo tanto a continuacion reemplazamos el punto por una X y asi no tener inconvenientes mas adelante 
 ## usando lalibreria stringi
@@ -47,7 +47,7 @@ sample_names(fresa_kraken_fil) # 80#
 index = estimate_richness(fresa_kraken_fil)
 index
 plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson"))
-plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson"),x = "Category", color = "Category") 
+plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson"),x = "category", color = "category") 
 
 
 ## diversidad beta
@@ -56,9 +56,36 @@ head(percentages_fil@otu_table@.Data)
 meta_ord_fil <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "bray") 
 plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Treatment") +
   geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
-
-plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Category") +
+##### ERROR DATOS DE COVARIANZA
+plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "category") +
   geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
 
+
 #####################################################################################################################
+
+## StackBar
+
+percentages_df <- psmelt(percentages_fil)
+
+# Ahora vamos a ordenar el data frame, para que nos quede en el orden que queremos graficar
+percentages_df$Sample<-as.factor(percentages_df$Sample)
+percentages_df$category<-as.factor(percentages_df$category)
+# Ordenamos respecto a categoria 
+percentages_df<-percentages_df[order(percentages_df$category,percentages_df$Sample),]
+
+ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='Phylum' ,color='category'))  +
+  scale_colour_manual(values=c('cyan','pink','yellow')) +
+  geom_bar(aes(), stat="identity", position="stack") +
+  #scale_x_discrete(limits = rev(levels(percentages_df$Category))) +
+  labs(title = "Abundance", x='Sample', y='Abundance', color = 'Category') +
+  theme(legend.key.size = unit(0.2, "cm"),
+        legend.key.width = unit(0.25,"cm"),
+        legend.position = "bottom",
+        legend.direction = "horizontal",
+        legend.title=element_text(size=8, face = "bold"),
+        legend.text=element_text(size=6),
+        text = element_text(size=12),
+        axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+
+
 

@@ -12,8 +12,6 @@ library("ggplot2")
 # $ conda activate metagenomics
 # $ kraken-biom *txt --fmt json -o fresa_kraken.biom
 
-
-
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data_all")
 fresa_kraken <- import_biom("fresa_kraken_all.biom")
 class(fresa_kraken)
@@ -64,34 +62,46 @@ plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Ca
 
 ## StackBar
 
+percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
 percentages_df <- psmelt(percentages_fil)
 
-#creamos una funcion que crea un vector ordenado por categoria de los datos
+# Ahora vamos a ordenar el data frame, para que nos quede en el orden que queremos graficar
+percentages_df$Sample<-as.factor(percentages_df$Sample)
+percentages_df$Category<-as.factor(percentages_df$Category)
+# Ordenamos respecto a categoria 
+percentages_df<-percentages_df[order(percentages_df$Category,percentages_df$Sample),]
+
+##### Ahora vamos a crear una nueva variable, con los nombres ordenados de las muestras (New_sample)
+
 crear_vector<-function(df,vec){
-  t<-(as.integer(log10(length(vec))))+1
-  i<-1
-  new_name<-c()
-  new<-c()
+  t<-(as.integer(log10(length(vec))))+1 # numero de digitos del vector, se usa para calcular el numero de ceros 
+  i<-1 # contador de muestra
+  new_name<-c() # vector nombres nuevos
+  new<-c() # 
   for (sample_i in unique(vec)){
     n <- count(df[vec==sample_i,]) #número de OTUs por muestra
     n <- as.integer(n)
-    new <-c(rep(i, n))
-    m<-t-((as.integer(log10(i)))+1)
+    new <-c(rep(i, n)) # repetir i, n veces
+    m<-t-((as.integer(log10(i)))+1) # i es el numero de muestra, queremos "00i"
+    #acorde a la longitud de t es el numero de ceros para los nuevos nombres
+    # ejemplo t=3 queremos dos ceros 001
     ceros<-paste((rep(0,m)),collapse = '')
-    new<-paste(paste('A',ceros,sep=""),new,sep = "")
+    new<-paste(paste('A',ceros,sep=""),new,sep = "") # nuevos nombres (por separado) "A0001"
     # cat(i,as.integer(log10(i))+1,m,ceros,new,"\n")
-    new_name <- c(new_name,new)
+    new_name <- c(new_name,new) # vector acomula nuevos nombres 
     i<-i+1
   }
   new_vec<-paste(new_name, vec, sep="_")
   return(new_vec)
 }
 
+### Ahora percentages_df$new_sample está ordenada alfabéticamente pero sigue el orden de las categorías
 percentages_df$new_sample<-crear_vector(percentages_df,percentages_df$Sample)
 
-ggplot(data=percentages_df, aes_string(x=('new_sample'), y='Abundance', fill='Phylum', colour='Category' ))+
+ggplot(data=percentages_df, aes_string(x='new_sample', y='Abundance', fill='Phylum' ,color='Category'))  +
   scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
   geom_bar(aes(), stat="identity", position="stack") +
+  #scale_x_discrete(limits = rev(levels(percentages_df$Category))) +
   labs(title = "Abundance", x='Sample', y='Abundance', color = 'Category') +
   theme(legend.key.size = unit(0.2, "cm"),
         legend.key.width = unit(0.25,"cm"),
@@ -101,4 +111,7 @@ ggplot(data=percentages_df, aes_string(x=('new_sample'), y='Abundance', fill='Ph
         legend.text=element_text(size=6),
         text = element_text(size=12),
         axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+
+
+
 

@@ -8,7 +8,7 @@ library("stringi")
 library("forcats")
 library("dplyr")
 
-setwd("/home/nelly/Tesis_Maestria/Data/fresa_solena/Data_all")
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data_all")
 fresa_kraken <- import_biom("fresa_kraken_all.biom")
 class(fresa_kraken)
 ## como tenemos diferencias de longitud en los nombres de las muestras, al cortar los nombres, quedan los datos nuevos con un punto al final, lo  cual para ciertos procedimientos a R no le gusta, por lo tanto a continuacion reemplazamos el punto por una X y asi no tener inconvenientes mas adelante
@@ -70,10 +70,8 @@ crear_vector<-function(df,vec){
   new_name<-c() # vector nombres nuevos
   new<-c() # 
   for (sample_i in unique(vec)){
-# sample_i<-"P3367"
-   n <- count(df[vec==sample_i,]) #número de OTUs por muestra
+    n <- count(df[vec==sample_i,]) #número de OTUs por muestra
     n <- as.integer(n)
-    print(n)
     new <-c(rep(i, n)) # repetir i, n veces
     m<-t-((as.integer(log10(i)))+1) # i es el numero de muestra, queremos "00i"
                                     #acorde a la longitud de t es el numero de ceros para los nuevos nombres
@@ -92,7 +90,7 @@ crear_vector<-function(df,vec){
 percentages_df$new_sample<-crear_vector(percentages_df,percentages_df$Sample)
 
 ggplot(data=percentages_df, aes_string(x='new_sample', y='Abundance', fill='Phylum' ,color='Category'))  +
- # scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
+  scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
   geom_bar(aes(), stat="identity", position="stack") +
   #scale_x_discrete(limits = rev(levels(percentages_df$Category))) +
   labs(title = "Abundance", x='Sample', y='Abundance', color = 'Category') +
