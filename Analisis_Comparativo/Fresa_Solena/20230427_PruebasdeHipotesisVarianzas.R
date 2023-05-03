@@ -1,3 +1,5 @@
+## PRUEBA DE HIPOTESIS - ANALISIS DE VARIANZAS PARA DIVERSIDADES CHAO1
+
 library("phyloseq")
 library("ggplot2")
 library("vegan")
@@ -22,7 +24,6 @@ fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_r
 percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
 percentages_df <- psmelt(percentages_fil)
 
-
 ###EJEMPLO 10.16..PAG 532 DEL LIBRO DE ESTADISTICA
 # Prueba de varianzas para Chao1
 
@@ -34,12 +35,43 @@ SAM <- fresa_kraken_fil@sam_data
 ## Calculamos la diversidad Chao1
 Chao1_OTU <- estimateR(t(OTU))  
 
-
 Chao1_OTU_df <- data.frame(Chao1=Chao1_OTU,f.prob.x = probabilidades)
 
 Chao1_OTU_df[2, ]
 
 var(Chao1_OTU_df[2, ], na.rm = FALSE)
 
+
+
+
+
+
+
+
+
+
+
+
+#################################################################################
+## Subconjunto de "Bacteria"
+merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
+
+glomToGraph<-function(phy,tax){
+  ## creamos el subconjunto dependiendo del linaje taxonomico deseado
+  glom <- tax_glom(phy, taxrank = tax)
+  glom_df <- psmelt(glom)
+  ## sacamos los porcentajes
+  percentages <- transform_sample_counts(glom, function(x) x*100 / sum(x) )
+  percentages_df <- psmelt(percentages)
+  return(list(glom,glom_df,percentages,percentages_df))
+}
+
+## ACTINOBACTERIA
+# PRUEBAS A NIVEL DE GENERO
+Data <- glomToGraph(merge_Eukaryota,'Genus')
+glom <- Data[[1]] # phyloseq
+glom_df <- Data[[2]] # dataframe
+percentages <- Data[[3]] # phyloseq
+percentages_df <- Data[[4]] # dataframe
 
 

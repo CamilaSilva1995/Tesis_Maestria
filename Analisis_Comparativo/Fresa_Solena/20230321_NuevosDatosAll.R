@@ -52,9 +52,6 @@ plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shanno
 percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
 head(percentages_fil@otu_table@.Data)
 meta_ord_fil <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "bray") 
-plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Treatment") +
-  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
-
 plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Category") +
   geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
 

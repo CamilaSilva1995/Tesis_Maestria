@@ -1,5 +1,5 @@
-###https://cran.r-project.org/web/packages/Rarefy/vignettes/Rarefy_basics.html
-###
+## RAREFACCION DE NORMALIZACION Y PRUEBAS DE HIPOTESIS
+# https://cran.r-project.org/web/packages/Rarefy/vignettes/Rarefy_basics.html
 
 library("phyloseq")
 library("ggplot2")
@@ -23,17 +23,17 @@ colnames(fresa_kraken@sam_data)<-c('Treatment','Samples')
 samples_to_remove <- c("MP2079","MP2080","MP2088","MP2109","MP2137")
 fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_remove), fresa_kraken)
 
+#### Rarefacción con phyloseq
 
-#### rarefy in phyloseq
-
-#fijamos la semilla
+## fijamos la semilla y aplicamos 'rarefy'
 fresa_kraken_rarefy <- rarefy_even_depth(fresa_kraken_fil, rngseed = 123, sample.size = min(sample_sums(fresa_kraken_fil)))
 
-## queremos ver laprofundidad delas muestras
+## Primero veremos la profundidad de las muestras
 dprof <- data.frame(Samples = colnames(fresa_kraken_rarefy@otu_table@.Data),
                     Reads = sample_sums(fresa_kraken_rarefy),
                     Treatment = fresa_kraken_rarefy@sam_data@.Data[[1]])
 
+## Tomamos la media de las profundidades
 mu_Samples <- mean(dprof$Reads) 
 
 ggplot(data = dprof, mapping = aes(x = Samples, y = Reads))+
@@ -43,9 +43,7 @@ ggplot(data = dprof, mapping = aes(x = Samples, y = Reads))+
   theme(text = element_text(size = 15),
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
 
-
-## luego dela rarefacción sacar los indices de diversidad alfa
-
+## luego de la rarefacción sacamos los indices de diversidad alfa
 
 index = estimate_richness(fresa_kraken_rarefy)
 index
@@ -54,7 +52,7 @@ p<-plot_richness(physeq = fresa_kraken_rarefy, measures = c("Observed","Chao1","
 p + geom_point(size=3, alpha=0.5) +
   theme(axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
 
-# y diversidad beta
+## y diversidad beta
 
 percentages_fil <- transform_sample_counts(fresa_kraken_rarefy, function(x) x*100 / sum(x) )
 head(percentages_fil@otu_table@.Data)
@@ -64,10 +62,10 @@ plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Tr
   geom_text(mapping = aes(label = colnames(fresa_kraken_rarefy@otu_table@.Data)), size = 3, vjust = 1.5)
 
 
-####################################################################
-# media de Shannon y varianza de Chao1 para prueba de hipotesis 
+################################################################################
+## media de indices Shannon y varianza de Chao1 para prueba de hipotesis 
 
-## prueba dehipotesis con medias con indice Shannon
+## Prueba de Hipotesis con medias para el indice Shannon
 
 fresa_kraken_rarefy_df <- psmelt(fresa_kraken_rarefy)
 

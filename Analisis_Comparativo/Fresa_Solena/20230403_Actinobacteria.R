@@ -1,13 +1,12 @@
-## DIVERSIDADES ALFA Y BETA ACTINOBACTERIA
+## DIVERSIDADES ALFA Y BETA
+# Phylum - ACTINOBACTERIA
+#https://ciespinosa.github.io/AlphaDiversidad/rarefaccion.html
 
 library("phyloseq")
 library("ggplot2")
 library("vegan")
-#library("BiodiversityR") 
 library("RColorBrewer")
 library("stringi")
-
-#https://ciespinosa.github.io/AlphaDiversidad/rarefaccion.html
 
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena")
 outpath = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img"
@@ -30,7 +29,7 @@ percentages_df <- psmelt(percentages_fil)
 merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
 
 ## Aglomeramos Actinobacteria
-#Actinobacteria
+# Actinobacteria
 glom_Actinobacteria <- subset_taxa(merge_Bacteria, Phylum == 'Actinobacteria')
 glom_Actinobacteriaa_df <- psmelt(glom_Actinobacteria)
 

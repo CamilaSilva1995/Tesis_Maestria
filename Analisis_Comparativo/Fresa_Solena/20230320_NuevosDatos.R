@@ -1,4 +1,4 @@
-## SE ANALIZAN LA TOTALIDAD DELOS DATOS (85, 80 despues del filtro de calidad)
+## ANALIZAMOS EL SEGUNDO CONJUNTO DE DATOS POR SEPARADO (3 CATEGORIAS POR TIPO DE CULTIVO)
 
 library("phyloseq") 
 library("stringi")
@@ -11,8 +11,6 @@ library("ggplot2")
 #~/GIT/Tesis_Maestria/Data/fresa_solena/Data_all/taxonomic_profiling/kraken_results
 # $ conda activate metagenomics
 # $ kraken-biom *txt --fmt json -o fresa_kraken.biom
-
-
 
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data2")
 fresa_kraken <- import_biom("fresa_kraken.biom")
@@ -32,40 +30,27 @@ rownames(metadata_fresa) <- sample_names(fresa_kraken)
 ## unir los metadatos al objeto phyloseq
 fresa_kraken@sam_data <- sample_data(metadata_fresa) 
 
-# filtro de calidad 
-samples_to_remove <- c("MP2079","MP2080","MP2088","MP2109","MP2137")
-samples<-!(sample_names(fresa_kraken) %in% samples_to_remove)
-sample_names(fresa_kraken)
-names(samples)<-as.character(sample_names(fresa_kraken))
-samples
-fresa_kraken_fil <- prune_samples(samples, fresa_kraken) #me esta quitando mas muestras de la que debe
-nsamples(fresa_kraken) # 85
-nsamples(fresa_kraken_fil) # 80
-sample_names(fresa_kraken_fil) # 80#  
-
 ## diversidad alfa
-index = estimate_richness(fresa_kraken_fil)
+index = estimate_richness(fresa_kraken)
 index
-plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson"))
-plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson"),x = "category", color = "category") 
+plot_richness(physeq = fresa_kraken, measures = c("Observed","Chao1","Shannon","simpson"))
+plot_richness(physeq = fresa_kraken, measures = c("Observed","Chao1","Shannon","simpson"),x = "category", color = "category") 
 
 
 ## diversidad beta
-percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
-head(percentages_fil@otu_table@.Data)
-meta_ord_fil <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "bray") 
-plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Treatment") +
-  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
-##### ERROR DATOS DE COVARIANZA
-plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "category") +
-  geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+percentages <- transform_sample_counts(fresa_kraken, function(x) x*100 / sum(x) )
+head(percentages@otu_table@.Data)
+meta_ord <- ordinate(physeq = percentages, method = "NMDS", distance = "bray") 
+plot_ordination(physeq = percentages, ordination = meta_ord, color = "category") +
+  geom_text(mapping = aes(label = colnames(fresa_kraken@otu_table@.Data)), size = 3, vjust = 1.5)
 
+##### ERROR DATOS DE COVARIANZA
 
 #####################################################################################################################
 
 ## StackBar
 
-percentages_df <- psmelt(percentages_fil)
+percentages_df <- psmelt(percentages)
 
 # Ahora vamos a ordenar el data frame, para que nos quede en el orden que queremos graficar
 percentages_df$Sample<-as.factor(percentages_df$Sample)

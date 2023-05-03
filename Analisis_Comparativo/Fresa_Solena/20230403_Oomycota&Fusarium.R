@@ -1,18 +1,15 @@
 ## DIVERSIDADES ALFA Y BETA 
-#Phylum - Oomycota
-#Genus - Fusarium
-
+# Phylum - Oomycota
+# Genus - Fusarium
+#https://ciespinosa.github.io/AlphaDiversidad/rarefaccion.html
 
 library("phyloseq")
 library("ggplot2")
 library("vegan")
-#library("BiodiversityR") 
 library("RColorBrewer")
 library("stringi")
 
-#https://ciespinosa.github.io/AlphaDiversidad/rarefaccion.html
-
-setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena")
+setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
 outpath = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img"
 
 ### Cargado de datos originales 
@@ -20,7 +17,7 @@ fresa_kraken <- import_biom("fresa_kraken.biom")
 colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 fresa_kraken@tax_table@.Data <- substr(fresa_kraken@tax_table@.Data,4,100)
 colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table@.Data),1,6)
-metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
+metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
 fresa_kraken@sam_data <- sample_data(metadata_fresa)
 fresa_kraken@sam_data$Sample<-row.names(fresa_kraken@sam_data)
 colnames(fresa_kraken@sam_data)<-c('Treatment','Samples')
@@ -64,6 +61,8 @@ plot_barras_Fusarium <- ggplot(data = percentages_Fusarium_df, mapping = aes(y= 
         text = element_text(size=12),
         axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
 plot_barras_Fusarium
+
+################################################################################
 
 ## Aglomeramos Oomycota
 glom_Oomycota <- subset_taxa(merge_Eukaryota, Phylum == 'Oomycota')

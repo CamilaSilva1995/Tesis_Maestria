@@ -1,3 +1,5 @@
+## PRUEBA DE HIPOTESIS SOBRE MEDIAS (GENERAL Y PARA LOS TAXONES ENFOQUE)
+
 library("phyloseq")
 library("ggplot2")
 library("vegan")
@@ -22,6 +24,9 @@ fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_r
 percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
 percentages_df <- psmelt(percentages_fil)
 
+## Prueba de hipotesis con medias con indice Shannon
+
+fresa_kraken_df <- psmelt(fresa_kraken_fil)
 
 OTU <- fresa_kraken_fil@otu_table@.Data
 SAM <- fresa_kraken_fil@sam_data
@@ -48,18 +53,12 @@ p+geom_vline(data=mu, aes(xintercept=grp.mean, color="red"),
 
 ggplot(total, aes(x=Treatment, y=value, color=Treatment)) + geom_point(size=2)
 
-
-###EJEMPLO 10.14..PAG 524 DEL LIBRO DE ESTADISTICA
-# Prueba de medias para Shannon
-
-
-
 #################################################################################
+## TAXONES ENFOQUE
+## FUSARIUM
 
 ## Subconjunto de "Eukaryota"
 merge_Eukaryota<-subset_taxa(fresa_kraken_fil,Kingdom=="Eukaryota")
-## Subconjunto de "Bacteria"
-merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
 
 glomToGraph<-function(phy,tax){
   ## creamos el subconjunto dependiendo del linaje taxonomico deseado
@@ -119,5 +118,3 @@ q2 <- p2 + geom_vline(data=mu_Simp, aes(xintercept=grp.mean, color="red"),linety
 
 
 ggplot(total, aes(x=Treatment, y=Shannon, color=Treatment)) + geom_point(size=2)
-
-
