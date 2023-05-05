@@ -44,6 +44,24 @@ total <-cbind(Shannon_OTU_df,SAM)
 
 # media por grupos
 mu <- ddply(total, "Treatment", summarise, grp.mean=mean(value))
+# numero de muestras
+n <- total%>%count('Treatment')
+# varianzas 
+sigma <- ddply(total, "Treatment", summarise, s.var=var(value))
+
+# S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}
+Sp <-  sqrt(((n[1,2]-1)*(sigma[1,2]*sigma[1,2]) + (n[2,2]-1)*(sigma[2,2]*sigma[2,2]))/(n[1,2]+n[2,2]-2)) 
+
+# Estadistico de prueba (t-Student)
+# T = \frac{\bar{Y_{1}} - \bar{Y_{2}}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}
+T <- (mu[1,2] - mu[2,2])/ (Sp * sqrt(1/n[1,2] + 1/n[2,2]))
+
+# grados de liberad
+gl <- n[1,2]+n[2,2]-2
+
+# nivel de significancia (alfa=0.05)
+# https://homepage.divms.uiowa.edu/~mbognar/applets/t.html
+# P-value -> probabilidad para rechazar la hipotesis
 
 p<-ggplot(total, aes(x=value))+
   geom_histogram(color="pink",fill="black")+
@@ -94,20 +112,42 @@ head(df)
 Chao1_OTU <- estimateR(glom_df2$Abundance)  
 
 Shannon_OTU <- diversity(df, "shannon")
-Shannon_OTU_df <- data.frame(Shannon=Shannon_OTU)
+Shannon_OTU_df <- data.frame(sample=names(Shannon_OTU),value=Shannon_OTU,measure=rep("Shannon", length(Shannon_OTU)))
 
 Simp_OTU <- diversity(df, "simpson")
 Simp_OTU_df <- data.frame(Simpson=Simp_OTU)
 
 #unir con 
+total_Shannon <-cbind(glom@sam_data,Shannon_OTU_df)
 total <-cbind(glom@sam_data,Shannon_OTU_df,Simp_OTU_df )
 
-mu_Shannon <- ddply(total, "Treatment", summarise, grp.mean=mean(Shannon))
+# media por grupos para indice Shannon
+mu_Shannon <- ddply(total_Shannon, "Treatment", summarise, grp.mean=mean(value))
 
-p <- ggplot(total, aes(x=Shannon))+
+# numero de muestras
+n <- total_Shannon%>%count('Treatment')
+# varianzas 
+sigma <- ddply(total_Shannon, "Treatment", summarise, s.var=var(value))
+
+# S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}
+Sp <-  sqrt(((n[1,2]-1)*(sigma[1,2]*sigma[1,2]) + (n[2,2]-1)*(sigma[2,2]*sigma[2,2]))/(n[1,2]+n[2,2]-2)) 
+
+# Estadistico de prueba (t-Student)
+# T = \frac{\bar{Y_{1}} - \bar{Y_{2}}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}
+T <- (mu_Shannon[1,2] - mu_Shannon[2,2])/ (Sp * sqrt(1/n[1,2] + 1/n[2,2]))
+
+# grados de liberad
+gl <- n[1,2]+n[2,2]-2
+
+# nivel de significancia (alfa=0.05)
+# P-value -> probabilidad para rechazar la hipotesis
+
+p <- ggplot(total_Shannon, aes(x=value))+
   geom_histogram(color="pink",fill="black")+
   facet_grid(Treatment ~ .)
 q <- p + geom_vline(data=mu_Shannon, aes(xintercept=grp.mean, color="red"),linetype="dashed")
+
+
 
 mu_Simp <- ddply(total, "Treatment", summarise, grp.mean=mean(Simpson))
 

@@ -35,17 +35,30 @@ SAM <- fresa_kraken_fil@sam_data
 ## Calculamos la diversidad Chao1
 Chao1_OTU <- estimateR(t(OTU))  
 
-Chao1_OTU_df <- data.frame(Chao1=Chao1_OTU,f.prob.x = probabilidades)
+Chao1_OTU_df <- data.frame(sample=colnames(Chao1_OTU),value=Chao1_OTU[2, ])#, measure=rep('Chao1',length(Chao1_OTU)))
 
-Chao1_OTU_df[2, ]
+total <-cbind(Chao1_OTU_df,SAM)
 
-var(Chao1_OTU_df[2, ], na.rm = FALSE)
+# media por grupos
+mu <- ddply(total, "Treatment", summarise, grp.mean=mean(value))
+# numero de muestras
+n <- total%>%count('Treatment')
+# varianzas 
+sigma <- ddply(total, "Treatment", summarise, s.var=var(value))
 
+# Estadistico de prueba (F de Fisher)
+F <- (sigma[1,2])/(sigma[2,2])
 
+# grados de liberad
+gl <- (n[1,2]-1)/(n[2,2]-1)
 
+p<-ggplot(total, aes(x=value))+
+  geom_histogram(color="pink",fill="black")+
+  facet_grid(Treatment ~ .)
+p+geom_vline(data=sigma, aes(xintercept=s.var, color="red"),
+             linetype="dashed")
 
-
-
+ggplot(total, aes(x=Treatment, y=value, color=Treatment)) + geom_point(size=2)
 
 
 
@@ -73,5 +86,43 @@ glom <- Data[[1]] # phyloseq
 glom_df <- Data[[2]] # dataframe
 percentages <- Data[[3]] # phyloseq
 percentages_df <- Data[[4]] # dataframe
+
+## solo tomamos las columnas Sample, OTU y Abundance
+glom_df2 <- glom_df[c(1,2,3)]
+head(glom_df2)
+
+# queremos pasar de dataframe a table, para calcular el alfa diversidad
+df <- reshape(glom_df2, idvar = "Sample",v.names= c("Abundance"), timevar = "OTU", direction = "wide")
+rownames(df) <- df$Sample
+df <- select(df, -Sample)
+head(df)
+
+
+##AQUI QUEDE.......20230404_20:42---------------------------------------------------------------------
+## Calculamos la diversidad Chao1
+Chao1_OTU <- estimateR(glom_df2$Abundance)  
+
+Chao1_OTU_df <- data.frame(sample=colnames(Chao1_OTU),value=Chao1_OTU[2, ])#, measure=rep('Chao1',length(Chao1_OTU)))
+
+total <-cbind(Chao1_OTU_df,SAM)
+
+# media por grupos
+mu <- ddply(total, "Treatment", summarise, grp.mean=mean(value))
+# numero de muestras
+n <- total%>%count('Treatment')
+# varianzas 
+sigma <- ddply(total, "Treatment", summarise, s.var=var(value))
+
+# Estadistico de prueba (F de Fisher)
+F <- (sigma[1,2])/(sigma[2,2])
+
+# grados de liberad
+gl <- (n[1,2]-1)/(n[2,2]-1)
+
+p<-ggplot(total, aes(x=value))+
+  geom_histogram(color="pink",fill="black")+
+  facet_grid(Treatment ~ .)
+p+geom_vline(data=sigma, aes(xintercept=s.var, color="red"),
+             linetype="dashed")
 
 

@@ -46,14 +46,15 @@ index = estimate_richness(fresa_kraken_fil)
 index
 plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson"))
 plot_richness(physeq = fresa_kraken_fil, measures = c("Observed","Chao1","Shannon","simpson"),x = "Category", color = "Category") 
-
+ggsave("AllData_Alfa_diversidad.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 ## diversidad beta
 percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
 head(percentages_fil@otu_table@.Data)
 meta_ord_fil <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "bray") 
-plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Category") +
+plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "category") +
   geom_text(mapping = aes(label = colnames(fresa_kraken_fil@otu_table@.Data)), size = 3, vjust = 1.5)
+ggsave("AllData_Beta_diversidad.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 #####################################################################################################################
 
@@ -99,7 +100,7 @@ ggplot(data=percentages_df, aes_string(x='new_sample', y='Abundance', fill='Phyl
   scale_colour_manual(values=c('white','black','cyan','pink','yellow')) +
   geom_bar(aes(), stat="identity", position="stack") +
   #scale_x_discrete(limits = rev(levels(percentages_df$Category))) +
-  labs(title = "Abundance", x='Sample', y='Abundance', color = 'Category') +
+  labs(title = "Abundance", x='Sample', y='Abundance', color = 'category') +
   theme(legend.key.size = unit(0.2, "cm"),
         legend.key.width = unit(0.25,"cm"),
         legend.position = "bottom",
@@ -108,6 +109,7 @@ ggplot(data=percentages_df, aes_string(x='new_sample', y='Abundance', fill='Phyl
         legend.text=element_text(size=6),
         text = element_text(size=12),
         axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+ggsave("AllData_StackBar.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 
 

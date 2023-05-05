@@ -17,7 +17,7 @@ colnames(fresa_kraken@sam_data)<-c('Treatment','Samples')
 samples_to_remove <- c("MP2079","MP2080","MP2088","MP2109","MP2137")
 fresa_kraken_fil <- prune_samples(!(sample_names(fresa_kraken) %in% samples_to_remove), fresa_kraken)
 percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 / sum(x) )
-
+percentages_df <- psmelt(percentages_fil)
 ## De aqui en adelante solo trabajaremos con los datos filtrados, 
 
 ## Grafico de barras de abundancia 
@@ -25,6 +25,22 @@ percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x*100 /
 ## Los valores de abundancia para cada OTUen cada muestra se apilan en el orden de mayor a menor, separados por una fina línea horizontal.
 plot_bar(fresa_kraken_fil,fill="Treatment")
 plot_bar(percentages_fil,fill="Treatment")
+
+ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='Phylum' ,color='Treatment'))  +
+  scale_colour_manual(values=c('white','black')) +
+  geom_bar(aes(), stat="identity", position="stack") +
+  #scale_x_discrete(limits = rev(levels(percentages_df$Category))) +
+  labs(title = "Abundance", x='Sample', y='Abundance', color = 'Treatment') +
+  theme(legend.key.size = unit(0.2, "cm"),
+        legend.key.width = unit(0.25,"cm"),
+        legend.position = "bottom",
+        legend.direction = "horizontal",
+        legend.title=element_text(size=8, face = "bold"),
+        legend.text=element_text(size=6),
+        text = element_text(size=12),
+        axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+ggsave("FresaKraken_fil_StackBar.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+
 
 ## Queremos explorar nuestras muestras a diferentes niveles taxonómicos específicos  
 ## A nivel de Kingdom

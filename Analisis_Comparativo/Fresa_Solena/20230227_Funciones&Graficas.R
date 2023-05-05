@@ -2,7 +2,6 @@
 
 library("phyloseq")
 library("ggplot2")
-#library("vegan")
 library("RColorBrewer")
 library("stringi")
 

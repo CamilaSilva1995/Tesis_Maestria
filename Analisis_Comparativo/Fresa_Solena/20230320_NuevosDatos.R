@@ -30,11 +30,17 @@ rownames(metadata_fresa) <- sample_names(fresa_kraken)
 ## unir los metadatos al objeto phyloseq
 fresa_kraken@sam_data <- sample_data(metadata_fresa) 
 
+## Creamos una columna extra en sam_data por necesidad de funcionamiento de mas adelante
+fresa_kraken@sam_data$Treatment<-c(rep('NA', nrow(metadata_fresa)))
+colnames(fresa_kraken@sam_data)<-c('category','Treatment')
+#View(fresa_kraken)
+
 ## diversidad alfa
 index = estimate_richness(fresa_kraken)
 index
 plot_richness(physeq = fresa_kraken, measures = c("Observed","Chao1","Shannon","simpson"))
 plot_richness(physeq = fresa_kraken, measures = c("Observed","Chao1","Shannon","simpson"),x = "category", color = "category") 
+ggsave("crop_uncultivatedLand_forestDegraded_Alfa_Diversidad.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 
 ## diversidad beta
@@ -43,8 +49,7 @@ head(percentages@otu_table@.Data)
 meta_ord <- ordinate(physeq = percentages, method = "NMDS", distance = "bray") 
 plot_ordination(physeq = percentages, ordination = meta_ord, color = "category") +
   geom_text(mapping = aes(label = colnames(fresa_kraken@otu_table@.Data)), size = 3, vjust = 1.5)
-
-##### ERROR DATOS DE COVARIANZA
+ggsave("crop_uncultivatedLand_forestDegraded_Beta_Diversidad.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 #####################################################################################################################
 
@@ -62,7 +67,7 @@ ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='Phylum' 
   scale_colour_manual(values=c('cyan','pink','yellow')) +
   geom_bar(aes(), stat="identity", position="stack") +
   #scale_x_discrete(limits = rev(levels(percentages_df$Category))) +
-  labs(title = "Abundance", x='Sample', y='Abundance', color = 'Category') +
+  labs(title = "Abundance", x='Sample', y='Abundance', color = 'category') +
   theme(legend.key.size = unit(0.2, "cm"),
         legend.key.width = unit(0.25,"cm"),
         legend.position = "bottom",
@@ -71,6 +76,7 @@ ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='Phylum' 
         legend.text=element_text(size=6),
         text = element_text(size=12),
         axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+ggsave("crop_uncultivatedLand_forestDegraded_StackBar.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 
 

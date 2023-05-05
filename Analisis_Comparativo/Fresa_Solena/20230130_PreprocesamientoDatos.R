@@ -89,7 +89,7 @@ colnames(fresa_kraken@otu_table@.Data) <- substr(colnames(fresa_kraken@otu_table
 ## ELIMINAR LOS DATOS QUE SOBRAN DE LOS METADATOS
 ### LO HICEA MANO... REVISAR COMO HACERLO EN BASH
 ## eliminamos las dos muestras (MD2145 MD2146) que no estaban en nuestra otu_table y cargamos los metadatos
-metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
+metadata_fresa <- read.csv2("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1/metadata.csv",header =  FALSE, row.names = 1, sep = ",")
 #metadata_fresa <- sample_data(metadata_fresa)
 ## luego hacemos que los metadatos pertenezcan al objeto phyloseq en la seccion de **sam_data**
 fresa_kraken@sam_data <- sample_data(metadata_fresa) 
