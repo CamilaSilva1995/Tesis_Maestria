@@ -61,17 +61,43 @@ p+geom_vline(data=sigma, aes(xintercept=s.var, color="red"),
 ggplot(total, aes(x=Treatment, y=value, color=Treatment)) + geom_point(size=2)
 
 
-
+alfa <- 0.05
 
 # prueba de Fisher para igualdad de varianzas 
 s1<-sigma[1,2]
 s2<-sigma[2,2]
+n1<-n[1,2]
+n2<-n[2,2]
+# grados de liberad
+v1<-n1-1
+v2<-n2-1
+gl <- v1+v2
 
-F=s1/s2
+#estadístico F calculado
+Fs<-s1/s2
+#F teórico para alfa = 0.05 (dos colas)
+# c(0.025,0.975) secuencia de probabilidades 
+Ftabla <- qf(c(alfa/2,alfa,2*alfa), v1, v2, lower.tail = TRUE)
+#qf() function gives the quantile function
+#function in R Language is used to compute the value of quantile function over F distribution for a sequence of numeric values. It also creates a density plot of quantile function over F Distribution.
+Pl <- pf(Fs, v1, v2,lower.tail = TRUE)#[0,Fs]
+Pr <- pf(Fs, v1, v2,lower.tail = FALSE)#[Fs,+inf]
+#pf() function gives the distribution function
+#We use the pf() to calculate the area under the curve for the interval [0,Fs] and [Fs,+inf]
+Pl+Pr==1
 
-Ftabla <- qf(c(0.025,0.975), v1, v2)
+x <- rf(100000, v1, v2)
+hist(x, 
+     breaks = 'Scott', 
+     freq = FALSE, 
+     xlim = c(0,3), 
+     ylim = c(0,1),
+     xlab = '')
+curve(df(x, v1, v2), from = 0, to = 4, n = 5000, col= 'pink', lwd=2, add = T)
 
-Pr <- pf(F, v1, v2)
+
+
+
 
 
 #################################################################################
