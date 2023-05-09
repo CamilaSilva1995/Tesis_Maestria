@@ -60,6 +60,20 @@ p+geom_vline(data=sigma, aes(xintercept=s.var, color="red"),
 
 ggplot(total, aes(x=Treatment, y=value, color=Treatment)) + geom_point(size=2)
 
+
+
+
+# prueba de Fisher para igualdad de varianzas 
+s1<-sigma[1,2]
+s2<-sigma[2,2]
+
+F=s1/s2
+
+Ftabla <- qf(c(0.025,0.975), v1, v2)
+
+Pr <- pf(F, v1, v2)
+
+
 #################################################################################
 ## Subconjunto de "Bacteria"
 merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
