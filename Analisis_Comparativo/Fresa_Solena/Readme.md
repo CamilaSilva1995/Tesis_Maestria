@@ -1,6 +1,4 @@
-Obtuvimos datos metagenomicos de Solena, estos son datos de
-microrganismos en cultivos de fresa, para los cuales, inicialmente tenemos dos poblaciones, estas muestras estan etiquetadas como
-como sanos y enfermos
+Obtuvimos datos metagenomicos de Solena, estos son datos de microrganismos en cultivos de fresa, para los cuales, inicialmente tenemos dos poblaciones, estas muestras estan etiquetadas como sanos y enfermos
 
 ## Scripts
 <table class="default">
