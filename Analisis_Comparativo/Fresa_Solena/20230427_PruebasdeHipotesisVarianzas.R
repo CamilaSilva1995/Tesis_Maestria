@@ -60,11 +60,6 @@ p+geom_vline(data=sigma, aes(xintercept=s.var, color="red"),
 
 ggplot(total, aes(x=Treatment, y=value, color=Treatment)) + geom_point(size=2)
 
-
-
-
-
-
 #################################################################################
 ## Subconjunto de "Bacteria"
 merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
@@ -81,7 +76,7 @@ glomToGraph<-function(phy,tax){
 
 ## ACTINOBACTERIA
 # PRUEBAS A NIVEL DE GENERO
-Data <- glomToGraph(merge_Eukaryota,'Genus')
+Data <- glomToGraph(merge_Bacteria,'Genus')
 glom <- Data[[1]] # phyloseq
 glom_df <- Data[[2]] # dataframe
 percentages <- Data[[3]] # phyloseq

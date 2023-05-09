@@ -146,9 +146,7 @@ ggplot(data = dprof, mapping = aes(x = Samples, y = Reads))+
 ```
 
 
-
-
-VIendo los resultados de la rarefaccion
+Veremos los resultados de los alfa y beta diversidad para los datos luego de la rarefaccion
 
 
 

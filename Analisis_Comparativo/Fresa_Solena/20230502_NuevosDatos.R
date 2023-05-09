@@ -39,8 +39,6 @@ ggsave("crop_vs_native_rawCounts_S_Alfa_Diversidad.png", plot = last_plot(), pat
 
 ## Diversidad beta
 percentages <- transform_sample_counts(fresa_kraken, function(x) x*100 / sum(x) )
-## se convierte (percentages) a dataframe
-percentages_df <- psmelt(percentages)
 
 meta_ord <- ordinate(physeq = percentages, method = "NMDS", distance = "bray") 
 plot_ordination(physeq = percentages, ordination = meta_ord, color = "category") +
@@ -49,6 +47,8 @@ ggsave("crop_vs_native_rawCounts_S_Beta_Diversidad.png", plot = last_plot(), pat
 
 ## Barras de abundancia (StackBar)
 
+## se convierte (percentages) a dataframe
+percentages_df <- psmelt(percentages)
 ## Ahora vamos a ordenar el data frame, para que nos quede en el orden que queremos graficar
 percentages_df$Sample<-as.factor(percentages_df$Sample)
 percentages_df$category<-as.factor(percentages_df$category)
@@ -56,40 +56,39 @@ percentages_df$category<-as.factor(percentages_df$category)
 percentages_df<-percentages_df[order(percentages_df$category,percentages_df$Sample),]
 
 ## Funcion para crear vector de nueva variable con los nombres de las muestras ordenados
-crear_vector<-function(df,vec){
-  t<-(as.integer(log10(length(vec))))+1 # numero de digitos del vector, se usa para calcular el numero de ceros 
-  i<-1 # contador de muestra
-  new_name<-c() # vector nombres nuevos
-  new<-c() # 
-  for (sample_i in unique(vec)){
-    n <- count(df[vec==sample_i,]) #número de OTUs por muestra
-    n <- as.integer(n)
-    new <-c(rep(i, n)) # repetir i, n veces
-    m<-t-((as.integer(log10(i)))+1) # i es el numero de muestra, queremos "00i"
-    # acorde a la longitud de t es el numero de ceros para los nuevos nombres
-    # ejemplo t=3 queremos dos ceros 001
-    ceros<-paste((rep(0,m)),collapse = '')
-    new<-paste(paste('A',ceros,sep=""),new,sep = "") # nuevos nombres (por separado) "A0001"
-    # cat(i,as.integer(log10(i))+1,m,ceros,new,"\n")
-    new_name <- c(new_name,new) # vector acomula nuevos nombres 
-    i<-i+1
-  }
-  new_vec<-paste(new_name, vec, sep="_")
-  return(new_vec)
-}
+# crear_vector<-function(df,vec){
+#   t<-(as.integer(log10(length(vec))))+1 # numero de digitos del vector, se usa para calcular el numero de ceros 
+#   i<-1 # contador de muestra
+#   new_name<-c() # vector nombres nuevos
+#   new<-c() # 
+#   for (sample_i in unique(vec)){
+#     n <- count(df[vec==sample_i,]) #número de OTUs por muestra
+#     n <- as.integer(n)
+#     new <-c(rep(i, n)) # repetir i, n veces
+#     m<-t-((as.integer(log10(i)))+1) # i es el numero de muestra, queremos "00i"
+#     # acorde a la longitud de t es el numero de ceros para los nuevos nombres
+#     # ejemplo t=3 queremos dos ceros 001
+#     ceros<-paste((rep(0,m)),collapse = '')
+#     new<-paste(paste('A',ceros,sep=""),new,sep = "") # nuevos nombres (por separado) "A0001"
+#     # cat(i,as.integer(log10(i))+1,m,ceros,new,"\n")
+#     new_name <- c(new_name,new) # vector acomula nuevos nombres 
+#     i<-i+1
+#   }
+#   new_vec<-paste(new_name, vec, sep="_")
+#   return(new_vec)
+# }
 
+
+#######################################################
 df=percentages_df
 vec=percentages_df$Sample
 sample_i= '5QBDM2ESPPOOBXX0490'
-count(df[vec==sample_i,])
 
-## Funcion para crear vector de nueva variable con los nombres de las muestras ordenados
-
-  t<-(as.integer(log10(length(vec))))+1 # numero de digitos del vector, se usa para calcular el numero de ceros 
+  t<-(as.integer(log10(length(vec))))+1 # numero de digitos del vector, se usa para calcular el numero de ceros
   i<-1 # contador de muestra
   new_name<-c() # vector nombres nuevos
-  new<-c() # 
-  for (sample_i in unique(vec)){
+  new<-c() #
+  #for (sample_i in unique(vec)){
     n <- count(df[vec==sample_i,]) #número de OTUs por muestra
     n <- as.integer(n)
     new <-c(rep(i, n)) # repetir i, n veces
@@ -99,18 +98,18 @@ count(df[vec==sample_i,])
     ceros<-paste((rep(0,m)),collapse = '')
     new<-paste(paste('A',ceros,sep=""),new,sep = "") # nuevos nombres (por separado) "A0001"
     # cat(i,as.integer(log10(i))+1,m,ceros,new,"\n")
-    new_name <- c(new_name,new) # vector acomula nuevos nombres 
+    new_name <- c(new_name,new) # vector acomula nuevos nombres
     i<-i+1
-  }
-  new_vec<-paste(new_name, vec, sep="_")
-  return(new_vec)
+  #}
+#######################################################
+
 
 
 ## Ahora percentages_df$new_sample está ordenada alfabéticamente pero sigue el orden de las categorías
 percentages_df$new_sample<-crear_vector(percentages_df,percentages_df$Sample)
 
 ## grafica barras de abundancia
-ggplot(data=percentages_df, aes_string(x='new_sample', y='Abundance', fill='Phylum' ,color='category'))  +
+ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='Phylum' ,color='category'))  +
   scale_colour_manual(values=c('cyan','pink')) +
   geom_bar(aes(), stat="identity", position="stack") +
   #scale_x_discrete(limits = rev(levels(percentages_df$Category))) +

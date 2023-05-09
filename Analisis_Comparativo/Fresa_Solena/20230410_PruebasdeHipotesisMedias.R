@@ -7,6 +7,7 @@ library("RColorBrewer")
 library("stringi")
 library("dplyr")
 library("plyr")
+library("gginference")
 
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
 outpath = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img"
@@ -44,30 +45,107 @@ total <-cbind(Shannon_OTU_df,SAM)
 
 # media por grupos
 mu <- ddply(total, "Treatment", summarise, grp.mean=mean(value))
-# numero de muestras
-n <- total%>%count('Treatment')
-# varianzas 
-sigma <- ddply(total, "Treatment", summarise, s.var=var(value))
-
-# S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}
-Sp <-  sqrt(((n[1,2]-1)*(sigma[1,2]*sigma[1,2]) + (n[2,2]-1)*(sigma[2,2]*sigma[2,2]))/(n[1,2]+n[2,2]-2)) 
-
-# Estadistico de prueba (t-Student)
-# T = \frac{\bar{Y_{1}} - \bar{Y_{2}}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}
-T <- (mu[1,2] - mu[2,2])/ (Sp * sqrt(1/n[1,2] + 1/n[2,2]))
-
-# grados de liberad
-gl <- n[1,2]+n[2,2]-2
-
-# nivel de significancia (alfa=0.05)
-# https://homepage.divms.uiowa.edu/~mbognar/applets/t.html
-# P-value -> probabilidad para rechazar la hipotesis
 
 p<-ggplot(total, aes(x=value))+
   geom_histogram(color="pink",fill="black")+
   facet_grid(Treatment ~ .)
 p+geom_vline(data=mu, aes(xintercept=grp.mean, color="red"),
              linetype="dashed")
+
+# se fija el nivel de significancia
+alfa <- 0.05
+# numero de muestras
+n <- total%>%count('Treatment')
+# varianzas 
+sigma <- ddply(total, "Treatment", summarise, s.var=var(value))
+
+# S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}
+#Sp <-  sqrt(((n[1,2]-1)*(sigma[1,2]*sigma[1,2]) + (n[2,2]-1)*(sigma[2,2]*sigma[2,2]))/(n[1,2]+n[2,2]-2)) 
+n1<-n[1,2]
+n2<-n[2,2]
+# grados de liberad
+v1<-n1-1
+v2<-n2-1
+gl <- v1+v2
+# varianza muestral (sigma)
+ss1<-sigma[1,2]*v1
+ss2<-sigma[2,2]*v2
+
+Sp2 <- (ss1+ss2)/(v1+v2)
+
+# Estadistico de prueba (t-Student)
+# T = \frac{\bar{Y_{1}} - \bar{Y_{2}}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}
+T <- (mu[1,2] - mu[2,2])/ (sqrt(Sp2/n1 + Sp2/n2))
+
+# P-value -> probabilidad para rechazar la hipotesis (nivel de significancia observada)
+
+p_value<-2*pt(q=T,df=v1+v2,lower.tail = FALSE)
+
+
+### no se rechaza H0 por que p-value>alfa
+# esto essuponiendo varianzas iguales
+
+totalH <- total[total$Treatment == "healthy", ]
+totalW <- total[total$Treatment == "wilted", ]
+
+pruebat <- t.test(totalH$value, totalW$value, var.equal = TRUE, alternative = "two.sided")
+pruebat
+ggttest(pruebat)
+
+### suponiendo varianzas diferentes
+
+pruebat2 <- t.test(totalH$value, totalW$value, var.equal = FALSE, alternative = "two.sided")
+pruebat2
+ggttest(pruebat2)
+
+qqnorm(totalH$value,main = "Healthy");qqline(totalH$value)
+qqnorm(totalW$value,main = "Wilted");qqline(totalW$value)
+shapiro.test(totalH$value)
+shapiro.test(totalW$value)
+
+wilcox.test(totalH$value, totalW$value)
+
+datos <- sort(total$value)
+rango <- rank(datos)
+observaciones <- cbind(total$value,datos,rango)
+
+
+##############################
+s1<-sigma[1,2]
+s2<-sigma[2,2]
+
+F=s1/s2
+
+Ftabla <- qf(c(0.025,0.975), v1, v2)
+
+Pr <- pf(F, v1, v2)
+
+################################
+###
+nH <- totalH%>%count('Treatment')
+nH <- nH[1,2]
+nW <- totalW%>%count('Treatment')
+nW <- nW[1,2]
+P1 = 1 - alfa
+P2 = 1 - alfa/2
+
+t1 <- qt(P1, gl)
+t2 <- qt(P2, gl)
+
+
+#The function qt returns the value of the inverse cumulative density function (cdf) of the Student t distribution given a certain random variable x and degrees of freedom df. 
+# Una cola
+sprintf("t_1cola: %g", t1)
+# Dos colas
+sprintf("t_2colas: %g", t2)
+
+# p-errorI para la t-calculada
+Ptcalc1 <- pt(T, gl, lower.tail = FALSE)
+
+# The function pt returns the value of the cumulative density function (cdf) of the Student t distribution given a certain random variable x and degrees of freedom df.
+sprintf("P_errorI_1cola: %g", Ptcalc1)
+sprintf("P_errorI_2cola: %g", Ptcalc1*2)
+
 
 ggplot(total, aes(x=Treatment, y=value, color=Treatment)) + geom_point(size=2)
 
@@ -123,21 +201,36 @@ total <-cbind(glom@sam_data,Shannon_OTU_df,Simp_OTU_df )
 
 # media por grupos para indice Shannon
 mu_Shannon <- ddply(total_Shannon, "Treatment", summarise, grp.mean=mean(value))
-
 # numero de muestras
 n <- total_Shannon%>%count('Treatment')
 # varianzas 
 sigma <- ddply(total_Shannon, "Treatment", summarise, s.var=var(value))
 
 # S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}
-Sp <-  sqrt(((n[1,2]-1)*(sigma[1,2]*sigma[1,2]) + (n[2,2]-1)*(sigma[2,2]*sigma[2,2]))/(n[1,2]+n[2,2]-2)) 
+#Sp <-  sqrt(((n[1,2]-1)*(sigma[1,2]*sigma[1,2]) + (n[2,2]-1)*(sigma[2,2]*sigma[2,2]))/(n[1,2]+n[2,2]-2)) 
+n1<-n[1,2]
+n2<-n[2,2]
+# grados de liberad
+v1<-n1-1
+v2<-n2-1
+gl <- v1+v2
+# varianza muestral (sigma)
+ss1<-sigma[1,2]*v1
+ss2<-sigma[2,2]*v2
+
+Sp2 <- (ss1+ss2)/(v1+v2)
 
 # Estadistico de prueba (t-Student)
 # T = \frac{\bar{Y_{1}} - \bar{Y_{2}}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}
-T <- (mu_Shannon[1,2] - mu_Shannon[2,2])/ (Sp * sqrt(1/n[1,2] + 1/n[2,2]))
+T <- (mu_Shannon[1,2] - mu_Shannon[2,2])/ (sqrt(Sp2/n1 + Sp2/n2))
 
-# grados de liberad
-gl <- n[1,2]+n[2,2]-2
+
+# # S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}
+# Sp <-  sqrt(((n[1,2]-1)*(sigma[1,2]*sigma[1,2]) + (n[2,2]-1)*(sigma[2,2]*sigma[2,2]))/(n[1,2]+n[2,2]-2)) 
+# 
+# # Estadistico de prueba (t-Student)
+# # T = \frac{\bar{Y_{1}} - \bar{Y_{2}}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}
+# T <- (mu_Shannon[1,2] - mu_Shannon[2,2])/ (Sp * sqrt(1/n[1,2] + 1/n[2,2]))
 
 # nivel de significancia (alfa=0.05)
 # P-value -> probabilidad para rechazar la hipotesis
@@ -146,6 +239,37 @@ p <- ggplot(total_Shannon, aes(x=value))+
   geom_histogram(color="pink",fill="black")+
   facet_grid(Treatment ~ .)
 q <- p + geom_vline(data=mu_Shannon, aes(xintercept=grp.mean, color="red"),linetype="dashed")
+
+
+totalH <- total[total$Treatment == "healthy", ]
+totalW <- total[total$Treatment == "wilted", ]
+
+P1 = 1 - alfa
+P2 = 1 - alfa/2
+
+t1 <- qt(P1, gl)
+t2 <- qt(P2, gl)
+#The function qt returns the value of the inverse cumulative density function (cdf) of the Student t distribution given a certain random variable x and degrees of freedom df. 
+
+# Una cola
+sprintf("t_1cola: %g", t1)
+# Dos colas
+sprintf("t_2colas: %g", t2)
+
+# p-errorI para la t-calculada
+Ptcalc1 <- pt(T, gl, lower.tail = FALSE)
+# The function pt returns the value of the cumulative density function (cdf) of the Student t distribution given a certain random variable x and degrees of freedom df.
+sprintf("P_errorI_1cola: %g", Ptcalc1)
+sprintf("P_errorI_2cola: %g", Ptcalc1*2)
+
+pruebat <- t.test(totalH$value, totalW$value, var.equal = TRUE, alternative = "two.sided")
+pruebat
+
+
+library('gginference')
+ggttest(pruebat)
+
+
 
 
 
