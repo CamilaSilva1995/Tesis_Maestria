@@ -83,7 +83,7 @@ p_value<-2*pt(q=T,df=v1+v2,lower.tail = FALSE)
 
 
 ### no se rechaza H0 por que p-value>alfa
-# esto essuponiendo varianzas iguales
+# esto es suponiendo varianzas iguales
 
 totalH <- total[total$Treatment == "healthy", ]
 totalW <- total[total$Treatment == "wilted", ]
@@ -98,8 +98,12 @@ pruebat2 <- t.test(totalH$value, totalW$value, var.equal = FALSE, alternative = 
 pruebat2
 ggttest(pruebat2)
 
+####
+
 qqnorm(totalH$value,main = "Healthy");qqline(totalH$value)
 qqnorm(totalW$value,main = "Wilted");qqline(totalW$value)
+
+#con shapiro para ver la distribucion de nuestros datos
 shapiro.test(totalH$value)
 shapiro.test(totalW$value)
 
@@ -109,8 +113,8 @@ datos <- sort(total$value)
 rango <- rank(datos)
 observaciones <- cbind(total$value,datos,rango)
 
-
 ##############################
+# prueba de Fisher para igualdad de varianzas 
 s1<-sigma[1,2]
 s2<-sigma[2,2]
 
@@ -132,7 +136,6 @@ P2 = 1 - alfa/2
 t1 <- qt(P1, gl)
 t2 <- qt(P2, gl)
 
-
 #The function qt returns the value of the inverse cumulative density function (cdf) of the Student t distribution given a certain random variable x and degrees of freedom df. 
 # Una cola
 sprintf("t_1cola: %g", t1)
@@ -145,7 +148,6 @@ Ptcalc1 <- pt(T, gl, lower.tail = FALSE)
 # The function pt returns the value of the cumulative density function (cdf) of the Student t distribution given a certain random variable x and degrees of freedom df.
 sprintf("P_errorI_1cola: %g", Ptcalc1)
 sprintf("P_errorI_2cola: %g", Ptcalc1*2)
-
 
 ggplot(total, aes(x=Treatment, y=value, color=Treatment)) + geom_point(size=2)
 
@@ -241,8 +243,23 @@ p <- ggplot(total_Shannon, aes(x=value))+
 q <- p + geom_vline(data=mu_Shannon, aes(xintercept=grp.mean, color="red"),linetype="dashed")
 
 
-totalH <- total[total$Treatment == "healthy", ]
-totalW <- total[total$Treatment == "wilted", ]
+total_ShannonH <- total_Shannon[total_Shannon$Treatment == "healthy", ]
+total_ShannonW <- total_Shannon[total_Shannon$Treatment == "wilted", ]
+
+
+# esto essuponiendo varianzas iguales
+
+pruebat <- t.test(total_ShannonH$value, total_ShannonW$value, var.equal = TRUE, alternative = "two.sided")
+pruebat
+ggttest(pruebat)
+
+### suponiendo varianzas diferentes
+
+pruebat2 <- t.test(total_ShannonH$value, total_ShannonW$value, var.equal = FALSE, alternative = "two.sided")
+pruebat2
+ggttest(pruebat2)
+
+###
 
 P1 = 1 - alfa
 P2 = 1 - alfa/2
@@ -261,10 +278,6 @@ Ptcalc1 <- pt(T, gl, lower.tail = FALSE)
 # The function pt returns the value of the cumulative density function (cdf) of the Student t distribution given a certain random variable x and degrees of freedom df.
 sprintf("P_errorI_1cola: %g", Ptcalc1)
 sprintf("P_errorI_2cola: %g", Ptcalc1*2)
-
-pruebat <- t.test(totalH$value, totalW$value, var.equal = TRUE, alternative = "two.sided")
-pruebat
-
 
 library('gginference')
 ggttest(pruebat)
