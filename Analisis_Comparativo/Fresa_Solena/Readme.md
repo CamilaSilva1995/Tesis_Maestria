@@ -1,4 +1,4 @@
-Obtuvimos datos metagenomicos de Solena, estos son datos de microrganismos en cultivos de fresa, para los cuales, inicialmente tenemos dos poblaciones, estas muestras estan etiquetadas como sanos y enfermos
+Obtuvimos datos metagenomicos de <a href="https://solena.ag/home/us" >Solena</a>, estos son datos de microrganismos en cultivos de fresa, para los cuales, inicialmente tenemos dos poblaciones, estas muestras estan etiquetadas como sanos y enfermos
 
 ## Scripts
 <table class="default">
@@ -8,7 +8,7 @@ Obtuvimos datos metagenomicos de Solena, estos son datos de microrganismos en cu
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230130_PreprocesamientoDatos.R">Preprocesamiento de Datos</a></td>
-    <td>En este Scrip empezamos con un preprocesamiento de los datos, muestra como se descargaron los datos y como fue creado el archivo BIOM para ser poder leerlos desde R. Una vez se obtiene el archivo BIOM, este se varga en R como un objeto phyloseq. Y con este ya se procede a hacer una reconocimiento de los datos y primera observacion de medidas ecologicas como las diversidades alfa y beta. </td>
+    <td>En este Script empezamos con un preprocesamiento de los datos, muestra como se descargaron los datos y como fue creado el archivo BIOM para ser poder leerlos desde R. Una vez se obtiene el archivo BIOM, este se varga en R como un objeto phyloseq. Y con este ya se procede a hacer una reconocimiento de los datos y primera observacion de medidas ecologicas como las diversidades alfa y beta. </td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230213_DiversidadesAlfa%26Beta.R">Diversidades Alfa y Beta</a></td>
@@ -74,6 +74,6 @@ Obtuvimos datos metagenomicos de Solena, estos son datos de microrganismos en cu
 </table>
 
 
-## Reportes
+## Reportes (R-MarkDown)
 Luego los scripts mostrados en la tabla anterior se convierten en los siguientes reportes, en los cuales se ordenan y se explican un poco mas los procesos, y sus respectivos resultados.
 
