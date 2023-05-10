@@ -32,6 +32,36 @@ SAM <- fresa_kraken_fil@sam_data
 
 ## UNIR TABLA DE ABUNDANCIAS CON METADATA DE SANOS Y ENFERMOS
 
+#################################################
+## UNIR TABLA DE ABUNDANCIAS CON METADATA DE SANOS Y ENFERMOS
+
+## Calculamos la diversidad Shannon 
+
+## Se usa la funcion diversidad del paquete vegan para calcular el indice Shannon
+## Se realiza el dataframe del indice de Shannon
+OTU <- t(OTU)
+Shannon_OTU <- diversity(OTU, "shannon")
+Shannon_OTU_df <- data.frame(sample=names(Shannon_OTU),value=Shannon_OTU,measure=rep("Shannon", length(Shannon_OTU)))
+total <-cbind(Shannon_OTU_df,SAM)
+
+total$Rank<-rank(total$value)
+
+ggplot(data = total, aes(x = Rank, y = value)) +
+  geom_point(aes(colour = Treatment), size = 3) +
+  ylab("") + xlab("rango") +
+  theme_bw() +
+  theme(axis.text.y = element_blank()) + 
+  ggtitle("Muestras procedentes de la misma población")
+
+healthy<-total[total$Treatment=="healthy",]$value
+wilted<-total[total$Treatment=="wilted",]$value
+
+
+wilcox.test(x = healthy, y = wilted, alternative = "two.sided", mu = 0,
+            paired = FALSE, conf.int = 0.95)
+#################################################
+
+
 ## Calculamos la diversidad Chao1
 Chao1_OTU <- estimateR(t(OTU))  
 
