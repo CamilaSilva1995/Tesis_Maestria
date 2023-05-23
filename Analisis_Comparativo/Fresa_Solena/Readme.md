@@ -104,43 +104,43 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
     <td>En este documento podemos ver el preprocesamiento de los datos, una breve explicación del tipo de datos y tipo de formato en el cual se trabajaron, junto con una exploración inicial de los indices de diversidad alfa y beta con diferentes medidas a la totalidad de los datos </td>
   </tr>
   <tr>
-    <td><a href="https">Diversidades Alfa y Beta</a></td>
+    <td><a href="https">Exploración en conjuntos pequeños</a></td>
     <td>Aqs.</td>
   </tr>
   <tr>
-    <td><a href="https">Funciones</a></td>
+    <td><a href="https">Funciones automatizadas para el analisis en conjuntos pequeños</a></td>
     <td>Cad.  </td>
   </tr>
   <tr>
-    <td><a href="https">Funciones automatizadas</a></td>
+    <td><a href="https">Pruebas de Hipótesis</a></td>
     <td>Marya</td>
   </tr>
   <tr>
-    <td><a href="https">Potencia</a></td>
+    <td><a href="https">Aglomerados para Fusarium y Actinobacteria</a></td>
     <td>Ania</td>
   </tr>
   <tr>
-    <td><a href="https">Redes</a></td>
+    <td><a href="https">Diversidades aglomerado 10%</a></td>
     <td>Ención. </td>
   </tr>
   <tr>
-    <td><a href="https">Nuevos datos</a></td>
+    <td><a href="https">Redes de coocurrencia</a></td>
     <td>Ss.</td>
   </tr>
   <tr>
-    <td><a href="https">Nuevos datos</a></td>
+    <td><a href="https">Exploración para el segundo conjunto de datos (tres categorias) </a></td>
     <td>Tomamas.</td>
   </tr>
   <tr>
-    <td><a href="https">PruebasOrden</a></td>
+    <td><a href="https">Exploración juntando los dos conjuntos de datos (cinco categorias) </a></td>
     <td>Eras.</td>
   </tr>
   <tr>
-    <td><a href="https">Actinobacteria</a></td>
-    <td>Aqeres.</td>
+    <td><a href="https">Normalización </a></td>
+    <td>Explorando diferntes tipos de rarefacción.</td>
   </tr>
   <tr>
-    <td><a href="https">Fusarium</a></td>
+    <td><a href="https">Exploración de datos normalizados</a></td>
     <td>Aqente. </td>
   </tr>
   <tr>
@@ -152,11 +152,11 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
     <td>SR</td>
   </tr>
   <tr>
-    <td><a href="https">Rarefaccion</a></td>
+    <td><a href="https">Rarefaccion</a></<td>
     <td>Ses</td>
   </tr>
   <tr>
-    <td><a href="https">Rarefaccion</a></td>
+    <td><a href="https">Funciones automatizadas para el analisis en conjuntos pequeños, con datos normalizados</a></td>
     <td>Sn</td>
   </tr>
 </table>
