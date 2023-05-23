@@ -100,64 +100,64 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
     <th>Explicación</th>
   </tr>
   <tr>
-    <td><a href="https">Preprocesamiento de Datos</a></td>
-    <td>En  </td>
+    <td><a href="https">Exploración</a></td>
+    <td>En este documento podemos ver el preprocesamiento de los datos, una breve explicación del tipo de datos y tipo de formato en el cual se trabajaron, junto con una exploración inicial de los indices de diversidad alfa y beta con diferentes medidas a la totalidad de los datos </td>
   </tr>
   <tr>
     <td><a href="https">Diversidades Alfa y Beta</a></td>
-    <td>Aqui se puede ver la grafica de barras de abundancias de los datos y de los porcentajes de los datos en total, y tambein se empezo con distintas aglomeraciones de datos dependiendo del nivel taxonomico. Tambien se empiezan a ver las alfa y beta diversidad a los diferentes niveles taxonomicos.</td>
+    <td>Aqs.</td>
   </tr>
   <tr>
     <td><a href="https">Funciones</a></td>
-    <td>Como mejora al anterior script, aqui se crean tres funciones automatizando el proceso de aglomeracion por niveles taxonomicos y sus respectivas graficas de barras de abundancia, alfa diversidad y beta diversidad.  </td>
+    <td>Cad.  </td>
   </tr>
   <tr>
     <td><a href="https">Funciones automatizadas</a></td>
-    <td>Mejora de las funciones del script anterior, y creacion de todas las graficas, a niveles de Phylum, Genus, Specie y Familia, ceparado por Bacteria y Eukarya</td>
+    <td>Marya</td>
   </tr>
   <tr>
     <td><a href="https">Potencia</a></td>
-    <td>Analisis de potencia</td>
+    <td>Ania</td>
   </tr>
   <tr>
     <td><a href="https">Redes</a></td>
-    <td>En este Scrip se realizo un breve acercamiento a las redes simples y redes de coocurrencia, las redes siples usadas para la visualizacion, y las redes de coocurrencia tomando Fusarium como genero de interes en correlación. </td>
+    <td>Ención. </td>
   </tr>
   <tr>
     <td><a href="https">Nuevos datos</a></td>
-    <td>Se obtuvo nuevos datos, los cuales estan divididos en tres nuevas categorias respecto a lugar donde se tomaron las muestras.</td>
+    <td>Ss.</td>
   </tr>
   <tr>
     <td><a href="https">Nuevos datos</a></td>
-    <td>Tomando los nuevos datos del anterior script y los anteriores, se llego obtuvieron 5 categorias en total, tomando tanto el tipo de cultivo y si son muestras sanas o enfermas.</td>
+    <td>Tomamas.</td>
   </tr>
   <tr>
     <td><a href="https">PruebasOrden</a></td>
-    <td>En este Scrip se realizo un reordenamiendo de las 5 categorias para poder visualizar mejor las graficas de barras.</td>
+    <td>Eras.</td>
   </tr>
   <tr>
     <td><a href="https">Actinobacteria</a></td>
-    <td>Aqui vemos las graficas de barras de abundania y beta diversidad para Actinobacteria como filo de interes.</td>
+    <td>Aqeres.</td>
   </tr>
   <tr>
     <td><a href="https">Fusarium</a></td>
-    <td>Aqui vemos las graficas de barras de abundania y beta diversidad para Fusarium y Oomycota, como genero y filo de interes, respectivamente. </td>
+    <td>Aqente. </td>
   </tr>
   <tr>
     <td><a href="https">Pruebas e Hipotesis</a></td>
-    <td>Primer exploración con pruebas de hipotesis</td>
+    <td>Priotesis</td>
   </tr>
   <tr>
     <td><a href="https">Preprocesamiento y Normalización</a></td>
-    <td>Se realizó una normalización usando el paquete de R, "edgeR"</td>
+    <td>SR</td>
   </tr>
   <tr>
     <td><a href="https">Rarefaccion</a></td>
-    <td>Se realizó una rarefacción de saturación, la cual nos indica que tenemos la cantidad necesaria de muestras para continuer con el analisis de los datos.</td>
+    <td>Ses</td>
   </tr>
   <tr>
     <td><a href="https">Rarefaccion</a></td>
-    <td>Se realizo una normalización tipo rarefacción.</td>
+    <td>Sn</td>
   </tr>
 </table>
 
