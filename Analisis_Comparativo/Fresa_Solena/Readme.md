@@ -1,4 +1,10 @@
-Obtuvimos datos metagenomicos de <a href="https://solena.ag/home/us" >Solena</a>, estos son datos de microrganismos en cultivos de fresa, para los cuales, inicialmente tenemos dos poblaciones, estas muestras estan etiquetadas como sanos y enfermos
+# Análisis exploratorio de datos metagenomicos
+
+El objetivo general de este analisis, es encontrar características diferenciadoras (marcadores funcionales) entre microbiomas de plantas sanos vs enfermos, usando datos metagenómicos. Para esto obtuvimos datos metagenomicos de <a href="https://solena.ag/home/us" >Solena</a>, estos son datos de microrganismos en cultivos de fresa, para los cuales, inicialmente tenemos dos poblaciones, estas muestras estan etiquetadas como sanos y enfermos.
+
+Se realizo un preprocesamiento de datos, tanto en Bash como en R; luego de esto se comenzó con el analisis exploratorio de los datos, el cual esta principalmente dividido en tres partes: en primer lugar se realizo una exploración con diversidades alfa y beta, lo que llevo a un analisis estadistico con pruebas de hipótesis, en segundo lugar una visualización de correlación con redes y por ultimo una clasificacion con machine learning.
+
+A continuación, se muestra un resumen del análisis realizado, y a las concluciones obtenidas, explicando brevemente el contenido de cada script y markdown que contiene esta carpeta; empezando por los scripts:
 
 ## Scripts
 <table class="default">
@@ -67,13 +73,91 @@ Obtuvimos datos metagenomicos de <a href="https://solena.ag/home/us" >Solena</a>
     <td>Se realizo una normalización tipo rarefacción.</td>
   </tr>
    <tr>
-    <td><a href="">Rsss</a></td>
+    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230427_PruebasdeHipotesisVarianzas.R">Prueba de hipótesis sobre varianzas</a></td>
+     <td>Esss</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230428_ML.ipynb">Clasificación con machine learning</a></td>
     <td>Esss</td>
   </tr>
-  
+  <tr>
+    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230502_NuevosDatos.R">Exproración de nuevos datos</a></td>
+    <td>Esss</td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230510_PruebaWilcoxon.R">Prueba de wilcoxon</a></td>
+    <td>Esss</td>
+  </tr>
 </table>
 
 
 ## Reportes (R-MarkDown)
 Luego los scripts mostrados en la tabla anterior se convierten en los siguientes reportes, en los cuales se ordenan y se explican un poco mas los procesos, y sus respectivos resultados.
+
+<table class="default">
+  <tr>
+    <th scope="row">Nombre</th>
+    <th>Explicación</th>
+  </tr>
+  <tr>
+    <td><a href="https">Preprocesamiento de Datos</a></td>
+    <td>En  </td>
+  </tr>
+  <tr>
+    <td><a href="https">Diversidades Alfa y Beta</a></td>
+    <td>Aqui se puede ver la grafica de barras de abundancias de los datos y de los porcentajes de los datos en total, y tambein se empezo con distintas aglomeraciones de datos dependiendo del nivel taxonomico. Tambien se empiezan a ver las alfa y beta diversidad a los diferentes niveles taxonomicos.</td>
+  </tr>
+  <tr>
+    <td><a href="https">Funciones</a></td>
+    <td>Como mejora al anterior script, aqui se crean tres funciones automatizando el proceso de aglomeracion por niveles taxonomicos y sus respectivas graficas de barras de abundancia, alfa diversidad y beta diversidad.  </td>
+  </tr>
+  <tr>
+    <td><a href="https">Funciones automatizadas</a></td>
+    <td>Mejora de las funciones del script anterior, y creacion de todas las graficas, a niveles de Phylum, Genus, Specie y Familia, ceparado por Bacteria y Eukarya</td>
+  </tr>
+  <tr>
+    <td><a href="https">Potencia</a></td>
+    <td>Analisis de potencia</td>
+  </tr>
+  <tr>
+    <td><a href="https">Redes</a></td>
+    <td>En este Scrip se realizo un breve acercamiento a las redes simples y redes de coocurrencia, las redes siples usadas para la visualizacion, y las redes de coocurrencia tomando Fusarium como genero de interes en correlación. </td>
+  </tr>
+  <tr>
+    <td><a href="https">Nuevos datos</a></td>
+    <td>Se obtuvo nuevos datos, los cuales estan divididos en tres nuevas categorias respecto a lugar donde se tomaron las muestras.</td>
+  </tr>
+  <tr>
+    <td><a href="https">Nuevos datos</a></td>
+    <td>Tomando los nuevos datos del anterior script y los anteriores, se llego obtuvieron 5 categorias en total, tomando tanto el tipo de cultivo y si son muestras sanas o enfermas.</td>
+  </tr>
+  <tr>
+    <td><a href="https">PruebasOrden</a></td>
+    <td>En este Scrip se realizo un reordenamiendo de las 5 categorias para poder visualizar mejor las graficas de barras.</td>
+  </tr>
+  <tr>
+    <td><a href="https">Actinobacteria</a></td>
+    <td>Aqui vemos las graficas de barras de abundania y beta diversidad para Actinobacteria como filo de interes.</td>
+  </tr>
+  <tr>
+    <td><a href="https">Fusarium</a></td>
+    <td>Aqui vemos las graficas de barras de abundania y beta diversidad para Fusarium y Oomycota, como genero y filo de interes, respectivamente. </td>
+  </tr>
+  <tr>
+    <td><a href="https">Pruebas e Hipotesis</a></td>
+    <td>Primer exploración con pruebas de hipotesis</td>
+  </tr>
+  <tr>
+    <td><a href="https">Preprocesamiento y Normalización</a></td>
+    <td>Se realizó una normalización usando el paquete de R, "edgeR"</td>
+  </tr>
+  <tr>
+    <td><a href="https">Rarefaccion</a></td>
+    <td>Se realizó una rarefacción de saturación, la cual nos indica que tenemos la cantidad necesaria de muestras para continuer con el analisis de los datos.</td>
+  </tr>
+  <tr>
+    <td><a href="https">Rarefaccion</a></td>
+    <td>Se realizo una normalización tipo rarefacción.</td>
+  </tr>
+</table>
 
