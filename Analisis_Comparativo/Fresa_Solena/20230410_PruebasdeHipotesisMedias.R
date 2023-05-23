@@ -1,4 +1,5 @@
 ## PRUEBA DE HIPOTESIS SOBRE MEDIAS (GENERAL Y PARA LOS TAXONES ENFOQUE)
+#https://fhernanb.github.io/Manual-de-R/ph.html
 
 library("phyloseq")
 library("ggplot2")
@@ -125,7 +126,8 @@ Ftabla <- qf(c(0.025,0.975), v1, v2)
 Pr <- pf(F, v1, v2)
 
 ################################
-###
+###https://www.jmp.com/es_co/statistics-knowledge-portal/t-test/two-sample-t-test.html
+###https://rstudio-pubs-static.s3.amazonaws.com/423172_fbe936199b504e38882f26ececc66a2a.html#prueba-t-con-varianzas-diferentes
 nH <- totalH%>%count('Treatment')
 nH <- nH[1,2]
 nW <- totalW%>%count('Treatment')
