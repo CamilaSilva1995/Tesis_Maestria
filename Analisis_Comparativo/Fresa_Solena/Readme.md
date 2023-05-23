@@ -1,8 +1,8 @@
-# Análisis exploratorio de datos metagenomicos
+# Análisis exploratorio de datos metagenómicos
 
-El objetivo general de este analisis, es encontrar características diferenciadoras (marcadores funcionales) entre microbiomas de plantas sanos vs enfermos, usando datos metagenómicos. Para esto obtuvimos datos metagenomicos de <a href="https://solena.ag/home/us" >Solena</a>, estos son datos de microrganismos en cultivos de fresa, para los cuales, inicialmente tenemos dos poblaciones, estas muestras estan etiquetadas como sanos y enfermos.
+El objetivo general de este análisis, es encontrar características diferenciadoras (marcadores funcionales) entre microbiomas de plantas sanas vs enfermas, usando datos metagenómicos. Para esto obtuvimos datos metagenómicos de <a href="https://solena.ag/home/us" >Solena</a>, estos son datos de microrganismos en cultivos de fresa, para los cuales, inicialmente tenemos dos poblaciones, estas muestras están etiquetadas como sanqs y enfermas.
 
-Se realizo un preprocesamiento de datos, tanto en Bash como en R; luego de esto se comenzó con el analisis exploratorio de los datos, el cual esta principalmente dividido en tres partes: en primer lugar se realizo una exploración con diversidades alfa y beta, lo que llevo a un analisis estadistico con pruebas de hipótesis, en segundo lugar una visualización de correlación con redes y por ultimo una clasificacion con machine learning.
+Primero, se realizó un preprocesamiento de datos, tanto en Bash como en R; luego de esto se comenzó con el analisis exploratorio de los datos, el cual está principalmente dividido en tres partes: en primer lugar se realizó una exploración con diversidades alfa y beta, lo que llevo a un análisis estadístico con pruebas de hipótesis, en segundo lugar una visualización de correlación con redes y por ultimo una clasificación con machine learning.
 
 A continuación, se muestra un resumen del análisis realizado, y a las concluciones obtenidas, explicando brevemente el contenido de cada script y markdown que contiene esta carpeta; empezando por los scripts:
 
@@ -101,19 +101,19 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
   </tr>
   <tr>
     <td><a href="https">Exploración</a></td>
-    <td>En este documento podemos ver el preprocesamiento de los datos, una breve explicación del tipo de datos y tipo de formato en el cual se trabajaron, junto con una exploración inicial de los indices de diversidad alfa y beta con diferentes medidas a la totalidad de los datos </td>
+    <td>En este documento podemos ver el preprocesamiento de los datos, una breve explicación del tipo de datos y tipo de formato en el cual se trabajaron, junto con una exploración inicial de los indices de diversidad alfa y beta, con diferentes medidas, a la totalidad de los datos; los cuales no mostraron una buena separacion de los datos entre muestras sanas y enfermas. Tambien se tiene una pequeña vizualización de correlacion con redes simples.</td>
   </tr>
   <tr>
     <td><a href="https">Exploración en conjuntos pequeños</a></td>
-    <td>Aqs.</td>
+    <td>No se obtuvo una separacion visible de los datos en general, por lo tanto, en este reporte se realizaron subconjuntos por diferentes niveles taxonómicos, a los cuales tambien se visualizaron las diversidades alfa y beta.</td>
   </tr>
   <tr>
-    <td><a href="https">Funciones automatizadas para el analisis en conjuntos pequeños</a></td>
-    <td>Cad.  </td>
+    <td><a href="https">Funciones automatizadas</a></td>
+    <td>Se crearon funciones automatizadas para el análisis en conjuntos pequeños que se hizo en el reporte anterior.</td>
   </tr>
   <tr>
     <td><a href="https">Pruebas de Hipótesis</a></td>
-    <td>Marya</td>
+    <td>Se realizaron distintas pruebas estadísticas, tanto al conjunto total de datos, sobre diferentes indices de diversidad; como a subconjuntos a distintos niveles taxonomicos de interes. Se realizo: prueba de Wilcoxon, pueba de hipótesis sobre las medias del indice Shannon y prueba de hipótesis sobre las varianzas de las medidas Chao1.</td>
   </tr>
   <tr>
     <td><a href="https">Aglomerados para Fusarium y Actinobacteria</a></td>
@@ -125,11 +125,11 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
   </tr>
   <tr>
     <td><a href="https">Redes de coocurrencia</a></td>
-    <td>Ss.</td>
+    <td>Se utilizaron los software (MincNet y **AlnitaK**) para crear las matrices de coocurrencia, tomando un taxon como taxon principal (Fusarium) y tambien de los datos en total.</td>
   </tr>
   <tr>
     <td><a href="https">Exploración para el segundo conjunto de datos (tres categorias) </a></td>
-    <td>Tomamas.</td>
+    <td>Tomando como referencia la primeta vis.</td>
   </tr>
   <tr>
     <td><a href="https">Exploración juntando los dos conjuntos de datos (cinco categorias) </a></td>
