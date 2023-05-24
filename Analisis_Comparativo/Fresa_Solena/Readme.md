@@ -129,11 +129,11 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
   </tr>
   <tr>
     <td><a href="https">Exploración para el segundo conjunto de datos (tres categorias) </a></td>
-    <td>Tomando como referencia la primeta vis.</td>
+    <td>Tomando como referencia la primeta visualización, se repitio en su gran mayoria  para ver como se comportan los datos nuevos.</td>
   </tr>
   <tr>
     <td><a href="https">Exploración juntando los dos conjuntos de datos (cinco categorias) </a></td>
-    <td>Eras.</td>
+    <td>Se tomaron los datos nuevos unidos con los principales, obteniendo cinco categorias, y con esto se realizo un nuevo análisis  exploratorio.  .</td>
   </tr>
   <tr>
     <td><a href="https">Normalización </a></td>
@@ -141,7 +141,7 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
   </tr>
   <tr>
     <td><a href="https">Exploración de datos normalizados</a></td>
-    <td>Aqente. </td>
+    <td>Tomando los datos normalizados,realizamos de nuevo todo el análisis principal, para posibles comparaciones entre resultados.</td>
   </tr>
   <tr>
     <td><a href="https">Pruebas e Hipotesis</a></td>
@@ -153,11 +153,11 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
   </tr>
   <tr>
     <td><a href="https">Rarefaccion</a></<td>
-    <td>Ses</td>
+    <td>Explorando diferntes tipos de rarefacción.</td>
   </tr>
   <tr>
     <td><a href="https">Funciones automatizadas para el analisis en conjuntos pequeños, con datos normalizados</a></td>
-    <td>Sn</td>
+    <td>Tomando las funciones creadas anteriormente, se realizó de nuevo un análisis, pero esta vez con los datos normalizados.</td>
   </tr>
 </table>
 
