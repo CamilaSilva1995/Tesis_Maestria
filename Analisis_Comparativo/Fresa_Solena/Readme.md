@@ -117,15 +117,15 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
   </tr>
   <tr>
     <td><a href="https">Aglomerados para Fusarium y Actinobacteria</a></td>
-    <td>Ania</td>
+    <td>An...ia</td>
   </tr>
   <tr>
     <td><a href="https">Diversidades aglomerado 10%</a></td>
-    <td>Ención. </td>
+    <td>En...ción. </td>
   </tr>
   <tr>
     <td><a href="https">Redes de coocurrencia</a></td>
-    <td>Se utilizaron los software (MincNet y **AlnitaK**) para crear las matrices de coocurrencia, tomando un taxon como taxon principal (Fusarium) y tambien de los datos en total.</td>
+    <td>Se utilizaron los software (**AlnitaK** y MicNet) para crear las matrices de coocurrencia, tomando Fusarium como taxon principal,  y tambien de los datos en total.</td>
   </tr>
   <tr>
     <td><a href="https">Exploración para el segundo conjunto de datos (tres categorias) </a></td>
@@ -145,7 +145,7 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
   </tr>
   <tr>
     <td><a href="https">Pruebas e Hipotesis</a></td>
-    <td>Priotesis</td>
+    <td>Se realizaron diferentes tipos de pruebas de </td>
   </tr>
   <tr>
     <td><a href="https">Preprocesamiento y Normalización</a></td>
