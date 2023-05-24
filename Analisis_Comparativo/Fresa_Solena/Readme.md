@@ -4,7 +4,7 @@ El objetivo general de este análisis, es encontrar características diferenciad
 
 Primero, se realizó un preprocesamiento de datos, tanto en Bash como en R; luego de esto se comenzó con el analisis exploratorio de los datos, el cual está principalmente dividido en tres partes: en primer lugar se realizó una exploración con diversidades alfa y beta, lo que llevo a un análisis estadístico con pruebas de hipótesis, en segundo lugar una visualización de correlación con redes y por ultimo una clasificación con machine learning.
 
-A continuación, se muestra un resumen del análisis realizado, y a las concluciones obtenidas, explicando brevemente el contenido de cada script y markdown que contiene esta carpeta; empezando por los scripts:
+A continuación, se muestra un resumen del análisis realizado, y a las conclusiones obtenidas, explicando brevemente el contenido de cada script y markdown que contiene esta carpeta, en los reportes de markdown se encuentran algunos de los scripts usados para diferentes tipos de análisis y con los diferentes conjuntos de datos; empezando por los scripts:
 
 ## Scripts
 <table class="default">
