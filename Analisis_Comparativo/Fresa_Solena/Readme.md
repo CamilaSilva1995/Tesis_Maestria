@@ -50,31 +50,31 @@ A continuación, se muestra un resumen del análisis realizado y a las conclusio
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230403_Actinobacteria.R">Actinobacteria</a></td>
-    <td>Aqui vemos las gráficas de barras de abundania y beta diversidad para Actinobacteria como filo de interes.</td>
+    <td>Aquí vemos las gráficas de barras de abundania y beta diversidad para Actinobacteria como filo de interes.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230403_Oomycota%26Fusarium.R">Fusarium</a></td>
-    <td>Aqui vemos las graficas de barras de abundania y beta diversidad para Fusarium y Oomycota, como genero y filo de interes, respectivamente. </td>
+    <td>Aquí vemos las gráficas de barras de abundania y beta diversidad para Fusarium y Oomycota, como género y filo de interes, respectivamente. </td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230410_PruebasdeHipotesis.R">Pruebas e Hipotesis</a></td>
-    <td>Primer exploración con pruebas de hipotesis</td>
+    <td>Primer exploración con pruebas de hipótesis de medias, sobre los índices Shannon.</td>
   </tr>
   <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230411_Preprocesamiento%26Normalizaci%C3%B3n.R">Preprocesamiento y Normalización</a></td>
+    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230411_Preprocesamiento%26Normalizaci%C3%B3n.R">Preprocesamiento y normalización</a></td>
     <td>Se realizó una normalización usando el paquete de R, "edgeR"</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230419_Rarefaccion.R">Rarefaccion</a></td>
-    <td>Se realizó una rarefacción de saturación, la cual nos indica que tenemos la cantidad necesaria de muestras para continuer con el analisis de los datos.</td>
+    <td>Se realizó una rarefacción de saturación, la cual nos indica que tenemos la cantidad necesaria de muestras para continuar con el análisis de los datos.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230425_Rarefaccion(Normalizacion).R">Rarefaccion</a></td>
-    <td>Se realizo una normalización tipo rarefacción.</td>
+    <td>Se realizó una normalización tipo rarefacción.</td>
   </tr>
    <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230427_PruebasdeHipotesisVarianzas.R">Prueba de hipótesis sobre varianzas</a></td>
-     <td>Esss</td>
+     <td>Se realizó una prueba de hipótesis de varianzas, sobre los índices Chao1.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230428_ML.ipynb">Clasificación con machine learning</a></td>
