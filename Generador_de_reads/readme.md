@@ -1,7 +1,8 @@
-# Generador de reads
-Este código crea lecturas de metagenomas a partir de genomas  
-## Autora: Camila Silva  
-## Documentación: Jazmin Chacón   
+# PyMetaSeem - Generador de reads
+PyMetaSeem es un algoritmo creado desde cero que simula datos metagenómicos a partir de datos genómicos. Este simulador de datos metagenómicos fue creado a partir de reads recortadas de datos genómicos. Los genomas reales se utilizan para calificar la precisión de los clasificadores y ensambladores taxonómicos. Está pensado como un entorno conda, escalable, reproducible, fácil de usar y gratuito para el público ya que otros simuladores conocidos (como CAMISIM) tienen dificultades de instalación e implementación.
+
+
+
 
 #### Crear un archivo de genomas como CAMISIM, dado el documento 'ejemplo.fasta'
 1. lectura de archivo texto
