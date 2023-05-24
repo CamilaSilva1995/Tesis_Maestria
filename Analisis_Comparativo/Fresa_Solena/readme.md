@@ -82,7 +82,7 @@ A continuación, se muestra un resumen del análisis realizado y a las conclusio
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230502_NuevosDatos.R">Exproración de nuevos datos</a></td>
-    <td>Esss</td>
+    <td>Se repitio el análisis de datos para un tercer conjunto de datos, el cual contiene dos categorías (cultivo vs. nativos crudos).</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230510_PruebaWilcoxon.R">Prueba de wilcoxon</a></td>
@@ -92,7 +92,7 @@ A continuación, se muestra un resumen del análisis realizado y a las conclusio
 
 
 ## Reportes (R-MarkDown)
-Luego los scripts mostrados en la tabla anterior se convierten en los siguientes reportes, en los cuales se ordenan y se explican un poco mas los procesos, y sus respectivos resultados.
+Luego los scripts mostrados en la tabla anterior, se compilan en los siguientes reportes, en los cuales se ordenan y se explican un poco mas los procesos, y sus respectivos resultados.
 
 <table class="default">
   <tr>
@@ -101,11 +101,11 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
   </tr>
   <tr>
     <td><a href="https">Exploración</a></td>
-    <td>En este documento podemos ver el preprocesamiento de los datos, una breve explicación del tipo de datos y tipo de formato en el cual se trabajaron, junto con una exploración inicial de los indices de diversidad alfa y beta, con diferentes medidas, a la totalidad de los datos; los cuales no mostraron una buena separacion de los datos entre muestras sanas y enfermas. Tambien se tiene una pequeña vizualización de correlacion con redes simples.</td>
+    <td>En este documento podemos ver el preprocesamiento de los datos, una breve explicación del tipo de datos y tipo de formato en el cual se trabajaron, junto con una exploración inicial de los índices de diversidad alfa y beta, con diferentes medidas, a la totalidad de los datos; los cuales no mostraron una buena separación de los datos entre muestras sanas y enfermas. También se tiene una pequeña vizualización de correlación con redes simples.</td>
   </tr>
   <tr>
     <td><a href="https">Exploración en conjuntos pequeños</a></td>
-    <td>No se obtuvo una separacion visible de los datos en general, por lo tanto, en este reporte se realizaron subconjuntos por diferentes niveles taxonómicos, a los cuales tambien se visualizaron las diversidades alfa y beta.</td>
+    <td>No se obtuvo una separación visible de los datos en general, por lo tanto, en este reporte se realizaron subconjuntos por diferentes niveles taxonómicos, a los cuales tambien se visualizaron las diversidades alfa y beta.</td>
   </tr>
   <tr>
     <td><a href="https">Funciones automatizadas</a></td>
