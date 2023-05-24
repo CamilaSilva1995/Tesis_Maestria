@@ -4,7 +4,7 @@ El objetivo general de este análisis, es encontrar características diferenciad
 
 Primero, se realizó un preprocesamiento de datos, tanto en Bash como en R; luego de esto se comenzó con el analisis exploratorio de los datos, el cual está principalmente dividido en tres partes: en primer lugar se realizó una exploración con diversidades alfa y beta, lo que llevo a un análisis estadístico con pruebas de hipótesis, en segundo lugar una visualización de correlación con redes y por ultimo una clasificación con machine learning.
 
-A continuación, se muestra un resumen del análisis realizado, y a las conclusiones obtenidas, explicando brevemente el contenido de cada script y markdown que contiene esta carpeta, en los reportes de markdown se encuentran algunos de los scripts usados para diferentes tipos de análisis y con los diferentes conjuntos de datos; empezando por los scripts:
+A continuación, se muestra un resumen del análisis realizado y a las conclusiones obtenidas, explicando brevemente el contenido de cada script y markdown que contiene esta carpeta, en los reportes de markdown se encuentran algunos de los scripts usados para diferentes tipos de análisis y con los diferentes conjuntos de datos; empezando por los scripts:
 
 ## Scripts
 <table class="default">
@@ -14,43 +14,43 @@ A continuación, se muestra un resumen del análisis realizado, y a las conclusi
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230130_PreprocesamientoDatos.R">Preprocesamiento de Datos</a></td>
-    <td>En este Script empezamos con un preprocesamiento de los datos, muestra como se descargaron los datos y como fue creado el archivo BIOM para ser poder leerlos desde R. Una vez se obtiene el archivo BIOM, este se varga en R como un objeto phyloseq. Y con este ya se procede a hacer una reconocimiento de los datos y primera observacion de medidas ecologicas como las diversidades alfa y beta. </td>
+    <td>En este script empezamos con un preprocesamiento de los datos, muestra como se descargaron los datos y como fue creado el archivo BIOM para poder leerlos desde R. Una vez se obtiene el archivo BIOM, este se carga en R como un objeto phyloseq. Y con este ya se procede a hacer un reconocimiento de los datos y primera observación de medidas ecologicas como las diversidades alfa y beta. </td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230213_DiversidadesAlfa%26Beta.R">Diversidades Alfa y Beta</a></td>
-    <td>Aqui se puede ver la grafica de barras de abundancias de los datos y de los porcentajes de los datos en total, y tambein se empezo con distintas aglomeraciones de datos dependiendo del nivel taxonomico. Tambien se empiezan a ver las alfa y beta diversidad a los diferentes niveles taxonomicos.</td>
+    <td>Aquí se puede ver la grafica de barras de abundancias de los datos y de los porcentajes de los datos en total, y también se empezó con distintas aglomeraciones de datos dependiendo del nivel taxonómico. También se empiezan a ver las alfa y beta diversidad a los diferentes niveles taxonómicos.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230220_Funciones.R">Funciones</a></td>
-    <td>Como mejora al anterior script, aqui se crean tres funciones automatizando el proceso de aglomeracion por niveles taxonomicos y sus respectivas graficas de barras de abundancia, alfa diversidad y beta diversidad.  </td>
+    <td>Como mejora al anterior script, aquí se crean tres funciones automatizando el proceso de aglomeración por niveles taxonómicos y sus respectivas graficas de barras de abundancia, alfa diversidad y beta diversidad.  </td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones%26Graficas.R">Funciones automatizadas</a></td>
-    <td>Mejora de las funciones del script anterior, y creacion de todas las graficas, a niveles de Phylum, Genus, Specie y Familia, ceparado por Bacteria y Eukarya</td>
+    <td>Mejora de las funciones del script anterior, y crse crean todas las graficas, a niveles de filo (Phylum), género (Genus), especie (Specie) y familia (family), separando por bacteria y eucariota.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230306_Potencia%26PruebaHipotesis.R">Potencia</a></td>
-    <td>Analisis de potencia</td>
+    <td>Análisis de potencia</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230314_Redes.R">Redes</a></td>
-    <td>En este Scrip se realizo un breve acercamiento a las redes simples y redes de coocurrencia, las redes siples usadas para la visualizacion, y las redes de coocurrencia tomando Fusarium como genero de interes en correlación. </td>
+    <td>En este script se realizó un breve acercamiento a las redes simples y redes de coocurrencia; las redes simples usadas para la visualización, y las redes de coocurrencia tomando Fusarium como género de interés en correlación. </td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230320_NuevosDatos.R">Nuevos datos</a></td>
-    <td>Se obtuvo nuevos datos, los cuales estan divididos en tres nuevas categorias respecto a lugar donde se tomaron las muestras.</td>
+    <td>Se obtuvieron nuevos datos, los cuales estan divididos en tres nuevas categorí as respecto a lugar donde se tomaron las muestras.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230321_NuevosDatosAll.R">Nuevos datos</a></td>
-    <td>Tomando los nuevos datos del anterior script y los anteriores, se llego obtuvieron 5 categorias en total, tomando tanto el tipo de cultivo y si son muestras sanas o enfermas.</td>
+    <td>Tomando los nuevos datos del anterior script y los anteriores, se obtuvieron 5 categorías en total, tomando tanto el tipo de cultivo y si son muestras sanas o enfermas.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230327_PruebasOrden.R">PruebasOrden</a></td>
-    <td>En este Scrip se realizo un reordenamiendo de las 5 categorias para poder visualizar mejor las graficas de barras.</td>
+    <td>En este scrip se realizó un reordenamiendo de las 5 categorías para poder visualizar mejor las gráficas de barras.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230403_Actinobacteria.R">Actinobacteria</a></td>
-    <td>Aqui vemos las graficas de barras de abundania y beta diversidad para Actinobacteria como filo de interes.</td>
+    <td>Aqui vemos las gráficas de barras de abundania y beta diversidad para Actinobacteria como filo de interes.</td>
   </tr>
   <tr>
     <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230403_Oomycota%26Fusarium.R">Fusarium</a></td>
@@ -156,8 +156,12 @@ Luego los scripts mostrados en la tabla anterior se convierten en los siguientes
     <td>Explorando diferntes tipos de rarefacción.</td>
   </tr>
   <tr>
-    <td><a href="https">Funciones automatizadas para el analisis en conjuntos pequeños, con datos normalizados</a></td>
+    <td><a href="https">Funciones automatizadas para el análisis en conjuntos pequeños, con datos normalizados</a></td>
     <td>Tomando las funciones creadas anteriormente, se realizó de nuevo un análisis, pero esta vez con los datos normalizados.</td>
+  </tr>
+    <tr>
+    <td><a href="https">Datos normalizados</a></td>
+    <td>Pruebas de hipótesis con los datos normalizados.</td>
   </tr>
 </table>
 
