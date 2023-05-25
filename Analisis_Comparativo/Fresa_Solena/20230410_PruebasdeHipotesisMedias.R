@@ -43,6 +43,7 @@ OTU <- t(OTU)
 Shannon_OTU <- diversity(OTU, "shannon")
 Shannon_OTU_df <- data.frame(sample=names(Shannon_OTU),value=Shannon_OTU,measure=rep("Shannon", length(Shannon_OTU)))
 total <-cbind(Shannon_OTU_df,SAM)
+write.csv(total, "Medidas_Shannon_total.csv")
 
 # media por grupos
 mu <- ddply(total, "Treatment", summarise, grp.mean=mean(value))
@@ -202,6 +203,7 @@ Simp_OTU_df <- data.frame(Simpson=Simp_OTU)
 #unir con 
 total_Shannon <-cbind(glom@sam_data,Shannon_OTU_df)
 total <-cbind(glom@sam_data,Shannon_OTU_df,Simp_OTU_df )
+write.csv(total_Shannon, "Medidas_Shannon_Genero.csv")
 
 # media por grupos para indice Shannon
 mu_Shannon <- ddply(total_Shannon, "Treatment", summarise, grp.mean=mean(value))

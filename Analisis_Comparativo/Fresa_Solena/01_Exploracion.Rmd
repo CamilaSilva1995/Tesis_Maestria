@@ -9,7 +9,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Analisis exploratorio de datos
+# Análisis exploratorio de datos
 
 Obtuvimos un conjunto de datos metagenómicos de cultivo de fresa, entregado por Solena. Con el objetivo de encontrar características diferenciadoras entre frutos sanos y enfermos, y para esto se realizo un análisis exploratorio de los datos.
 

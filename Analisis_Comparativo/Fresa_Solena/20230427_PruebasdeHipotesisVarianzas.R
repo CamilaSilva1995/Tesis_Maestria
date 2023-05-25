@@ -39,6 +39,7 @@ Chao1_OTU <- estimateR(t(OTU))
 Chao1_OTU_df <- data.frame(sample=colnames(Chao1_OTU),value=Chao1_OTU[2, ])#, measure=rep('Chao1',length(Chao1_OTU)))
 
 total <-cbind(Chao1_OTU_df,SAM)
+write.csv(total, "Medidas_Chao1.csv")
 
 # media por grupos
 mu <- ddply(total, "Treatment", summarise, grp.mean=mean(value))
@@ -156,7 +157,7 @@ df <- select(df, -Sample)
 head(df)
 
 
-##AQUI QUEDE.......20230404_20:42---------------------------------------------------------------------
+##AQUI QUEDE.......
 ## Calculamos la diversidad Chao1
 Chao1_OTU <- estimateR(glom_df2$Abundance)  
 
