@@ -260,7 +260,7 @@ total_ShannonW <- total_Shannon[total_Shannon$Treatment == "wilted", ]
 pruebat <- t.test(total_ShannonH$value, total_ShannonW$value, var.equal = TRUE, alternative = "two.sided")
 pruebat
 ggttest(pruebat)
-ggsave("pruebat_varianzasdiferentesFusarium_Shannon.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("pruebat_varianzasigualesFusarium_Shannon.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 
 ### suponiendo varianzas diferentes
