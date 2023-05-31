@@ -42,6 +42,7 @@ ggplot(data = dprof, mapping = aes(x = Samples, y = Reads))+
   scale_fill_manual(values = c("cyan3","darkmagenta")) +
   theme(text = element_text(size = 15),
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+ggsave("Rarefaccion.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 ## luego de la rarefacción sacamos los indices de diversidad alfa
 
@@ -51,6 +52,7 @@ index
 p<-plot_richness(physeq = fresa_kraken_rarefy, measures = c("Observed","Chao1","Shannon","simpson"),x = "Treatment", color = "Treatment") 
 p + geom_point(size=3, alpha=0.5) +
   theme(axis.text.x = element_text(angle=90, size=5, hjust=1, vjust=0.5))
+ggsave("Rarefaccion_diversidadAlfa.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 ## y diversidad beta
 
@@ -60,6 +62,7 @@ meta_ord_fil <- ordinate(physeq = percentages_fil, method = "NMDS", distance = "
 
 plot_ordination(physeq = percentages_fil, ordination = meta_ord_fil, color = "Treatment") +
   geom_text(mapping = aes(label = colnames(fresa_kraken_rarefy@otu_table@.Data)), size = 3, vjust = 1.5)
+ggsave("Rarefaccion_diversidadBeta.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 
 ################################################################################
