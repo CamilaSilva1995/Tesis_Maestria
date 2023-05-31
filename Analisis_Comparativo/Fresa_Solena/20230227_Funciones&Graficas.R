@@ -123,54 +123,54 @@ Alpha_diversity <- function(phy,tax,attribute){
 Barras_Eukarya_Phylum <- Abundance_barras(merge_Eukaryota,'Phylum' , 'Treatment', 10.0)
 Barras_Eukarya_Phylum[[1]] # normal
 Barras_Eukarya_Phylum[[2]] # 10%
-ggsave("Barras_Eukarya_Phylum.png", plot = Barras_Eukarya_Phylum[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
-ggsave("Barras_Eukarya_Phylum_10.png", plot = Barras_Eukarya_Phylum[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Eukarya_Phylum.svg", plot = Barras_Eukarya_Phylum[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Eukarya_Phylum_10.svg", plot = Barras_Eukarya_Phylum[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Beta_Eukarya_Phylum<-Beta_diversity(merge_Eukaryota , 'Phylum' , 'Treatment', 'bray')
-ggsave("Beta_Eukarya_Phylum.png", plot = Beta_Eukarya_Phylum, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Beta_Eukarya_Phylum.svg", plot = Beta_Eukarya_Phylum, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Alpha_Eukarya_Phylum<-Alpha_diversity(merge_Eukaryota , 'Phylum' , 'Treatment')
-ggsave("Alpha_Eukarya_Phylum.png", plot = Alpha_Eukarya_Phylum, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Alpha_Eukarya_Phylum.svg", plot = Alpha_Eukarya_Phylum, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 #-----------Eukarya by Family 
 Barras_Eukarya_Family <- Abundance_barras(merge_Eukaryota,'Family' , 'Treatment', 10.0)
 Barras_Eukarya_Family[[1]] # normal
 Barras_Eukarya_Family[[2]] # 10%
-ggsave("Barras_Eukarya_Family.png", plot = Barras_Eukarya_Family[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
-ggsave("Barras_Eukarya_Family_10.png", plot = Barras_Eukarya_Family[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Eukarya_Family.svg", plot = Barras_Eukarya_Family[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Eukarya_Family_10.svg", plot = Barras_Eukarya_Family[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Beta_Eukarya_Family<-Beta_diversity(merge_Eukaryota , 'Family' , 'Treatment', 'bray')
-ggsave("Beta_Eukarya_Family.png", plot = Beta_Eukarya_Family, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Beta_Eukarya_Family.svg", plot = Beta_Eukarya_Family, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Alpha_Eukarya_Family<-Alpha_diversity(merge_Eukaryota , 'Family' , 'Treatment')
-ggsave("Alpha_Eukarya_Family.png", plot = Alpha_Eukarya_Family, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Alpha_Eukarya_Family.svg", plot = Alpha_Eukarya_Family, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 #-----------Eukarya by Genus
 Barras_Eukarya_Genus <- Abundance_barras(merge_Eukaryota,'Genus' , 'Treatment', 10.0)
 Barras_Eukarya_Genus[[1]] # normal
 Barras_Eukarya_Genus[[2]] # 10%
-ggsave("Barras_Eukarya_Genus.png", plot = Barras_Eukarya_Genus[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
-ggsave("Barras_Eukarya_Genus_10.png", plot = Barras_Eukarya_Genus[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Eukarya_Genus.svg", plot = Barras_Eukarya_Genus[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Eukarya_Genus_10.svg", plot = Barras_Eukarya_Genus[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Beta_Eukarya_Genus<-Beta_diversity(merge_Eukaryota , 'Genus' , 'Treatment', 'bray')
-ggsave("Beta_Eukarya_Genus.png", plot = Beta_Eukarya_Genus, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Beta_Eukarya_Genus.svg", plot = Beta_Eukarya_Genus, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Alpha_Eukarya_Genus<-Alpha_diversity(merge_Eukaryota , 'Genus' , 'Treatment')
-ggsave("Alpha_Eukarya_Genus.png", plot = Alpha_Eukarya_Genus, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Alpha_Eukarya_Genus.svg", plot = Alpha_Eukarya_Genus, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 #-----------Eukarya by Species 
 
 Barras_Eukarya_Species <- Abundance_barras(merge_Eukaryota,'Species' , 'Treatment', 10.0)
 Barras_Eukarya_Species[[1]] 
 Barras_Eukarya_Species[[2]]
-ggsave("Barras_Eukarya_Species.png", plot = Barras_Eukarya_Species[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
-ggsave("Barras_Eukarya_Species_10.png", plot = Barras_Eukarya_Species[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Eukarya_Species.svg", plot = Barras_Eukarya_Species[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Eukarya_Species_10.svg", plot = Barras_Eukarya_Species[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Beta_Eukarya_Species<-Beta_diversity(merge_Eukaryota , 'Species' , 'Treatment', 'bray')
-ggsave("Beta_Eukarya_Species.png", plot = Beta_Eukarya_Species, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Beta_Eukarya_Species.svg", plot = Beta_Eukarya_Species, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Alpha_Eukarya_Species<-Alpha_diversity(merge_Eukaryota , 'Species' , 'Treatment')
-ggsave("Alpha_Eukarya_Species.png", plot = Alpha_Eukarya_Species, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Alpha_Eukarya_Species.svg", plot = Alpha_Eukarya_Species, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 ############Bacteria############################################################
 
@@ -179,51 +179,51 @@ ggsave("Alpha_Eukarya_Species.png", plot = Alpha_Eukarya_Species, path = "/home/
 Barras_Bacteria_Phylum <- Abundance_barras(merge_Bacteria,'Phylum' , 'Treatment', 10.0)
 Barras_Bacteria_Phylum[[1]] # normal
 Barras_Bacteria_Phylum[[2]] # 10%
-ggsave("Barras_Bacteria_Phylum.png", plot = Barras_Bacteria_Phylum[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
-ggsave("Barras_Bacteria_Phylum_10.png", plot = Barras_Bacteria_Phylum[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Bacteria_Phylum.svg", plot = Barras_Bacteria_Phylum[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Bacteria_Phylum_10.svg", plot = Barras_Bacteria_Phylum[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Beta_Bacteria_Phylum<-Beta_diversity(merge_Bacteria , 'Phylum' , 'Treatment', 'bray')
-ggsave("Beta_Bacteria_Phylum.png", plot = Beta_Bacteria_Phylum, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Beta_Bacteria_Phylum.svg", plot = Beta_Bacteria_Phylum, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Alpha_Bacteria_Phylum<-Alpha_diversity(merge_Bacteria , 'Phylum' , 'Treatment')
-ggsave("Alpha_Bacteria_Phylum.png", plot = Alpha_Bacteria_Phylum, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Alpha_Bacteria_Phylum.svg", plot = Alpha_Bacteria_Phylum, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 #-----------Bacteria by Family 
 Barras_Bacteria_Family <- Abundance_barras(merge_Bacteria,'Family' , 'Treatment', 10.0)
 Barras_Bacteria_Family[[1]] # normal
 Barras_Bacteria_Family[[2]] # 10%
-ggsave("Barras_Bacteria_Family.png", plot = Barras_Bacteria_Family[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
-ggsave("Barras_Bacteria_Family_10.png", plot = Barras_Bacteria_Family[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Bacteria_Family.svg", plot = Barras_Bacteria_Family[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Bacteria_Family_10.svg", plot = Barras_Bacteria_Family[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Beta_Bacteria_Family<-Beta_diversity(merge_Bacteria , 'Family' , 'Treatment', 'bray')
-ggsave("Beta_Bacteria_Family.png", plot = Beta_Bacteria_Family, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Beta_Bacteria_Family.svg", plot = Beta_Bacteria_Family, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Alpha_Bacteria_Family<-Alpha_diversity(merge_Bacteria , 'Family' , 'Treatment')
-ggsave("Alpha_Bacteria_Family.png", plot = Alpha_Bacteria_Family, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Alpha_Bacteria_Family.svg", plot = Alpha_Bacteria_Family, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 #-----------Bacteria by Genus
 Barras_Bacteria_Genus <- Abundance_barras(merge_Bacteria,'Genus' , 'Treatment', 10.0)
 Barras_Bacteria_Genus[[1]] # normal
 Barras_Bacteria_Genus[[2]] # 10%
-ggsave("Barras_Bacteria_Genus.png", plot = Barras_Bacteria_Genus[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
-ggsave("Barras_Bacteria_Genus_10.png", plot = Barras_Bacteria_Genus[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Bacteria_Genus.svg", plot = Barras_Bacteria_Genus[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Bacteria_Genus_10.svg", plot = Barras_Bacteria_Genus[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Beta_Bacteria_Genus<-Beta_diversity(merge_Bacteria , 'Genus' , 'Treatment', 'bray')
-ggsave("Beta_Bacteria_Genus.png", plot = Beta_Bacteria_Genus, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Beta_Bacteria_Genus.svg", plot = Beta_Bacteria_Genus, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Alpha_Bacteria_Genus<-Alpha_diversity(merge_Bacteria , 'Genus' , 'Treatment')
-ggsave("Alpha_Bacteria_Genus.png", plot = Alpha_Bacteria_Genus, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Alpha_Bacteria_Genus.svg", plot = Alpha_Bacteria_Genus, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 #-----------Bacteria by Species 
 
 Barras_Bacteria_Species <- Abundance_barras(merge_Bacteria,'Species' , 'Treatment', 10.0)
 Barras_Bacteria_Species[[1]] 
 Barras_Bacteria_Species[[2]]
-ggsave("Barras_Bacteria_Species.png", plot = Barras_Bacteria_Species[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
-ggsave("Barras_Bacteria_Species_10.png", plot = Barras_Bacteria_Species[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Bacteria_Species.svg", plot = Barras_Bacteria_Species[[1]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Barras_Bacteria_Species_10.svg", plot = Barras_Bacteria_Species[[2]], path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Beta_Bacteria_Species<-Beta_diversity(merge_Bacteria , 'Species' , 'Treatment', 'bray')
-ggsave("Beta_Bacteria_Species.png", plot = Beta_Bacteria_Species, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Beta_Bacteria_Species.svg", plot = Beta_Bacteria_Species, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 Alpha_Bacteria_Species<-Alpha_diversity(merge_Bacteria , 'Species' , 'Treatment')
-ggsave("Alpha_Bacteria_Species.png", plot = Alpha_Bacteria_Species, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+ggsave("Alpha_Bacteria_Species.svg", plot = Alpha_Bacteria_Species, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
