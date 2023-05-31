@@ -53,6 +53,7 @@ p<-ggplot(total, aes(x=value))+
   facet_grid(Treatment ~ .)
 p+geom_vline(data=mu, aes(xintercept=grp.mean, color="red"),
              linetype="dashed")
+ggsave("medias_Shannon.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 # se fija el nivel de significancia
 alfa <- 0.05
@@ -93,12 +94,14 @@ totalW <- total[total$Treatment == "wilted", ]
 pruebat <- t.test(totalH$value, totalW$value, var.equal = TRUE, alternative = "two.sided")
 pruebat
 ggttest(pruebat)
+ggsave("pruebat_varianzasiguales_Shannon.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 ### suponiendo varianzas diferentes
 
 pruebat2 <- t.test(totalH$value, totalW$value, var.equal = FALSE, alternative = "two.sided")
 pruebat2
 ggttest(pruebat2)
+ggsave("pruebat_varianzasdiferentes_Shannon.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 ####
 

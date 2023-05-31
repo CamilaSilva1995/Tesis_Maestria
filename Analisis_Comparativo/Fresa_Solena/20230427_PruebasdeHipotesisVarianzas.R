@@ -59,8 +59,7 @@ p<-ggplot(total, aes(x=value))+
   facet_grid(Treatment ~ .)
 p+geom_vline(data=sigma, aes(xintercept=s.var, color="red"),
              linetype="dashed")
-
-ggplot(total, aes(x=Treatment, y=value, color=Treatment)) + geom_point(size=2)
+ggsave("varianzas_Chao1.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 alfa <- 0.05
 
@@ -97,6 +96,9 @@ hist(x,
      ylim = c(0,1),
      xlab = '')
 curve(df(x, v1, v2), from = 0, to = 4, n = 5000, col= 'pink', lwd=2, add = T)
+ggsave("pruebaf_Chao1.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+
+
 
 ##EJEMPLO
 n1 <- 10
@@ -121,8 +123,8 @@ hist(x,
      freq = FALSE, 
      xlim = c(0,3), 
      ylim = c(0,1),
-     xlab = '')
-curve(df(x, v1, v2), from = 0, to = 4, n = 5000, col= 'pink', lwd=2, add = T)
+     xlab = '')  
+  curve(df(x, v1, v2), from = 0, to = 4, n = 5000, col= 'pink', lwd=2, add = T)
 
 #################################################################################
 ## Subconjunto de "Bacteria"

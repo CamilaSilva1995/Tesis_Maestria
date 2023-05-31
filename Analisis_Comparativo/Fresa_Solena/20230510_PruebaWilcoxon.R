@@ -55,6 +55,7 @@ ggplot(data = total, aes(x = Rank, y = value)) +
   theme_bw() +
   theme(axis.text.y = element_blank()) + 
   ggtitle("Muestras procedentes de la misma población")
+ggsave("Wilcoxon_Shannon.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 healthy<-total[total$Treatment=="healthy",]$value
 wilted<-total[total$Treatment=="wilted",]$value

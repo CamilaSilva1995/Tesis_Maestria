@@ -46,7 +46,7 @@ Tomamos las columnas Sample, OTU y Abundance, para crear un nuevo data frame mas
 fresa_kraken_fil_df2 <- fresa_kraken_fil_df[c(1,2,3)]
 ```
 
-PAsamos nuestros datos de dataframe a table, para calcular el alfa diversidad
+Pasamos nuestros datos de dataframe a table, para calcular el alfa diversidad
 
 ```{r}
 dfss <- reshape(fresa_kraken_fil_df2, idvar = "Sample",v.names= c("Abundance"), timevar = "OTU", direction = "wide")
