@@ -43,7 +43,7 @@ glomToGraph<-function(phy,tax){
   percentages_df <- psmelt(percentages)
   return(list(glom,percentages,percentages_df))
 }
-#-----------------------------------------------------------------
+#-------------------------------------------------------------------------------
 ## Graficar abundancias stackbar
 
 # input entra el percentages_df 
