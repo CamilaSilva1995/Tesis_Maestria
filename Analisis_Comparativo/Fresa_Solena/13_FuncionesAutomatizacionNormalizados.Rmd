@@ -302,8 +302,11 @@ Beta_diversity(merge_Bacteria , 'Species' , 'Treatment', 'bray')
 Alpha_diversity(merge_Bacteria , 'Species' , 'Treatment')
 ```
 
+# Pruebas de Hipotesis
 
-
-
+## Wilcox 
+## Medias
+## Varianzas 
+## Mann-Whitney
 
 
