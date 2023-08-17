@@ -13,7 +13,7 @@ A continuación, se muestra un resumen del análisis realizado y a las conclusio
     <th>Explicación</th>
   </tr>
   <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd">Preprocesamiento de Datos</a></td>
+    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230130_PreprocesamientoDatos.R">Preprocesamiento de Datos</a></td>
     <td>En este script empezamos con un preprocesamiento de los datos, muestra como se descargaron los datos y como fue creado el archivo BIOM para poder leerlos desde R. Una vez se obtiene el archivo BIOM, este se carga en R como un objeto phyloseq. Y con este ya se procede a hacer un reconocimiento de los datos y primera observación de medidas ecologicas como las diversidades alfa y beta. </td>
   </tr>
   <tr>
@@ -100,7 +100,7 @@ Luego los scripts mostrados en la tabla anterior, se compilan en los siguientes 
     <th>Explicación</th>
   </tr>
   <tr>
-    <td><a href="https">Exploración</a></td>
+    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd">Exploración</a></td>
     <td>En este documento podemos ver el preprocesamiento de los datos, una breve explicación del tipo de datos y tipo de formato en el cual se trabajaron, junto con una exploración inicial de los índices de diversidad alfa y beta, con diferentes medidas, a la totalidad de los datos; los cuales no mostraron una buena separación de los datos entre muestras sanas y enfermas. También se tiene una pequeña vizualización de correlación con redes simples.</td>
   </tr>
   <tr>
