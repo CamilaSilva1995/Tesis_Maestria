@@ -13,7 +13,7 @@ A continuación, se muestra un resumen del análisis realizado y a las conclusio
     <th>Explicación</th>
   </tr>
   <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230130_PreprocesamientoDatos.R">Preprocesamiento de Datos</a></td>
+    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd">Preprocesamiento de Datos</a></td>
     <td>En este script empezamos con un preprocesamiento de los datos, muestra como se descargaron los datos y como fue creado el archivo BIOM para poder leerlos desde R. Una vez se obtiene el archivo BIOM, este se carga en R como un objeto phyloseq. Y con este ya se procede a hacer un reconocimiento de los datos y primera observación de medidas ecologicas como las diversidades alfa y beta. </td>
   </tr>
   <tr>
