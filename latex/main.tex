@@ -1,0 +1,248 @@
+\documentclass[12pt]{book}
+\usepackage[paperwidth=17cm, paperheight=22.5cm, bottom=2.5cm, right=2.5cm]{geometry}
+\usepackage{amssymb,amsmath,amsthm} %paquete para símbolo matemáticos
+%\usepackage[spanish,english]{babel}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc} %Paquete para escribir acentos y otros símbolos directamente
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+%\usepackage{subfig} %para poner subfiguras
+\graphicspath{{Img/}} %En qué carpeta están las imágenes
+\usepackage[nottoc]{tocbibind}
+\usepackage[pdftex,
+            pdfauthor={NOMBRE DEL AUTOR},
+            pdftitle={TÍTULO DE LA TESIS},
+            pdfsubject={ÁREA DE LA TESIS},
+            pdfkeywords={PALABRAS CLAVE},
+            pdfproducer={Latex con hyperref},
+            pdfcreator={pdflatex}]{hyperref}
+
+\usepackage{blindtext}
+\usepackage{hyperref}
+
+\usepackage{svg}
+\usepackage{listings}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	COMANDOS PERSONALIZADOS
+%----------------------------------------------------------------------------------------
+
+%Para teoremas y demostraciones 
+
+\renewcommand{\proofname}{Demostración}
+\providecommand{\norm}[1]{\lVert#1\rVert} %Provee el comando para producir una norma.
+\providecommand{\innp}[1]{\langle#1\rangle} 
+\newcommand{\seno}{\mathrm{sen}}
+\newcommand{\diff}{\mathrm{d}}
+
+\newtheorem{teo}{Teorema}[section] 
+\newtheorem{cor}[teo]{Corolario}
+\newtheorem{lem}[teo]{Lema}
+
+\theoremstyle{definition}
+\newtheorem{dfn}[teo]{Definición}
+
+\theoremstyle{remark}
+\newtheorem{obs}[teo]{Observación}
+
+\allowdisplaybreaks
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	PORTADA
+%----------------------------------------------------------------------------------------
+
+\title{TÍTULO DE LA TESIS} %Con este nombre se guardará el proyecto en writeLaTex
+
+\begin{titlepage}
+\begin{center}
+
+%% Portada bonita
+\begin{minipage}{\textwidth} 
+  \newcolumntype{V}{>{\centering\arraybackslash} m{.17\textwidth} }
+  \newcolumntype{C}{>{\centering\arraybackslash} m{.56\textwidth} }
+  \begin{tabular}{ V C V }
+  \includegraphics[width=.15\textwidth]{UNAMlogo.png}  %
+  &\Large Universidad Nacional Autónoma de México y Universidad Michoacana de San Nicolás de Hidalgo &%
+  \includegraphics[width=.15\textwidth]{UMSNHlogo.png}
+ \end{tabular}
+\end{minipage} 
+
+
+ \vfill
+
+
+\begin{minipage}{0.7\textwidth}
+\begin{center}
+\vspace*{0.7cm}
+\large Posgrado Conjunto en Ciencias Matemáticas UMSNH-UNAM
+\end{center}
+\end{minipage} \\
+
+\begin{center}
+\vspace*{0.7cm}
+\medskip \rule{.9\textwidth}{2pt}
+\bigskip \\
+AQUI VA EL TITULO DE LA TESIS \\
+%{\Large \bfseries  \thetitle   }
+\medskip \rule{.9\textwidth}{2pt}
+\end{center}
+
+\begin{center}
+\vspace*{0.7cm}
+{\huge TESIS}\\
+\vspace*{0.7cm}
+para obtener el grado de \\ \bigskip
+{\large \emph{Maestra en Ciencias Matemáticas}} \\ \bigskip
+presenta\\ \medskip
+%\theauthor \\
+Paula Camila Silva Gomez \\
+\texttt{csilva@matmor.unam.mx}
+\bigskip \\
+Asesor: \\
+Doctora\\
+Nelly Sélem Mojica\\
+\texttt{nselem@matmor.unam.mx}
+\end{center}
+
+\vfill
+
+\begin{center}
+{Morelia, Michoacán, México}\\
+% {\thedate}% to use the date of compilation
+{Octubre, 2023}
+\end{center}
+
+\end{center}
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	DECLARACIÓN
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty}
+\vspace*{\fill}
+\begingroup
+%``Con fundamento en los artículos 21 y 27 de la Ley Federal del Derecho de Autor y como titular de los derechos moral y patrimonial de la obra titulada ``\textbf{TÍTULO DE LA TESIS}'', otorgo de manera gratuita y permanente al Instituto Tecnológico Autónomo de México y a la Biblioteca Raúl Bailléres Jr., la autorización para que fijen la obra en cualquier medio, incluido el electrónico, y la divulguen entre sus usuarios, profesores, estudiantes o terceras personas, sin que pueda percibir por tal divulgación una contraprestación''.
+
+\centering
+
+\hspace{5em}
+
+\textsc{Paula Camila Silva Gomez}
+
+\vspace{5em}
+
+\rule[1em]{20em}{0.5pt} % Línea para la firma
+
+\textsc{Firma}
+ 
+\vspace{5em}
+
+\rule[1em]{20em}{0.5pt} % Línea para la fecha
+
+\textsc{Fecha}
+
+\endgroup
+\vspace*{\fill}
+
+
+%----------------------------------------------------------------------------------------
+%	DEDICATORIA
+%----------------------------------------------------------------------------------------
+
+%\pagestyle{empty}
+%\frontmatter
+
+%\chapter*{}
+%\begin{flushright}
+%\textit{DEDICATORIA}
+%\end{flushright}
+
+
+%----------------------------------------------------------------------------------------
+%	AGRADECIMIENTOS
+%----------------------------------------------------------------------------------------
+
+\chapter*{Agradecimientos}
+%\markboth{AGRADECIMIENTOS23}{AGRADECIMIENTOS} % encabezado 
+
+Gracias totales.
+
+
+%----------------------------------------------------------------------------------------
+%	TABLA DE CONTENIDOS
+%---------------------------------------------------------------------------------------
+
+\tableofcontents
+
+
+%----------------------------------------------------------------------------------------
+%	TESIS
+%----------------------------------------------------------------------------------------
+\chapter*{Abstract}
+\thispagestyle{empty}
+
+\chapter*{Introducción}
+\thispagestyle{empty}
+
+\mainmatter %empieza la numeración de las páginas
+\pagestyle{headings}
+
+%  Incluye los capítulos en el folder de capítulos
+
+\include{Capitulos/cap1_Intro}
+\thispagestyle{empty}
+
+\include{Capitulos/cap2}
+\thispagestyle{empty}
+
+\include{Capitulos/cap3}
+\thispagestyle{empty}
+
+\include{Capitulos/cap4}
+\thispagestyle{empty}
+
+\chapter*{Conclusiones}
+\thispagestyle{empty}
+
+
+%----------------------------------------------------------------------------------------
+%	APÉNDICES
+%----------------------------------------------------------------------------------------
+
+\addtocontents{toc}{\vspace{2em}} % Agrega espacios en la toc
+
+\appendix % Los siguientes capítulos son apéndices
+
+%  Incluye los apéndices en el folder de apéndices
+
+\include{Apendices/Ap}
+\thispagestyle{empty}
+\include{Apendices/Bp}
+\thispagestyle{empty}
+%\include{Apendices/AppendixB}
+%\include{Apendices/AppendixC}
+
+\addtocontents{toc}{\vspace{2em}} % Agrega espacio en la toc
+
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAFÍA
+%----------------------------------------------------------------------------------------
+\backmatter
+\nocite{*}
+\bibliographystyle{apalike}
+\bibliography{ref.bib} %Aquí ponen el nombre del archivo .bib
+
+
+
+
+
+
+\end{document}
