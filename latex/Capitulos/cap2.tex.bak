@@ -321,7 +321,7 @@ A partir de estos dos subconjuntos, realizamos una agrupación adicional por fil
 %\caption{}
 %\end{figure}
 
-\textbf{PONER AQUI IMAGEN DE BARRAS DE ABUNDANCIAS RELATIVAS, (filo, familia,genero y especie para eucariota 10\%}
+
 \begin{figure}[!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras_Eukarya10.png}
@@ -338,45 +338,45 @@ En esta representación a nivel de filo, podemos destacar la disminución notabl
 %\caption{}
 %\end{figure}
 
-\textbf{PONER AQUI IMAGEN DE BARRAS DE ABUNDANCIAS RELATIVAS, (filo, familia,genero y especie para bacteria 10\%}
+
 \begin{figure}[!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras_Bacteria10.png}
-\caption{A) Filo, B) Familia, C) Genero, D) Especie, \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
+%\caption{A) Filo, B) Familia, C) Genero, D) Especie, \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
 \end{figure}
 
 
-\textbf{PONER AQUI IMAGEN DE Diversidades alfa por nivel taxonómico para (filo, familia, genero y especie para eucariota}
+
 \begin{figure}[!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Alpha_Eukarya.png}
-\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
+%\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
 \end{figure}
 
 En esta imagen, podemos ver que con la diversidad Chao1 a nivel de especie se genera una diferencia considerable de diversidades entre muestras sanas y enfermas, lo cual se detallara mas adelante con una prueba de hipótesis. Tambien ...
 
-\textbf{PONER AQUI IMAGEN DE Diversidades alfa por nivel taxonómico (filo, familia, genero y especie para Bacteria}
+
 \begin{figure}[!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Alpha_Bacteria.png}
-\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
+%\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
 \end{figure}
 
 En esta imagen, podemos ver que con la diversidad Chao1 a nivel de género se evidencia una diferencia considerable de diversidades entre muestras sanas y enfermas, lo cual se detallara mas adelante con una prueba de hipótesis. Tambien ...
 
+Diversidad beta para los niveles taxonomicos 
 
-\textbf{PONER AQUI IMAGEN DE Diversidades beta por nivel taxonómico , (filo, familia, genero y especie \textbf{PONER AQUI IMAGEN DE Diversidades beta por nivel taxonómico , (filo, familia,genero y especie para bacteria}}
 \begin{figure}[!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Beta_Eukarya.png}
-\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
+%\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
 \end{figure}
 
-\textbf{PONER AQUI IMAGEN DEDiversidades beta por nivel taxonómico, (filo, familia,genero y especie para bacteria}
+
 \begin{figure}[!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Beta_Bacteria.png}
-\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
+%\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
 \end{figure}
 
 
@@ -384,8 +384,6 @@ En esta imagen, podemos ver que con la diversidad Chao1 a nivel de género se ev
 
 
 \section{Prueba de Hipótesis}
-
-
 
 Procedimiento para evaluar la veracidad de una afirmación científica.
 Una prueba de hipótesis es un método estadístico que se utiliza para tomar decisiones sobre una población basándose en una muestra de datos.
@@ -395,7 +393,7 @@ Una prueba de hipótesis es un método estadístico que se utiliza para tomar de
 
 
 %\begin{figure}[!]
-%\centering
+%centering
 %\includegraphics[width=\textwidth]{Img/cap2/imagen de ejemplo p-valor.png}
 %\caption{imagen de ejemplo %p-valor}
 %\end{figure}

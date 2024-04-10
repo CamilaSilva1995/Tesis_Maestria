@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  9 APR 2024 19:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  9 APR 2024 19:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1539,473 +1539,314 @@ File: Img/cap2/Barras_Eukarya10.png Graphic file (type png)
 Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 327.
 
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.328 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.328 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
  []
 
-LaTeX Info: Redefining \. on input line 334.
-LaTeX Info: Redefining \% on input line 334.
-[28 <./Img/cap2/Barras_Eukarya10.png>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `!tbp') on input line 342.
 
-<Img/cap2/Barras_Bacteria10.png, id=391, 853.5087pt x 426.6339pt>
+<Img/cap2/Barras_Bacteria10.png, id=382, 853.5087pt x 426.6339pt>
 File: Img/cap2/Barras_Bacteria10.png Graphic file (type png)
 <use Img/cap2/Barras_Bacteria10.png>
 Package pdftex.def Info: Img/cap2/Barras_Bacteria10.png  used on input line 344
 .
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.345 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.345 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `!tbp') on input line 350.
 
-<Img/cap2/Alpha_Eukarya.png, id=394, 853.5087pt x 426.6339pt>
+<Img/cap2/Alpha_Eukarya.png, id=383, 853.5087pt x 426.6339pt>
 File: Img/cap2/Alpha_Eukarya.png Graphic file (type png)
 <use Img/cap2/Alpha_Eukarya.png>
 Package pdftex.def Info: Img/cap2/Alpha_Eukarya.png  used on input line 352.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.353 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.353 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
+LaTeX Info: Redefining \. on input line 357.
+LaTeX Info: Redefining \% on input line 357.
+[28 <./Img/cap2/Barras_Eukarya10.png>]
+LaTeX Info: Redefining \. on input line 357.
+LaTeX Info: Redefining \% on input line 357.
+ [29 <./Img/cap2/Barras_Bacteria10.png> <./Img/cap2/Alpha_Eukarya.png>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `!tbp') on input line 359.
 
-<Img/cap2/Alpha_Bacteria.png, id=397, 853.5087pt x 426.6339pt>
+<Img/cap2/Alpha_Bacteria.png, id=396, 853.5087pt x 426.6339pt>
 File: Img/cap2/Alpha_Bacteria.png Graphic file (type png)
 <use Img/cap2/Alpha_Bacteria.png>
 Package pdftex.def Info: Img/cap2/Alpha_Bacteria.png  used on input line 361.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.362 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.362 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-LaTeX Info: Redefining \. on input line 366.
-LaTeX Info: Redefining \% on input line 366.
-[29 <./Img/cap2/Barras_Bacteria10.png>]
-LaTeX Info: Redefining \. on input line 366.
-LaTeX Info: Redefining \% on input line 366.
- [30 <./Img/cap2/Alpha_Eukarya.png> <./Img/cap2/Alpha_Bacteria.png>]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `!tbp') on input line 369.
 
-<Img/cap2/Beta_Eukarya.png, id=417, 853.5087pt x 426.6339pt>
+<Img/cap2/Beta_Eukarya.png, id=397, 853.5087pt x 426.6339pt>
 File: Img/cap2/Beta_Eukarya.png Graphic file (type png)
 <use Img/cap2/Beta_Eukarya.png>
 Package pdftex.def Info: Img/cap2/Beta_Eukarya.png  used on input line 371.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.372 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.372 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `!tbp') on input line 376.
 
-<Img/cap2/Beta_Bacteria.png, id=420, 853.5087pt x 426.6339pt>
+<Img/cap2/Beta_Bacteria.png, id=398, 853.5087pt x 426.6339pt>
 File: Img/cap2/Beta_Bacteria.png Graphic file (type png)
 <use Img/cap2/Beta_Bacteria.png>
 Package pdftex.def Info: Img/cap2/Beta_Bacteria.png  used on input line 378.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.379 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Misplaced alignment tab character &.
-<argument> (Funciones&
-                      Graficas.R)
-l.379 ...ones&Graficas.R}{(Funciones&Graficas.R)}}
-                                                  
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
 LaTeX Info: Redefining \. on input line 404.
 LaTeX Info: Redefining \% on input line 404.
-[31 <./Img/cap2/Beta_Eukarya.png>]
-LaTeX Info: Redefining \. on input line 422.
-LaTeX Info: Redefining \% on input line 422.
- [32 <./Img/cap2/Beta_Bacteria.png>]
+[30 <./Img/cap2/Alpha_Bacteria.png>]
+LaTeX Info: Redefining \. on input line 404.
+LaTeX Info: Redefining \% on input line 404.
+ [31 <./Img/cap2/Beta_Eukarya.png> <./Img/cap2/Beta_Bacteria.png>]
+LaTeX Info: Redefining \. on input line 443.
+LaTeX Info: Redefining \% on input line 443.
+ [32]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 455.
+               Default added (so using `!tbp') on input line 453.
 
-<Img/cap2/medias_Shannon.png, id=437, 853.5087pt x 426.6339pt>
+<Img/cap2/medias_Shannon.png, id=414, 853.5087pt x 426.6339pt>
 File: Img/cap2/medias_Shannon.png Graphic file (type png)
 <use Img/cap2/medias_Shannon.png>
-Package pdftex.def Info: Img/cap2/medias_Shannon.png  used on input line 457.
+Package pdftex.def Info: Img/cap2/medias_Shannon.png  used on input line 455.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 461.
+               Default added (so using `!tbp') on input line 459.
 
-<Img/cap2/pruebat_varianzasiguales_Shannon.png, id=438, 853.5087pt x 426.6339pt
+<Img/cap2/pruebat_varianzasiguales_Shannon.png, id=415, 853.5087pt x 426.6339pt
 >
 File: Img/cap2/pruebat_varianzasiguales_Shannon.png Graphic file (type png)
 <use Img/cap2/pruebat_varianzasiguales_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasiguales_Shannon.png  used on
- input line 463.
+ input line 461.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 467.
+               Default added (so using `!tbp') on input line 465.
 
-<Img/cap2/pruebat_varianzasdiferentes_Shannon.png, id=439, 853.5087pt x 426.633
+<Img/cap2/pruebat_varianzasdiferentes_Shannon.png, id=416, 853.5087pt x 426.633
 9pt>
 File: Img/cap2/pruebat_varianzasdiferentes_Shannon.png Graphic file (type png)
 <use Img/cap2/pruebat_varianzasdiferentes_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasdiferentes_Shannon.png  used
- on input line 469.
+ on input line 467.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 474.
+               Default added (so using `!tbp') on input line 472.
 
-<Img/cap2/mediasFusarium_Shannon.png, id=440, 853.5087pt x 426.6339pt>
+<Img/cap2/mediasFusarium_Shannon.png, id=417, 853.5087pt x 426.6339pt>
 File: Img/cap2/mediasFusarium_Shannon.png Graphic file (type png)
 <use Img/cap2/mediasFusarium_Shannon.png>
 Package pdftex.def Info: Img/cap2/mediasFusarium_Shannon.png  used on input lin
-e 476.
+e 474.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 480.
+               Default added (so using `!tbp') on input line 478.
 
-<Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png, id=441, 853.5087pt x 42
+<Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png, id=418, 853.5087pt x 42
 6.6339pt>
 File: Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png Graphic file (type 
 png)
 <use Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png 
- used on input line 482.
+ used on input line 480.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 486.
+               Default added (so using `!tbp') on input line 484.
 
-<Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png, id=442, 853.5087pt x
+<Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png, id=419, 853.5087pt x
  426.6339pt>
 File: Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png Graphic file (ty
 pe png)
 <use Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.p
-ng  used on input line 488.
+ng  used on input line 486.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 LaTeX Info: Redefining \. on input line 496.
 LaTeX Info: Redefining \% on input line 496.
-[33]
+[33 <./Img/cap2/medias_Shannon.png>]
 LaTeX Info: Redefining \. on input line 496.
 LaTeX Info: Redefining \% on input line 496.
- [34 <./Img/cap2/medias_Shannon.png> <./Img/cap2/pruebat_varianzasiguales_Shann
-on.png>]
+ [34 <./Img/cap2/pruebat_varianzasiguales_Shannon.png> <./Img/cap2/pruebat_vari
+anzasdiferentes_Shannon.png>]
 LaTeX Info: Redefining \. on input line 496.
 LaTeX Info: Redefining \% on input line 496.
- [35 <./Img/cap2/pruebat_varianzasdiferentes_Shannon.png> <./Img/cap2/mediasFus
-arium_Shannon.png>]
-LaTeX Info: Redefining \. on input line 496.
-LaTeX Info: Redefining \% on input line 496.
- [36 <./Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png> <./Img/cap2/prue
-bat_varianzasdiferentesFusarium_Shannon.png>]
-Overfull \hbox (7.36714pt too wide) in paragraph at lines 498--499
+ [35 <./Img/cap2/mediasFusarium_Shannon.png> <./Img/cap2/pruebat_varianzasigual
+esFusarium_Shannon.png>]
+Overfull \hbox (7.36714pt too wide) in paragraph at lines 496--497
 []\OT1/cmr/m/n/12 y que-re-mos pro-bar (te-ne-mos co-mo hi-po-te-sis nu-la)Wilc
 oxonWilcoxon 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 511.
+               Default added (so using `!tbp') on input line 509.
 
-<Img/cap2/varianzas_Chao1.png, id=466, 853.5087pt x 426.6339pt>
+<Img/cap2/varianzas_Chao1.png, id=438, 853.5087pt x 426.6339pt>
 File: Img/cap2/varianzas_Chao1.png Graphic file (type png)
 <use Img/cap2/varianzas_Chao1.png>
-Package pdftex.def Info: Img/cap2/varianzas_Chao1.png  used on input line 513.
+Package pdftex.def Info: Img/cap2/varianzas_Chao1.png  used on input line 511.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 520.
-LaTeX Info: Redefining \% on input line 520.
-[37 <./Img/cap2/varianzas_Chao1.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 521.
+               Default added (so using `!tbp') on input line 519.
 
-<Img/cap2/Wilcoxon_Shannon.png, id=472, 853.5087pt x 426.6339pt>
+<Img/cap2/Wilcoxon_Shannon.png, id=439, 853.5087pt x 426.6339pt>
 File: Img/cap2/Wilcoxon_Shannon.png Graphic file (type png)
 <use Img/cap2/Wilcoxon_Shannon.png>
-Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 523.
+Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 521.
 
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+LaTeX Info: Redefining \. on input line 523.
+LaTeX Info: Redefining \% on input line 523.
+[36 <./Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png>]
+Underfull \vbox (badness 1107) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 534.
+LaTeX Info: Redefining \% on input line 534.
+ [37 <./Img/cap2/varianzas_Chao1.png> <./Img/cap2/Wilcoxon_Shannon.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 537.
+               Default added (so using `!tbp') on input line 535.
 
 File: Img/cap2/Wilcoxon_Shannon.png Graphic file (type png)
 <use Img/cap2/Wilcoxon_Shannon.png>
-Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 539.
+Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 537.
 
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 548.
+               Default added (so using `!tbp') on input line 546.
 
-<Img/cap2/Barras_Abundancia.png, id=473, 853.5087pt x 426.6339pt>
+<Img/cap2/Barras_Abundancia.png, id=451, 853.5087pt x 426.6339pt>
 File: Img/cap2/Barras_Abundancia.png Graphic file (type png)
 <use Img/cap2/Barras_Abundancia.png>
-Package pdftex.def Info: Img/cap2/Barras_Abundancia.png  used on input line 550
+Package pdftex.def Info: Img/cap2/Barras_Abundancia.png  used on input line 548
 .
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \vbox (badness 3396) has occurred while \output is active []
+Underfull \vbox (badness 5637) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 552.
-LaTeX Info: Redefining \% on input line 552.
- [38 <./Img/cap2/Wilcoxon_Shannon.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 555.
-LaTeX Info: Redefining \% on input line 555.
- [39 <./Img/cap2/Barras_Abundancia.png>]
+LaTeX Info: Redefining \. on input line 556.
+LaTeX Info: Redefining \% on input line 556.
+ [38]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 565.
+               Default added (so using `!tbp') on input line 563.
 
-<Img/cap2/Rarefaccion.png, id=487, 853.5087pt x 426.6339pt>
+<Img/cap2/Rarefaccion.png, id=457, 853.5087pt x 426.6339pt>
 File: Img/cap2/Rarefaccion.png Graphic file (type png)
 <use Img/cap2/Rarefaccion.png>
-Package pdftex.def Info: Img/cap2/Rarefaccion.png  used on input line 567.
+Package pdftex.def Info: Img/cap2/Rarefaccion.png  used on input line 565.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 571.
+               Default added (so using `!tbp') on input line 569.
 
-<Img/cap2/Rarefaccion_diversidadAlfa.png, id=488, 853.5087pt x 426.6339pt>
+<Img/cap2/Rarefaccion_diversidadAlfa.png, id=458, 853.5087pt x 426.6339pt>
 File: Img/cap2/Rarefaccion_diversidadAlfa.png Graphic file (type png)
 <use Img/cap2/Rarefaccion_diversidadAlfa.png>
 Package pdftex.def Info: Img/cap2/Rarefaccion_diversidadAlfa.png  used on input
- line 573.
+ line 571.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 577.
+               Default added (so using `!tbp') on input line 575.
 
-<Img/cap2/Rarefaccion_diversidadBeta.png, id=489, 853.5087pt x 426.6339pt>
+<Img/cap2/Rarefaccion_diversidadBeta.png, id=459, 853.5087pt x 426.6339pt>
 File: Img/cap2/Rarefaccion_diversidadBeta.png Graphic file (type png)
 <use Img/cap2/Rarefaccion_diversidadBeta.png>
 Package pdftex.def Info: Img/cap2/Rarefaccion_diversidadBeta.png  used on input
- line 579.
+ line 577.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \vbox (badness 2189) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 589.
-LaTeX Info: Redefining \% on input line 589.
- [40 <./Img/cap2/Rarefaccion.png>]
-LaTeX Info: Redefining \. on input line 589.
-LaTeX Info: Redefining \% on input line 589.
- [41 <./Img/cap2/Rarefaccion_diversidadAlfa.png> <./Img/cap2/Rarefaccion_divers
-idadBeta.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 595--597
+Underfull \hbox (badness 10000) in paragraph at lines 593--595
 
  []
 
+LaTeX Info: Redefining \. on input line 596.
+LaTeX Info: Redefining \% on input line 596.
+[39 <./Img/cap2/Barras_Abundancia.png>]
+LaTeX Info: Redefining \. on input line 596.
+LaTeX Info: Redefining \% on input line 596.
+ [40 <./Img/cap2/Rarefaccion.png> <./Img/cap2/Rarefaccion_diversidadAlfa.png>]
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 5
-99.
+97.
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 599.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 597.
 
-Overfull \hbox (26.17857pt too wide) in paragraph at lines 610--611
+Overfull \hbox (26.17857pt too wide) in paragraph at lines 608--609
 [][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (181.2783pt too wide) in paragraph at lines 616--617
+Overfull \hbox (181.2783pt too wide) in paragraph at lines 614--615
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 621--622
+Underfull \hbox (badness 10000) in paragraph at lines 619--620
 
  []
 
 
-Overfull \hbox (13.35484pt too wide) in paragraph at lines 623--624
+Overfull \hbox (13.35484pt too wide) in paragraph at lines 621--622
 \OT1/cmr/m/n/12 plot[]net() no re-quie-re una lla-ma-da se-pa-ra-da a la fun-ci
 ^^Son ma-ke[]network(),
  []
 
-
-Overfull \hbox (230.62822pt too wide) in paragraph at lines 626--627
+LaTeX Info: Redefining \. on input line 622.
+LaTeX Info: Redefining \% on input line 622.
+[41 <./Img/cap2/Rarefaccion_diversidadBeta.png>]
+Overfull \hbox (230.62822pt too wide) in paragraph at lines 624--625
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-LaTeX Info: Redefining \. on input line 634.
-LaTeX Info: Redefining \% on input line 634.
+LaTeX Info: Redefining \. on input line 653.
+LaTeX Info: Redefining \% on input line 653.
 [42]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 664.
+               Default added (so using `!tbp') on input line 662.
 
-<Img/cap2/AllData_Alfa_diversidad.png, id=514, 853.5087pt x 426.6339pt>
+<Img/cap2/AllData_Alfa_diversidad.png, id=491, 853.5087pt x 426.6339pt>
 File: Img/cap2/AllData_Alfa_diversidad.png Graphic file (type png)
 <use Img/cap2/AllData_Alfa_diversidad.png>
 Package pdftex.def Info: Img/cap2/AllData_Alfa_diversidad.png  used on input li
-ne 666.
+ne 664.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 668.
-LaTeX Info: Redefining \% on input line 668.
- [43]
-
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 670.
+               Default added (so using `!tbp') on input line 668.
 
-<Img/cap2/AllData_Beta_diversidad.png, id=519, 853.5087pt x 426.6339pt>
+<Img/cap2/AllData_Beta_diversidad.png, id=492, 853.5087pt x 426.6339pt>
 File: Img/cap2/AllData_Beta_diversidad.png Graphic file (type png)
 <use Img/cap2/AllData_Beta_diversidad.png>
 Package pdftex.def Info: Img/cap2/AllData_Beta_diversidad.png  used on input li
-ne 672.
+ne 670.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 )
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [44 <./Img/cap2/AllData_Alfa_diversidad.png>]
+ [43 <./Img/cap2/AllData_Alfa_diversidad.png>]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [45 <./Img/cap2/AllData_Beta_diversidad.png>]
+ [44 <./Img/cap2/AllData_Beta_diversidad.png>]
 \openout2 = `Capitulos/cap3.aux'.
 
- (./Capitulos/cap3.tex [46
-
-
-
-
-]
+ (./Capitulos/cap3.tex
 Cap\'{\i }tulo 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
@@ -2025,7 +1866,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [47]
+ [45
+
+
+
+
+]
 Underfull \hbox (badness 10000) in paragraph at lines 24--25
 
  []
@@ -2052,11 +1898,11 @@ LaTeX Info: Redefining \. on input line 48.
 LaTeX Info: Redefining \% on input line 48.
 
 Overfull \hbox (3.68361pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 48 \OT1/cmr/m/sl/12 CAP[]ITULO 3.  SIMULADOR METAGEN[]OMICO PYM
+\OT1/cmr/m/n/12 46 \OT1/cmr/m/sl/12 CAP[]ITULO 3.  SIMULADOR METAGEN[]OMICO PYM
 ETASEEM
  []
 
-[48]
+[46]
 Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
  []
@@ -2073,51 +1919,51 @@ Underfull \hbox (badness 10000) in paragraph at lines 60--205
 
 LaTeX Info: Redefining \. on input line 205.
 LaTeX Info: Redefining \% on input line 205.
-[49]
+[47]
 LaTeX Info: Redefining \. on input line 205.
 LaTeX Info: Redefining \% on input line 205.
 
 Overfull \hbox (3.68361pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 50 \OT1/cmr/m/sl/12 CAP[]ITULO 3.  SIMULADOR METAGEN[]OMICO PYM
+\OT1/cmr/m/n/12 48 \OT1/cmr/m/sl/12 CAP[]ITULO 3.  SIMULADOR METAGEN[]OMICO PYM
 ETASEEM
  []
 
-[50]
+[48]
 \openout2 = `Capitulos/cap4.aux'.
 
  (./Capitulos/cap4.tex
 Cap\'{\i }tulo 4.
-) [51
+) [49
 
 
 
 
-] [52
+] [50
 
 
 
-] [53]
+] [51]
 \openout2 = `Apendices/Ap.aux'.
 
  (./Apendices/Ap.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [54
+ [52
 
 
 ]
 Ap\'{e}ndice A.
-) [55]
+) [53]
 \openout2 = `Apendices/Bp.aux'.
 
- (./Apendices/Bp.tex [56
+ (./Apendices/Bp.tex [54
 
 
 
 
 ]
 Ap\'{e}ndice B.
-) [57] [58
+) [55] [56
 
 
 
@@ -2136,8 +1982,8 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 53DFE23172C6FBC7F95A73B034A870DE;5356.
  ) 
 Here is how much of TeX's memory you used:
- 16484 strings out of 478287
- 274183 string characters out of 5849289
+ 16477 strings out of 478287
+ 274114 string characters out of 5849289
  618132 words of memory out of 5000000
  34194 multiletter control sequences out of 15000+600000
  478522 words of font info for 61 fonts, out of 8000000 for 9000
@@ -2159,10 +2005,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1
 /public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfr
 m1200.pfb>
-Output written on main.pdf (68 pages, 6349111 bytes).
+Output written on main.pdf (66 pages, 6347447 bytes).
 PDF statistics:
- 691 PDF objects out of 1000 (max. 8388607)
- 527 compressed objects within 6 object streams
- 145 named destinations out of 1000 (max. 500000)
+ 655 PDF objects out of 1000 (max. 8388607)
+ 500 compressed objects within 5 object streams
+ 138 named destinations out of 1000 (max. 500000)
  405 words of extra memory for PDF output out of 10000 (max. 10000000)
 
