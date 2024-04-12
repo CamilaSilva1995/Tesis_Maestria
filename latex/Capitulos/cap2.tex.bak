@@ -295,10 +295,31 @@ Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud
 Luego de no ver una clara separacion de los datos, Dado que no se observa una clara separación de los datos, se decide proceder con un análisis en conjuntos más pequeños. Este enfoque puede ayudar a identificar patrones más específicos o diferencias significativas en la composición de especies entre subconjuntos de muestras, lo que contribuirá a una comprensión más detallada de la diversidad microbiana en el contexto particular del estudio.\\
 
 \section{Exploración a distintos niveles taxonómicos}
+Podemos visualizar las barras de abundancia absolutas y relativas de nuestros datos representando las muestras en el eje x y las abundancias en el eje y, diferenciando entre muestras sanas y enfermas.\\
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/Barras_Eukarya10.png}
+\caption{A) Barras de abundancias absolutas y B) Relativas}
+\end{figure}
+Debido a la gran cantidad de datos, resulta difícil discernir diferencias entre las muestras. Por lo tanto, se han creado subconjuntos dividiendo por reino y estableciendo subdivisiones en diferentes niveles taxonómicos.\\
 
-En el análisis de diferentes grupos taxonómicos, comenzamos examinando gráficos de barras de abundancias como primer paso para la selección de conjuntos específicos de interés. Al representar las muestras en el eje x y las abundancias en el eje y, se logra una visualización clara de las abundancias, tanto absolutas como relativas, en cada muestra. Este enfoque nos permite identificar de manera eficiente conjuntos particulares que pueden ser esenciales para un análisis más detallado y específico.\\
+A nivel de filo, ya podemos apreciar una mayor diversidad en nuestras muestras, siendo la mayoría de los filos pertenecientes a bacterias.\\
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/Barras_Eukarya10.png}
+\caption{A)Barras de abundancias absolutas y B) relativas a nivel de filo}
+\end{figure}
+Podemos notar algunas diferencias entre los diferentes filos; sin embargo, la gran cantidad de taxones dificulta distinguir adecuadamente el color de cada uno, a menos que tengan una abundancia muy significativa. Dado que nuestro objetivo es diferenciar entre muestras sanas y enfermas, agregaremos una distinción adicional utilizando la variable 'Tratamiento': representaremos las muestras sanas en color blanco y las muestras enfermas en color negro.\\
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/Barras_Eukarya10.png}
+\caption{Barras de abundancias relativas separando entre sanas y enfermas}
+\end{figure}
+De igual manera, la cantidad de taxones dificulta la distinción entre las muestras. Por ello, hemos creado subconjuntos más pequeños para facilitar una observación más clara de nuestros datos.\\
 
-Basándonos en los resultados y medidas anteriores, procedemos a explorar las muestras a diferentes niveles taxonómicos específicos, comenzando con los subconjuntos a nivel de reino, en este caso, Bacteria y Eucariota. \\
+En el análisis de diversos grupos taxonómicos, comenzamos examinando gráficos de barras de abundancias como primer paso para seleccionar conjuntos específicos de interés. Al representar las muestras en el eje x y las abundancias en el eje y, obtenemos una visualización clara de las abundancias absolutas y relativas en cada muestra. Este enfoque nos facilita identificar de manera eficiente conjuntos particulares que pueden ser fundamentales para un análisis más detallado y específico.\\
+
+Basándonos en los resultados y medidas anteriores, procedemos a explorar las muestras a diferentes niveles taxonómicos específicos, comenzando con los subconjuntos a nivel de reino, en este caso, Bacteria y Eucariota.\\
 
 Podemos ver cuantos “Eukaryota” tenemos en “Kingdom”.
 \begin{lstlisting}[basicstyle=\small] 
@@ -312,75 +333,55 @@ sum(fresa_kraken_fil@tax_table@.Data[,"Kingdom"]=="Bacteria")
 
 Al verificar lo observado anteriormente con la agrupación de subconjuntos, confirmamos que hay una mayor cantidad de muestras clasificadas como bacterias en comparación con las clasificadas como eucariotas.\\
 
-A partir de estos dos subconjuntos, realizamos una agrupación adicional por filo, familia, género y especie. La elección de estos niveles taxonómicos se fundamenta en diferentes propósitos: el filo se selecciona como el siguiente nivel después del reino para proporcionar una visualización panorámica de los datos; mientras que la familia, el género y la especie se eligen para obtener una visualización más detallada y poder identificar diferencias significativas entre los grupos de datos.\\
+A partir de estos dos subconjuntos, llevamos a cabo una agrupación adicional por filo, familia, género y especie. La elección de estos niveles taxonómicos se basa en diferentes propósitos: el filo se selecciona como el siguiente nivel después del reino para proporcionar una visualización panorámica de los datos; mientras que la familia, el género y la especie se seleccionan para obtener una visualización más detallada y poder identificar diferencias significativas entre los grupos de datos.\\
 
-\textbf{PONER AQUI IMAGEN DE BARRAS DE ABUNDANCIAS RELATIVAS, (filo, familia,genero y especie para eucariota}
-%\begin{figure}[!]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/.png}
-%\caption{}
-%\end{figure}
+EXPLICAR COMO Y  POR QUE SACAR EL 10 POR CIENTO\\
 
-
-\begin{figure}[!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras_Eukarya10.png}
-\caption{A) Filo, B) Familia, C) Genero, D) Especie, \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
+\caption{Barras de abundancia para eucariota a nivel A) Filo, B) Familia, C) Genero, D) Especie,  \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
-
 
 En esta representación a nivel de filo, podemos destacar la disminución notable de \textit{Oomycota} en las muestras enfermas en comparación con las muestras sanas. Al profundizar a nivel de familia, observamos una disminución específica de \textit{Peronosporaceae} en las muestras enfermas en comparación con las muestras sanas.\\
 
-\textbf{PONER AQUI IMAGEN DE BARRAS DE ABUNDANCIAS RELATIVAS, (filo, familia,genero y especie para bacteria}
-%\begin{figure}[!]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/.png}
-%\caption{}
-%\end{figure}
-
-
-\begin{figure}[!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras_Bacteria10.png}
-%\caption{A) Filo, B) Familia, C) Genero, D) Especie, \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
+\caption{Barras de abundancia para bacteria a nivel A) Filo, B) Familia, C) Genero, D) Especie, \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
 
+\textbf{Diversidad alfa para los niveles taxonomicos}
 
-
-\begin{figure}[!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Alpha_Eukarya.png}
-%\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
+\caption{Diversidad alpha para eucariota a nivel de A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
 
 En esta imagen, podemos ver que con la diversidad Chao1 a nivel de especie se genera una diferencia considerable de diversidades entre muestras sanas y enfermas, lo cual se detallara mas adelante con una prueba de hipótesis. Tambien ...
 
-
-\begin{figure}[!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Alpha_Bacteria.png}
-%\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
+\caption{Diversidad alpha para bacteria a nivel de A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
 
 En esta imagen, podemos ver que con la diversidad Chao1 a nivel de género se evidencia una diferencia considerable de diversidades entre muestras sanas y enfermas, lo cual se detallara mas adelante con una prueba de hipótesis. Tambien ...
 
-Diversidad beta para los niveles taxonomicos 
+\textbf{Diversidad beta para los niveles taxonomicos}
 
-\begin{figure}[!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Beta_Eukarya.png}
-%\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
+\caption{Diversidad beta para eucariota a nivel de A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
 
-
-\begin{figure}[!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Beta_Bacteria.png}
-%\caption{A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(Funciones&Graficas.R)}}
+\caption{Diversidad beta para bacteria a nivel de A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
-
-
-
 
 
 \section{Prueba de Hipótesis}
