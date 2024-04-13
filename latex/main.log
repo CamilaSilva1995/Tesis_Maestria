@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  11 APR 2024 20:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  12 APR 2024 18:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1172,208 +1172,215 @@ Underfull \hbox (badness 10000) in paragraph at lines 61--62
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 90--91
 
  []
 
-
+LaTeX Info: Redefining \. on input line 91.
+LaTeX Info: Redefining \% on input line 91.
+[12]
 Underfull \hbox (badness 10000) in paragraph at lines 92--93
 
  []
 
-LaTeX Info: Redefining \. on input line 93.
-LaTeX Info: Redefining \% on input line 93.
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
+LaTeX Warning: Citation `tuomisto2010' on page 13 undefined on input line 121.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
 
  []
 
-
-LaTeX Warning: Citation `tuomisto2010' on page 13 undefined on input line 125.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
-
- []
-
-LaTeX Info: Redefining \. on input line 126.
-LaTeX Info: Redefining \% on input line 126.
+LaTeX Info: Redefining \. on input line 122.
+LaTeX Info: Redefining \% on input line 122.
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 130--132
+Underfull \hbox (badness 10000) in paragraph at lines 126--128
 
  []
 
 
-LaTeX Warning: Citation `shannon1948' on page 14 undefined on input line 135.
+LaTeX Warning: Citation `shannon1948' on page 14 undefined on input line 131.
 
 
-LaTeX Warning: Citation `simpson1949' on page 14 undefined on input line 135.
+LaTeX Warning: Citation `simpson1949' on page 14 undefined on input line 131.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--136
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 137--138
+Underfull \hbox (badness 10000) in paragraph at lines 129--132
 
  []
 
-LaTeX Info: Redefining \. on input line 140.
-LaTeX Info: Redefining \% on input line 140.
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+
+ []
+
+LaTeX Info: Redefining \. on input line 136.
+LaTeX Info: Redefining \% on input line 136.
 [14]
 
-LaTeX Warning: Command \texttimes invalid in math mode on input line 142.
+LaTeX Warning: Command \texttimes invalid in math mode on input line 138.
 
 
-LaTeX Warning: Command \texttimes invalid in math mode on input line 142.
+LaTeX Warning: Command \texttimes invalid in math mode on input line 138.
 
 
-LaTeX Warning: Command \texttimes invalid in math mode on input line 142.
+LaTeX Warning: Command \texttimes invalid in math mode on input line 138.
 
 
-LaTeX Warning: Command \texttimes invalid in math mode on input line 142.
+LaTeX Warning: Command \texttimes invalid in math mode on input line 138.
 
 Missing character: There is no Ö in font cmr12!
 Missing character: There is no Ö in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
-LaTeX Info: Redefining \. on input line 155.
-LaTeX Info: Redefining \% on input line 155.
+LaTeX Info: Redefining \. on input line 154.
+LaTeX Info: Redefining \% on input line 154.
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 162--163
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 174--175
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
-LaTeX Info: Redefining \. on input line 175.
-LaTeX Info: Redefining \% on input line 175.
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--173
+
+ []
+
+LaTeX Info: Redefining \. on input line 173.
+LaTeX Info: Redefining \% on input line 173.
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 176--177
-
- []
-
 <Img/cap2/DiversidadAlfaFresaKraken.png, id=293, 853.5087pt x 426.6339pt>
 File: Img/cap2/DiversidadAlfaFresaKraken.png Graphic file (type png)
 <use Img/cap2/DiversidadAlfaFresaKraken.png>
 Package pdftex.def Info: Img/cap2/DiversidadAlfaFresaKraken.png  used on input 
-line 180.
+line 176.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
-LaTeX Info: Redefining \. on input line 185.
-LaTeX Info: Redefining \% on input line 185.
+
+Underfull \hbox (badness 10000) in paragraph at lines 182--183
+
+ []
+
+LaTeX Info: Redefining \. on input line 183.
+LaTeX Info: Redefining \% on input line 183.
 [17 <./Img/cap2/DiversidadAlfaFresaKraken.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 186--187
-
- []
-
 <Img/cap2/DiversidadAlfaFresaKraken_fil.png, id=302, 853.5087pt x 426.6339pt>
 File: Img/cap2/DiversidadAlfaFresaKraken_fil.png Graphic file (type png)
 <use Img/cap2/DiversidadAlfaFresaKraken_fil.png>
 Package pdftex.def Info: Img/cap2/DiversidadAlfaFresaKraken_fil.png  used on in
-put line 190.
+put line 186.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
 
  []
 
-LaTeX Info: Redefining \. on input line 195.
-LaTeX Info: Redefining \% on input line 195.
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+ []
+
+LaTeX Info: Redefining \. on input line 193.
+LaTeX Info: Redefining \% on input line 193.
 [18 <./Img/cap2/DiversidadAlfaFresaKraken_fil.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 196--197
+
+LaTeX Warning: Citation `whittaker1960' on page 19 undefined on input line 195.
+
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
 
  []
 
 
-LaTeX Warning: Citation `whittaker1960' on page 19 undefined on input line 199.
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
 
+ []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 199--200
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 201--202
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 203--204
-
- []
-
-LaTeX Info: Redefining \. on input line 204.
-LaTeX Info: Redefining \% on input line 204.
+LaTeX Info: Redefining \. on input line 206.
+LaTeX Info: Redefining \% on input line 206.
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 210--212
+Underfull \hbox (badness 10000) in paragraph at lines 206--208
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
+Underfull \hbox (badness 10000) in paragraph at lines 209--210
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--216
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
 
  []
 
 
 LaTeX Warning: Citation `bray&curtis1957' on page 20 undefined on input line 21
-7.
+3.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--222
-
- []
-
-LaTeX Info: Redefining \. on input line 223.
-LaTeX Info: Redefining \% on input line 223.
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 223--224
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
 
  []
 
-<Img/cap2/DiversidadBetaFresaKraken_fil.png, id=323, 853.5087pt x 426.6339pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
+
+ []
+
+<Img/cap2/DiversidadBetaFresaKraken_fil.png, id=318, 853.5087pt x 426.6339pt>
 File: Img/cap2/DiversidadBetaFresaKraken_fil.png Graphic file (type png)
 <use Img/cap2/DiversidadBetaFresaKraken_fil.png>
 Package pdftex.def Info: Img/cap2/DiversidadBetaFresaKraken_fil.png  used on in
-put line 227.
+put line 223.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 234--236
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Info: Redefining \. on input line 228.
+LaTeX Info: Redefining \% on input line 228.
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 230--232
 
  []
 
-LaTeX Info: Redefining \. on input line 236.
-LaTeX Info: Redefining \% on input line 236.
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
+
+ []
+
+LaTeX Info: Redefining \. on input line 234.
+LaTeX Info: Redefining \% on input line 234.
 [21 <./Img/cap2/DiversidadBetaFresaKraken_fil.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 237--238
-
- []
-
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 239.
+               Default added (so using `!tbp') on input line 235.
 
 <Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png, id=333, 853.5087pt x 426.6
 339pt>
@@ -1381,31 +1388,31 @@ File: Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png Graphic file (type png
 )
 <use Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png>
 Package pdftex.def Info: Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png  us
-ed on input line 241.
+ed on input line 237.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 245--246
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 
  []
 
 
 Underfull \vbox (badness 1147) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 248.
-LaTeX Info: Redefining \% on input line 248.
+LaTeX Info: Redefining \. on input line 246.
+LaTeX Info: Redefining \% on input line 246.
  [22 <./Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 250--252
+Underfull \hbox (badness 10000) in paragraph at lines 246--248
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--254
+Underfull \hbox (badness 10000) in paragraph at lines 249--250
 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 255.
+               Default added (so using `!tbp') on input line 251.
 
 <Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png, id=341, 853.5087pt x 426
 .6339pt>
@@ -1413,62 +1420,73 @@ File: Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png Graphic file (type p
 ng)
 <use Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png>
 Package pdftex.def Info: Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png  
-used on input line 257.
+used on input line 253.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 264--266
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 267--268
+LaTeX Info: Redefining \. on input line 259.
+LaTeX Info: Redefining \% on input line 259.
+[23 <./Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 260--262
 
  []
 
-LaTeX Info: Redefining \. on input line 268.
-LaTeX Info: Redefining \% on input line 268.
-[23]
+
+Underfull \hbox (badness 10000) in paragraph at lines 263--264
+
+ []
+
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 269.
+               Default added (so using `!tbp') on input line 265.
 
-<Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png, id=348, 853.5087pt x 426
+<Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png, id=349, 853.5087pt x 426
 .6339pt>
 File: Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png Graphic file (type p
 ng)
 <use Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png>
 Package pdftex.def Info: Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png  
-used on input line 271.
+used on input line 267.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 278--280
+LaTeX Info: Redefining \. on input line 272.
+LaTeX Info: Redefining \% on input line 272.
+[24 <./Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 274--276
 
  []
 
-LaTeX Info: Redefining \. on input line 280.
-LaTeX Info: Redefining \% on input line 280.
-[24 <./Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png>]
-Overfull \hbox (1.36168pt too wide) in paragraph at lines 281--282
+
+Overfull \hbox (1.36168pt too wide) in paragraph at lines 277--278
 []\OT1/cmr/m/n/12 Al igual que las dis-tan-cias an-te-rio-res, la dis-tan-cia d
 e JSD es sim^^Setri-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 281--282
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 283.
+               Default added (so using `!tbp') on input line 279.
 
-<Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png, id=356, 853.5087pt x 426.6339p
+<Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png, id=357, 853.5087pt x 426.6339p
 t>
 File: Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png Graphic file (type png)
 <use Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png>
 Package pdftex.def Info: Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png  used o
-n input line 285.
+n input line 281.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 285--286
+
+ []
+
+LaTeX Info: Redefining \. on input line 286.
+LaTeX Info: Redefining \% on input line 286.
+[25 <./Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 287--288
+
+ []
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 289--290
 
@@ -1479,115 +1497,103 @@ Underfull \hbox (badness 10000) in paragraph at lines 291--292
 
  []
 
-LaTeX Info: Redefining \. on input line 292.
-LaTeX Info: Redefining \% on input line 292.
-[25 <./Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 293--294
+<Img/cap2/Barras_Eukarya10.png, id=366, 853.5087pt x 426.6339pt>
+File: Img/cap2/Barras_Eukarya10.png Graphic file (type png)
+<use Img/cap2/Barras_Eukarya10.png>
+Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 297.
+
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 294--301
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 295--296
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- []
-
-
-Underfull \vbox (badness 1147) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 296.
-LaTeX Info: Redefining \% on input line 296.
- [26 <./Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png>]
-<Img/cap2/Barras_Eukarya10.png, id=370, 853.5087pt x 426.6339pt>
+LaTeX Info: Redefining \. on input line 301.
+LaTeX Info: Redefining \% on input line 301.
+ [26]
 File: Img/cap2/Barras_Eukarya10.png Graphic file (type png)
 <use Img/cap2/Barras_Eukarya10.png>
-Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 301.
-
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 298--305
-
- []
-
-File: Img/cap2/Barras_Eukarya10.png Graphic file (type png)
-<use Img/cap2/Barras_Eukarya10.png>
-Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 309.
+Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 305.
 
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 File: Img/cap2/Barras_Eukarya10.png Graphic file (type png)
 <use Img/cap2/Barras_Eukarya10.png>
-Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 315.
+Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 311.
 
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 306--319
+Underfull \hbox (badness 10000) in paragraph at lines 302--315
 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 319.
-LaTeX Info: Redefining \% on input line 319.
+LaTeX Info: Redefining \. on input line 315.
+LaTeX Info: Redefining \% on input line 315.
 [27 <./Img/cap2/Barras_Eukarya10.png>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 320--321
+Underfull \hbox (badness 10000) in paragraph at lines 316--317
 
  []
 
 
-Underfull \vbox (badness 6428) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 318--319
 
-LaTeX Info: Redefining \. on input line 321.
-LaTeX Info: Redefining \% on input line 321.
+ []
+
+
+Underfull \vbox (badness 2707) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 319.
+LaTeX Info: Redefining \% on input line 319.
  [28]
-Underfull \hbox (badness 10000) in paragraph at lines 322--323
-
- []
-
-
-Overfull \hbox (52.82347pt too wide) in paragraph at lines 326--327
+Overfull \hbox (52.82347pt too wide) in paragraph at lines 322--323
 [][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (46.2534pt too wide) in paragraph at lines 330--331
+Overfull \hbox (46.2534pt too wide) in paragraph at lines 326--327
 [][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--335
+Underfull \hbox (badness 10000) in paragraph at lines 330--331
 
  []
 
-LaTeX Info: Redefining \. on input line 336.
-LaTeX Info: Redefining \% on input line 336.
+
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
+
+ []
+
+LaTeX Info: Redefining \. on input line 333.
+LaTeX Info: Redefining \% on input line 333.
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 336--337
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 338--339
+Underfull \hbox (badness 10000) in paragraph at lines 334--335
 
  []
 
 File: Img/cap2/Barras_Eukarya10.png Graphic file (type png)
 <use Img/cap2/Barras_Eukarya10.png>
-Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 342.
+Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 338.
 
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 346--347
+Underfull \hbox (badness 10000) in paragraph at lines 342--343
 
  []
 
 <Img/cap2/Barras_Bacteria10.png, id=396, 853.5087pt x 426.6339pt>
 File: Img/cap2/Barras_Bacteria10.png Graphic file (type png)
 <use Img/cap2/Barras_Bacteria10.png>
-Package pdftex.def Info: Img/cap2/Barras_Bacteria10.png  used on input line 350
+Package pdftex.def Info: Img/cap2/Barras_Bacteria10.png  used on input line 346
 .
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
@@ -1596,26 +1602,27 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <Img/cap2/Alpha_Eukarya.png, id=399, 853.5087pt x 426.6339pt>
 File: Img/cap2/Alpha_Eukarya.png Graphic file (type png)
 <use Img/cap2/Alpha_Eukarya.png>
-Package pdftex.def Info: Img/cap2/Alpha_Eukarya.png  used on input line 358.
+Package pdftex.def Info: Img/cap2/Alpha_Eukarya.png  used on input line 354.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 360.
-LaTeX Info: Redefining \% on input line 360.
-[30]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+LaTeX Info: Redefining \. on input line 359.
+LaTeX Info: Redefining \% on input line 359.
+[30]
 <Img/cap2/Alpha_Bacteria.png, id=407, 853.5087pt x 426.6339pt>
 File: Img/cap2/Alpha_Bacteria.png Graphic file (type png)
 <use Img/cap2/Alpha_Bacteria.png>
-Package pdftex.def Info: Img/cap2/Alpha_Bacteria.png  used on input line 366.
+Package pdftex.def Info: Img/cap2/Alpha_Bacteria.png  used on input line 362.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 <Img/cap2/Beta_Eukarya.png, id=410, 853.5087pt x 426.6339pt>
 File: Img/cap2/Beta_Eukarya.png Graphic file (type png)
 <use Img/cap2/Beta_Eukarya.png>
-Package pdftex.def Info: Img/cap2/Beta_Eukarya.png  used on input line 376.
+Package pdftex.def Info: Img/cap2/Beta_Eukarya.png  used on input line 372.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1623,16 +1630,16 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <Img/cap2/Beta_Bacteria.png, id=413, 853.5087pt x 426.6339pt>
 File: Img/cap2/Beta_Bacteria.png Graphic file (type png)
 <use Img/cap2/Beta_Bacteria.png>
-Package pdftex.def Info: Img/cap2/Beta_Bacteria.png  used on input line 382.
+Package pdftex.def Info: Img/cap2/Beta_Bacteria.png  used on input line 378.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 403.
-LaTeX Info: Redefining \% on input line 403.
+LaTeX Info: Redefining \. on input line 401.
+LaTeX Info: Redefining \% on input line 401.
 [31 <./Img/cap2/Barras_Bacteria10.png>]
-LaTeX Info: Redefining \. on input line 419.
-LaTeX Info: Redefining \% on input line 419.
+LaTeX Info: Redefining \. on input line 420.
+LaTeX Info: Redefining \% on input line 420.
  [32 <./Img/cap2/Alpha_Eukarya.png>]
 LaTeX Info: Redefining \. on input line 440.
 LaTeX Info: Redefining \% on input line 440.
@@ -1640,48 +1647,48 @@ LaTeX Info: Redefining \% on input line 440.
 [33 <./Img/cap2/Alpha_Bacteria.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 454.
+               Default added (so using `!tbp') on input line 450.
 
 <Img/cap2/medias_Shannon.png, id=435, 853.5087pt x 426.6339pt>
 File: Img/cap2/medias_Shannon.png Graphic file (type png)
 <use Img/cap2/medias_Shannon.png>
-Package pdftex.def Info: Img/cap2/medias_Shannon.png  used on input line 456.
+Package pdftex.def Info: Img/cap2/medias_Shannon.png  used on input line 452.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 460.
+               Default added (so using `!tbp') on input line 456.
 
 <Img/cap2/pruebat_varianzasiguales_Shannon.png, id=436, 853.5087pt x 426.6339pt
 >
 File: Img/cap2/pruebat_varianzasiguales_Shannon.png Graphic file (type png)
 <use Img/cap2/pruebat_varianzasiguales_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasiguales_Shannon.png  used on
- input line 462.
+ input line 458.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 466.
+               Default added (so using `!tbp') on input line 462.
 
 <Img/cap2/pruebat_varianzasdiferentes_Shannon.png, id=437, 853.5087pt x 426.633
 9pt>
 File: Img/cap2/pruebat_varianzasdiferentes_Shannon.png Graphic file (type png)
 <use Img/cap2/pruebat_varianzasdiferentes_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasdiferentes_Shannon.png  used
- on input line 468.
+ on input line 464.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 473.
+               Default added (so using `!tbp') on input line 469.
 
 <Img/cap2/mediasFusarium_Shannon.png, id=438, 853.5087pt x 426.6339pt>
 File: Img/cap2/mediasFusarium_Shannon.png Graphic file (type png)
 <use Img/cap2/mediasFusarium_Shannon.png>
 Package pdftex.def Info: Img/cap2/mediasFusarium_Shannon.png  used on input lin
-e 475.
+e 471.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 479.
+               Default added (so using `!tbp') on input line 475.
 
 <Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png, id=439, 853.5087pt x 42
 6.6339pt>
@@ -1689,11 +1696,11 @@ File: Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png Graphic file (type
 png)
 <use Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png 
- used on input line 481.
+ used on input line 477.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 485.
+               Default added (so using `!tbp') on input line 481.
 
 <Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png, id=440, 853.5087pt x
  426.6339pt>
@@ -1701,12 +1708,18 @@ File: Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png Graphic file (ty
 pe png)
 <use Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.p
-ng  used on input line 487.
+ng  used on input line 483.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 495.
-LaTeX Info: Redefining \% on input line 495.
+LaTeX Info: Redefining \. on input line 492.
+LaTeX Info: Redefining \% on input line 492.
 [34 <./Img/cap2/Beta_Eukarya.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (7.36714pt too wide) in paragraph at lines 493--494
+[]\OT1/cmr/m/n/12 y que-re-mos pro-bar (te-ne-mos co-mo hi-po-te-sis nu-la)Wilc
+oxonWilcoxon 
+ []
+
+
+Underfull \vbox (badness 1796) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 495.
 LaTeX Info: Redefining \% on input line 495.
@@ -1719,160 +1732,151 @@ LaTeX Info: Redefining \. on input line 495.
 LaTeX Info: Redefining \% on input line 495.
  [37 <./Img/cap2/mediasFusarium_Shannon.png> <./Img/cap2/pruebat_varianzasigual
 esFusarium_Shannon.png>]
-Overfull \hbox (7.36714pt too wide) in paragraph at lines 497--498
-[]\OT1/cmr/m/n/12 y que-re-mos pro-bar (te-ne-mos co-mo hi-po-te-sis nu-la)Wilc
-oxonWilcoxon 
- []
-
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 510.
+               Default added (so using `!tbp') on input line 506.
 
 <Img/cap2/varianzas_Chao1.png, id=466, 853.5087pt x 426.6339pt>
 File: Img/cap2/varianzas_Chao1.png Graphic file (type png)
 <use Img/cap2/varianzas_Chao1.png>
-Package pdftex.def Info: Img/cap2/varianzas_Chao1.png  used on input line 512.
+Package pdftex.def Info: Img/cap2/varianzas_Chao1.png  used on input line 508.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 519.
-LaTeX Info: Redefining \% on input line 519.
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `!tbp') on input line 516.
+
+<Img/cap2/Wilcoxon_Shannon.png, id=467, 853.5087pt x 426.6339pt>
+File: Img/cap2/Wilcoxon_Shannon.png Graphic file (type png)
+<use Img/cap2/Wilcoxon_Shannon.png>
+Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 518.
+
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+LaTeX Info: Redefining \. on input line 528.
+LaTeX Info: Redefining \% on input line 528.
 [38 <./Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png>]
+LaTeX Info: Redefining \. on input line 528.
+LaTeX Info: Redefining \% on input line 528.
+ [39 <./Img/cap2/varianzas_Chao1.png> <./Img/cap2/Wilcoxon_Shannon.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 520.
+               Default added (so using `!tbp') on input line 532.
 
-<Img/cap2/Wilcoxon_Shannon.png, id=472, 853.5087pt x 426.6339pt>
 File: Img/cap2/Wilcoxon_Shannon.png Graphic file (type png)
 <use Img/cap2/Wilcoxon_Shannon.png>
-Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 522.
+Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 534.
 
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 536.
+               Default added (so using `!tbp') on input line 543.
 
-File: Img/cap2/Wilcoxon_Shannon.png Graphic file (type png)
-<use Img/cap2/Wilcoxon_Shannon.png>
-Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 538.
-
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 547.
-
-<Img/cap2/Barras_Abundancia.png, id=473, 853.5087pt x 426.6339pt>
+<Img/cap2/Barras_Abundancia.png, id=481, 853.5087pt x 426.6339pt>
 File: Img/cap2/Barras_Abundancia.png Graphic file (type png)
 <use Img/cap2/Barras_Abundancia.png>
-Package pdftex.def Info: Img/cap2/Barras_Abundancia.png  used on input line 549
+Package pdftex.def Info: Img/cap2/Barras_Abundancia.png  used on input line 545
 .
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-Underfull \vbox (badness 3396) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 551.
-LaTeX Info: Redefining \% on input line 551.
- [39 <./Img/cap2/varianzas_Chao1.png>]
-LaTeX Info: Redefining \. on input line 551.
-LaTeX Info: Redefining \% on input line 551.
- [40 <./Img/cap2/Wilcoxon_Shannon.png>]
+LaTeX Info: Redefining \. on input line 553.
+LaTeX Info: Redefining \% on input line 553.
+[40]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 564.
+               Default added (so using `!tbp') on input line 560.
 
 <Img/cap2/Rarefaccion.png, id=487, 853.5087pt x 426.6339pt>
 File: Img/cap2/Rarefaccion.png Graphic file (type png)
 <use Img/cap2/Rarefaccion.png>
-Package pdftex.def Info: Img/cap2/Rarefaccion.png  used on input line 566.
+Package pdftex.def Info: Img/cap2/Rarefaccion.png  used on input line 562.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 570.
+               Default added (so using `!tbp') on input line 566.
 
 <Img/cap2/Rarefaccion_diversidadAlfa.png, id=488, 853.5087pt x 426.6339pt>
 File: Img/cap2/Rarefaccion_diversidadAlfa.png Graphic file (type png)
 <use Img/cap2/Rarefaccion_diversidadAlfa.png>
 Package pdftex.def Info: Img/cap2/Rarefaccion_diversidadAlfa.png  used on input
- line 572.
+ line 568.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 576.
+               Default added (so using `!tbp') on input line 572.
 
 <Img/cap2/Rarefaccion_diversidadBeta.png, id=489, 853.5087pt x 426.6339pt>
 File: Img/cap2/Rarefaccion_diversidadBeta.png Graphic file (type png)
 <use Img/cap2/Rarefaccion_diversidadBeta.png>
 Package pdftex.def Info: Img/cap2/Rarefaccion_diversidadBeta.png  used on input
- line 578.
+ line 574.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \vbox (badness 2189) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 588.
-LaTeX Info: Redefining \% on input line 588.
- [41 <./Img/cap2/Barras_Abundancia.png>]
-LaTeX Info: Redefining \. on input line 588.
-LaTeX Info: Redefining \% on input line 588.
- [42 <./Img/cap2/Rarefaccion.png> <./Img/cap2/Rarefaccion_diversidadAlfa.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 594--596
+Underfull \hbox (badness 10000) in paragraph at lines 590--592
 
  []
 
+LaTeX Info: Redefining \. on input line 593.
+LaTeX Info: Redefining \% on input line 593.
+[41 <./Img/cap2/Barras_Abundancia.png>]
+LaTeX Info: Redefining \. on input line 593.
+LaTeX Info: Redefining \% on input line 593.
+ [42 <./Img/cap2/Rarefaccion.png> <./Img/cap2/Rarefaccion_diversidadAlfa.png>]
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 5
-98.
+94.
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 598.
-LaTeX Info: Redefining \. on input line 608.
-LaTeX Info: Redefining \% on input line 608.
- [43 <./Img/cap2/Rarefaccion_diversidadBeta.png>]
-Overfull \hbox (26.17857pt too wide) in paragraph at lines 609--610
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 594.
+
+Overfull \hbox (26.17857pt too wide) in paragraph at lines 605--606
 [][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (181.2783pt too wide) in paragraph at lines 615--616
+Overfull \hbox (181.2783pt too wide) in paragraph at lines 611--612
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 620--621
+Underfull \hbox (badness 10000) in paragraph at lines 616--617
 
  []
 
 
-Overfull \hbox (13.35484pt too wide) in paragraph at lines 622--623
+Overfull \hbox (13.35484pt too wide) in paragraph at lines 618--619
 \OT1/cmr/m/n/12 plot[]net() no re-quie-re una lla-ma-da se-pa-ra-da a la fun-ci
 ^^Son ma-ke[]network(),
  []
 
-
-Overfull \hbox (230.62822pt too wide) in paragraph at lines 625--626
+LaTeX Info: Redefining \. on input line 619.
+LaTeX Info: Redefining \% on input line 619.
+[43 <./Img/cap2/Rarefaccion_diversidadBeta.png>]
+Overfull \hbox (230.62822pt too wide) in paragraph at lines 621--622
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-LaTeX Info: Redefining \. on input line 654.
-LaTeX Info: Redefining \% on input line 654.
+LaTeX Info: Redefining \. on input line 650.
+LaTeX Info: Redefining \% on input line 650.
 [44]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 663.
+               Default added (so using `!tbp') on input line 659.
 
 <Img/cap2/AllData_Alfa_diversidad.png, id=519, 853.5087pt x 426.6339pt>
 File: Img/cap2/AllData_Alfa_diversidad.png Graphic file (type png)
 <use Img/cap2/AllData_Alfa_diversidad.png>
 Package pdftex.def Info: Img/cap2/AllData_Alfa_diversidad.png  used on input li
-ne 665.
+ne 661.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 669.
+               Default added (so using `!tbp') on input line 665.
 
 <Img/cap2/AllData_Beta_diversidad.png, id=520, 853.5087pt x 426.6339pt>
 File: Img/cap2/AllData_Beta_diversidad.png Graphic file (type png)
 <use Img/cap2/AllData_Beta_diversidad.png>
 Package pdftex.def Info: Img/cap2/AllData_Beta_diversidad.png  used on input li
-ne 671.
+ne 667.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 )
 LaTeX Info: Redefining \. on input line 202.
@@ -2042,7 +2046,7 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1
 /public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfr
 m1200.pfb>
-Output written on main.pdf (68 pages, 6350947 bytes).
+Output written on main.pdf (68 pages, 6350647 bytes).
 PDF statistics:
  688 PDF objects out of 1000 (max. 8388607)
  524 compressed objects within 6 object streams

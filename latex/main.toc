@@ -10,14 +10,14 @@
 \contentsline {section}{\numberline {2.3}Exploración a distintos niveles taxonómicos}{27}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Prueba de Hipótesis}{31}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{33}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Prueba de Hipótesis sobre las varianzas de dos poblaciones pequeñas}{38}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Prueba de los rangos con signos de Wilcolxon}{39}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}Mann-Whitney}{39}{subsection.2.4.4}%
-\contentsline {section}{\numberline {2.5}Normalización}{41}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Normalización}{41}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.4.2}Prueba de Hipótesis sobre las varianzas de dos poblaciones pequeñas}{34}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Prueba de los rangos con signos de Wilcolxon}{38}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Mann-Whitney}{40}{subsection.2.4.4}%
+\contentsline {section}{\numberline {2.5}Normalización}{40}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Normalización}{40}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}Rarefacción}{41}{subsection.2.5.2}%
-\contentsline {section}{\numberline {2.6}Rarefacción}{43}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Redes}{43}{section.2.7}%
+\contentsline {section}{\numberline {2.6}Rarefacción}{41}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Redes}{41}{section.2.7}%
 \contentsline {section}{\numberline {2.8}Rs}{45}{section.2.8}%
 \contentsline {chapter}{\numberline {3}Simulador Metagenómico PyMetaSeem}{47}{chapter.3}%
 \contentsline {section}{\numberline {3.1}PyMetaSeem: simulador de datos metagenómicos a partir de un conjunto de datos genómicos}{48}{section.3.1}%
