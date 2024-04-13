@@ -117,6 +117,13 @@ Alpha_diversity <- function(phy,tax,attribute){
 #### Guarda Graficas
 ################################################################################
 
+barras1<-plot_bar(fresa_kraken_fil,fill="Treatment")
+barras2<-plot_bar(percentages_fil,fill="Treatment")
+Barras <- plot_grid(
+  barras1, barras2,
+  labels = c('A', 'B'), label_size = 12, ncol = 2)
+ggsave("Barras.png", plot = Barras, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+
 ############Eukarya#############################################################
 
 #-----------Eukarya by Phylum 
@@ -196,6 +203,8 @@ Beta_Eukarya <- plot_grid(
   Beta_Eukarya_Phylum, Beta_Eukarya_Family, Beta_Eukarya_Genus, Beta_Eukarya_Species,
   labels = c('A', 'B','C','D'), label_size = 12, ncol = 2)
 ggsave("Beta_Eukarya.png", plot = Beta_Eukarya, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+
+####-----------------------------------------------
 
 ############Bacteria############################################################
 
@@ -278,3 +287,4 @@ Beta_Bacteria <- plot_grid(
 ggsave("Beta_Bacteria.png", plot = Beta_Bacteria, path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
   
 ####-----------------------------------------------
+
