@@ -63,9 +63,6 @@ Este enfoque de eliminación se basa en mantener un umbral mínimo de calidad, c
 \begin{lstlisting}[basicstyle=\small] 
 sample_sums(fresa_kraken)
 \end{lstlisting}
-
-\textbf{PONER HISTOGRAMA DE CANTIDAD DE LECTURAS POR MUESTRAS}
-
 \resizebox{0.9\textwidth}{!} {
 \begin{tabular}{ c c c c c c c c }
 MD2055 & MD2056 & MD2065 & MD2066 & MD2075 & MD2076 & MD2085 & MD2086 \\
@@ -96,9 +93,6 @@ Este enfoque de eliminación selectiva respalda la robustez del análisis de dat
 \begin{lstlisting}[basicstyle=\small] 
 sample_sums(fresa_kraken_fil)
 \end{lstlisting}
-
-\textbf{PONER HISTOGRAMA DE CANTIDAD DE LECTURAS POR MUESTRAS (FILTRADO)}
-
 \resizebox{0.9\textwidth}{!} {
 \begin{tabular}{ c c c c c c c c }
 MD2055 & MD2056 & MD2065 & MD2066 & MD2075 & MD2076 & MD2085 & MD2086 \\
@@ -298,7 +292,7 @@ Luego de no ver una clara separacion de los datos, Dado que no se observa una cl
 Podemos visualizar las barras de abundancia absolutas y relativas de nuestros datos representando las muestras en el eje x y las abundancias en el eje y, diferenciando entre muestras sanas y enfermas.\\
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Img/cap2/Barras_Eukarya10.png}
+\includegraphics[width=\textwidth]{Img/cap2/Barras.png}
 \caption{A) Barras de abundancias absolutas y B) Relativas}
 \end{figure}
 Debido a la gran cantidad de datos, resulta difícil discernir diferencias entre las muestras. Por lo tanto, se han creado subconjuntos dividiendo por reino y estableciendo subdivisiones en diferentes niveles taxonómicos.\\
@@ -306,13 +300,13 @@ Debido a la gran cantidad de datos, resulta difícil discernir diferencias entre
 A nivel de filo, ya podemos apreciar una mayor diversidad en nuestras muestras, siendo la mayoría de los filos pertenecientes a bacterias.\\
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Img/cap2/Barras_Eukarya10.png}
+\includegraphics[width=\textwidth]{Img/cap2/filo_plot.png}
 \caption{A)Barras de abundancias absolutas y B) relativas a nivel de filo}
 \end{figure}
 Podemos notar algunas diferencias entre los diferentes filos; sin embargo, la gran cantidad de taxones dificulta distinguir adecuadamente el color de cada uno, a menos que tengan una abundancia muy significativa. Dado que nuestro objetivo es diferenciar entre muestras sanas y enfermas, agregaremos una distinción adicional utilizando la variable 'Tratamiento': representaremos las muestras sanas en color blanco y las muestras enfermas en color negro.\\
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Img/cap2/Barras_Eukarya10.png}
+\includegraphics[width=\textwidth]{Img/cap2/filo_plot_blackandwhite.png}
 \caption{Barras de abundancias relativas separando entre sanas y enfermas}
 \end{figure}
 De igual manera, la cantidad de taxones dificulta la distinción entre las muestras. Por ello, hemos creado subconjuntos más pequeños para facilitar una observación más clara de nuestros datos.\\
@@ -335,7 +329,8 @@ Al verificar lo observado anteriormente con la agrupación de subconjuntos, conf
 
 A partir de estos dos subconjuntos, llevamos a cabo una agrupación adicional por filo, familia, género y especie. La elección de estos niveles taxonómicos se basa en diferentes propósitos: el filo se selecciona como el siguiente nivel después del reino para proporcionar una visualización panorámica de los datos; mientras que la familia, el género y la especie se seleccionan para obtener una visualización más detallada y poder identificar diferencias significativas entre los grupos de datos.\\
 
-EXPLICAR COMO Y  POR QUE SACAR EL 10 POR CIENTO\\
+\textbf{GLOM10\%}
+Se realiza una aglomeracion al diez por ciento (10\%)  para tener una mejor visibilidad y podernos enfocar en las muestras con menor (mayor) abundancia. \\
 
 \begin{figure}[h]
 \centering
@@ -343,13 +338,13 @@ EXPLICAR COMO Y  POR QUE SACAR EL 10 POR CIENTO\\
 \caption{Barras de abundancia para eucariota a nivel A) Filo, B) Familia, C) Genero, D) Especie,  \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
 
-En esta representación a nivel de filo, podemos destacar la disminución notable de \textit{Oomycota} en las muestras enfermas en comparación con las muestras sanas. Al profundizar a nivel de familia, observamos una disminución específica de \textit{Peronosporaceae} en las muestras enfermas en comparación con las muestras sanas.\\
-
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras_Bacteria10.png}
 \caption{Barras de abundancia para bacteria a nivel A) Filo, B) Familia, C) Genero, D) Especie, \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
+
+En esta representación a nivel de filo, podemos destacar la disminución notable de \textit{Oomycota} en las muestras enfermas en comparación con las muestras sanas. Al profundizar a nivel de familia, observamos una disminución específica de \textit{Peronosporaceae} en las muestras enfermas en comparación con las muestras sanas.\\
 
 \textbf{Diversidad alfa para los niveles taxonomicos}
 
@@ -358,15 +353,12 @@ En esta representación a nivel de filo, podemos destacar la disminución notabl
 \includegraphics[width=\textwidth]{Img/cap2/Alpha_Eukarya.png}
 \caption{Diversidad alpha para eucariota a nivel de A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
-
 En esta imagen, podemos ver que con la diversidad Chao1 a nivel de especie se genera una diferencia considerable de diversidades entre muestras sanas y enfermas, lo cual se detallara mas adelante con una prueba de hipótesis. Tambien ...
-
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Alpha_Bacteria.png}
 \caption{Diversidad alpha para bacteria a nivel de A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
-
 En esta imagen, podemos ver que con la diversidad Chao1 a nivel de género se evidencia una diferencia considerable de diversidades entre muestras sanas y enfermas, lo cual se detallara mas adelante con una prueba de hipótesis. Tambien ...
 
 \textbf{Diversidad beta para los niveles taxonomicos}
