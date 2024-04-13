@@ -8,17 +8,17 @@
 \contentsline {subsection}{\numberline {2.2.1}Diversidad Alfa}{14}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Diversidad Beta}{19}{subsection.2.2.2}%
 \contentsline {section}{\numberline {2.3}Exploración a distintos niveles taxonómicos}{27}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Prueba de Hipótesis}{30}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{31}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Prueba de Hipótesis sobre las varianzas de dos poblaciones pequeñas}{32}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Prueba de los rangos con signos de Wilcolxon}{33}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}Mann-Whitney}{33}{subsection.2.4.4}%
-\contentsline {section}{\numberline {2.5}Normalización}{33}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Normalización}{33}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Rarefacción}{33}{subsection.2.5.2}%
-\contentsline {section}{\numberline {2.6}Rarefacción}{34}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Redes}{34}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Rs}{36}{section.2.8}%
+\contentsline {section}{\numberline {2.4}Prueba de Hipótesis}{31}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{34}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Prueba de Hipótesis sobre las varianzas de dos poblaciones pequeñas}{36}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Prueba de los rangos con signos de Wilcolxon}{36}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Mann-Whitney}{36}{subsection.2.4.4}%
+\contentsline {section}{\numberline {2.5}Normalización}{37}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Normalización}{37}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Rarefacción}{37}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}Rarefacción}{37}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Redes}{37}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Rs}{39}{section.2.8}%
 \contentsline {chapter}{\numberline {3}Simulador Metagenómico PyMetaSeem}{49}{chapter.3}%
 \contentsline {section}{\numberline {3.1}PyMetaSeem: simulador de datos metagenómicos a partir de un conjunto de datos genómicos}{50}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Simulaciones}{51}{subsection.3.1.1}%

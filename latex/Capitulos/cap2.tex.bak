@@ -377,13 +377,19 @@ En esta imagen, podemos ver que con la diversidad Chao1 a nivel de género se ev
 
 
 \section{Prueba de Hipótesis}
+Hipotesis 
+Suposición sobre los datos, la cual puede ser cierta o falsa.
 
-Procedimiento para evaluar la veracidad de una afirmación científica.
-Una prueba de hipótesis es un método estadístico que se utiliza para tomar decisiones sobre una población basándose en una muestra de datos.
+Las pruebas de hipótesis son herramientas valiosas en diversos campos, ya que permiten contrastar una teoría con la evidencia empírica. Este procedimiento riguroso nos ayuda a evaluar la veracidad de una afirmación científica de manera objetiva y fundamentada. En esencia, una prueba de hipótesis se define como un método estadístico que se emplea para tomar decisiones sobre una población en base a los datos obtenidos de una muestra representativa. Es una técnica de inferencia estadística que nos permite tomar decisiones sobre suposiciones acerca de una población, basadas en la observación.\\
 
+El propósito de una prueba estadística es examinar una hipótesis con respecto a los valores de uno o más parámetros poblacionales. Los componentes de una prueba estadística incluyen: la hipótesis nula, la hipótesis alternativa, el estadístico de prueba, la región de rechazo y el valor p. \\
+\textbf{Hipótesis nula ($H_0$):} Es la idea inicial, la suposición que se pone a prueba. Representa la creencia de que no hay diferencia o efecto significativo.\\
+\textbf{Hipótesis alternativa ($H_1$): }Es la contrapropuesta, lo que se espera encontrar si la $H_0$ es falsa. Representa la alternativa que se busca demostrar.\\
+\textbf{Estadístico de prueba: }Es la herramienta matemática (funcionde las mediciones muestrales) que utilizamos para analizar los datos y determinar si apoyan o no la $H_1$. Cada prueba estadística tiene su propio estadístico específico.\\
+\textbf{Región de rechazo: }Es una zona predefinida como territorio prohibido para la $H_0$. Si el valor del estadístico de prueba cae en esta región, la $H_0$ se rechaza por considerarse poco probable. ($x$ es el valor critico observado, el cual define la region de rechazo)\\
+\textbf{ P-valor:} Es la probabilidad de obtener un valor del estadístico de prueba tan extremo o más extremo que el observado, suponiendo que la $H_0$ sea verdadera. Un valor de p bajo (menor que el nivel de significancia $\alpha $  el cual se fija previamente  ) indica que es poco probable que el resultado se deba al azar, lo que lleva al rechazo de la $H_0$.\\
 
-
-
+En donde el objetivo principal de esta prueba es rechazar la hipótesis nula.\\
 
 %\begin{figure}[!]
 %centering
@@ -391,35 +397,11 @@ Una prueba de hipótesis es un método estadístico que se utiliza para tomar de
 %\caption{imagen de ejemplo %p-valor}
 %\end{figure}
 
-\textbf{P\_Valor}, el p\-valor se toma como una medida de probabilidad de exito (obtener un resultado especifico), de un estudio estadistico con datos observados.
-
-El calculo de este valor, depende de la prueba estadistica a usar y de las suposiciones hechas sobre la distribución de los datos. En general un valor pequeño del p-valor sugiere que los datos observados son poco probables bajo la hipótesis.
-
-Rice, J. A. (2006). Mathematical Statistics and Data Analysis (3rd ed.)
-Wasserman, L. (2004). All of Statistics: A Concise Course in Statistical Inference.
-
-EL p-valor se aplica a la teoría de decision, cuando se tiene dos hipótesis sobre una población.
-
-Hipotesis 
-Suposición sobre los datos, la cual puede ser cierta o falsa.
-
-$H_0$ como hipótesis nula y $H_a$ como hipótesis alternativa.
-  
-Prueba de Hipotesis
-Tecnica de inferencia estadística que permite tomar desiciones sobre suposiciones acerca de una población, basada en la observación.
-
-$\alpha$ = Es el nivel de significancia, el cual se fija previamente  
-
-x = Es el valor critico observado. 
-
-Dada que la hipotesis nula sea cierta, el p-valor es la probabilidad de obtener el $\alpha$-crítico o más extremo.
-
-
-
-A continuación se hacen las siguientes pruebas de hipotesis que parten de esta base, pero se realizan sobre diferentes medidas de los datos 
-
-
-		
+El p\-valor se considera como una medida de la probabilidad de éxito (obtener un resultado específico) en un estudio estadístico con los datos observados. El cálculo de este valor depende de la prueba estadística utilizada y de las suposiciones realizadas sobre la distribución de los datos. En general, un valor pequeño del p-valor sugiere que los datos observados son poco probables bajo la hipótesis nula.\\
+%Rice, J. A. (2006). Mathematical Statistics and Data Analysis (3rd ed.)
+%Wasserman, L. (2004). All of Statistics: A Concise Course in Statistical Inference.
+A continuación, se realizan las siguientes pruebas de hipótesis, todas basadas en esta premisa, pero aplicadas a diferentes medidas de los datos. \\
+	
 
 \subsection{Pruebas con muestras pequeñas para comparar dos medias poblacionales}
 
