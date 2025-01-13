@@ -1,4 +1,4 @@
-\chapter{Análisis Exploratorio de Datos}
+|\chapter{Análisis Exploratorio de Datos}
 
 Un análisis exploratorio se realiza para una investigacion y entendimiento afondo de los datos, y asi descubrir patrones ocultos y generar hipótesis, a traves de tecnicas de visualización de datos, análisis de correlación o minería de datos.\\
 
@@ -377,8 +377,7 @@ En esta imagen, podemos ver que con la diversidad Chao1 a nivel de género se ev
 
 
 \section{Prueba de Hipótesis}
-Hipotesis 
-Suposición sobre los datos, la cual puede ser cierta o falsa.
+La hipótesis es una suposición sobre los datos, la cual puede resultar verdadera o falsa..\\
 
 Las pruebas de hipótesis son herramientas valiosas en diversos campos, ya que permiten contrastar una teoría con la evidencia empírica. Este procedimiento riguroso nos ayuda a evaluar la veracidad de una afirmación científica de manera objetiva y fundamentada. En esencia, una prueba de hipótesis se define como un método estadístico que se emplea para tomar decisiones sobre una población en base a los datos obtenidos de una muestra representativa. Es una técnica de inferencia estadística que nos permite tomar decisiones sobre suposiciones acerca de una población, basadas en la observación.\\
 
@@ -391,11 +390,11 @@ El propósito de una prueba estadística es examinar una hipótesis con respecto
 
 En donde el objetivo principal de esta prueba es rechazar la hipótesis nula.\\
 
-%\begin{figure}[!]
-%centering
-%\includegraphics[width=\textwidth]{Img/cap2/imagen de ejemplo p-valor.png}
-%\caption{imagen de ejemplo %p-valor}
-%\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/pvalor.png}
+\caption{imagen de ejemplo p-valor}
+\end{figure}
 
 El p\-valor se considera como una medida de la probabilidad de éxito (obtener un resultado específico) en un estudio estadístico con los datos observados. El cálculo de este valor depende de la prueba estadística utilizada y de las suposiciones realizadas sobre la distribución de los datos. En general, un valor pequeño del p-valor sugiere que los datos observados son poco probables bajo la hipótesis nula.\\
 %Rice, J. A. (2006). Mathematical Statistics and Data Analysis (3rd ed.)

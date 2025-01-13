@@ -1,32 +1,48 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1}Preliminares}{1}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Análisis Exploratorio de Datos}{7}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Preprocesamiento}{8}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Phyloseq}{9}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Filtrado de Calidad}{10}{subsection.2.1.2}%
-\contentsline {section}{\numberline {2.2}Índices de diversidad}{13}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Diversidad Alfa}{14}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Diversidad Beta}{19}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Exploración a distintos niveles taxonómicos}{27}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Prueba de Hipótesis}{31}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{34}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Prueba de Hipótesis sobre las varianzas de dos poblaciones pequeñas}{36}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Prueba de los rangos con signos de Wilcolxon}{36}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}Mann-Whitney}{36}{subsection.2.4.4}%
-\contentsline {section}{\numberline {2.5}Normalización}{37}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Normalización}{37}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Rarefacción}{37}{subsection.2.5.2}%
-\contentsline {section}{\numberline {2.6}Rarefacción}{37}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Redes}{37}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Rs}{39}{section.2.8}%
-\contentsline {chapter}{\numberline {3}Simulador Metagenómico PyMetaSeem}{49}{chapter.3}%
-\contentsline {section}{\numberline {3.1}PyMetaSeem: simulador de datos metagenómicos a partir de un conjunto de datos genómicos}{50}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Simulaciones}{51}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Comparaciones}{51}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Comparación taxonomica}{51}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Generalizando el N50, nuevas métricas para ensamblados de metagenoma}{51}{section.3.3}%
-\contentsline {chapter}{\numberline {4}holasss}{53}{chapter.4}%
+\contentsline {section}{\numberline {1.1}Metagenómica}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Microbioma}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Clasificadores}{5}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Kaiju}{5}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Kraken \& Braken}{5}{subsection.1.3.2}%
+\contentsline {section}{\numberline {1.4}Lenguajes}{6}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}BASH}{6}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Python}{7}{subsection.1.4.2}%
+\contentsline {subsubsection}{Phyloseq}{7}{section*.5}%
+\contentsline {subsection}{\numberline {1.4.3}R \& RStudio}{8}{subsection.1.4.3}%
+\contentsline {section}{\numberline {1.5}Formatos}{9}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}JSON}{9}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}BIOM}{9}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.3}FASTA}{9}{subsection.1.5.3}%
+\contentsline {section}{\numberline {1.6}Solena}{10}{section.1.6}%
+\contentsline {section}{\numberline {1.7}fresa}{11}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Simuladores de Secuencias metagenomicas}{11}{section.1.8}%
+\contentsline {chapter}{\numberline {2}Análisis Exploratorio de Datos}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Preprocesamiento}{16}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Filtrado de Calidad}{17}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Índices de diversidad}{20}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Diversidad Alfa}{21}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Diversidad Beta}{26}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Exploración a distintos niveles taxonómicos}{34}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Prueba de Hipótesis}{38}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{42}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Prueba de Hipótesis sobre las varianzas de dos poblaciones pequeñas}{43}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Prueba de los rangos con signos de Wilcolxon}{43}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Mann-Whitney}{44}{subsection.2.4.4}%
+\contentsline {section}{\numberline {2.5}Normalización}{44}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Normalización}{44}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Rarefacción}{44}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}Rarefacción}{44}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Redes}{45}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Rs}{46}{section.2.8}%
+\contentsline {chapter}{\numberline {3}Simulador Metagenómico PyMetaSeem}{57}{chapter.3}%
+\contentsline {section}{\numberline {3.1}PyMetaSeem: simulador de datos metagenómicos a partir de un conjunto de datos genómicos}{58}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Simulaciones}{59}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Comparaciones}{59}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Comparación taxonomica}{59}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Generalizando el N50, nuevas métricas para ensamblados de metagenoma}{59}{section.3.3}%
+\contentsline {chapter}{\numberline {4}holasss}{61}{chapter.4}%
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Codigos}{57}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Imagenes}{59}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {A}Codigos}{65}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Imagenes}{67}{appendix.Alph2}%
 \vspace {2em}

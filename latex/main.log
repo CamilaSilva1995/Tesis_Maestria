@@ -1,61 +1,61 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.14)  12 APR 2024 20:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.28)  13 JAN 2025 11:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
-LaTeX2e <2021-11-15> patch level 1
-L3 programming layer <2022-01-21>
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
-Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
+Document Class: book 2023/05/17 v1.4n Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/bk12.clo
-File: bk12.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+File: bk12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count185
-\c@chapter=\count186
-\c@section=\count187
-\c@subsection=\count188
-\c@subsubsection=\count189
-\c@paragraph=\count190
-\c@subparagraph=\count191
-\c@figure=\count192
-\c@table=\count193
-\abovecaptionskip=\skip47
-\belowcaptionskip=\skip48
-\bibindent=\dimen138
+\c@part=\count187
+\c@chapter=\count188
+\c@section=\count189
+\c@subsection=\count190
+\c@subsubsection=\count191
+\c@paragraph=\count192
+\c@subparagraph=\count193
+\c@figure=\count194
+\c@table=\count195
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
 )
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks16
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
 )
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2020/03/06 v1.0d TeX engine tests
+Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count194
-\Gm@cntv=\count195
-\c@Gm@tempcnt=\count196
-\Gm@bindingoffset=\dimen139
-\Gm@wd@mp=\dimen140
-\Gm@odd@mp=\dimen141
-\Gm@even@mp=\dimen142
-\Gm@layoutwidth=\dimen143
-\Gm@layoutheight=\dimen144
-\Gm@layouthoffset=\dimen145
-\Gm@layoutvoffset=\dimen146
-\Gm@dimlist=\toks17
+\Gm@cnth=\count196
+\Gm@cntv=\count197
+\c@Gm@tempcnt=\count198
+\Gm@bindingoffset=\dimen141
+\Gm@wd@mp=\dimen142
+\Gm@odd@mp=\dimen143
+\Gm@even@mp=\dimen144
+\Gm@layoutwidth=\dimen145
+\Gm@layoutheight=\dimen146
+\Gm@layouthoffset=\dimen147
+\Gm@layoutvoffset=\dimen148
+\Gm@dimlist=\toks18
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks18
+\@emptytoks=\toks19
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
@@ -63,8 +63,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2021/10/15 v2.17l AMS math features
-\@mathmargin=\skip49
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip50
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -72,99 +72,113 @@ Package: amstext 2021/08/26 v2.01 AMS text
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks19
-\ex@=\dimen147
+\@emptytoks=\toks20
+\ex@=\dimen149
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen148
+\pmbraise@=\dimen150
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2021/08/26 v2.02 operator names
+Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count197
+\inf@bad=\count199
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count198
-\leftroot@=\count199
+\uproot@=\count266
+\leftroot@=\count267
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count266
-\DOTSCASE@=\count267
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count268
+\DOTSCASE@=\count269
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box50
-\strutbox@=\box51
-\big@size=\dimen149
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen151
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count268
-\c@MaxMatrixCols=\count269
+\macc@depth=\count270
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count271
 \dotsspace@=\muskip16
-\c@parentequation=\count270
-\dspbrk@lvl=\count271
-\tag@help=\toks20
-\row@=\count272
-\column@=\count273
-\maxfields@=\count274
-\andhelp@=\toks21
-\eqnshift@=\dimen150
-\alignsep@=\dimen151
-\tagshift@=\dimen152
-\tagwidth@=\dimen153
-\totwidth@=\dimen154
-\lineht@=\dimen155
-\@envbody=\toks22
-\multlinegap=\skip50
-\multlinetaggap=\skip51
-\mathdisplay@stack=\toks23
-LaTeX Info: Redefining \[ on input line 2938.
-LaTeX Info: Redefining \] on input line 2939.
+\c@parentequation=\count272
+\dspbrk@lvl=\count273
+\tag@help=\toks21
+\row@=\count274
+\column@=\count275
+\maxfields@=\count276
+\andhelp@=\toks22
+\eqnshift@=\dimen152
+\alignsep@=\dimen153
+\tagshift@=\dimen154
+\tagwidth@=\dimen155
+\totwidth@=\dimen156
+\lineht@=\dimen157
+\@envbody=\toks23
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks24
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks24
-\thm@bodyfont=\toks25
-\thm@headfont=\toks26
-\thm@notefont=\toks27
-\thm@headpunct=\toks28
-\thm@preskip=\skip52
-\thm@postskip=\skip53
-\thm@headsep=\skip54
-\dth@everypar=\toks29
+\thm@style=\toks25
+\thm@bodyfont=\toks26
+\thm@headfont=\toks27
+\thm@notefont=\toks28
+\thm@headpunct=\toks29
+\thm@preskip=\skip53
+\thm@postskip=\skip54
+\thm@headsep=\skip55
+\dth@everypar=\toks30
 )
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2022/01/26 3.70 The Babel package
-\babel@savecnt=\count275
-\U@D=\dimen156
-\l@unhyphenated=\language87
+Package: babel 2024/01/07 v24.1 The Babel package
+\babel@savecnt=\count277
+\U@D=\dimen158
+\l@unhyphenated=\language89
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count276
+\bbl@dirlevel=\count278
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel-spanish/spanish.ldf
 Language: spanish.ldf 2021/05/27 v5.0q Spanish support from the babel system
-\es@quottoks=\toks30
-\es@quotdepth=\count277
+\es@quottoks=\toks31
+\es@quotdepth=\count279
 Package babel Info: Making " an active character on input line 570.
 Package babel Info: Making . an active character on input line 675.
 Package babel Info: Making < an active character on input line 722.
 Package babel Info: Making > an active character on input line 722.
 ))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/locale/es/babel-spanish.tex
+Package babel Info: Importing font and identification data for spanish
+(babel)             from babel-es.ini. Reported on input line 11.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks31
-\inpenc@posthook=\toks32
+\inpenc@prehook=\toks32
+\inpenc@posthook=\toks33
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
-Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
-\@enLab=\toks33
+Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
+\@enLab=\toks34
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
@@ -175,45 +189,46 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 Package graphics Info: Driver file: pdftex.def on input line 107.
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen157
-\Gin@req@width=\dimen158
+\Gin@req@height=\dimen159
+\Gin@req@width=\dimen160
 )
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: pdftex.def on input line 227.
+Package xcolor Info: Driver file: pdftex.def on input line 274.
 
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
-Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
-\col@sep=\dimen159
-\ar@mcellbox=\box52
-\extrarowheight=\dimen160
-\NC@list=\toks34
-\extratabsurround=\skip55
-\backup@length=\skip56
-\ar@cellbox=\box53
+Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen161
+\ar@mcellbox=\box53
+\extrarowheight=\dimen162
+\NC@list=\toks35
+\extratabsurround=\skip56
+\backup@length=\skip57
+\ar@cellbox=\box54
 )
-\everycr=\toks35
-\minrowclearance=\skip57
-)
-\rownum=\count278
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
-Package xcolor Info: Model `RGB' extended on input line 1368.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+\everycr=\toks36
+\minrowclearance=\skip58
+\rownum=\count280
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
@@ -223,10 +238,19 @@ Package tocbibind Info: The document has chapter divisions on input line 50.
 Package tocbibind Note: Using chapter style headings, unless overridden.
 
 ) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
+Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
@@ -238,276 +262,65 @@ Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
-Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
-Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-)
+))
 (/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
-Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-\@linkdim=\dimen161
-\Hy@linkcounter=\count279
-\Hy@pagecounter=\count280
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count281
+)
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count282
+)
+\@linkdim=\dimen163
+\Hy@linkcounter=\count283
+\Hy@pagecounter=\count284
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2021-06-07 v7.00m Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
-File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel la
-nguages
 )
 (/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
-Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
-)
-\Hy@SavedSpaceFactor=\count281
+\Hy@SavedSpaceFactor=\count285
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\unhbox' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\voidb@x' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\unhbox' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\voidb@x' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\setbox' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@tempboxa' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\global' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathchardef' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\spacefactor' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\begingroup' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\typeout' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\begingroup' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<def>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\write' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\m@ne' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\endgroup' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\endgroup' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\ignorespaces' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\accent' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\spacefactor' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\unhbox' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\voidb@x' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\unhbox' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\voidb@x' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\setbox' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@tempboxa' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\hbox' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\global' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathchardef' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\spacefactor' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\begingroup' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\typeout' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\begingroup' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<def>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\write' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\m@ne' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\endgroup' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\endgroup' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<let>-command' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\ignorespaces' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\accent' on input line 4073.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\spacefactor' on input line 4073.
-
-Package hyperref Info: Hyper figures OFF on input line 4192.
-Package hyperref Info: Link nesting OFF on input line 4197.
-Package hyperref Info: Hyper index ON on input line 4200.
-Package hyperref Info: Plain pages OFF on input line 4207.
-Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Hyper figures OFF on input line 4179.
+Package hyperref Info: Link nesting OFF on input line 4184.
+Package hyperref Info: Hyper index ON on input line 4187.
+Package hyperref Info: Plain pages OFF on input line 4194.
+Package hyperref Info: Backreferencing OFF on input line 4199.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4445.
-\c@Hy@tempcnt=\count282
+Package hyperref Info: Bookmarks ON on input line 4446.
+\c@Hy@tempcnt=\count286
+
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4804.
-\XeTeXLinkMargin=\dimen162
+LaTeX Info: Redefining \url on input line 4784.
+\XeTeXLinkMargin=\dimen164
 
 (/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -516,50 +329,48 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count283
-\Field@Width=\dimen163
-\Fld@charsize=\dimen164
-Package hyperref Info: Hyper figures OFF on input line 6076.
-Package hyperref Info: Link nesting OFF on input line 6081.
-Package hyperref Info: Hyper index ON on input line 6084.
-Package hyperref Info: backreferencing OFF on input line 6091.
-Package hyperref Info: Link coloring OFF on input line 6096.
-Package hyperref Info: Link coloring with OCG OFF on input line 6101.
-Package hyperref Info: PDF/A mode OFF on input line 6106.
-LaTeX Info: Redefining \ref on input line 6146.
-LaTeX Info: Redefining \pageref on input line 6150.
+\Fld@menulength=\count287
+\Field@Width=\dimen165
+\Fld@charsize=\dimen166
+Package hyperref Info: Hyper figures OFF on input line 6063.
+Package hyperref Info: Link nesting OFF on input line 6068.
+Package hyperref Info: Hyper index ON on input line 6071.
+Package hyperref Info: backreferencing OFF on input line 6078.
+Package hyperref Info: Link coloring OFF on input line 6083.
+Package hyperref Info: Link coloring with OCG OFF on input line 6088.
+Package hyperref Info: PDF/A mode OFF on input line 6093.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count284
-\c@Item=\count285
-\c@Hfootnote=\count286
+\Hy@abspage=\count288
+\c@Item=\count289
+\c@Hfootnote=\count290
 )
 Package hyperref Info: Driver: hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2021-06-07 v7.00m Hyperref driver for pdfTeX
+File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count287
-\c@bookmark@seq@number=\count288
+\Fld@listcount=\count291
+\c@bookmark@seq@number=\count292
 
 (/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-86.
+85.
 )
-\Hy@SectionHShift=\skip58
+\Hy@SectionHShift=\skip59
 )
 (/usr/share/texlive/texmf-dist/tex/latex/blindtext/blindtext.sty
 Package: blindtext 2012/01/06 V2.0 blindtext-Package
@@ -567,41 +378,41 @@ Package: blindtext 2012/01/06 V2.0 blindtext-Package
 (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-\c@blindtext=\count289
-\c@Blindtext=\count290
-\c@blind@countparstart=\count291
-\blind@countxx=\count292
-\blindtext@numBlindtext=\count293
-\blind@countyy=\count294
-\c@blindlist=\count295
-\c@blindlistlevel=\count296
-\c@blindlist@level=\count297
-\blind@listitem=\count298
-\c@blind@listcount=\count299
-\c@blind@levelcount=\count300
-\blind@mathformula=\count301
-\blind@Mathformula=\count302
-\c@blind@randomcount=\count303
-\c@blind@randommax=\count304
-\c@blind@pangramcount=\count305
-\c@blind@pangrammax=\count306
+\c@blindtext=\count293
+\c@Blindtext=\count294
+\c@blind@countparstart=\count295
+\blind@countxx=\count296
+\blindtext@numBlindtext=\count297
+\blind@countyy=\count298
+\c@blindlist=\count299
+\c@blindlistlevel=\count300
+\c@blindlist@level=\count301
+\blind@listitem=\count302
+\c@blind@listcount=\count303
+\c@blind@levelcount=\count304
+\blind@mathformula=\count305
+\blind@Mathformula=\count306
+\c@blind@randomcount=\count307
+\c@blind@randommax=\count308
+\c@blind@pangramcount=\count309
+\c@blind@pangrammax=\count310
 )
 (/usr/share/texlive/texmf-dist/tex/latex/svg/svg.sty
 Package: svg 2020/11/26 v2.02k (include SVG pictures)
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbase.sty
-Package: scrbase 2021/11/13 v3.35 KOMA-Script package (KOMA-Script-independent 
+Package: scrbase 2023/07/07 v3.41 KOMA-Script package (KOMA-Script-independent 
 basics and keyval usage)
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile.sty
-Package: scrlfile 2021/11/13 v3.35 KOMA-Script package (file load hooks)
+Package: scrlfile 2023/07/07 v3.41 KOMA-Script package (file load hooks)
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
-Package: scrlfile-hook 2021/11/13 v3.35 KOMA-Script package (using LaTeX hooks)
+Package: scrlfile-hook 2023/07/07 v3.41 KOMA-Script package (using LaTeX hooks)
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlogo.sty
-Package: scrlogo 2021/11/13 v3.35 KOMA-Script package (logo)
+Package: scrlogo 2023/07/07 v3.41 KOMA-Script package (logo)
 )))
 Applying: [2021/05/01] Usage of raw or classic option list on input line 252.
 Already applied: [0000/00/00] Usage of raw or classic option list on input line
@@ -611,116 +422,117 @@ Already applied: [0000/00/00] Usage of raw or classic option list on input line
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
-Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package: shellesc 2023/07/08 v1.0d unified shell escape interface for LaTeX
 Package shellesc Info: Restricted shell escape enabled on input line 77.
 )
-\c@svg@param@lastpage=\count307
-\svg@box=\box54
-\c@svg@param@currpage=\count308
+\c@svg@param@lastpage=\count311
+\svg@box=\box55
+\c@svg@param@currpage=\count312
 )
 (/usr/share/texlive/texmf-dist/tex/latex/transparent/transparent.sty
-Package: transparent 2019/11/29 v1.4 Transparency via pdfTeX's color stack (HO)
+Package: transparent 2022-10-27 v1.5 Transparency with color stacks
 
-)
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texlive/texmf-dist/tex/latex/transparent/transparent-nometadata.sty
+Package: transparent-nometadata 2022-10-27 v1.5 Transparency via pdfTeX's color
+ stack (HO)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks36
-\pgfutil@tempdima=\dimen165
-\pgfutil@tempdimb=\dimen166
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
-ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box55
-) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+\pgfutil@everybye=\toks37
+\pgfutil@tempdima=\dimen167
+\pgfutil@tempdimb=\dimen168
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box56
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
-Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks37
-\pgfkeys@temptoks=\toks38
+\pgfkeys@pathtoks=\toks38
+\pgfkeys@temptoks=\toks39
 
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
-ex
-\pgfkeys@tmptoks=\toks39
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered
+.code.tex
+\pgfkeys@tmptoks=\toks40
 ))
-\pgf@x=\dimen167
-\pgf@y=\dimen168
-\pgf@xa=\dimen169
-\pgf@ya=\dimen170
-\pgf@xb=\dimen171
-\pgf@yb=\dimen172
-\pgf@xc=\dimen173
-\pgf@yc=\dimen174
-\pgf@xd=\dimen175
-\pgf@yd=\dimen176
+\pgf@x=\dimen169
+\pgf@y=\dimen170
+\pgf@xa=\dimen171
+\pgf@ya=\dimen172
+\pgf@xb=\dimen173
+\pgf@yb=\dimen174
+\pgf@xc=\dimen175
+\pgf@yc=\dimen176
+\pgf@xd=\dimen177
+\pgf@yd=\dimen178
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count309
-\c@pgf@countb=\count310
-\c@pgf@countc=\count311
-\c@pgf@countd=\count312
-\t@pgf@toka=\toks40
-\t@pgf@tokb=\toks41
-\t@pgf@tokc=\toks42
-\pgf@sys@id@count=\count313
+\c@pgf@counta=\count313
+\c@pgf@countb=\count314
+\c@pgf@countc=\count315
+\c@pgf@countd=\count316
+\t@pgf@toka=\toks41
+\t@pgf@tokb=\toks42
+\t@pgf@tokc=\toks43
+\pgf@sys@id@count=\count317
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
-File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
 Driver file for pgf: pgfsys-pdftex.def
-
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2021/05/15 v3.1.9a (3.1.9a)
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.de
 f
-File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 )))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
-File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfsyssoftpath@smallbuffer@items=\count314
-\pgfsyssoftpath@bigbuffer@items=\count315
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count318
+\pgfsyssoftpath@bigbuffer@items=\count319
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
-File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count316
-\lst@gtempboxa=\box56
-\lst@token=\toks43
-\lst@length=\count317
-\lst@currlwidth=\dimen177
-\lst@column=\count318
-\lst@pos=\count319
-\lst@lostspace=\dimen178
-\lst@width=\dimen179
-\lst@newlines=\count320
-\lst@lineno=\count321
-\lst@maxwidth=\dimen180
+\lst@mode=\count320
+\lst@gtempboxa=\box57
+\lst@token=\toks44
+\lst@length=\count321
+\lst@currlwidth=\dimen179
+\lst@column=\count322
+\lst@pos=\count323
+\lst@lostspace=\dimen180
+\lst@width=\dimen181
+\lst@newlines=\count324
+\lst@lineno=\count325
+\lst@maxwidth=\dimen182
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count322
-\lst@skipnumbers=\count323
-\lst@framebox=\box57
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count326
+\lst@skipnumbers=\count327
+\lst@framebox=\box58
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2020/03/24 1.8d listings configuration
+File: listings.cfg 2023/02/27 1.9 listings configuration
 ))
-Package: listings 2020/03/24 1.8d (Carsten Heinz)
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count324
-\l__pdf_internal_box=\box58
+File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count328
+\l__pdf_internal_box=\box59
 )
 (./main.aux
-LaTeX Info: Redefining \. on input line 26.
-LaTeX Info: Redefining \% on input line 26.
+LaTeX Info: Redefining \. on input line 12.
+LaTeX Info: Redefining \% on input line 12.
  (./Capitulos/cap1_Intro.aux) (./Capitulos/cap2.aux)
 (./Capitulos/cap3.aux) (./Capitulos/cap4.aux) (./Apendices/Ap.aux)
 (./Apendices/Bp.aux))
@@ -783,17 +595,17 @@ LaTeX Info: Redefining \. on input line 27.
 LaTeX Info: Redefining \% on input line 27.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count325
-\scratchdimen=\dimen181
-\scratchbox=\box59
-\nofMPsegments=\count326
-\nofMParguments=\count327
-\everyMPshowfont=\toks44
-\MPscratchCnt=\count328
-\MPscratchDim=\dimen182
-\MPnumerator=\count329
-\makeMPintoPDFobject=\count330
-\everyMPtoPDFconversion=\toks45
+\scratchcounter=\count329
+\scratchdimen=\dimen183
+\scratchbox=\box60
+\nofMPsegments=\count330
+\nofMParguments=\count331
+\everyMPshowfont=\toks45
+\MPscratchCnt=\count332
+\MPscratchDim=\dimen184
+\MPnumerator=\count333
+\makeMPintoPDFobject=\count334
+\everyMPtoPDFconversion=\toks46
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -805,27 +617,12 @@ e
 ))
 Package hyperref Info: Link coloring OFF on input line 27.
 
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
-
-(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
-Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
-Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
-)
-\c@section@level=\count331
-)
-LaTeX Info: Redefining \ref on input line 27.
-LaTeX Info: Redefining \pageref on input line 27.
-LaTeX Info: Redefining \nameref on input line 27.
-
 (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-\c@lstlisting=\count332
-\c@teo=\count333
+\c@lstlisting=\count335
+\c@teo=\count336
 LaTeX Font Info:    Trying to load font information for U+msa on input line 69.
 
 
@@ -838,15 +635,15 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 69.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<Img//UNAMlogo.png, id=123, 300.83122pt x 338.14134pt>
-File: Img//UNAMlogo.png Graphic file (type png)
-<use Img//UNAMlogo.png>
-Package pdftex.def Info: Img//UNAMlogo.png  used on input line 70.
+<Img/UNAMlogo.png, id=183, 300.83122pt x 338.14134pt>
+File: Img/UNAMlogo.png Graphic file (type png)
+<use Img/UNAMlogo.png>
+Package pdftex.def Info: Img/UNAMlogo.png  used on input line 70.
 (pdftex.def)             Requested size: 53.17595pt x 59.76897pt.
-<Img//UMSNHlogo.png, id=125, 1011.78pt x 1051.93pt>
-File: Img//UMSNHlogo.png Graphic file (type png)
-<use Img//UMSNHlogo.png>
-Package pdftex.def Info: Img//UMSNHlogo.png  used on input line 72.
+<Img/UMSNHlogo.png, id=185, 1011.78pt x 1051.93pt>
+File: Img/UMSNHlogo.png Graphic file (type png)
+<use Img/UMSNHlogo.png>
+Package pdftex.def Info: Img/UMSNHlogo.png  used on input line 72.
 (pdftex.def)             Requested size: 53.17595pt x 55.28012pt.
 
 Overfull \hbox (0.54573pt too wide) in paragraph at lines 69--74
@@ -856,8 +653,8 @@ Overfull \hbox (0.54573pt too wide) in paragraph at lines 69--74
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Img//UNAMlogo.png> <./Im
-g//UMSNHlogo.png>] [2] [3
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Img/UNAMlogo.png> <./Img
+/UMSNHlogo.png>] [2] [3
 
 ] [4
 
@@ -865,7 +662,7 @@ g//UMSNHlogo.png>] [2] [3
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [5]
-Overfull \hbox (0.16008pt too wide) in paragraph at lines 23--23
+Overfull \hbox (0.16008pt too wide) in paragraph at lines 39--39
  [][] [][]\OT1/cmr/m/n/12 PyMetaSeem: si-mu-la-dor de da-tos me-ta-gen^^Somi-co
 s a par- 
  []
@@ -908,6 +705,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
@@ -917,93 +715,67 @@ l.8
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 9--10
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 11--12
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 13--14
-
- []
-
-LaTeX Info: Redefining \. on input line 14.
-LaTeX Info: Redefining \% on input line 14.
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.14 
-      [2]
-Underfull \hbox (badness 10000) in paragraph at lines 15--16
-
- []
-
+<Img/cap1/taxonomic.png, id=293, 638.385pt x 560.0925pt>
+File: Img/cap1/taxonomic.png Graphic file (type png)
+<use Img/cap1/taxonomic.png>
+Package pdftex.def Info: Img/cap1/taxonomic.png  used on input line 11.
+(pdftex.def)             Requested size: 191.51697pt x 168.02904pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
-<Img/cap1/taxonomic.png, id=221, 638.385pt x 560.0925pt>
-File: Img/cap1/taxonomic.png Graphic file (type png)
-<use Img/cap1/taxonomic.png>
-Package pdftex.def Info: Img/cap1/taxonomic.png  used on input line 21.
-(pdftex.def)             Requested size: 191.51697pt x 168.02904pt.
+LaTeX Info: Redefining \. on input line 18.
+LaTeX Info: Redefining \% on input line 18.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.18 
+      [2 <./Img/cap1/taxonomic.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
  []
 
 
-LaTeX Warning: Citation `wood2014kraken' on page 3 undefined on input line 27.
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+LaTeX Info: Redefining \. on input line 22.
+LaTeX Info: Redefining \% on input line 22.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.22 
+      [3]
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.28 
-      [3]
-Underfull \hbox (badness 10000) in paragraph at lines 29--30
+LaTeX Info: Redefining \. on input line 28.
+LaTeX Info: Redefining \% on input line 28.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 31--32
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 33--34
-
- []
-
-LaTeX Info: Redefining \. on input line 34.
-LaTeX Info: Redefining \% on input line 34.
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.34 
-      [4 <./Img/cap1/taxonomic.png>]
-
-LaTeX Warning: Citation `lu2017bracken' on page 5 undefined on input line 35.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 35--36
+l.28 
+      [4]
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
 
  []
+
+
+LaTeX Warning: Citation `wood2014kraken' on page 5 undefined on input line 37.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 37--38
@@ -1011,47 +783,197 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
 
-LaTeX Warning: Citation `fritz2019camisim' on page 5 undefined on input line 42
-.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
 
  []
+
+LaTeX Info: Redefining \. on input line 42.
+LaTeX Info: Redefining \% on input line 42.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.44 E
-      n segunda parte se basa en la simulacion del metagenoma, los conjuntos...
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 44--45
+l.42 
+      [5]
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
+LaTeX Warning: Citation `lu2017bracken' on page 6 undefined on input line 52.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.60 
+      [6]
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+
+ []
+
+
+LaTeX Warning: Citation `mcmurdie2013' on page 7 undefined on input line 65.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
+
+ []
+
+LaTeX Info: Redefining \. on input line 66.
+LaTeX Info: Redefining \% on input line 66.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.66 
+      [7]
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+
+ []
+
+<Img/cap2/Phyloseq.png, id=316, 946.53625pt x 335.2525pt>
+File: Img/cap2/Phyloseq.png Graphic file (type png)
+<use Img/cap2/Phyloseq.png>
+Package pdftex.def Info: Img/cap2/Phyloseq.png  used on input line 72.
+(pdftex.def)             Requested size: 354.52077pt x 125.5659pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+
+ []
+
+
+Underfull \vbox (badness 1789) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 80.
+LaTeX Info: Redefining \% on input line 80.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.8}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.80 
+      [8 <./Img/cap2/Phyloseq.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 85
+.
+(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 85--86
+
+ []
+
+LaTeX Info: Redefining \. on input line 86.
+LaTeX Info: Redefining \% on input line 86.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.86 
+      [9]
+Underfull \hbox (badness 10000) in paragraph at lines 87--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--108
+
+ []
+
+
+Underfull \vbox (badness 1038) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 108.
+LaTeX Info: Redefining \% on input line 108.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.10}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.108 
+       [10]
+
+LaTeX Warning: Citation `fritz2019camisim' on page 11 undefined on input line 1
+12.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
+
+ []
+
+LaTeX Info: Redefining \. on input line 115.
+LaTeX Info: Redefining \% on input line 115.
+[11{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
 )
 LaTeX Info: Redefining \. on input line 199.
 LaTeX Info: Redefining \% on input line 199.
-pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.199 \include{Capitulos/cap1_Intro}
-                                     [6]
+ [12]
 \openout2 = `Capitulos/cap2.aux'.
 
- (./Capitulos/cap2.tex
+ (./Capitulos/cap2.tex [13
+
+
+
+]
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [14
+
+]
 Cap\'{\i }tulo 2.
 
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
@@ -1068,26 +990,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.8 
-     [7
+[15]
 
-
-
-
-]
-
-LaTeX Warning: Citation `yang2020' on page 8 undefined on input line 9.
+LaTeX Warning: Citation `yang2020' on page 16 undefined on input line 9.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 14--15
 
  []
 
-<Img/cap2/preprosecamiento.png, id=240, 1900.09875pt x 807.015pt>
+<Img/cap2/preprosecamiento.png, id=353, 1900.09875pt x 807.015pt>
 File: Img/cap2/preprosecamiento.png Graphic file (type png)
 <use Img/cap2/preprosecamiento.png>
 Package pdftex.def Info: Img/cap2/preprosecamiento.png  used on input line 18.
@@ -1101,220 +1013,195 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--23
  []
 
 
-LaTeX Warning: Citation `mcmurdie2013' on page 8 undefined on input line 26.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 26--27
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
 
  []
 
-LaTeX Info: Redefining \. on input line 27.
-LaTeX Info: Redefining \% on input line 27.
-pdfTeX warning (ext4): destination with the same identifier (name{page.8}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.27 
-      [8]
-<Img/cap2/Phyloseq.png, id=244, 946.53625pt x 335.2525pt>
-File: Img/cap2/Phyloseq.png Graphic file (type png)
-<use Img/cap2/Phyloseq.png>
-Package pdftex.def Info: Img/cap2/Phyloseq.png  used on input line 30.
-(pdftex.def)             Requested size: 354.52077pt x 125.5659pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 2189) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 35.
-LaTeX Info: Redefining \% on input line 35.
-pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.35 
-      [9 <./Img/cap2/preprosecamiento.png>]
-Overfull \hbox (20.56145pt too wide) in paragraph at lines 38--39
+LaTeX Info: Redefining \. on input line 25.
+LaTeX Info: Redefining \% on input line 25.
+[16]
+Overfull \hbox (20.56145pt too wide) in paragraph at lines 28--29
 \OT1/cmr/m/n/12 mos una ta-bla que re-fle-ja la ca-li-dad de las mues-tras (fas
 tp.kraken.summary
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--39
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
  []
 
-LaTeX Info: Redefining \. on input line 44.
-LaTeX Info: Redefining \% on input line 44.
-pdfTeX warning (ext4): destination with the same identifier (name{page.10}) has
- been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.44   \item \textbf
-                    {Reads\_A (Reads\_After):} NÃºmero total de lecturas des...
-[10 <./Img/cap2/Phyloseq.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 57--58
+LaTeX Info: Redefining \. on input line 29.
+LaTeX Info: Redefining \% on input line 29.
+[17 <./Img/cap2/preprosecamiento.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 59--60
-
- []
-
-LaTeX Info: Redefining \. on input line 61.
-LaTeX Info: Redefining \% on input line 61.
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
+LaTeX Info: Redefining \. on input line 48.
+LaTeX Info: Redefining \% on input line 48.
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--90
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
-LaTeX Info: Redefining \. on input line 90.
-LaTeX Info: Redefining \% on input line 90.
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 91--92
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 117--118
+LaTeX Info: Redefining \. on input line 78.
+LaTeX Info: Redefining \% on input line 78.
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
 
  []
 
 
-LaTeX Warning: Citation `tuomisto2010' on page 13 undefined on input line 119.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
-
- []
-
-LaTeX Info: Redefining \. on input line 120.
-LaTeX Info: Redefining \% on input line 120.
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 124--126
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
 
-LaTeX Warning: Citation `shannon1948' on page 14 undefined on input line 129.
-
-
-LaTeX Warning: Citation `simpson1949' on page 14 undefined on input line 129.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 127--130
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
+LaTeX Warning: Citation `tuomisto2010' on page 20 undefined on input line 109.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
 
-LaTeX Info: Redefining \. on input line 134.
-LaTeX Info: Redefining \% on input line 134.
-[14]
+LaTeX Info: Redefining \. on input line 110.
+LaTeX Info: Redefining \% on input line 110.
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
 
-LaTeX Warning: Command \texttimes invalid in math mode on input line 136.
-
-
-LaTeX Warning: Command \texttimes invalid in math mode on input line 136.
+ []
 
 
-LaTeX Warning: Command \texttimes invalid in math mode on input line 136.
+LaTeX Warning: Citation `shannon1948' on page 21 undefined on input line 119.
 
 
-LaTeX Warning: Command \texttimes invalid in math mode on input line 136.
+LaTeX Warning: Citation `simpson1949' on page 21 undefined on input line 119.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--120
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
+
+ []
+
+LaTeX Info: Redefining \. on input line 122.
+LaTeX Info: Redefining \% on input line 122.
+[21]
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 126.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 126.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 126.
+
+
+LaTeX Warning: Command \texttimes invalid in math mode on input line 126.
 
 Missing character: There is no Ö in font cmr12!
 Missing character: There is no Ö in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
 
  []
 
-LaTeX Info: Redefining \. on input line 152.
-LaTeX Info: Redefining \% on input line 152.
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 156--157
+LaTeX Info: Redefining \. on input line 137.
+LaTeX Info: Redefining \% on input line 137.
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
+LaTeX Info: Redefining \. on input line 155.
+LaTeX Info: Redefining \% on input line 155.
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 158--159
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+
+ []
+
+<Img/cap2/DiversidadAlfaFresaKraken.png, id=401, 853.5087pt x 426.6339pt>
+File: Img/cap2/DiversidadAlfaFresaKraken.png Graphic file (type png)
+<use Img/cap2/DiversidadAlfaFresaKraken.png>
+Package pdftex.def Info: Img/cap2/DiversidadAlfaFresaKraken.png  used on input 
+line 164.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 168--169
 
  []
 
-
+LaTeX Info: Redefining \. on input line 169.
+LaTeX Info: Redefining \% on input line 169.
+[24 <./Img/cap2/DiversidadAlfaFresaKraken.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
-LaTeX Info: Redefining \. on input line 171.
-LaTeX Info: Redefining \% on input line 171.
-[16]
-<Img/cap2/DiversidadAlfaFresaKraken.png, id=293, 853.5087pt x 426.6339pt>
-File: Img/cap2/DiversidadAlfaFresaKraken.png Graphic file (type png)
-<use Img/cap2/DiversidadAlfaFresaKraken.png>
-Package pdftex.def Info: Img/cap2/DiversidadAlfaFresaKraken.png  used on input 
-line 174.
+<Img/cap2/DiversidadAlfaFresaKraken_fil.png, id=410, 853.5087pt x 426.6339pt>
+File: Img/cap2/DiversidadAlfaFresaKraken_fil.png Graphic file (type png)
+<use Img/cap2/DiversidadAlfaFresaKraken_fil.png>
+Package pdftex.def Info: Img/cap2/DiversidadAlfaFresaKraken_fil.png  used on in
+put line 174.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 178--179
 
  []
 
-
+LaTeX Info: Redefining \. on input line 179.
+LaTeX Info: Redefining \% on input line 179.
+[25 <./Img/cap2/DiversidadAlfaFresaKraken_fil.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
-LaTeX Info: Redefining \. on input line 181.
-LaTeX Info: Redefining \% on input line 181.
-[17 <./Img/cap2/DiversidadAlfaFresaKraken.png>]
-<Img/cap2/DiversidadAlfaFresaKraken_fil.png, id=302, 853.5087pt x 426.6339pt>
-File: Img/cap2/DiversidadAlfaFresaKraken_fil.png Graphic file (type png)
-<use Img/cap2/DiversidadAlfaFresaKraken_fil.png>
-Package pdftex.def Info: Img/cap2/DiversidadAlfaFresaKraken_fil.png  used on in
-put line 184.
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
+LaTeX Warning: Citation `whittaker1960' on page 26 undefined on input line 183.
+
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
-
- []
-
-LaTeX Info: Redefining \. on input line 191.
-LaTeX Info: Redefining \% on input line 191.
-[18 <./Img/cap2/DiversidadAlfaFresaKraken_fil.png>]
-
-LaTeX Warning: Citation `whittaker1960' on page 19 undefined on input line 193.
-
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
+Underfull \hbox (badness 10000) in paragraph at lines 187--188
+
+ []
+
+LaTeX Info: Redefining \. on input line 188.
+LaTeX Info: Redefining \% on input line 188.
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 194--196
 
  []
 
@@ -1323,140 +1210,146 @@ Underfull \hbox (badness 10000) in paragraph at lines 197--198
 
  []
 
-LaTeX Info: Redefining \. on input line 204.
-LaTeX Info: Redefining \% on input line 204.
-[19]
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+
+ []
+
+
+LaTeX Warning: Citation `bray&curtis1957' on page 27 undefined on input line 20
+1.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 204--206
 
  []
 
-
+LaTeX Info: Redefining \. on input line 207.
+LaTeX Info: Redefining \% on input line 207.
+[27]
 Underfull \hbox (badness 10000) in paragraph at lines 207--208
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 209--210
-
- []
-
-
-LaTeX Warning: Citation `bray&curtis1957' on page 20 undefined on input line 21
-1.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 214--216
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 217--218
-
- []
-
-<Img/cap2/DiversidadBetaFresaKraken_fil.png, id=318, 853.5087pt x 426.6339pt>
+<Img/cap2/DiversidadBetaFresaKraken_fil.png, id=431, 853.5087pt x 426.6339pt>
 File: Img/cap2/DiversidadBetaFresaKraken_fil.png Graphic file (type png)
 <use Img/cap2/DiversidadBetaFresaKraken_fil.png>
 Package pdftex.def Info: Img/cap2/DiversidadBetaFresaKraken_fil.png  used on in
-put line 221.
+put line 211.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 226.
-LaTeX Info: Redefining \% on input line 226.
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 228--230
+Underfull \hbox (badness 10000) in paragraph at lines 218--220
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 231--232
+LaTeX Info: Redefining \. on input line 220.
+LaTeX Info: Redefining \% on input line 220.
+[28 <./Img/cap2/DiversidadBetaFresaKraken_fil.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
-LaTeX Info: Redefining \. on input line 232.
-LaTeX Info: Redefining \% on input line 232.
-[21 <./Img/cap2/DiversidadBetaFresaKraken_fil.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 233.
+               Default added (so using `!tbp') on input line 223.
 
-<Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png, id=333, 853.5087pt x 426.6
+<Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png, id=440, 853.5087pt x 426.6
 339pt>
 File: Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png Graphic file (type png
 )
 <use Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png>
 Package pdftex.def Info: Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png  us
-ed on input line 235.
+ed on input line 225.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--240
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
 
 Underfull \vbox (badness 1147) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 244.
-LaTeX Info: Redefining \% on input line 244.
- [22 <./Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 244--246
+LaTeX Info: Redefining \. on input line 232.
+LaTeX Info: Redefining \% on input line 232.
+ [29 <./Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 234--236
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--248
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 249.
+               Default added (so using `!tbp') on input line 239.
 
-<Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png, id=341, 853.5087pt x 426
+<Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png, id=448, 853.5087pt x 426
 .6339pt>
 File: Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png Graphic file (type p
 ng)
 <use Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png>
 Package pdftex.def Info: Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png  
-used on input line 251.
+used on input line 241.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 257.
-LaTeX Info: Redefining \% on input line 257.
-[23 <./Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 258--260
+
+Underfull \hbox (badness 10000) in paragraph at lines 248--250
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--262
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
 
  []
 
+LaTeX Info: Redefining \. on input line 252.
+LaTeX Info: Redefining \% on input line 252.
+[30]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 263.
+               Default added (so using `!tbp') on input line 253.
 
-<Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png, id=349, 853.5087pt x 426
+<Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png, id=455, 853.5087pt x 426
 .6339pt>
 File: Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png Graphic file (type p
 ng)
 <use Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png>
 Package pdftex.def Info: Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png  
-used on input line 265.
+used on input line 255.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 270.
-LaTeX Info: Redefining \% on input line 270.
-[24 <./Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 272--274
+
+Underfull \hbox (badness 10000) in paragraph at lines 262--264
+
+ []
+
+LaTeX Info: Redefining \. on input line 264.
+LaTeX Info: Redefining \% on input line 264.
+[31 <./Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png>]
+Overfull \hbox (1.36168pt too wide) in paragraph at lines 265--266
+[]\OT1/cmr/m/n/12 Al igual que las dis-tan-cias an-te-rio-res, la dis-tan-cia d
+e JSD es sim^^Setri-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 265--266
 
  []
 
 
-Overfull \hbox (1.36168pt too wide) in paragraph at lines 275--276
-[]\OT1/cmr/m/n/12 Al igual que las dis-tan-cias an-te-rio-res, la dis-tan-cia d
-e JSD es sim^^Setri-
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `!tbp') on input line 267.
+
+<Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png, id=464, 853.5087pt x 426.6339p
+t>
+File: Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png Graphic file (type png)
+<use Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png>
+Package pdftex.def Info: Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png  used o
+n input line 269.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
+
  []
 
 
@@ -1464,472 +1357,460 @@ Underfull \hbox (badness 10000) in paragraph at lines 275--276
 
  []
 
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 277.
-
-<Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png, id=357, 853.5087pt x 426.6339p
-t>
-File: Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png Graphic file (type png)
-<use Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png>
-Package pdftex.def Info: Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png  used o
-n input line 279.
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 283--284
-
- []
-
-LaTeX Info: Redefining \. on input line 284.
-LaTeX Info: Redefining \% on input line 284.
-[25 <./Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 285--286
+LaTeX Info: Redefining \. on input line 276.
+LaTeX Info: Redefining \% on input line 276.
+[32 <./Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 289--290
+Underfull \vbox (badness 1147) has occurred while \output is active []
 
- []
-
-<Img/cap2/Barras.png, id=366, 853.5087pt x 426.6339pt>
+LaTeX Info: Redefining \. on input line 280.
+LaTeX Info: Redefining \% on input line 280.
+ [33 <./Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png>]
+<Img/cap2/Barras.png, id=479, 853.5087pt x 426.6339pt>
 File: Img/cap2/Barras.png Graphic file (type png)
 <use Img/cap2/Barras.png>
-Package pdftex.def Info: Img/cap2/Barras.png  used on input line 295.
+Package pdftex.def Info: Img/cap2/Barras.png  used on input line 285.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--299
+Underfull \hbox (badness 10000) in paragraph at lines 282--289
+
+ []
+
+<Img/cap2/filo_plot.png, id=480, 853.5087pt x 426.6339pt>
+File: Img/cap2/filo_plot.png Graphic file (type png)
+<use Img/cap2/filo_plot.png>
+Package pdftex.def Info: Img/cap2/filo_plot.png  used on input line 293.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+<Img/cap2/filo_plot_blackandwhite.png, id=481, 853.5087pt x 426.6339pt>
+File: Img/cap2/filo_plot_blackandwhite.png Graphic file (type png)
+<use Img/cap2/filo_plot_blackandwhite.png>
+Package pdftex.def Info: Img/cap2/filo_plot_blackandwhite.png  used on input li
+ne 299.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 290--303
+
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+LaTeX Info: Redefining \. on input line 303.
+LaTeX Info: Redefining \% on input line 303.
+[34 <./Img/cap2/Barras.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 304--305
+
+ []
+
+
+Underfull \vbox (badness 6428) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 305.
+LaTeX Info: Redefining \% on input line 305.
+ [35 <./Img/cap2/filo_plot.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
+
+ []
+
+
+Overfull \hbox (52.82347pt too wide) in paragraph at lines 310--311
+[][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (46.2534pt too wide) in paragraph at lines 314--315
+[][][][][][][][][][][][][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--319
+
+ []
+
+LaTeX Info: Redefining \. on input line 320.
+LaTeX Info: Redefining \% on input line 320.
+[36 <./Img/cap2/filo_plot_blackandwhite.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 320--321
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 322--324
+
+ []
+
+<Img/cap2/Barras_Eukarya10.png, id=505, 853.5087pt x 426.6339pt>
+File: Img/cap2/Barras_Eukarya10.png Graphic file (type png)
+<use Img/cap2/Barras_Eukarya10.png>
+Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 327.
+
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+<Img/cap2/Barras_Bacteria10.png, id=508, 853.5087pt x 426.6339pt>
+File: Img/cap2/Barras_Bacteria10.png Graphic file (type png)
+<use Img/cap2/Barras_Bacteria10.png>
+Package pdftex.def Info: Img/cap2/Barras_Bacteria10.png  used on input line 333
+.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--338
+
+ []
+
+LaTeX Info: Redefining \. on input line 338.
+LaTeX Info: Redefining \% on input line 338.
+[37 <./Img/cap2/Barras_Eukarya10.png>]
+<Img/cap2/Alpha_Eukarya.png, id=517, 853.5087pt x 426.6339pt>
+File: Img/cap2/Alpha_Eukarya.png Graphic file (type png)
+<use Img/cap2/Alpha_Eukarya.png>
+Package pdftex.def Info: Img/cap2/Alpha_Eukarya.png  used on input line 343.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Img/cap2/Alpha_Bacteria.png, id=520, 853.5087pt x 426.6339pt>
+File: Img/cap2/Alpha_Bacteria.png Graphic file (type png)
+<use Img/cap2/Alpha_Bacteria.png>
+Package pdftex.def Info: Img/cap2/Alpha_Bacteria.png  used on input line 349.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Img/cap2/Beta_Eukarya.png, id=523, 853.5087pt x 426.6339pt>
+File: Img/cap2/Beta_Eukarya.png Graphic file (type png)
+<use Img/cap2/Beta_Eukarya.png>
+Package pdftex.def Info: Img/cap2/Beta_Eukarya.png  used on input line 358.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<Img/cap2/Beta_Bacteria.png, id=526, 853.5087pt x 426.6339pt>
+File: Img/cap2/Beta_Bacteria.png Graphic file (type png)
+<use Img/cap2/Beta_Bacteria.png>
+Package pdftex.def Info: Img/cap2/Beta_Bacteria.png  used on input line 364.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
+
+ []
+
+LaTeX Info: Redefining \. on input line 373.
+LaTeX Info: Redefining \% on input line 373.
+[38 <./Img/cap2/Barras_Bacteria10.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 374--380
+
+ []
+
+
+Underfull \vbox (badness 2717) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 380.
+LaTeX Info: Redefining \% on input line 380.
+ [39 <./Img/cap2/Alpha_Eukarya.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 381.
+LaTeX Info: Redefining \% on input line 381.
+ [40 <./Img/cap2/Alpha_Bacteria.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 381--382
+
+ []
+
+<Img/cap2/pvalor.png, id=548, 220.825pt x 220.825pt>
+File: Img/cap2/pvalor.png Graphic file (type png)
+<use Img/cap2/pvalor.png>
+Package pdftex.def Info: Img/cap2/pvalor.png  used on input line 385.
+(pdftex.def)             Requested size: 354.52077pt x 354.53685pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 389--393
 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 299.
-LaTeX Info: Redefining \% on input line 299.
- [26]
-<Img/cap2/filo_plot.png, id=371, 853.5087pt x 426.6339pt>
-File: Img/cap2/filo_plot.png Graphic file (type png)
-<use Img/cap2/filo_plot.png>
-Package pdftex.def Info: Img/cap2/filo_plot.png  used on input line 303.
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-<Img/cap2/filo_plot_blackandwhite.png, id=372, 853.5087pt x 426.6339pt>
-File: Img/cap2/filo_plot_blackandwhite.png Graphic file (type png)
-<use Img/cap2/filo_plot_blackandwhite.png>
-Package pdftex.def Info: Img/cap2/filo_plot_blackandwhite.png  used on input li
-ne 309.
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 300--313
-
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-LaTeX Info: Redefining \. on input line 313.
-LaTeX Info: Redefining \% on input line 313.
-[27 <./Img/cap2/Barras.png>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 314--315
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 316--317
-
- []
-
-
-Underfull \vbox (badness 2707) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 317.
-LaTeX Info: Redefining \% on input line 317.
- [28 <./Img/cap2/filo_plot.png>]
-Overfull \hbox (52.82347pt too wide) in paragraph at lines 320--321
-[][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (46.2534pt too wide) in paragraph at lines 324--325
-[][][][][][][][][][][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 328--329
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 330--331
-
- []
-
-LaTeX Info: Redefining \. on input line 331.
-LaTeX Info: Redefining \% on input line 331.
-[29 <./Img/cap2/filo_plot_blackandwhite.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 332--334
-
- []
-
-<Img/cap2/Barras_Eukarya10.png, id=397, 853.5087pt x 426.6339pt>
-File: Img/cap2/Barras_Eukarya10.png Graphic file (type png)
-<use Img/cap2/Barras_Eukarya10.png>
-Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 337.
-
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-<Img/cap2/Barras_Bacteria10.png, id=400, 853.5087pt x 426.6339pt>
-File: Img/cap2/Barras_Bacteria10.png Graphic file (type png)
-<use Img/cap2/Barras_Bacteria10.png>
-Package pdftex.def Info: Img/cap2/Barras_Bacteria10.png  used on input line 343
-.
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 347--348
-
- []
-
-<Img/cap2/Alpha_Eukarya.png, id=403, 853.5087pt x 426.6339pt>
-File: Img/cap2/Alpha_Eukarya.png Graphic file (type png)
-<use Img/cap2/Alpha_Eukarya.png>
-Package pdftex.def Info: Img/cap2/Alpha_Eukarya.png  used on input line 353.
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Img/cap2/Alpha_Bacteria.png, id=406, 853.5087pt x 426.6339pt>
-File: Img/cap2/Alpha_Bacteria.png Graphic file (type png)
-<use Img/cap2/Alpha_Bacteria.png>
-Package pdftex.def Info: Img/cap2/Alpha_Bacteria.png  used on input line 359.
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 363.
-LaTeX Info: Redefining \% on input line 363.
-[30 <./Img/cap2/Barras_Eukarya10.png>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Img/cap2/Beta_Eukarya.png, id=415, 853.5087pt x 426.6339pt>
-File: Img/cap2/Beta_Eukarya.png Graphic file (type png)
-<use Img/cap2/Beta_Eukarya.png>
-Package pdftex.def Info: Img/cap2/Beta_Eukarya.png  used on input line 368.
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<Img/cap2/Beta_Bacteria.png, id=418, 853.5087pt x 426.6339pt>
-File: Img/cap2/Beta_Bacteria.png Graphic file (type png)
-<use Img/cap2/Beta_Bacteria.png>
-Package pdftex.def Info: Img/cap2/Beta_Bacteria.png  used on input line 374.
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 380--381
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 382--383
-
- []
-
-LaTeX Info: Redefining \. on input line 383.
-LaTeX Info: Redefining \% on input line 383.
-[31 <./Img/cap2/Barras_Bacteria10.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 384--390
-
- []
-
-
-Underfull \vbox (badness 2717) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 390.
-LaTeX Info: Redefining \% on input line 390.
- [32 <./Img/cap2/Alpha_Eukarya.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 391--392
-
- []
-
-<Img/cap2/pvalor.png, id=433, 220.825pt x 220.825pt>
-File: Img/cap2/pvalor.png Graphic file (type png)
-<use Img/cap2/pvalor.png>
-Package pdftex.def Info: Img/cap2/pvalor.png  used on input line 395.
-(pdftex.def)             Requested size: 354.52077pt x 354.53685pt.
-
-Underfull \vbox (badness 2717) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 397.
-LaTeX Info: Redefining \% on input line 397.
- [33 <./Img/cap2/Alpha_Bacteria.png>]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 399--403
-
- []
-
-LaTeX Info: Redefining \. on input line 409.
-LaTeX Info: Redefining \% on input line 409.
-[34 <./Img/cap2/Beta_Eukarya.png>]
+LaTeX Info: Redefining \. on input line 399.
+LaTeX Info: Redefining \% on input line 399.
+ [41 <./Img/cap2/Beta_Eukarya.png>]
+LaTeX Info: Redefining \. on input line 411.
+LaTeX Info: Redefining \% on input line 411.
+ [42 <./Img/cap2/Beta_Bacteria.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 427.
+               Default added (so using `!tbp') on input line 417.
 
-<Img/cap2/medias_Shannon.png, id=447, 853.5087pt x 426.6339pt>
+<Img/cap2/medias_Shannon.png, id=561, 853.5087pt x 426.6339pt>
 File: Img/cap2/medias_Shannon.png Graphic file (type png)
 <use Img/cap2/medias_Shannon.png>
-Package pdftex.def Info: Img/cap2/medias_Shannon.png  used on input line 429.
+Package pdftex.def Info: Img/cap2/medias_Shannon.png  used on input line 419.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 431.
-LaTeX Info: Redefining \% on input line 431.
-[35 <./Img/cap2/Beta_Bacteria.png>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 433.
+               Default added (so using `!tbp') on input line 423.
 
-<Img/cap2/pruebat_varianzasiguales_Shannon.png, id=454, 853.5087pt x 426.6339pt
+<Img/cap2/pruebat_varianzasiguales_Shannon.png, id=562, 853.5087pt x 426.6339pt
 >
 File: Img/cap2/pruebat_varianzasiguales_Shannon.png Graphic file (type png)
 <use Img/cap2/pruebat_varianzasiguales_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasiguales_Shannon.png  used on
- input line 435.
+ input line 425.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 439.
+               Default added (so using `!tbp') on input line 429.
 
-<Img/cap2/pruebat_varianzasdiferentes_Shannon.png, id=455, 853.5087pt x 426.633
+<Img/cap2/pruebat_varianzasdiferentes_Shannon.png, id=563, 853.5087pt x 426.633
 9pt>
 File: Img/cap2/pruebat_varianzasdiferentes_Shannon.png Graphic file (type png)
 <use Img/cap2/pruebat_varianzasdiferentes_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasdiferentes_Shannon.png  used
- on input line 441.
+ on input line 431.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 446.
+               Default added (so using `!tbp') on input line 436.
 
-<Img/cap2/mediasFusarium_Shannon.png, id=456, 853.5087pt x 426.6339pt>
+<Img/cap2/mediasFusarium_Shannon.png, id=564, 853.5087pt x 426.6339pt>
 File: Img/cap2/mediasFusarium_Shannon.png Graphic file (type png)
 <use Img/cap2/mediasFusarium_Shannon.png>
 Package pdftex.def Info: Img/cap2/mediasFusarium_Shannon.png  used on input lin
-e 448.
+e 438.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 452.
+               Default added (so using `!tbp') on input line 442.
 
-<Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png, id=457, 853.5087pt x 42
+<Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png, id=565, 853.5087pt x 42
 6.6339pt>
 File: Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png Graphic file (type 
 png)
 <use Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png 
- used on input line 454.
+ used on input line 444.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 458.
+               Default added (so using `!tbp') on input line 448.
 
-<Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png, id=458, 853.5087pt x
+<Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png, id=566, 853.5087pt x
  426.6339pt>
 File: Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png Graphic file (ty
 pe png)
 <use Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png>
 Package pdftex.def Info: Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.p
-ng  used on input line 460.
+ng  used on input line 450.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Overfull \hbox (7.36714pt too wide) in paragraph at lines 470--471
+Overfull \hbox (7.36714pt too wide) in paragraph at lines 460--461
 []\OT1/cmr/m/n/12 y que-re-mos pro-bar (te-ne-mos co-mo hi-po-te-sis nu-la)Wilc
 oxonWilcoxon 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 483.
+               Default added (so using `!tbp') on input line 473.
 
-<Img/cap2/varianzas_Chao1.png, id=459, 853.5087pt x 426.6339pt>
+<Img/cap2/varianzas_Chao1.png, id=567, 853.5087pt x 426.6339pt>
 File: Img/cap2/varianzas_Chao1.png Graphic file (type png)
 <use Img/cap2/varianzas_Chao1.png>
-Package pdftex.def Info: Img/cap2/varianzas_Chao1.png  used on input line 485.
+Package pdftex.def Info: Img/cap2/varianzas_Chao1.png  used on input line 475.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 493.
+               Default added (so using `!tbp') on input line 483.
 
-<Img/cap2/Wilcoxon_Shannon.png, id=460, 853.5087pt x 426.6339pt>
+<Img/cap2/Wilcoxon_Shannon.png, id=568, 853.5087pt x 426.6339pt>
 File: Img/cap2/Wilcoxon_Shannon.png Graphic file (type png)
 <use Img/cap2/Wilcoxon_Shannon.png>
-Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 495.
+Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 485.
 
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+LaTeX Info: Redefining \. on input line 495.
+LaTeX Info: Redefining \% on input line 495.
+[43]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 509.
+               Default added (so using `!tbp') on input line 499.
 
 File: Img/cap2/Wilcoxon_Shannon.png Graphic file (type png)
 <use Img/cap2/Wilcoxon_Shannon.png>
-Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 511.
+Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 501.
 
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 520.
+               Default added (so using `!tbp') on input line 510.
 
-<Img/cap2/Barras_Abundancia.png, id=461, 853.5087pt x 426.6339pt>
+<Img/cap2/Barras_Abundancia.png, id=573, 853.5087pt x 426.6339pt>
 File: Img/cap2/Barras_Abundancia.png Graphic file (type png)
 <use Img/cap2/Barras_Abundancia.png>
-Package pdftex.def Info: Img/cap2/Barras_Abundancia.png  used on input line 522
+Package pdftex.def Info: Img/cap2/Barras_Abundancia.png  used on input line 512
 .
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 524.
-LaTeX Info: Redefining \% on input line 524.
-[36]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 537.
+               Default added (so using `!tbp') on input line 527.
 
-<Img/cap2/Rarefaccion.png, id=466, 853.5087pt x 426.6339pt>
+<Img/cap2/Rarefaccion.png, id=574, 853.5087pt x 426.6339pt>
 File: Img/cap2/Rarefaccion.png Graphic file (type png)
 <use Img/cap2/Rarefaccion.png>
-Package pdftex.def Info: Img/cap2/Rarefaccion.png  used on input line 539.
+Package pdftex.def Info: Img/cap2/Rarefaccion.png  used on input line 529.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 543.
+               Default added (so using `!tbp') on input line 533.
 
-<Img/cap2/Rarefaccion_diversidadAlfa.png, id=467, 853.5087pt x 426.6339pt>
+<Img/cap2/Rarefaccion_diversidadAlfa.png, id=575, 853.5087pt x 426.6339pt>
 File: Img/cap2/Rarefaccion_diversidadAlfa.png Graphic file (type png)
 <use Img/cap2/Rarefaccion_diversidadAlfa.png>
 Package pdftex.def Info: Img/cap2/Rarefaccion_diversidadAlfa.png  used on input
- line 545.
+ line 535.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 549.
+               Default added (so using `!tbp') on input line 539.
 
-<Img/cap2/Rarefaccion_diversidadBeta.png, id=468, 853.5087pt x 426.6339pt>
+<Img/cap2/Rarefaccion_diversidadBeta.png, id=576, 853.5087pt x 426.6339pt>
 File: Img/cap2/Rarefaccion_diversidadBeta.png Graphic file (type png)
 <use Img/cap2/Rarefaccion_diversidadBeta.png>
 Package pdftex.def Info: Img/cap2/Rarefaccion_diversidadBeta.png  used on input
- line 551.
+ line 541.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 567--569
+Underfull \hbox (badness 10000) in paragraph at lines 557--559
 
  []
 
+LaTeX Info: Redefining \. on input line 559.
+LaTeX Info: Redefining \% on input line 559.
+[44]
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 5
-71.
-(/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+61.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 571.
-LaTeX Info: Redefining \. on input line 579.
-LaTeX Info: Redefining \% on input line 579.
- [37]
-Overfull \hbox (26.17857pt too wide) in paragraph at lines 582--583
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 561.
+
+Overfull \hbox (26.17857pt too wide) in paragraph at lines 572--573
 [][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (181.2783pt too wide) in paragraph at lines 588--589
+Overfull \hbox (181.2783pt too wide) in paragraph at lines 578--579
 [][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 593--594
+Underfull \hbox (badness 10000) in paragraph at lines 583--584
 
  []
 
 
-Overfull \hbox (13.35484pt too wide) in paragraph at lines 595--596
+Overfull \hbox (13.35484pt too wide) in paragraph at lines 585--586
 \OT1/cmr/m/n/12 plot[]net() no re-quie-re una lla-ma-da se-pa-ra-da a la fun-ci
 ^^Son ma-ke[]network(),
  []
 
 
-Overfull \hbox (230.62822pt too wide) in paragraph at lines 598--599
+Overfull \hbox (230.62822pt too wide) in paragraph at lines 588--589
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-LaTeX Info: Redefining \. on input line 622.
-LaTeX Info: Redefining \% on input line 622.
-[38]
+LaTeX Info: Redefining \. on input line 603.
+LaTeX Info: Redefining \% on input line 603.
+[45]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 636.
+               Default added (so using `!tbp') on input line 626.
 
-<Img/cap2/AllData_Alfa_diversidad.png, id=487, 853.5087pt x 426.6339pt>
+<Img/cap2/AllData_Alfa_diversidad.png, id=594, 853.5087pt x 426.6339pt>
 File: Img/cap2/AllData_Alfa_diversidad.png Graphic file (type png)
 <use Img/cap2/AllData_Alfa_diversidad.png>
 Package pdftex.def Info: Img/cap2/AllData_Alfa_diversidad.png  used on input li
-ne 638.
+ne 628.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `!tbp') on input line 642.
+               Default added (so using `!tbp') on input line 632.
 
-<Img/cap2/AllData_Beta_diversidad.png, id=488, 853.5087pt x 426.6339pt>
+<Img/cap2/AllData_Beta_diversidad.png, id=595, 853.5087pt x 426.6339pt>
 File: Img/cap2/AllData_Beta_diversidad.png Graphic file (type png)
 <use Img/cap2/AllData_Beta_diversidad.png>
 Package pdftex.def Info: Img/cap2/AllData_Beta_diversidad.png  used on input li
-ne 644.
+ne 634.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 )
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [39]
+ [46]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [40 <./Img/cap2/pvalor.png>]
+ [47 <./Img/cap2/pvalor.png>]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [41 <./Img/cap2/medias_Shannon.png> <./Img/cap2/pruebat_varianzasiguales_Shann
+ [48 <./Img/cap2/medias_Shannon.png> <./Img/cap2/pruebat_varianzasiguales_Shann
 on.png>]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [42 <./Img/cap2/pruebat_varianzasdiferentes_Shannon.png> <./Img/cap2/mediasFus
+ [49 <./Img/cap2/pruebat_varianzasdiferentes_Shannon.png> <./Img/cap2/mediasFus
 arium_Shannon.png>]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [43 <./Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png> <./Img/cap2/prue
+ [50 <./Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png> <./Img/cap2/prue
 bat_varianzasdiferentesFusarium_Shannon.png>]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [44 <./Img/cap2/varianzas_Chao1.png> <./Img/cap2/Wilcoxon_Shannon.png>]
+ [51 <./Img/cap2/varianzas_Chao1.png> <./Img/cap2/Wilcoxon_Shannon.png>]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [45 <./Img/cap2/Barras_Abundancia.png>]
+ [52 <./Img/cap2/Barras_Abundancia.png>]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [46 <./Img/cap2/Rarefaccion.png> <./Img/cap2/Rarefaccion_diversidadAlfa.png>]
+ [53 <./Img/cap2/Rarefaccion.png> <./Img/cap2/Rarefaccion_diversidadAlfa.png>]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [47 <./Img/cap2/Rarefaccion_diversidadBeta.png> <./Img/cap2/AllData_Alfa_diver
+ [54 <./Img/cap2/Rarefaccion_diversidadBeta.png> <./Img/cap2/AllData_Alfa_diver
 sidad.png>]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
 
-[48 <./Img/cap2/AllData_Beta_diversidad.png>]
+[55 <./Img/cap2/AllData_Beta_diversidad.png>]
 \openout2 = `Capitulos/cap3.aux'.
 
- (./Capitulos/cap3.tex
+ (./Capitulos/cap3.tex [56
+
+
+
+
+]
 Cap\'{\i }tulo 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
@@ -1949,12 +1830,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [49
-
-
-
-
-]
+ [57]
 Underfull \hbox (badness 10000) in paragraph at lines 24--25
 
  []
@@ -1981,11 +1857,11 @@ LaTeX Info: Redefining \. on input line 48.
 LaTeX Info: Redefining \% on input line 48.
 
 Overfull \hbox (3.68361pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 50 \OT1/cmr/m/sl/12 CAP[]ITULO 3.  SIMULADOR METAGEN[]OMICO PYM
+\OT1/cmr/m/n/12 58 \OT1/cmr/m/sl/12 CAP[]ITULO 3.  SIMULADOR METAGEN[]OMICO PYM
 ETASEEM
  []
 
-[50]
+[58]
 Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
  []
@@ -1995,103 +1871,112 @@ Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
-)
-Underfull \hbox (badness 10000) in paragraph at lines 60--205
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
-LaTeX Info: Redefining \. on input line 205.
-LaTeX Info: Redefining \% on input line 205.
-[51]
+LaTeX Info: Redefining \. on input line 62.
+LaTeX Info: Redefining \% on input line 62.
+[59])
+Underfull \hbox (badness 10000) in paragraph at lines 62--205
+
+ []
+
 LaTeX Info: Redefining \. on input line 205.
 LaTeX Info: Redefining \% on input line 205.
 
 Overfull \hbox (3.68361pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/12 52 \OT1/cmr/m/sl/12 CAP[]ITULO 3.  SIMULADOR METAGEN[]OMICO PYM
+\OT1/cmr/m/n/12 60 \OT1/cmr/m/sl/12 CAP[]ITULO 3.  SIMULADOR METAGEN[]OMICO PYM
 ETASEEM
  []
 
-[52]
+[60]
 \openout2 = `Capitulos/cap4.aux'.
 
  (./Capitulos/cap4.tex
 Cap\'{\i }tulo 4.
-) [53
+) [61
 
 
 
 
-] [54
+] [62
 
 
 
-] [55]
+] [63]
 \openout2 = `Apendices/Ap.aux'.
 
  (./Apendices/Ap.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [56
+ [64
 
 
 ]
 Ap\'{e}ndice A.
-) [57]
+) [65]
 \openout2 = `Apendices/Bp.aux'.
 
- (./Apendices/Bp.tex [58
+ (./Apendices/Bp.tex [66
 
 
 
 
 ]
 Ap\'{e}ndice B.
-) [59] [60
+) [67] [68
 
 
 
 ]
 No file main.bbl.
 (./main.aux
-LaTeX Info: Redefining \. on input line 26.
-LaTeX Info: Redefining \% on input line 26.
+LaTeX Info: Redefining \. on input line 12.
+LaTeX Info: Redefining \% on input line 12.
  (./Capitulos/cap1_Intro.aux) (./Capitulos/cap2.aux)
 (./Capitulos/cap3.aux) (./Capitulos/cap4.aux) (./Apendices/Ap.aux)
 (./Apendices/Bp.aux))
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+ ***********
+
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 53DFE23172C6FBC7F95A73B034A870DE;5356.
+(rerunfilecheck)             Checksum: C2F35DB8CE1F998A89F541D223C268C7;7005.
  ) 
 Here is how much of TeX's memory you used:
- 16518 strings out of 478287
- 275001 string characters out of 5849289
- 618132 words of memory out of 5000000
- 34218 multiletter control sequences out of 15000+600000
- 478522 words of font info for 61 fonts, out of 8000000 for 9000
+ 16901 strings out of 474222
+ 279394 string characters out of 5748733
+ 1942975 words of memory out of 5000000
+ 38673 multiletter control sequences out of 15000+600000
+ 567438 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,15n,92p,1257b,1247s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1
-/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfr
-m1200.pfb>
-Output written on main.pdf (70 pages, 7039788 bytes).
+ 94i,15n,93p,1258b,1249s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+l12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr/shar
+e/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/
+public/cm-super/sfrm1200.pfb>
+Output written on main.pdf (78 pages, 7059472 bytes).
 PDF statistics:
- 705 PDF objects out of 1000 (max. 8388607)
- 532 compressed objects within 6 object streams
- 151 named destinations out of 1000 (max. 500000)
- 425 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 825 PDF objects out of 1000 (max. 8388607)
+ 641 compressed objects within 7 object streams
+ 175 named destinations out of 1000 (max. 500000)
+ 545 words of extra memory for PDF output out of 10000 (max. 10000000)
 

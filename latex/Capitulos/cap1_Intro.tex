@@ -6,23 +6,33 @@ En la microbiología un factor de estudio son las interacciones entre microorgan
 
 Phylogenetica, es el estudio de la vida evolutiva y las relaciones entre organismos y grupos de organismos. Este análisis se centra en temas de estudio como la diversidad, evolución, ecología, y genomas; y nos ayuda a comprender como genes, genomas y especies evolucionan. Parte importante de este estudio, es la identificación, clasificación y denominación de organismos biológicos; y a este campo se le llama Taxonomía,  principalmente Calr Linnaeus (El padre de la taxonomía) creo 7 niveles taxonómicos (Reino, Phylum, Clase, Orden, Familia, Género y Especie) a los cuales le agregaron el dominio, como el octavo grupo taxonómico más grande, dividido en Arqueas, Bacterias y Eukarya. \\
 
-La metagenómica...\\
-
-En metagenómica existen dos enfoques para la secuenciación de microorganismos, “Amplicón 16S rRNA” y “Shotgun”.  La secuenciación por amplicon  16S fue el primer método de secuenciación metagenómica altamente aceptado, tiene muchas ventajas: el gen 16S está presente en todas las bacterias y arqueas, contiene las regiones necesarias para un buen análisis de PCR altamente conservadas,  existen conjuntos de primers altamente estudiados para amplificar la mayoría de los organismos, ya se encuentran disponibles bases de datos públicas y bien seleccionadas que permiten una buena comparación, la secuenciación por 16S es relativamente barata y simple; aunque posee algunas desventajas: el gen 16S este no está presente en los genes de hongos, por lo que no es bueno este método cuando se desea trabajar con hongos, existe una probabilidad de aumentar un error de sesgo al no elegir el conjunto de primers adecuado para el organismo a analizar. \\
-
-Para realizar una secuenciación por 16S, antes se deben seguir una serie de pasos para la preparación de la muestra biológica y la extracción del ADN: colecta de la muestra, extracción del ADN, preparación de la librería. Para la colecta de las muestras se deben tener en cuenta las necesidades del experimento y los resultados esperados, estimar el número de muestras necesarias y considerar el método de almacenamiento; todo esto para garantizar la calidad de los datos. Existen varios métodos y herramientas para realizar la extracción del ADN. Se necesita una preparación de bibliotecas de datos genómicos para la comparación de las secuencias. Luego de esto, se continúa con la secuenciación de las muestras, para lo cual existen varias herramientas y una de las más usada es Ilumina que ofrece unamayor cobertura a menor costo. Y por último se realiza un control de calidad, del cual los principales objetivos son mejorar la precisión del análisis y prevenir la sobreestimación de los datos, el control de calidad puede incluir: la detección y eliminación de quimeras artificiales, filtrado de secuencias de baja calidad y reads muy cortos y eliminación de ruido. \\
-
-Luego de obtener las secuencias , se requiere identificar el grupo taxonómico para cada secuencia. Para esto se conocen dos enfoques principales: uno basado en filotipos, que como su nombre lo indica, se agrupa directamente en función de la similitud con los filotipos. Y por otro lado, uno basado en OTU’s (Unidades Taxonómicas Operacionales) los cuales agrupan secuencias según la similitud entre OTU’s. El método de agrupación por OTU’s supera al basado en filotipos, pero también tiene ciertas limitaciones, ya que es relativamente costoso computacionalmente y requiere mucha memoria. Un OTU se define entre el mismo cluster por un porcentaje de similitud, siendo 97\% un porcentaje común a nivel de especie. Estos OTU son obtenidos mediante clusterización, para lo cual ya existen varios métodos y algoritmos posibles. (Xia et al., 2018) \\
-
-Los niveles taxonómicos...\\
-
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.3]{Img/cap1/taxonomic.png}
 \caption{Niveles taxonómicos}
 \end{figure}
 
-El microbioma se refiere a la comunidad de microorganismos, incluyendo bacterias, virus, hongos y organismos unicelulares, que habitan en un entorno o en un organismo en particular.\\
+\section{Metagenómica}
+
+La metagenómica es el estudio integral del material genético recuperado directamente de muestras ambientales. Permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, sin necesidad de cultivarlos individualmente. Este campo se centra en comprender la diversidad microbiana, las estructuras poblacionales, las capacidades funcionales y las interacciones de las comunidades microbianas con su entorno. Se aplica comúnmente en el estudio de ecosistemas como suelo, agua, microbiota humana y otros hábitats microbianos complejos. La metagenómica utiliza tecnologías avanzadas de secuenciación, como la secuenciación de nueva generación, para desentrañar la diversidad genética y funcional de estas comunidades. (zhang2021)\\
+
+Existen dos enfoques para la secuenciación de microorganismos, “Amplicón 16S rRNA” y “Shotgun”.  La secuenciación por amplicon  16S fue el primer método de secuenciación metagenómica altamente aceptado, tiene muchas ventajas: el gen 16S está presente en todas las bacterias y arqueas, contiene las regiones necesarias para un buen análisis de PCR altamente conservadas,  existen conjuntos de primers altamente estudiados para amplificar la mayoría de los organismos, ya se encuentran disponibles bases de datos públicas y bien seleccionadas que permiten una buena comparación, la secuenciación por 16S es relativamente barata y simple; aunque posee algunas desventajas: el gen 16S este no está presente en los genes de hongos, por lo que no es bueno este método cuando se desea trabajar con hongos, existe una probabilidad de aumentar un error de sesgo al no elegir el conjunto de primers adecuado para el organismo a analizar. \\
+
+Para realizar una secuenciación por 16S, antes se deben seguir una serie de pasos para la preparación de la muestra biológica y la extracción del ADN: colecta de la muestra, extracción del ADN, preparación de la librería. Para la colecta de las muestras se deben tener en cuenta las necesidades del experimento y los resultados esperados, estimar el número de muestras necesarias y considerar el método de almacenamiento; todo esto para garantizar la calidad de los datos. Existen varios métodos y herramientas para realizar la extracción del ADN. Se necesita una preparación de bibliotecas de datos genómicos para la comparación de las secuencias. Luego de esto, se continúa con la secuenciación de las muestras, para lo cual existen varias herramientas y una de las más usada es Ilumina que ofrece una mayor cobertura a menor costo. Y por último se realiza un control de calidad, del cual los principales objetivos son mejorar la precisión del análisis y prevenir la sobreestimación de los datos, el control de calidad puede incluir: la detección y eliminación de quimeras artificiales, filtrado de secuencias de baja calidad y reads muy cortos y eliminación de ruido. \\
+
+Luego de obtener las secuencias , se requiere identificar el grupo taxonómico para cada secuencia. Para esto se conocen dos enfoques principales: uno basado en filotipos, que como su nombre lo indica, se agrupa directamente en función de la similitud con los filotipos. Y por otro lado, uno basado en OTU’s (Unidades Taxonómicas Operacionales) los cuales agrupan secuencias según la similitud entre OTU’s. El método de agrupación por OTU’s supera al basado en filotipos, pero también tiene ciertas limitaciones, ya que es relativamente costoso computacionalmente y requiere mucha memoria. Un OTU se define entre el mismo cluster por un porcentaje de similitud, siendo 97\% un porcentaje común a nivel de especie. Estos OTU son obtenidos mediante clusterización, para lo cual ya existen varios métodos y algoritmos posibles. (Xia et al., 2018) \\
+
+\section{Microbioma}
+
+El microbioma se define como la comunidad completa de microorganismos (incluyendo bacterias, arqueas, hongos, protozoos y virus) que habitan en un entorno específico, como el cuerpo humano, animales, plantas o ambientes naturales. Este término no solo abarca a los microorganismos vivos, sino también sus genes, metabolitos y las interacciones que tienen entre ellos y con su huésped. La investigación del microbioma utiliza herramientas avanzadas como la secuenciación de próxima generación y análisis metagenómicos para entender su diversidad y funciones en la salud, la enfermedad y los ecosistemas. (Marchesi, J.R., Ravel, J. The vocabulary of microbiome research: a proposal. Microbiome 3, 31 (2015). https://doi.org/10.1186/s40168-015-0094-5) \\
+
+\section{Clasificadores}
+
+\subsection{Kaiju}
+
+Kaiju es un programa para clasificacion taxonomica de lecturas de secuenciación de alto rendimiento,  a partir de la secuenciacion del genoma completo fde ADN metagenomico. \\
+
+\subsection{Kraken \& Braken}
 
 Kraken, es una herramienta de clasificación de secuencias de ADN metagenómico, mediante alineación exacta de k-meros, asignándoles etiquetas taxonómicas, con gran exactitud y velocidad (\cite{wood2014kraken}).  Este crea su base de datos de consulta, en base a una biblioteca de datos metagenómicos e información taxonómica de NCBI. \\
 
@@ -32,12 +42,72 @@ Kraken nos entrega una línea por cada read, que contiene 5 ítems separados por
 
 Para saber todo su ID taxonómico kraken tiene la herramienta (kraken\_translate), el cual luego de los resultados de kraken y con la misma base de datos nos genera una lista de los reads, y el id taxonómico en nombre completo. Y una herramienta complementaria (--mpa-) aparte de esta,nos muestra la salida ordenada por categoría taxonómica (root\_Super Kingdom, d\_kingdom, p\_phylum, c\_class, o\_order, f\_family, g\_genus, s\_species). (Wood \& Salzberg, 2014)  \\
 
+
+%\begin{figure}[h]
+%\centering
+%\includegraphics[scale=0.3]{Img/cap1/kraken.png}
+%\caption{kraken}
+%\end{figure}
+
 BRACKEN : Bayesian Reestimation of Abundance after Classification with kraKEN: Calcula la abundancia de especies, géneros u otras categorías taxonómicas a partir de las secuencias de ADN recopiladas en un experimento de metagenómica .(\cite{lu2017bracken})  \\
 
 Hace estimaciones probabilísticas en las salidas de kraken para completar las asignaciones al nivel taxonómico que se requiera ,y así lograr una estimación de abundancias más eficaz. Puede producir estimaciones precisas de abundancia a nivel de especie y género incluso cuando una muestra contiene múltiples especies casi idénticas.   \\
 
+\section{Lenguajes}
 
-Kaiju es un programa para clasificacion taxonomica de lecturas de secuenciación de alto rendimiento,  a partir de la secuenciacion del genoma completo fde ADN metagenomico.  \\
+\subsection{BASH}
+Bash (Bourne Again SHell) es un intérprete de comandos y lenguaje de scripting desarrollado para el sistema operativo Unix y sus derivados, como Linux. Creado en 1989 por Brian Fox, Bash permite automatizar tareas mediante scripts, lo que es particularmente útil en entornos de análisis bioinformático donde se requiere manejar grandes volúmenes de datos. Aunque no está orientado a análisis estadísticos o gráficos, Bash es fundamental para la gestión de flujos de trabajo y la integración de herramientas como BLAST, SAMtools y GATK. Bash se emplea para procesar datos en sistemas de alto rendimiento, administrar flujos de trabajo de análisis masivo, y realizar manipulaciones rápidas de datos en formato de texto o binario.\\
+
+\subsection{Python}
+Python es un lenguaje de programación de propósito general, conocido por su sintaxis sencilla y su amplia aplicabilidad en la ciencia de datos, bioinformática y aprendizaje automático. Fue creado por Guido van Rossum en 1991 y se ha consolidado como una herramienta versátil en disciplinas científicas debido a su capacidad para integrar múltiples flujos de trabajo. Python cuenta con bibliotecas científicas robustas como NumPy para álgebra lineal, Pandas para manejo de datos estructurados y Biopython para análisis bioinformáticos. Se emplea para la automatización de procesos, el desarrollo de algoritmos personalizados, el análisis de secuencias genómicas, y la inteligencia artificial aplicada a la investigación científica.\\
+
+\subsubsection{Phyloseq}
+Phyloseq es un Software de Código Abierto para Bioinformática (Open Source Software For Bioinformatics), diseñado para la manipulación y análisis integral de datos metagenómicos generados mediante tecnologías de secuenciación de alto rendimiento. Esta herramienta en R ofrece capacidades para importar, almacenar, analizar y visualizar datos metagenómicos de manera eficiente. En el entorno de R, estos datos se estructuran en un objeto Phyloseq, el cual tiene la versatilidad de contener elementos clave, como la tabla de taxonomía, la tabla de conteos, la tabla de muestras o metadatos, y el árbol filogenético. Esta organización multifacética facilita un análisis completo y preciso de la estructura de la comunidad microbiana, brindando una comprensión profunda de los datos metagenómicos en cuestión. (\cite{mcmurdie2013})\\
+
+\subsection{R \& RStudio}
+R es un lenguaje de programación y un entorno de software diseñado específicamente para el análisis estadístico y la visualización de datos. Desarrollado inicialmente por Ross Ihaka y Robert Gentleman en 1993, se ha convertido en una herramienta esencial en biología, ecología, genómica y otras disciplinas científicas que requieren análisis cuantitativos. Su principal fortaleza radica en la disponibilidad de bibliotecas especializadas, como ggplot2 para visualización y phyloseq para análisis de microbiomas, además de su comunidad activa que contribuye con paquetes de código abierto. R se utiliza ampliamente en análisis de datos complejos, modelado estadístico, aprendizaje automático y visualización avanzada, facilitando la reproducibilidad y el manejo de grandes volúmenes de datos.\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/Phyloseq.png}
+\caption{Objeto phyloseq }%\citep{Introducción a phyloseq-castrolab})}
+\end{figure}
+
+\section{Formatos}
+
+\subsection{JSON}
+JSON (JavaScript Object Notation) es un formato de texto ligero para el intercambio de datos estructurados que se representa como pares clave-valor u objetos anidados. Este formato se utiliza en bioinformática para almacenar metadatos y resultados jerarquizados debido a su compatibilidad con múltiples lenguajes de programación y su legibilidad. En bioinformática, se usa frecuentemente para guardar información de taxonomía, anotaciones funcionales, o resultados de herramientas como QIIME 2, que lo emplean para almacenar objetos complejos, como árboles filogenéticos y tablas de abundancia.\\
+
+\subsection{BIOM}
+El formato BIOM (Biological Observation Matrix) es un estándar binario utilizado en bioinformática para almacenar matrices de datos biológicos, particularmente en estudios de microbiomas. Facilita el almacenamiento eficiente de datos de abundancia y metadatos asociados, y es compatible con herramientas como QIIME y Phyloseq. Contiene tablas de abundancia con taxones como filas, muestras como columnas y valores numéricos que representan abundancias relativas o absolutas. También permite incluir metadatos sobre muestras y taxones, como información ambiental o taxonómica.\\
+
+\subsection{FASTA}
+FASTA (Fast Alignment Search Tool-All)es un formato de texto plano que almacena secuencias de ADN, ARN o proteínas. Cada entrada contiene un encabezado (precedido por ">") seguido de una línea con la secuencia biológica. Es ampliamente utilizado para compartir datos genómicos y transcriptómicos.\\
+
+FASTQ es un formato que extiende FASTA incluyendo información sobre la calidad de cada nucleótido o aminoácido. Es crucial para datos generados por plataformas de secuenciación de próxima generación (NGS).\\
+Cada entrada tiene cuatro líneas:\\
+Un identificador de la secuencia.\\
+La secuencia biológEl objetivo principal fue caracterizar las diferencias en la composición y diversidad microbiana de la rizosfera entre plantas infectadas y no infectadas, explorando posibles relaciones entre la infección por oídio y cambios en el microbioma rizosférico.ica.\\
+Un separador "+".\\
+Una línea con la puntuación de calidad (en ASCII).\\
+
+
+\section{Solena}
+ 
+Solena es una empresa de biotecnología agrícola (AgTech) que se especializa en el análisis y la mejora del microbioma del suelo. Su enfoque principal radica en el desarrollo de soluciones innovadoras basadas en datos moleculares y biotecnología para optimizar la salud del suelo y, por ende, la productividad agrícola. Utilizan herramientas avanzadas como la inteligencia artificial y la genómica para generar insights profundos sobre la composición y funcionalidad del microbioma del suelo.\\
+
+En colaboración con organizaciones locales, Solena también trabaja en la implementación de centros de diagnóstico molecular agrícola, como el establecido en México, para evaluar la salud de los suelos y fomentar prácticas agrícolas regenerativa\\
+
+
+\section{fresa}
+
+rizosfera 
+datos de fresas 
+plantas sanasy enfermas 
+El estudio investiga las diferencias en la estructura y diversidad de la comunidad microbiana del suelo rizosférico asociadas a plantas de fresa (Fragaria × ananassa) infectadas y no infectadas con el oídio (Podosphaera aphanis). Utilizando tecnología de secuenciación de alto rendimiento (Illumina MiSeq), se analizaron las comunidades microbianas para evaluar los efectos del patógeno sobre la microbiota del suelo en condiciones controladas de invernadero. El objetivo principal fue caracterizar las diferencias en la composición y diversidad microbiana de la rizosfera entre plantas infectadas y no infectadas, explorando posibles relaciones entre la infección por oídio y cambios en el microbioma rizosférico.(yang2020comparison)\\
+
+
+\section{Simuladores de Secuencias metagenomicas}
 
 CAMISIM es un simulador de secuencias metagenómicas, este software puede simular una amplia variedad de comunidades microbianas y conjuntos de datos metagenomicos, este algoritmo se divide en tres partes, la primera es el diseño de la comunidad, aqui se crean dichos datos a partir de perfiles taxonomicos de novo o de una base de datos genomicos dada (\cite{fritz2019camisim}). Para el diseño a partir de perfiles taxonomicos, se incluye una base de datos de la taxonomia de NCBI (National Center for Biotechnology Information), y se proporcionan en formato BIOM (Biological Observation Matrix format); estos perfiles pueden incluir taxones de bacterias,arqueas y eucariotas asi como virus. Para el diseño de comunidad de novo, se necesitan genomas en formato .fasta y un archivo de mapeo que contenga ID taxonomico (de NCBI) y OTU para cada genoma.  \\
 
@@ -51,12 +121,9 @@ Y por ultimo en la tercera parte se tiene la creación y posprocesamiento de est
     \item Exploraron el efecto de las propiedades específicas de los datos en el rendimiento del ensamblador.
 \end{itemize}
 
-TIPOS DE FORMATOS DE LOS ARCHIVOS
-JSON
-BIOM
-FASTA
-FASTQ
-...
-QUE ES?
-QUE DATOS CONTIENEN?
-QUE ES UN SAMDATA
+
+
+DeepMAsED tiene un enfoque de deeplearning para identificar contig  mal ensamblados sin necesidad de genomas de referencia.\\
+
+
+

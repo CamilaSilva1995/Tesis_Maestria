@@ -1,4 +1,4 @@
-\chapter{Análisis Exploratorio de Datos}
+|\chapter{Análisis Exploratorio de Datos}
 
 Un análisis exploratorio se realiza para una investigacion y entendimiento afondo de los datos, y asi descubrir patrones ocultos y generar hipótesis, a traves de tecnicas de visualización de datos, análisis de correlación o minería de datos.\\
 
@@ -21,17 +21,7 @@ Dentro de las etapas principales de los datos, se encuentra la adquisición de l
 
 Dentro de este preprocesamiento es necesario realizar una limpieza y trasformación de los datos para que estos sean adecuados para el análisis. En este caso se realizó un cambio de formato a objeto BIOM, para un mejor manejo de los datos; luego fue necesario renombrar columnas, agregar los metadatos y realizar un filtro de calidad, que se explicara a fondo más adelante.\\
 
-\subsection{Phyloseq}
-
-Phyloseq es un Software de Código Abierto para Bioinformática (Open Source Software For Bioinformatics), diseñado para la manipulación y análisis integral de datos metagenómicos generados mediante tecnologías de secuenciación de alto rendimiento. Esta herramienta en R ofrece capacidades para importar, almacenar, analizar y visualizar datos metagenómicos de manera eficiente. En el entorno de R, estos datos se estructuran en un objeto Phyloseq, el cual tiene la versatilidad de contener elementos clave, como la tabla de taxonomía, la tabla de conteos, la tabla de muestras o metadatos, y el árbol filogenético. Esta organización multifacética facilita un análisis completo y preciso de la estructura de la comunidad microbiana, brindando una comprensión profunda de los datos metagenómicos en cuestión. (\cite{mcmurdie2013})\\
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/Phyloseq.png}
-\caption{Objeto phyloseq }%\citep{Introducción a phyloseq-castrolab})}
-\end{figure}
-
-Para iniciar el análisis de estos datos, llevamos a cabo una exploración general utilizando índices ecológicos, especialmente centrándonos en las diversidades alfa y beta. Importamos los datos como un objeto Phyloseq, que puede incluir cuatro componentes: la matriz de abundancias, la tabla de taxonomía, los metadatos y el árbol filogenético. Este enfoque nos permite obtener una comprensión más profunda de la estructura de la comunidad microbiana presente en los datos metagenómicos, empleando medidas de diversidad para evaluar la variabilidad intra e inter-muestral.
+Para iniciar el análisis de estos datos, llevamos a cabo una exploración general utilizando índices ecológicos, especialmente centrándonos en las diversidades alfa y beta. Importamos los datos como un objeto Phyloseq, que puede incluir cuatro componentes: la matriz de abundancias, la tabla de taxonomía, los metadatos y el árbol filogenético. Este enfoque nos permite obtener una comprensión más profunda de la estructura de la comunidad microbiana presente en los datos metagenómicos, empleando medidas de diversidad para evaluar la variabilidad intra e inter-muestral.\\
 
 \subsection{Filtrado de Calidad}
 
