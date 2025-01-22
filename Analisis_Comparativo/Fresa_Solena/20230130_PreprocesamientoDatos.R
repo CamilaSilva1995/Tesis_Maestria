@@ -46,7 +46,7 @@ library("patchwork")
 library("vegan")
 library("GUniFrac")
 library("pbkrtest")
-#library("BiodiversityR")
+library("BiodiversityR")
 library("kableExtra")
 library("RColorBrewer")
 ## Debemos especificarle a R en que directorio estamos trabajando

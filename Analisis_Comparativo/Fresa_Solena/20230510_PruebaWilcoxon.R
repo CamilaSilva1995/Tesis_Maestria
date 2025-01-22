@@ -66,3 +66,4 @@ wilcox.test(x = healthy, y = wilted, alternative = "two.sided", mu = 0,
 
 
 ## WILCOX PARA CHAO1
+

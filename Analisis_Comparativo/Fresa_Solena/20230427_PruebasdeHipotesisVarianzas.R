@@ -126,6 +126,7 @@ hist(x,
      xlab = '')  
   curve(df(x, v1, v2), from = 0, to = 4, n = 5000, col= 'pink', lwd=2, add = T)
 
+  
 #################################################################################
 ## Subconjunto de "Bacteria"
 merge_Bacteria<-subset_taxa(fresa_kraken_fil,Kingdom=="Bacteria")
@@ -157,6 +158,13 @@ df <- reshape(glom_df2, idvar = "Sample",v.names= c("Abundance"), timevar = "OTU
 rownames(df) <- df$Sample
 df <- select(df, -Sample)
 head(df)
+
+
+
+
+
+
+
 
 
 ##AQUI QUEDE.......

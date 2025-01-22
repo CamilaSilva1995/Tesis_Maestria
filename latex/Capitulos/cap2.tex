@@ -1,22 +1,19 @@
 |\chapter{Análisis Exploratorio de Datos}
-
-Un análisis exploratorio se realiza para una investigacion y entendimiento afondo de los datos, y asi descubrir patrones ocultos y generar hipótesis, a traves de tecnicas de visualización de datos, análisis de correlación o minería de datos.\\
-
 El propósito de este análisis es identificar características diferenciadoras entre los microbiomas de plantas sanas y enfermas mediante el uso de datos metagenómicos. Para llevar a cabo este estudio, se obtuvieron datos metagenómicos de la empresa Solena, específicamente de microorganismos presentes en cultivos de fresa. Inicialmente, se dividieron las muestras en dos poblaciones: aquellas etiquetadas como $"$sanas$"$ y $"$enfermas$"$.\\
 
-En una primera etapa, se llevó a cabo un exhaustivo preprocesamiento de los datos, utilizando los lenguajes de programación, BASH y R. Posteriormente, se inició el análisis exploratorio de datos, el cual se estructura principalmente en tres partes. En primer lugar, se realizó una exploración que abarcó las diversidades alfa y beta. Esto condujo a un análisis estadístico respaldado por pruebas de hipótesis. En segundo lugar, se llevó a cabo una visualización de correlaciones mediante redes.\\ %Por último, se implementó una clasificación empleando técnicas de machine learning.\\
+En este estudio, el propósito es identificar características diferenciadoras entre los microbiomas de plantas sanas y enfermas a partir de datos metagenómicos. Para ello, se obtuvieron datos de microorganismos presentes en cultivos de fresa, proporcionados por la empresa Solena. Las muestras se dividieron en dos grupos: las etiquetadas como $"$sanas" y las etiquetadas como $"$enfermas".\\
 
-Este enfoque integral no solo proporciona una comprensión detallada de la composición de los microbiomas en las plantas de fresa, sino que también permite identificar patrones significativos que podrían ser fundamentales para distinguir entre la salud y la enfermedad en estos cultivos (\cite{yang2020}). 
-Este enfoque integral no solo proporciona una comprensión detallada de la composición de los microbiomas en las plantas de fresa, sino que también permite identificar patrones significativos en las diferencias ya sea de presencia-ausencia o abundancia de microorganismos, que podrían ser fundamentales para distinguir entre la salud y la enfermedad en estos cultivos.
+En la primera etapa, se realizó un proceso exhaustivo de preprocesamiento de los datos utilizando lenguajes de programación como BASH y R. Luego, el análisis exploratorio se estructuró en tres partes principales. Primero, se exploraron las diversidades alfa y beta, seguidas de un análisis estadístico respaldado por pruebas de hipótesis. En segundo lugar, se visualizó la correlación entre variables a través de redes.\\
+
+Este enfoque integral no solo proporciona una comprensión detallada de la composición de los microbiomas en las plantas de fresa, sino que también permite identificar patrones significativos en las diferencias de presencia-ausencia o abundancia de microorganismos, que podrían ser fundamentales para distinguir entre la salud y la enfermedad en estos cultivos (\cite{yang2020}).\\
 
 \section{Preprocesamiento}
-
-Dentro de las etapas principales de los datos, se encuentra la adquisición de los datos, en donde se recopilan los datos necesarios para el análisis. Se ha adquirido un conjunto de datos metagenómicos de cultivos de fresa proporcionados por Solena. Estas secuencias se entregaron en formato fasta y se encuentran almacenadas en archivos Json, siendo el resultado de la clasificación metagenómica realizada mediante el clasificador Kraken. Con la finalidad de identificar características distintivas entre los frutos sanos y enfermos, hemos llevado a cabo un análisis exploratorio de estos datos.\\
+Dentro de las etapas principales del análisis, se encuentra la adquisición de datos, en la cual se recopilan los datos necesarios para el estudio. En este caso, se ha adquirido un conjunto de datos metagenómicos de cultivos de fresa proporcionados por Solena. Estas secuencias se entregaron en formato FASTA y se encuentran almacenadas en archivos JSON, los cuales contienen los resultados de la clasificación metagenómica realizada mediante el clasificador Kraken. Con el objetivo de identificar características distintivas entre los frutos sanos y enfermos, se ha llevado a cabo un análisis exploratorio detallado de estos datos.\\
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/preprosecamiento.png}
-\caption{Flujo de trabajo, preprocesamiento de datos}
+\caption{Flujo de Trabajo para el Análisis Metagenómico de Microbiomas en Cultivos de Fresa}
 \end{figure}
 
 Dentro de este preprocesamiento es necesario realizar una limpieza y trasformación de los datos para que estos sean adecuados para el análisis. En este caso se realizó un cambio de formato a objeto BIOM, para un mejor manejo de los datos; luego fue necesario renombrar columnas, agregar los metadatos y realizar un filtro de calidad, que se explicara a fondo más adelante.\\
@@ -161,19 +158,13 @@ En el contexto de la diversidad alfa, estos índices nos permiten explorar y com
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Img/cap2/DiversidadAlfaFresaKraken.png}
-\caption{Diversidad alfa datos crudos metagenomicos de fresa, \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)} }
+\includegraphics[width=\textwidth]{Img/cap2/AlphaDiversity_CrudosFiltrados.png}
+\caption{La diversidad alfa en los datos crudos es similar en ambos tratamientos en todos los índices. Al realizar el filtro de calidad se obtienen una mejor visión de esta diversidad.A) Datos crudos, B) Datos luego del filtro de calidad. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)} }
 \end{figure}
 
 En la imagen, se pueden identificar datos no deseados que afectan la visualización, por lo que se lleva a cabo un filtro de calidad de los datos.\\
 
 Eliminar muestras de baja calidad resulta en una mejora significativa en la claridad y la interpretación de la visualización. La diferencia es notable después de descartar las muestras de baja calidad, lo que resalta la importancia de un proceso riguroso de filtrado para obtener resultados más precisos y confiables. Este enfoque contribuye a una representación más fiel de los datos, permitiendo una interpretación más precisa y una toma de decisiones informada.\\
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/DiversidadAlfaFresaKraken_fil.png}
-\caption{Diversidad alfa datos filtrados metagenomicos de fresa, \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)} }
-\end{figure}
 
 Después de aplicar el filtro de calidad de los datos, la visualización de la diversidad alfa en los conjuntos de muestras de plantas sanas y enfermas revela una mayor diversidad en las muestras sanas en comparación con las muestras enfermas. Esta observación se confirma mediante la métrica Chao1, que elimina la influencia de los singletons y doubletons, respaldando la percepción visual de una mayor diversidad en las muestras sanas. A pesar de la diferencia en las diversidades observadas, cabe destacar que esta disparidad no es significativamente grande, sugiriendo que no hay una diferencia sustancial en la diversidad entre las muestras sanas y enfermas.\\
 
@@ -206,12 +197,6 @@ donde $d_{BC}$ es el índice de disimilitud de Bray-Curtis, $S$ es el número de
 
 Este índice proporciona una medida cuantitativa de la diferencia relativa en términos de composición de especies y abundancia entre dos poblaciones o muestras. Cuanto más cercano a 1 sea el valor del índice, mayor será la disimilitud entre las poblaciones.\\
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/DiversidadBetaFresaKraken_fil.png}
-\caption{Diversidad Beta, disimilitud de Bray-Curtis,  \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
-\end{figure}
-
 La \textbf{Distancia Jaccard} es un índice de disimilitud que se basa en la presencia o ausencia de especies en diferentes poblaciones. Este índice compara la proporción de especies que son comunes entre dos poblaciones en relación con el total de especies encontradas en ambas poblaciones. Resulta útil para comparar la diversidad de especies entre diferentes poblaciones o evaluar la similitud en la composición de especies entre comunidades diversas.
 
 La fórmula para el índice de disimilitud de Jaccard es la siguiente:
@@ -219,12 +204,6 @@ $$d_{JC} = 1 - \frac{S}{(S_{a} + S_{b}-S)}$$
 donde $d_{JC}$ es el índice de disimilitud de Jaccard, $S$ es el número de especies compartidas entre las poblaciones $a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, respectivamente.\\
 
 Este índice ofrece una medida de disimilitud que se centra en la presencia o ausencia de especies, siendo 0 cuando las poblaciones comparten todas las especies y 1 cuando no comparten ninguna. Es especialmente útil para análisis comparativos de la composición de especies entre diferentes comunidades.\\
-
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/DiversidadBetaFresaKraken_fil_jaccard.png}
-\caption{Diversidad Beta, distancia de Jaccard, \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
-\end{figure}
 
 Tomando los datos con filtro de calidad y utilizando la distancia de Jaccard, la cual es la más comúnmente utilizada en este tipo de estudios, se observa que las muestras, tanto sanas como enfermas, están bastante mezcladas. Ante esta observación, se procede a realizar pruebas con distintas distancias para explorar si alguna otra métrica puede proporcionar una separación más clara o revelar patrones específicos en la composición de especies entre las muestras.\\
 
@@ -236,12 +215,6 @@ Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las 
 
 La distancia Euclidiana es simétrica y cumple con la desigualdad del triángulo, lo que significa que satisface las propiedades de una verdadera distancia. Esta métrica es especialmente adecuada para comparar muestras en términos de diferencias numéricas en las abundancias de las especies.\\
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/DiversidadBetaFresaKraken_fil_euclidean.png}
-\caption{Diversidad Beta, distancia Euclidiana, \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
-\end{figure}
-
 La distancia \textbf{Manhattan} también se emplea en el análisis de datos numéricos y se basa en la diferencia de las abundancias o proporciones de diferentes especies en distintas muestras. En este caso, la distancia de Manhattan entre dos muestras se define como la suma de las diferencias absolutas entre las proporciones de cada especie en ambas muestras.
 
 La fórmula de la distancia de Manhattan entre dos muestras $A$ y $B$ se calcula como:
@@ -249,12 +222,6 @@ $$d_{Manhattan}(A, B) = \sum{|A_i - B_i|}$$
 Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente. \\
 
 Al igual que la distancia Euclidiana, la distancia de Manhattan es simétrica y satisface la desigualdad del triángulo. Esta métrica es adecuada para comparar muestras en términos de las diferencias absolutas en las abundancias de las especies.\\
-
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/DiversidadBetaFresaKraken_fil_manhattan.png}
-\caption{Diversidad Beta, distancia Manhattan,  \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
-\end{figure}
 
 La \textbf{Divergencia de Jensen-Shannon (JSD)} se utiliza para comparar la similitud entre dos distribuciones de probabilidad. En el contexto del análisis de datos de diversidad, estas distribuciones de probabilidad pueden representar la proporción de diferentes especies en distintas muestras. La distancia de JSD entre dos distribuciones de probabilidad se calcula como la raíz cuadrada de la divergencia de Kullback-Leibler entre las dos distribuciones, dividida por dos. 
 
@@ -264,17 +231,18 @@ Donde $D_{KL}(P, M)$ y $D_{KL}(Q, M)$ son las divergencias de Kullback-Leibler e
 
 Al igual que las distancias anteriores, la distancia de JSD es simétrica y satisface la desigualdad del triángulo. Esta métrica es especialmente útil cuando se quiere evaluar la similitud entre las proporciones de especies en diferentes muestras.\\
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/DiversidadBetaFresaKraken_fil_jsd.png}
-\caption{Diversidad Beta, divergencia de Jensen-Shannon,  \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
-\end{figure}
-
 La metrica de \textbf{UniFrac} es un índice de disimilitud que se basa en la filogenia de las especies presentes en diferentes sitios. Su objetivo es comparar la similitud entre dos sitios en términos de la diversidad filogenética de las especies, teniendo en cuenta la contribución relativa de cada rama en el árbol filogenético. Esta métrica resulta valiosa para evaluar la similitud en la evolución de las especies en diferentes comunidades o para comparar la estructura filogenética de distintas comunidades.\\
 
 La fórmula del índice de disimilitud de UniFrac es más compleja en comparación con las de Bray-Curtis y Jaccard, ya que se basa en un análisis de la distribución de ramas filogenéticas únicas o compartidas entre los sitios. Este enfoque permite capturar la información sobre las relaciones evolutivas entre las especies, proporcionando una medida más completa de la similitud o disimilitud entre las comunidades estudiadas. \\
 
 Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud entre muestras, permitiendo seleccionar la más apropiada según el contexto del estudio y los objetivos específicos del análisis de diversidad beta.\\
+
+\begin{figure}[!]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/BetaDiversity.png}
+\caption{La diversidad beta no muestra una separación clara entre muestras sanas y marchitas en ninguna distancia. A) Medida de disimilitud de Bray-Curtis B) Distancia de Jaccard C) Distancia Euclidiana D) Distancia Manhattan E) Medida de divergencia de Jensen-Shannon
+,  \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
+\end{figure}
 
 Luego de no ver una clara separacion de los datos, Dado que no se observa una clara separación de los datos, se decide proceder con un análisis en conjuntos más pequeños. Este enfoque puede ayudar a identificar patrones más específicos o diferencias significativas en la composición de especies entre subconjuntos de muestras, lo que contribuirá a una comprensión más detallada de la diversidad microbiana en el contexto particular del estudio.\\
 
@@ -283,20 +251,20 @@ Podemos visualizar las barras de abundancia absolutas y relativas de nuestros da
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras.png}
-\caption{A) Barras de abundancias absolutas y B) Relativas}
+\caption{Las muestras saludables (N=35 ) tienen en promedio mayor cantidad de lecturas (A +- ) que las No saludables (N=18)}
 \end{figure}
 Debido a la gran cantidad de datos, resulta difícil discernir diferencias entre las muestras. Por lo tanto, se han creado subconjuntos dividiendo por reino y estableciendo subdivisiones en diferentes niveles taxonómicos.\\
 
 A nivel de filo, ya podemos apreciar una mayor diversidad en nuestras muestras, siendo la mayoría de los filos pertenecientes a bacterias.\\
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Img/cap2/filo_plot.png}
+\includegraphics[width=\textwidth]{Img/cap2/BarrasFilo.png}
 \caption{A)Barras de abundancias absolutas y B) relativas a nivel de filo}
 \end{figure}
 Podemos notar algunas diferencias entre los diferentes filos; sin embargo, la gran cantidad de taxones dificulta distinguir adecuadamente el color de cada uno, a menos que tengan una abundancia muy significativa. Dado que nuestro objetivo es diferenciar entre muestras sanas y enfermas, agregaremos una distinción adicional utilizando la variable 'Tratamiento': representaremos las muestras sanas en color blanco y las muestras enfermas en color negro.\\
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Img/cap2/filo_plot_blackandwhite.png}
+\includegraphics[width=\textwidth]{Img/cap2/BarrasFilo_blackandwhite.png}
 \caption{Barras de abundancias relativas separando entre sanas y enfermas}
 \end{figure}
 De igual manera, la cantidad de taxones dificulta la distinción entre las muestras. Por ello, hemos creado subconjuntos más pequeños para facilitar una observación más clara de nuestros datos.\\
@@ -416,40 +384,17 @@ $$ S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 
 
 \begin{figure}[!]
 \centering
-\includegraphics[width=\textwidth]{Img/cap2/medias_Shannon.png}
-\caption{}
-\end{figure}
-
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/pruebat_varianzasiguales_Shannon.png}
-\caption{}
-\end{figure}
-
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/pruebat_varianzasdiferentes_Shannon.png}
+\includegraphics[width=\textwidth]{Img/cap2/tTest_Shannon.png}
 \caption{}
 \end{figure}
 
 
 \begin{figure}[!]
 \centering
-\includegraphics[width=\textwidth]{Img/cap2/mediasFusarium_Shannon.png}
+\includegraphics[width=\textwidth]{Img/cap2/tTest_Shannon_Fusarium.png}
 \caption{}
 \end{figure}
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/pruebat_varianzasigualesFusarium_Shannon.png}
-\caption{}
-\end{figure}
-
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/pruebat_varianzasdiferentesFusarium_Shannon.png}
-\caption{}
-\end{figure}
 
 \subsection{Prueba de Hipótesis sobre las varianzas de dos poblaciones pequeñas} 
 Pon tu figura y describe tus resultados
@@ -470,21 +415,21 @@ tomando como estadistico de prueba:
 $$ F = \frac{S_{1}^{2}}{S_{2}^{2}}$$
 
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/varianzas_Chao1.png}
-\caption{}
-\end{figure}
+%\begin{figure}[!]
+%\centering
+%\includegraphics[width=\textwidth]{Img/cap2/varianzas_Chao1.png}
+%\caption{}
+%\end{figure}
 
 \subsection{Prueba de los rangos con signos de Wilcolxon}
 
 Esta es una prueba no parametrica para comparar el rango medio de dos muestras relacionadas y determinar si existen diferencias entre ellas. Se uso, ya que los datos no tienen una distribucion normal.
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/Wilcoxon_Shannon.png}
-\caption{Wilcoxon}
-\end{figure}
+%\begin{figure}[!]
+%\centering
+%\includegraphics[width=\textwidth]{Img/cap2/Wilcoxon_Shannon.png}
+%\caption{Wilcoxon}
+%\end{figure}
 
 
 
@@ -496,22 +441,22 @@ Pon tu figura y describe tus resultados, y describe que es una prueba Wilcoxon
 La U de Mann-Whitney para comparar lasmedias dedos grupos independientes. 
 Prueba no parametrica o libre de distribución, es el analogo no parametrico a la t de Student para lacomparacion de dos medias independientes; solo que esta no requiere parametros y se puede emplear sin ninguna condicion de aplicación.
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/Wilcoxon_Shannon.png}
-\caption{Mann-Whitney}
-\end{figure}
+%\begin{figure}[!]
+%\centering
+%\includegraphics[width=\textwidth]{Img/cap2/Wilcoxon_Shannon.png}
+%\caption{Mann-Whitney}
+%\end{figure}
 
 
 
 \section{Normalización}
 \subsection{Normalización}
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/Barras_Abundancia.png}
-\caption{Barras de abundancia de los datos en crudo}
-\end{figure}
+%\begin{figure}[!]
+%\centering
+%\includegraphics[width=\textwidth]{Img/cap2/Barras_Abundancia.png}
+%\caption{Barras de abundancia de los datos en crudo}
+%\end{figure}
 
 La función edgeRnorm escala datos NGS normalizados utilizando la función de normalización provista en edgeR. Toma un objeto phyloseq y devuelve un objeto phyloseq cuya otu\_table se transforma.
 
@@ -524,23 +469,23 @@ Se eliminaron 670 OTUs
 
 
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/Rarefaccion.png}
-\caption{Barras de abundancia, luego de la rarefacción}
-\end{figure}
+%\begin{figure}[!]
+%\centering
+%\includegraphics[width=\textwidth]{Img/cap2/Rarefaccion.png}
+%\caption{Barras de abundancia, luego de la rarefacción}
+%\end{figure}
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/Rarefaccion_diversidadAlfa.png}
-\caption{Diversidad alfa luego de la rarefacción}
-\end{figure}
+%\begin{figure}[!]
+%\centering
+%\includegraphics[width=\textwidth]{Img/cap2/Rarefaccion_diversidadAlfa.png}
+%\caption{Diversidad alfa luego de la rarefacción}
+%\end{figure}
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/Rarefaccion_diversidadBeta.png}
-\caption{Diversidad beta luego de la rarefacción}
-\end{figure}
+%\begin{figure}[!]
+%\centering
+%\includegraphics[width=\textwidth]{Img/cap2/Rarefaccion_diversidadBeta.png}
+%\caption{Diversidad beta luego de la rarefacción}
+%\end{figure}
 
 \section{Rarefacción}
 La rarefacción se usa como una medida de saturacion de muestras, es decir, 
@@ -623,14 +568,14 @@ Asi la primera red creada con esta herramienta es tomando Fusarium a nivel de ge
 
 Se obtuvo un nuevo conjunto de datos complementario, el cual se divide en cinco categorias, respecto al tipo de cultivo de las fresas,
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/AllData_Alfa_diversidad.png}
-\caption{Diversidad Alfa, }
-\end{figure}
+%\begin{figure}[!]
+%\centering
+%\includegraphics[width=\textwidth]{Img/cap2/AllData_Alfa_diversidad.png}
+%\caption{Diversidad Alfa, }
+%\end{figure}
 
-\begin{figure}[!]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/AllData_Beta_diversidad.png}
-\caption{Diversidad Beta, }
-\end{figure}
+%\begin{figure}[!]
+%\centering
+%\includegraphics[width=\textwidth]{Img/cap2/AllData_Beta_diversidad.png}
+%\caption{Diversidad Beta, }
+%\end{figure}

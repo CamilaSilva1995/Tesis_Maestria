@@ -24,6 +24,7 @@ percentages_df <- psmelt(percentages_fil)
 ## Trazando las muestras en el eje x y las abundancias en el eje y
 ## Los valores de abundancia para cada OTUen cada muestra se apilan en el orden de mayor a menor, separados por una fina línea horizontal.
 plot_bar(fresa_kraken_fil,fill="Treatment")
+ggsave("FresaKraken_StackBar.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 plot_bar(percentages_fil,fill="Treatment")
 
 ggplot(data=percentages_df, aes_string(x='Sample', y='Abundance', fill='Phylum' ,color='Treatment'))  +
@@ -74,7 +75,9 @@ relative_plot <- ggplot(data=percentages_df_phylum, aes(x=Sample, y=Abundance, f
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
 
 absolute_plot
+ggsave("absolute_plot.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 relative_plot
+ggsave("relative_plot.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
 
 ## Usaremos un comando llamado unique() para explorar cuántos filos y reinos tenemos. 

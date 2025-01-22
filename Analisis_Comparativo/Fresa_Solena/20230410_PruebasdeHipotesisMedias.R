@@ -8,7 +8,7 @@ library("RColorBrewer")
 library("stringi")
 library("dplyr")
 library("plyr")
-library("gginference")
+#library("gginference")
 
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
 outpath = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img"
@@ -84,9 +84,12 @@ T <- (mu[1,2] - mu[2,2])/ (sqrt(Sp2/n1 + Sp2/n2))
 
 p_value<-2*pt(q=T,df=v1+v2,lower.tail = FALSE)
 
-
 ### no se rechaza H0 por que p-value>alfa
 # esto es suponiendo varianzas iguales
+
+#Aquí se realiza una prueba t de Student para comparar las medias de Shannon entre los dos grupos (sano y marchito). 
+#Se calcula el valor del estadístico t y #el valor p correspondiente para determinar si hay diferencias significativas 
+#entre los grupos. Si el valor p es mayor que el nivel de significancia alfa (0.05), no se rechaza la hipótesis nula de que no hay diferencias.
 
 totalH <- total[total$Treatment == "healthy", ]
 totalW <- total[total$Treatment == "wilted", ]
@@ -96,12 +99,23 @@ pruebat
 ggttest(pruebat)
 ggsave("pruebat_varianzasiguales_Shannon.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
 
+#Finalmente, se realiza una prueba t de Student utilizando la función t.test del lenguaje R para comparar las medias de Shannon 
+#entre los tratamientos "healthy" y "wilted" (sano y marchito). 
+
+
+
+
+
+
 ### suponiendo varianzas diferentes
 
 pruebat2 <- t.test(totalH$value, totalW$value, var.equal = FALSE, alternative = "two.sided")
 pruebat2
 ggttest(pruebat2)
 ggsave("pruebat_varianzasdiferentes_Shannon.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+
+
+
 
 ####
 
@@ -292,8 +306,6 @@ sprintf("P_errorI_2cola: %g", Ptcalc1*2)
 
 library('gginference')
 ggttest(pruebat)
-
-
 
 
 

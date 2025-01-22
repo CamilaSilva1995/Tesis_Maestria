@@ -67,12 +67,35 @@ p+geom_vline(data=mu, aes(xintercept=grp.mean, color="red"),
              linetype="dashed")
 ```
 
+```{r}
+ggsave("ShannonDistribucion.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+```
 
 
 
+El gráfico muestra la distribución del índice de diversidad de Shannon para dos grupos de tratamiento diferentes: "healthy" (sano) y "wilted" (marchito), con líneas verticales indicando la media de cada grupo.
 
+Análisis del gráfico:
 
+Ejes del gráfico:
+Eje X (value): Representa los valores del índice de Shannon, que mide la diversidad de microorganismos. Valores más altos indican una comunidad microbiana más diversa.
+Eje Y (count): Indica la frecuencia (número de muestras) para cada rango de valores de Shannon.
+Paneles por tratamiento:
 
+El gráfico se divide en dos paneles:
+Arriba: "healthy" (sano).
+Abajo: "wilted" (marchito).
+Distribución dentro de los tratamientos:
+
+En el grupo "healthy", la diversidad microbiana parece estar concentrada en valores más altos de Shannon (aproximadamente entre 7.2 y 7.6), indicando una mayor diversidad en muestras saludables.
+En el grupo "wilted", los valores de Shannon están distribuidos en un rango más bajo (entre 6.8 y 7.4), sugiriendo que las muestras marchitas tienen menor diversidad microbiana.
+Líneas verticales:
+
+Las líneas rojas punteadas representan la media del índice de Shannon para cada tratamiento:
+Para "healthy", la media está cerca de 7.4.
+Para "wilted", la media está más baja, alrededor de 7.2.
+Interpretación biológica:
+El índice de Shannon más alto en las muestras saludables podría indicar que una mayor diversidad microbiana está asociada con un mejor estado de salud de las plantas. Por otro lado, la menor diversidad en muestras marchitas podría estar relacionada con un desequilibrio o dominancia de ciertas especies microbianas perjudiciales.
 
 
 
