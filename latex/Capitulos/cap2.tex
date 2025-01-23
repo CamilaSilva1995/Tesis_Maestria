@@ -13,7 +13,7 @@ Dentro de las etapas principales del análisis, se encuentra la adquisición de 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/preprosecamiento.png}
-\caption{Flujo de Trabajo para el Análisis Metagenómico de Microbiomas en Cultivos de Fresa}
+\caption{Flujo de Trabajo para el Análisis Metagenómico de Microbiomas en Cultivos de Fresa: Desde la Recolección de Datos hasta la Interpretación de Resultados.}
 \end{figure}
 
 Dentro de este preprocesamiento es necesario realizar una limpieza y trasformación de los datos para que estos sean adecuados para el análisis. En este caso se realizó un cambio de formato a objeto BIOM, para un mejor manejo de los datos; luego fue necesario renombrar columnas, agregar los metadatos y realizar un filtro de calidad, que se explicara a fondo más adelante.\\
@@ -159,7 +159,7 @@ En el contexto de la diversidad alfa, estos índices nos permiten explorar y com
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/AlphaDiversity_CrudosFiltrados.png}
-\caption{La diversidad alfa en los datos crudos es similar en ambos tratamientos en todos los índices. Al realizar el filtro de calidad se obtienen una mejor visión de esta diversidad.A) Datos crudos, B) Datos luego del filtro de calidad. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)} }
+\caption{La diversidad alfa en los datos crudos es similar en ambos tratamientos en todos los índices. Al realizar el filtro de calidad se obtienen una mejor visión de esta diversidad. A) Índices de diversidad alfa calculados antes de aplicar el filtro de calidad, las diferencias entre las muestras saludables y enfermas son poco claras debido a la influencia de datos ruidosos. B) Índices de diversidad alfa tras eliminar muestras de baja calidad o datos inconsistentes, mejora la claridad y permite una mejor percepción visual de las diferencias en la diversidad microbiana entre los grupos. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)} }
 \end{figure}
 
 En la imagen, se pueden identificar datos no deseados que afectan la visualización, por lo que se lleva a cabo un filtro de calidad de los datos.\\
@@ -240,8 +240,7 @@ Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud
 \begin{figure}[!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/BetaDiversity.png}
-\caption{La diversidad beta no muestra una separación clara entre muestras sanas y marchitas en ninguna distancia. A) Medida de disimilitud de Bray-Curtis B) Distancia de Jaccard C) Distancia Euclidiana D) Distancia Manhattan E) Medida de divergencia de Jensen-Shannon
-,  \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
+\caption{La diversidad beta muestra que las diferencias entre las muestras no son lo suficientemente claras como para separar completamente los grupos entre muestras sanas y marchitas para ninguna métrica de distancia. Esto sugiere una gran superposición en la composición microbiana entre las muestras saludables y enfermas, independientemente de la métrica utilizada. A) Medida de disimilitud de Bray-Curtis B) Distancia de Jaccard C) Distancia Euclidiana D) Distancia Manhattan E) Medida de divergencia de Jensen-Shannon. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
 \end{figure}
 
 Luego de no ver una clara separacion de los datos, Dado que no se observa una clara separación de los datos, se decide proceder con un análisis en conjuntos más pequeños. Este enfoque puede ayudar a identificar patrones más específicos o diferencias significativas en la composición de especies entre subconjuntos de muestras, lo que contribuirá a una comprensión más detallada de la diversidad microbiana en el contexto particular del estudio.\\
@@ -251,7 +250,7 @@ Podemos visualizar las barras de abundancia absolutas y relativas de nuestros da
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras.png}
-\caption{Las muestras saludables (N=35 ) tienen en promedio mayor cantidad de lecturas (A +- ) que las No saludables (N=18)}
+\caption{Las muestras saludables (N=35) muestran, en promedio, una mayor cantidad de lecturas en comparación con las no saludables (N=18).}
 \end{figure}
 Debido a la gran cantidad de datos, resulta difícil discernir diferencias entre las muestras. Por lo tanto, se han creado subconjuntos dividiendo por reino y estableciendo subdivisiones en diferentes niveles taxonómicos.\\
 
@@ -259,13 +258,13 @@ A nivel de filo, ya podemos apreciar una mayor diversidad en nuestras muestras, 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/BarrasFilo.png}
-\caption{A)Barras de abundancias absolutas y B) relativas a nivel de filo}
+\caption{Las barras de abundancia a nivel de FILO muestran a Actinobacteria y Proteobacteria como los más abundantes  A) Las barras de abundancia absolutas, representan el conteo total de lecturas asignadas a cada filo en las muestras.  B) Las barras de abundancia relativas, representan las proporciones de cada filo dentro de la comunidad microbiana total para cada muestra}
 \end{figure}
 Podemos notar algunas diferencias entre los diferentes filos; sin embargo, la gran cantidad de taxones dificulta distinguir adecuadamente el color de cada uno, a menos que tengan una abundancia muy significativa. Dado que nuestro objetivo es diferenciar entre muestras sanas y enfermas, agregaremos una distinción adicional utilizando la variable 'Tratamiento': representaremos las muestras sanas en color blanco y las muestras enfermas en color negro.\\
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/BarrasFilo_blackandwhite.png}
-\caption{Barras de abundancias relativas separando entre sanas y enfermas}
+\caption{A nivel de filo, se observa una menor presencia de ciertos taxones como Oomycota en las plantas enfermas, lo cual es consistente con la hipótesis de que la salud de las plantas está relacionada con una microbiota específica.}
 \end{figure}
 De igual manera, la cantidad de taxones dificulta la distinción entre las muestras. Por ello, hemos creado subconjuntos más pequeños para facilitar una observación más clara de nuestros datos.\\
 
@@ -293,13 +292,13 @@ Se realiza una aglomeracion al diez por ciento (10\%)  para tener una mejor visi
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras_Eukarya10.png}
-\caption{Barras de abundancia para eucariota a nivel A) Filo, B) Familia, C) Genero, D) Especie,  \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
+\caption{La distribución de la abundancia relativa de microorganismos eucariotas en muestras de plantas saludable y no saludables, desglosada en diferentes niveles taxonómicos. A) Filo: Muestra una disminución significativa de algunos filos en las muestras enfermas, destacando particularmente la baja abundancia de Oomycota, un grupo importante asociado a la salud del suelo y de las plantas. B) Familia: Resalta la disminución específica de familias como Peronosporaceae en las muestras enfermas, lo cual podría indicar una pérdida de componentes microbianos clave para la resistencia a enfermedades. C) Género: Ofrece una visualización más específica que permite identificar  permiten identificar biomarcadores positivos, como Pseudomonas y Bacillus, que se asocian con plantas saludables, así como Fusarium y Phytophthora, que predominan en condiciones de enfermedad. D) Especie: Se observan diferencias claras que pueden servir para identificar biomarcadores asociados a la salud o enfermedad de las plantas. Como Pseudomonas o Bacillus en muestras saludables y Phytophthora o Fusarium en muestras no saludables.  \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras_Bacteria10.png}
-\caption{Barras de abundancia para bacteria a nivel A) Filo, B) Familia, C) Genero, D) Especie, \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
+\caption{La distribución de la abundancia relativa de bacterias revela que las plantas saludables albergan una microbiota diversa y equilibrada, caracterizada por la dominancia de filos beneficiosos como Actinobacteria y Firmicutes. En contraste, las plantas enfermas presentan una mayor proporción de posibles patógenos, destacando especies como Ralstonia. A) Filo, La composición a nivel de filo sugiere diferencias en la dominancia de filos beneficiosos (e.g., Actinobacteria) frente a posibles patógenos o descomponedores en plantas enfermas (e.g., Bacteroidetes). B) Familia, A nivel de familia, se observa cómo las plantas saludables están asociadas con microbiota protectora (e.g., Bacillaceae), mientras que las plantas enfermas presentan familias que incluyen patógenos o microbios oportunistas. C) Género, La identificación de géneros específicos permite asociar Pseudomonas y Bacillus con la salud de las plantas, mientras que géneros como Ralstonia se relacionan con la enfermedad. D) Especie, La diferenciación a nivel de especie permite identificar microorganismos específicos que actúan como indicadores claros de la salud o enfermedad de las plantas. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
 
 En esta representación a nivel de filo, podemos destacar la disminución notable de \textit{Oomycota} en las muestras enfermas en comparación con las muestras sanas. Al profundizar a nivel de familia, observamos una disminución específica de \textit{Peronosporaceae} en las muestras enfermas en comparación con las muestras sanas.\\
@@ -309,7 +308,8 @@ En esta representación a nivel de filo, podemos destacar la disminución notabl
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Alpha_Eukarya.png}
-\caption{Diversidad alpha para eucariota a nivel de A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
+\caption{La diversidad alfa de eucariotas revela que las plantas saludables presentan una microbiota más equilibrada y diversa, mientras que las plantas enfermas están dominadas por eucariotas patógenos, lo que las convierte en indicadores clave para el diagnóstico y manejo de enfermedades en cultivos. A) Filo B) Familia C) Género D) Especie
+ \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
 En esta imagen, podemos ver que con la diversidad Chao1 a nivel de especie se genera una diferencia considerable de diversidades entre muestras sanas y enfermas, lo cual se detallara mas adelante con una prueba de hipótesis. Tambien ...
 \begin{figure}[h]

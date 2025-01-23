@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.28)  21 JAN 2025 20:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.28)  22 JAN 2025 22:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1132,12 +1132,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--158
 
  []
 
-<Img/cap2/AlphaDiversity_CrudosFiltrados.png, id=407, 963.6pt x 542.025pt>
+<Img/cap2/AlphaDiversity_CrudosFiltrados.png, id=407, 963.6pt x 350.30875pt>
 File: Img/cap2/AlphaDiversity_CrudosFiltrados.png Graphic file (type png)
 <use Img/cap2/AlphaDiversity_CrudosFiltrados.png>
 Package pdftex.def Info: Img/cap2/AlphaDiversity_CrudosFiltrados.png  used on i
 nput line 161.
-(pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
+(pdftex.def)             Requested size: 354.52077pt x 128.8799pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1177,7 +1177,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 175.
 LaTeX Info: Redefining \% on input line 175.
- [24 <./Img/cap2/AlphaDiversity_CrudosFiltrados.png (PNG copy)>]
+ [24 <./Img/cap2/AlphaDiversity_CrudosFiltrados.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 176--177
 
  []
@@ -1288,48 +1288,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--239
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `!tbp') on input line 240.
 
-<Img/cap2/BetaDiversity.png, id=440, 963.6pt x 542.025pt>
+<Img/cap2/BetaDiversity.png, id=441, 963.6pt x 521.95pt>
 File: Img/cap2/BetaDiversity.png Graphic file (type png)
 <use Img/cap2/BetaDiversity.png>
 Package pdftex.def Info: Img/cap2/BetaDiversity.png  used on input line 242.
-(pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
+(pdftex.def)             Requested size: 354.52077pt x 192.02736pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--248
+Underfull \hbox (badness 10000) in paragraph at lines 246--247
 
  []
 
-<Img/cap2/Barras.png, id=443, 963.6pt x 542.025pt>
+<Img/cap2/Barras.png, id=444, 963.6pt x 542.025pt>
 File: Img/cap2/Barras.png Graphic file (type png)
 <use Img/cap2/Barras.png>
-Package pdftex.def Info: Img/cap2/Barras.png  used on input line 253.
+Package pdftex.def Info: Img/cap2/Barras.png  used on input line 252.
 (pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 250--257
+Underfull \hbox (badness 10000) in paragraph at lines 249--256
 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-LaTeX Info: Redefining \. on input line 258.
-LaTeX Info: Redefining \% on input line 258.
+LaTeX Info: Redefining \. on input line 257.
+LaTeX Info: Redefining \% on input line 257.
 [29]
-LaTeX Info: Redefining \. on input line 258.
-LaTeX Info: Redefining \% on input line 258.
- [30 <./Img/cap2/BetaDiversity.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 257.
+LaTeX Info: Redefining \% on input line 257.
+ [30 <./Img/cap2/BetaDiversity.png>]
 <Img/cap2/BarrasFilo.png, id=455, 963.6pt x 542.025pt>
 File: Img/cap2/BarrasFilo.png Graphic file (type png)
 <use Img/cap2/BarrasFilo.png>
-Package pdftex.def Info: Img/cap2/BarrasFilo.png  used on input line 261.
+Package pdftex.def Info: Img/cap2/BarrasFilo.png  used on input line 260.
 (pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
 <Img/cap2/BarrasFilo_blackandwhite.png, id=456, 963.6pt x 542.025pt>
 File: Img/cap2/BarrasFilo_blackandwhite.png Graphic file (type png)
 <use Img/cap2/BarrasFilo_blackandwhite.png>
 Package pdftex.def Info: Img/cap2/BarrasFilo_blackandwhite.png  used on input l
-ine 267.
+ine 266.
 (pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--271
+Underfull \hbox (badness 10000) in paragraph at lines 257--270
 
  []
 
@@ -1340,80 +1340,80 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 272--273
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
 
  []
 
-LaTeX Info: Redefining \. on input line 273.
-LaTeX Info: Redefining \% on input line 273.
+LaTeX Info: Redefining \. on input line 272.
+LaTeX Info: Redefining \% on input line 272.
 [31 <./Img/cap2/Barras.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
 
  []
 
 
-Overfull \hbox (17.48302pt too wide) in paragraph at lines 278--279
+Overfull \hbox (17.48302pt too wide) in paragraph at lines 277--278
 [][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (11.48296pt too wide) in paragraph at lines 282--283
+Overfull \hbox (11.48296pt too wide) in paragraph at lines 281--282
 [][][][][][][][][][][][][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 286--287
-
- []
-
-LaTeX Info: Redefining \. on input line 288.
-LaTeX Info: Redefining \% on input line 288.
+LaTeX Info: Redefining \. on input line 282.
+LaTeX Info: Redefining \% on input line 282.
 [32 <./Img/cap2/BarrasFilo.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
+Underfull \hbox (badness 10000) in paragraph at lines 285--286
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--292
+Underfull \hbox (badness 10000) in paragraph at lines 287--288
 
  []
 
-<Img/cap2/Barras_Eukarya10.png, id=473, 963.6pt x 542.025pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--291
+
+ []
+
+LaTeX Info: Redefining \. on input line 291.
+LaTeX Info: Redefining \% on input line 291.
+[33 <./Img/cap2/BarrasFilo_blackandwhite.png (PNG copy)>]
+<Img/cap2/Barras_Eukarya10.png, id=479, 963.6pt x 542.025pt>
 File: Img/cap2/Barras_Eukarya10.png Graphic file (type png)
 <use Img/cap2/Barras_Eukarya10.png>
-Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 295.
+Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 294.
 
 (pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Img/cap2/Barras_Bacteria10.png, id=476, 963.6pt x 542.025pt>
+<Img/cap2/Barras_Bacteria10.png, id=482, 963.6pt x 542.025pt>
 File: Img/cap2/Barras_Bacteria10.png Graphic file (type png)
 <use Img/cap2/Barras_Bacteria10.png>
-Package pdftex.def Info: Img/cap2/Barras_Bacteria10.png  used on input line 301
+Package pdftex.def Info: Img/cap2/Barras_Bacteria10.png  used on input line 300
 .
 (pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 305--306
+Underfull \hbox (badness 10000) in paragraph at lines 304--305
 
  []
 
-LaTeX Info: Redefining \. on input line 306.
-LaTeX Info: Redefining \% on input line 306.
-[33 <./Img/cap2/BarrasFilo_blackandwhite.png (PNG copy)>]
-<Img/cap2/Alpha_Eukarya.png, id=486, 963.6pt x 542.025pt>
+<Img/cap2/Alpha_Eukarya.png, id=485, 963.6pt x 542.025pt>
 File: Img/cap2/Alpha_Eukarya.png Graphic file (type png)
 <use Img/cap2/Alpha_Eukarya.png>
-Package pdftex.def Info: Img/cap2/Alpha_Eukarya.png  used on input line 311.
+Package pdftex.def Info: Img/cap2/Alpha_Eukarya.png  used on input line 310.
 (pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Img/cap2/Alpha_Bacteria.png, id=489, 963.6pt x 542.025pt>
+<Img/cap2/Alpha_Bacteria.png, id=488, 963.6pt x 542.025pt>
 File: Img/cap2/Alpha_Bacteria.png Graphic file (type png)
 <use Img/cap2/Alpha_Bacteria.png>
 Package pdftex.def Info: Img/cap2/Alpha_Bacteria.png  used on input line 317.
@@ -1421,7 +1421,7 @@ Package pdftex.def Info: Img/cap2/Alpha_Bacteria.png  used on input line 317.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Img/cap2/Beta_Eukarya.png, id=492, 963.6pt x 542.025pt>
+<Img/cap2/Beta_Eukarya.png, id=491, 963.6pt x 542.025pt>
 File: Img/cap2/Beta_Eukarya.png Graphic file (type png)
 <use Img/cap2/Beta_Eukarya.png>
 Package pdftex.def Info: Img/cap2/Beta_Eukarya.png  used on input line 326.
@@ -1429,7 +1429,7 @@ Package pdftex.def Info: Img/cap2/Beta_Eukarya.png  used on input line 326.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Img/cap2/Beta_Bacteria.png, id=495, 963.6pt x 542.025pt>
+<Img/cap2/Beta_Bacteria.png, id=494, 963.6pt x 542.025pt>
 File: Img/cap2/Beta_Bacteria.png Graphic file (type png)
 <use Img/cap2/Beta_Bacteria.png>
 Package pdftex.def Info: Img/cap2/Beta_Bacteria.png  used on input line 332.
@@ -1447,28 +1447,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 340--341
 
  []
 
-LaTeX Info: Redefining \. on input line 341.
-LaTeX Info: Redefining \% on input line 341.
-[34 <./Img/cap2/Barras_Eukarya10.png (PNG copy)>]
+
 Underfull \hbox (badness 10000) in paragraph at lines 342--348
 
  []
 
 LaTeX Info: Redefining \. on input line 348.
 LaTeX Info: Redefining \% on input line 348.
-[35 <./Img/cap2/Barras_Bacteria10.png (PNG copy)>]
+[34]
 Underfull \hbox (badness 10000) in paragraph at lines 349--350
 
  []
 
-<Img/cap2/pvalor.png, id=508, 220.825pt x 220.825pt>
+<Img/cap2/pvalor.png, id=502, 220.825pt x 220.825pt>
 File: Img/cap2/pvalor.png Graphic file (type png)
 <use Img/cap2/pvalor.png>
 Package pdftex.def Info: Img/cap2/pvalor.png  used on input line 353.
 (pdftex.def)             Requested size: 354.52077pt x 354.53685pt.
-LaTeX Info: Redefining \. on input line 355.
-LaTeX Info: Redefining \% on input line 355.
-[36 <./Img/cap2/Alpha_Eukarya.png (PNG copy)>]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1477,37 +1472,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 357--361
 
  []
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 LaTeX Info: Redefining \. on input line 367.
 LaTeX Info: Redefining \% on input line 367.
-[37 <./Img/cap2/Alpha_Bacteria.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 383.
-LaTeX Info: Redefining \% on input line 383.
- [38 <./Img/cap2/Beta_Eukarya.png (PNG copy)>]
+ [35]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `!tbp') on input line 385.
 
-<Img/cap2/tTest_Shannon.png, id=524, 963.6pt x 542.025pt>
+<Img/cap2/tTest_Shannon.png, id=507, 963.6pt x 508.90125pt>
 File: Img/cap2/tTest_Shannon.png Graphic file (type png)
 <use Img/cap2/tTest_Shannon.png>
 Package pdftex.def Info: Img/cap2/tTest_Shannon.png  used on input line 387.
-(pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
+(pdftex.def)             Requested size: 354.52077pt x 187.22668pt.
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `!tbp') on input line 392.
 
-<Img/cap2/tTest_Shannon_Fusarium.png, id=525, 963.6pt x 542.025pt>
+<Img/cap2/tTest_Shannon_Fusarium.png, id=508, 963.6pt x 513.92pt>
 File: Img/cap2/tTest_Shannon_Fusarium.png Graphic file (type png)
 <use Img/cap2/tTest_Shannon_Fusarium.png>
 Package pdftex.def Info: Img/cap2/tTest_Shannon_Fusarium.png  used on input lin
 e 394.
-(pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
+(pdftex.def)             Requested size: 354.52077pt x 189.07309pt.
 LaTeX Info: Redefining \. on input line 415.
 LaTeX Info: Redefining \% on input line 415.
-[39 <./Img/cap2/Beta_Bacteria.png (PNG copy)>]
+[36]
 LaTeX Info: Redefining \. on input line 496.
 LaTeX Info: Redefining \% on input line 496.
- [40]
+ [37]
 Underfull \hbox (badness 10000) in paragraph at lines 502--504
 
  []
@@ -1547,21 +1542,35 @@ Overfull \hbox (190.7949pt too wide) in paragraph at lines 533--534
 
 LaTeX Info: Redefining \. on input line 541.
 LaTeX Info: Redefining \% on input line 541.
-[41])
+[38])
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [42]
+ [39]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [43 <./Img/cap2/pvalor.png>]
+ [40 <./Img/cap2/Barras_Eukarya10.png (PNG copy)>]
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
- [44 <./Img/cap2/tTest_Shannon.png (PNG copy)> <./Img/cap2/tTest_Shannon_Fusari
-um.png (PNG copy)>]
+ [41 <./Img/cap2/Barras_Bacteria10.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 202.
+LaTeX Info: Redefining \% on input line 202.
+ [42 <./Img/cap2/Alpha_Eukarya.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 202.
+LaTeX Info: Redefining \% on input line 202.
+[43 <./Img/cap2/Alpha_Bacteria.png (PNG copy)> <./Img/cap2/Beta_Eukarya.png (PN
+G copy)>]
+LaTeX Info: Redefining \. on input line 202.
+LaTeX Info: Redefining \% on input line 202.
+ [44 <./Img/cap2/Beta_Bacteria.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 202.
+LaTeX Info: Redefining \% on input line 202.
+ [45 <./Img/cap2/pvalor.png>]
+LaTeX Info: Redefining \. on input line 202.
+LaTeX Info: Redefining \% on input line 202.
+ [46 <./Img/cap2/tTest_Shannon.png> <./Img/cap2/tTest_Shannon_Fusarium.png>]
 \openout2 = `Capitulos/cap3.aux'.
 
-
-(./Capitulos/cap3.tex
+ (./Capitulos/cap3.tex
 Cap\'{\i }tulo 3.
 
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
@@ -1578,7 +1587,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
 
-[45
+[47
 
 
 
@@ -1605,7 +1614,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--48
 
 LaTeX Info: Redefining \. on input line 48.
 LaTeX Info: Redefining \% on input line 48.
-[46]
+[48]
 Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
  []
@@ -1630,45 +1639,45 @@ LaTeX Info: Redefining \% on input line 205.
 
 Overfull \hbox (153.89445pt too wide) has occurred while \output is active
 \OT1/cmr/m/sl/10.95 3.3.  GENERALIZANDO EL N50, NUEVAS M[]ETRICAS PARA ENSAMBLA
-DOS DE METAGENOMA \OT1/cmr/m/n/10.95 47
+DOS DE METAGENOMA \OT1/cmr/m/n/10.95 49
  []
 
-[47]
+[49]
 \openout2 = `Capitulos/cap4.aux'.
 
- (./Capitulos/cap4.tex [48
+ (./Capitulos/cap4.tex [50
 
 
 
 
 ]
 Cap\'{\i }tulo 4.
-) [49] [50
+) [51] [52
 
 
 
-] [51]
+] [53]
 \openout2 = `Apendices/Ap.aux'.
 
  (./Apendices/Ap.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [52
+ [54
 
 
 ]
 Ap\'{e}ndice A.
-) [53]
+) [55]
 \openout2 = `Apendices/Bp.aux'.
 
- (./Apendices/Bp.tex [54
+ (./Apendices/Bp.tex [56
 
 
 
 
 ]
 Ap\'{e}ndice B.
-) [55] [56
+) [57] [58
 
 
 
@@ -1692,13 +1701,13 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: DF095150AA37C1DBE8576EA5FB13BEF3;7082.
  ) 
 Here is how much of TeX's memory you used:
- 16753 strings out of 474222
- 273161 string characters out of 5748733
+ 16755 strings out of 474222
+ 273175 string characters out of 5748733
  1950975 words of memory out of 5000000
  38553 multiletter control sequences out of 15000+600000
  567638 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,15n,93p,1257b,1249s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,15n,93p,1505b,1955s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
@@ -1716,10 +1725,10 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf/font
 s/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-su
 per/sfrm1095.pfb>
-Output written on main.pdf (66 pages, 2211369 bytes).
+Output written on main.pdf (68 pages, 2186949 bytes).
 PDF statistics:
- 728 PDF objects out of 1000 (max. 8388607)
- 585 compressed objects within 6 object streams
- 150 named destinations out of 1000 (max. 500000)
+ 739 PDF objects out of 1000 (max. 8388607)
+ 594 compressed objects within 6 object streams
+ 152 named destinations out of 1000 (max. 500000)
  468 words of extra memory for PDF output out of 10000 (max. 10000000)
 
