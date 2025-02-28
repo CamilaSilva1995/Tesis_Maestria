@@ -65,5 +65,10 @@ wilcox.test(x = healthy, y = wilted, alternative = "two.sided", mu = 0,
             paired = FALSE, conf.int = 0.95)
 
 
-## WILCOX PARA CHAO1
+# Realizar la prueba de Mann-Whitney
+wilcox.test(x = healthy, y = wilted)
+
+
+
+
 

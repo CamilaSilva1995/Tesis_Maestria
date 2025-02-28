@@ -10,7 +10,7 @@ Este enfoque integral no solo proporciona una comprensión detallada de la compo
 \section{Preprocesamiento}
 Dentro de las etapas principales del análisis, se encuentra la adquisición de datos, en la cual se recopilan los datos necesarios para el estudio. En este caso, se ha adquirido un conjunto de datos metagenómicos de cultivos de fresa proporcionados por Solena. Estas secuencias se entregaron en formato FASTA y se encuentran almacenadas en archivos JSON, los cuales contienen los resultados de la clasificación metagenómica realizada mediante el clasificador Kraken. Con el objetivo de identificar características distintivas entre los frutos sanos y enfermos, se ha llevado a cabo un análisis exploratorio detallado de estos datos.\\
 
-\begin{figure}[h]
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/preprosecamiento.png}
 \caption{Flujo de Trabajo para el Análisis Metagenómico de Microbiomas en Cultivos de Fresa: Desde la Recolección de Datos hasta la Interpretación de Resultados.}
@@ -156,7 +156,7 @@ Esta expresión matemática nos proporciona un indicador cuantitativo de la dive
 
 En el contexto de la diversidad alfa, estos índices nos permiten explorar y comparar la diversidad de especies en cada muestra o subconjunto, como el grupo de muestras sanas y enfermas. Proporcionan una visión detallada de cómo se distribuye la diversidad de especies dentro de cada conjunto, permitiendo evaluaciones comparativas entre diferentes conjuntos o condiciones.\\
 
-\begin{figure}[h]
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/AlphaDiversity_CrudosFiltrados.png}
 \caption{La diversidad alfa en los datos crudos es similar en ambos tratamientos en todos los índices. Al realizar el filtro de calidad se obtienen una mejor visión de esta diversidad. A) Índices de diversidad alfa calculados antes de aplicar el filtro de calidad, las diferencias entre las muestras saludables y enfermas son poco claras debido a la influencia de datos ruidosos. B) Índices de diversidad alfa tras eliminar muestras de baja calidad o datos inconsistentes, mejora la claridad y permite una mejor percepción visual de las diferencias en la diversidad microbiana entre los grupos. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)} }
@@ -237,7 +237,7 @@ La fórmula del índice de disimilitud de UniFrac es más compleja en comparaci�
 
 Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud entre muestras, permitiendo seleccionar la más apropiada según el contexto del estudio y los objetivos específicos del análisis de diversidad beta.\\
 
-\begin{figure}[!]
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/BetaDiversity.png}
 \caption{La diversidad beta muestra que las diferencias entre las muestras no son lo suficientemente claras como para separar completamente los grupos entre muestras sanas y marchitas para ninguna métrica de distancia. Esto sugiere una gran superposición en la composición microbiana entre las muestras saludables y enfermas, independientemente de la métrica utilizada. A) Medida de disimilitud de Bray-Curtis B) Distancia de Jaccard C) Distancia Euclidiana D) Distancia Manhattan E) Medida de divergencia de Jensen-Shannon. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
@@ -245,9 +245,11 @@ Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud
 
 Luego de no ver una clara separacion de los datos, Dado que no se observa una clara separación de los datos, se decide proceder con un análisis en conjuntos más pequeños. Este enfoque puede ayudar a identificar patrones más específicos o diferencias significativas en la composición de especies entre subconjuntos de muestras, lo que contribuirá a una comprensión más detallada de la diversidad microbiana en el contexto particular del estudio.\\
 
+
 \section{Exploración a distintos niveles taxonómicos}
 Podemos visualizar las barras de abundancia absolutas y relativas de nuestros datos representando las muestras en el eje x y las abundancias en el eje y, diferenciando entre muestras sanas y enfermas.\\
-\begin{figure}[h]
+
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras.png}
 \caption{Las muestras saludables (N=35) muestran, en promedio, una mayor cantidad de lecturas en comparación con las no saludables (N=18).}
@@ -255,17 +257,21 @@ Podemos visualizar las barras de abundancia absolutas y relativas de nuestros da
 Debido a la gran cantidad de datos, resulta difícil discernir diferencias entre las muestras. Por lo tanto, se han creado subconjuntos dividiendo por reino y estableciendo subdivisiones en diferentes niveles taxonómicos.\\
 
 A nivel de filo, ya podemos apreciar una mayor diversidad en nuestras muestras, siendo la mayoría de los filos pertenecientes a bacterias.\\
-\begin{figure}[h]
+
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/BarrasFilo.png}
 \caption{Las barras de abundancia a nivel de FILO muestran a Actinobacteria y Proteobacteria como los más abundantes  A) Las barras de abundancia absolutas, representan el conteo total de lecturas asignadas a cada filo en las muestras.  B) Las barras de abundancia relativas, representan las proporciones de cada filo dentro de la comunidad microbiana total para cada muestra}
 \end{figure}
+
 Podemos notar algunas diferencias entre los diferentes filos; sin embargo, la gran cantidad de taxones dificulta distinguir adecuadamente el color de cada uno, a menos que tengan una abundancia muy significativa. Dado que nuestro objetivo es diferenciar entre muestras sanas y enfermas, agregaremos una distinción adicional utilizando la variable 'Tratamiento': representaremos las muestras sanas en color blanco y las muestras enfermas en color negro.\\
-\begin{figure}[h]
+
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/BarrasFilo_blackandwhite.png}
 \caption{A nivel de filo, se observa una menor presencia de ciertos taxones como Oomycota en las plantas enfermas, lo cual es consistente con la hipótesis de que la salud de las plantas está relacionada con una microbiota específica.}
 \end{figure}
+
 De igual manera, la cantidad de taxones dificulta la distinción entre las muestras. Por ello, hemos creado subconjuntos más pequeños para facilitar una observación más clara de nuestros datos.\\
 
 En el análisis de diversos grupos taxonómicos, comenzamos examinando gráficos de barras de abundancias como primer paso para seleccionar conjuntos específicos de interés. Al representar las muestras en el eje x y las abundancias en el eje y, obtenemos una visualización clara de las abundancias absolutas y relativas en cada muestra. Este enfoque nos facilita identificar de manera eficiente conjuntos particulares que pueden ser fundamentales para un análisis más detallado y específico.\\
@@ -289,13 +295,13 @@ A partir de estos dos subconjuntos, llevamos a cabo una agrupación adicional po
 \textbf{GLOM10\%}
 Se realiza una aglomeracion al diez por ciento (10\%)  para tener una mejor visibilidad y podernos enfocar en las muestras con menor (mayor) abundancia. \\
 
-\begin{figure}[h]
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras_Eukarya10.png}
 \caption{La distribución de la abundancia relativa de microorganismos eucariotas en muestras de plantas saludable y no saludables, desglosada en diferentes niveles taxonómicos. A) Filo: Muestra una disminución significativa de algunos filos en las muestras enfermas, destacando particularmente la baja abundancia de Oomycota, un grupo importante asociado a la salud del suelo y de las plantas. B) Familia: Resalta la disminución específica de familias como Peronosporaceae en las muestras enfermas, lo cual podría indicar una pérdida de componentes microbianos clave para la resistencia a enfermedades. C) Género: Ofrece una visualización más específica que permite identificar  permiten identificar biomarcadores positivos, como Pseudomonas y Bacillus, que se asocian con plantas saludables, así como Fusarium y Phytophthora, que predominan en condiciones de enfermedad. D) Especie: Se observan diferencias claras que pueden servir para identificar biomarcadores asociados a la salud o enfermedad de las plantas. Como Pseudomonas o Bacillus en muestras saludables y Phytophthora o Fusarium en muestras no saludables.  \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras_Bacteria10.png}
 \caption{La distribución de la abundancia relativa de bacterias revela que las plantas saludables albergan una microbiota diversa y equilibrada, caracterizada por la dominancia de filos beneficiosos como Actinobacteria y Firmicutes. En contraste, las plantas enfermas presentan una mayor proporción de posibles patógenos, destacando especies como Ralstonia. A) Filo, La composición a nivel de filo sugiere diferencias en la dominancia de filos beneficiosos (e.g., Actinobacteria) frente a posibles patógenos o descomponedores en plantas enfermas (e.g., Bacteroidetes). B) Familia, A nivel de familia, se observa cómo las plantas saludables están asociadas con microbiota protectora (e.g., Bacillaceae), mientras que las plantas enfermas presentan familias que incluyen patógenos o microbios oportunistas. C) Género, La identificación de géneros específicos permite asociar Pseudomonas y Bacillus con la salud de las plantas, mientras que géneros como Ralstonia se relacionan con la enfermedad. D) Especie, La diferenciación a nivel de especie permite identificar microorganismos específicos que actúan como indicadores claros de la salud o enfermedad de las plantas. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
@@ -305,66 +311,98 @@ En esta representación a nivel de filo, podemos destacar la disminución notabl
 
 \textbf{Diversidad alfa para los niveles taxonomicos}
 
-\begin{figure}[h]
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Alpha_Eukarya.png}
-\caption{La diversidad alfa de eucariotas revela que las plantas saludables presentan una microbiota más equilibrada y diversa, mientras que las plantas enfermas están dominadas por eucariotas patógenos, lo que las convierte en indicadores clave para el diagnóstico y manejo de enfermedades en cultivos. A) Filo B) Familia C) Género D) Especie
- \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
-\end{figure}
-En esta imagen, podemos ver que con la diversidad Chao1 a nivel de especie se genera una diferencia considerable de diversidades entre muestras sanas y enfermas, lo cual se detallara mas adelante con una prueba de hipótesis. Tambien ...
-\begin{figure}[h]
-\centering
+\caption{Diversidad alfa para eucariotas a nivel de: A) Filo B) Familia C) Género D) Especie}
+\hspace{1cm}
 \includegraphics[width=\textwidth]{Img/cap2/Alpha_Bacteria.png}
-\caption{Diversidad alpha para bacteria a nivel de A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
+\caption{Diversidad alfa para bacterias a nivel de: A) Filo B) Familia C) Género D) Especie}
 \end{figure}
+
+La diversidad alfa de eucariotas revela que las plantas saludables presentan una microbiota más equilibrada y diversa, mientras que las plantas enfermas están dominadas por eucariotas patógenos, lo que las convierte en indicadores clave para el diagnóstico y manejo de enfermedades en cultivos.
+
+La diversidad alfa de bacterias revela que las plantas saludables albergan una comunidad bacteriana más diversa y equilibrada en todos los niveles taxonómicos, con una prevalencia de microorganismos beneficiosos. Por otro lado, las plantas enfermas muestran un aumento de patógenos específicos, lo que indica un desequilibrio microbiano.
+
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}
+
+En esta imagen, podemos ver que con la diversidad Chao1 a nivel de especie se genera una diferencia considerable de diversidades entre muestras sanas y enfermas, lo cual se detallara mas adelante con una prueba de hipótesis. Tambien ...
+
 En esta imagen, podemos ver que con la diversidad Chao1 a nivel de género se evidencia una diferencia considerable de diversidades entre muestras sanas y enfermas, lo cual se detallara mas adelante con una prueba de hipótesis. Tambien ...
+
+
 
 \textbf{Diversidad beta para los niveles taxonomicos}
 
-\begin{figure}[h]
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Beta_Eukarya.png}
-\caption{Diversidad beta para eucariota a nivel de A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
-\end{figure}
-
-\begin{figure}[h]
-\centering
+\caption{Diversidad beta para eucariota a nivel de A) Filo, B) Familia, C) Genero, D) Especie}
+\hspace{1cm}
 \includegraphics[width=\textwidth]{Img/cap2/Beta_Bacteria.png}
-\caption{Diversidad beta para bacteria a nivel de A) Filo, B) Familia, C) Genero, D) Especie \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
+\caption{Diversidad beta para bacteria a nivel de A) Filo, B) Familia, C) Genero, D) Especie}
 \end{figure}
 
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}
+
+La diversidad beta indica que, aunque hay variación entre los microbiomas de plantas saludables y enfermas, estas no son lo suficientemente marcadas para dividir los grupos de manera clara. Estos resultados destacan la necesidad de análisis adicionales para identificar biomarcadores específicos o patrones clave en niveles taxonómicos más detallados.
+
+La métrica de Bray-Curtis demuestra que las diferencias en la composición son más evidentes en niveles taxonómicos detallados (género y especie), destacando la importancia de estos análisis para identificar biomarcadores y desarrollar estrategias de manejo agrícola.
 
 \section{Prueba de Hipótesis}
-La hipótesis es una suposición sobre los datos, la cual puede resultar verdadera o falsa..\\
+Una hipótesis es una suposición sobre los datos que puede ser verdadera o falsa. Las pruebas de hipótesis son herramientas estadísticas esenciales en diversos campos, ya que permiten contrastar una teoría con la evidencia empírica. A través de un proceso riguroso, estas pruebas ayudan a evaluar la veracidad de una afirmación científica de manera objetiva y fundamentada.\\
 
-Las pruebas de hipótesis son herramientas valiosas en diversos campos, ya que permiten contrastar una teoría con la evidencia empírica. Este procedimiento riguroso nos ayuda a evaluar la veracidad de una afirmación científica de manera objetiva y fundamentada. En esencia, una prueba de hipótesis se define como un método estadístico que se emplea para tomar decisiones sobre una población en base a los datos obtenidos de una muestra representativa. Es una técnica de inferencia estadística que nos permite tomar decisiones sobre suposiciones acerca de una población, basadas en la observación.\\
+Una prueba de hipótesis es un método estadístico utilizado para tomar decisiones sobre una población a partir de los datos obtenidos de una muestra representativa. Como técnica de inferencia estadística, permite evaluar suposiciones sobre los parámetros de una población basándose en la observación.\\
 
-El propósito de una prueba estadística es examinar una hipótesis con respecto a los valores de uno o más parámetros poblacionales. Los componentes de una prueba estadística incluyen: la hipótesis nula, la hipótesis alternativa, el estadístico de prueba, la región de rechazo y el valor p. \\
-\textbf{Hipótesis nula ($H_0$):} Es la idea inicial, la suposición que se pone a prueba. Representa la creencia de que no hay diferencia o efecto significativo.\\
-\textbf{Hipótesis alternativa ($H_1$): }Es la contrapropuesta, lo que se espera encontrar si la $H_0$ es falsa. Representa la alternativa que se busca demostrar.\\
+El propósito de una prueba estadística es examinar una hipótesis respecto a los valores de uno o más parámetros poblacionales. Para ello, se consideran los siguientes componentes clave:\\
+
+\textbf{Hipótesis nula ($H_0$):} Es la idea inicial, la suposición que se pone a prueba. Representa la creencia de que no hay diferencia o efecto significativo.(Pretencion que inicialmente sesupone cierta)\\
+
+\textbf{Hipótesis alternativa ($H_1$): }Es la contrapropuesta, lo que se espera encontrar si la $H_0$ es falsa. Representa la alternativa que se busca demostrar.(hipotesis contradictoria a la hipotesis nula)\\
+
 \textbf{Estadístico de prueba: }Es la herramienta matemática (funcionde las mediciones muestrales) que utilizamos para analizar los datos y determinar si apoyan o no la $H_1$. Cada prueba estadística tiene su propio estadístico específico.\\
-\textbf{Región de rechazo: }Es una zona predefinida como territorio prohibido para la $H_0$. Si el valor del estadístico de prueba cae en esta región, la $H_0$ se rechaza por considerarse poco probable. ($x$ es el valor critico observado, el cual define la region de rechazo)\\
+
+\textbf{Región de rechazo: }Es una zona predefinida como territorio prohibido para la $H_0$. Si el valor del estadístico de prueba cae en esta región, la $H_0$ se rechaza por considerarse poco probable. ($x$ es el valor critico observado, el cual define la region de rechazo)(una hipotesis nula sera rechazada si y solo si el valor estadistico de prueba observado o calculado, queda en la region de rechazo)\\
+
 \textbf{ P-valor:} Es la probabilidad de obtener un valor del estadístico de prueba tan extremo o más extremo que el observado, suponiendo que la $H_0$ sea verdadera. Un valor de p bajo (menor que el nivel de significancia $\alpha $  el cual se fija previamente  ) indica que es poco probable que el resultado se deba al azar, lo que lleva al rechazo de la $H_0$.\\
 
-En donde el objetivo principal de esta prueba es rechazar la hipótesis nula.\\
+En donde el objetivo principal de una prueba de hipótesis es evaluar si la evidencia muestral es lo suficientemente fuerte como para rechazar $H_0$. \\
 
-\begin{figure}[h]
+La hipotesis nula sera rechazada a favor de la hipotesis alternativa solo si la evidencia muestral sugiere que $H_0$ es falsa. Si la muestra no contradice a $H_0$, se continuara creyendo en la veracidad de la hipotesis nula. (rechazar o no rechazar $H_0$).\\
+
+\begin{figure}[hbt!]
 \centering
-\includegraphics[width=\textwidth]{Img/cap2/pvalor.png}
-\caption{imagen de ejemplo p-valor}
+\includegraphics[width=\textwidth]{Img/cap2/pruebat_explicacion.png}
+\caption{Se ilustra el concepto esencial de una prueba de hipótesis, mostrando la distribución teórica de la estadística de prueba bajo la hipótesis nula ($H_0$) y destacando la región de rechazo. La posición del dato observado con respecto a esta región determinará si se rechaza o no $H_0$ en cada una de las pruebas estadísticas a realizar.\\
+En una prueba de hipótesis, la hipótesis nula ($H_0$) será rechazada en favor de la hipótesis alternativa ($H_1$) solo si la evidencia muestral proporciona suficiente soporte para considerar que $H_0$ es falsa. Si los datos no contradicen significativamente a $H_0$, se concluye que no hay suficiente evidencia para rechazarla, y se mantiene su validez.\\
+Prueba t de Student sobre el Índice de Shannon (Varianzas Iguales y Diferentes); Se utiliza para comparar la diversidad de Shannon entre dos grupos y determinar si hay diferencias significativas en sus medias y se evalúa tanto asumiendo varianzas iguales como distintas.\\
+Prueba t de Student sobre el Índice de Shannon en Fusarium (Varianzas Iguales y Diferentes); es similar a la prueba anterior, pero aplicada específicamente al género Fusarium dentro del análisis metagenómico.\\
+Prueba de Mann-Whitney sobre las distribuciones de los valores de Shannon (Método no paramétrico que compara las distribuciones del índice de Shannon entre dos grupos sin asumir normalidad.)}
 \end{figure}
 
-El p\-valor se considera como una medida de la probabilidad de éxito (obtener un resultado específico) en un estudio estadístico con los datos observados. El cálculo de este valor depende de la prueba estadística utilizada y de las suposiciones realizadas sobre la distribución de los datos. En general, un valor pequeño del p-valor sugiere que los datos observados son poco probables bajo la hipótesis nula.\\
+En este contexto, el p\-valor se considera como una medida de la probabilidad de éxito (obtener un resultado específico) en un estudio estadístico con los datos observados. Su cálculo depende de la prueba estadística utilizada y de las suposiciones realizadas sobre la distribución de los datos. En general, un valor pequeño del p\-valor sugiere que los datos observados son poco probables bajo la hipótesis nula, lo que sugiere que $H_0$ podría ser falsa.\\
 %Rice, J. A. (2006). Mathematical Statistics and Data Analysis (3rd ed.)
 %Wasserman, L. (2004). All of Statistics: A Concise Course in Statistical Inference.
-A continuación, se realizan las siguientes pruebas de hipótesis, todas basadas en esta premisa, pero aplicadas a diferentes medidas de los datos. \\
-	
+
+Existen dos tipos de errores que pueden ocurrir en una prueba de hipótesis:\\
+Error tipo I ($\alpha$): Ocurre cuando se rechaza $H_0$ siendo en realidad verdadera.\\
+Error tipo II ($\beta$): Se produce cuando no se rechaza $H_0$ cuando en realidad es falsa.\\
+El balance entre estos errores es fundamental en el diseño de pruebas estadísticas.\\
+
+
+Las pruebas de hipótesis pueden aplicarse a diferentes contextos, como la comparación de grupos en estudios médicos o científicos. Por ejemplo, en un análisis sobre la salud de los cultivos, se podrían definir las siguientes hipótesis:\\
+$H_0$ : No hay diferencias entre muestras de cultivos saludables y no saludables.\\
+$H_0$ : Existen diferencias significativas entre las muestras de cultivos saludables y no saludables.\\
+
+En los siguientes apartados, se presentarán diversas pruebas de hipótesis basadas en esta metodología, cada una enfocada en diferentes aspectos de los datos.\\
+
 
 \subsection{Pruebas con muestras pequeñas para comparar dos medias poblacionales}
 
 Suponemos dos poblaciones independientes con distibuciones normales con 
 
 $$\sigma_{1}^{2} = \sigma_{2}^{2}$$
+\\
 
 y queremos probar (tenemos como hipotesis nula)
 
@@ -382,17 +420,22 @@ donde
 
 $$ S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}$$
 
-\begin{figure}[!]
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/tTest_Shannon.png}
-\caption{}
+\caption{Prueba t de Student sobre el Índice Shannon (Varianzas Iguales y Diferentes) A) Los resultados de la prueba t sugieren que, aunque las muestras saludables muestran visualmente una mayor diversidad microbiana, no hay evidencia estadística suficiente para confirmar que las medias del índice de Shannon son diferentes entre los grupos.
+B) Suponiendo  varianzas iguales, no se observa una diferencia significativa en las medias del índice de Shannon entre los grupos saludables y no saludables, ya que el valor p es mayor a 0.05, lo que lleva a no rechazar la hipótesis nula.
+C) Asumiendo las varianzas diferentes el valor p sigue siendo mayor que 0.05 (0.1501), lo que indica que no hay una diferencia significativa entre las medias del índice de Shannon entre los grupos "saludable" y "no saludable". }
 \end{figure}
 
 
-\begin{figure}[!]
+\begin{figure}[hbt!]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/tTest_Shannon_Fusarium.png}
-\caption{}
+\caption{Prueba t de Student sobre el Índice Shannon en Fusarium (Varianzas Iguales y Diferentes) A)Se observa que el grupo "Saludable" presenta una distribución más amplia y una mayor diversidad promedio en comparación con el grupo "No Saludable".
+B) La distribución t bajo el supuesto de varianzas iguales muestra que el valor de t calculado está en el rango significativo, lo que indica diferencias entre las medias.
+C)La distribución t considerando varianzas diferentes también confirma una diferencia significativa entre los grupos. Esto sugiere que la diversidad microbiana de Fusarium difiere estadísticamente entre plantas saludables y no saludables, con un valor p < 0.05.
+}
 \end{figure}
 
 
@@ -421,32 +464,29 @@ $$ F = \frac{S_{1}^{2}}{S_{2}^{2}}$$
 %\caption{}
 %\end{figure}
 
-\subsection{Prueba de los rangos con signos de Wilcolxon}
+\subsection{Prueba de los rangos con signos de Wilcolxon Mann-Whitney}
 
-Esta es una prueba no parametrica para comparar el rango medio de dos muestras relacionadas y determinar si existen diferencias entre ellas. Se uso, ya que los datos no tienen una distribucion normal.
+Las pruebas de Wilcoxon y Mann-Whitney U son pruebas estadísticas no paramétricas, lo que significa que no asumen normalidad en los datos. \\
 
-%\begin{figure}[!]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/Wilcoxon_Shannon.png}
-%\caption{Wilcoxon}
-%\end{figure}
+Wilcoxon es una prueba no parametrica para comparar el rango medio de dos muestras relacionadas y determinar si existen diferencias entre ellas. Se uso, ya que los datos no tienen una distribucion normal.
 
 
-
-
-Pon tu figura y describe tus resultados, y describe que es una prueba Wilcoxon
-
-
-\subsection{Mann-Whitney}
-La U de Mann-Whitney para comparar lasmedias dedos grupos independientes. 
+La U de Mann-Whitney para comparar las medias de dos grupos independientes. 
 Prueba no parametrica o libre de distribución, es el analogo no parametrico a la t de Student para lacomparacion de dos medias independientes; solo que esta no requiere parametros y se puede emplear sin ninguna condicion de aplicación.
 
-%\begin{figure}[!]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/Wilcoxon_Shannon.png}
-%\caption{Mann-Whitney}
-%\end{figure}
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/Wilcoxon_Shannon.png}
+\caption{La distribución de los rangos en la prueba de Mann-Whitney sobre las distribuciones de los valores de Shannon  indica que los valores de los grupos "Saludable" y "No saludable" están mezclados, aunque con algunas diferencias en los extremos. El resultado de la prueba arroja un p-valor de 0.2586, lo que sugiere que no hay suficiente evidencia estadística para afirmar una diferencia significativa en el índice de Shannon entre ambos grupos.}
+\end{figure}
 
+Datos analizados: Se compararon dos grupos: healthy (saludables) y wilted (no saludables).\\
+Estadístico de prueba (W): 376. Este es el valor del estadístico de la prueba de Mann-Whitney.\\
+Valor p (p-value): 0.2586. Dado que este valor es mayor que el umbral típico de significancia (por ejemplo, 0.05), no hay suficiente evidencia estadística para rechazar la hipótesis nula.\\
+Hipótesis alternativa: Se planteaba que había una diferencia en la distribución de los valores entre los grupos (healthy y wilted), es decir, que la ubicación central de los datos no es la misma en ambos grupos.\\
+Intervalo de confianza del 95$\%$: (-0.01235350, 0.05609928). Esto indica que la verdadera diferencia en la ubicación de los dos grupos podría estar entre -0.012 y 0.056. Como este intervalo incluye el 0, no hay suficiente evidencia de que haya una diferencia significativa.\\
+Estimación de la diferencia en la ubicación central: 0.01706501. Esto significa que, en promedio, los valores del grupo healthy son aproximadamente 0.017 unidades mayores que los del grupo wilted. Sin embargo, como el intervalo de confianza incluye el 0, esta diferencia no es estadísticamente significativa.\\
+En conclusión,no se encontró una diferencia estadísticamente significativa entre los grupos saludable y no saludable, para las diversidades microbianas con indice Shannon. Es decir, con los datos disponibles, no se puede concluir que haya una diferencia real en la distribución de los valores entre ambos grupos.\\
 
 
 \section{Normalización}
@@ -487,8 +527,19 @@ Se eliminaron 670 OTUs
 %\caption{Diversidad beta luego de la rarefacción}
 %\end{figure}
 
+
+
+
+
+
+
+
 \section{Rarefacción}
 La rarefacción se usa como una medida de saturacion de muestras, es decir, 
+
+
+
+
 
 
 

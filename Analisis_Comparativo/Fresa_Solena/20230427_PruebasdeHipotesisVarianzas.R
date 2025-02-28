@@ -177,6 +177,7 @@ total <-cbind(Chao1_OTU_df,SAM)
 
 # media por grupos
 mu <- ddply(total, "Treatment", summarise, grp.mean=mean(value))
+
 # numero de muestras
 n <- total%>%count('Treatment')
 # varianzas 
@@ -193,5 +194,11 @@ p<-ggplot(total, aes(x=value))+
   facet_grid(Treatment ~ .)
 p+geom_vline(data=sigma, aes(xintercept=s.var, color="red"),
              linetype="dashed")
+
+
+
+
+
+
 
 

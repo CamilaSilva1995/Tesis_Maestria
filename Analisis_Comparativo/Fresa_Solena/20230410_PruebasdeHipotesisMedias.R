@@ -8,10 +8,11 @@ library("RColorBrewer")
 library("stringi")
 library("dplyr")
 library("plyr")
-#library("gginference")
+library("gginference")
 
 setwd("/home/camila/GIT/Tesis_Maestria/Data/fresa_solena/Data1")
 outpath = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img"
+
 ### Cargado de datos originales 
 fresa_kraken <- import_biom("fresa_kraken.biom")
 colnames(fresa_kraken@tax_table@.Data) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
@@ -113,6 +114,108 @@ pruebat2 <- t.test(totalH$value, totalW$value, var.equal = FALSE, alternative = 
 pruebat2
 ggttest(pruebat2)
 ggsave("pruebat_varianzasdiferentes_Shannon.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+
+
+
+
+
+
+
+
+
+
+
+
+
+###############################################################################
+############################# PRUEBA DE HIPOTESIS #############################
+###############################################################################
+
+# Crear secuencia de valores para la distribución t
+x <- seq(-4, 4, length = 1000)
+df <- 21  # Grados de libertad
+y <- dt(x, df = df)
+
+# Nivel de significancia para prueba unilateral
+alpha <- 0.05
+crit_val <- qt(1 - alpha, df = df)  # Valor crítico para una cola
+
+# Crear el dataframe
+data <- data.frame(x, y)
+
+# Graficar la distribución t con una cola de rechazo
+ggplot(data, aes(x, y)) +
+  #geom_line(size = 1, color = ) +  # Línea de la distribución t
+  geom_area(data = subset(data, x < crit_val), 
+            aes(x = x, y = y), fill = "lightblue", alpha = 0.8) +  # Región de aceptación
+  geom_area(data = subset(data, x > crit_val), 
+            aes(x = x, y = y), fill = "grey", alpha = 0.5) +  # Región de rechazo
+  geom_vline(xintercept = crit_val, linetype = "dashed", color = "blue") +  # Línea crítica
+  labs(title = "Distribución t con Región de Rechazo Unilateral",
+       subtitle = sprintf("Distribución t con %d grados de libertad", df),
+       x = "Valores de t", y = "Densidad") +
+  theme_minimal()
+
+
+
+
+
+# Crear datos para la distribución normal estándar
+x <- seq(-4, 4, length = 1000)
+y <- dnorm(x, mean = 0, sd = 1)
+
+# Punto crítico para una prueba de hipótesis unilateral (por ejemplo, alfa = 0.05)
+z_critico <- qnorm(0.95)
+
+# Crear un data frame para la curva
+data <- data.frame(x, y)
+
+# Crear un data frame para sombrear la cola derecha (p-valor)
+data_fill <- data[data$x >= z_critico, ]
+
+# Graficar la distribución normal con la región del p-valor destacada
+ggplot(data, aes(x, y)) +
+  geom_line(color = "#C6E2FF", size = 1) + # Curva de distribución
+  geom_area(data = subset(data, x < crit_val), 
+            aes(x = x, y = y), fill = "#C6E2FF", alpha = 0.8) + # Región de aceptación
+  geom_area(data = subset(data, x > crit_val), 
+            aes(x = x, y = y), fill = "grey", alpha = 0.5) +  # Región de rechazo
+  #geom_area(data = data_fill, aes(x, y), fill = "blue", alpha = 0.5) + # Región del p-valor
+  geom_vline(xintercept = z_critico, color = "royalblue4", linetype = "solid", size = 1) + # Línea del dato observado
+  #annotate("text", x = -2, y = 0.1, label = "Región de aceptación", size = 5) +
+  annotate("text", x = 2, y = 0.02, label = "Región de rechazo", size = 5) +
+  annotate("text", x = z_critico + 0.2, y = 0.15, label = "Dato observado", color = "royalblue4", angle = 90, size = 4) +
+  labs(title = "Región de rechazo y p-valor en prueba de hipótesis",
+       x = "Valor de la prueba",
+       y = "Densidad") +
+  theme_minimal() +
+  theme(panel.grid = element_blank(),
+        panel.background = element_blank())
+
+ggsave("pruebat_explicacion.png", plot = last_plot(), path = "/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/Results_img" , width = 30, height = 15, dpi = 300, units = "cm")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -269,7 +372,7 @@ total_ShannonH <- total_Shannon[total_Shannon$Treatment == "healthy", ]
 total_ShannonW <- total_Shannon[total_Shannon$Treatment == "wilted", ]
 
 
-# esto essuponiendo varianzas iguales
+# esto es suponiendo varianzas iguales
 
 pruebat <- t.test(total_ShannonH$value, total_ShannonW$value, var.equal = TRUE, alternative = "two.sided")
 pruebat

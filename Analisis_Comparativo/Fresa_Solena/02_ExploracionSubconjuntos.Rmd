@@ -45,7 +45,7 @@ percentages_df <- psmelt(percentages_fil)
 
 ```
 
-De aqui en adelante solo trabajaremos con los datos filtrados por calidad, ya que no vale lapena continuar con los datos que contiene  muestras en ceros, ya que esto altera las visualizaciones.
+De aqui en adelante solo trabajaremos con los datos filtrados por calidad, ya que no vale la pena continuar con los datos que contiene  muestras en ceros, ya que esto altera las visualizaciones.
 
 Queremos explorar nuestras muestras a diferentes niveles taxonómicos específicos, empezando por una aglomeración de los datos a nivel de reino y filo, Para agrupar todas las OTU que tienen la misma taxonomía en un determinado rango taxonómico, utilizaremos la función ***tax_glom()***.
 
@@ -124,6 +124,15 @@ relative_plot <- ggplot(data=percentages_df_phylum, aes(x=Sample, y=Abundance, f
 
 relative_plot
 ```
+```{r}
+library(dplyr)
+# Calcular la abundancia promedio por Phylum
+average_abundance <- percentages_df_phylum %>%
+     group_by(Phylum) %>%
+     summarise(mean_abundance = mean(Abundance, na.rm = TRUE)) %>%
+     arrange(desc(mean_abundance))
+average_abundance
+```
 
 Podemos ver algunas diferencias entre los diferentes filo, sin embargo, se nota que tenemos demasiados taxones para distinguir adecuadamente el color de cada uno, a menos que se tenga una abundancia muy grande.
 
@@ -152,6 +161,32 @@ relative_plot
 ```
 
 Igualmente tenemos demasiados taxones para ver una distinción entre las muestras, más adelante crearemos subconjuntos mas pequeños para tener una mejor observación de nuestros datos.
+
+```{r}
+# Filtrar los datos para seleccionar únicamente el filo "Oomycota"
+oomycota_abundance <- percentages_df_phylum %>%
+  filter(Phylum == "Oomycota") %>%
+  group_by(Treatment) %>%
+  summarise(total_abundance = sum(Abundance, na.rm = TRUE), # Abundancia total
+            mean_abundance = mean(Abundance, na.rm = TRUE), # Abundancia promedio
+            sample_count = n()) # Número de muestras con Oomycota
+
+oomycota_abundance
+```
+
+```{r}
+# Calcular abundancia total, promedio y número de muestras para cada filo por tratamiento
+microorganism_summary <- percentages_df_phylum %>%
+  group_by(Phylum, Treatment) %>%
+  summarise(
+    total_abundance = sum(Abundance, na.rm = TRUE), # Abundancia total por filo y tratamiento
+    mean_abundance = mean(Abundance, na.rm = TRUE), # Abundancia promedio por filo y tratamiento
+    sample_count = n() # Número de muestras que contienen el filo
+  ) %>%
+  arrange(desc(total_abundance)) # Ordenar por abundancia total
+microorganism_summary
+```
+
 
 Por otro lado, podemos usar un comando llamado "unique()" para explorar cuántos filos y reinos tenemos.
 
@@ -261,6 +296,44 @@ ggplot(data= percentages_Eukaryota_df, aes(x=Sample, y=Abundance, fill=Genus))+
   theme(text = element_text(size = 5),
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
 ```
+
+```{r}
+ # Agrupar por género (Genus) y tratamiento (Treatment)
+ critical_genera <- percentages_Eukaryota_df %>%
+     group_by(Genus, Treatment) %>%
+     summarise(
+         total_abundance = sum(Abundance, na.rm = TRUE), # Suma total de abundancia
+         mean_abundance = mean(Abundance, na.rm = TRUE), # Abundancia promedio
+         sample_count = n() # Número de muestras que contienen el género
+     ) %>%
+     ungroup() %>%
+     arrange(desc(total_abundance)) # Ordenar por abundancia total
+
+ 
+ 
+ # Calcular diferencia de abundancia promedio entre tratamientos
+
+ # Crear una tabla separada para cada tratamiento
+ healthy_data <- critical_genera %>% filter(Treatment == "healthy") %>%
+     rename(total_abundance_healthy = total_abundance, mean_abundance_healthy = mean_abundance)
+ 
+ wilted_data <- critical_genera %>% filter(Treatment == "wilted") %>%
+     rename(total_abundance_wilted = total_abundance, mean_abundance_wilted = mean_abundance)
+ 
+ # Combinar las tablas por el género
+ critical_genera_diff <- merge(healthy_data, wilted_data, by = "Genus", all = TRUE)
+ 
+ # Calcular la diferencia de abundancia promedio
+ critical_genera_diff <- critical_genera_diff %>%
+     mutate(
+         abundance_diff = mean_abundance_healthy - mean_abundance_wilted
+     ) %>%
+     arrange(desc(abs(abundance_diff))) # Ordenar por la diferencia más alta
+ 
+ # Mostrar los géneros más afectados
+ head(critical_genera_diff, 10)
+```
+
 
 ```{r}
 merge_Eukaryota_Genus<-tax_glom(merge_Eukaryota,taxrank="Genus")
