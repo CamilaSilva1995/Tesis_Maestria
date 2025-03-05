@@ -183,7 +183,7 @@ ggplot(data, aes(x, y)) +
   #geom_area(data = data_fill, aes(x, y), fill = "blue", alpha = 0.5) + # Región del p-valor
   geom_vline(xintercept = z_critico, color = "royalblue4", linetype = "solid", size = 1) + # Línea del dato observado
   #annotate("text", x = -2, y = 0.1, label = "Región de aceptación", size = 5) +
-  annotate("text", x = 2, y = 0.02, label = "Región de rechazo", size = 5) +
+  #annotate("text", x = 2, y = 0.02, label = "Región de rechazo", size = 5) +
   annotate("text", x = z_critico + 0.2, y = 0.15, label = "Dato observado", color = "royalblue4", angle = 90, size = 4) +
   labs(title = "Región de rechazo y p-valor en prueba de hipótesis",
        x = "Valor de la prueba",

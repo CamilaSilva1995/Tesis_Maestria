@@ -1,7 +1,10 @@
 \chapter{Simulador Metagenómico PyMetaSeem}
-Un problema abierto en la metagenómica es distinguir la calidad del ensamblaje y la correcta asignación taxonómica de los datos metagenómicos. Para lo cual es necesario tener datos metagenomicos de referencia de calidad, que contengan un sistema de clasificacion de la calidad de estos datos debidamente clasificados taxonomicamente, y de alta calidad para poder realizar la evaluacion de las herramientas de software de clasificación taxonomica y  de ensamblaje. Por esto se han realizado distintos simuladores de datos metagenomicos, los cuales se revisan en este capitulo, llegando a la conclusión de que la gran mayoria tienen complicaciones para su uso, y asi empezaremoscon la creaccion de nuestro propio simulador de datos metagenomicos.   \\
+Uno de los principales desafíos en metagenómica es evaluar la calidad del ensamblaje y la correcta asignación taxonómica de los datos. Para ello, es fundamental contar con datos metagenómicos de referencia de alta calidad, que incluyan un sistema de clasificación riguroso y validado. Estos datos permiten evaluar el desempeño de las herramientas de ensamblaje y clasificación taxonómica.\\
 
-%\begin{figure}[h]
+En respuesta a esta necesidad, se han desarrollado diversos simuladores de datos metagenómicos. Sin embargo, como se analiza en este capítulo, la mayoría de estos simuladores presentan limitaciones que dificultan su uso. Ante este panorama, se justifica la creación de un nuevo simulador de datos metagenómicos que supere estas dificultades y brinde una herramienta más efectiva para la evaluación de software en este campo.\\
+
+
+%\begin{figure}[H]
 %\centering
 %\includegraphics[width=\textwidth]{Img/cap2/problem.png}
 %\caption{Flujo }
@@ -10,27 +13,27 @@ Un problema abierto en la metagenómica es distinguir la calidad del ensamblaje 
 
 \section{PyMetaSeem: simulador de datos metagenómicos a partir de un conjunto de datos genómicos}
 
-PyMetaSeem es un algoritmo creado desde cero que simula datos metagenómicos a partir de datos genómicos. Este simulador de datos metagenómicos fue creado a partir de reads recortadas de datos genómicos. Los genomas reales se utilizan para calificar la precisión de los clasificadores y ensambladores taxonómicos. Está pensado como un entorno conda, escalable, reproducible, fácil de usar y gratuito para el público ya que otros simuladores conocidos (como CAMISIM) tienen dificultades de instalación e implementación.  \\
+PyMetaSeem es un algoritmo desarrollado desde cero para la simulación de datos metagenómicos a partir de datos genómicos. Este simulador genera reads recortadas a partir de genomas reales, los cuales se emplean para evaluar la precisión de clasificadores y ensambladores taxonómicos.\\
+
+Diseñado como un entorno Conda, PyMetaSeem es escalable, reproducible y de fácil uso. Además, es una herramienta de acceso libre para la comunidad científica, a diferencia de otros simuladores como CAMISIM, que presentan dificultades en su instalación e implementación. \\
 
 
-%\begin{figure}[h]
+%\begin{figure}[H]
 %\centering
 %\includegraphics[width=\textwidth]{Img/cap2/diagrams_de_flujo.png}
 %\caption{Diagrama de Flujo PyMetaSeem}
 %\end{figure}
 
-Este algoritmo está compuesto de varias funciones:
+El algoritmo PyMetaSeem está compuesto por varias funciones que permiten la simulación de datos metagenómicos a partir de secuencias genómicas. En primer lugar, recibe un conjunto de archivos en formato FASTA que contienen diferentes genomas. Para definir el número y la longitud de los reads generados, se ofrece la opción de ingresar estos parámetros manualmente o a través de un archivo de texto que contenga el nombre de los archivos y la cantidad de reads por genoma, lo que permite establecer un perfil taxonómico. \\
 
-PyMetaSeem recibe un conjunto de archivos con diferentes genomas en formato FASTA, para esto se tienen las opciones de inicializar el algoritmo con numero de reads y longitud de reads ya sea manual o en un archivo de texto (txt) que contenga elnombre de los archivos y la cantidad de reads por genoma (perfil taxonomico).  \\
+Una de las funciones principales del algoritmo se encarga de la lectura y procesamiento de los archivos FASTA, convirtiéndolos en un diccionario en el que cada secuencia de nucleótidos se almacena como valor y su identificador como clave. Esta estructura facilita la manipulación de los datos dentro del entorno de Python y permite un acceso eficiente a las secuencias genómicas. \\
 
-Se tiene una función que se encarga de de la lectura de los fasta, convirtiendolos en un diccionario que contiene cada secuencia de nucleótidos como valor y su nombre o identificador como clave, lo que facilita la gestión de los datos dentro de python.   \\
-
-Teniendo los genomas en diccionarios, se crean varias funciones para tomar las longitudes de los reads a recortar y las proporciones,  tomando en cuenta el tamaño original de los contigs. Luego de obtener las longitudes y proporciones, se cortan los reads aleatorias (m) de una longitud determinada (n) a partir de la secuencia de nucleótidos.  \\
+A partir de los genomas almacenados en diccionarios, el algoritmo implementa funciones que determinan las longitudes y proporciones de los reads a generar, considerando el tamaño original de los contigs. Posteriormente, se procede a la extracción de reads de manera aleatoria con una longitud específica a partir de las secuencias de nucleótidos, asegurando que la distribución de los fragmentos refleje de manera precisa la composición genómica original. \\
 
 
 \subsection{Simulaciones}
 
-%\begin{figure}[h]
+%\begin{figure}[H]
 %\centering
 %\includegraphics[width=\textwidth]{Img/cap2/clavibacter.png}
 %\caption{Clavibacter}
@@ -49,7 +52,7 @@ En cuanto a la calidad de los ensamblajes, evaluamos la pertinencia de aplicar l
 Se trata de una medida utilizada para evaluar la contigüidad y la calidad del ensamblaje de un genoma. Los contigs de un ensamblaje se ordenan por tamaño y se suman, empezando por el mayor. Se toma el tamaño del contig que hace que el total sea mayor o igual al 50\% del tamaño del genoma.  \\
 
 
-%\begin{figure}[h]
+%\begin{figure}[H]
 %\centering
 %\includegraphics[width=\textwidth]{Img/cap2/N50_es.png}
 %\caption{N50 }

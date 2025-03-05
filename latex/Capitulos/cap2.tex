@@ -10,7 +10,7 @@ Este enfoque integral no solo proporciona una comprensión detallada de la compo
 \section{Preprocesamiento}
 Dentro de las etapas principales del análisis, se encuentra la adquisición de datos, en la cual se recopilan los datos necesarios para el estudio. En este caso, se ha adquirido un conjunto de datos metagenómicos de cultivos de fresa proporcionados por Solena. Estas secuencias se entregaron en formato FASTA y se encuentran almacenadas en archivos JSON, los cuales contienen los resultados de la clasificación metagenómica realizada mediante el clasificador Kraken. Con el objetivo de identificar características distintivas entre los frutos sanos y enfermos, se ha llevado a cabo un análisis exploratorio detallado de estos datos.\\
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/preprosecamiento.png}
 \caption{Flujo de Trabajo para el Análisis Metagenómico de Microbiomas en Cultivos de Fresa: Desde la Recolección de Datos hasta la Interpretación de Resultados.}
@@ -156,7 +156,7 @@ Esta expresión matemática nos proporciona un indicador cuantitativo de la dive
 
 En el contexto de la diversidad alfa, estos índices nos permiten explorar y comparar la diversidad de especies en cada muestra o subconjunto, como el grupo de muestras sanas y enfermas. Proporcionan una visión detallada de cómo se distribuye la diversidad de especies dentro de cada conjunto, permitiendo evaluaciones comparativas entre diferentes conjuntos o condiciones.\\
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/AlphaDiversity_CrudosFiltrados.png}
 \caption{La diversidad alfa en los datos crudos es similar en ambos tratamientos en todos los índices. Al realizar el filtro de calidad se obtienen una mejor visión de esta diversidad. A) Índices de diversidad alfa calculados antes de aplicar el filtro de calidad, las diferencias entre las muestras saludables y enfermas son poco claras debido a la influencia de datos ruidosos. B) Índices de diversidad alfa tras eliminar muestras de baja calidad o datos inconsistentes, mejora la claridad y permite una mejor percepción visual de las diferencias en la diversidad microbiana entre los grupos. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)} }
@@ -237,7 +237,7 @@ La fórmula del índice de disimilitud de UniFrac es más compleja en comparaci�
 
 Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud entre muestras, permitiendo seleccionar la más apropiada según el contexto del estudio y los objetivos específicos del análisis de diversidad beta.\\
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/BetaDiversity.png}
 \caption{La diversidad beta muestra que las diferencias entre las muestras no son lo suficientemente claras como para separar completamente los grupos entre muestras sanas y marchitas para ninguna métrica de distancia. Esto sugiere una gran superposición en la composición microbiana entre las muestras saludables y enfermas, independientemente de la métrica utilizada. A) Medida de disimilitud de Bray-Curtis B) Distancia de Jaccard C) Distancia Euclidiana D) Distancia Manhattan E) Medida de divergencia de Jensen-Shannon. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
@@ -249,7 +249,7 @@ Luego de no ver una clara separacion de los datos, Dado que no se observa una cl
 \section{Exploración a distintos niveles taxonómicos}
 Podemos visualizar las barras de abundancia absolutas y relativas de nuestros datos representando las muestras en el eje x y las abundancias en el eje y, diferenciando entre muestras sanas y enfermas.\\
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras.png}
 \caption{Las muestras saludables (N=35) muestran, en promedio, una mayor cantidad de lecturas en comparación con las no saludables (N=18).}
@@ -258,7 +258,7 @@ Debido a la gran cantidad de datos, resulta difícil discernir diferencias entre
 
 A nivel de filo, ya podemos apreciar una mayor diversidad en nuestras muestras, siendo la mayoría de los filos pertenecientes a bacterias.\\
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/BarrasFilo.png}
 \caption{Las barras de abundancia a nivel de FILO muestran a Actinobacteria y Proteobacteria como los más abundantes  A) Las barras de abundancia absolutas, representan el conteo total de lecturas asignadas a cada filo en las muestras.  B) Las barras de abundancia relativas, representan las proporciones de cada filo dentro de la comunidad microbiana total para cada muestra}
@@ -266,7 +266,7 @@ A nivel de filo, ya podemos apreciar una mayor diversidad en nuestras muestras, 
 
 Podemos notar algunas diferencias entre los diferentes filos; sin embargo, la gran cantidad de taxones dificulta distinguir adecuadamente el color de cada uno, a menos que tengan una abundancia muy significativa. Dado que nuestro objetivo es diferenciar entre muestras sanas y enfermas, agregaremos una distinción adicional utilizando la variable 'Tratamiento': representaremos las muestras sanas en color blanco y las muestras enfermas en color negro.\\
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/BarrasFilo_blackandwhite.png}
 \caption{A nivel de filo, se observa una menor presencia de ciertos taxones como Oomycota en las plantas enfermas, lo cual es consistente con la hipótesis de que la salud de las plantas está relacionada con una microbiota específica.}
@@ -295,13 +295,13 @@ A partir de estos dos subconjuntos, llevamos a cabo una agrupación adicional po
 \textbf{GLOM10\%}
 Se realiza una aglomeracion al diez por ciento (10\%)  para tener una mejor visibilidad y podernos enfocar en las muestras con menor (mayor) abundancia. \\
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras_Eukarya10.png}
 \caption{La distribución de la abundancia relativa de microorganismos eucariotas en muestras de plantas saludable y no saludables, desglosada en diferentes niveles taxonómicos. A) Filo: Muestra una disminución significativa de algunos filos en las muestras enfermas, destacando particularmente la baja abundancia de Oomycota, un grupo importante asociado a la salud del suelo y de las plantas. B) Familia: Resalta la disminución específica de familias como Peronosporaceae en las muestras enfermas, lo cual podría indicar una pérdida de componentes microbianos clave para la resistencia a enfermedades. C) Género: Ofrece una visualización más específica que permite identificar  permiten identificar biomarcadores positivos, como Pseudomonas y Bacillus, que se asocian con plantas saludables, así como Fusarium y Phytophthora, que predominan en condiciones de enfermedad. D) Especie: Se observan diferencias claras que pueden servir para identificar biomarcadores asociados a la salud o enfermedad de las plantas. Como Pseudomonas o Bacillus en muestras saludables y Phytophthora o Fusarium en muestras no saludables.  \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
 \end{figure}
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Barras_Bacteria10.png}
 \caption{La distribución de la abundancia relativa de bacterias revela que las plantas saludables albergan una microbiota diversa y equilibrada, caracterizada por la dominancia de filos beneficiosos como Actinobacteria y Firmicutes. En contraste, las plantas enfermas presentan una mayor proporción de posibles patógenos, destacando especies como Ralstonia. A) Filo, La composición a nivel de filo sugiere diferencias en la dominancia de filos beneficiosos (e.g., Actinobacteria) frente a posibles patógenos o descomponedores en plantas enfermas (e.g., Bacteroidetes). B) Familia, A nivel de familia, se observa cómo las plantas saludables están asociadas con microbiota protectora (e.g., Bacillaceae), mientras que las plantas enfermas presentan familias que incluyen patógenos o microbios oportunistas. C) Género, La identificación de géneros específicos permite asociar Pseudomonas y Bacillus con la salud de las plantas, mientras que géneros como Ralstonia se relacionan con la enfermedad. D) Especie, La diferenciación a nivel de especie permite identificar microorganismos específicos que actúan como indicadores claros de la salud o enfermedad de las plantas. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
@@ -311,7 +311,7 @@ En esta representación a nivel de filo, podemos destacar la disminución notabl
 
 \textbf{Diversidad alfa para los niveles taxonomicos}
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Alpha_Eukarya.png}
 \caption{Diversidad alfa para eucariotas a nivel de: A) Filo B) Familia C) Género D) Especie}
@@ -334,7 +334,7 @@ En esta imagen, podemos ver que con la diversidad Chao1 a nivel de género se ev
 
 \textbf{Diversidad beta para los niveles taxonomicos}
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Beta_Eukarya.png}
 \caption{Diversidad beta para eucariota a nivel de A) Filo, B) Familia, C) Genero, D) Especie}
@@ -370,7 +370,7 @@ En donde el objetivo principal de una prueba de hipótesis es evaluar si la evid
 
 La hipotesis nula sera rechazada a favor de la hipotesis alternativa solo si la evidencia muestral sugiere que $H_0$ es falsa. Si la muestra no contradice a $H_0$, se continuara creyendo en la veracidad de la hipotesis nula. (rechazar o no rechazar $H_0$).\\
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/pruebat_explicacion.png}
 \caption{Se ilustra el concepto esencial de una prueba de hipótesis, mostrando la distribución teórica de la estadística de prueba bajo la hipótesis nula ($H_0$) y destacando la región de rechazo. La posición del dato observado con respecto a esta región determinará si se rechaza o no $H_0$ en cada una de las pruebas estadísticas a realizar.\\
@@ -420,16 +420,15 @@ donde
 
 $$ S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}$$
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/tTest_Shannon.png}
-\caption{Prueba t de Student sobre el Índice Shannon (Varianzas Iguales y Diferentes) A) Los resultados de la prueba t sugieren que, aunque las muestras saludables muestran visualmente una mayor diversidad microbiana, no hay evidencia estadística suficiente para confirmar que las medias del índice de Shannon son diferentes entre los grupos.
+\caption{Prueba t de Student sobre el Índice Shannon no muestra evidencia estadística suficiente para rechazar la hipótesis nula (Varianzas Iguales y Diferentes)  A) Los resultados de la prueba t sugieren que, aunque las muestras saludables muestran visualmente una mayor diversidad microbiana, no hay evidencia estadística suficiente para rechazar la hipótesis nula.
 B) Suponiendo  varianzas iguales, no se observa una diferencia significativa en las medias del índice de Shannon entre los grupos saludables y no saludables, ya que el valor p es mayor a 0.05, lo que lleva a no rechazar la hipótesis nula.
 C) Asumiendo las varianzas diferentes el valor p sigue siendo mayor que 0.05 (0.1501), lo que indica que no hay una diferencia significativa entre las medias del índice de Shannon entre los grupos "saludable" y "no saludable". }
 \end{figure}
 
-
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/tTest_Shannon_Fusarium.png}
 \caption{Prueba t de Student sobre el Índice Shannon en Fusarium (Varianzas Iguales y Diferentes) A)Se observa que el grupo "Saludable" presenta una distribución más amplia y una mayor diversidad promedio en comparación con el grupo "No Saludable".
@@ -474,7 +473,7 @@ Wilcoxon es una prueba no parametrica para comparar el rango medio de dos muestr
 La U de Mann-Whitney para comparar las medias de dos grupos independientes. 
 Prueba no parametrica o libre de distribución, es el analogo no parametrico a la t de Student para lacomparacion de dos medias independientes; solo que esta no requiere parametros y se puede emplear sin ninguna condicion de aplicación.
 
-\begin{figure}[hbt!]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Wilcoxon_Shannon.png}
 \caption{La distribución de los rangos en la prueba de Mann-Whitney sobre las distribuciones de los valores de Shannon  indica que los valores de los grupos "Saludable" y "No saludable" están mezclados, aunque con algunas diferencias en los extremos. El resultado de la prueba arroja un p-valor de 0.2586, lo que sugiere que no hay suficiente evidencia estadística para afirmar una diferencia significativa en el índice de Shannon entre ambos grupos.}
@@ -619,13 +618,13 @@ Asi la primera red creada con esta herramienta es tomando Fusarium a nivel de ge
 
 Se obtuvo un nuevo conjunto de datos complementario, el cual se divide en cinco categorias, respecto al tipo de cultivo de las fresas,
 
-%\begin{figure}[!]
+%\begin{figure}[H]
 %\centering
 %\includegraphics[width=\textwidth]{Img/cap2/AllData_Alfa_diversidad.png}
 %\caption{Diversidad Alfa, }
 %\end{figure}
 
-%\begin{figure}[!]
+%\begin{figure}[H]
 %\centering
 %\includegraphics[width=\textwidth]{Img/cap2/AllData_Beta_diversidad.png}
 %\caption{Diversidad Beta, }
