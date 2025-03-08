@@ -36,13 +36,13 @@
 \contentsline {section}{\numberline {2.7}Redes}{51}{section.2.7}%
 \contentsline {section}{\numberline {2.8}Rs}{52}{section.2.8}%
 \contentsline {chapter}{\numberline {3}Simulador Metagenómico PyMetaSeem}{53}{chapter.3}%
-\contentsline {section}{\numberline {3.1}PyMetaSeem: simulador de datos metagenómicos a partir de un conjunto de datos genómicos}{54}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Simulaciones}{55}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Comparaciones}{55}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Comparación taxonomica}{55}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Generalizando el N50, nuevas métricas para ensamblados de metagenoma}{55}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Conclusiones}{57}{chapter.4}%
+\contentsline {section}{\numberline {3.1}PyMetaSeem: Un simulador de datos metagenómicos basado en secuencias genómicas}{54}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Simulaciones}{57}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Comparaciones}{57}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Comparación taxonomica}{57}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Generalizando el N50, nuevas métricas para ensamblados de metagenoma}{57}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Conclusiones}{59}{chapter.4}%
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Codigos}{61}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Imagenes}{63}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {A}Codigos}{63}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Imagenes}{65}{appendix.Alph2}%
 \vspace {2em}
