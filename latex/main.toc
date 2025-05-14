@@ -16,8 +16,8 @@
 \contentsline {subsection}{\numberline {1.5.3}FASTA}{9}{subsection.1.5.3}%
 \contentsline {subsection}{\numberline {1.5.4}BAM}{10}{subsection.1.5.4}%
 \contentsline {section}{\numberline {1.6}Solena}{10}{section.1.6}%
-\contentsline {section}{\numberline {1.7}fresa}{11}{section.1.7}%
-\contentsline {section}{\numberline {1.8}Simuladores de Secuencias metagenomicas}{11}{section.1.8}%
+\contentsline {section}{\numberline {1.7}Analisis comparativo del microbioma de fresa, en relacion con el estado de la planta}{11}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Simuladores de Secuencias metagenomicas}{12}{section.1.8}%
 \contentsline {chapter}{\numberline {2}Análisis Exploratorio de Datos}{15}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Preprocesamiento}{16}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Filtrado de Calidad}{17}{subsection.2.1.1}%
