@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.28)  13 MAY 2025 22:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.28)  19 MAY 2025 21:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1028,41 +1028,78 @@ CION CON EL ESTADO DE LA PLANTA \OT1/cmr/m/n/10.95 11
  []
 
 [11]
-
-LaTeX Warning: Citation `fritz2019camisim' on page 12 undefined on input line 1
-19.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 123--124
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
-LaTeX Info: Redefining \. on input line 124.
-LaTeX Info: Redefining \% on input line 124.
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+
+ []
+
+LaTeX Info: Redefining \. on input line 121.
+LaTeX Info: Redefining \% on input line 121.
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
+Overfull \hbox (2.90588pt too wide) in paragraph at lines 122--123
+\OT1/cmr/m/n/10.95 pren-si^^Son ecol^^Sogi-ca co-mo pa-ra la apli-ca-ci^^Son bi
+o-tec-nol^^Sogi-ca en sis-te-mas agr^^S^^Pco-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
+
+ []
+
+
+LaTeX Warning: Citation `fritz2019camisim' on page 13 undefined on input line 1
+27.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
+
+ []
+
+LaTeX Info: Redefining \. on input line 132.
+LaTeX Info: Redefining \% on input line 132.
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
 
  []
 
 )
 LaTeX Info: Redefining \. on input line 229.
 LaTeX Info: Redefining \% on input line 229.
- [13]
+ [14]
 \openout2 = `Capitulos/cap2.aux'.
 
- (./Capitulos/cap2.tex [14
+ (./Capitulos/cap2.tex [15
 
 
+
+]
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [16
 
 ]
 Cap\'{\i }tulo 2.
@@ -1082,21 +1119,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--7
  []
 
 
-LaTeX Warning: Citation `yang2020' on page 15 undefined on input line 8.
+LaTeX Warning: Citation `yang2020' on page 17 undefined on input line 8.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-[15
-
-]
+[17]
 Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
  []
 
-<Img/cap2/preprosecamiento.png, id=361, 1900.09875pt x 807.015pt>
+<Img/cap2/preprosecamiento.png, id=369, 1900.09875pt x 807.015pt>
 File: Img/cap2/preprosecamiento.png Graphic file (type png)
 <use Img/cap2/preprosecamiento.png>
 Package pdftex.def Info: Img/cap2/preprosecamiento.png  used on input line 15.
@@ -1108,7 +1143,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
-[16 <./Img/cap2/preprosecamiento.png>]
+[18 <./Img/cap2/preprosecamiento.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
@@ -1120,7 +1155,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--26
 
 LaTeX Info: Redefining \. on input line 32.
 LaTeX Info: Redefining \% on input line 32.
-[17]
+[19]
 Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
  []
@@ -1137,7 +1172,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 48--49
 
 LaTeX Info: Redefining \. on input line 49.
 LaTeX Info: Redefining \% on input line 49.
-[18]
+[20]
 Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
@@ -1154,13 +1189,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
 LaTeX Info: Redefining \. on input line 102.
 LaTeX Info: Redefining \% on input line 102.
-[19]
+[21]
 Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
 
-LaTeX Warning: Citation `tuomisto2010' on page 20 undefined on input line 106.
+LaTeX Warning: Citation `tuomisto2010' on page 22 undefined on input line 106.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 106--107
@@ -1174,12 +1209,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 111--113
 
 LaTeX Info: Redefining \. on input line 113.
 LaTeX Info: Redefining \% on input line 113.
-[20]
+[22]
 
-LaTeX Warning: Citation `shannon1948' on page 21 undefined on input line 116.
+LaTeX Warning: Citation `shannon1948' on page 23 undefined on input line 116.
 
 
-LaTeX Warning: Citation `simpson1949' on page 21 undefined on input line 116.
+LaTeX Warning: Citation `simpson1949' on page 23 undefined on input line 116.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 114--117
@@ -1212,14 +1247,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 131--132
 
 LaTeX Info: Redefining \. on input line 132.
 LaTeX Info: Redefining \% on input line 132.
-[21]
+[23]
 Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
  []
 
 LaTeX Info: Redefining \. on input line 148.
 LaTeX Info: Redefining \% on input line 148.
-[22]
+[24]
 Underfull \hbox (badness 10000) in paragraph at lines 155--156
 
  []
@@ -1229,7 +1264,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 157--158
 
  []
 
-<Img/cap2/AlphaDiversity_CrudosFiltrados.png, id=404, 963.6pt x 350.30875pt>
+<Img/cap2/AlphaDiversity_CrudosFiltrados.png, id=412, 963.6pt x 350.30875pt>
 File: Img/cap2/AlphaDiversity_CrudosFiltrados.png Graphic file (type png)
 <use Img/cap2/AlphaDiversity_CrudosFiltrados.png>
 Package pdftex.def Info: Img/cap2/AlphaDiversity_CrudosFiltrados.png  used on i
@@ -1240,7 +1275,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 164.
 LaTeX Info: Redefining \% on input line 164.
- [23]
+ [25]
 Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
@@ -1257,13 +1292,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 169--170
 
 LaTeX Info: Redefining \. on input line 170.
 LaTeX Info: Redefining \% on input line 170.
-[24 <./Img/cap2/AlphaDiversity_CrudosFiltrados.png>]
+[26 <./Img/cap2/AlphaDiversity_CrudosFiltrados.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 171--172
 
  []
 
 
-LaTeX Warning: Citation `whittaker1960' on page 25 undefined on input line 174.
+LaTeX Warning: Citation `whittaker1960' on page 27 undefined on input line 174.
 
 
 
@@ -1283,7 +1318,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 178--179
 
 LaTeX Info: Redefining \. on input line 179.
 LaTeX Info: Redefining \% on input line 179.
-[25]
+[27]
 Underfull \hbox (badness 10000) in paragraph at lines 185--187
 
  []
@@ -1299,7 +1334,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 190--191
  []
 
 
-LaTeX Warning: Citation `bray&curtis1957' on page 26 undefined on input line 19
+LaTeX Warning: Citation `bray&curtis1957' on page 28 undefined on input line 19
 2.
 
 
@@ -1314,7 +1349,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 198--199
 
 LaTeX Info: Redefining \. on input line 201.
 LaTeX Info: Redefining \% on input line 201.
-[26{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+[28{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 Underfull \hbox (badness 10000) in paragraph at lines 203--205
 
  []
@@ -1331,7 +1366,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 208--209
 
 LaTeX Info: Redefining \. on input line 213.
 LaTeX Info: Redefining \% on input line 213.
-[27]
+[29]
 Underfull \hbox (badness 10000) in paragraph at lines 213--215
 
  []
@@ -1353,7 +1388,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 224--225
 
 LaTeX Info: Redefining \. on input line 229.
 LaTeX Info: Redefining \% on input line 229.
-[28]
+[30]
 Underfull \hbox (badness 10000) in paragraph at lines 229--231
 
  []
@@ -1378,7 +1413,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--239
 
  []
 
-<Img/cap2/BetaDiversity.png, id=438, 963.6pt x 521.95pt>
+<Img/cap2/BetaDiversity.png, id=446, 963.6pt x 521.95pt>
 File: Img/cap2/BetaDiversity.png Graphic file (type png)
 <use Img/cap2/BetaDiversity.png>
 Package pdftex.def Info: Img/cap2/BetaDiversity.png  used on input line 242.
@@ -1388,7 +1423,7 @@ Underfull \vbox (badness 6741) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 245.
 LaTeX Info: Redefining \% on input line 245.
- [29]
+ [31]
 Underfull \hbox (badness 10000) in paragraph at lines 246--247
 
  []
@@ -1400,8 +1435,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 250--251
 
 LaTeX Info: Redefining \. on input line 251.
 LaTeX Info: Redefining \% on input line 251.
-[30 <./Img/cap2/BetaDiversity.png>]
-<Img/cap2/Barras.png, id=451, 963.6pt x 542.025pt>
+[32 <./Img/cap2/BetaDiversity.png>]
+<Img/cap2/Barras.png, id=459, 963.6pt x 542.025pt>
 File: Img/cap2/Barras.png Graphic file (type png)
 <use Img/cap2/Barras.png>
 Package pdftex.def Info: Img/cap2/Barras.png  used on input line 254.
@@ -1416,7 +1451,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 259--260
 
  []
 
-<Img/cap2/BarrasFilo.png, id=452, 963.6pt x 542.025pt>
+<Img/cap2/BarrasFilo.png, id=460, 963.6pt x 542.025pt>
 File: Img/cap2/BarrasFilo.png Graphic file (type png)
 <use Img/cap2/BarrasFilo.png>
 Package pdftex.def Info: Img/cap2/BarrasFilo.png  used on input line 263.
@@ -1426,12 +1461,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 266.
 LaTeX Info: Redefining \% on input line 266.
- [31 <./Img/cap2/Barras.png (PNG copy)>]
+ [33 <./Img/cap2/Barras.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 267--268
 
  []
 
-<Img/cap2/BarrasFilo_blackandwhite.png, id=458, 963.6pt x 542.025pt>
+<Img/cap2/BarrasFilo_blackandwhite.png, id=467, 963.6pt x 542.025pt>
 File: Img/cap2/BarrasFilo_blackandwhite.png Graphic file (type png)
 <use Img/cap2/BarrasFilo_blackandwhite.png>
 Package pdftex.def Info: Img/cap2/BarrasFilo_blackandwhite.png  used on input l
@@ -1442,7 +1477,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 274.
 LaTeX Info: Redefining \% on input line 274.
- [32 <./Img/cap2/BarrasFilo.png (PNG copy)>]
+ [34 <./Img/cap2/BarrasFilo.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 275--276
 
  []
@@ -1459,7 +1494,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 279--280
 
 LaTeX Info: Redefining \. on input line 281.
 LaTeX Info: Redefining \% on input line 281.
-[33 <./Img/cap2/BarrasFilo_blackandwhite.png (PNG copy)>]
+[35 <./Img/cap2/BarrasFilo_blackandwhite.png (PNG copy)>]
 Overfull \hbox (17.48302pt too wide) in paragraph at lines 283--284
 [][][][][][][][][][][][][] 
  []
@@ -1484,7 +1519,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 295--297
 
  []
 
-<Img/cap2/Barras_Eukarya10.png, id=470, 963.6pt x 542.025pt>
+<Img/cap2/Barras_Eukarya10.png, id=478, 963.6pt x 542.025pt>
 File: Img/cap2/Barras_Eukarya10.png Graphic file (type png)
 <use Img/cap2/Barras_Eukarya10.png>
 Package pdftex.def Info: Img/cap2/Barras_Eukarya10.png  used on input line 300.
@@ -1495,8 +1530,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 303.
 LaTeX Info: Redefining \% on input line 303.
- [34]
-<Img/cap2/Barras_Bacteria10.png, id=483, 963.6pt x 542.025pt>
+ [36]
+<Img/cap2/Barras_Bacteria10.png, id=491, 963.6pt x 542.025pt>
 File: Img/cap2/Barras_Bacteria10.png Graphic file (type png)
 <use Img/cap2/Barras_Bacteria10.png>
 Package pdftex.def Info: Img/cap2/Barras_Bacteria10.png  used on input line 306
@@ -1507,7 +1542,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 309.
 LaTeX Info: Redefining \% on input line 309.
- [35 <./Img/cap2/Barras_Eukarya10.png (PNG copy)>]
+ [37 <./Img/cap2/Barras_Eukarya10.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 310--311
 
  []
@@ -1517,13 +1552,13 @@ Underfull \vbox (badness 3354) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 311.
 LaTeX Info: Redefining \% on input line 311.
- [36 <./Img/cap2/Barras_Bacteria10.png (PNG copy)>]
-<Img/cap2/Alpha_Eukarya.png, id=497, 963.6pt x 542.025pt>
+ [38 <./Img/cap2/Barras_Bacteria10.png (PNG copy)>]
+<Img/cap2/Alpha_Eukarya.png, id=505, 963.6pt x 542.025pt>
 File: Img/cap2/Alpha_Eukarya.png Graphic file (type png)
 <use Img/cap2/Alpha_Eukarya.png>
 Package pdftex.def Info: Img/cap2/Alpha_Eukarya.png  used on input line 316.
 (pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
-<Img/cap2/Alpha_Bacteria.png, id=498, 963.6pt x 542.025pt>
+<Img/cap2/Alpha_Bacteria.png, id=506, 963.6pt x 542.025pt>
 File: Img/cap2/Alpha_Bacteria.png Graphic file (type png)
 <use Img/cap2/Alpha_Bacteria.png>
 Package pdftex.def Info: Img/cap2/Alpha_Bacteria.png  used on input line 319.
@@ -1533,19 +1568,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 322.
 LaTeX Info: Redefining \% on input line 322.
- [37]
+ [39]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 324.
 LaTeX Info: Redefining \% on input line 324.
- [38 <./Img/cap2/Alpha_Eukarya.png (PNG copy)> <./Img/cap2/Alpha_Bacteria.png (
+ [40 <./Img/cap2/Alpha_Eukarya.png (PNG copy)> <./Img/cap2/Alpha_Bacteria.png (
 PNG copy)>]
-<Img/cap2/Beta_Eukarya.png, id=510, 963.6pt x 542.025pt>
+<Img/cap2/Beta_Eukarya.png, id=519, 963.6pt x 542.025pt>
 File: Img/cap2/Beta_Eukarya.png Graphic file (type png)
 <use Img/cap2/Beta_Eukarya.png>
 Package pdftex.def Info: Img/cap2/Beta_Eukarya.png  used on input line 339.
 (pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
-<Img/cap2/Beta_Bacteria.png, id=511, 963.6pt x 542.025pt>
+<Img/cap2/Beta_Bacteria.png, id=520, 963.6pt x 542.025pt>
 File: Img/cap2/Beta_Bacteria.png Graphic file (type png)
 <use Img/cap2/Beta_Bacteria.png>
 Package pdftex.def Info: Img/cap2/Beta_Bacteria.png  used on input line 342.
@@ -1555,12 +1590,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 345.
 LaTeX Info: Redefining \% on input line 345.
- [39]
+ [41]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 348.
 LaTeX Info: Redefining \% on input line 348.
- [40 <./Img/cap2/Beta_Eukarya.png (PNG copy)> <./Img/cap2/Beta_Bacteria.png (PN
+ [42 <./Img/cap2/Beta_Eukarya.png (PNG copy)> <./Img/cap2/Beta_Bacteria.png (PN
 G copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 353--354
 
@@ -1588,7 +1623,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 361--362
 
 LaTeX Info: Redefining \. on input line 363.
 LaTeX Info: Redefining \% on input line 363.
-[41]
+[43]
 Underfull \hbox (badness 10000) in paragraph at lines 363--364
 
  []
@@ -1613,7 +1648,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 371--372
 
  []
 
-<Img/cap2/pruebat_explicacion.png, id=528, 963.6pt x 542.025pt>
+<Img/cap2/pruebat_explicacion.png, id=536, 963.6pt x 542.025pt>
 File: Img/cap2/pruebat_explicacion.png Graphic file (type png)
 <use Img/cap2/pruebat_explicacion.png>
 Package pdftex.def Info: Img/cap2/pruebat_explicacion.png  used on input line 3
@@ -1624,7 +1659,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 382.
 LaTeX Info: Redefining \% on input line 382.
- [42]
+ [44]
 Underfull \hbox (badness 10000) in paragraph at lines 383--386
 
  []
@@ -1634,7 +1669,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 386.
 LaTeX Info: Redefining \% on input line 386.
- [43 <./Img/cap2/pruebat_explicacion.png (PNG copy)>]
+ [45 <./Img/cap2/pruebat_explicacion.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 387--391
 
  []
@@ -1651,12 +1686,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 397--398
 
 LaTeX Info: Redefining \. on input line 404.
 LaTeX Info: Redefining \% on input line 404.
-[44]
+[46]
 Underfull \hbox (badness 10000) in paragraph at lines 404--406
 
  []
 
-<Img/cap2/tTest_Shannon.png, id=542, 963.6pt x 508.90125pt>
+<Img/cap2/tTest_Shannon.png, id=551, 963.6pt x 508.90125pt>
 File: Img/cap2/tTest_Shannon.png Graphic file (type png)
 <use Img/cap2/tTest_Shannon.png>
 Package pdftex.def Info: Img/cap2/tTest_Shannon.png  used on input line 425.
@@ -1666,8 +1701,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 430.
 LaTeX Info: Redefining \% on input line 430.
- [45]
-<Img/cap2/tTest_Shannon_Fusarium.png, id=548, 963.6pt x 513.92pt>
+ [47]
+<Img/cap2/tTest_Shannon_Fusarium.png, id=556, 963.6pt x 513.92pt>
 File: Img/cap2/tTest_Shannon_Fusarium.png Graphic file (type png)
 <use Img/cap2/tTest_Shannon_Fusarium.png>
 Package pdftex.def Info: Img/cap2/tTest_Shannon_Fusarium.png  used on input lin
@@ -1678,15 +1713,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 439.
 LaTeX Info: Redefining \% on input line 439.
- [46 <./Img/cap2/tTest_Shannon.png>]
+ [48 <./Img/cap2/tTest_Shannon.png>]
 LaTeX Info: Redefining \. on input line 453.
 LaTeX Info: Redefining \% on input line 453.
- [47 <./Img/cap2/tTest_Shannon_Fusarium.png>]
+ [49 <./Img/cap2/tTest_Shannon_Fusarium.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 468--469
 
  []
 
-<Img/cap2/Wilcoxon_Shannon.png, id=559, 963.6pt x 542.025pt>
+<Img/cap2/Wilcoxon_Shannon.png, id=567, 963.6pt x 542.025pt>
 File: Img/cap2/Wilcoxon_Shannon.png Graphic file (type png)
 <use Img/cap2/Wilcoxon_Shannon.png>
 Package pdftex.def Info: Img/cap2/Wilcoxon_Shannon.png  used on input line 478.
@@ -1697,7 +1732,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 481.
 LaTeX Info: Redefining \% on input line 481.
- [48]
+ [50]
 Underfull \hbox (badness 10000) in paragraph at lines 482--489
 
  []
@@ -1707,14 +1742,14 @@ Underfull \vbox (badness 4024) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 489.
 LaTeX Info: Redefining \% on input line 489.
- [49 <./Img/cap2/Wilcoxon_Shannon.png (PNG copy)>]
+ [51 <./Img/cap2/Wilcoxon_Shannon.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 552--554
 
  []
 
 LaTeX Info: Redefining \. on input line 554.
 LaTeX Info: Redefining \% on input line 554.
-[50]
+[52]
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 5
 56.
  (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
@@ -1750,10 +1785,10 @@ Overfull \hbox (190.7949pt too wide) in paragraph at lines 583--584
 
 LaTeX Info: Redefining \. on input line 601.
 LaTeX Info: Redefining \% on input line 601.
-[51])
+[53])
 LaTeX Info: Redefining \. on input line 232.
 LaTeX Info: Redefining \% on input line 232.
- [52]
+ [54]
 \openout2 = `Capitulos/cap3.aux'.
 
  (./Capitulos/cap3.tex
@@ -1773,13 +1808,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
-[53
+[55
 
 
 
 
 ]
-<Img/cap3/problem.png, id=596, 1089.06876pt x 585.18625pt>
+<Img/cap3/problem.png, id=604, 1089.06876pt x 585.18625pt>
 File: Img/cap3/problem.png Graphic file (type png)
 <use Img/cap3/problem.png>
 Package pdftex.def Info: Img/cap3/problem.png  used on input line 11.
@@ -1796,7 +1831,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--21
 
 LaTeX Info: Redefining \. on input line 21.
 LaTeX Info: Redefining \% on input line 21.
-[54 <./Img/cap3/problem.png>]
+[56 <./Img/cap3/problem.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 22--23
 
  []
@@ -1806,7 +1841,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--25
 
  []
 
-<Img/cap3/diagrams_de_flujo.png, id=603, 963.6pt x 542.025pt>
+<Img/cap3/diagrams_de_flujo.png, id=611, 963.6pt x 542.025pt>
 File: Img/cap3/diagrams_de_flujo.png Graphic file (type png)
 <use Img/cap3/diagrams_de_flujo.png>
 Package pdftex.def Info: Img/cap3/diagrams_de_flujo.png  used on input line 28.
@@ -1820,10 +1855,10 @@ LaTeX Info: Redefining \% on input line 31.
 
 Overfull \hbox (225.97961pt too wide) has occurred while \output is active
 \OT1/cmr/m/sl/10.95 3.1.  PYMETASEEM: UN SIMULADOR DE DATOS METAGEN[]OMICOS BAS
-ADO EN SECUENCIAS GEN[]OMICAS \OT1/cmr/m/n/10.95 55
+ADO EN SECUENCIAS GEN[]OMICAS \OT1/cmr/m/n/10.95 57
  []
 
-[55]
+[57]
 Underfull \hbox (badness 10000) in paragraph at lines 32--33
 
  []
@@ -1840,7 +1875,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
 LaTeX Info: Redefining \. on input line 37.
 LaTeX Info: Redefining \% on input line 37.
-[56 <./Img/cap3/diagrams_de_flujo.png (PNG copy)>]
+[58 <./Img/cap3/diagrams_de_flujo.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 54--56
 
  []
@@ -1862,14 +1897,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
 LaTeX Info: Redefining \. on input line 69.
 LaTeX Info: Redefining \% on input line 69.
-[57])
+[59])
 Underfull \hbox (badness 10000) in paragraph at lines 70--235
 
  []
 
 LaTeX Info: Redefining \. on input line 235.
 LaTeX Info: Redefining \% on input line 235.
-[58]
+[60]
 \openout2 = `Capitulos/cap4.aux'.
 
  (./Capitulos/cap4.tex
@@ -1889,37 +1924,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--238
 
  []
 
-[59
+[61
 
 
 
 
-] [60
+] [62
 
 
 
-] [61]
+] [63]
 \openout2 = `Apendices/Ap.aux'.
 
  (./Apendices/Ap.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [62
+ [64
 
 
 ]
 Ap\'{e}ndice A.
-) [63]
+) [65]
 \openout2 = `Apendices/Bp.aux'.
 
- (./Apendices/Bp.tex [64
+ (./Apendices/Bp.tex [66
 
 
 
 
 ]
 Ap\'{e}ndice B.
-) [65] [66
+) [67] [68
 
 
 
@@ -1944,9 +1979,9 @@ Package rerunfilecheck Info: File `main.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  16859 strings out of 474222
- 275129 string characters out of 5748733
- 1950975 words of memory out of 5000000
- 38643 multiletter control sequences out of 15000+600000
+ 275126 string characters out of 5748733
+ 1951975 words of memory out of 5000000
+ 38641 multiletter control sequences out of 15000+600000
  567638 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  94i,15n,93p,1569b,1249s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1967,10 +2002,10 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf/font
 s/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-su
 per/sfrm1095.pfb>
-Output written on main.pdf (76 pages, 2436664 bytes).
+Output written on main.pdf (78 pages, 2439423 bytes).
 PDF statistics:
- 772 PDF objects out of 1000 (max. 8388607)
- 619 compressed objects within 7 object streams
- 162 named destinations out of 1000 (max. 500000)
+ 781 PDF objects out of 1000 (max. 8388607)
+ 626 compressed objects within 7 object streams
+ 164 named destinations out of 1000 (max. 500000)
  475 words of extra memory for PDF output out of 10000 (max. 10000000)
 
