@@ -16,6 +16,31 @@ La filogenética es el estudio de la evolución de la vida y las relaciones entr
 Los niveles taxonómicos \ref{Fig 1.1} son categorías jerárquicas utilizadas para clasificar organismos, desde los grupos más generales hasta los más específicos. El Reino es el nivel más amplio y agrupa organismos según características fundamentales, como ser procariotas o eucariotas. Dentro de cada reino, los organismos se subdividen en Filos, que los organizan según estructuras o procesos biológicos compartidos. Estos se clasifican en Clases, que reúnen grupos más específicos de organismos. A su vez, las clases se dividen en Órdenes, que contienen familias relacionadas. Las Familias agrupan Géneros, que son conjuntos de especies estrechamente relacionadas. Finalmente, la Especie es el nivel más específico, que incluye organismos capaces de reproducirse entre sí y producir descendencia viable. Esta jerarquía es esencial para organizar la biodiversidad y estudiar las relaciones evolutivas entre los organismos.\\
 
 \section{Metagenómica}
+
+La metagenómica es el estudio integral del material genético recuperado directamente de muestras ambientales. Permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, sin necesidad de cultivarlos individualmente.\\
+
+Desde un punto de vista matemático, los datos metagenómicos pueden representarse como una matriz de conteos:\\
+%$$
+%X = (x_{ij}) \in \mathbb{N}^{n \times p}
+%$$
+donde:\\
+%\begin{itemize}
+%\item $n$ es el número de muestras,
+%\item $p$ el número de taxones,
+%\item $x_{ij}$ el número de lecturas asignadas al taxón $j$ en la muestra $i$.
+%\end{itemize}
+
+Debido a que las muestras presentan distinta profundidad de secuenciación, se emplean abundancias relativas:\\
+%$$
+%a_{ij} = \frac{x_{ij}}{\sum_{k=1}^{p} x_{ik}},
+%\quad
+%\sum_{j=1}^{p} a_{ij} = 1.
+%$$
+%Estas pertenecen al simplex composicional:
+%$$
+%S^{p-1} = \left\{ x \in \mathbb{R}_+^p : \sum_{j=1}^{p} x_j = 1 \right\}.
+%$$
+
 La metagenómica es el estudio integral del material genético recuperado directamente de muestras ambientales. Permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, sin necesidad de cultivarlos individualmente. Este campo se centra en comprender la diversidad microbiana, las estructuras poblacionales, las capacidades funcionales y las interacciones de las comunidades microbianas con su entorno. Se aplica comúnmente en el estudio de ecosistemas como el suelo, el agua, la microbiota humana y otros hábitats microbianos complejos. La metagenómica utiliza tecnologías avanzadas de secuenciación, como la secuenciación de nueva generación, para desentrañar la diversidad genética y funcional de estas comunidades (Zhang, 2021).\\
 
 Existen dos enfoques para la secuenciación de microorganismos: “Amplicón 16S rRNA” y “Shotgun”. La secuenciación por amplicón 16S fue el primer método de secuenciación metagenómica altamente aceptado. Tiene muchas ventajas: el gen 16S está presente en todas las bacterias y arqueas, contiene las regiones necesarias para un buen análisis de PCR (Polymerase Chain Reaction - Reacción en Cadena de la Polimerasa) altamente conservadas, existen conjuntos de primers altamente estudiados para amplificar la mayoría de los organismos, ya se encuentran disponibles bases de datos públicas y bien seleccionadas que permiten una buena comparación, y la secuenciación por 16S es relativamente barata y simple. Sin embargo, posee algunas desventajas: el gen 16S no está presente en los hongos, por lo que este método no es adecuado cuando se desea trabajar con hongos. Además, existe la posibilidad de que se incremente el error de sesgo si no se elige el conjunto de primers adecuado para el organismo a analizar.\\
@@ -23,6 +48,108 @@ Existen dos enfoques para la secuenciación de microorganismos: “Amplicón 16S
 Para realizar una secuenciación por 16S, es necesario seguir una serie de pasos para la preparación de la muestra biológica y la extracción del ADN: colecta de la muestra, extracción del ADN y preparación de la librería. Para la colecta de las muestras, se deben tener en cuenta las necesidades del experimento y los resultados esperados, estimar el número de muestras necesarias y considerar el método de almacenamiento; todo esto para garantizar la calidad de los datos. Existen varios métodos y herramientas para realizar la extracción del ADN. Es necesario preparar bibliotecas de datos genómicos para la comparación de las secuencias. Posteriormente, se continúa con la secuenciación de las muestras, para lo cual existen varias herramientas, siendo una de las más usadas Ilumina, que ofrece una mayor cobertura a menor costo. Finalmente, se realiza un control de calidad, cuyo principal objetivo es mejorar la precisión del análisis y prevenir la sobreestimación de los datos. El control de calidad puede incluir: la detección y eliminación de quimeras artificiales, el filtrado de secuencias de baja calidad y de reads muy cortos, así como la eliminación de ruido.\\
 
 Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico correspondiente para cada secuencia. Para esto, se conocen dos enfoques principales: uno basado en filotipos, que agrupa las secuencias directamente en función de su similitud con los filotipos, y otro basado en OTUs (Unidades Taxonómicas Operacionales), que agrupa las secuencias según la similitud entre OTUs. El método de agrupación por OTUs supera al basado en filotipos, pero también presenta ciertas limitaciones, ya que es relativamente costoso computacionalmente y requiere mucha memoria. Un OTU se define dentro del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje común a nivel de especie. Estos OTUs se obtienen mediante clústering, para lo cual ya existen varios métodos y algoritmos disponibles (Xia et al., 2018).\\
+
+\section{Índices de Diversidad}
+
+Un índice de diversidad constituye una medida numérica empleada para cuantificar la variedad y la distribución de especies en una comunidad biológica.\\
+Un índice de diversidad constituye una medida numérica empleada para cuantificar la variedad y la distribución de especies en una comunidad biológica o un ecosistema. Estos índices son herramientas matemáticas diseñadas para sintetizar y comparar la composición de especies en diversas comunidades.\\
+
+\subsection{Diversidad Alfa}
+
+La diversidad alfa, en esencia, refleja la riqueza de las muestras, es decir, el número de especies distintas presentes en un determinado entorno, o la abundancia relativa de dichas especies en dicho entorno; es usada principalmente para medir la diversidad local, haciendo referencia a la diversidad dentro de una muestra o comunidad % (\cite{whittaker1960} & \cite{whittaker1972})
+ Para cuantificar esta diversidad, se recurre a diversos índices de medida, cada uno con enfoques particulares.\\
+
+\textbf{Chao1}, es una métrica que evalúa la riqueza de especies, proporcionando una estimación del número total de especies en una comunidad. Su utilidad se destaca especialmente en situaciones donde la muestra es pequeña o la proporción de especies raras es considerable. Este índice demuestra ser menos sensible a la presencia de especies raras en comparación con otros índices, lo que lo convierte en una herramienta valiosa en estudios centrados en la conservación de especies poco comunes.
+
+La fórmula para calcular el índice Chao1 es la siguiente:
+$$S_{Chao1} = S_{Obs} + \frac{F_1×(F_1-1)}{F_2×(F_2+1)}$$
+Donde:
+\begin{itemize}
+    \item $S_{Obs}$ es el número de especies observadas.
+    \item $F_1$ es el recuento de "singletons" (especies con un solo individuo en todo el inventario).
+    \item $F_2$ es el recuento de "doubletons" (especies con dos individuos en todo el inventario).
+\end{itemize}
+
+Esta expresión nos proporciona una estimación más completa de la riqueza de especies al considerar las especies raras representadas por singletons y doubletons. En consecuencia, Chao1 emerge como una herramienta valiosa para evaluar y comparar la diversidad de especies en comunidades biológicas, especialmente en situaciones donde la muestra es limitada o las especies raras desempeñan un papel significativo.\\
+
+El índice de \textbf{Shannon}, representado por $D_{SH}$, es una medida que estima la diversidad de especies, teniendo en cuenta tanto la abundancia como la uniformidad de las especies en una comunidad. Este índice se enfoca en medir la incertidumbre asociada con la identificación de una especie seleccionada al azar en la comunidad. Cuanto mayor sea el índice de Shannon, mayor será la diversidad de especies en la comunidad.
+
+La fórmula para calcular el índice de Shannon es la siguiente:
+$$H=-\sum_{i_1}^{S}{P_{i}\ln(P_{i})}$$
+Donde:
+\begin{itemize}
+    \item $S$ es el número de OTU's (Operational Taxonomic Units).
+    \item $P_i$ es la proporción de la comunidad representada por $OTU_i$.
+\end{itemize}
+
+Esta expresión matemática nos proporciona una medida cuantitativa de la diversidad de especies, tomando en cuenta la riqueza y la uniformidad de las mismas en la comunidad. Un índice de Shannon más alto indica una mayor diversidad, lo que sugiere una distribución más equitativa de abundancias entre las especies presentes. Es decir, comunidades con índices de Shannon más elevados tienden a tener una mayor variedad de especies y una distribución más equilibrada de individuos entre esas especies.\\
+
+\textbf{Simpson}, es una medida de la dominancia relativa de una o unas pocas especies en una comunidad. Este índice evalúa la probabilidad de que dos individuos seleccionados al azar pertenezcan a la misma especie. En términos prácticos, un índice de Simpson más bajo indica una mayor diversidad de especies en la comunidad, lo que sugiere una distribución más equitativa de la abundancia entre las especies presentes.
+
+La fórmula para calcular el índice de Simpson es la siguiente:
+$$D=\frac{1}{\sum_{i_1}^{S}{P_{i}^{2}}}$$
+Donde:
+\begin{itemize}
+    \item $S$ en el número total de especies en la comunidad.
+    \item $P_i$ es la proporción de la comunidad representada por $OTU_i$.
+\end{itemize}
+
+Esta expresión matemática nos proporciona un indicador cuantitativo de la diversidad de especies, donde un índice de Simpson más bajo refleja una comunidad con una mayor variedad de especies y una distribución más uniforme de individuos entre esas especies.\\
+
+En el contexto de la diversidad alfa, estos índices nos permiten explorar y comparar la diversidad de especies en cada muestra o subconjunto, como el grupo de muestras sanas y enfermas. Proporcionan una visión detallada de cómo se distribuye la diversidad de especies dentro de cada conjunto, permitiendo evaluaciones comparativas entre diferentes conjuntos o condiciones.\\
+
+
+\subsection{Diversidad Beta}
+La diversidad beta se encarga de evaluar cuán similares o diferentes son un par de especies, muestras, conjuntos de muestras o poblaciones entre sí. Fue definida por Whittaker como una medida del cambio de diversidad a traves de gradientes ambientales, en otras palabras "tasa de cambio en la composisión de especies de una comunidad a otra a los largo de gradientes" (\cite{whittaker1960}). Para medir esta diversidad, se utilizan métricas como la disimilitud de Bray-Curtis, la distancia Jaccard o la distancia UniFrac.\\
+
+A continuación, se presenta una lista de distancias disponibles que Phyloseq puede utilizar, siendo las siguientes las más comúnmente utilizadas:\\
+
+La \textbf{Disimilitud de Bray-Curtis}es un índice que se fundamenta en la composición y abundancia de especies en diferentes sitios (\cite{bray&curtis1957}). Este índice mide la similitud entre dos muestras o poblaciones en términos de las especies que comparten, considerando la ponderación de la abundancia de cada especie en cada población.
+
+La fórmula del índice de disimilitud de Bray-Curtis es:
+$$d_{BC} = 1 - \frac{2S}{(S_{a} + S_{b})}$$
+donde $d_{BC}$ es el índice de disimilitud de Bray-Curtis, $S$ es el número de especies compartidas entre las poblaciones $a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, respectivamente.\\
+
+Este índice proporciona una medida cuantitativa de la diferencia relativa en términos de composición de especies y abundancia entre dos poblaciones o muestras. Cuanto más cercano a 1 sea el valor del índice, mayor será la disimilitud entre las poblaciones.\\
+
+La \textbf{Distancia Jaccard} es un índice de disimilitud que se basa en la presencia o ausencia de especies en diferentes poblaciones. Este índice compara la proporción de especies que son comunes entre dos poblaciones en relación con el total de especies encontradas en ambas poblaciones. Resulta útil para comparar la diversidad de especies entre diferentes poblaciones o evaluar la similitud en la composición de especies entre comunidades diversas.
+
+La fórmula para el índice de disimilitud de Jaccard es la siguiente:
+$$d_{JC} = 1 - \frac{S}{(S_{a} + S_{b}-S)}$$
+donde $d_{JC}$ es el índice de disimilitud de Jaccard, $S$ es el número de especies compartidas entre las poblaciones $a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, respectivamente.\\
+
+Este índice ofrece una medida de disimilitud que se centra en la presencia o ausencia de especies, siendo 0 cuando las poblaciones comparten todas las especies y 1 cuando no comparten ninguna. Es especialmente útil para análisis comparativos de la composición de especies entre diferentes comunidades.\\
+
+La distancia \textbf{Euclideana}es comúnmente utilizada en el análisis de datos numéricos y se fundamenta en la diferencia de las abundancias o proporciones de diferentes especies en distintas muestras. Esta distancia mide la separación entre dos muestras como la raíz cuadrada de la suma de las diferencias cuadráticas entre las proporciones de cada especie en ambas muestras.
+
+La fórmula para la distancia Euclidiana entre dos muestras $A$ y $B$ es la siguiente:
+$$d_{euclidean} (A,B) = \sqrt{\sum(A_i - B_i)^2}$$
+Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente.\\
+
+La distancia Euclidiana es simétrica y cumple con la desigualdad del triángulo, lo que significa que satisface las propiedades de una verdadera distancia. Esta métrica es especialmente adecuada para comparar muestras en términos de diferencias numéricas en las abundancias de las especies.\\
+
+La distancia \textbf{Manhattan} también se emplea en el análisis de datos numéricos y se basa en la diferencia de las abundancias o proporciones de diferentes especies en distintas muestras. En este caso, la distancia de Manhattan entre dos muestras se define como la suma de las diferencias absolutas entre las proporciones de cada especie en ambas muestras.
+
+La fórmula de la distancia de Manhattan entre dos muestras $A$ y $B$ se calcula como:
+$$d_{Manhattan}(A, B) = \sum{|A_i - B_i|}$$
+Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente. \\
+
+Al igual que la distancia Euclidiana, la distancia de Manhattan es simétrica y satisface la desigualdad del triángulo. Esta métrica es adecuada para comparar muestras en términos de las diferencias absolutas en las abundancias de las especies.\\
+
+La \textbf{Divergencia de Jensen-Shannon (JSD)} se utiliza para comparar la similitud entre dos distribuciones de probabilidad. En el contexto del análisis de datos de diversidad, estas distribuciones de probabilidad pueden representar la proporción de diferentes especies en distintas muestras. La distancia de JSD entre dos distribuciones de probabilidad se calcula como la raíz cuadrada de la divergencia de Kullback-Leibler entre las dos distribuciones, dividida por dos. 
+
+La fórmula de la distancia de JSD entre dos distribuciones de probabilidad $P$ y $Q$ es la siguiente:
+$$d_{JSD}(P, Q) = \frac{\sqrt{(D_{KL}(P, M) + D_{KL}(Q, M))}}{2}$$
+Donde $D_{KL}(P, M)$ y $D_{KL}(Q, M)$ son las divergencias de Kullback-Leibler entre las distribuciones $P$ y $Q$ y la media $M$ de ambas distribuciones, respectivamente. \\
+
+Al igual que las distancias anteriores, la distancia de JSD es simétrica y satisface la desigualdad del triángulo. Esta métrica es especialmente útil cuando se quiere evaluar la similitud entre las proporciones de especies en diferentes muestras.\\
+
+La metrica de \textbf{UniFrac} es un índice de disimilitud que se basa en la filogenia de las especies presentes en diferentes sitios. Su objetivo es comparar la similitud entre dos sitios en términos de la diversidad filogenética de las especies, teniendo en cuenta la contribución relativa de cada rama en el árbol filogenético. Esta métrica resulta valiosa para evaluar la similitud en la evolución de las especies en diferentes comunidades o para comparar la estructura filogenética de distintas comunidades.\\
+
+La fórmula del índice de disimilitud de UniFrac es más compleja en comparación con las de Bray-Curtis y Jaccard, ya que se basa en un análisis de la distribución de ramas filogenéticas únicas o compartidas entre los sitios. Este enfoque permite capturar la información sobre las relaciones evolutivas entre las especies, proporcionando una medida más completa de la similitud o disimilitud entre las comunidades estudiadas. \\
+
+Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud entre muestras, permitiendo seleccionar la más apropiada según el contexto del estudio y los objetivos específicos del análisis de diversidad beta.\\
+
 
 \section{Microbioma}
 El microbioma se define como la comunidad completa de microorganismos (incluyendo bacterias, arqueas, hongos, protozoos y virus) que habitan en un entorno específico, como el cuerpo humano, animales, plantas o ambientes naturales. Este término no solo abarca a los microorganismos vivos, sino también sus genes, metabolitos y las interacciones que tienen entre ellos y con su huésped. La investigación del microbioma utiliza herramientas avanzadas, como la secuenciación de próxima generación y los análisis metagenómicos, para entender su diversidad y funciones en la salud, la enfermedad y los ecosistemas (Marchesi \& Ravel, 2015).\\
@@ -102,6 +229,113 @@ Cada archivo BAM contiene información detallada sobre cómo las secuencias de A
 Solena es una empresa de biotecnología agrícola (AgTech) enfocada en el análisis y mejora del microbioma del suelo. Su misión es desarrollar soluciones innovadoras basadas en datos moleculares y biotecnología para optimizar la salud del suelo y, como consecuencia, aumentar la productividad agrícola. Aprovechando herramientas avanzadas como inteligencia artificial y genómica, Solena obtiene conocimientos profundos sobre la composición y funcionalidad del microbioma del suelo. Además, en colaboración con organizaciones locales, la empresa implementa centros de diagnóstico molecular agrícola, como el establecido en México, para evaluar la salud de los suelos y fomentar prácticas agrícolas regenerativas.
 
 
+\section{Prueba de Hipótesis}
+Una hipótesis es una suposición sobre los datos que puede ser verdadera o falsa. Las pruebas de hipótesis son herramientas estadísticas esenciales en diversos campos, ya que permiten contrastar una teoría con la evidencia empírica. A través de un proceso riguroso, estas pruebas ayudan a evaluar la veracidad de una afirmación científica de manera objetiva y fundamentada.\\
+
+Una prueba de hipótesis es un método estadístico utilizado para tomar decisiones sobre una población a partir de los datos obtenidos de una muestra representativa. Como técnica de inferencia estadística, permite evaluar suposiciones sobre los parámetros de una población basándose en la observación.\\
+
+El propósito de una prueba estadística es examinar una hipótesis respecto a los valores de uno o más parámetros poblacionales. Para ello, se consideran los siguientes componentes clave:\\
+
+\textbf{Hipótesis nula ($H_0$):} Es la idea inicial, la suposición que se pone a prueba. Representa la creencia de que no hay diferencia o efecto significativo.(Pretencion que inicialmente sesupone cierta)\\
+
+\textbf{Hipótesis alternativa ($H_1$): }Es la contrapropuesta, lo que se espera encontrar si la $H_0$ es falsa. Representa la alternativa que se busca demostrar.(hipotesis contradictoria a la hipotesis nula)\\
+
+\textbf{Estadístico de prueba: }Es la herramienta matemática (funcionde las mediciones muestrales) que utilizamos para analizar los datos y determinar si apoyan o no la $H_1$. Cada prueba estadística tiene su propio estadístico específico.\\
+
+\textbf{Región de rechazo: }Es una zona predefinida como territorio prohibido para la $H_0$. Si el valor del estadístico de prueba cae en esta región, la $H_0$ se rechaza por considerarse poco probable. ($x$ es el valor critico observado, el cual define la region de rechazo)(una hipotesis nula sera rechazada si y solo si el valor estadistico de prueba observado o calculado, queda en la region de rechazo)\\
+
+\textbf{ P-valor:} Es la probabilidad de obtener un valor del estadístico de prueba tan extremo o más extremo que el observado, suponiendo que la $H_0$ sea verdadera. Un valor de p bajo (menor que el nivel de significancia $\alpha $  el cual se fija previamente  ) indica que es poco probable que el resultado se deba al azar, lo que lleva al rechazo de la $H_0$.\\
+
+En donde el objetivo principal de una prueba de hipótesis es evaluar si la evidencia muestral es lo suficientemente fuerte como para rechazar $H_0$. \\
+
+La hipotesis nula sera rechazada a favor de la hipotesis alternativa solo si la evidencia muestral sugiere que $H_0$ es falsa. Si la muestra no contradice a $H_0$, se continuara creyendo en la veracidad de la hipotesis nula. (rechazar o no rechazar $H_0$).\\
+
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=\textwidth]{Img/cap2/pruebat_explicacion.png}
+%\caption{Se ilustra el concepto esencial de una prueba de hipótesis, mostrando la distribución teórica de la estadística de prueba bajo la hipótesis nula ($H_0$) y destacando la región de rechazo. La posición del dato observado con respecto a esta región determinará si se rechaza o no $H_0$ en cada una de las pruebas estadísticas a realizar.\\
+%En una prueba de hipótesis, la hipótesis nula ($H_0$) será rechazada en favor de la hipótesis alternativa ($H_1$) solo si la evidencia muestral proporciona suficiente soporte para considerar que $H_0$ es falsa. Si los datos no contradicen significativamente a $H_0$, se concluye que no hay suficiente evidencia para rechazarla, y se mantiene su validez.\\
+%\end{figure}
+
+En este contexto, el p\-valor se considera como una medida de la probabilidad de éxito (obtener un resultado específico) en un estudio estadístico con los datos observados. Su cálculo depende de la prueba estadística utilizada y de las suposiciones realizadas sobre la distribución de los datos. En general, un valor pequeño del p\-valor sugiere que los datos observados son poco probables bajo la hipótesis nula, lo que sugiere que $H_0$ podría ser falsa.\\
+%Rice, J. A. (2006). Mathematical Statistics and Data Analysis (3rd ed.)
+%Wasserman, L. (2004). All of Statistics: A Concise Course in Statistical Inference.
+
+Existen dos tipos de errores que pueden ocurrir en una prueba de hipótesis:\\
+Error tipo I ($\alpha$): Ocurre cuando se rechaza $H_0$ siendo en realidad verdadera.\\
+Error tipo II ($\beta$): Se produce cuando no se rechaza $H_0$ cuando en realidad es falsa.\\
+El balance entre estos errores es fundamental en el diseño de pruebas estadísticas.\\
+
+
+Las pruebas de hipótesis pueden aplicarse a diferentes contextos, como la comparación de grupos en estudios médicos o científicos. Por ejemplo, en un análisis sobre la salud de los cultivos, se podrían definir las siguientes hipótesis:\\
+$H_0$ : No hay diferencias entre muestras de cultivos saludables y no saludables.\\
+$H_0$ : Existen diferencias significativas entre las muestras de cultivos saludables y no saludables.\\
+
+
+\subsection{Pruebas con muestras pequeñas para comparar dos medias poblacionales}
+Suponemos dos poblaciones independientes con distibuciones normales con 
+
+$$\sigma_{1}^{2} = \sigma_{2}^{2}$$
+\\
+
+y queremos probar (tenemos como hipotesis nula)
+
+$$H_{0} : \mu_{1} = \mu _{2}$$
+
+respecto a la hipotesis alternativa
+
+$$H_{a} : \mu_{1} \neq \mu _{2}$$
+
+tomando como estadistico de prueba:
+
+$$ T = \frac{\bar{Y_{1}} - \bar{Y_{2}}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}$$
+
+donde  
+
+$$ S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}$$
+
+
+\subsection{Prueba de Hipótesis sobre las varianzas de dos poblaciones pequeñas} 
+Suponemos dos poblaciones independientes con distibuciones normales  
+
+y queremos probar (tenemos como hipotesis nula)WilcoxonWilcoxon
+
+$$H_{0} : \sigma_{1}^{2} = \sigma_{2}^{2}$$
+
+respecto a la hipotesis alternativa
+
+$$H_{a} : \sigma_{1}^{2} \neq \sigma_{2}^{2}$$
+
+tomando como estadistico de prueba:
+
+$$ F = \frac{S_{1}^{2}}{S_{2}^{2}}$$
+
+
+\subsection{Prueba de los rangos con signos de Wilcolxon Mann-Whitney}
+Las pruebas de Wilcoxon y Mann-Whitney U son pruebas estadísticas no paramétricas, lo que significa que no asumen normalidad en los datos. \\
+
+Wilcoxon es una prueba no parametrica para comparar el rango medio de dos muestras relacionadas y determinar si existen diferencias entre ellas. Se uso, ya que los datos no tienen una distribucion normal.
+
+La U de Mann-Whitney para comparar las medias de dos grupos independientes. 
+Prueba no parametrica o libre de distribución, es el analogo no parametrico a la t de Student para lacomparacion de dos medias independientes; solo que esta no requiere parametros y se puede emplear sin ninguna condicion de aplicación.
+
+
+\section{Normalización}
+\subsection{Normalización}
+
+%\begin{figure}[!]
+%\centering
+%\includegraphics[width=\textwidth]{Img/cap2/Barras_Abundancia.png}
+%\caption{Barras de abundancia de los datos en crudo}
+%\end{figure}
+
+La función edgeRnorm escala datos NGS normalizados utilizando la función de normalización provista en edgeR. Toma un objeto phyloseq y devuelve un objeto phyloseq cuya otu\_table se transforma.
+
+\subsection{Rarefacción}
+La rarefacción es una tecnica de normalización usada en el preprocesamiento de datos, para equilibrar el tamaño de las muestras en un conjunto de datos. Esta implica un submuestreo aleatorio de secuencias
+
+\section{Redes Bayesianas}
+Una red bayesiana es un grafo acìclico dirigiso (DAG) $G=(V,E)$ donde cada nodod representa una variable.
 
 \section{Analisis comparativo del microbioma de fresa, en relacion con el estado de la planta}
 

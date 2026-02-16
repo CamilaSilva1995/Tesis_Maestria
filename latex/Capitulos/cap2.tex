@@ -350,52 +350,11 @@ La diversidad beta indica que, aunque hay variación entre los microbiomas de pl
 La métrica de Bray-Curtis demuestra que las diferencias en la composición son más evidentes en niveles taxonómicos detallados (género y especie), destacando la importancia de estos análisis para identificar biomarcadores y desarrollar estrategias de manejo agrícola.
 
 \section{Prueba de Hipótesis}
-Una hipótesis es una suposición sobre los datos que puede ser verdadera o falsa. Las pruebas de hipótesis son herramientas estadísticas esenciales en diversos campos, ya que permiten contrastar una teoría con la evidencia empírica. A través de un proceso riguroso, estas pruebas ayudan a evaluar la veracidad de una afirmación científica de manera objetiva y fundamentada.\\
-
-Una prueba de hipótesis es un método estadístico utilizado para tomar decisiones sobre una población a partir de los datos obtenidos de una muestra representativa. Como técnica de inferencia estadística, permite evaluar suposiciones sobre los parámetros de una población basándose en la observación.\\
-
-El propósito de una prueba estadística es examinar una hipótesis respecto a los valores de uno o más parámetros poblacionales. Para ello, se consideran los siguientes componentes clave:\\
-
-\textbf{Hipótesis nula ($H_0$):} Es la idea inicial, la suposición que se pone a prueba. Representa la creencia de que no hay diferencia o efecto significativo.(Pretencion que inicialmente sesupone cierta)\\
-
-\textbf{Hipótesis alternativa ($H_1$): }Es la contrapropuesta, lo que se espera encontrar si la $H_0$ es falsa. Representa la alternativa que se busca demostrar.(hipotesis contradictoria a la hipotesis nula)\\
-
-\textbf{Estadístico de prueba: }Es la herramienta matemática (funcionde las mediciones muestrales) que utilizamos para analizar los datos y determinar si apoyan o no la $H_1$. Cada prueba estadística tiene su propio estadístico específico.\\
-
-\textbf{Región de rechazo: }Es una zona predefinida como territorio prohibido para la $H_0$. Si el valor del estadístico de prueba cae en esta región, la $H_0$ se rechaza por considerarse poco probable. ($x$ es el valor critico observado, el cual define la region de rechazo)(una hipotesis nula sera rechazada si y solo si el valor estadistico de prueba observado o calculado, queda en la region de rechazo)\\
-
-\textbf{ P-valor:} Es la probabilidad de obtener un valor del estadístico de prueba tan extremo o más extremo que el observado, suponiendo que la $H_0$ sea verdadera. Un valor de p bajo (menor que el nivel de significancia $\alpha $  el cual se fija previamente  ) indica que es poco probable que el resultado se deba al azar, lo que lleva al rechazo de la $H_0$.\\
-
-En donde el objetivo principal de una prueba de hipótesis es evaluar si la evidencia muestral es lo suficientemente fuerte como para rechazar $H_0$. \\
-
-La hipotesis nula sera rechazada a favor de la hipotesis alternativa solo si la evidencia muestral sugiere que $H_0$ es falsa. Si la muestra no contradice a $H_0$, se continuara creyendo en la veracidad de la hipotesis nula. (rechazar o no rechazar $H_0$).\\
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{Img/cap2/pruebat_explicacion.png}
-\caption{Se ilustra el concepto esencial de una prueba de hipótesis, mostrando la distribución teórica de la estadística de prueba bajo la hipótesis nula ($H_0$) y destacando la región de rechazo. La posición del dato observado con respecto a esta región determinará si se rechaza o no $H_0$ en cada una de las pruebas estadísticas a realizar.\\
-En una prueba de hipótesis, la hipótesis nula ($H_0$) será rechazada en favor de la hipótesis alternativa ($H_1$) solo si la evidencia muestral proporciona suficiente soporte para considerar que $H_0$ es falsa. Si los datos no contradicen significativamente a $H_0$, se concluye que no hay suficiente evidencia para rechazarla, y se mantiene su validez.\\
-Prueba t de Student sobre el Índice de Shannon (Varianzas Iguales y Diferentes); Se utiliza para comparar la diversidad de Shannon entre dos grupos y determinar si hay diferencias significativas en sus medias y se evalúa tanto asumiendo varianzas iguales como distintas.\\
+La prueba t de Student sobre el Índice de Shannon (Varianzas Iguales y Diferentes); Se utiliza para comparar la diversidad de Shannon entre dos grupos y determinar si hay diferencias significativas en sus medias y se evalúa tanto asumiendo varianzas iguales como distintas.\\
 Prueba t de Student sobre el Índice de Shannon en Fusarium (Varianzas Iguales y Diferentes); es similar a la prueba anterior, pero aplicada específicamente al género Fusarium dentro del análisis metagenómico.\\
-Prueba de Mann-Whitney sobre las distribuciones de los valores de Shannon (Método no paramétrico que compara las distribuciones del índice de Shannon entre dos grupos sin asumir normalidad.)}
-\end{figure}
-
-En este contexto, el p\-valor se considera como una medida de la probabilidad de éxito (obtener un resultado específico) en un estudio estadístico con los datos observados. Su cálculo depende de la prueba estadística utilizada y de las suposiciones realizadas sobre la distribución de los datos. En general, un valor pequeño del p\-valor sugiere que los datos observados son poco probables bajo la hipótesis nula, lo que sugiere que $H_0$ podría ser falsa.\\
-%Rice, J. A. (2006). Mathematical Statistics and Data Analysis (3rd ed.)
-%Wasserman, L. (2004). All of Statistics: A Concise Course in Statistical Inference.
-
-Existen dos tipos de errores que pueden ocurrir en una prueba de hipótesis:\\
-Error tipo I ($\alpha$): Ocurre cuando se rechaza $H_0$ siendo en realidad verdadera.\\
-Error tipo II ($\beta$): Se produce cuando no se rechaza $H_0$ cuando en realidad es falsa.\\
-El balance entre estos errores es fundamental en el diseño de pruebas estadísticas.\\
-
-
-Las pruebas de hipótesis pueden aplicarse a diferentes contextos, como la comparación de grupos en estudios médicos o científicos. Por ejemplo, en un análisis sobre la salud de los cultivos, se podrían definir las siguientes hipótesis:\\
-$H_0$ : No hay diferencias entre muestras de cultivos saludables y no saludables.\\
-$H_0$ : Existen diferencias significativas entre las muestras de cultivos saludables y no saludables.\\
+Prueba de Mann-Whitney sobre las distribuciones de los valores de Shannon (Método no paramétrico que compara las distribuciones del índice de Shannon entre dos grupos sin asumir normalidad.)
 
 En los siguientes apartados, se presentarán diversas pruebas de hipótesis basadas en esta metodología, cada una enfocada en diferentes aspectos de los datos.\\
-
 
 \subsection{Pruebas con muestras pequeñas para comparar dos medias poblacionales}
 
@@ -433,8 +392,7 @@ C) Asumiendo las varianzas diferentes el valor p sigue siendo mayor que 0.05 (0.
 \includegraphics[width=\textwidth]{Img/cap2/tTest_Shannon_Fusarium.png}
 \caption{Prueba t de Student sobre el Índice Shannon en Fusarium (Varianzas Iguales y Diferentes) A)Se observa que el grupo "Saludable" presenta una distribución más amplia y una mayor diversidad promedio en comparación con el grupo "No Saludable".
 B) La distribución t bajo el supuesto de varianzas iguales muestra que el valor de t calculado está en el rango significativo, lo que indica diferencias entre las medias.
-C)La distribución t considerando varianzas diferentes también confirma una diferencia significativa entre los grupos. Esto sugiere que la diversidad microbiana de Fusarium difiere estadísticamente entre plantas saludables y no saludables, con un valor p < 0.05.
-}
+C)La distribución t considerando varianzas diferentes también confirma una diferencia significativa entre los grupos. Esto sugiere que la diversidad microbiana de Fusarium difiere estadísticamente entre plantas saludables y no saludables, con un valor p < 0.05.}
 \end{figure}
 
 

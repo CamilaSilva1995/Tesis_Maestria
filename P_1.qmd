@@ -1,0 +1,97 @@
+---
+title: "Análisis estadístico del microbioma rizosférico en cultivos de fresa"
+author: "Paula Camila Silva Gomez"
+institute: "Universidad Nacional Autonoma de Mexico"
+date: "Congreso Colombiano de Matemáticas – 2025"
+format: revealjs
+theme: solarized
+transition: fade
+---
+
+# Introducción
+
+-   La fresa (*Fragaria × ananassa*) es un cultivo de importancia global 🌎\
+-   Su salud depende del microbioma del suelo (rizósfera)\
+-   Objetivo: analizar si la diversidad microbiana permite distinguir plantas sanas y enfermas\
+-   ¿Puede la estadística ayudar a diagnosticar el estado del cultivo?
+
+------------------------------------------------------------------------
+
+# Marco teórico
+
+-   La rizósfera: zona del suelo influenciada por la raíz\
+-   Microbioma rizosférico = bacterias, hongos, arqueas\
+-   Técnicas: secuenciación 16S rRNA, ITS (hongos)\
+-   Herramientas estadísticas:
+    -   Índices de diversidad (Shannon, Chao1)\
+    -   Comparación de grupos (Wilcoxon, PERMANOVA)\
+    -   Visualización (NMDS, PCoA, redes de co-ocurrencia)
+
+------------------------------------------------------------------------
+
+# Datos y procesamiento
+
+-   Muestras clasificadas: plantas saludables y no saludables\
+-   Procesamiento en R con `phyloseq`\
+-   Secuencias normalizadas y filtradas\
+-   Taxonomía desde nivel Reino hasta Género\
+-   Visualización de abundancias relativas y agrupaciones
+
+------------------------------------------------------------------------
+
+# Análisis de diversidad
+
+-   **Diversidad alfa**:
+    -   Shannon y Chao1 más bajos en plantas enfermas\
+    -   No siempre significativos (p \> 0.05)
+-   **Diversidad beta**:
+    -   Separación visible en NMDS\
+    -   PERMANOVA sugiere diferencias estructurales
+
+------------------------------------------------------------------------
+
+# Diferencias taxonómicas
+
+-   Géneros más abundantes en muestras saludables:
+    -   *Pseudomonas*, *Bacillus*, *Mortierella*\
+-   En muestras enfermas:
+    -   *Udaeobacter*, *Solibacter*, *Chitinophagales*
+-   Algunos taxones actúan como **biomarcadores** del estado del cultivo
+
+------------------------------------------------------------------------
+
+# Pruebas estadísticas
+
+-   Comparación de diversidades:
+    -   Wilcoxon: diferencias no significativas pero tendencias marcadas\
+-   Varianzas: prueba F sobre Chao1\
+-   Redes de co-ocurrencia: cambios en la interacción microbiana
+
+------------------------------------------------------------------------
+
+# Conclusiones
+
+-   El microbioma rizosférico refleja el estado de salud de la planta\
+-   Algunas métricas y taxones permiten distinguir grupos\
+-   Potencial para desarrollar herramientas de diagnóstico microbiológico en campo\
+-   La estadística permite extraer valor biotecnológico de datos genómicos
+
+------------------------------------------------------------------------
+
+# Trabajo futuro
+
+-   Integrar datos funcionales (PICRUSt)\
+-   Aplicar modelos de clasificación supervisada (random forest, SVM)\
+-   Validación con más muestras y otros cultivares\
+-   Diseño de bioinoculantes personalizados
+
+------------------------------------------------------------------------
+
+# ¡Gracias!
+
+**¿Preguntas?**
+
+[🔗 camila.ejemplo\@universidad.edu](mailto:camila.ejemplo@universidad.edu)\
+LinkedIn / GitHub (si quieres poner)
+
+------------------------------------------------------------------------

@@ -1,70 +1,147 @@
-\chapter{Simulador Metagenómico PyMetaSeem}
+\chapter{Resultados}
 
-Uno de los principales desafíos en metagenómica es evaluar la calidad del ensamblaje y la correcta asignación taxonómica de los datos. Para ello, es fundamental contar con datos metagenómicos de referencia de alta calidad, que incluyan un sistema de clasificación riguroso y validado. Estos datos permiten evaluar el desempeño de las herramientas de ensamblaje y clasificación taxonómica.\\
+\section{Índices de diversidad}
 
-En respuesta a esta necesidad, se han desarrollado diversos simuladores de datos metagenómicos. Sin embargo, como se analiza en este capítulo, la mayoría de estos simuladores presentan limitaciones que dificultan su uso. Entre los principales problemas se encuentran la complejidad en la instalación y configuración, la falta de flexibilidad en la parametrización de los datos simulados y la ausencia de modelos realistas que reflejen con precisión la diversidad y complejidad de las comunidades microbianas naturales.\\
+Un índice de diversidad constituye una medida numérica empleada para cuantificar la variedad y la distribución de especies en una comunidad biológica o un ecosistema. Estos índices son herramientas matemáticas diseñadas para sintetizar y comparar la composición de especies en diversas comunidades.\\
 
-Ante este panorama, se justifica la creación de un nuevo simulador de datos metagenómicos que supere estas dificultades y brinde una herramienta más efectiva para la evaluación de software en este campo. Un simulador ideal debe permitir la generación de reads metagenómicos con parámetros ajustables, garantizar la reproducibilidad de los experimentos, incluir modelos de error realistas y ofrecer una interfaz accesible para facilitar su uso en distintos contextos de investigación.\\
+El propósito fundamental de los índices de diversidad es proporcionar una manera objetiva y cuantitativa de comprender la estructura y la abundancia relativa de las especies en el seno de una población o comunidad biológica. En este contexto, iniciaremos un análisis de diversidad de nuestras muestras, empleando dos métricas fundamentales: la Diversidad Alfa y la Diversidad Beta (\cite{tuomisto2010}). Estas métricas nos permitirán explorar y comprender tanto la variabilidad interna de una sola comunidad como las diferencias entre varias comunidades, respectivamente.\\ 
+
+
+\subsection{Diversidad Alfa}
+
+La diversidad alfa, en esencia, refleja la riqueza de las muestras, es decir, el número de especies distintas presentes en un determinado entorno, o la abundancia relativa de dichas especies en dicho entorno; es usada principalmente para medir la diversidad local, haciendo referencia a la diversidad dentro de una muestra o comunidad % (\cite{whittaker1960} & \cite{whittaker1972})
+ Para cuantificar esta diversidad, se recurre a diversos índices de medida, cada uno con enfoques particulares.\\
+
+En nuestro análisis de diversidad alfa, consideramos tres índices específicos: Chao1, Shannon y Simpson. El índice Chao1 es una m,edida cualitativa basada en especies
+% (\cite{chao1984} & \cite{chao1987}), 
+la cual estima el número total de especies presentes en una muestra o comunidad. Por otro lado, el índice Shannon toma en cuenta tanto la riqueza en especies como su abundancia (\cite{shannon1948}), utilizando una escala logarítmica para proporcionar una visión integral de la diversidad. Finalmente, el índice Simpson se centra en la medida de dominancia, otorgando un peso considerable a las especies comunes en comparación con las especies más raras. Siendo estas dos medidas cuantitativas (\cite{simpson1949}).\\
+
+Esta selección de índices nos permite capturar diferentes aspectos de la diversidad alfa, brindando una comprensión más completa de la estructura y la composición de especies en nuestras muestras o comunidades.\\
+
+\textbf{Chao1}, es una métrica que evalúa la riqueza de especies, proporcionando una estimación del número total de especies en una comunidad. Su utilidad se destaca especialmente en situaciones donde la muestra es pequeña o la proporción de especies raras es considerable. Este índice demuestra ser menos sensible a la presencia de especies raras en comparación con otros índices, lo que lo convierte en una herramienta valiosa en estudios centrados en la conservación de especies poco comunes.
+
+La fórmula para calcular el índice Chao1 es la siguiente:
+$$S_{Chao1} = S_{Obs} + \frac{F_1×(F_1-1)}{F_2×(F_2+1)}$$
+Donde:
+\begin{itemize}
+    \item $S_{Obs}$ es el número de especies observadas.
+    \item $F_1$ es el recuento de "singletons" (especies con un solo individuo en todo el inventario).
+    \item $F_2$ es el recuento de "doubletons" (especies con dos individuos en todo el inventario).
+\end{itemize}
+
+Esta expresión nos proporciona una estimación más completa de la riqueza de especies al considerar las especies raras representadas por singletons y doubletons. En consecuencia, Chao1 emerge como una herramienta valiosa para evaluar y comparar la diversidad de especies en comunidades biológicas, especialmente en situaciones donde la muestra es limitada o las especies raras desempeñan un papel significativo.\\
+
+El índice de \textbf{Shannon}, representado por $D_{SH}$, es una medida que estima la diversidad de especies, teniendo en cuenta tanto la abundancia como la uniformidad de las especies en una comunidad. Este índice se enfoca en medir la incertidumbre asociada con la identificación de una especie seleccionada al azar en la comunidad. Cuanto mayor sea el índice de Shannon, mayor será la diversidad de especies en la comunidad.
+
+La fórmula para calcular el índice de Shannon es la siguiente:
+$$H=-\sum_{i_1}^{S}{P_{i}\ln(P_{i})}$$
+Donde:
+\begin{itemize}
+    \item $S$ es el número de OTU's (Operational Taxonomic Units).
+    \item $P_i$ es la proporción de la comunidad representada por $OTU_i$.
+\end{itemize}
+
+Esta expresión matemática nos proporciona una medida cuantitativa de la diversidad de especies, tomando en cuenta la riqueza y la uniformidad de las mismas en la comunidad. Un índice de Shannon más alto indica una mayor diversidad, lo que sugiere una distribución más equitativa de abundancias entre las especies presentes. Es decir, comunidades con índices de Shannon más elevados tienden a tener una mayor variedad de especies y una distribución más equilibrada de individuos entre esas especies.\\
+
+\textbf{Simpson}, es una medida de la dominancia relativa de una o unas pocas especies en una comunidad. Este índice evalúa la probabilidad de que dos individuos seleccionados al azar pertenezcan a la misma especie. En términos prácticos, un índice de Simpson más bajo indica una mayor diversidad de especies en la comunidad, lo que sugiere una distribución más equitativa de la abundancia entre las especies presentes.
+
+La fórmula para calcular el índice de Simpson es la siguiente:
+$$D=\frac{1}{\sum_{i_1}^{S}{P_{i}^{2}}}$$
+Donde:
+\begin{itemize}
+    \item $S$ en el número total de especies en la comunidad.
+    \item $P_i$ es la proporción de la comunidad representada por $OTU_i$.
+\end{itemize}
+
+Esta expresión matemática nos proporciona un indicador cuantitativo de la diversidad de especies, donde un índice de Simpson más bajo refleja una comunidad con una mayor variedad de especies y una distribución más uniforme de individuos entre esas especies.\\
+
+En el contexto de la diversidad alfa, estos índices nos permiten explorar y comparar la diversidad de especies en cada muestra o subconjunto, como el grupo de muestras sanas y enfermas. Proporcionan una visión detallada de cómo se distribuye la diversidad de especies dentro de cada conjunto, permitiendo evaluaciones comparativas entre diferentes conjuntos o condiciones.\\
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{Img/cap3/problem.png}
-\caption{ggg }
+\includegraphics[width=\textwidth]{Img/cap2/AlphaDiversity_CrudosFiltrados.png}
+\caption{La diversidad alfa en los datos crudos es similar en ambos tratamientos en todos los índices. Al realizar el filtro de calidad se obtienen una mejor visión de esta diversidad. A) Índices de diversidad alfa calculados antes de aplicar el filtro de calidad, las diferencias entre las muestras saludables y enfermas son poco claras debido a la influencia de datos ruidosos. B) Índices de diversidad alfa tras eliminar muestras de baja calidad o datos inconsistentes, mejora la claridad y permite una mejor percepción visual de las diferencias en la diversidad microbiana entre los grupos. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)} }
 \end{figure}
 
-En este capítulo se presenta el desarrollo de PyMetaSeem, un simulador diseñado desde cero para abordar estas limitaciones. Su implementación busca proporcionar una solución escalable, reproducible y de fácil acceso para la comunidad científica. Se detallan los principios de su diseño, su estructura funcional y sus ventajas frente a los simuladores existentes, demostrando su potencial como herramienta clave en la validación de metodologías de análisis metagenómico.\\
+En la imagen, se pueden identificar datos no deseados que afectan la visualización, por lo que se lleva a cabo un filtro de calidad de los datos.\\
 
+Eliminar muestras de baja calidad resulta en una mejora significativa en la claridad y la interpretación de la visualización. La diferencia es notable después de descartar las muestras de baja calidad, lo que resalta la importancia de un proceso riguroso de filtrado para obtener resultados más precisos y confiables. Este enfoque contribuye a una representación más fiel de los datos, permitiendo una interpretación más precisa y una toma de decisiones informada.\\
 
-\section{PyMetaSeem: Un simulador de datos metagenómicos basado en secuencias genómicas}
+Después de aplicar el filtro de calidad de los datos, la visualización de la diversidad alfa en los conjuntos de muestras de plantas sanas y enfermas revela una mayor diversidad en las muestras sanas en comparación con las muestras enfermas. Esta observación se confirma mediante la métrica Chao1, que elimina la influencia de los singletons y doubletons, respaldando la percepción visual de una mayor diversidad en las muestras sanas. A pesar de la diferencia en las diversidades observadas, cabe destacar que esta disparidad no es significativamente grande, sugiriendo que no hay una diferencia sustancial en la diversidad entre las muestras sanas y enfermas.\\
 
-El análisis metagenómico requiere herramientas precisas para la clasificación taxonómica y el ensamblaje de secuencias. Sin embargo, la evaluación de estas herramientas depende en gran medida de la disponibilidad de datos metagenómicos de referencia de alta calidad. En respuesta a esta necesidad, se ha desarrollado PyMetaSeem, un algoritmo diseñado desde cero para la simulación de datos metagenómicos a partir de secuencias genómicas.\\
+Este análisis proporciona una evaluación más completa de la diversidad alfa, indicando que aunque hay variaciones discernibles, estas no son lo suficientemente notables como para afirmar una gran disparidad en la diversidad entre los conjuntos de muestras. Este tipo de conclusiones respaldadas por métricas específicas y visualizaciones contribuyen a una interpretación más precisa de la composición de las comunidades microbianas en plantas sanas y enfermas\\
 
-PyMetaSeem permite la generación de reads metagenómicos sintéticos mediante el procesamiento de secuencias genómicas reales, proporcionando datos controlados y reproducibles para la evaluación de clasificadores taxonómicos y ensambladores de secuencias. A diferencia de otros simuladores como CAMISIM, que presentan dificultades en su instalación e implementación, PyMetaSeem ha sido desarrollado como un entorno Conda, garantizando escalabilidad, reproducibilidad y facilidad de uso. Su diseño modular y su código abierto facilitan su integración en diversos flujos de trabajo bioinformáticos, permitiendo su aplicación en múltiples estudios metagenómicos.\\
+\subsection{Diversidad Beta}
+La diversidad beta se encarga de evaluar cuán similares o diferentes son un par de especies, muestras, conjuntos de muestras o poblaciones entre sí. Fue definida por Whittaker como una medida del cambio de diversidad a traves de gradientes ambientales, en otras palabras "tasa de cambio en la composisión de especies de una comunidad a otra a los largo de gradientes" (\cite{whittaker1960}). Para medir esta diversidad, se utilizan métricas como la disimilitud de Bray-Curtis, la distancia Jaccard o la distancia UniFrac.\\
 
-El algoritmo está compuesto por diversas funciones que permiten la generación de datos metagenómicos sintéticos de manera estructurada y eficiente. Inicialmente, recibe un conjunto de archivos en formato FASTA que contienen distintos genomas. La configuración de los parámetros de simulación puede realizarse manualmente o mediante un archivo de texto que especifica el número de reads por genoma, permitiendo la definición de un perfil taxonómico detallado y adaptable a distintos escenarios experimentales.\\
+Antes de realizar análisis de diversidad beta, es crucial convertir las abundancias absolutas (número de lecturas por OTU) a relativas (porcentajes de lecturas asignadas a un OTU dentro de una muestra). Esta transformación es esencial debido a que los metagenomas tienen tamaños diferentes. Se lleva a cabo el cálculo de las abundancias relativas utilizando la función 'transform\_sample' de Phyloseq, tanto para los datos originales como para los datos filtrados.\\
+
+Este paso es fundamental para garantizar una comparación y evaluación adecuada de la diversidad beta, ya que las abundancias relativas proporcionan una representación más precisa de la estructura de la comunidad, independientemente de las diferencias en el tamaño del metagenoma entre las muestras.\\
+
+\begin{lstlisting}[basicstyle=\small] 
+transform_sample_counts(fresa_kraken_fil,
+function(x) x*100/sum(x) )
+\end{lstlisting}
+
+Usamos “ordinate” para asignar las distancias entre muestras, iniciando y tomando como referencia “Bray-Curtis”, ya que es una de las
+metricas mas completas y mayormente utilizadas para medir la diversidad beta.\\
+
+Para visualizar y presentar los resultados de este análisis, se opta por el uso de NMDS (Non-metric Multidimensional Scaling), una herramienta de análisis exploratorio de datos que se emplea para visualizar la similitud o disimilitud entre una colección de objetos (por ejemplo, especies, sitios, genes) en un espacio de baja dimensionalidad. Entre otros, se utilizan ampliamente los análisis PCA, PCoA o NMDS.\\
+
+A continuación, se presenta una lista de distancias disponibles que Phyloseq puede utilizar, siendo las siguientes las más comúnmente utilizadas:\\
+
+La \textbf{Disimilitud de Bray-Curtis}es un índice que se fundamenta en la composición y abundancia de especies en diferentes sitios (\cite{bray&curtis1957}). Este índice mide la similitud entre dos muestras o poblaciones en términos de las especies que comparten, considerando la ponderación de la abundancia de cada especie en cada población.
+
+La fórmula del índice de disimilitud de Bray-Curtis es:
+$$d_{BC} = 1 - \frac{2S}{(S_{a} + S_{b})}$$
+donde $d_{BC}$ es el índice de disimilitud de Bray-Curtis, $S$ es el número de especies compartidas entre las poblaciones $a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, respectivamente.\\
+
+Este índice proporciona una medida cuantitativa de la diferencia relativa en términos de composición de especies y abundancia entre dos poblaciones o muestras. Cuanto más cercano a 1 sea el valor del índice, mayor será la disimilitud entre las poblaciones.\\
+
+La \textbf{Distancia Jaccard} es un índice de disimilitud que se basa en la presencia o ausencia de especies en diferentes poblaciones. Este índice compara la proporción de especies que son comunes entre dos poblaciones en relación con el total de especies encontradas en ambas poblaciones. Resulta útil para comparar la diversidad de especies entre diferentes poblaciones o evaluar la similitud en la composición de especies entre comunidades diversas.
+
+La fórmula para el índice de disimilitud de Jaccard es la siguiente:
+$$d_{JC} = 1 - \frac{S}{(S_{a} + S_{b}-S)}$$
+donde $d_{JC}$ es el índice de disimilitud de Jaccard, $S$ es el número de especies compartidas entre las poblaciones $a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, respectivamente.\\
+
+Este índice ofrece una medida de disimilitud que se centra en la presencia o ausencia de especies, siendo 0 cuando las poblaciones comparten todas las especies y 1 cuando no comparten ninguna. Es especialmente útil para análisis comparativos de la composición de especies entre diferentes comunidades.\\
+
+Tomando los datos con filtro de calidad y utilizando la distancia de Jaccard, la cual es la más comúnmente utilizada en este tipo de estudios, se observa que las muestras, tanto sanas como enfermas, están bastante mezcladas. Ante esta observación, se procede a realizar pruebas con distintas distancias para explorar si alguna otra métrica puede proporcionar una separación más clara o revelar patrones específicos en la composición de especies entre las muestras.\\
+
+La distancia \textbf{Euclideana}es comúnmente utilizada en el análisis de datos numéricos y se fundamenta en la diferencia de las abundancias o proporciones de diferentes especies en distintas muestras. Esta distancia mide la separación entre dos muestras como la raíz cuadrada de la suma de las diferencias cuadráticas entre las proporciones de cada especie en ambas muestras.
+
+La fórmula para la distancia Euclidiana entre dos muestras $A$ y $B$ es la siguiente:
+$$d_{euclidean} (A,B) = \sqrt{\sum(A_i - B_i)^2}$$
+Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente.\\
+
+La distancia Euclidiana es simétrica y cumple con la desigualdad del triángulo, lo que significa que satisface las propiedades de una verdadera distancia. Esta métrica es especialmente adecuada para comparar muestras en términos de diferencias numéricas en las abundancias de las especies.\\
+
+La distancia \textbf{Manhattan} también se emplea en el análisis de datos numéricos y se basa en la diferencia de las abundancias o proporciones de diferentes especies en distintas muestras. En este caso, la distancia de Manhattan entre dos muestras se define como la suma de las diferencias absolutas entre las proporciones de cada especie en ambas muestras.
+
+La fórmula de la distancia de Manhattan entre dos muestras $A$ y $B$ se calcula como:
+$$d_{Manhattan}(A, B) = \sum{|A_i - B_i|}$$
+Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente. \\
+
+Al igual que la distancia Euclidiana, la distancia de Manhattan es simétrica y satisface la desigualdad del triángulo. Esta métrica es adecuada para comparar muestras en términos de las diferencias absolutas en las abundancias de las especies.\\
+
+La \textbf{Divergencia de Jensen-Shannon (JSD)} se utiliza para comparar la similitud entre dos distribuciones de probabilidad. En el contexto del análisis de datos de diversidad, estas distribuciones de probabilidad pueden representar la proporción de diferentes especies en distintas muestras. La distancia de JSD entre dos distribuciones de probabilidad se calcula como la raíz cuadrada de la divergencia de Kullback-Leibler entre las dos distribuciones, dividida por dos. 
+
+La fórmula de la distancia de JSD entre dos distribuciones de probabilidad $P$ y $Q$ es la siguiente:
+$$d_{JSD}(P, Q) = \frac{\sqrt{(D_{KL}(P, M) + D_{KL}(Q, M))}}{2}$$
+Donde $D_{KL}(P, M)$ y $D_{KL}(Q, M)$ son las divergencias de Kullback-Leibler entre las distribuciones $P$ y $Q$ y la media $M$ de ambas distribuciones, respectivamente. \\
+
+Al igual que las distancias anteriores, la distancia de JSD es simétrica y satisface la desigualdad del triángulo. Esta métrica es especialmente útil cuando se quiere evaluar la similitud entre las proporciones de especies en diferentes muestras.\\
+
+La metrica de \textbf{UniFrac} es un índice de disimilitud que se basa en la filogenia de las especies presentes en diferentes sitios. Su objetivo es comparar la similitud entre dos sitios en términos de la diversidad filogenética de las especies, teniendo en cuenta la contribución relativa de cada rama en el árbol filogenético. Esta métrica resulta valiosa para evaluar la similitud en la evolución de las especies en diferentes comunidades o para comparar la estructura filogenética de distintas comunidades.\\
+
+La fórmula del índice de disimilitud de UniFrac es más compleja en comparación con las de Bray-Curtis y Jaccard, ya que se basa en un análisis de la distribución de ramas filogenéticas únicas o compartidas entre los sitios. Este enfoque permite capturar la información sobre las relaciones evolutivas entre las especies, proporcionando una medida más completa de la similitud o disimilitud entre las comunidades estudiadas. \\
+
+Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud entre muestras, permitiendo seleccionar la más apropiada según el contexto del estudio y los objetivos específicos del análisis de diversidad beta.\\
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{Img/cap3/diagrams_de_flujo.png}
-\caption{Diagrama de Flujo PyMetaSeem}
+\includegraphics[width=\textwidth]{Img/cap2/BetaDiversity.png}
+\caption{La diversidad beta muestra que las diferencias entre las muestras no son lo suficientemente claras como para separar completamente los grupos entre muestras sanas y marchitas para ninguna métrica de distancia. Esto sugiere una gran superposición en la composición microbiana entre las muestras saludables y enfermas, independientemente de la métrica utilizada. A) Medida de disimilitud de Bray-Curtis B) Distancia de Jaccard C) Distancia Euclidiana D) Distancia Manhattan E) Medida de divergencia de Jensen-Shannon. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
 \end{figure}
 
-Una de las funciones clave de PyMetaSeem es la lectura y procesamiento de los archivos FASTA, los cuales son convertidos en una estructura de diccionario donde cada secuencia de nucleótidos se almacena como valor y su identificador como clave. Esta representación facilita la manipulación eficiente de los datos dentro del entorno de Python y optimiza el acceso a las secuencias genómicas para su posterior procesamiento.\\
-
-A partir de los genomas almacenados en diccionarios, PyMetaSeem implementa funciones para determinar la longitud y la proporción de los reads a generar, teniendo en cuenta el tamaño original de los contigs. Posteriormente, se lleva a cabo la extracción de reads de manera aleatoria, garantizando que la longitud y distribución de los fragmentos reflejen con precisión la composición genómica original. Además, el algoritmo simula la calidad de los reads generados, incorporando modelos de error realistas que permiten una representación más precisa de los datos metagenómicos experimentales.\\
-
-Finalmente, PyMetaSeem genera un archivo en formato FASTQ, que contiene las secuencias de reads metagenómicos junto con sus respectivas calidades de lectura. Este archivo puede ser utilizado en diferentes herramientas de ensamblaje y clasificación taxonómica, facilitando la evaluación de la precisión y eficiencia de estos métodos.\\
-
-
-\subsection{Simulaciones}
-
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/clavibacter.png}
-%\caption{Clavibacter}
-%\end{figure}
-
-\subsection{Comparaciones}
-
-
-\section{Comparación taxonomica}
-
-\section{Generalizando el N50, nuevas métricas para ensamblados de metagenoma}
-
-En cuanto a la calidad de los ensamblajes, evaluamos la pertinencia de aplicar la métrica genómica N50 a los datos metagenómicos.  \\
-(Videvall, 2017)  \\
-
-Se trata de una medida utilizada para evaluar la contigüidad y la calidad del ensamblaje de un genoma. Los contigs de un ensamblaje se ordenan por tamaño y se suman, empezando por el mayor. Se toma el tamaño del contig que hace que el total sea mayor o igual al 50\% del tamaño del genoma.  \\
-
-
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/N50_es.png}
-%\caption{N50 }
-%\end{figure}
-
-N50 es una medida de calidad de secuencias genómicas (Miller et al., 2010; Videvall, 2017) (“metagenómica”), la cual se mide ordenando la totalidad de las secuencias de mayor a menor longitud, y sumando todas las longitudes hasta llegar al 50\% del total de la suma; la longitud de la secuencia que esté en este 50\% será la medida N50.  \\
-
-Una medida típica para evaluar el éxito del ensamblaje es la medida N50, que equivale a la longitud del scaﬀold (o contig) que se solapa con el punto medio de la concatenación de scaﬀolds (contigs) por orden de longitud. Mäkinen, V., Salmela, L. \& Ylinen, J. Métrica de ensamblaje N50 normalizada mediante encadenamiento colineal restringido por espacios. BMC Bioinformática 13 , 255 (2012). https://doi.org/10.1186/1471-2105-13-255   \\
-
-L50 es una medida de calidad de secuencias genómicas\\
+Luego de no ver una clara separacion de los datos, Dado que no se observa una clara separación de los datos, se decide proceder con un análisis en conjuntos más pequeños. Este enfoque puede ayudar a identificar patrones más específicos o diferencias significativas en la composición de especies entre subconjuntos de muestras, lo que contribuirá a una comprensión más detallada de la diversidad microbiana en el contexto particular del estudio.\\
