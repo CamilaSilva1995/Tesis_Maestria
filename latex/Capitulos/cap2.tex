@@ -310,6 +310,27 @@ Prueba no parametrica o libre de distribución, es el analogo no parametrico a l
 \section{Normalización}
 \subsection{Normalización}
 
+Desde un punto de vista matemático, los datos metagenómicos pueden representarse como una matriz de conteos:\\
+$$ X = (x_{ij}) \in \mathbb{N}^{n \times p}$$
+donde:
+\begin{itemize}
+\item $n$ es el número de muestras,
+\item $p$ el número de taxones,
+\item $x_{ij}$ el número de lecturas asignadas al taxón $j$ en la muestra $i$.
+\end{itemize}
+
+Debido a que las muestras presentan distinta profundidad de secuenciación, se emplean abundancias relativas:\\
+$$
+a_{ij} = \frac{x_{ij}}{\sum_{k=1}^{p} x_{ik}},
+\quad
+\sum_{j=1}^{p} a_{ij} = 1.
+$$
+Estas pertenecen al simplex composicional:
+$$
+S^{p-1} = \left\{ x \in \mathbb{R}_+^p : \sum_{j=1}^{p} x_j = 1 \right\}.
+$$
+
+
 %\begin{figure}[!]
 %\centering
 %\includegraphics[width=\textwidth]{Img/cap2/Barras_Abundancia.png}
@@ -430,6 +451,9 @@ Aqui pide el documento BIOM cortado por nivel taxonomico del taxon escojido, jun
 Asi la primera red creada con esta herramienta es tomando Fusarium a nivel de genero, ya que como se vio anteriormente es un genero importante entre los datos de Eucariota…
 
 
+\section{Redes bayesianas}
+
+fundamentos teóricos utilizados para modelar la estructura de dependencia probabilística entre el género fúngico Fusarium, el Índice de Shannon (como métrica de diversidad alfa) y los taxones microbianos más abundantes en muestras de fresa. El análisis se basa en Redes Bayesianas (BN), una herramienta de modelado gráfico que permite inferir relaciones direccionales y condicionales. La robustez de los hallazgos se garantiza mediante la aplicación de técnicas avanzadas de validación, incluyendo Bootstrapping y Validación Cruzada K-fold,
 
 
 

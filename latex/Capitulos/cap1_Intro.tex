@@ -12,32 +12,9 @@ La filogenética es el estudio de la evolución de la vida y las relaciones entr
 \caption{Representación Jerárquica de los Niveles Taxonómicos para la Clasificación y Análisis de Datos Metagenómicos}
 \end{figure}
 
-
 Los niveles taxonómicos \ref{Fig 1.1} son categorías jerárquicas utilizadas para clasificar organismos, desde los grupos más generales hasta los más específicos. El Reino es el nivel más amplio y agrupa organismos según características fundamentales, como ser procariotas o eucariotas. Dentro de cada reino, los organismos se subdividen en Filos, que los organizan según estructuras o procesos biológicos compartidos. Estos se clasifican en Clases, que reúnen grupos más específicos de organismos. A su vez, las clases se dividen en Órdenes, que contienen familias relacionadas. Las Familias agrupan Géneros, que son conjuntos de especies estrechamente relacionadas. Finalmente, la Especie es el nivel más específico, que incluye organismos capaces de reproducirse entre sí y producir descendencia viable. Esta jerarquía es esencial para organizar la biodiversidad y estudiar las relaciones evolutivas entre los organismos.\\
 
 \section{Metagenómica}
-
-La metagenómica es el estudio integral del material genético recuperado directamente de muestras ambientales. Permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, sin necesidad de cultivarlos individualmente.\\
-
-Desde un punto de vista matemático, los datos metagenómicos pueden representarse como una matriz de conteos:\\
-$$ X = (x_{ij}) \in \mathbb{N}^{n \times p}$$
-donde:\\
-%\begin{itemize}
-%\item $n$ es el número de muestras,
-%\item $p$ el número de taxones,
-%\item $x_{ij}$ el número de lecturas asignadas al taxón $j$ en la muestra $i$.
-%\end{itemize}
-
-Debido a que las muestras presentan distinta profundidad de secuenciación, se emplean abundancias relativas:\\
-%$$
-%a_{ij} = \frac{x_{ij}}{\sum_{k=1}^{p} x_{ik}},
-%\quad
-%\sum_{j=1}^{p} a_{ij} = 1.
-%$$
-%Estas pertenecen al simplex composicional:
-%$$
-%S^{p-1} = \left\{ x \in \mathbb{R}_+^p : \sum_{j=1}^{p} x_j = 1 \right\}.
-%$$
 
 La metagenómica es el estudio integral del material genético recuperado directamente de muestras ambientales. Permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, sin necesidad de cultivarlos individualmente. Este campo se centra en comprender la diversidad microbiana, las estructuras poblacionales, las capacidades funcionales y las interacciones de las comunidades microbianas con su entorno. Se aplica comúnmente en el estudio de ecosistemas como el suelo, el agua, la microbiota humana y otros hábitats microbianos complejos. La metagenómica utiliza tecnologías avanzadas de secuenciación, como la secuenciación de nueva generación, para desentrañar la diversidad genética y funcional de estas comunidades (Zhang, 2021).\\
 
@@ -45,12 +22,13 @@ Existen dos enfoques para la secuenciación de microorganismos: “Amplicón 16S
 
 Para realizar una secuenciación por 16S, es necesario seguir una serie de pasos para la preparación de la muestra biológica y la extracción del ADN: colecta de la muestra, extracción del ADN y preparación de la librería. Para la colecta de las muestras, se deben tener en cuenta las necesidades del experimento y los resultados esperados, estimar el número de muestras necesarias y considerar el método de almacenamiento; todo esto para garantizar la calidad de los datos. Existen varios métodos y herramientas para realizar la extracción del ADN. Es necesario preparar bibliotecas de datos genómicos para la comparación de las secuencias. Posteriormente, se continúa con la secuenciación de las muestras, para lo cual existen varias herramientas, siendo una de las más usadas Ilumina, que ofrece una mayor cobertura a menor costo. Finalmente, se realiza un control de calidad, cuyo principal objetivo es mejorar la precisión del análisis y prevenir la sobreestimación de los datos. El control de calidad puede incluir: la detección y eliminación de quimeras artificiales, el filtrado de secuencias de baja calidad y de reads muy cortos, así como la eliminación de ruido.\\
 
-Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico correspondiente para cada secuencia. Para esto, se conocen dos enfoques principales: uno basado en filotipos, que agrupa las secuencias directamente en función de su similitud con los filotipos, y otro basado en OTUs (Unidades Taxonómicas Operacionales), que agrupa las secuencias según la similitud entre OTUs. El método de agrupación por OTUs supera al basado en filotipos, pero también presenta ciertas limitaciones, ya que es relativamente costoso computacionalmente y requiere mucha memoria. Un OTU se define dentro del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje común a nivel de especie. Estos OTUs se obtienen mediante clústering, para lo cual ya existen varios métodos y algoritmos disponibles (Xia et al., 2018).\\
+Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico correspondiente para cada secuencia. Para esto, se conocen dos enfoques principales: uno basado en filotipos, que agrupa las secuencias directamente en función de su similitud con los filotipos, y otro basado en OTUs (Unidades Taxonómicas Operacionales), que agrupa las secuencias según la similitud entre OTUs. El método de agrupación por OTUs supera al basado en filotipos, pero también presenta ciertas limitaciones, ya que es relativamente costoso computacionalmente y requiere mucha memoria. Un OTU se define dentro del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje común a nivel de especie. Estos OTUs se obtienen mediante clústering, para lo cual ya existen varios métodos y algoritmos disponibles (Xia et al., 2018).
 
 \section{Índices de Diversidad}
 
 Un índice de diversidad constituye una medida numérica empleada para cuantificar la variedad y la distribución de especies en una comunidad biológica.\\
-Un índice de diversidad constituye una medida numérica empleada para cuantificar la variedad y la distribución de especies en una comunidad biológica o un ecosistema. Estos índices son herramientas matemáticas diseñadas para sintetizar y comparar la composición de especies en diversas comunidades.\\
+
+Un índice de diversidad constituye una medida numérica empleada para cuantificar la variedad y la distribución de especies en una comunidad biológica o un ecosistema. Estos índices son herramientas matemáticas diseñadas para sintetizar y comparar la composición de especies en diversas comunidades.
 
 \subsection{Diversidad Alfa}
 
@@ -118,7 +96,7 @@ donde $d_{JC}$ es el índice de disimilitud de Jaccard, $S$ es el número de esp
 
 Este índice ofrece una medida de disimilitud que se centra en la presencia o ausencia de especies, siendo 0 cuando las poblaciones comparten todas las especies y 1 cuando no comparten ninguna. Es especialmente útil para análisis comparativos de la composición de especies entre diferentes comunidades.\\
 
-La distancia \textbf{Euclideana}es comúnmente utilizada en el análisis de datos numéricos y se fundamenta en la diferencia de las abundancias o proporciones de diferentes especies en distintas muestras. Esta distancia mide la separación entre dos muestras como la raíz cuadrada de la suma de las diferencias cuadráticas entre las proporciones de cada especie en ambas muestras.
+La distancia \textbf{Euclideana} es comúnmente utilizada en el análisis de datos numéricos y se fundamenta en la diferencia de las abundancias o proporciones de diferentes especies en distintas muestras. Esta distancia mide la separación entre dos muestras como la raíz cuadrada de la suma de las diferencias cuadráticas entre las proporciones de cada especie en ambas muestras.
 
 La fórmula para la distancia Euclidiana entre dos muestras $A$ y $B$ es la siguiente:
 $$d_{euclidean} (A,B) = \sqrt{\sum(A_i - B_i)^2}$$
@@ -146,8 +124,7 @@ La metrica de \textbf{UniFrac} es un índice de disimilitud que se basa en la fi
 
 La fórmula del índice de disimilitud de UniFrac es más compleja en comparación con las de Bray-Curtis y Jaccard, ya que se basa en un análisis de la distribución de ramas filogenéticas únicas o compartidas entre los sitios. Este enfoque permite capturar la información sobre las relaciones evolutivas entre las especies, proporcionando una medida más completa de la similitud o disimilitud entre las comunidades estudiadas. \\
 
-Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud entre muestras, permitiendo seleccionar la más apropiada según el contexto del estudio y los objetivos específicos del análisis de diversidad beta.\\
-
+Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud entre muestras, permitiendo seleccionar la más apropiada según el contexto del estudio y los objetivos específicos del análisis de diversidad beta.
 
 \section{Microbioma}
 El microbioma se define como la comunidad completa de microorganismos (incluyendo bacterias, arqueas, hongos, protozoos y virus) que habitan en un entorno específico, como el cuerpo humano, animales, plantas o ambientes naturales. Este término no solo abarca a los microorganismos vivos, sino también sus genes, metabolitos y las interacciones que tienen entre ellos y con su huésped. La investigación del microbioma utiliza herramientas avanzadas, como la secuenciación de próxima generación y los análisis metagenómicos, para entender su diversidad y funciones en la salud, la enfermedad y los ecosistemas (Marchesi \& Ravel, 2015).\\
@@ -170,12 +147,15 @@ Para obtener el ID taxonómico completo, Kraken dispone de la herramienta kraken
 %\begin{figure}[h]
 %\centering
 %\includegraphics[scale=0.3]{Img/cap1/kraken.png}
+%\label{Fig 1.2}
 %\caption{kraken}
 %\end{figure}
+%"C:\Users\csilva\OneDrive - universidadean.edu.co\Documentos\Cami\Tesis_Maestria\latex\Img\cap1\kraken.png"
+
 
 BRACKEN (Bayesian Re-estimation of Abundance after Classification with KraKEN) calcula la abundancia de especies, géneros u otras categorías taxonómicas a partir de las secuencias de ADN recopiladas en un experimento de metagenómica (Lu et al., 2017)(\cite{lu2017bracken}).\\
 
-BRACKEN realiza estimaciones probabilísticas basadas en las salidas de Kraken para completar las asignaciones al nivel taxonómico requerido, con el objetivo de obtener una estimación de abundancia más precisa. Este enfoque permite producir estimaciones fiables de abundancia a nivel de especie y género, incluso cuando una muestra contiene múltiples especies casi idénticas.\\
+BRACKEN realiza estimaciones probabilísticas basadas en las salidas de Kraken para completar las asignaciones al nivel taxonómico requerido, con el objetivo de obtener una estimación de abundancia más precisa. Este enfoque permite producir estimaciones fiables de abundancia a nivel de especie y género, incluso cuando una muestra contiene múltiples especies casi idénticas.
 
 \section{Lenguajes}
 
@@ -190,7 +170,7 @@ Phyloseq es un software de código abierto diseñado para la manipulación y an�
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{Img/cap2/Phyloseq.png}
+\includegraphics[width=\textwidth]{Img/cap1/Phyloseq.png}
 \caption{Estructura del Objeto Phyloseq: Organización Integral de Datos Metagenómicos para Análisis de Diversidad Microbiana, que integra tablas de abundancia, datos taxonómicos, metadatos de las muestras y árboles filogenéticos. Este formato permite un análisis eficiente y completo de las comunidades microbianas.}%\citep{Introducción a phyloseq-castrolab})}
 \end{figure}
 
@@ -221,11 +201,10 @@ FASTQ es un formato que extiende FASTA, añadiendo información sobre la calidad
 \subsection{BAM}
 BAM (Binary Alignment/Map) es un formato binario utilizado para almacenar datos de alineamiento de secuencias genómicas. Es una versión comprimida y binaria del formato SAM (Sequence Alignment/Map), que es un formato de texto para almacenar los mismos datos. BAM es ampliamente utilizado en bioinformática, especialmente en análisis de datos de secuenciación de próxima generación (NGS), debido a su eficiencia en el almacenamiento y procesamiento de grandes volúmenes de datos.\\
 
-Cada archivo BAM contiene información detallada sobre cómo las secuencias de ADN se alinean con una referencia genómica, incluyendo la posición de la secuencia en el genoma, la calidad del alineamiento, las secuencias de los nucleótidos y las puntuaciones de calidad. Dado que el formato BAM es binario, es más compacto y rápido de manejar en comparación con su contraparte en texto, SAM.\\
+Cada archivo BAM contiene información detallada sobre cómo las secuencias de ADN se alinean con una referencia genómica, incluyendo la posición de la secuencia en el genoma, la calidad del alineamiento, las secuencias de los nucleótidos y las puntuaciones de calidad. Dado que el formato BAM es binario, es más compacto y rápido de manejar en comparación con su contraparte en texto, SAM.
 
 \section{Solena}
 Solena es una empresa de biotecnología agrícola (AgTech) enfocada en el análisis y mejora del microbioma del suelo. Su misión es desarrollar soluciones innovadoras basadas en datos moleculares y biotecnología para optimizar la salud del suelo y, como consecuencia, aumentar la productividad agrícola. Aprovechando herramientas avanzadas como inteligencia artificial y genómica, Solena obtiene conocimientos profundos sobre la composición y funcionalidad del microbioma del suelo. Además, en colaboración con organizaciones locales, la empresa implementa centros de diagnóstico molecular agrícola, como el establecido en México, para evaluar la salud de los suelos y fomentar prácticas agrícolas regenerativas.
-
 
 \section{Prueba de Hipótesis}
 Una hipótesis es una suposición sobre los datos que puede ser verdadera o falsa. Las pruebas de hipótesis son herramientas estadísticas esenciales en diversos campos, ya que permiten contrastar una teoría con la evidencia empírica. A través de un proceso riguroso, estas pruebas ayudan a evaluar la veracidad de una afirmación científica de manera objetiva y fundamentada.\\
@@ -248,12 +227,12 @@ En donde el objetivo principal de una prueba de hipótesis es evaluar si la evid
 
 La hipotesis nula sera rechazada a favor de la hipotesis alternativa solo si la evidencia muestral sugiere que $H_0$ es falsa. Si la muestra no contradice a $H_0$, se continuara creyendo en la veracidad de la hipotesis nula. (rechazar o no rechazar $H_0$).\\
 
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap1/pruebat_explicacion.png}
-%%\caption{Se ilustra el concepto esencial de una prueba de hipótesis, mostrando la distribución teórica de la estadística de prueba bajo la hipótesis nula ($H_0$) y destacando la región de rechazo. La posición del dato observado con respecto a esta región determinará si se rechaza o no $H_0$ en cada una de las pruebas estadísticas a realizar.\\
-%%En una prueba de hipótesis, la hipótesis nula ($H_0$) será rechazada en favor de la hipótesis alternativa ($H_1$) solo si la evidencia muestral proporciona suficiente soporte para considerar que $H_0$ es falsa. Si los datos no contradicen significativamente a $H_0$, se concluye que no hay suficiente evidencia para rechazarla, y se mantiene su validez.\\
-%\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Img/cap1/pruebat_explicacion.png}
+\caption{Se ilustra el concepto esencial de una prueba de hipótesis, mostrando la distribución teórica de la estadística de prueba bajo la hipótesis nula ($H_0$) y destacando la región de rechazo. La posición del dato observado con respecto a esta región determinará si se rechaza o no $H_0$ en cada una de las pruebas estadísticas a realizar.\\
+En una prueba de hipótesis, la hipótesis nula ($H_0$) será rechazada en favor de la hipótesis alternativa ($H_1$) solo si la evidencia muestral proporciona suficiente soporte para considerar que $H_0$ es falsa. Si los datos no contradicen significativamente a $H_0$, se concluye que no hay suficiente evidencia para rechazarla, y se mantiene su validez.\\}%\citep{Introducción a phyloseq-castrolab})}
+\end{figure}
 
 En este contexto, el p\-valor se considera como una medida de la probabilidad de éxito (obtener un resultado específico) en un estudio estadístico con los datos observados. Su cálculo depende de la prueba estadística utilizada y de las suposiciones realizadas sobre la distribución de los datos. En general, un valor pequeño del p\-valor sugiere que los datos observados son poco probables bajo la hipótesis nula, lo que sugiere que $H_0$ podría ser falsa.\\
 %Rice, J. A. (2006). Mathematical Statistics and Data Analysis (3rd ed.)
@@ -264,11 +243,9 @@ Error tipo I ($\alpha$): Ocurre cuando se rechaza $H_0$ siendo en realidad verda
 Error tipo II ($\beta$): Se produce cuando no se rechaza $H_0$ cuando en realidad es falsa.\\
 El balance entre estos errores es fundamental en el diseño de pruebas estadísticas.\\
 
-
 Las pruebas de hipótesis pueden aplicarse a diferentes contextos, como la comparación de grupos en estudios médicos o científicos. Por ejemplo, en un análisis sobre la salud de los cultivos, se podrían definir las siguientes hipótesis:\\
 $H_0$ : No hay diferencias entre muestras de cultivos saludables y no saludables.\\
 $H_0$ : Existen diferencias significativas entre las muestras de cultivos saludables y no saludables.\\
-
 
 \subsection{Pruebas con muestras pequeñas para comparar dos medias poblacionales}
 Suponemos dos poblaciones independientes con distibuciones normales con 
@@ -334,6 +311,8 @@ La rarefacción es una tecnica de normalización usada en el preprocesamiento de
 
 \section{Redes Bayesianas}
 Una red bayesiana es un grafo acìclico dirigiso (DAG) $G=(V,E)$ donde cada nodod representa una variable.
+
+
 
 \section{Analisis comparativo del microbioma de fresa, en relacion con el estado de la planta}
 

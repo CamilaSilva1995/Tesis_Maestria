@@ -1,34 +1,34 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1}Preliminares}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Metagenómica}{3}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Índices de Diversidad}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.2}Índices de Diversidad}{4}{section.1.2}%
 \contentsline {subsection}{\numberline {1.2.1}Diversidad Alfa}{5}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Diversidad Beta}{8}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.2}Diversidad Beta}{7}{subsection.1.2.2}%
 \contentsline {section}{\numberline {1.3}Microbioma}{11}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Clasificadores}{12}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Kaiju}{12}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Kraken \& Braken}{12}{subsection.1.4.2}%
-\contentsline {section}{\numberline {1.5}Lenguajes}{13}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}BASH}{13}{subsection.1.5.1}%
+\contentsline {section}{\numberline {1.4}Clasificadores}{11}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Kaiju}{11}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Kraken \& Braken}{11}{subsection.1.4.2}%
+\contentsline {section}{\numberline {1.5}Lenguajes}{12}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}BASH}{12}{subsection.1.5.1}%
 \contentsline {subsection}{\numberline {1.5.2}Python}{13}{subsection.1.5.2}%
-\contentsline {subsubsection}{Phyloseq}{14}{section*.5}%
+\contentsline {subsubsection}{Phyloseq}{13}{section*.5}%
 \contentsline {subsection}{\numberline {1.5.3}R \& RStudio}{14}{subsection.1.5.3}%
 \contentsline {section}{\numberline {1.6}Formatos}{15}{section.1.6}%
 \contentsline {subsection}{\numberline {1.6.1}JSON}{15}{subsection.1.6.1}%
-\contentsline {subsection}{\numberline {1.6.2}BIOM}{16}{subsection.1.6.2}%
-\contentsline {subsection}{\numberline {1.6.3}FASTA}{16}{subsection.1.6.3}%
-\contentsline {subsection}{\numberline {1.6.4}BAM}{17}{subsection.1.6.4}%
-\contentsline {section}{\numberline {1.7}Solena}{17}{section.1.7}%
+\contentsline {subsection}{\numberline {1.6.2}BIOM}{15}{subsection.1.6.2}%
+\contentsline {subsection}{\numberline {1.6.3}FASTA}{15}{subsection.1.6.3}%
+\contentsline {subsection}{\numberline {1.6.4}BAM}{16}{subsection.1.6.4}%
+\contentsline {section}{\numberline {1.7}Solena}{16}{section.1.7}%
 \contentsline {section}{\numberline {1.8}Prueba de Hipótesis}{17}{section.1.8}%
-\contentsline {subsection}{\numberline {1.8.1}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{20}{subsection.1.8.1}%
+\contentsline {subsection}{\numberline {1.8.1}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{19}{subsection.1.8.1}%
 \contentsline {subsection}{\numberline {1.8.2}Prueba de Hipótesis sobre las varianzas de dos poblaciones pequeñas}{20}{subsection.1.8.2}%
-\contentsline {subsection}{\numberline {1.8.3}Prueba de los rangos con signos de Wilcolxon Mann-Whitney}{21}{subsection.1.8.3}%
+\contentsline {subsection}{\numberline {1.8.3}Prueba de los rangos con signos de Wilcolxon Mann-Whitney}{20}{subsection.1.8.3}%
 \contentsline {section}{\numberline {1.9}Normalización}{21}{section.1.9}%
 \contentsline {subsection}{\numberline {1.9.1}Normalización}{21}{subsection.1.9.1}%
 \contentsline {subsection}{\numberline {1.9.2}Rarefacción}{21}{subsection.1.9.2}%
-\contentsline {section}{\numberline {1.10}Redes Bayesianas}{22}{section.1.10}%
-\contentsline {section}{\numberline {1.11}Analisis comparativo del microbioma de fresa, en relacion con el estado de la planta}{22}{section.1.11}%
-\contentsline {section}{\numberline {1.12}Simuladores de Secuencias metagenomicas}{24}{section.1.12}%
+\contentsline {section}{\numberline {1.10}Redes Bayesianas}{21}{section.1.10}%
+\contentsline {section}{\numberline {1.11}Analisis comparativo del microbioma de fresa, en relacion con el estado de la planta}{21}{section.1.11}%
+\contentsline {section}{\numberline {1.12}Simuladores de Secuencias metagenomicas}{23}{section.1.12}%
 \contentsline {chapter}{\numberline {2}Análisis Exploratorio de Datos, metodología}{27}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Preprocesamiento}{28}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Filtrado de Calidad}{29}{subsection.2.1.1}%
@@ -44,22 +44,24 @@
 \contentsline {subsection}{\numberline {2.5.1}Normalización}{42}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}Rarefacción}{43}{subsection.2.5.2}%
 \contentsline {section}{\numberline {2.6}Rarefacción}{43}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Redes}{43}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Rs}{45}{section.2.8}%
+\contentsline {section}{\numberline {2.7}Redes}{44}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Redes bayesianas}{45}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Rs}{46}{section.2.9}%
 \contentsline {chapter}{\numberline {3}Resultados}{47}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Índices de diversidad}{48}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Diversidad Alfa}{48}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}Diversidad Beta}{50}{subsection.3.1.2}%
 \contentsline {subsection}{\numberline {3.1.3}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{62}{subsection.3.1.3}%
 \contentsline {subsection}{\numberline {3.1.4}Prueba de los rangos con signos de Wilcolxon Mann-Whitney}{64}{subsection.3.1.4}%
-\contentsline {chapter}{\numberline {4}Simulador Metagenómico PyMetaSeem}{67}{chapter.4}%
-\contentsline {section}{\numberline {4.1}PyMetaSeem: Un simulador de datos metagenómicos basado en secuencias genómicas}{68}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Simulaciones}{71}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Comparaciones}{71}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}Comparación taxonomica}{71}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Generalizando el N50, nuevas métricas para ensamblados de metagenoma}{71}{section.4.3}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{73}{chapter.5}%
+\contentsline {chapter}{\numberline {4}Conclusiones}{67}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Simulador Metagenómico PyMetaSeem}{69}{chapter.5}%
+\contentsline {section}{\numberline {5.1}PyMetaSeem: Un simulador de datos metagenómicos basado en secuencias genómicas}{70}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Simulaciones}{73}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Comparaciones}{73}{subsection.5.1.2}%
+\contentsline {section}{\numberline {5.2}Comparación taxonomica}{73}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Generalizando el N50, nuevas métricas para ensamblados de metagenoma}{73}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Conclusiones}{75}{chapter.6}%
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Codigos}{77}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Imagenes}{79}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {A}Codigos}{79}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Imagenes}{81}{appendix.Alph2}%
 \vspace {2em}
