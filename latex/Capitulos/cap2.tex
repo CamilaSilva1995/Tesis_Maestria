@@ -1,14 +1,12 @@
 |\chapter{Análisis Exploratorio de Datos, metodología}
-El propósito de este análisis es identificar características diferenciadoras entre los microbiomas de plantas sanas y enfermas mediante el uso de datos metagenómicos. Para llevar a cabo este estudio, se obtuvieron datos metagenómicos de la empresa Solena, específicamente de microorganismos presentes en cultivos de fresa. Inicialmente, se dividieron las muestras en dos poblaciones: aquellas etiquetadas como $"$sanas$"$ y $"$enfermas$"$.\\
+El propósito de este análisis es identificar características diferenciadoras entre los microbiomas de plantas sanas y enfermas mediante el uso de datos metagenómicos. Para ello, se obtuvieron datos de microorganismos presentes en cultivos de fresa, proporcionados por la empresa Solena (véase sección ??). Las muestras se dividieron en dos grupos: las etiquetadas como $"$sanas$"$ y las etiquetadas como $"$enfermas$"$.\\
 
-En este estudio, el propósito es identificar características diferenciadoras entre los microbiomas de plantas sanas y enfermas a partir de datos metagenómicos. Para ello, se obtuvieron datos de microorganismos presentes en cultivos de fresa, proporcionados por la empresa Solena. Las muestras se dividieron en dos grupos: las etiquetadas como $"$sanas" y las etiquetadas como $"$enfermas".\\
+En la primera etapa, se realizó un proceso exhaustivo de preprocesamiento de los datos utilizando lenguajes de programación como BASH y R. Luego, el análisis exploratorio se estructuró en tres partes principales. Primero, se exploraron las diversidades alfa y beta, seguidas de un análisis estadístico respaldado por pruebas de hipótesis. En segundo lugar, se visualizó la correlación entre variables a través de redes.
 
-En la primera etapa, se realizó un proceso exhaustivo de preprocesamiento de los datos utilizando lenguajes de programación como BASH y R. Luego, el análisis exploratorio se estructuró en tres partes principales. Primero, se exploraron las diversidades alfa y beta, seguidas de un análisis estadístico respaldado por pruebas de hipótesis. En segundo lugar, se visualizó la correlación entre variables a través de redes.\\
-
-Este enfoque integral no solo proporciona una comprensión detallada de la composición de los microbiomas en las plantas de fresa, sino que también permite identificar patrones significativos en las diferencias de presencia-ausencia o abundancia de microorganismos, que podrían ser fundamentales para distinguir entre la salud y la enfermedad en estos cultivos (\cite{yang2020}).\\
+Este enfoque integral no solo proporciona una comprensión detallada de la composición de los microbiomas en las plantas de fresa, sino que también permite identificar patrones significativos en las diferencias de presencia-ausencia o abundancia de microorganismos, que podrían ser fundamentales para distinguir entre la salud y la enfermedad en estos cultivos (\cite{yang2020}). \\
 
 \section{Preprocesamiento}
-Dentro de las etapas principales del análisis, se encuentra la adquisición de datos, en la cual se recopilan los datos necesarios para el estudio. En este caso, se ha adquirido un conjunto de datos metagenómicos de cultivos de fresa proporcionados por Solena. Estas secuencias se entregaron en formato FASTA y se encuentran almacenadas en archivos JSON, los cuales contienen los resultados de la clasificación metagenómica realizada mediante el clasificador Kraken. Con el objetivo de identificar características distintivas entre los frutos sanos y enfermos, se ha llevado a cabo un análisis exploratorio detallado de estos datos.\\
+Dentro de las etapas principales del análisis, se encuentra la adquisición de datos.En este caso se adquirió un conjunto de datos metagenómicos de cultivos de fresa proporcionados por Solena. Estas secuencias se entregaron en formato FASTA y se encuentran almacenadas en archivos JSON, los cuales contienen los resultados de la clasificación metagenómica realizada mediante el clasificador Kraken. Con el objetivo de identificar características distintivas entre los frutos sanos y enfermos, se ha llevado a cabo un análisis exploratorio detallado de estos datos.\\
 
 \begin{figure}[H]
 \centering
@@ -16,9 +14,11 @@ Dentro de las etapas principales del análisis, se encuentra la adquisición de 
 \caption{Flujo de Trabajo para el Análisis Metagenómico de Microbiomas en Cultivos de Fresa: Desde la Recolección de Datos hasta la Interpretación de Resultados.}
 \end{figure}
 
-Dentro de este preprocesamiento es necesario realizar una limpieza y trasformación de los datos para que estos sean adecuados para el análisis. En este caso se realizó un cambio de formato a objeto BIOM, para un mejor manejo de los datos; luego fue necesario renombrar columnas, agregar los metadatos y realizar un filtro de calidad, que se explicara a fondo más adelante.\\
+Dentro de este preprocesamiento es necesario realizar una limpieza y trasformación de los datos para que estos sean adecuados para el análisis. En este caso se realizó un cambio de formato a objeto BIOM, para un mejor manejo de los datos; luego fue necesario renombrar columnas, agregar los metadatos y realizar un filtro de calidad.\\
 
-Para iniciar el análisis de estos datos, llevamos a cabo una exploración general utilizando índices ecológicos, especialmente centrándonos en las diversidades alfa y beta. Importamos los datos como un objeto Phyloseq, que puede incluir cuatro componentes: la matriz de abundancias, la tabla de taxonomía, los metadatos y el árbol filogenético. Este enfoque nos permite obtener una comprensión más profunda de la estructura de la comunidad microbiana presente en los datos metagenómicos, empleando medidas de diversidad para evaluar la variabilidad intra e inter-muestral.\\
+Para iniciar el análisis de estos datos, llevamos a cabo una exploración general utilizando índices ecológicos, especialmente centrándonos en las diversidades alfa y beta. \\
+
+Se Importaron los datos como un objeto Phyloseq, que puede incluir cuatro componentes: la matriz de abundancias, la tabla de taxonomía, los metadatos y el árbol filogenético. Este enfoque nos permite obtener una comprensión más profunda de la estructura de la comunidad microbiana presente en los datos metagenómicos, empleando medidas de diversidad para evaluar la variabilidad intra e inter-muestral.\\
 
 \subsection{Filtrado de Calidad}
 

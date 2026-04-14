@@ -3,7 +3,9 @@ La ciencia de datos es el campo que aplica técnicas analíticas avanzadas y pri
 
 En microbiología, un factor importante de estudio son las interacciones entre microorganismos en un ambiente natural, ya que la mayoría de estos estudios se realizan en laboratorios. Los avances tecnológicos han llevado al desarrollo de métodos de secuenciación de ADN. Una de las plataformas más utilizadas y conocidas en el campo de la metagenómica es Illumina. Con este tipo de herramientas, es posible analizar el ADN extraído directamente de una muestra, en lugar de trabajar únicamente con microorganismos cultivados individualmente.\\
 
-La filogenética es el estudio de la evolución de la vida y las relaciones entre organismos y grupos de organismos. Este análisis se centra en temas como la diversidad, la evolución, la ecología y los genomas, ayudándonos a comprender cómo evolucionan los genes, los genomas y las especies. Una parte importante de este estudio es la identificación, clasificación y denominación de organismos biológicos, campo conocido como taxonomía. Carl Linnaeus, considerado el padre de la taxonomía, propuso siete niveles taxonómicos: Reino, Phylum, Clase, Orden, Familia, Género y Especie. Posteriormente, se añadió el Dominio como el octavo grupo taxonómico más amplio, dividido en Arqueas, Bacterias y Eukarya.\\
+La filogenética es el estudio de la evolución de la vida y las relaciones entre organismos y grupos de organismos. Este análisis se centra en temas como la diversidad, la evolución, la ecología y los genomas, ayudándonos a comprender cómo evolucionan los genes, los genomas y las especies. Una parte importante de este estudio es la identificación, clasificación y denominación de organismos biológicos, campo conocido como taxonomía. \\
+
+Carl Linnaeus, considerado el padre de la taxonomía, propuso siete niveles taxonómicos: Reino, Phylum, Clase, Orden, Familia, Género y Especie. Posteriormente, se añadió el Dominio como el octavo grupo taxonómico más amplio, dividido en Arqueas, Bacterias y Eukarya.\\
 
 \begin{figure}[h]
 \centering
@@ -16,24 +18,35 @@ Los niveles taxonómicos \ref{Fig 1.1} son categorías jerárquicas utilizadas p
 
 \section{Metagenómica}
 
-La metagenómica es el estudio integral del material genético recuperado directamente de muestras ambientales. Permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, sin necesidad de cultivarlos individualmente. Este campo se centra en comprender la diversidad microbiana, las estructuras poblacionales, las capacidades funcionales y las interacciones de las comunidades microbianas con su entorno. Se aplica comúnmente en el estudio de ecosistemas como el suelo, el agua, la microbiota humana y otros hábitats microbianos complejos. La metagenómica utiliza tecnologías avanzadas de secuenciación, como la secuenciación de nueva generación, para desentrañar la diversidad genética y funcional de estas comunidades (Zhang, 2021).\\
+La metagenómica es el estudio integral del material genético recuperado directamente de muestras ambientales. Permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, sin necesidad de cultivarlos individualmente. \\
+
+Desde un punto de vista matemático, los datos metagenómicos pueden representarse como una matriz de conteos:
+
+\begin{equation}
+X=(x_{ij}) \in \mathbb{N}^{n \times p}
+\end{equation} 
+
+Debido a que las muestras presentan distinta profundidad de secuenciación, se emplean abundancias relativas.
+
+Este campo se centra en comprender la diversidad microbiana, las estructuras poblacionales, las capacidades funcionales y las interacciones de las comunidades microbianas con su entorno. Se aplica comúnmente en el estudio de ecosistemas como el suelo, el agua, la microbiota humana y otros hábitats microbianos complejos. La metagenómica utiliza tecnologías avanzadas de secuenciación, como la secuenciación de nueva generación, para desentrañar la diversidad genética y funcional de estas comunidades (Zhang, 2021).\\
 
 Existen dos enfoques para la secuenciación de microorganismos: “Amplicón 16S rRNA” y “Shotgun”. La secuenciación por amplicón 16S fue el primer método de secuenciación metagenómica altamente aceptado. Tiene muchas ventajas: el gen 16S está presente en todas las bacterias y arqueas, contiene las regiones necesarias para un buen análisis de PCR (Polymerase Chain Reaction - Reacción en Cadena de la Polimerasa) altamente conservadas, existen conjuntos de primers altamente estudiados para amplificar la mayoría de los organismos, ya se encuentran disponibles bases de datos públicas y bien seleccionadas que permiten una buena comparación, y la secuenciación por 16S es relativamente barata y simple. Sin embargo, posee algunas desventajas: el gen 16S no está presente en los hongos, por lo que este método no es adecuado cuando se desea trabajar con hongos. Además, existe la posibilidad de que se incremente el error de sesgo si no se elige el conjunto de primers adecuado para el organismo a analizar.\\
 
 Para realizar una secuenciación por 16S, es necesario seguir una serie de pasos para la preparación de la muestra biológica y la extracción del ADN: colecta de la muestra, extracción del ADN y preparación de la librería. Para la colecta de las muestras, se deben tener en cuenta las necesidades del experimento y los resultados esperados, estimar el número de muestras necesarias y considerar el método de almacenamiento; todo esto para garantizar la calidad de los datos. Existen varios métodos y herramientas para realizar la extracción del ADN. Es necesario preparar bibliotecas de datos genómicos para la comparación de las secuencias. Posteriormente, se continúa con la secuenciación de las muestras, para lo cual existen varias herramientas, siendo una de las más usadas Ilumina, que ofrece una mayor cobertura a menor costo. Finalmente, se realiza un control de calidad, cuyo principal objetivo es mejorar la precisión del análisis y prevenir la sobreestimación de los datos. El control de calidad puede incluir: la detección y eliminación de quimeras artificiales, el filtrado de secuencias de baja calidad y de reads muy cortos, así como la eliminación de ruido.\\
 
-Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico correspondiente para cada secuencia. Para esto, se conocen dos enfoques principales: uno basado en filotipos, que agrupa las secuencias directamente en función de su similitud con los filotipos, y otro basado en OTUs (Unidades Taxonómicas Operacionales), que agrupa las secuencias según la similitud entre OTUs. El método de agrupación por OTUs supera al basado en filotipos, pero también presenta ciertas limitaciones, ya que es relativamente costoso computacionalmente y requiere mucha memoria. Un OTU se define dentro del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje común a nivel de especie. Estos OTUs se obtienen mediante clústering, para lo cual ya existen varios métodos y algoritmos disponibles (Xia et al., 2018).
+Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico correspondiente para cada secuencia. Para esto, se conocen dos enfoques principales: uno basado en filotipos, que agrupa las secuencias directamente en función de su similitud con los filotipos, y otro basado en OTUs (Unidades Taxonómicas Operacionales), que agrupa las secuencias según la similitud entre OTUs. El método de agrupación por OTUs supera al basado en filotipos, pero también presenta ciertas limitaciones, ya que es relativamente costoso computacionalmente y requiere mucha memoria. \\
+
+Un OTU se define dentro del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje común a nivel de especie. Estos OTUs se obtienen mediante clústering, para lo cual ya existen varios métodos y algoritmos disponibles (Xia et al., 2018).
 
 \section{Índices de Diversidad}
-
-Un índice de diversidad constituye una medida numérica empleada para cuantificar la variedad y la distribución de especies en una comunidad biológica.\\
 
 Un índice de diversidad constituye una medida numérica empleada para cuantificar la variedad y la distribución de especies en una comunidad biológica o un ecosistema. Estos índices son herramientas matemáticas diseñadas para sintetizar y comparar la composición de especies en diversas comunidades.
 
 \subsection{Diversidad Alfa}
 
-La diversidad alfa, en esencia, refleja la riqueza de las muestras, es decir, el número de especies distintas presentes en un determinado entorno, o la abundancia relativa de dichas especies en dicho entorno; es usada principalmente para medir la diversidad local, haciendo referencia a la diversidad dentro de una muestra o comunidad % (\cite{whittaker1960} & \cite{whittaker1972})
- Para cuantificar esta diversidad, se recurre a diversos índices de medida, cada uno con enfoques particulares.\\
+La diversidad alfa refleja la riqueza de las muestras, es decir, el número de especies distintas presentes en un determinado entorno, o la abundancia relativa de dichas especies en dicho entorno; es usada principalmente para medir la diversidad local, haciendo referencia a la diversidad dentro de una muestra o comunidad %(\cite{whittaker1960} & \cite{whittaker1972})
+.Para cuantificar esta diversidad, se recurre a diversos índices de medida, cada uno con enfoques particulares.
+
 
 \textbf{Chao1}, es una métrica que evalúa la riqueza de especies, proporcionando una estimación del número total de especies en una comunidad. Su utilidad se destaca especialmente en situaciones donde la muestra es pequeña o la proporción de especies raras es considerable. Este índice demuestra ser menos sensible a la presencia de especies raras en comparación con otros índices, lo que lo convierte en una herramienta valiosa en estudios centrados en la conservación de especies poco comunes.
 
@@ -223,9 +236,12 @@ El propósito de una prueba estadística es examinar una hipótesis respecto a l
 
 \textbf{ P-valor:} Es la probabilidad de obtener un valor del estadístico de prueba tan extremo o más extremo que el observado, suponiendo que la $H_0$ sea verdadera. Un valor de p bajo (menor que el nivel de significancia $\alpha $  el cual se fija previamente  ) indica que es poco probable que el resultado se deba al azar, lo que lleva al rechazo de la $H_0$.\\
 
-En donde el objetivo principal de una prueba de hipótesis es evaluar si la evidencia muestral es lo suficientemente fuerte como para rechazar $H_0$. \\
+El objetivo principal de una prueba de hipótesis es evaluar si la evidencia muestral es lo suficientemente fuerte como para rechazar $H_0$. La hipotesis nula sera rechazada a favor de la hipotesis alternativa solo si la evidencia muestral sugiere que $H_0$ es falsa. Si la muestra no contradice a $H_0$, se continuara creyendo en la veracidad de la hipotesis nula. (rechazar o no rechazar $H_0$).\\
 
-La hipotesis nula sera rechazada a favor de la hipotesis alternativa solo si la evidencia muestral sugiere que $H_0$ es falsa. Si la muestra no contradice a $H_0$, se continuara creyendo en la veracidad de la hipotesis nula. (rechazar o no rechazar $H_0$).\\
+
+En este contexto, el p-valor se considera como una medida de la probabilidad de obtener un resultado específico en un estudio estadístico con los datos observados. Su cálculo depende de la prueba estadística utilizada y de las suposiciones realizadas sobre la distribución de los datos. En general, un valor pequeño del p-valor sugiere que los datos observados son poco probables bajo la hipótesis nula, lo que sugiere que $H_0$ podría ser falsa. \\
+%Rice, J. A. (2006). Mathematical Statistics and Data Analysis (3rd ed.)
+%Wasserman, L. (2004). All of Statistics: A Concise Course in Statistical Inference.
 
 \begin{figure}[h]
 \centering
@@ -234,10 +250,6 @@ La hipotesis nula sera rechazada a favor de la hipotesis alternativa solo si la 
 En una prueba de hipótesis, la hipótesis nula ($H_0$) será rechazada en favor de la hipótesis alternativa ($H_1$) solo si la evidencia muestral proporciona suficiente soporte para considerar que $H_0$ es falsa. Si los datos no contradicen significativamente a $H_0$, se concluye que no hay suficiente evidencia para rechazarla, y se mantiene su validez.\\}%\citep{Introducción a phyloseq-castrolab})}
 \end{figure}
 
-En este contexto, el p\-valor se considera como una medida de la probabilidad de éxito (obtener un resultado específico) en un estudio estadístico con los datos observados. Su cálculo depende de la prueba estadística utilizada y de las suposiciones realizadas sobre la distribución de los datos. En general, un valor pequeño del p\-valor sugiere que los datos observados son poco probables bajo la hipótesis nula, lo que sugiere que $H_0$ podría ser falsa.\\
-%Rice, J. A. (2006). Mathematical Statistics and Data Analysis (3rd ed.)
-%Wasserman, L. (2004). All of Statistics: A Concise Course in Statistical Inference.
-
 Existen dos tipos de errores que pueden ocurrir en una prueba de hipótesis:\\
 Error tipo I ($\alpha$): Ocurre cuando se rechaza $H_0$ siendo en realidad verdadera.\\
 Error tipo II ($\beta$): Se produce cuando no se rechaza $H_0$ cuando en realidad es falsa.\\
@@ -245,19 +257,20 @@ El balance entre estos errores es fundamental en el diseño de pruebas estadíst
 
 Las pruebas de hipótesis pueden aplicarse a diferentes contextos, como la comparación de grupos en estudios médicos o científicos. Por ejemplo, en un análisis sobre la salud de los cultivos, se podrían definir las siguientes hipótesis:\\
 $H_0$ : No hay diferencias entre muestras de cultivos saludables y no saludables.\\
-$H_0$ : Existen diferencias significativas entre las muestras de cultivos saludables y no saludables.\\
+$H_1$ : Existen diferencias significativas entre las muestras de cultivos saludables y no saludables.\\
 
-\subsection{Pruebas con muestras pequeñas para comparar dos medias poblacionales}
+\subsection{Prueba t para comparar dos medias poblacionales (muestras pequeñas)}
+
 Suponemos dos poblaciones independientes con distibuciones normales con 
 
 $$\sigma_{1}^{2} = \sigma_{2}^{2}$$
 \\
 
-y queremos probar (tenemos como hipotesis nula)
+y queremos probar (tenemos como hipotesis nula):
 
 $$H_{0} : \mu_{1} = \mu _{2}$$
 
-respecto a la hipotesis alternativa
+respecto a la hipotesis alternativa:
 
 $$H_{a} : \mu_{1} \neq \mu _{2}$$
 
@@ -265,19 +278,17 @@ tomando como estadistico de prueba:
 
 $$ T = \frac{\bar{Y_{1}} - \bar{Y_{2}}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}$$
 
-donde  
+donde:  
 
 $$ S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}$$
 
 
-\subsection{Prueba de Hipótesis sobre las varianzas de dos poblaciones pequeñas} 
-Suponemos dos poblaciones independientes con distibuciones normales  
-
-y queremos probar (tenemos como hipotesis nula)WilcoxonWilcoxon
+\subsection{Prueba F sobre las varianzas de dos poblaciones pequeñas} 
+Suponemos dos poblaciones independientes con distibuciones normales y queremos probar:
 
 $$H_{0} : \sigma_{1}^{2} = \sigma_{2}^{2}$$
 
-respecto a la hipotesis alternativa
+respecto a la hipotesis alternativa:
 
 $$H_{a} : \sigma_{1}^{2} \neq \sigma_{2}^{2}$$
 
@@ -286,7 +297,7 @@ tomando como estadistico de prueba:
 $$ F = \frac{S_{1}^{2}}{S_{2}^{2}}$$
 
 
-\subsection{Prueba de los rangos con signos de Wilcolxon Mann-Whitney}
+\subsection{Prueba de Wilcolxon Mann-Whitney }
 Las pruebas de Wilcoxon y Mann-Whitney U son pruebas estadísticas no paramétricas, lo que significa que no asumen normalidad en los datos. \\
 
 Wilcoxon es una prueba no parametrica para comparar el rango medio de dos muestras relacionadas y determinar si existen diferencias entre ellas. Se uso, ya que los datos no tienen una distribucion normal.
@@ -295,7 +306,7 @@ La U de Mann-Whitney para comparar las medias de dos grupos independientes.
 Prueba no parametrica o libre de distribución, es el analogo no parametrico a la t de Student para lacomparacion de dos medias independientes; solo que esta no requiere parametros y se puede emplear sin ninguna condicion de aplicación.
 
 
-\section{Normalización}
+\section{Normalización y Rarefacción}
 \subsection{Normalización}
 
 %\begin{figure}[!]
@@ -314,7 +325,7 @@ Una red bayesiana es un grafo acìclico dirigiso (DAG) $G=(V,E)$ donde cada nodo
 
 
 
-\section{Analisis comparativo del microbioma de fresa, en relacion con el estado de la planta}
+\section{Microbioma de Fresa}
 
 La fresa \textit{(Fragaria x ananassa)} es un cultivo de gran relevancia comercial y nutricional a nivel mundial. Sin embargo, su producción se ve afectada por diversos factores, como la susceptibilidad a enfermedades y la influencia de las prácticas agrícolas y del ambiente en la calidad del fruto (Geng et al., 2023). En los últimos años, se he visto la importancia del estudio del microbioma vegetal, entendido como la comunidad de microorganismos que coexiste con la planta e incluye bacterias, hongos y arqueas, presentes en nichos como el suelo a granel, la rizósfera (zona directamente influenciada por las raíces) y los tejidos internos (Compant et al., 2019; Sieieda et al., 2024).  \\
 
