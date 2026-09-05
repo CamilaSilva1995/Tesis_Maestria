@@ -18,7 +18,9 @@ Los niveles taxonómicos \ref{Fig 1.1} son categorías jerárquicas utilizadas p
 
 \section{Metagenómica}
 
-La metagenómica es el estudio integral del material genético recuperado directamente de muestras ambientales. Permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, sin necesidad de cultivarlos individualmente. \\
+La metagenómica es el estudio integral del material genético recuperado directamente de muestras ambientales. 
+Permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, 
+sin necesidad de cultivarlos individualmente. \\
 
 Desde un punto de vista matemático, los datos metagenómicos pueden representarse como una matriz de conteos:
 
@@ -28,134 +30,106 @@ X=(x_{ij}) \in \mathbb{N}^{n \times p}
 
 Debido a que las muestras presentan distinta profundidad de secuenciación, se emplean abundancias relativas.
 
-Este campo se centra en comprender la diversidad microbiana, las estructuras poblacionales, las capacidades funcionales y las interacciones de las comunidades microbianas con su entorno. Se aplica comúnmente en el estudio de ecosistemas como el suelo, el agua, la microbiota humana y otros hábitats microbianos complejos. La metagenómica utiliza tecnologías avanzadas de secuenciación, como la secuenciación de nueva generación, para desentrañar la diversidad genética y funcional de estas comunidades (Zhang, 2021).\\
+Este campo se centra en comprender la diversidad microbiana, las estructuras poblacionales, 
+las capacidades funcionales y las interacciones de las comunidades microbianas con su entorno. 
+Se aplica comúnmente en el estudio de ecosistemas como el suelo, el agua, la microbiota humana 
+y otros hábitats microbianos complejos. La metagenómica utiliza tecnologías avanzadas de secuenciación, 
+como la secuenciación de nueva generación, para desentrañar la diversidad genética y funcional de estas 
+comunidades (Zhang, 2021).\\
 
-Existen dos enfoques para la secuenciación de microorganismos: “Amplicón 16S rRNA” y “Shotgun”. La secuenciación por amplicón 16S fue el primer método de secuenciación metagenómica altamente aceptado. Tiene muchas ventajas: el gen 16S está presente en todas las bacterias y arqueas, contiene las regiones necesarias para un buen análisis de PCR (Polymerase Chain Reaction - Reacción en Cadena de la Polimerasa) altamente conservadas, existen conjuntos de primers altamente estudiados para amplificar la mayoría de los organismos, ya se encuentran disponibles bases de datos públicas y bien seleccionadas que permiten una buena comparación, y la secuenciación por 16S es relativamente barata y simple. Sin embargo, posee algunas desventajas: el gen 16S no está presente en los hongos, por lo que este método no es adecuado cuando se desea trabajar con hongos. Además, existe la posibilidad de que se incremente el error de sesgo si no se elige el conjunto de primers adecuado para el organismo a analizar.\\
+Existen dos enfoques para la secuenciación de microorganismos: “Amplicón 16S rRNA” y “Shotgun”. 
+La secuenciación por amplicón 16S fue el primer método de secuenciación metagenómica altamente aceptado. 
+Tiene muchas ventajas: el gen 16S está presente en todas las bacterias y arqueas, contiene las regiones 
+necesarias para un buen análisis de PCR (Polymerase Chain Reaction - Reacción en Cadena de la Polimerasa) 
+altamente conservadas, existen conjuntos de primers altamente estudiados para amplificar la mayoría de los 
+organismos, ya se encuentran disponibles bases de datos públicas y bien seleccionadas que permiten una buena 
+comparación, y la secuenciación por 16S es relativamente barata y simple. Sin embargo, posee algunas desventajas: 
+el gen 16S no está presente en los hongos, por lo que este método no es adecuado cuando se desea trabajar con hongos. 
+Además, existe la posibilidad de que se incremente el error de sesgo si no se elige el conjunto de primers adecuado 
+para el organismo a analizar.\\
 
-Para realizar una secuenciación por 16S, es necesario seguir una serie de pasos para la preparación de la muestra biológica y la extracción del ADN: colecta de la muestra, extracción del ADN y preparación de la librería. Para la colecta de las muestras, se deben tener en cuenta las necesidades del experimento y los resultados esperados, estimar el número de muestras necesarias y considerar el método de almacenamiento; todo esto para garantizar la calidad de los datos. Existen varios métodos y herramientas para realizar la extracción del ADN. Es necesario preparar bibliotecas de datos genómicos para la comparación de las secuencias. Posteriormente, se continúa con la secuenciación de las muestras, para lo cual existen varias herramientas, siendo una de las más usadas Ilumina, que ofrece una mayor cobertura a menor costo. Finalmente, se realiza un control de calidad, cuyo principal objetivo es mejorar la precisión del análisis y prevenir la sobreestimación de los datos. El control de calidad puede incluir: la detección y eliminación de quimeras artificiales, el filtrado de secuencias de baja calidad y de reads muy cortos, así como la eliminación de ruido.\\
+Para realizar una secuenciación por 16S, es necesario seguir una serie de pasos para la preparación de la muestra 
+biológica y la extracción del ADN: colecta de la muestra, extracción del ADN y preparación de la librería. 
+Para la colecta de las muestras, se deben tener en cuenta las necesidades del experimento y los resultados esperados, 
+estimar el número de muestras necesarias y considerar el método de almacenamiento; todo esto para garantizar 
+la calidad de los datos. Existen varios métodos y herramientas para realizar la extracción del ADN. 
+Es necesario preparar bibliotecas de datos genómicos para la comparación de las secuencias.
+Posteriormente, se continúa con la secuenciación de las muestras, para lo cual existen varias herramientas, 
+siendo una de las más usadas Ilumina, que ofrece una mayor cobertura a menor costo. Finalmente, 
+se realiza un control de calidad, cuyo principal objetivo es mejorar la precisión del análisis y prevenir la 
+sobreestimación de los datos. El control de calidad puede incluir: la detección y eliminación de quimeras artificiales, 
+el filtrado de secuencias de baja calidad y de reads muy cortos, así como la eliminación de ruido.\\
 
-Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico correspondiente para cada secuencia. Para esto, se conocen dos enfoques principales: uno basado en filotipos, que agrupa las secuencias directamente en función de su similitud con los filotipos, y otro basado en OTUs (Unidades Taxonómicas Operacionales), que agrupa las secuencias según la similitud entre OTUs. El método de agrupación por OTUs supera al basado en filotipos, pero también presenta ciertas limitaciones, ya que es relativamente costoso computacionalmente y requiere mucha memoria. \\
+Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico correspondiente para cada secuencia. 
+Para esto, se conocen dos enfoques principales: uno basado en filotipos, que agrupa las secuencias directamente en 
+función de su similitud con los filotipos, y otro basado en OTUs (Unidades Taxonómicas Operacionales), que agrupa 
+las secuencias según la similitud entre OTUs. El método de agrupación por OTUs supera al basado en filotipos, 
+pero también presenta ciertas limitaciones, ya que es relativamente costoso computacionalmente y requiere mucha memoria. \\
 
-Un OTU se define dentro del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje común a nivel de especie. Estos OTUs se obtienen mediante clústering, para lo cual ya existen varios métodos y algoritmos disponibles (Xia et al., 2018).
-
-\section{Índices de Diversidad}
-
-Un índice de diversidad constituye una medida numérica empleada para cuantificar la variedad y la distribución de especies en una comunidad biológica o un ecosistema. Estos índices son herramientas matemáticas diseñadas para sintetizar y comparar la composición de especies en diversas comunidades.
-
-\subsection{Diversidad Alfa}
-
-La diversidad alfa refleja la riqueza de las muestras, es decir, el número de especies distintas presentes en un determinado entorno, o la abundancia relativa de dichas especies en dicho entorno; es usada principalmente para medir la diversidad local, haciendo referencia a la diversidad dentro de una muestra o comunidad %(\cite{whittaker1960} & \cite{whittaker1972})
-.Para cuantificar esta diversidad, se recurre a diversos índices de medida, cada uno con enfoques particulares.
-
-
-\textbf{Chao1}, es una métrica que evalúa la riqueza de especies, proporcionando una estimación del número total de especies en una comunidad. Su utilidad se destaca especialmente en situaciones donde la muestra es pequeña o la proporción de especies raras es considerable. Este índice demuestra ser menos sensible a la presencia de especies raras en comparación con otros índices, lo que lo convierte en una herramienta valiosa en estudios centrados en la conservación de especies poco comunes.
-
-La fórmula para calcular el índice Chao1 es la siguiente:
-$$S_{Chao1} = S_{Obs} + \frac{F_1×(F_1-1)}{F_2×(F_2+1)}$$
-Donde:
-\begin{itemize}
-    \item $S_{Obs}$ es el número de especies observadas.
-    \item $F_1$ es el recuento de "singletons" (especies con un solo individuo en todo el inventario).
-    \item $F_2$ es el recuento de "doubletons" (especies con dos individuos en todo el inventario).
-\end{itemize}
-
-Esta expresión nos proporciona una estimación más completa de la riqueza de especies al considerar las especies raras representadas por singletons y doubletons. En consecuencia, Chao1 emerge como una herramienta valiosa para evaluar y comparar la diversidad de especies en comunidades biológicas, especialmente en situaciones donde la muestra es limitada o las especies raras desempeñan un papel significativo.\\
-
-El índice de \textbf{Shannon}, representado por $D_{SH}$, es una medida que estima la diversidad de especies, teniendo en cuenta tanto la abundancia como la uniformidad de las especies en una comunidad. Este índice se enfoca en medir la incertidumbre asociada con la identificación de una especie seleccionada al azar en la comunidad. Cuanto mayor sea el índice de Shannon, mayor será la diversidad de especies en la comunidad.
-
-La fórmula para calcular el índice de Shannon es la siguiente:
-$$H=-\sum_{i_1}^{S}{P_{i}\ln(P_{i})}$$
-Donde:
-\begin{itemize}
-    \item $S$ es el número de OTU's (Operational Taxonomic Units).
-    \item $P_i$ es la proporción de la comunidad representada por $OTU_i$.
-\end{itemize}
-
-Esta expresión matemática nos proporciona una medida cuantitativa de la diversidad de especies, tomando en cuenta la riqueza y la uniformidad de las mismas en la comunidad. Un índice de Shannon más alto indica una mayor diversidad, lo que sugiere una distribución más equitativa de abundancias entre las especies presentes. Es decir, comunidades con índices de Shannon más elevados tienden a tener una mayor variedad de especies y una distribución más equilibrada de individuos entre esas especies.\\
-
-\textbf{Simpson}, es una medida de la dominancia relativa de una o unas pocas especies en una comunidad. Este índice evalúa la probabilidad de que dos individuos seleccionados al azar pertenezcan a la misma especie. En términos prácticos, un índice de Simpson más bajo indica una mayor diversidad de especies en la comunidad, lo que sugiere una distribución más equitativa de la abundancia entre las especies presentes.
-
-La fórmula para calcular el índice de Simpson es la siguiente:
-$$D=\frac{1}{\sum_{i_1}^{S}{P_{i}^{2}}}$$
-Donde:
-\begin{itemize}
-    \item $S$ en el número total de especies en la comunidad.
-    \item $P_i$ es la proporción de la comunidad representada por $OTU_i$.
-\end{itemize}
-
-Esta expresión matemática nos proporciona un indicador cuantitativo de la diversidad de especies, donde un índice de Simpson más bajo refleja una comunidad con una mayor variedad de especies y una distribución más uniforme de individuos entre esas especies.\\
-
-En el contexto de la diversidad alfa, estos índices nos permiten explorar y comparar la diversidad de especies en cada muestra o subconjunto, como el grupo de muestras sanas y enfermas. Proporcionan una visión detallada de cómo se distribuye la diversidad de especies dentro de cada conjunto, permitiendo evaluaciones comparativas entre diferentes conjuntos o condiciones.\\
-
-
-\subsection{Diversidad Beta}
-La diversidad beta se encarga de evaluar cuán similares o diferentes son un par de especies, muestras, conjuntos de muestras o poblaciones entre sí. Fue definida por Whittaker como una medida del cambio de diversidad a traves de gradientes ambientales, en otras palabras "tasa de cambio en la composisión de especies de una comunidad a otra a los largo de gradientes" (\cite{whittaker1960}). Para medir esta diversidad, se utilizan métricas como la disimilitud de Bray-Curtis, la distancia Jaccard o la distancia UniFrac.\\
-
-A continuación, se presenta una lista de distancias disponibles que Phyloseq puede utilizar, siendo las siguientes las más comúnmente utilizadas:\\
-
-La \textbf{Disimilitud de Bray-Curtis}es un índice que se fundamenta en la composición y abundancia de especies en diferentes sitios (\cite{bray&curtis1957}). Este índice mide la similitud entre dos muestras o poblaciones en términos de las especies que comparten, considerando la ponderación de la abundancia de cada especie en cada población.
-
-La fórmula del índice de disimilitud de Bray-Curtis es:
-$$d_{BC} = 1 - \frac{2S}{(S_{a} + S_{b})}$$
-donde $d_{BC}$ es el índice de disimilitud de Bray-Curtis, $S$ es el número de especies compartidas entre las poblaciones $a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, respectivamente.\\
-
-Este índice proporciona una medida cuantitativa de la diferencia relativa en términos de composición de especies y abundancia entre dos poblaciones o muestras. Cuanto más cercano a 1 sea el valor del índice, mayor será la disimilitud entre las poblaciones.\\
-
-La \textbf{Distancia Jaccard} es un índice de disimilitud que se basa en la presencia o ausencia de especies en diferentes poblaciones. Este índice compara la proporción de especies que son comunes entre dos poblaciones en relación con el total de especies encontradas en ambas poblaciones. Resulta útil para comparar la diversidad de especies entre diferentes poblaciones o evaluar la similitud en la composición de especies entre comunidades diversas.
-
-La fórmula para el índice de disimilitud de Jaccard es la siguiente:
-$$d_{JC} = 1 - \frac{S}{(S_{a} + S_{b}-S)}$$
-donde $d_{JC}$ es el índice de disimilitud de Jaccard, $S$ es el número de especies compartidas entre las poblaciones $a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, respectivamente.\\
-
-Este índice ofrece una medida de disimilitud que se centra en la presencia o ausencia de especies, siendo 0 cuando las poblaciones comparten todas las especies y 1 cuando no comparten ninguna. Es especialmente útil para análisis comparativos de la composición de especies entre diferentes comunidades.\\
-
-La distancia \textbf{Euclideana} es comúnmente utilizada en el análisis de datos numéricos y se fundamenta en la diferencia de las abundancias o proporciones de diferentes especies en distintas muestras. Esta distancia mide la separación entre dos muestras como la raíz cuadrada de la suma de las diferencias cuadráticas entre las proporciones de cada especie en ambas muestras.
-
-La fórmula para la distancia Euclidiana entre dos muestras $A$ y $B$ es la siguiente:
-$$d_{euclidean} (A,B) = \sqrt{\sum(A_i - B_i)^2}$$
-Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente.\\
-
-La distancia Euclidiana es simétrica y cumple con la desigualdad del triángulo, lo que significa que satisface las propiedades de una verdadera distancia. Esta métrica es especialmente adecuada para comparar muestras en términos de diferencias numéricas en las abundancias de las especies.\\
-
-La distancia \textbf{Manhattan} también se emplea en el análisis de datos numéricos y se basa en la diferencia de las abundancias o proporciones de diferentes especies en distintas muestras. En este caso, la distancia de Manhattan entre dos muestras se define como la suma de las diferencias absolutas entre las proporciones de cada especie en ambas muestras.
-
-La fórmula de la distancia de Manhattan entre dos muestras $A$ y $B$ se calcula como:
-$$d_{Manhattan}(A, B) = \sum{|A_i - B_i|}$$
-Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente. \\
-
-Al igual que la distancia Euclidiana, la distancia de Manhattan es simétrica y satisface la desigualdad del triángulo. Esta métrica es adecuada para comparar muestras en términos de las diferencias absolutas en las abundancias de las especies.\\
-
-La \textbf{Divergencia de Jensen-Shannon (JSD)} se utiliza para comparar la similitud entre dos distribuciones de probabilidad. En el contexto del análisis de datos de diversidad, estas distribuciones de probabilidad pueden representar la proporción de diferentes especies en distintas muestras. La distancia de JSD entre dos distribuciones de probabilidad se calcula como la raíz cuadrada de la divergencia de Kullback-Leibler entre las dos distribuciones, dividida por dos. 
-
-La fórmula de la distancia de JSD entre dos distribuciones de probabilidad $P$ y $Q$ es la siguiente:
-$$d_{JSD}(P, Q) = \frac{\sqrt{(D_{KL}(P, M) + D_{KL}(Q, M))}}{2}$$
-Donde $D_{KL}(P, M)$ y $D_{KL}(Q, M)$ son las divergencias de Kullback-Leibler entre las distribuciones $P$ y $Q$ y la media $M$ de ambas distribuciones, respectivamente. \\
-
-Al igual que las distancias anteriores, la distancia de JSD es simétrica y satisface la desigualdad del triángulo. Esta métrica es especialmente útil cuando se quiere evaluar la similitud entre las proporciones de especies en diferentes muestras.\\
-
-La metrica de \textbf{UniFrac} es un índice de disimilitud que se basa en la filogenia de las especies presentes en diferentes sitios. Su objetivo es comparar la similitud entre dos sitios en términos de la diversidad filogenética de las especies, teniendo en cuenta la contribución relativa de cada rama en el árbol filogenético. Esta métrica resulta valiosa para evaluar la similitud en la evolución de las especies en diferentes comunidades o para comparar la estructura filogenética de distintas comunidades.\\
-
-La fórmula del índice de disimilitud de UniFrac es más compleja en comparación con las de Bray-Curtis y Jaccard, ya que se basa en un análisis de la distribución de ramas filogenéticas únicas o compartidas entre los sitios. Este enfoque permite capturar la información sobre las relaciones evolutivas entre las especies, proporcionando una medida más completa de la similitud o disimilitud entre las comunidades estudiadas. \\
-
-Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud entre muestras, permitiendo seleccionar la más apropiada según el contexto del estudio y los objetivos específicos del análisis de diversidad beta.
+Un OTU se define dentro del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje común a 
+nivel de especie. Estos OTUs se obtienen mediante clústering, para lo cual ya existen varios métodos y algoritmos 
+disponibles (Xia et al., 2018).
 
 \section{Microbioma}
-El microbioma se define como la comunidad completa de microorganismos (incluyendo bacterias, arqueas, hongos, protozoos y virus) que habitan en un entorno específico, como el cuerpo humano, animales, plantas o ambientes naturales. Este término no solo abarca a los microorganismos vivos, sino también sus genes, metabolitos y las interacciones que tienen entre ellos y con su huésped. La investigación del microbioma utiliza herramientas avanzadas, como la secuenciación de próxima generación y los análisis metagenómicos, para entender su diversidad y funciones en la salud, la enfermedad y los ecosistemas (Marchesi \& Ravel, 2015).\\
+El microbioma se define como la comunidad completa de microorganismos (incluyendo bacterias, arqueas, hongos, 
+protozoos y virus) que habitan en un entorno específico, como el cuerpo humano, animales, plantas o ambientes naturales. 
+Este término no solo abarca a los microorganismos vivos, sino también sus genes, metabolitos y las interacciones que 
+tienen entre ellos y con su huésped. La investigación del microbioma utiliza herramientas avanzadas, como la secuenciación 
+de próxima generación y los análisis metagenómicos, para entender su diversidad y funciones en la salud, la enfermedad y 
+los ecosistemas (Marchesi \& Ravel, 2015).\\
 % (Marchesi, J.R., Ravel, J. The vocabulary of microbiome research: a proposal. Microbiome 3, 31 (2015). https://doi.org/10.1186/s40168-015-0094-5) 
+
+
+\section{Microbioma de Fresa}
+
+La fresa \textit{(Fragaria x ananassa)} es un cultivo de gran relevancia comercial y nutricional a nivel mundial. Sin embargo, su producción se ve afectada por diversos factores, como la susceptibilidad a enfermedades y la influencia de las prácticas agrícolas y del ambiente en la calidad del fruto (Geng et al., 2023). En los últimos años, se he visto la importancia del estudio del microbioma vegetal, entendido como la comunidad de microorganismos que coexiste con la planta e incluye bacterias, hongos y arqueas, presentes en nichos como el suelo a granel, la rizósfera (zona directamente influenciada por las raíces) y los tejidos internos (Compant et al., 2019; Sieieda et al., 2024).  \\
+
+La rizósfera constituye un entorno microbiano complejo que alberga una gran variedad de organismos con funciones clave en el desarrollo vegetal, incluyendo la mineralización de nutrientes, producción de hormonas, supresión de patógenos y estimulación de la inmunidad vegetal (Berendsen et al., 2012; Wang et al., 2023). Las comunidades microbianas no solo influyen en el crecimiento y rendimiento de los cultivos, sino que también reflejan su estado de salud, lo cual hace posible identificar biomarcadores microbianos para clasificar plantas sanas y enfermas (Yang et al., 2020; Nam et al., 2023).  \\
+
+La composición del microbioma de fresa ha sido analizada mediante diferentes métodos, el uso de secuenciación de alto rendimiento ha revolucionado el campo, permitiendo el estudio masivo del ADN microbiano directamente desde las muestras ambientales (Bokulich et al., 2018). Particularmente, la secuenciación de regiones como **16S rRNA** (bacterias) e **ITS1** (hongos) ha permitido caracterizar comunidades microbianas asociadas a distintos tejidos de la planta (raíces, tallos, hojas) y diferentes estados de salud (Zhang et al., 2023). \\
+
+Para el análisis de estos datos, se emplean pipelines bioinformáticos como QIIME2, junto con clasificadores taxonómicos basados en *machine learning* (como Scikit-learn) y bases de datos como SILVA (Quast et al., 2013). En el entorno de R, herramientas como phyloseq y vegan permiten calcular índices de diversidad (alfa: Shannon, Simpson, Chao1; beta: Bray-Curtis, UniFrac), realizar pruebas estadísticas (Wilcoxon), análisis multivariado (NMDS, PCoA) y análisis funcional (McMurdie  Holmes, 2013; Douglas et al., 2020). \\
+
+Estudios recientes han identificado diferencias taxonómicas significativas entre plantas de fresa sanas y enfermas. Por ejemplo, *Udaeobacter sp.*, *Solibacter sp.* y *Nitrosomonadaceae* son más abundantes en rizósferas no saludables, mientras que *Tepidisphaerales*, *Hydrocarboniphaga* y algunos géneros de *Pseudomonas* están relacionados con condiciones saludables (Nam et al., 2023; Sieieda et al., 2024). Estas diferencias en abundancia sugieren que ciertos microorganismos pueden actuar como indicadores microbianos del estado fisiológico de la planta. \\
+
+El estudio de Yang et al. (2020), utilizando secuenciación de alto rendimiento, mostró que la infección por oídio inducía cambios significativos en la estructura y diversidad microbiana del suelo rizosférico de la fresa, incluyendo una reducción general de la riqueza microbiana. Esto refuerza la idea de que las alteraciones en el microbioma pueden estar asociadas con la aparición o progresión de enfermedades. \\
+
+Además, diversas especies de bacterias y hongos han sido identificadas como patógenos relevantes en fresa, como *Colletotrichum sp.*, *Alternaria sp.*, *Botrytis cinerea* y *Dactylonectria sp.*. No obstante, también se han reportado microorganismos benéficos con potencial para ser utilizados como agentes de biocontrol (BCA) o rizobacterias promotoras del crecimiento (PGPR). Especies como *Bacillus subtilis*, *B. amyloliquefaciens*, *Pseudomonas monteilii*, *Mortierella sp.* y levaduras como *Rhodotorula* o *Trichoderma asperellum* han mostrado eficacia en la mejora de la salud de la planta y en la calidad de la fruta (Geng et al., 2023; Sieieda et al., 2024). \\
+
+En conjunto, estos hallazgos destacan la importancia del análisis estadístico y bioinformático del microbioma rizosférico, tanto para la comprensión ecológica como para la aplicación biotecnológica en sistemas agrícolas sostenibles. A partir de estos estudios, se pueden desarrollar modelos predictivos y herramientas diagnósticas basadas en perfiles microbianos, útiles para monitorear la salud del cultivo, diseñar estrategias de manejo más eficientes, e incluso seleccionar microorganismos clave como bioinoculantes. \\
+
+
+
+\section{Solena}
+Solena es una empresa de biotecnología agrícola (AgTech) enfocada en el análisis y mejora del microbioma del suelo. Su misión es desarrollar soluciones innovadoras basadas en datos moleculares y biotecnología para optimizar la salud del suelo y, como consecuencia, aumentar la productividad agrícola. Aprovechando herramientas avanzadas como inteligencia artificial y genómica, Solena obtiene conocimientos profundos sobre la composición y funcionalidad del microbioma del suelo. Además, en colaboración con organizaciones locales, la empresa implementa centros de diagnóstico molecular agrícola, como el establecido en México, para evaluar la salud de los suelos y fomentar prácticas agrícolas regenerativas.
+
 
 \section{Clasificadores}
 
 \subsection{Kaiju}
-Kaiju es un programa para clasificación taxonómica de lecturas de secuenciación de alto rendimiento,  a partir de la secuenciación del genoma completo de ADN metagenómico. \\
+Kaiju es un programa para clasificación taxonómica de lecturas de secuenciación de alto rendimiento, 
+a partir de la secuenciación del genoma completo de ADN metagenómico. \\
 
 \subsection{Kraken \& Braken}
-Kraken es una herramienta de clasificación de secuencias de ADN metagenómico mediante alineación exacta de k-mers, asignándoles etiquetas taxonómicas con gran exactitud y velocidad (Wood, 2014)(\cite{wood2014kraken}). Esta herramienta crea su base de datos de consulta a partir de una biblioteca de datos metagenómicos e información taxonómica de NCBI (National Center for Biotechnology Information).\\
+Kraken es una herramienta de clasificación de secuencias de ADN metagenómico mediante alineación exacta de k-mers, 
+asignándoles etiquetas taxonómicas con gran exactitud y velocidad (Wood, 2014)(\cite{wood2014kraken}). 
+Esta herramienta crea su base de datos de consulta a partir de una biblioteca de datos metagenómicos e información 
+taxonómica de NCBI (National Center for Biotechnology Information).\\
 
 Kraken deja sin clasificar las secuencias que no tienen k-mers presentes en la base de datos precalculada.\\
 
-La salida de Kraken consiste en una línea por cada read, que contiene 5 ítems separados por tabulaciones. En primer lugar, se indica si el read fue clasificado o no clasificado (C/U), seguido por el nombre del read (ID de la secuencia, el encabezado del archivo FASTA o FASTQ de entrada), la etiqueta taxonómica asignada por Kraken (0 si la secuencia no queda clasificada), la longitud de la secuencia en pares de bases (bp), y finalmente una lista delimitada por espacios que muestra el mapeo LCA (Lowest Common Ancestor) de cada k-mer de la secuencia (ID taxonómico : número de k-mers).\\
+La salida de Kraken consiste en una línea por cada read, que contiene 5 ítems separados por tabulaciones. 
+En primer lugar, se indica si el read fue clasificado o no clasificado (C/U), seguido por el nombre del read 
+(ID de la secuencia, el encabezado del archivo FASTA o FASTQ de entrada), la etiqueta taxonómica asignada por Kraken 
+(0 si la secuencia no queda clasificada), la longitud de la secuencia en pares de bases (bp), y finalmente una lista 
+delimitada por espacios que muestra el mapeo LCA (Lowest Common Ancestor) de cada k-mer de la secuencia 
+(ID taxonómico : número de k-mers).\\
 
-Para obtener el ID taxonómico completo, Kraken dispone de la herramienta kraken\_translate, que, después de procesar los resultados con la misma base de datos, genera una lista de los reads junto con el nombre completo del ID taxonómico. Además, tiene una herramienta complementaria (-mpa), que presenta la salida ordenada por categoría taxonómica (root\_Super Kingdom, d\_kingdom, p\_phylum, c\_class, o\_order, f\_family, g\_genus, s\_species). (Wood \& Salzberg, 2014) .\\
+Para obtener el ID taxonómico completo, Kraken dispone de la herramienta kraken\_translate, que, después de procesar 
+los resultados con la misma base de datos, genera una lista de los reads junto con el nombre completo del ID taxonómico. 
+Además, tiene una herramienta complementaria (-mpa), que presenta la salida ordenada por categoría taxonómica 
+(root\_Super Kingdom, d\_kingdom, p\_phylum, c\_class, o\_order, f\_family, g\_genus, s\_species). 
+(Wood \& Salzberg, 2014) .\\
 
 %\begin{figure}[h]
 %\centering
@@ -166,31 +140,68 @@ Para obtener el ID taxonómico completo, Kraken dispone de la herramienta kraken
 %"C:\Users\csilva\OneDrive - universidadean.edu.co\Documentos\Cami\Tesis_Maestria\latex\Img\cap1\kraken.png"
 
 
-BRACKEN (Bayesian Re-estimation of Abundance after Classification with KraKEN) calcula la abundancia de especies, géneros u otras categorías taxonómicas a partir de las secuencias de ADN recopiladas en un experimento de metagenómica (Lu et al., 2017)(\cite{lu2017bracken}).\\
+BRACKEN (Bayesian Re-estimation of Abundance after Classification with KraKEN) calcula la abundancia de especies, 
+géneros u otras categorías taxonómicas a partir de las secuencias de ADN recopiladas en un experimento de metagenómica 
+(Lu et al., 2017)(\cite{lu2017bracken}).\\
 
-BRACKEN realiza estimaciones probabilísticas basadas en las salidas de Kraken para completar las asignaciones al nivel taxonómico requerido, con el objetivo de obtener una estimación de abundancia más precisa. Este enfoque permite producir estimaciones fiables de abundancia a nivel de especie y género, incluso cuando una muestra contiene múltiples especies casi idénticas.
+BRACKEN realiza estimaciones probabilísticas basadas en las salidas de Kraken para completar las asignaciones 
+al nivel taxonómico requerido, con el objetivo de obtener una estimación de abundancia más precisa. 
+Este enfoque permite producir estimaciones fiables de abundancia a nivel de especie y género, incluso cuando una muestra 
+contiene múltiples especies casi idénticas.
+
 
 \section{Lenguajes}
 
 \subsection{BASH}
-Bash (Bourne Again SHell) es un intérprete de comandos y un lenguaje de scripting desarrollado para el sistema operativo Unix y sus derivados, como Linux. Creado en 1989 por Brian Fox, Bash permite automatizar tareas mediante scripts, lo que resulta particularmente útil en entornos de análisis bioinformático, donde se requiere manejar grandes volúmenes de datos. Aunque no está diseñado específicamente para análisis estadísticos o gráficos, Bash es fundamental para la gestión de flujos de trabajo y la integración de herramientas como BLAST, SAMtools y GATK. Se emplea para procesar datos en sistemas de alto rendimiento, administrar flujos de trabajo de análisis masivo y realizar manipulaciones rápidas de datos en formatos de texto o binarios. \\
+Bash (Bourne Again SHell) es un intérprete de comandos y un lenguaje de scripting desarrollado para el sistema operativo 
+Unix y sus derivados, como Linux. Creado en 1989 por Brian Fox, Bash permite automatizar tareas mediante scripts, 
+lo que resulta particularmente útil en entornos de análisis bioinformático, donde se requiere manejar grandes volúmenes 
+de datos. Aunque no está diseñado específicamente para análisis estadísticos o gráficos, Bash es fundamental para 
+la gestión de flujos de trabajo y la integración de herramientas como BLAST, SAMtools y GATK. Se emplea para procesar 
+datos en sistemas de alto rendimiento, administrar flujos de trabajo de análisis masivo y realizar manipulaciones 
+rápidas de datos en formatos de texto o binarios. \\
 
 \subsection{Python}
-Python es un lenguaje de programación de propósito general, conocido por su sintaxis sencilla y su amplia aplicabilidad en la ciencia de datos, bioinformática y aprendizaje automático. Fue creado por Guido van Rossum en 1991 y se ha consolidado como una herramienta versátil en disciplinas científicas debido a su capacidad para integrar múltiples flujos de trabajo. Python cuenta con bibliotecas científicas robustas, como NumPy para álgebra lineal, Pandas para manejo de datos estructurados y Biopython para análisis bioinformáticos. Se emplea en la automatización de procesos, el desarrollo de algoritmos personalizados, el análisis de secuencias genómicas y la inteligencia artificial aplicada a la investigación científica.\\
+Python es un lenguaje de programación de propósito general, conocido por su sintaxis sencilla y su amplia aplicabilidad 
+en la ciencia de datos, bioinformática y aprendizaje automático. Fue creado por Guido van Rossum en 1991 y se ha 
+consolidado como una herramienta versátil en disciplinas científicas debido a su capacidad para integrar múltiples flujos 
+de trabajo. Python cuenta con bibliotecas científicas robustas, como NumPy para álgebra lineal, Pandas para manejo de 
+datos estructurados y Biopython para análisis bioinformáticos. Se emplea en la automatización de procesos, el desarrollo 
+de algoritmos personalizados, el análisis de secuencias genómicas y la inteligencia artificial aplicada a la investigación 
+científica.\\
 
 \subsubsection{Phyloseq}
-Phyloseq es un software de código abierto diseñado para la manipulación y análisis integral de datos metagenómicos generados mediante tecnologías de secuenciación de alto rendimiento. Esta herramienta, desarrollada en R, ofrece capacidades para importar, almacenar, analizar y visualizar datos metagenómicos de manera eficiente. En el entorno de R, los datos se estructuran en un objeto Phyloseq, que tiene la versatilidad de contener elementos clave, como la tabla de taxonomía, la tabla de conteos, la tabla de muestras o metadatos, y el árbol filogenético. Esta organización multifacética facilita un análisis completo y preciso de la estructura de la comunidad microbiana, brindando una comprensión profunda de los datos metagenómicos. (\cite{mcmurdie2013})\\
+Phyloseq es un software de código abierto diseñado para la manipulación y análisis integral de datos metagenómicos 
+generados mediante tecnologías de secuenciación de alto rendimiento. Esta herramienta, desarrollada en R, ofrece 
+capacidades para importar, almacenar, analizar y visualizar datos metagenómicos de manera eficiente. En el entorno de R, 
+los datos se estructuran en un objeto Phyloseq, que tiene la versatilidad de contener elementos clave, como la tabla de 
+taxonomía, la tabla de conteos, la tabla de muestras o metadatos, y el árbol filogenético. Esta organización multifacética 
+facilita un análisis completo y preciso de la estructura de la comunidad microbiana, brindando una comprensión profunda 
+de los datos metagenómicos. (\cite{mcmurdie2013})\\
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap1/Phyloseq.png}
-\caption{Estructura del Objeto Phyloseq: Organización Integral de Datos Metagenómicos para Análisis de Diversidad Microbiana, que integra tablas de abundancia, datos taxonómicos, metadatos de las muestras y árboles filogenéticos. Este formato permite un análisis eficiente y completo de las comunidades microbianas.}%\citep{Introducción a phyloseq-castrolab})}
+\caption{Estructura del Objeto Phyloseq: Organización Integral de Datos Metagenómicos para Análisis de Diversidad 
+Microbiana, que integra tablas de abundancia, datos taxonómicos, metadatos de las muestras y árboles filogenéticos. 
+Este formato permite un análisis eficiente y completo de las comunidades microbianas.}
+%\citep{Introducción a phyloseq-castrolab})}
 \end{figure}
 
 \subsection{R \& RStudio}
-R es un lenguaje de programación y un entorno de software diseñado específicamente para el análisis estadístico y la visualización de datos. Desarrollado inicialmente por Ross Ihaka y Robert Gentleman en 1993, se ha convertido en una herramienta esencial en biología, ecología, genómica y otras disciplinas científicas que requieren análisis cuantitativos. Su principal fortaleza radica en la disponibilidad de bibliotecas especializadas, como ggplot2 para visualización y phyloseq para análisis de microbiomas, además de su comunidad activa, que contribuye con paquetes de código abierto. R se utiliza ampliamente en análisis de datos complejos, modelado estadístico, aprendizaje automático y visualización avanzada, facilitando la reproducibilidad y el manejo de grandes volúmenes de datos.\\
+R es un lenguaje de programación y un entorno de software diseñado específicamente para el análisis estadístico y la 
+visualización de datos. Desarrollado inicialmente por Ross Ihaka y Robert Gentleman en 1993, se ha convertido en una 
+herramienta esencial en biología, ecología, genómica y otras disciplinas científicas que requieren análisis cuantitativos.
+Su principal fortaleza radica en la disponibilidad de bibliotecas especializadas, como ggplot2 para visualización 
+y phyloseq para análisis de microbiomas, además de su comunidad activa, que contribuye con paquetes de código abierto. 
+R se utiliza ampliamente en análisis de datos complejos, modelado estadístico, aprendizaje automático y visualización 
+avanzada, facilitando la reproducibilidad y el manejo de grandes volúmenes de datos.\\
 
-RStudio es un entorno de desarrollo integrado (IDE) diseñado para trabajar con el lenguaje de programación R. Ofrece una interfaz intuitiva que facilita la escritura, ejecución y depuración de código, así como la visualización de resultados. RStudio permite organizar proyectos, gestionar paquetes y bibliotecas, y crear documentos reproducibles con R Markdown. También es compatible con Shiny para aplicaciones interactivas. Disponible en versiones gratuitas y de pago, RStudio es ideal tanto para principiantes como para expertos en análisis de datos.\\
+RStudio es un entorno de desarrollo integrado (IDE) diseñado para trabajar con el lenguaje de programación R. 
+Ofrece una interfaz intuitiva que facilita la escritura, ejecución y depuración de código, así como la visualización 
+de resultados. RStudio permite organizar proyectos, gestionar paquetes y bibliotecas, y crear documentos reproducibles 
+con R Markdown. También es compatible con Shiny para aplicaciones interactivas. Disponible en versiones gratuitas y 
+de pago, RStudio es ideal tanto para principiantes como para expertos en análisis de datos.\\
 
 \section{Formatos}
 
@@ -216,8 +227,178 @@ BAM (Binary Alignment/Map) es un formato binario utilizado para almacenar datos 
 
 Cada archivo BAM contiene información detallada sobre cómo las secuencias de ADN se alinean con una referencia genómica, incluyendo la posición de la secuencia en el genoma, la calidad del alineamiento, las secuencias de los nucleótidos y las puntuaciones de calidad. Dado que el formato BAM es binario, es más compacto y rápido de manejar en comparación con su contraparte en texto, SAM.
 
-\section{Solena}
-Solena es una empresa de biotecnología agrícola (AgTech) enfocada en el análisis y mejora del microbioma del suelo. Su misión es desarrollar soluciones innovadoras basadas en datos moleculares y biotecnología para optimizar la salud del suelo y, como consecuencia, aumentar la productividad agrícola. Aprovechando herramientas avanzadas como inteligencia artificial y genómica, Solena obtiene conocimientos profundos sobre la composición y funcionalidad del microbioma del suelo. Además, en colaboración con organizaciones locales, la empresa implementa centros de diagnóstico molecular agrícola, como el establecido en México, para evaluar la salud de los suelos y fomentar prácticas agrícolas regenerativas.
+
+\section{Índices de Diversidad}
+
+Un índice de diversidad constituye una medida numérica empleada para cuantificar la variedad y la distribución 
+de especies en una comunidad biológica o un ecosistema. Estos índices son herramientas matemáticas diseñadas para 
+sintetizar y comparar la composición de especies en diversas comunidades.
+
+\subsection{Diversidad Alfa}
+\label{sec:diversidad_alfa}
+
+La diversidad alfa refleja la riqueza de las muestras, es decir, el número de especies distintas presentes 
+en un determinado entorno, o la abundancia relativa de dichas especies en dicho entorno; es usada principalmente 
+para medir la diversidad local, haciendo referencia a la diversidad dentro de una muestra o 
+comunidad %(\cite{whittaker1960} & \cite{whittaker1972})
+.Para cuantificar esta diversidad, se recurre a diversos índices de medida, cada uno con enfoques particulares.
+
+
+\textbf{Chao1}, es una métrica que evalúa la riqueza de especies, proporcionando una estimación del 
+número total de especies en una comunidad. Su utilidad se destaca especialmente en situaciones donde la 
+muestra es pequeña o la proporción de especies raras es considerable. Este índice demuestra ser menos sensible a 
+la presencia de especies raras en comparación con otros índices, lo que lo convierte en una herramienta valiosa 
+en estudios centrados en la conservación de especies poco comunes.
+
+La fórmula para calcular el índice Chao1 es la siguiente:
+$$S_{Chao1} = S_{Obs} + \frac{F_1×(F_1-1)}{F_2×(F_2+1)}$$
+Donde:
+\begin{itemize}
+    \item $S_{Obs}$ es el número de especies observadas.
+    \item $F_1$ es el recuento de "singletons" (especies con un solo individuo en todo el inventario).
+    \item $F_2$ es el recuento de "doubletons" (especies con dos individuos en todo el inventario).
+\end{itemize}
+
+Esta expresión nos proporciona una estimación más completa de la riqueza de especies al considerar 
+las especies raras representadas por singletons y doubletons. En consecuencia, Chao1 emerge como una 
+herramienta valiosa para evaluar y comparar la diversidad de especies en comunidades biológicas, especialmente 
+en situaciones donde la muestra es limitada o las especies raras desempeñan un papel significativo.\\
+
+El índice de \textbf{Shannon}, representado por $D_{SH}$, es una medida que estima la diversidad de especies, 
+teniendo en cuenta tanto la abundancia como la uniformidad de las especies en una comunidad. 
+Este índice se enfoca en medir la incertidumbre asociada con la identificación de una especie seleccionada 
+al azar en la comunidad. Cuanto mayor sea el índice de Shannon, mayor será la diversidad de especies en la comunidad.
+
+La fórmula para calcular el índice de Shannon es la siguiente:
+$$H=-\sum_{i_1}^{S}{P_{i}\ln(P_{i})}$$
+Donde:
+\begin{itemize}
+    \item $S$ es el número de OTU's (Operational Taxonomic Units).
+    \item $P_i$ es la proporción de la comunidad representada por $OTU_i$.
+\end{itemize}
+
+Esta expresión matemática nos proporciona una medida cuantitativa de la diversidad de especies, 
+tomando en cuenta la riqueza y la uniformidad de las mismas en la comunidad. Un índice de Shannon más alto indica 
+una mayor diversidad, lo que sugiere una distribución más equitativa de abundancias entre las especies presentes. 
+Es decir, comunidades con índices de Shannon más elevados tienden a tener una mayor variedad de especies y 
+una distribución más equilibrada de individuos entre esas especies.\\
+
+\textbf{Simpson}, es una medida de la dominancia relativa de una o unas pocas especies en una comunidad. 
+Este índice evalúa la probabilidad de que dos individuos seleccionados al azar pertenezcan a la misma especie. 
+En términos prácticos, un índice de Simpson más bajo indica una mayor diversidad de especies en la comunidad, 
+lo que sugiere una distribución más equitativa de la abundancia entre las especies presentes.
+
+La fórmula para calcular el índice de Simpson es la siguiente:
+$$D=\frac{1}{\sum_{i_1}^{S}{P_{i}^{2}}}$$
+Donde:
+\begin{itemize}
+    \item $S$ en el número total de especies en la comunidad.
+    \item $P_i$ es la proporción de la comunidad representada por $OTU_i$.
+\end{itemize}
+
+Esta expresión matemática nos proporciona un indicador cuantitativo de la diversidad de especies, 
+donde un índice de Simpson más bajo refleja una comunidad con una mayor variedad de especies y una
+distribución más uniforme de individuos entre esas especies.\\
+
+En el contexto de la diversidad alfa, estos índices nos permiten explorar y comparar la 
+diversidad de especies en cada muestra o subconjunto, como el grupo de muestras sanas y enfermas.
+ Proporcionan una visión detallada de cómo se distribuye la diversidad de especies dentro de cada conjunto, 
+ permitiendo evaluaciones comparativas entre diferentes conjuntos o condiciones.\\
+
+
+\subsection{Diversidad Beta}
+La diversidad beta se encarga de evaluar cuán similares o diferentes son un par de especies, muestras, 
+conjuntos de muestras o poblaciones entre sí. Fue definida por Whittaker como una medida del cambio 
+de diversidad a traves de gradientes ambientales, en otras palabras "tasa de cambio en la composisión de 
+especies de una comunidad a otra a los largo de gradientes" (\cite{whittaker1960}). Para medir esta diversidad, 
+se utilizan métricas como la disimilitud de Bray-Curtis, la distancia Jaccard o la distancia UniFrac.\\
+
+A continuación, se presenta una lista de distancias disponibles que Phyloseq puede utilizar, siendo las 
+siguientes las más comúnmente utilizadas:\\
+
+La \textbf{Disimilitud de Bray-Curtis}es un índice que se fundamenta en la composición y abundancia de 
+especies en diferentes sitios (\cite{bray&curtis1957}). Este índice mide la similitud entre dos muestras 
+o poblaciones en términos de las especies que comparten, considerando la ponderación de la abundancia de cada 
+especie en cada población.
+
+La fórmula del índice de disimilitud de Bray-Curtis es:
+$$d_{BC} = 1 - \frac{2S}{(S_{a} + S_{b})}$$
+donde $d_{BC}$ es el índice de disimilitud de Bray-Curtis, $S$ es el número de especies compartidas entre 
+las poblaciones $a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, 
+respectivamente.\\
+
+Este índice proporciona una medida cuantitativa de la diferencia relativa en términos de composición de especies y 
+abundancia entre dos poblaciones o muestras. Cuanto más cercano a 1 sea el valor del índice, mayor será la disimilitud 
+entre las poblaciones.\\
+
+La \textbf{Distancia Jaccard} es un índice de disimilitud que se basa en la presencia o ausencia de especies en 
+diferentes poblaciones. Este índice compara la proporción de especies que son comunes entre dos poblaciones 
+en relación con el total de especies encontradas en ambas poblaciones. Resulta útil para comparar la diversidad de 
+especies entre diferentes poblaciones o evaluar la similitud en la composición de especies entre comunidades diversas.
+
+La fórmula para el índice de disimilitud de Jaccard es la siguiente:
+$$d_{JC} = 1 - \frac{S}{(S_{a} + S_{b}-S)}$$
+donde $d_{JC}$ es el índice de disimilitud de Jaccard, $S$ es el número de especies compartidas entre las poblaciones 
+$a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, respectivamente.\\
+
+Este índice ofrece una medida de disimilitud que se centra en la presencia o ausencia de especies, siendo 0 cuando 
+las poblaciones comparten todas las especies y 1 cuando no comparten ninguna. Es especialmente útil para análisis 
+comparativos de la composición de especies entre diferentes comunidades.\\
+
+La distancia \textbf{Euclideana} es comúnmente utilizada en el análisis de datos numéricos y se fundamenta en la 
+diferencia de las abundancias o proporciones de diferentes especies en distintas muestras. Esta distancia mide la 
+separación entre dos muestras como la raíz cuadrada de la suma de las diferencias cuadráticas entre las proporciones 
+de cada especie en ambas muestras.
+
+La fórmula para la distancia Euclidiana entre dos muestras $A$ y $B$ es la siguiente:
+$$d_{euclidean} (A,B) = \sqrt{\sum(A_i - B_i)^2}$$
+Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente.\\
+
+La distancia Euclidiana es simétrica y cumple con la desigualdad del triángulo, lo que significa que satisface las 
+propiedades de una verdadera distancia. Esta métrica es especialmente adecuada para comparar muestras en términos de 
+diferencias numéricas en las abundancias de las especies.\\
+
+La distancia \textbf{Manhattan} también se emplea en el análisis de datos numéricos y se basa en la diferencia de 
+las abundancias o proporciones de diferentes especies en distintas muestras. En este caso, la distancia de Manhattan 
+entre dos muestras se define como la suma de las diferencias absolutas entre las proporciones de cada especie en ambas 
+muestras.
+
+La fórmula de la distancia de Manhattan entre dos muestras $A$ y $B$ se calcula como:
+$$d_{Manhattan}(A, B) = \sum{|A_i - B_i|}$$
+Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente. \\
+
+Al igual que la distancia Euclidiana, la distancia de Manhattan es simétrica y satisface la desigualdad del triángulo. 
+Esta métrica es adecuada para comparar muestras en términos de las diferencias absolutas en las abundancias de las 
+especies.\\
+
+La \textbf{Divergencia de Jensen-Shannon (JSD)} se utiliza para comparar la similitud entre dos distribuciones 
+de probabilidad. En el contexto del análisis de datos de diversidad, estas distribuciones de probabilidad pueden 
+representar la proporción de diferentes especies en distintas muestras. La distancia de JSD entre dos distribuciones 
+de probabilidad se calcula como la raíz cuadrada de la divergencia de Kullback-Leibler entre las dos distribuciones, 
+dividida por dos. 
+
+La fórmula de la distancia de JSD entre dos distribuciones de probabilidad $P$ y $Q$ es la siguiente:
+$$d_{JSD}(P, Q) = \frac{\sqrt{(D_{KL}(P, M) + D_{KL}(Q, M))}}{2}$$
+Donde $D_{KL}(P, M)$ y $D_{KL}(Q, M)$ son las divergencias de Kullback-Leibler entre las distribuciones $P$ y $Q$ y 
+la media $M$ de ambas distribuciones, respectivamente. \\
+
+Al igual que las distancias anteriores, la distancia de JSD es simétrica y satisface la desigualdad del triángulo. 
+Esta métrica es especialmente útil cuando se quiere evaluar la similitud entre las proporciones de especies en 
+diferentes muestras.\\
+
+La metrica de \textbf{UniFrac} es un índice de disimilitud que se basa en la filogenia de las especies presentes 
+en diferentes sitios. Su objetivo es comparar la similitud entre dos sitios en términos de la diversidad filogenética 
+de las especies, teniendo en cuenta la contribución relativa de cada rama en el árbol filogenético. Esta métrica resulta 
+valiosa para evaluar la similitud en la evolución de las especies en diferentes comunidades o para comparar la estructura 
+filogenética de distintas comunidades.\\
+
+La fórmula del índice de disimilitud de UniFrac es más compleja en comparación con las de Bray-Curtis y Jaccard, 
+ya que se basa en un análisis de la distribución de ramas filogenéticas únicas o compartidas entre los sitios. 
+Este enfoque permite capturar la información sobre las relaciones evolutivas entre las especies, proporcionando una 
+medida más completa de la similitud o disimilitud entre las comunidades estudiadas. \\
+
+Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud entre muestras, permitiendo seleccionar 
+la más apropiada según el contexto del estudio y los objetivos específicos del análisis de diversidad beta.
 
 \section{Prueba de Hipótesis}
 Una hipótesis es una suposición sobre los datos que puede ser verdadera o falsa. Las pruebas de hipótesis son herramientas estadísticas esenciales en diversos campos, ya que permiten contrastar una teoría con la evidencia empírica. A través de un proceso riguroso, estas pruebas ayudan a evaluar la veracidad de una afirmación científica de manera objetiva y fundamentada.\\
@@ -322,45 +503,5 @@ La rarefacción es una tecnica de normalización usada en el preprocesamiento de
 
 \section{Redes Bayesianas}
 Una red bayesiana es un grafo acìclico dirigiso (DAG) $G=(V,E)$ donde cada nodod representa una variable.
-
-
-
-\section{Microbioma de Fresa}
-
-La fresa \textit{(Fragaria x ananassa)} es un cultivo de gran relevancia comercial y nutricional a nivel mundial. Sin embargo, su producción se ve afectada por diversos factores, como la susceptibilidad a enfermedades y la influencia de las prácticas agrícolas y del ambiente en la calidad del fruto (Geng et al., 2023). En los últimos años, se he visto la importancia del estudio del microbioma vegetal, entendido como la comunidad de microorganismos que coexiste con la planta e incluye bacterias, hongos y arqueas, presentes en nichos como el suelo a granel, la rizósfera (zona directamente influenciada por las raíces) y los tejidos internos (Compant et al., 2019; Sieieda et al., 2024).  \\
-
-La rizósfera constituye un entorno microbiano complejo que alberga una gran variedad de organismos con funciones clave en el desarrollo vegetal, incluyendo la mineralización de nutrientes, producción de hormonas, supresión de patógenos y estimulación de la inmunidad vegetal (Berendsen et al., 2012; Wang et al., 2023). Las comunidades microbianas no solo influyen en el crecimiento y rendimiento de los cultivos, sino que también reflejan su estado de salud, lo cual hace posible identificar biomarcadores microbianos para clasificar plantas sanas y enfermas (Yang et al., 2020; Nam et al., 2023).  \\
-
-La composición del microbioma de fresa ha sido analizada mediante diferentes métodos, el uso de secuenciación de alto rendimiento ha revolucionado el campo, permitiendo el estudio masivo del ADN microbiano directamente desde las muestras ambientales (Bokulich et al., 2018). Particularmente, la secuenciación de regiones como **16S rRNA** (bacterias) e **ITS1** (hongos) ha permitido caracterizar comunidades microbianas asociadas a distintos tejidos de la planta (raíces, tallos, hojas) y diferentes estados de salud (Zhang et al., 2023). \\
-
-Para el análisis de estos datos, se emplean pipelines bioinformáticos como QIIME2, junto con clasificadores taxonómicos basados en *machine learning* (como Scikit-learn) y bases de datos como SILVA (Quast et al., 2013). En el entorno de R, herramientas como phyloseq y vegan permiten calcular índices de diversidad (alfa: Shannon, Simpson, Chao1; beta: Bray-Curtis, UniFrac), realizar pruebas estadísticas (Wilcoxon), análisis multivariado (NMDS, PCoA) y análisis funcional (McMurdie  Holmes, 2013; Douglas et al., 2020). \\
-
-Estudios recientes han identificado diferencias taxonómicas significativas entre plantas de fresa sanas y enfermas. Por ejemplo, *Udaeobacter sp.*, *Solibacter sp.* y *Nitrosomonadaceae* son más abundantes en rizósferas no saludables, mientras que *Tepidisphaerales*, *Hydrocarboniphaga* y algunos géneros de *Pseudomonas* están relacionados con condiciones saludables (Nam et al., 2023; Sieieda et al., 2024). Estas diferencias en abundancia sugieren que ciertos microorganismos pueden actuar como indicadores microbianos del estado fisiológico de la planta. \\
-
-El estudio de Yang et al. (2020), utilizando secuenciación de alto rendimiento, mostró que la infección por oídio inducía cambios significativos en la estructura y diversidad microbiana del suelo rizosférico de la fresa, incluyendo una reducción general de la riqueza microbiana. Esto refuerza la idea de que las alteraciones en el microbioma pueden estar asociadas con la aparición o progresión de enfermedades. \\
-
-Además, diversas especies de bacterias y hongos han sido identificadas como patógenos relevantes en fresa, como *Colletotrichum sp.*, *Alternaria sp.*, *Botrytis cinerea* y *Dactylonectria sp.*. No obstante, también se han reportado microorganismos benéficos con potencial para ser utilizados como agentes de biocontrol (BCA) o rizobacterias promotoras del crecimiento (PGPR). Especies como *Bacillus subtilis*, *B. amyloliquefaciens*, *Pseudomonas monteilii*, *Mortierella sp.* y levaduras como *Rhodotorula* o *Trichoderma asperellum* han mostrado eficacia en la mejora de la salud de la planta y en la calidad de la fruta (Geng et al., 2023; Sieieda et al., 2024). \\
-
-En conjunto, estos hallazgos destacan la importancia del análisis estadístico y bioinformático del microbioma rizosférico, tanto para la comprensión ecológica como para la aplicación biotecnológica en sistemas agrícolas sostenibles. A partir de estos estudios, se pueden desarrollar modelos predictivos y herramientas diagnósticas basadas en perfiles microbianos, útiles para monitorear la salud del cultivo, diseñar estrategias de manejo más eficientes, e incluso seleccionar microorganismos clave como bioinoculantes. \\
-
-
-\section{Simuladores de Secuencias metagenomicas}
-
-CAMISIM es un simulador de secuencias metagenómicas, este software puede simular una amplia variedad de comunidades microbianas y conjuntos de datos metagenomicos, este algoritmo se divide en tres partes, la primera es el diseño de la comunidad, aqui se crean dichos datos a partir de perfiles taxonomicos de novo o de una base de datos genomicos dada (\cite{fritz2019camisim}). Para el diseño a partir de perfiles taxonomicos, se incluye una base de datos de la taxonomia de NCBI (National Center for Biotechnology Information), y se proporcionan en formato BIOM (Biological Observation Matrix format); estos perfiles pueden incluir taxones de bacterias,arqueas y eucariotas asi como virus. Para el diseño de comunidad de novo, se necesitan genomas en formato .fasta y un archivo de mapeo que contenga ID taxonomico (de NCBI) y OTU para cada genoma.  \\
-
-En segunda parte se basa en la simulacion del metagenoma, los conjuntos de datos del metagenoma se generan a partir de los perfiles de abundancia y genomas del paso anterior; las longitudes de los reads y los tamaños de los insertos se pueden variar para algunos simuladores. Para cada conjunto de datos, CAMISIM genera archivos FASTQ y un archivo BAM.  \\
-
-Y por ultimo en la tercera parte se tiene la creación y posprocesamiento de estandares de oro de ensamblaje y agrupacion, a partir de los datos del metagenoma simulado,los archivos FASTQ y BAM. CAMISIM genera los estándares de oro del genoma y el taxón para las lecturas y los contigs ensamblados, respectivamente. Estos especifican el genoma y el linaje taxonómico al que pertenecen las secuencias individuales. Todas las secuencias se pueden anonimizar y mezclar (pero rastrear durante todo el proceso), para permitir su uso en desafíos de evaluación comparativa.  \\
-
-\begin{itemize}
-    \item CAMISIM es un programa flexible para simular una gran variedad de comunidades microbianas y muestras de metagenomas. 
-    \item Posee un conjunto de funciones completo para simular comunidades microbianas realistas y conjuntos de datos de metagenomas.
-    \item Exploraron el efecto de las propiedades específicas de los datos en el rendimiento del ensamblador.
-\end{itemize}
-
-
-
-DeepMAsED tiene un enfoque de deeplearning para identificar contig  mal ensamblados sin necesidad de genomas de referencia.\\
-
 
 
