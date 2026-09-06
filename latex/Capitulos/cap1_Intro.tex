@@ -1,11 +1,33 @@
 \chapter{Preliminares}
-La ciencia de datos es el campo que aplica técnicas analíticas avanzadas y principios científicos para extraer información valiosa de los datos. Su objetivo principal es la extracción, el análisis y la comunicación de información útil a partir de los datos. Combina la estadística, la informática y el pensamiento crítico para obtener conocimiento significativo y relevante. Para realizar un análisis de datos, es necesario tener conocimientos en matemáticas, estadística, programación, inteligencia artificial, aprendizaje automático y experiencia en diversas áreas de aplicación. En este caso, es indispensable incursionar en conocimientos de genómica y metagenómica.\\
+La ciencia de datos es el campo que aplica técnicas analíticas avanzadas y 
+principios científicos para extraer información valiosa de los datos. 
+Su objetivo principal es la extracción, el análisis y la comunicación de 
+información útil a partir de los datos. Combina la estadística, la informática 
+y el pensamiento crítico para obtener conocimiento significativo y relevante. 
+Para realizar un análisis de datos, es necesario tener conocimientos en matemáticas, 
+estadística, programación, inteligencia artificial, aprendizaje automático y 
+experiencia en diversas áreas de aplicación. En este caso, es indispensable 
+incursionar en conocimientos de genómica y metagenómica.\\
 
-En microbiología, un factor importante de estudio son las interacciones entre microorganismos en un ambiente natural, ya que la mayoría de estos estudios se realizan en laboratorios. Los avances tecnológicos han llevado al desarrollo de métodos de secuenciación de ADN. Una de las plataformas más utilizadas y conocidas en el campo de la metagenómica es Illumina. Con este tipo de herramientas, es posible analizar el ADN extraído directamente de una muestra, en lugar de trabajar únicamente con microorganismos cultivados individualmente.\\
+En microbiología, un factor importante de estudio son las interacciones entre 
+microorganismos en un ambiente natural, ya que la mayoría de estos estudios se 
+realizan en laboratorios. Los avances tecnológicos han llevado al desarrollo de 
+métodos de secuenciación de ADN. Una de las plataformas más utilizadas y 
+conocidas en el campo de la metagenómica es Illumina. Con este tipo de herramientas,
+ es posible analizar el ADN extraído directamente de una muestra, en lugar de 
+ trabajar únicamente con microorganismos cultivados individualmente.\\
 
-La filogenética es el estudio de la evolución de la vida y las relaciones entre organismos y grupos de organismos. Este análisis se centra en temas como la diversidad, la evolución, la ecología y los genomas, ayudándonos a comprender cómo evolucionan los genes, los genomas y las especies. Una parte importante de este estudio es la identificación, clasificación y denominación de organismos biológicos, campo conocido como taxonomía. \\
+La filogenética es el estudio de la evolución de la vida y las relaciones entre 
+organismos y grupos de organismos. Este análisis se centra en temas como la 
+diversidad, la evolución, la ecología y los genomas, ayudándonos a comprender cómo 
+evolucionan los genes, los genomas y las especies. Una parte importante de este 
+estudio es la identificación, clasificación y denominación de organismos biológicos,
+ campo conocido como taxonomía. \\
 
-Carl Linnaeus, considerado el padre de la taxonomía, propuso siete niveles taxonómicos: Reino, Phylum, Clase, Orden, Familia, Género y Especie. Posteriormente, se añadió el Dominio como el octavo grupo taxonómico más amplio, dividido en Arqueas, Bacterias y Eukarya.\\
+Carl Linnaeus, considerado el padre de la taxonomía, propuso siete niveles 
+taxonómicos: Reino, Phylum, Clase, Orden, Familia, Género y Especie. Posteriormente,
+ se añadió el Dominio como el octavo grupo taxonómico más amplio, dividido en 
+ Arqueas, Bacterias y Eukarya.\\
 
 \begin{figure}[h]
 \centering
@@ -15,60 +37,6 @@ Carl Linnaeus, considerado el padre de la taxonomía, propuso siete niveles taxo
 \end{figure}
 
 Los niveles taxonómicos \ref{Fig 1.1} son categorías jerárquicas utilizadas para clasificar organismos, desde los grupos más generales hasta los más específicos. El Reino es el nivel más amplio y agrupa organismos según características fundamentales, como ser procariotas o eucariotas. Dentro de cada reino, los organismos se subdividen en Filos, que los organizan según estructuras o procesos biológicos compartidos. Estos se clasifican en Clases, que reúnen grupos más específicos de organismos. A su vez, las clases se dividen en Órdenes, que contienen familias relacionadas. Las Familias agrupan Géneros, que son conjuntos de especies estrechamente relacionadas. Finalmente, la Especie es el nivel más específico, que incluye organismos capaces de reproducirse entre sí y producir descendencia viable. Esta jerarquía es esencial para organizar la biodiversidad y estudiar las relaciones evolutivas entre los organismos.\\
-
-\section{Metagenómica}
-
-La metagenómica es el estudio integral del material genético recuperado directamente de muestras ambientales. 
-Permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, 
-sin necesidad de cultivarlos individualmente. \\
-
-Desde un punto de vista matemático, los datos metagenómicos pueden representarse como una matriz de conteos:
-
-\begin{equation}
-X=(x_{ij}) \in \mathbb{N}^{n \times p}
-\end{equation} 
-
-Debido a que las muestras presentan distinta profundidad de secuenciación, se emplean abundancias relativas.
-
-Este campo se centra en comprender la diversidad microbiana, las estructuras poblacionales, 
-las capacidades funcionales y las interacciones de las comunidades microbianas con su entorno. 
-Se aplica comúnmente en el estudio de ecosistemas como el suelo, el agua, la microbiota humana 
-y otros hábitats microbianos complejos. La metagenómica utiliza tecnologías avanzadas de secuenciación, 
-como la secuenciación de nueva generación, para desentrañar la diversidad genética y funcional de estas 
-comunidades (Zhang, 2021).\\
-
-Existen dos enfoques para la secuenciación de microorganismos: “Amplicón 16S rRNA” y “Shotgun”. 
-La secuenciación por amplicón 16S fue el primer método de secuenciación metagenómica altamente aceptado. 
-Tiene muchas ventajas: el gen 16S está presente en todas las bacterias y arqueas, contiene las regiones 
-necesarias para un buen análisis de PCR (Polymerase Chain Reaction - Reacción en Cadena de la Polimerasa) 
-altamente conservadas, existen conjuntos de primers altamente estudiados para amplificar la mayoría de los 
-organismos, ya se encuentran disponibles bases de datos públicas y bien seleccionadas que permiten una buena 
-comparación, y la secuenciación por 16S es relativamente barata y simple. Sin embargo, posee algunas desventajas: 
-el gen 16S no está presente en los hongos, por lo que este método no es adecuado cuando se desea trabajar con hongos. 
-Además, existe la posibilidad de que se incremente el error de sesgo si no se elige el conjunto de primers adecuado 
-para el organismo a analizar.\\
-
-Para realizar una secuenciación por 16S, es necesario seguir una serie de pasos para la preparación de la muestra 
-biológica y la extracción del ADN: colecta de la muestra, extracción del ADN y preparación de la librería. 
-Para la colecta de las muestras, se deben tener en cuenta las necesidades del experimento y los resultados esperados, 
-estimar el número de muestras necesarias y considerar el método de almacenamiento; todo esto para garantizar 
-la calidad de los datos. Existen varios métodos y herramientas para realizar la extracción del ADN. 
-Es necesario preparar bibliotecas de datos genómicos para la comparación de las secuencias.
-Posteriormente, se continúa con la secuenciación de las muestras, para lo cual existen varias herramientas, 
-siendo una de las más usadas Ilumina, que ofrece una mayor cobertura a menor costo. Finalmente, 
-se realiza un control de calidad, cuyo principal objetivo es mejorar la precisión del análisis y prevenir la 
-sobreestimación de los datos. El control de calidad puede incluir: la detección y eliminación de quimeras artificiales, 
-el filtrado de secuencias de baja calidad y de reads muy cortos, así como la eliminación de ruido.\\
-
-Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico correspondiente para cada secuencia. 
-Para esto, se conocen dos enfoques principales: uno basado en filotipos, que agrupa las secuencias directamente en 
-función de su similitud con los filotipos, y otro basado en OTUs (Unidades Taxonómicas Operacionales), que agrupa 
-las secuencias según la similitud entre OTUs. El método de agrupación por OTUs supera al basado en filotipos, 
-pero también presenta ciertas limitaciones, ya que es relativamente costoso computacionalmente y requiere mucha memoria. \\
-
-Un OTU se define dentro del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje común a 
-nivel de especie. Estos OTUs se obtienen mediante clústering, para lo cual ya existen varios métodos y algoritmos 
-disponibles (Xia et al., 2018).
 
 \section{Microbioma}
 El microbioma se define como la comunidad completa de microorganismos (incluyendo bacterias, arqueas, hongos, 
@@ -80,28 +48,142 @@ los ecosistemas (Marchesi \& Ravel, 2015).\\
 % (Marchesi, J.R., Ravel, J. The vocabulary of microbiome research: a proposal. Microbiome 3, 31 (2015). https://doi.org/10.1186/s40168-015-0094-5) 
 
 
+\section{Metagenómica}
+El microbioma se estudia a través de la metagenómica, que mediante el dato de un 
+archivo de texto llamado metagenoma permite analizar comunidades microbianas en su entorno natural.
+La metagenómica es el estudio integral del material genético recuperado directamente de muestras 
+ambientales. Este campo se centra en comprender la diversidad microbiana, las estructuras poblacionales, 
+las capacidades funcionales y las interacciones de las comunidades microbianas con su entorno. 
+Se aplica comúnmente en el estudio de ecosistemas como el suelo, el agua, la microbiota humana 
+y otros hábitats microbianos complejos. La metagenómica utiliza tecnologías avanzadas de secuenciación, 
+como la secuenciación de nueva generación, para desentrañar la diversidad genética y funcional de estas 
+comunidades (Zhang, 2021).\\
+
+La metagenómica permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, 
+sin necesidad de cultivarlos individualmente. El DNA es pasado por un secuenciador, que regresa lecturas que pueden después
+de un procesamiento bioinformático, ser clasificadas y asignadas a un taxón. En este sentido, 
+los datos metagenómicos pueden representarse como una matriz de conteos, como la siguiente:
+
+\begin{equation}
+X=(x_{ij}) \in \mathbb{N}^{n \times p}
+\end{equation} 
+
+En esta matriz, cada fila puede representar una muestra (por ejemplo, 
+un sitio ambiental), y cada columna corresponde a un taxón (por ejemplo, una especie bacteriana). 
+El elemento $x_{ij}$ indica el número de lecturas asignadas al taxón $j$ en la muestra $i$. 
+Debido a que las muestras presentan distinta profundidad de secuenciación, 
+se suelen emplear abundancias relativas.
+
+Existen dos enfoques para la secuenciación de DNA ambiental de microorganismos: 
+“Amplicón 16S rRNA” y “Shotgun”. 
+La secuenciación por amplicón 16S fue el primer método de secuenciación metagenómica altamente aceptado. 
+Tiene muchas ventajas: el gen 16S está presente en todas las bacterias y arqueas, contiene las regiones 
+necesarias para un buen análisis de PCR (Polymerase Chain Reaction - Reacción en Cadena de la Polimerasa) 
+altamente conservadas, existen conjuntos de primers altamente estudiados para amplificar la mayoría de los 
+organismos, ya se encuentran disponibles bases de datos públicas y bien seleccionadas que permiten una buena 
+comparación, y la secuenciación por 16S es relativamente barata y simple. Sin embargo, posee algunas desventajas: 
+el gen 16S no está presente en los hongos, por lo que este método no es adecuado cuando se desea trabajar con hongos. 
+Además, existe la posibilidad de que se incremente el error de sesgo si no se elige el conjunto de primers adecuado 
+para el organismo a analizar. La secuenciación shotgun corta al azar todo el ADN  presente en la muestra y lee esos fragmentos, 
+sin amplificar  previamente ninguna región en particular. El nombre alude a esa 
+fragmentación indiscriminada: en lugar de leer una única región conservada, 
+se obtiene una cobertura dispersa de todo el metagenoma, de modo que cada lectura 
+puede provenir de cualquier parte del genoma de cualquier organismo presente en la muestra. 
+Gracias a ello se  detectan a la vez bacterias, hongos y otros eucariotas, que el enfoque 
+por amplicón 16S no alcanza a ver. \\
+
+En estre trabajo utilizaremos metagenomas shotgun de microorganismos relacionados con el
+cultivo de fresas. Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico correspondiente para cada secuencia. 
+Para esto, se realiza un enfoque basado en OTUs (Unidades Taxonómicas Operacionales), que agrupa 
+las secuencias según la similitud entre OTUs. El método de agrupación por OTUs presenta ciertas limitaciones, 
+ya que es relativamente costoso computacionalmente y requiere mucha memoria. Un OTU puede definirse dentro 
+del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje común a 
+nivel de especie. Estos OTUs pueden obtenerse mediante clústering, para lo cual ya existen varios métodos y algoritmos 
+disponibles (Xia et al., 2018). La identificación taxonómica de los OTUs también 
+puede abordarse mediante clasificadores basados en $k$-meros, que descomponen cada secuencia en sus subcadenas de longitud $k$
+y las confrontan contra una base de referencia.
+
+Para el análisis de estos datos, se emplean herramientas bioinformáticas como kraken y braken. 
+A los que posteriori, se pueden realizar análisis estadísticos y de diversidad 
+utilizando herramientas como R y Python. 
+En el entorno de R, herramientas 
+como phyloseq y vegan permiten calcular índices de diversidad (alfa: Shannon, Simpson, Chao1; beta: Bray-Curtis, UniFrac), 
+realizar pruebas estadísticas (Wilcoxon), análisis multivariado (NMDS, PCoA) y 
+análisis funcional (McMurdie  Holmes, 2013; Douglas et al., 2020). \\
+
+
 \section{Microbioma de Fresa}
 
-La fresa \textit{(Fragaria x ananassa)} es un cultivo de gran relevancia comercial y nutricional a nivel mundial. Sin embargo, su producción se ve afectada por diversos factores, como la susceptibilidad a enfermedades y la influencia de las prácticas agrícolas y del ambiente en la calidad del fruto (Geng et al., 2023). En los últimos años, se he visto la importancia del estudio del microbioma vegetal, entendido como la comunidad de microorganismos que coexiste con la planta e incluye bacterias, hongos y arqueas, presentes en nichos como el suelo a granel, la rizósfera (zona directamente influenciada por las raíces) y los tejidos internos (Compant et al., 2019; Sieieda et al., 2024).  \\
+La fresa \textit{(Fragaria x ananassa)} es un cultivo de gran relevancia 
+comercial y nutricional a nivel mundial. Sin embargo, su producción se ve afectada 
+por diversos factores, como la susceptibilidad a enfermedades y la influencia de las 
+prácticas agrícolas y del ambiente en la calidad del fruto (Geng et al., 2023). 
+En los últimos años, se he visto la importancia del estudio del microbioma vegetal, 
+entendido como la comunidad de microorganismos que coexiste con la planta e incluye bacterias, 
+hongos y arqueas, presentes en nichos como el suelo a granel, la rizósfera 
+(zona directamente influenciada por las raíces) 
+y los tejidos internos (Compant et al., 2019; Sieieda et al., 2024).  
+La composición del microbioma de fresa ha sido analizada mediante 
+diferentes métodos, mediante el estudio masivo del ADN microbiano directamente desde 
+las muestras ambientales (Bokulich et al., 2018). Particularmente, 
+la secuenciación de regiones como **16S rRNA** (bacterias) e **ITS1** (hongos) 
+ha permitido comenzar a caracterizar comunidades microbianas asociadas a distintos tejidos 
+de la planta (raíces, tallos, hojas) y diferentes estados de salud (Zhang et al., 2023). \\
 
-La rizósfera constituye un entorno microbiano complejo que alberga una gran variedad de organismos con funciones clave en el desarrollo vegetal, incluyendo la mineralización de nutrientes, producción de hormonas, supresión de patógenos y estimulación de la inmunidad vegetal (Berendsen et al., 2012; Wang et al., 2023). Las comunidades microbianas no solo influyen en el crecimiento y rendimiento de los cultivos, sino que también reflejan su estado de salud, lo cual hace posible identificar biomarcadores microbianos para clasificar plantas sanas y enfermas (Yang et al., 2020; Nam et al., 2023).  \\
-
-La composición del microbioma de fresa ha sido analizada mediante diferentes métodos, el uso de secuenciación de alto rendimiento ha revolucionado el campo, permitiendo el estudio masivo del ADN microbiano directamente desde las muestras ambientales (Bokulich et al., 2018). Particularmente, la secuenciación de regiones como **16S rRNA** (bacterias) e **ITS1** (hongos) ha permitido caracterizar comunidades microbianas asociadas a distintos tejidos de la planta (raíces, tallos, hojas) y diferentes estados de salud (Zhang et al., 2023). \\
-
-Para el análisis de estos datos, se emplean pipelines bioinformáticos como QIIME2, junto con clasificadores taxonómicos basados en *machine learning* (como Scikit-learn) y bases de datos como SILVA (Quast et al., 2013). En el entorno de R, herramientas como phyloseq y vegan permiten calcular índices de diversidad (alfa: Shannon, Simpson, Chao1; beta: Bray-Curtis, UniFrac), realizar pruebas estadísticas (Wilcoxon), análisis multivariado (NMDS, PCoA) y análisis funcional (McMurdie  Holmes, 2013; Douglas et al., 2020). \\
-
-Estudios recientes han identificado diferencias taxonómicas significativas entre plantas de fresa sanas y enfermas. Por ejemplo, *Udaeobacter sp.*, *Solibacter sp.* y *Nitrosomonadaceae* son más abundantes en rizósferas no saludables, mientras que *Tepidisphaerales*, *Hydrocarboniphaga* y algunos géneros de *Pseudomonas* están relacionados con condiciones saludables (Nam et al., 2023; Sieieda et al., 2024). Estas diferencias en abundancia sugieren que ciertos microorganismos pueden actuar como indicadores microbianos del estado fisiológico de la planta. \\
-
-El estudio de Yang et al. (2020), utilizando secuenciación de alto rendimiento, mostró que la infección por oídio inducía cambios significativos en la estructura y diversidad microbiana del suelo rizosférico de la fresa, incluyendo una reducción general de la riqueza microbiana. Esto refuerza la idea de que las alteraciones en el microbioma pueden estar asociadas con la aparición o progresión de enfermedades. \\
-
-Además, diversas especies de bacterias y hongos han sido identificadas como patógenos relevantes en fresa, como *Colletotrichum sp.*, *Alternaria sp.*, *Botrytis cinerea* y *Dactylonectria sp.*. No obstante, también se han reportado microorganismos benéficos con potencial para ser utilizados como agentes de biocontrol (BCA) o rizobacterias promotoras del crecimiento (PGPR). Especies como *Bacillus subtilis*, *B. amyloliquefaciens*, *Pseudomonas monteilii*, *Mortierella sp.* y levaduras como *Rhodotorula* o *Trichoderma asperellum* han mostrado eficacia en la mejora de la salud de la planta y en la calidad de la fruta (Geng et al., 2023; Sieieda et al., 2024). \\
-
-En conjunto, estos hallazgos destacan la importancia del análisis estadístico y bioinformático del microbioma rizosférico, tanto para la comprensión ecológica como para la aplicación biotecnológica en sistemas agrícolas sostenibles. A partir de estos estudios, se pueden desarrollar modelos predictivos y herramientas diagnósticas basadas en perfiles microbianos, útiles para monitorear la salud del cultivo, diseñar estrategias de manejo más eficientes, e incluso seleccionar microorganismos clave como bioinoculantes. \\
+La rizósfera constituye un entorno microbiano complejo que alberga una gran variedad 
+de organismos con funciones clave en el desarrollo vegetal, incluyendo la mineralización 
+de nutrientes, producción de hormonas, supresión de patógenos y estimulación de la 
+inmunidad vegetal (Berendsen et al., 2012; Wang et al., 2023). 
+Las comunidades microbianas no solo influyen en el crecimiento y 
+rendimiento de los cultivos, sino que también pueden reflejar su estado de salud, 
+lo cual hace posible identificar biomarcadores microbianos para clasificar
+ plantas sanas y enfermas (Yang et al., 2020; Nam et al., 2023).  \\
 
 
+Estudios recientes han identificado diferencias taxonómicas significativas
+entre plantas de fresa sanas y enfermas. Por ejemplo, \textit{Udaeobacter sp.},
+\textit{Solibacter sp.} y \textit{Nitrosomonadaceae} son más abundantes en rizósferas
+no saludables, mientras que \textit{Tepidisphaerales}, \textit{Hydrocarboniphaga} y algunos
+ géneros de \textit{Pseudomonas} están relacionados con condiciones
+ saludables (Nam et al., 2023; Sieieda et al., 2024).
+ Estas diferencias en abundancia sugieren que ciertos microorganismos pueden actuar 
+ como indicadores microbianos del estado fisiológico de la planta. \\
 
-\section{Solena}
-Solena es una empresa de biotecnología agrícola (AgTech) enfocada en el análisis y mejora del microbioma del suelo. Su misión es desarrollar soluciones innovadoras basadas en datos moleculares y biotecnología para optimizar la salud del suelo y, como consecuencia, aumentar la productividad agrícola. Aprovechando herramientas avanzadas como inteligencia artificial y genómica, Solena obtiene conocimientos profundos sobre la composición y funcionalidad del microbioma del suelo. Además, en colaboración con organizaciones locales, la empresa implementa centros de diagnóstico molecular agrícola, como el establecido en México, para evaluar la salud de los suelos y fomentar prácticas agrícolas regenerativas.
+El estudio de Yang et al. (2020), utilizando secuenciación de alto rendimiento, 
+mostró que la infección por oídio inducía cambios significativos en la estructura y 
+diversidad microbiana del suelo rizosférico de la fresa, incluyendo una reducción 
+general de la riqueza microbiana. Esto refuerza la idea de que las alteraciones 
+en el microbioma pueden estar asociadas con la aparición o progresión de enfermedades. \\
+
+Además, diversas especies de bacterias y hongos han sido identificadas como patógenos
+relevantes en fresa, como \textit{Colletotrichum sp.}, \textit{Alternaria sp.}, \textit{Botrytis cinerea}
+y \textit{Dactylonectria sp.}. No obstante, también se han reportado microorganismos benéficos
+con potencial para ser utilizados como agentes de biocontrol (BCA) o
+rizobacterias promotoras del crecimiento (PGPR). Especies como \textit{Bacillus subtilis},
+ \textit{B. amyloliquefaciens}, \textit{Pseudomonas monteilii}, \textit{Mortierella sp.} y levaduras
+ como \textit{Rhodotorula} o \textit{Trichoderma asperellum} han mostrado eficacia en la mejora
+ de la salud de la planta y en la calidad de la 
+ fruta (Geng et al., 2023; Sieieda et al., 2024). \\
+
+En conjunto, estos hallazgos destacan la importancia del análisis estadístico 
+y bioinformático del microbioma rizosférico, tanto para la comprensión ecológica 
+como para la aplicación biotecnológica en sistemas agrícolas sostenibles. 
+A partir de estos estudios, se pueden desarrollar modelos predictivos y herramientas 
+diagnósticas basadas en perfiles microbianos, útiles para monitorear la salud del cultivo, 
+diseñar estrategias de manejo más eficientes, e incluso seleccionar microorganismos 
+clave como bioinoculantes. \\
+
+
+Los datos shotgun que utilizaremos en este estudio , son originales y fueron provistos por Solena,
+una empresa de biotecnología agrícola (AgTech) enfocada en el análisis y 
+mejora del microbioma del suelo. Su misión es desarrollar soluciones innovadoras 
+basadas en datos moleculares y biotecnología para optimizar la salud del suelo y, 
+como consecuencia, aumentar la productividad agrícola. Aprovechando herramientas avanzadas 
+como inteligencia artificial y genómica, Solena obtiene conocimientos profundos sobre 
+la composición y funcionalidad del microbioma del suelo. Además, en colaboración con 
+organizaciones locales, la empresa implementa centros de diagnóstico molecular agrícola, 
+como el establecido en México, para evaluar la salud de los suelos y fomentar prácticas 
+agrícolas regenerativas.
 
 
 \section{Clasificadores}

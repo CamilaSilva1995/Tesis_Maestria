@@ -1,33 +1,32 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {chapter}{\numberline {1}Preliminares}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Metagenómica}{3}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Microbioma}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.1}Microbioma}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Metagenómica}{3}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Microbioma de Fresa}{5}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Solena}{7}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Clasificadores}{8}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}Kaiju}{8}{subsection.1.5.1}%
-\contentsline {subsection}{\numberline {1.5.2}Kraken \& Braken}{8}{subsection.1.5.2}%
-\contentsline {section}{\numberline {1.6}Lenguajes}{9}{section.1.6}%
-\contentsline {subsection}{\numberline {1.6.1}BASH}{9}{subsection.1.6.1}%
-\contentsline {subsection}{\numberline {1.6.2}Python}{9}{subsection.1.6.2}%
+\contentsline {section}{\numberline {1.4}Clasificadores}{7}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Kaiju}{7}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Kraken \& Braken}{8}{subsection.1.4.2}%
+\contentsline {section}{\numberline {1.5}Lenguajes}{9}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}BASH}{9}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Python}{9}{subsection.1.5.2}%
 \contentsline {subsubsection}{Phyloseq}{10}{section*.5}%
-\contentsline {subsection}{\numberline {1.6.3}R \& RStudio}{10}{subsection.1.6.3}%
-\contentsline {section}{\numberline {1.7}Formatos}{11}{section.1.7}%
-\contentsline {subsection}{\numberline {1.7.1}JSON}{11}{subsection.1.7.1}%
-\contentsline {subsection}{\numberline {1.7.2}BIOM}{12}{subsection.1.7.2}%
-\contentsline {subsection}{\numberline {1.7.3}FASTA}{12}{subsection.1.7.3}%
-\contentsline {subsection}{\numberline {1.7.4}BAM}{13}{subsection.1.7.4}%
-\contentsline {section}{\numberline {1.8}Índices de Diversidad}{13}{section.1.8}%
-\contentsline {subsection}{\numberline {1.8.1}Diversidad Alfa}{13}{subsection.1.8.1}%
-\contentsline {subsection}{\numberline {1.8.2}Diversidad Beta}{16}{subsection.1.8.2}%
-\contentsline {section}{\numberline {1.9}Prueba de Hipótesis}{19}{section.1.9}%
-\contentsline {subsection}{\numberline {1.9.1}Prueba t para comparar dos medias poblacionales (muestras pequeñas)}{21}{subsection.1.9.1}%
-\contentsline {subsection}{\numberline {1.9.2}Prueba F sobre las varianzas de dos poblaciones pequeñas}{22}{subsection.1.9.2}%
-\contentsline {subsection}{\numberline {1.9.3}Prueba de Wilcolxon Mann-Whitney }{23}{subsection.1.9.3}%
-\contentsline {section}{\numberline {1.10}Normalización y Rarefacción}{23}{section.1.10}%
-\contentsline {subsection}{\numberline {1.10.1}Normalización}{23}{subsection.1.10.1}%
-\contentsline {subsection}{\numberline {1.10.2}Rarefacción}{23}{subsection.1.10.2}%
-\contentsline {section}{\numberline {1.11}Redes Bayesianas}{23}{section.1.11}%
+\contentsline {subsection}{\numberline {1.5.3}R \& RStudio}{10}{subsection.1.5.3}%
+\contentsline {section}{\numberline {1.6}Formatos}{11}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}JSON}{11}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}BIOM}{12}{subsection.1.6.2}%
+\contentsline {subsection}{\numberline {1.6.3}FASTA}{12}{subsection.1.6.3}%
+\contentsline {subsection}{\numberline {1.6.4}BAM}{12}{subsection.1.6.4}%
+\contentsline {section}{\numberline {1.7}Índices de Diversidad}{13}{section.1.7}%
+\contentsline {subsection}{\numberline {1.7.1}Diversidad Alfa}{13}{subsection.1.7.1}%
+\contentsline {subsection}{\numberline {1.7.2}Diversidad Beta}{16}{subsection.1.7.2}%
+\contentsline {section}{\numberline {1.8}Prueba de Hipótesis}{19}{section.1.8}%
+\contentsline {subsection}{\numberline {1.8.1}Prueba t para comparar dos medias poblacionales (muestras pequeñas)}{22}{subsection.1.8.1}%
+\contentsline {subsection}{\numberline {1.8.2}Prueba F sobre las varianzas de dos poblaciones pequeñas}{23}{subsection.1.8.2}%
+\contentsline {subsection}{\numberline {1.8.3}Prueba de Wilcolxon Mann-Whitney }{23}{subsection.1.8.3}%
+\contentsline {section}{\numberline {1.9}Normalización y Rarefacción}{24}{section.1.9}%
+\contentsline {subsection}{\numberline {1.9.1}Normalización}{24}{subsection.1.9.1}%
+\contentsline {subsection}{\numberline {1.9.2}Rarefacción}{24}{subsection.1.9.2}%
+\contentsline {section}{\numberline {1.10}Redes Bayesianas}{24}{section.1.10}%
 \contentsline {chapter}{\numberline {2}objetivos}{25}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Objetivo general}{25}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Objetivos específicos}{25}{section.2.2}%
