@@ -1,11 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[Int, ]{Introducción}
-
-
-\bibitem[Met, ]{Metagenomics}
-
-
 \bibitem[Anderson et~al., 2011]{anderson2011navigating}
 Anderson, M.~J., Crist, T.~O., Chase, J.~M., Vellend, M., Inouye, B.~D.,
   Freestone, A.~L., Sanders, N.~J., Cornell, H.~V., Comita, L.~S., Davies,
@@ -97,11 +91,21 @@ Datta, S., Guha, S., et~al. (2021).
 \newblock {\em Statistical Analysis of Microbiome Data}.
 \newblock Springer.
 
+\bibitem[Eduardo Castro~Nallar, 2020]{castro2020phyloseq}
+Eduardo Castro~Nallar, P. (2020).
+\newblock
+  \texttt{http://www.castrolab.org/teaching/data_analysis/intro-phyloseq.html}.
+
 \bibitem[Favila et~al., 2022]{favila2022micnet}
 Favila, N., Madrigal-Trejo, D., Legorreta, D., S{\'a}nchez-P{\'e}rez, J.,
   Espinosa-Asuar, L., Eguiarte, L.~E., and Souza, V. (2022).
 \newblock Micnet toolbox: Visualizing and unraveling a microbial network.
 \newblock {\em Plos one}, 17(6):e0259756.
+
+\bibitem[Fernandez,  Jan]{selem2022metagenomics}
+Fernandez, N. S. M. D. G. G. C. Z. M. J. A. A. R. A. J. E. A. L. F. T. V.~A.
+  ((2022, Jan)).
+\newblock \texttt{https://doi.org/10.5281/zenodo.4285900}.
 
 \bibitem[Fritz et~al., 2019]{fritz2019camisim}
 Fritz, A., Hofmann, P., Majda, S., Dahms, E., Dr{\""o}ge, J., Fiedler, J.,
@@ -373,7 +377,7 @@ Tuomisto, H. (2010b).
   diversity.
 \newblock {\em Ecography}, 33(1):2--22.
 
-\bibitem[{Videvall, E. The Molecular Ecologist}, 2017]{What’s_N50?}
+\bibitem[{Videvall, E. The Molecular Ecologist}, 2017]{videvall2017n50}
 {Videvall, E. The Molecular Ecologist} (29 de {M}arzo de 2017).
 \newblock \texttt{www.molecularecologist.com/2017/03/29/whats-n50/}.
 

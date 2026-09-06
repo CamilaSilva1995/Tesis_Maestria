@@ -232,6 +232,11 @@ Este enfoque permite producir estimaciones fiables de abundancia a nivel de espe
 contiene múltiples especies casi idénticas.
 
 
+\subsection{Kaiju}
+Kaiju es un programa para clasificación taxonómica de lecturas de secuenciación de alto rendimiento, 
+a partir de la secuenciación del genoma completo de ADN metagenómico. \\
+
+
 \section{Lenguajes}
 
 \subsection{BASH}
@@ -259,7 +264,7 @@ capacidades para importar, almacenar, analizar y visualizar datos metagenómicos
 los datos se estructuran en un objeto Phyloseq, que tiene la versatilidad de contener elementos clave, como la tabla de 
 taxonomía, la tabla de conteos, la tabla de muestras o metadatos, y el árbol filogenético. Esta organización multifacética 
 facilita un análisis completo y preciso de la estructura de la comunidad microbiana, brindando una comprensión profunda 
-de los datos metagenómicos. (\cite{mcmurdie2013})\\
+de los datos metagenómicos. (\cite{mcmurdie2013phyloseq})\\
 
 \begin{figure}[h]
 \centering
@@ -322,7 +327,7 @@ sintetizar y comparar la composición de especies en diversas comunidades.
 La diversidad alfa refleja la riqueza de las muestras, es decir, el número de especies distintas presentes 
 en un determinado entorno, o la abundancia relativa de dichas especies en dicho entorno; es usada principalmente 
 para medir la diversidad local, haciendo referencia a la diversidad dentro de una muestra o 
-comunidad %(\cite{whittaker1960} & \cite{whittaker1972})
+comunidad %(\cite{whittaker1960vegetation} & \cite{whittaker1972})
 .Para cuantificar esta diversidad, se recurre a diversos índices de medida, cada uno con enfoques particulares.
 
 
@@ -333,7 +338,7 @@ la presencia de especies raras en comparación con otros índices, lo que lo con
 en estudios centrados en la conservación de especies poco comunes.
 
 La fórmula para calcular el índice Chao1 es la siguiente:
-$$S_{Chao1} = S_{Obs} + \frac{F_1×(F_1-1)}{F_2×(F_2+1)}$$
+$$S_{Chao1} = S_{Obs} + \frac{F_1\times(F_1-1)}{F_2\times(F_2+1)}$$
 Donde:
 \begin{itemize}
     \item $S_{Obs}$ es el número de especies observadas.
@@ -392,14 +397,14 @@ diversidad de especies en cada muestra o subconjunto, como el grupo de muestras 
 La diversidad beta se encarga de evaluar cuán similares o diferentes son un par de especies, muestras, 
 conjuntos de muestras o poblaciones entre sí. Fue definida por Whittaker como una medida del cambio 
 de diversidad a traves de gradientes ambientales, en otras palabras "tasa de cambio en la composisión de 
-especies de una comunidad a otra a los largo de gradientes" (\cite{whittaker1960}). Para medir esta diversidad, 
+especies de una comunidad a otra a los largo de gradientes" (\cite{whittaker1960vegetation}). Para medir esta diversidad, 
 se utilizan métricas como la disimilitud de Bray-Curtis, la distancia Jaccard o la distancia UniFrac.\\
 
 A continuación, se presenta una lista de distancias disponibles que Phyloseq puede utilizar, siendo las 
 siguientes las más comúnmente utilizadas:\\
 
 La \textbf{Disimilitud de Bray-Curtis}es un índice que se fundamenta en la composición y abundancia de 
-especies en diferentes sitios (\cite{bray&curtis1957}). Este índice mide la similitud entre dos muestras 
+especies en diferentes sitios (\cite{bray&curtis1957ordination}). Este índice mide la similitud entre dos muestras 
 o poblaciones en términos de las especies que comparten, considerando la ponderación de la abundancia de cada 
 especie en cada población.
 
@@ -483,6 +488,7 @@ Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud
 la más apropiada según el contexto del estudio y los objetivos específicos del análisis de diversidad beta.
 
 \section{Prueba de Hipótesis}
+\label{sec:pruebas_hipotesis}
 Una hipótesis es una suposición sobre los datos que puede ser verdadera o falsa. Las pruebas de hipótesis son herramientas estadísticas esenciales en diversos campos, ya que permiten contrastar una teoría con la evidencia empírica. A través de un proceso riguroso, estas pruebas ayudan a evaluar la veracidad de una afirmación científica de manera objetiva y fundamentada.\\
 
 Una prueba de hipótesis es un método estadístico utilizado para tomar decisiones sobre una población a partir de los datos obtenidos de una muestra representativa. Como técnica de inferencia estadística, permite evaluar suposiciones sobre los parámetros de una población basándose en la observación.\\
@@ -539,9 +545,12 @@ $$H_{a} : \mu_{1} \neq \mu _{2}$$
 
 tomando como estadistico de prueba:
 
-$$ T = \frac{\bar{Y_{1}} - \bar{Y_{2}}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}$$
+\begin{equation}
+T = \frac{\bar{Y_{1}} - \bar{Y_{2}}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}
+\label{eq:t-statistic}
+\end{equation}
 
-donde:  
+donde:
 
 $$ S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}$$
 

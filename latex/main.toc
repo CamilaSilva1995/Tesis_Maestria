@@ -6,6 +6,7 @@
 \contentsline {section}{\numberline {1.4}Clasificadores}{7}{section.1.4}%
 \contentsline {subsection}{\numberline {1.4.1}Kaiju}{7}{subsection.1.4.1}%
 \contentsline {subsection}{\numberline {1.4.2}Kraken \& Braken}{8}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Kaiju}{9}{subsection.1.4.3}%
 \contentsline {section}{\numberline {1.5}Lenguajes}{9}{section.1.5}%
 \contentsline {subsection}{\numberline {1.5.1}BASH}{9}{subsection.1.5.1}%
 \contentsline {subsection}{\numberline {1.5.2}Python}{9}{subsection.1.5.2}%
@@ -15,18 +16,18 @@
 \contentsline {subsection}{\numberline {1.6.1}JSON}{11}{subsection.1.6.1}%
 \contentsline {subsection}{\numberline {1.6.2}BIOM}{12}{subsection.1.6.2}%
 \contentsline {subsection}{\numberline {1.6.3}FASTA}{12}{subsection.1.6.3}%
-\contentsline {subsection}{\numberline {1.6.4}BAM}{12}{subsection.1.6.4}%
+\contentsline {subsection}{\numberline {1.6.4}BAM}{13}{subsection.1.6.4}%
 \contentsline {section}{\numberline {1.7}Índices de Diversidad}{13}{section.1.7}%
 \contentsline {subsection}{\numberline {1.7.1}Diversidad Alfa}{13}{subsection.1.7.1}%
 \contentsline {subsection}{\numberline {1.7.2}Diversidad Beta}{16}{subsection.1.7.2}%
 \contentsline {section}{\numberline {1.8}Prueba de Hipótesis}{19}{section.1.8}%
-\contentsline {subsection}{\numberline {1.8.1}Prueba t para comparar dos medias poblacionales (muestras pequeñas)}{22}{subsection.1.8.1}%
-\contentsline {subsection}{\numberline {1.8.2}Prueba F sobre las varianzas de dos poblaciones pequeñas}{23}{subsection.1.8.2}%
+\contentsline {subsection}{\numberline {1.8.1}Prueba t para comparar dos medias poblacionales (muestras pequeñas)}{21}{subsection.1.8.1}%
+\contentsline {subsection}{\numberline {1.8.2}Prueba F sobre las varianzas de dos poblaciones pequeñas}{22}{subsection.1.8.2}%
 \contentsline {subsection}{\numberline {1.8.3}Prueba de Wilcolxon Mann-Whitney }{23}{subsection.1.8.3}%
-\contentsline {section}{\numberline {1.9}Normalización y Rarefacción}{24}{section.1.9}%
-\contentsline {subsection}{\numberline {1.9.1}Normalización}{24}{subsection.1.9.1}%
-\contentsline {subsection}{\numberline {1.9.2}Rarefacción}{24}{subsection.1.9.2}%
-\contentsline {section}{\numberline {1.10}Redes Bayesianas}{24}{section.1.10}%
+\contentsline {section}{\numberline {1.9}Normalización y Rarefacción}{23}{section.1.9}%
+\contentsline {subsection}{\numberline {1.9.1}Normalización}{23}{subsection.1.9.1}%
+\contentsline {subsection}{\numberline {1.9.2}Rarefacción}{23}{subsection.1.9.2}%
+\contentsline {section}{\numberline {1.10}Redes Bayesianas}{23}{section.1.10}%
 \contentsline {chapter}{\numberline {2}objetivos}{25}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Objetivo general}{25}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Objetivos específicos}{25}{section.2.2}%
@@ -39,29 +40,29 @@
 \contentsline {subsubsection}{Diversidad Beta}{32}{section*.7}%
 \contentsline {subsection}{\numberline {3.1.4}Exploración a distintos niveles taxonómicos}{33}{subsection.3.1.4}%
 \contentsline {section}{\numberline {3.2}Prueba de Hipótesis}{33}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{34}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Prueba de Hipótesis sobre las varianzas de dos poblaciones pequeñas}{35}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Prueba de los rangos con signos de Wilcolxon Mann-Whitney}{35}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.1}Prueba t de Student sobre el índice de Shannon}{34}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Prueba F sobre las varianzas}{34}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Prueba de Wilcoxon-Mann-Whitney}{34}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Normalización}{35}{subsection.3.2.4}%
 \contentsline {subsection}{\numberline {3.2.5}Rarefacción}{36}{subsection.3.2.5}%
 \contentsline {section}{\numberline {3.3}Rarefacción}{36}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Redes}{37}{section.3.4}%
+\contentsline {section}{\numberline {3.4}Redes}{36}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Redes bayesianas}{38}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Rs}{39}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Resultados}{41}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Caracterización de la composición taxonómica de la microbiota asociada a plantas de fresa sanas y enfermas}{41}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Preprocesamiento y Filtrado de Calidad}{41}{subsection.4.1.1}%
-\contentsline {subsubsection}{El filtro por control de calidad mejora la comparación por Diversidad Alfa}{42}{section*.8}%
-\contentsline {subsubsection}{Diversidad Beta}{44}{section*.9}%
-\contentsline {subsubsection}{Distribución y diversidad microbiana al separar por reino}{45}{section*.10}%
-\contentsline {subsubsection}{Distribución y diversidad microbiana en phyla Eucaryota}{49}{section*.11}%
-\contentsline {section}{\numberline {4.2}Evaluar estadísticamente las diferencias entre los microbiomas de plantas saludables y no saludables}{57}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{57}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Prueba de los rangos con signos de Wilcolxon Mann-Whitney}{59}{subsection.4.2.2}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{61}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Perspectivas}{63}{chapter.6}%
+\contentsline {section}{\numberline {3.6}Rs}{38}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Resultados}{39}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Caracterización de la composición taxonómica de la microbiota asociada a plantas de fresa sanas y enfermas}{39}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Preprocesamiento y Filtrado de Calidad}{39}{subsection.4.1.1}%
+\contentsline {subsubsection}{El filtro por control de calidad mejora la comparación por Diversidad Alfa}{40}{section*.8}%
+\contentsline {subsubsection}{Diversidad Beta}{42}{section*.9}%
+\contentsline {subsubsection}{Distribución y diversidad microbiana al separar por reino}{43}{section*.10}%
+\contentsline {subsubsection}{Distribución y diversidad microbiana en phyla Eucaryota}{47}{section*.11}%
+\contentsline {section}{\numberline {4.2}Evaluar estadísticamente las diferencias entre los microbiomas de plantas saludables y no saludables}{55}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{55}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Prueba de los rangos con signos de Wilcolxon Mann-Whitney}{57}{subsection.4.2.2}%
+\contentsline {chapter}{\numberline {5}Conclusiones}{59}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Perspectivas}{61}{chapter.6}%
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Codigos}{67}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Imagenes}{69}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {A}Codigos}{65}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Imagenes}{67}{appendix.Alph2}%
 \vspace {2em}
-\contentsline {chapter}{Bibliograf\'{\i }a}{71}{appendix*.13}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{69}{appendix*.13}%

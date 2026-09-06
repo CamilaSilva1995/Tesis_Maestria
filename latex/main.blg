@@ -1,0 +1,62 @@
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: Capitulos/cap1_Intro.aux
+A level-1 auxiliary file: Capitulos/cap2.aux
+A level-1 auxiliary file: Capitulos/cap3.aux
+A level-1 auxiliary file: Capitulos/cap4.aux
+A level-1 auxiliary file: Capitulos/cap5.aux
+A level-1 auxiliary file: Capitulos/cap6.aux
+A level-1 auxiliary file: Apendices/Ap.aux
+A level-1 auxiliary file: Apendices/Bp.aux
+The style file: apalike.bst
+Database file #1: ref.bib
+Warning--entry type for "castro2020phyloseq" isn't style-file defined
+--line 715 of file ref.bib
+Warning--entry type for "selem2022metagenomics" isn't style-file defined
+--line 720 of file ref.bib
+Warning--entry type for "videvall2017n50" isn't style-file defined
+--line 725 of file ref.bib
+Warning--empty publisher in wackerly2002estadistica
+You've used 80 entries,
+            1935 wiz_defined-function locations,
+            936 strings with 19814 characters,
+and the built_in function-call counts, 35248 in all, are:
+= -- 3361
+> -- 1835
+< -- 41
++ -- 671
+- -- 646
+* -- 3264
+:= -- 6223
+add.period$ -- 236
+call.type$ -- 80
+change.case$ -- 702
+chr.to.int$ -- 79
+cite$ -- 81
+duplicate$ -- 1133
+empty$ -- 2232
+format.name$ -- 760
+if$ -- 6676
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 86
+newline$ -- 399
+num.names$ -- 240
+pop$ -- 568
+preamble$ -- 1
+purify$ -- 711
+quote$ -- 0
+skip$ -- 873
+stack$ -- 0
+substring$ -- 2471
+swap$ -- 105
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 462
+warning$ -- 1
+while$ -- 282
+width$ -- 0
+write$ -- 1023
+(There were 4 warnings)
