@@ -21,13 +21,13 @@
 \contentsline {subsection}{\numberline {1.7.1}Diversidad Alfa}{13}{subsection.1.7.1}%
 \contentsline {subsection}{\numberline {1.7.2}Diversidad Beta}{16}{subsection.1.7.2}%
 \contentsline {section}{\numberline {1.8}Prueba de Hipótesis}{19}{section.1.8}%
-\contentsline {subsection}{\numberline {1.8.1}Prueba t para comparar dos medias poblacionales (muestras pequeñas)}{21}{subsection.1.8.1}%
-\contentsline {subsection}{\numberline {1.8.2}Prueba F sobre las varianzas de dos poblaciones pequeñas}{22}{subsection.1.8.2}%
+\contentsline {subsection}{\numberline {1.8.1}Prueba t para comparar dos medias poblacionales (muestras pequeñas)}{22}{subsection.1.8.1}%
+\contentsline {subsection}{\numberline {1.8.2}Prueba F sobre las varianzas de dos poblaciones pequeñas}{23}{subsection.1.8.2}%
 \contentsline {subsection}{\numberline {1.8.3}Prueba de Wilcolxon Mann-Whitney }{23}{subsection.1.8.3}%
-\contentsline {section}{\numberline {1.9}Normalización y Rarefacción}{23}{section.1.9}%
-\contentsline {subsection}{\numberline {1.9.1}Normalización}{23}{subsection.1.9.1}%
-\contentsline {subsection}{\numberline {1.9.2}Rarefacción}{23}{subsection.1.9.2}%
-\contentsline {section}{\numberline {1.10}Redes Bayesianas}{23}{section.1.10}%
+\contentsline {section}{\numberline {1.9}Normalización y Rarefacción}{24}{section.1.9}%
+\contentsline {subsection}{\numberline {1.9.1}Normalización}{24}{subsection.1.9.1}%
+\contentsline {subsection}{\numberline {1.9.2}Rarefacción}{24}{subsection.1.9.2}%
+\contentsline {section}{\numberline {1.10}Redes Bayesianas}{24}{section.1.10}%
 \contentsline {chapter}{\numberline {2}objetivos}{25}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Objetivo general}{25}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Objetivos específicos}{25}{section.2.2}%
@@ -44,10 +44,10 @@
 \contentsline {subsection}{\numberline {3.2.2}Prueba F sobre las varianzas}{34}{subsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.2.3}Prueba de Wilcoxon-Mann-Whitney}{34}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Normalización}{35}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Rarefacción}{36}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.5}Rarefacción}{35}{subsection.3.2.5}%
 \contentsline {section}{\numberline {3.3}Rarefacción}{36}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Redes}{36}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Redes bayesianas}{38}{section.3.5}%
+\contentsline {section}{\numberline {3.5}Redes bayesianas}{37}{section.3.5}%
 \contentsline {section}{\numberline {3.6}Rs}{38}{section.3.6}%
 \contentsline {chapter}{\numberline {4}Resultados}{39}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Caracterización de la composición taxonómica de la microbiota asociada a plantas de fresa sanas y enfermas}{39}{section.4.1}%

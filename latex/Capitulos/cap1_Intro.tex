@@ -44,7 +44,7 @@ protozoos y virus) que habitan en un entorno específico, como el cuerpo humano,
 Este término no solo abarca a los microorganismos vivos, sino también sus genes, metabolitos y las interacciones que 
 tienen entre ellos y con su huésped. La investigación del microbioma utiliza herramientas avanzadas, como la secuenciación 
 de próxima generación y los análisis metagenómicos, para entender su diversidad y funciones en la salud, la enfermedad y 
-los ecosistemas (Marchesi \& Ravel, 2015).\\
+los ecosistemas \citep{marchesi2015vocabulary}.\\
 % (Marchesi, J.R., Ravel, J. The vocabulary of microbiome research: a proposal. Microbiome 3, 31 (2015). https://doi.org/10.1186/s40168-015-0094-5) 
 
 
@@ -99,7 +99,7 @@ las secuencias según la similitud entre OTUs. El método de agrupación por OTU
 ya que es relativamente costoso computacionalmente y requiere mucha memoria. Un OTU puede definirse dentro 
 del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje común a 
 nivel de especie. Estos OTUs pueden obtenerse mediante clústering, para lo cual ya existen varios métodos y algoritmos 
-disponibles (Xia et al., 2018). La identificación taxonómica de los OTUs también 
+disponibles \citep{xia2018statistical}. La identificación taxonómica de los OTUs también 
 puede abordarse mediante clasificadores basados en $k$-meros, que descomponen cada secuencia en sus subcadenas de longitud $k$
 y las confrontan contra una base de referencia.
 
@@ -137,7 +137,7 @@ inmunidad vegetal (Berendsen et al., 2012; Wang et al., 2023).
 Las comunidades microbianas no solo influyen en el crecimiento y 
 rendimiento de los cultivos, sino que también pueden reflejar su estado de salud, 
 lo cual hace posible identificar biomarcadores microbianos para clasificar
- plantas sanas y enfermas (Yang et al., 2020; Nam et al., 2023).  \\
+ plantas sanas y enfermas \citep{yang2020comparison,nam2023multidisciplinary}.  \\
 
 
 Estudios recientes han identificado diferencias taxonómicas significativas
@@ -145,7 +145,7 @@ entre plantas de fresa sanas y enfermas. Por ejemplo, \textit{Udaeobacter sp.},
 \textit{Solibacter sp.} y \textit{Nitrosomonadaceae} son más abundantes en rizósferas
 no saludables, mientras que \textit{Tepidisphaerales}, \textit{Hydrocarboniphaga} y algunos
  géneros de \textit{Pseudomonas} están relacionados con condiciones
- saludables (Nam et al., 2023; Sieieda et al., 2024).
+ saludables \citep{nam2023multidisciplinary,siegieda2024ecological}.
  Estas diferencias en abundancia sugieren que ciertos microorganismos pueden actuar 
  como indicadores microbianos del estado fisiológico de la planta. \\
 
@@ -194,7 +194,7 @@ a partir de la secuenciación del genoma completo de ADN metagenómico. \\
 
 \subsection{Kraken \& Braken}
 Kraken es una herramienta de clasificación de secuencias de ADN metagenómico mediante alineación exacta de k-mers, 
-asignándoles etiquetas taxonómicas con gran exactitud y velocidad (Wood, 2014)(\cite{wood2014kraken}). 
+asignándoles etiquetas taxonómicas con gran exactitud y velocidad \citep{wood2014kraken}. 
 Esta herramienta crea su base de datos de consulta a partir de una biblioteca de datos metagenómicos e información 
 taxonómica de NCBI (National Center for Biotechnology Information).\\
 
@@ -211,7 +211,7 @@ Para obtener el ID taxonómico completo, Kraken dispone de la herramienta kraken
 los resultados con la misma base de datos, genera una lista de los reads junto con el nombre completo del ID taxonómico. 
 Además, tiene una herramienta complementaria (-mpa), que presenta la salida ordenada por categoría taxonómica 
 (root\_Super Kingdom, d\_kingdom, p\_phylum, c\_class, o\_order, f\_family, g\_genus, s\_species). 
-(Wood \& Salzberg, 2014) .\\
+\citep{wood2014kraken}.\\
 
 %\begin{figure}[h]
 %\centering
@@ -224,7 +224,7 @@ Además, tiene una herramienta complementaria (-mpa), que presenta la salida ord
 
 BRACKEN (Bayesian Re-estimation of Abundance after Classification with KraKEN) calcula la abundancia de especies, 
 géneros u otras categorías taxonómicas a partir de las secuencias de ADN recopiladas en un experimento de metagenómica 
-(Lu et al., 2017)(\cite{lu2017bracken}).\\
+\citep{lu2017bracken}.\\
 
 BRACKEN realiza estimaciones probabilísticas basadas en las salidas de Kraken para completar las asignaciones 
 al nivel taxonómico requerido, con el objetivo de obtener una estimación de abundancia más precisa. 
@@ -264,7 +264,7 @@ capacidades para importar, almacenar, analizar y visualizar datos metagenómicos
 los datos se estructuran en un objeto Phyloseq, que tiene la versatilidad de contener elementos clave, como la tabla de 
 taxonomía, la tabla de conteos, la tabla de muestras o metadatos, y el árbol filogenético. Esta organización multifacética 
 facilita un análisis completo y preciso de la estructura de la comunidad microbiana, brindando una comprensión profunda 
-de los datos metagenómicos. (\cite{mcmurdie2013phyloseq})\\
+de los datos metagenómicos. \citep{mcmurdie2013phyloseq}\\
 
 \begin{figure}[h]
 \centering
@@ -272,7 +272,7 @@ de los datos metagenómicos. (\cite{mcmurdie2013phyloseq})\\
 \caption{Estructura del Objeto Phyloseq: Organización Integral de Datos Metagenómicos para Análisis de Diversidad 
 Microbiana, que integra tablas de abundancia, datos taxonómicos, metadatos de las muestras y árboles filogenéticos. 
 Este formato permite un análisis eficiente y completo de las comunidades microbianas.}
-%\citep{Introducción a phyloseq-castrolab})}
+%\citep{castro2020phyloseq})}
 \end{figure}
 
 \subsection{R \& RStudio}
@@ -327,7 +327,7 @@ sintetizar y comparar la composición de especies en diversas comunidades.
 La diversidad alfa refleja la riqueza de las muestras, es decir, el número de especies distintas presentes 
 en un determinado entorno, o la abundancia relativa de dichas especies en dicho entorno; es usada principalmente 
 para medir la diversidad local, haciendo referencia a la diversidad dentro de una muestra o 
-comunidad %(\cite{whittaker1960vegetation} & \cite{whittaker1972})
+comunidad %(\cite{whittaker1960vegetation} & \cite{whittaker1972evolution})
 .Para cuantificar esta diversidad, se recurre a diversos índices de medida, cada uno con enfoques particulares.
 
 
@@ -397,14 +397,14 @@ diversidad de especies en cada muestra o subconjunto, como el grupo de muestras 
 La diversidad beta se encarga de evaluar cuán similares o diferentes son un par de especies, muestras, 
 conjuntos de muestras o poblaciones entre sí. Fue definida por Whittaker como una medida del cambio 
 de diversidad a traves de gradientes ambientales, en otras palabras "tasa de cambio en la composisión de 
-especies de una comunidad a otra a los largo de gradientes" (\cite{whittaker1960vegetation}). Para medir esta diversidad, 
+especies de una comunidad a otra a los largo de gradientes" \citep{whittaker1960vegetation}. Para medir esta diversidad, 
 se utilizan métricas como la disimilitud de Bray-Curtis, la distancia Jaccard o la distancia UniFrac.\\
 
 A continuación, se presenta una lista de distancias disponibles que Phyloseq puede utilizar, siendo las 
 siguientes las más comúnmente utilizadas:\\
 
 La \textbf{Disimilitud de Bray-Curtis}es un índice que se fundamenta en la composición y abundancia de 
-especies en diferentes sitios (\cite{bray&curtis1957ordination}). Este índice mide la similitud entre dos muestras 
+especies en diferentes sitios \citep{bray&curtis1957ordination}. Este índice mide la similitud entre dos muestras 
 o poblaciones en términos de las especies que comparten, considerando la ponderación de la abundancia de cada 
 especie en cada población.
 
@@ -516,7 +516,7 @@ En este contexto, el p-valor se considera como una medida de la probabilidad de 
 \centering
 \includegraphics[width=\textwidth]{Img/cap1/pruebat_explicacion.png}
 \caption{Se ilustra el concepto esencial de una prueba de hipótesis, mostrando la distribución teórica de la estadística de prueba bajo la hipótesis nula ($H_0$) y destacando la región de rechazo. La posición del dato observado con respecto a esta región determinará si se rechaza o no $H_0$ en cada una de las pruebas estadísticas a realizar.\\
-En una prueba de hipótesis, la hipótesis nula ($H_0$) será rechazada en favor de la hipótesis alternativa ($H_1$) solo si la evidencia muestral proporciona suficiente soporte para considerar que $H_0$ es falsa. Si los datos no contradicen significativamente a $H_0$, se concluye que no hay suficiente evidencia para rechazarla, y se mantiene su validez.\\}%\citep{Introducción a phyloseq-castrolab})}
+En una prueba de hipótesis, la hipótesis nula ($H_0$) será rechazada en favor de la hipótesis alternativa ($H_1$) solo si la evidencia muestral proporciona suficiente soporte para considerar que $H_0$ es falsa. Si los datos no contradicen significativamente a $H_0$, se concluye que no hay suficiente evidencia para rechazarla, y se mantiene su validez.\\}%\citep{castro2020phyloseq})}
 \end{figure}
 
 Existen dos tipos de errores que pueden ocurrir en una prueba de hipótesis:\\

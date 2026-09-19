@@ -16,7 +16,7 @@ través de redes.
 Este enfoque integral no solo proporciona una comprensión detallada de la composición de los 
 microbiomas en las plantas de fresa, sino que también permite identificar patrones significativos 
 en las diferencias de presencia-ausencia o abundancia de microorganismos, que podrían ser 
-fundamentales para distinguir entre la salud y la enfermedad en estos cultivos (\cite{yang2020comparison}). \\
+fundamentales para distinguir entre la salud y la enfermedad en estos cultivos \citep{yang2020comparison}. \\
 
 \section{Métodos para caracterización de la diversidad microbiana}
 \subsection{Preprocesamiento}
@@ -123,7 +123,7 @@ restantes.\\
 Aplicamos índices de diversidad alfa para comprender la estructura de la distribución de la abundancia relativa de las especies en el seno de una 
 población o comunidad biológica. En este contexto, realizamos un análisis de diversidad de nuestras 
 muestras, empleando dos métricas fundamentales: la Diversidad Alfa y la Diversidad 
-Beta (\cite{tuomisto2010diversity}). Estas métricas nos permitirán explorar y comprender tanto la variabilidad 
+Beta \citep{tuomisto2010diversity}. Estas métricas nos permitirán explorar y comprender tanto la variabilidad 
 interna de una sola comunidad como las diferencias entre varias comunidades, respectivamente.\\ 
 
 
@@ -150,7 +150,7 @@ plot_richness(physeq = fresa_kraken_fil,
 La diversidad beta se encarga de evaluar cuán similares o diferentes son un par de especies, 
 muestras, conjuntos de muestras o poblaciones entre sí. Fue definida por Whittaker como una medida 
 del cambio de diversidad a traves de gradientes ambientales, en otras palabras "tasa de cambio en la 
-composisión de especies de una comunidad a otra a los largo de gradientes" (\cite{whittaker1960vegetation}). 
+composisión de especies de una comunidad a otra a los largo de gradientes" \citep{whittaker1960vegetation}. 
 Para medir esta diversidad, se utilizan métricas como la disimilitud de Bray-Curtis, la distancia 
 Jaccard o la distancia UniFrac.\\
 
@@ -207,7 +207,7 @@ las muestras en el eje x y las abundancias en el eje y, diferenciando entre mues
 
 En este estudio se busca contrastar si existen diferencias de diversidad, medidas a través del índice
 de Shannon, entre las muestras saludables y no saludables, tanto a nivel general de la comunidad
-microbiana como específicamente en el género Fusarium. Las definiciones formales de $H_0$, $H_1$, el
+microbiana como a nivel de género dentro de los eucariotas. Las definiciones formales de $H_0$, $H_1$, el
 estadístico de prueba, la región de rechazo y el p-valor se presentaron en el Capítulo 1,
 Sección \ref{sec:pruebas_hipotesis}, por lo que aquí no se redefinen y solo se retoman para su
 aplicación directa sobre los datos.
@@ -226,8 +226,8 @@ $$H_0: \mu_{\text{saludable}} = \mu_{\text{no saludable}}$$
 frente a la alternativa $H_1: \mu_{\text{saludable}} \neq \mu_{\text{no saludable}}$, usando el
 estadístico $T$ definido en la Ecuación \ref{eq:t-statistic}. Esta prueba se aplicó en dos escenarios:
 (a) sobre el índice de Shannon calculado a nivel general de la comunidad microbiana, y (b) sobre el
-índice de Shannon restringido al género Fusarium, para evaluar si este patógeno particular presenta
-diferencias de diversidad entre tratamientos.
+índice de Shannon calculado a nivel de género dentro de los eucariotas, grupo que incluye a los
+hongos fitopatógenos de interés como \textit{Fusarium}.
 
 \subsection{Prueba F sobre las varianzas}
 
