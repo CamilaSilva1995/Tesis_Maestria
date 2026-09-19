@@ -188,10 +188,6 @@ agrícolas regenerativas.
 
 \section{Clasificadores}
 
-\subsection{Kaiju}
-Kaiju es un programa para clasificación taxonómica de lecturas de secuenciación de alto rendimiento, 
-a partir de la secuenciación del genoma completo de ADN metagenómico. \\
-
 \subsection{Kraken \& Braken}
 Kraken es una herramienta de clasificación de secuencias de ADN metagenómico mediante alineación exacta de k-mers, 
 asignándoles etiquetas taxonómicas con gran exactitud y velocidad \citep{wood2014kraken}. 
@@ -232,11 +228,6 @@ Este enfoque permite producir estimaciones fiables de abundancia a nivel de espe
 contiene múltiples especies casi idénticas.
 
 
-\subsection{Kaiju}
-Kaiju es un programa para clasificación taxonómica de lecturas de secuenciación de alto rendimiento, 
-a partir de la secuenciación del genoma completo de ADN metagenómico. \\
-
-
 \section{Lenguajes}
 
 \subsection{BASH}
@@ -248,47 +239,38 @@ la gestión de flujos de trabajo y la integración de herramientas como BLAST, S
 datos en sistemas de alto rendimiento, administrar flujos de trabajo de análisis masivo y realizar manipulaciones 
 rápidas de datos en formatos de texto o binarios. \\
 
-\subsection{Python}
-Python es un lenguaje de programación de propósito general, conocido por su sintaxis sencilla y su amplia aplicabilidad 
-en la ciencia de datos, bioinformática y aprendizaje automático. Fue creado por Guido van Rossum en 1991 y se ha 
-consolidado como una herramienta versátil en disciplinas científicas debido a su capacidad para integrar múltiples flujos 
-de trabajo. Python cuenta con bibliotecas científicas robustas, como NumPy para álgebra lineal, Pandas para manejo de 
-datos estructurados y Biopython para análisis bioinformáticos. Se emplea en la automatización de procesos, el desarrollo 
-de algoritmos personalizados, el análisis de secuencias genómicas y la inteligencia artificial aplicada a la investigación 
-científica.\\
+\subsection{R \& RStudio}
+R es un lenguaje de programación y un entorno de software diseñado específicamente para el análisis estadístico y la
+visualización de datos. Desarrollado inicialmente por Ross Ihaka y Robert Gentleman en 1993, se ha convertido en una
+herramienta esencial en biología, ecología, genómica y otras disciplinas científicas que requieren análisis cuantitativos.
+Su principal fortaleza radica en la disponibilidad de bibliotecas especializadas, como ggplot2 para visualización
+y phyloseq para análisis de microbiomas, además de su comunidad activa, que contribuye con paquetes de código abierto.
+R se utiliza ampliamente en análisis de datos complejos, modelado estadístico, aprendizaje automático y visualización
+avanzada, facilitando la reproducibilidad y el manejo de grandes volúmenes de datos.\\
+
+RStudio es un entorno de desarrollo integrado (IDE) diseñado para trabajar con el lenguaje de programación R.
+Ofrece una interfaz intuitiva que facilita la escritura, ejecución y depuración de código, así como la visualización
+de resultados. RStudio permite organizar proyectos, gestionar paquetes y bibliotecas, y crear documentos reproducibles
+con R Markdown. También es compatible con Shiny para aplicaciones interactivas. Disponible en versiones gratuitas y
+de pago, RStudio es ideal tanto para principiantes como para expertos en análisis de datos.\\
 
 \subsubsection{Phyloseq}
-Phyloseq es un software de código abierto diseñado para la manipulación y análisis integral de datos metagenómicos 
-generados mediante tecnologías de secuenciación de alto rendimiento. Esta herramienta, desarrollada en R, ofrece 
-capacidades para importar, almacenar, analizar y visualizar datos metagenómicos de manera eficiente. En el entorno de R, 
-los datos se estructuran en un objeto Phyloseq, que tiene la versatilidad de contener elementos clave, como la tabla de 
-taxonomía, la tabla de conteos, la tabla de muestras o metadatos, y el árbol filogenético. Esta organización multifacética 
-facilita un análisis completo y preciso de la estructura de la comunidad microbiana, brindando una comprensión profunda 
+Phyloseq es un software de código abierto diseñado para la manipulación y análisis integral de datos metagenómicos
+generados mediante tecnologías de secuenciación de alto rendimiento. Esta herramienta, desarrollada en R, ofrece
+capacidades para importar, almacenar, analizar y visualizar datos metagenómicos de manera eficiente. En el entorno de R,
+los datos se estructuran en un objeto Phyloseq, que tiene la versatilidad de contener elementos clave, como la tabla de
+taxonomía, la tabla de conteos, la tabla de muestras o metadatos, y el árbol filogenético. Esta organización multifacética
+facilita un análisis completo y preciso de la estructura de la comunidad microbiana, brindando una comprensión profunda
 de los datos metagenómicos. \citep{mcmurdie2013phyloseq}\\
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{Img/cap1/Phyloseq.png}
-\caption{Estructura del Objeto Phyloseq: Organización Integral de Datos Metagenómicos para Análisis de Diversidad 
-Microbiana, que integra tablas de abundancia, datos taxonómicos, metadatos de las muestras y árboles filogenéticos. 
+\caption{Estructura del Objeto Phyloseq: Organización Integral de Datos Metagenómicos para Análisis de Diversidad
+Microbiana, que integra tablas de abundancia, datos taxonómicos, metadatos de las muestras y árboles filogenéticos.
 Este formato permite un análisis eficiente y completo de las comunidades microbianas.}
 %\citep{castro2020phyloseq})}
 \end{figure}
-
-\subsection{R \& RStudio}
-R es un lenguaje de programación y un entorno de software diseñado específicamente para el análisis estadístico y la 
-visualización de datos. Desarrollado inicialmente por Ross Ihaka y Robert Gentleman en 1993, se ha convertido en una 
-herramienta esencial en biología, ecología, genómica y otras disciplinas científicas que requieren análisis cuantitativos.
-Su principal fortaleza radica en la disponibilidad de bibliotecas especializadas, como ggplot2 para visualización 
-y phyloseq para análisis de microbiomas, además de su comunidad activa, que contribuye con paquetes de código abierto. 
-R se utiliza ampliamente en análisis de datos complejos, modelado estadístico, aprendizaje automático y visualización 
-avanzada, facilitando la reproducibilidad y el manejo de grandes volúmenes de datos.\\
-
-RStudio es un entorno de desarrollo integrado (IDE) diseñado para trabajar con el lenguaje de programación R. 
-Ofrece una interfaz intuitiva que facilita la escritura, ejecución y depuración de código, así como la visualización 
-de resultados. RStudio permite organizar proyectos, gestionar paquetes y bibliotecas, y crear documentos reproducibles 
-con R Markdown. También es compatible con Shiny para aplicaciones interactivas. Disponible en versiones gratuitas y 
-de pago, RStudio es ideal tanto para principiantes como para expertos en análisis de datos.\\
 
 \section{Formatos}
 
