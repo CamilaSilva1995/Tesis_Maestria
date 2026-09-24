@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.28)  19 SEP 2026 13:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.28)  24 SEP 2026 17:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1486,12 +1486,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--23
 
 
 ]
-<Img/cap3/AlphaDiversity_CrudosFiltrados.png, id=630, 963.6pt x 350.30875pt>
+<Img/cap3/AlphaDiversity_CrudosFiltrados.png, id=630, 853.5087pt x 426.6339pt>
 File: Img/cap3/AlphaDiversity_CrudosFiltrados.png Graphic file (type png)
 <use Img/cap3/AlphaDiversity_CrudosFiltrados.png>
 Package pdftex.def Info: Img/cap3/AlphaDiversity_CrudosFiltrados.png  used on i
 nput line 28.
-(pdftex.def)             Requested size: 354.52077pt x 128.8799pt.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 32--55
 
@@ -1500,11 +1500,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--55
 LaTeX Info: Redefining \. on input line 55.
 LaTeX Info: Redefining \% on input line 55.
 [40 <./Img/cap3/AlphaDiversity_CrudosFiltrados.png>]
-<Img/cap3/Barras.png, id=640, 963.6pt x 542.025pt>
+<Img/cap3/Barras.png, id=640, 853.5087pt x 426.6339pt>
 File: Img/cap3/Barras.png Graphic file (type png)
 <use Img/cap3/Barras.png>
 Package pdftex.def Info: Img/cap3/Barras.png  used on input line 58.
-(pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1517,17 +1517,17 @@ ROBIOTA ASOCIADA A PLANTAS DE FRESA SANAS Y ENFERMAS \T1/cmr/m/n/10.95 41
  []
 
 [41]
-<Img/cap3/BetaDiversity.png, id=645, 963.6pt x 521.95pt>
+<Img/cap3/BetaDiversity.png, id=645, 853.5087pt x 455.0601pt>
 File: Img/cap3/BetaDiversity.png Graphic file (type png)
 <use Img/cap3/BetaDiversity.png>
 Package pdftex.def Info: Img/cap3/BetaDiversity.png  used on input line 82.
-(pdftex.def)             Requested size: 354.52077pt x 192.02736pt.
+(pdftex.def)             Requested size: 354.52077pt x 189.01306pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 88.
 LaTeX Info: Redefining \% on input line 88.
- [42 <./Img/cap3/Barras.png (PNG copy)>]
+ [42 <./Img/cap3/Barras.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 91--97
 
  []
@@ -1591,12 +1591,12 @@ ROBIOTA ASOCIADA A PLANTAS DE FRESA SANAS Y ENFERMAS \T1/cmr/m/n/10.95 45
  []
 
 [45 <./Img/cap3/BarrasFilo_blackandwhite.png>]
-<Img/cap3/Barras_Eukarya10.png, id=680, 963.6pt x 542.025pt>
+<Img/cap3/Barras_Eukarya10.png, id=680, 853.5087pt x 483.4863pt>
 File: Img/cap3/Barras_Eukarya10.png Graphic file (type png)
 <use Img/cap3/Barras_Eukarya10.png>
 Package pdftex.def Info: Img/cap3/Barras_Eukarya10.png  used on input line 158.
 
-(pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
+(pdftex.def)             Requested size: 354.52077pt x 200.82013pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1620,7 +1620,7 @@ Overfull \hbox (395.58485pt too wide) has occurred while \output is active
 ROBIOTA ASOCIADA A PLANTAS DE FRESA SANAS Y ENFERMAS \T1/cmr/m/n/10.95 47
  []
 
-[47 <./Img/cap3/Barras_Eukarya10.png (PNG copy)>]
+[47 <./Img/cap3/Barras_Eukarya10.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 182--187
 
  []
@@ -1954,7 +1954,7 @@ cm-super/sfrm2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1095.pf
 b></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/
 fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/c
 m-super/sftt1095.pfb>
-Output written on main.pdf (88 pages, 3685561 bytes).
+Output written on main.pdf (88 pages, 4179457 bytes).
 PDF statistics:
  1078 PDF objects out of 1200 (max. 8388607)
  898 compressed objects within 9 object streams
