@@ -18,45 +18,45 @@ Warning--entry type for "selem2022metagenomics" isn't style-file defined
 Warning--entry type for "videvall2017n50" isn't style-file defined
 --line 735 of file ref.bib
 Warning--empty publisher in wackerly2002estadistica
-You've used 81 entries,
+You've used 86 entries,
             1935 wiz_defined-function locations,
-            939 strings with 19922 characters,
-and the built_in function-call counts, 35593 in all, are:
-= -- 3394
-> -- 1848
-< -- 42
-+ -- 677
-- -- 650
-* -- 3292
-:= -- 6285
-add.period$ -- 239
-call.type$ -- 81
-change.case$ -- 709
-chr.to.int$ -- 80
-cite$ -- 82
-duplicate$ -- 1147
-empty$ -- 2256
-format.name$ -- 767
-if$ -- 6742
+            967 strings with 20805 characters,
+and the built_in function-call counts, 37572 in all, are:
+= -- 3590
+> -- 1922
+< -- 45
++ -- 703
+- -- 674
+* -- 3472
+:= -- 6629
+add.period$ -- 254
+call.type$ -- 86
+change.case$ -- 746
+chr.to.int$ -- 85
+cite$ -- 87
+duplicate$ -- 1217
+empty$ -- 2399
+format.name$ -- 800
+if$ -- 7123
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 87
-newline$ -- 404
-num.names$ -- 243
-pop$ -- 572
+missing$ -- 92
+newline$ -- 429
+num.names$ -- 258
+pop$ -- 596
 preamble$ -- 1
-purify$ -- 718
+purify$ -- 755
 quote$ -- 0
-skip$ -- 884
+skip$ -- 937
 stack$ -- 0
-substring$ -- 2491
-swap$ -- 106
+substring$ -- 2652
+swap$ -- 111
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 468
+type$ -- 498
 warning$ -- 1
-while$ -- 285
+while$ -- 303
 width$ -- 0
-write$ -- 1036
+write$ -- 1101
 (There were 4 warnings)

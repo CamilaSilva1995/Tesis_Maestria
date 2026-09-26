@@ -313,61 +313,69 @@ comunidad %(\cite{whittaker1960vegetation} & \cite{whittaker1972evolution})
 .Para cuantificar esta diversidad, se recurre a diversos índices de medida, cada uno con enfoques particulares.
 
 
-\textbf{Chao1}, es una métrica que evalúa la riqueza de especies, proporcionando una estimación del 
-número total de especies en una comunidad. Su utilidad se destaca especialmente en situaciones donde la 
-muestra es pequeña o la proporción de especies raras es considerable. Este índice demuestra ser menos sensible a 
-la presencia de especies raras en comparación con otros índices, lo que lo convierte en una herramienta valiosa 
-en estudios centrados en la conservación de especies poco comunes.
+En lo que sigue, para una muestra con $p$ taxones se denota por $x_i$ el número de lecturas asignadas
+al taxón $i$, por $N = \sum_{i=1}^{p} x_i$ la profundidad de secuenciación de la muestra y por
+$p_i = x_i / N$ la abundancia relativa del taxón $i$, de modo que $\sum_i p_i = 1$.
 
-La fórmula para calcular el índice Chao1 es la siguiente:
-$$S_{Chao1} = S_{Obs} + \frac{F_1\times(F_1-1)}{F_2\times(F_2+1)}$$
+\textbf{Chao1} es un estimador no paramétrico de la riqueza de especies, es decir, del número total
+de especies presentes en la comunidad, incluidas aquellas que no fueron observadas en la muestra
+\citep{chao1984nonparametric,chao1987estimating}. Se basa en la idea de que el número de especies raras
+observadas, las representadas por uno o dos individuos, contiene información sobre cuántas especies
+quedaron sin detectar. Por esta razón Chao1 es especialmente sensible a las especies raras y a la
+profundidad de secuenciación: una muestra con más lecturas tiende a detectar más especies con un solo
+individuo y, en consecuencia, a producir estimaciones de riqueza mayores.
+
+La forma del estimador corregida por sesgo, que es la que calcula phyloseq, es:
+$$S_{Chao1} = S_{obs} + \frac{F_1(F_1-1)}{2(F_2+1)}$$
 Donde:
 \begin{itemize}
-    \item $S_{Obs}$ es el número de especies observadas.
-    \item $F_1$ es el recuento de "singletons" (especies con un solo individuo en todo el inventario).
-    \item $F_2$ es el recuento de "doubletons" (especies con dos individuos en todo el inventario).
+    \item $S_{obs}$ es el número de especies observadas en la muestra.
+    \item $F_1$ es el número de \emph{singletons}, especies con exactamente un individuo (una lectura) en la muestra.
+    \item $F_2$ es el número de \emph{doubletons}, especies con exactamente dos individuos en la muestra.
 \end{itemize}
 
-Esta expresión nos proporciona una estimación más completa de la riqueza de especies al considerar 
-las especies raras representadas por singletons y doubletons. En consecuencia, Chao1 emerge como una 
-herramienta valiosa para evaluar y comparar la diversidad de especies en comunidades biológicas, especialmente 
-en situaciones donde la muestra es limitada o las especies raras desempeñan un papel significativo.\\
+Cuando $F_2 > 0$, la forma clásica $S_{obs} + F_1^2/(2F_2)$ produce valores muy cercanos; la forma
+corregida tiene la ventaja de estar definida también cuando no hay \emph{doubletons}. En cualquier caso
+se cumple $S_{Chao1} \geq S_{obs}$, con igualdad únicamente cuando no hay \emph{singletons}.
+Así, Chao1 resulta útil para comparar la riqueza entre comunidades cuando la muestra es limitada o las
+especies raras tienen un papel importante, siempre que las muestras comparadas tengan profundidades
+de secuenciación semejantes.\\
 
-El índice de \textbf{Shannon}, representado por $D_{SH}$, es una medida que estima la diversidad de especies, 
-teniendo en cuenta tanto la abundancia como la uniformidad de las especies en una comunidad. 
-Este índice se enfoca en medir la incertidumbre asociada con la identificación de una especie seleccionada 
-al azar en la comunidad. Cuanto mayor sea el índice de Shannon, mayor será la diversidad de especies en la comunidad.
-
-La fórmula para calcular el índice de Shannon es la siguiente:
-$$H=-\sum_{i_1}^{S}{P_{i}\ln(P_{i})}$$
+El índice de \textbf{Shannon}, denotado por $H$, es la entropía de la distribución de abundancias
+relativas de la comunidad \citep{shannon1948mathematical}. Mide la incertidumbre asociada con la identidad
+taxonómica de un individuo (una lectura) tomado al azar de la muestra, y por lo tanto tiene en cuenta
+tanto el número de especies como la uniformidad de sus abundancias. Se define como:
+$$H = -\sum_{i=1}^{S} p_i \ln p_i$$
 Donde:
 \begin{itemize}
-    \item $S$ es el número de OTU's (Operational Taxonomic Units).
-    \item $P_i$ es la proporción de la comunidad representada por $OTU_i$.
+    \item $S$ es el número de taxones observados en la muestra.
+    \item $p_i$ es la abundancia relativa del taxón $i$, con la convención $0 \ln 0 = 0$ para los taxones ausentes.
 \end{itemize}
 
-Esta expresión matemática nos proporciona una medida cuantitativa de la diversidad de especies, 
-tomando en cuenta la riqueza y la uniformidad de las mismas en la comunidad. Un índice de Shannon más alto indica 
-una mayor diversidad, lo que sugiere una distribución más equitativa de abundancias entre las especies presentes. 
-Es decir, comunidades con índices de Shannon más elevados tienden a tener una mayor variedad de especies y 
-una distribución más equilibrada de individuos entre esas especies.\\
+El índice toma valores entre $0$, cuando toda la comunidad pertenece a una sola especie, y $\ln S$,
+cuando las $S$ especies son equiprobables. Un valor mayor de $H$ indica mayor diversidad: más especies,
+una distribución más equitativa de los individuos entre ellas, o ambas cosas. Es menos sensible que
+Chao1 a las especies raras, porque estas aportan términos $p_i \ln p_i$ cercanos a cero.\\
 
-\textbf{Simpson}, es una medida de la dominancia relativa de una o unas pocas especies en una comunidad. 
-Este índice evalúa la probabilidad de que dos individuos seleccionados al azar pertenezcan a la misma especie. 
-En términos prácticos, un índice de Simpson más bajo indica una mayor diversidad de especies en la comunidad, 
-lo que sugiere una distribución más equitativa de la abundancia entre las especies presentes.
-
-La fórmula para calcular el índice de Simpson es la siguiente:
-$$D=\frac{1}{\sum_{i_1}^{S}{P_{i}^{2}}}$$
-Donde:
+\textbf{Simpson.} Sea
+$$\lambda = \sum_{i=1}^{S} p_i^{2}$$
+la probabilidad de que dos individuos tomados al azar, con reemplazo, pertenezcan a la misma especie
+\citep{simpson1949measurement}. La cantidad $\lambda$ es un índice de \emph{dominancia}: se acerca a $1$ cuando
+una o pocas especies concentran casi toda la abundancia y decrece cuando la abundancia se reparte de
+manera uniforme. A partir de $\lambda$ se definen dos índices de diversidad, que crecen cuando la
+diversidad aumenta:
 \begin{itemize}
-    \item $S$ en el número total de especies en la comunidad.
-    \item $P_i$ es la proporción de la comunidad representada por $OTU_i$.
+    \item El índice de Gini-Simpson, $D = 1 - \lambda$, que es la probabilidad de que dos individuos
+    tomados al azar pertenezcan a especies distintas. Toma valores en $[0,\, 1 - 1/S]$.
+    \item El inverso de Simpson, $D' = 1/\lambda$, que toma valores en $[1, S]$ y puede interpretarse
+    como el número de especies equiprobables que producirían la misma dominancia.
 \end{itemize}
 
-Esta expresión matemática nos proporciona un indicador cuantitativo de la diversidad de especies, 
-donde un índice de Simpson más bajo refleja una comunidad con una mayor variedad de especies y una
-distribución más uniforme de individuos entre esas especies.\\
+En esta tesis se utiliza la primera forma, $D = 1 - \lambda$, que es la que calcula la función
+\texttt{estimate\_richness} de phyloseq bajo el nombre ``Simpson''. Por lo tanto, en todas las figuras
+un valor mayor del índice de Simpson corresponde a una mayor diversidad, del mismo modo que en Shannon
+y Chao1. Como $\lambda$ pondera cada especie por el cuadrado de su abundancia relativa, este índice
+está dominado por las especies más abundantes y es el menos sensible de los tres a las especies raras.\\
 
 En el contexto de la diversidad alfa, estos índices nos permiten explorar y comparar la 
 diversidad de especies en cada muestra o subconjunto, como el grupo de muestras sanas y enfermas.
@@ -382,89 +390,73 @@ de diversidad a traves de gradientes ambientales, en otras palabras "tasa de cam
 especies de una comunidad a otra a los largo de gradientes" \citep{whittaker1960vegetation}. Para medir esta diversidad, 
 se utilizan métricas como la disimilitud de Bray-Curtis, la distancia Jaccard o la distancia UniFrac.\\
 
-A continuación, se presenta una lista de distancias disponibles que Phyloseq puede utilizar, siendo las 
-siguientes las más comúnmente utilizadas:\\
+A continuación se definen las medidas de disimilitud entre pares de muestras que se utilizan en este
+trabajo. Para dos muestras $a$ y $b$ se denota por $x = (x_1, \dots, x_p)$ y $y = (y_1, \dots, y_p)$ sus
+vectores de abundancia sobre los mismos $p$ taxones, ya sea en conteos o en abundancias relativas. Una
+función $d$ es una \emph{métrica} si es no negativa, simétrica, vale cero solo entre muestras iguales y
+cumple la desigualdad del triángulo $d(x,z) \leq d(x,y) + d(y,z)$. Varias de las medidas usadas en
+ecología no cumplen esta última propiedad, por lo que se las llama \emph{disimilitudes} y no distancias;
+esto no impide usarlas en métodos de ordenación como NMDS, que solo requieren el orden de las disimilitudes.\\
 
-La \textbf{Disimilitud de Bray-Curtis}es un índice que se fundamenta en la composición y abundancia de 
-especies en diferentes sitios \citep{bray&curtis1957ordination}. Este índice mide la similitud entre dos muestras 
-o poblaciones en términos de las especies que comparten, considerando la ponderación de la abundancia de cada 
-especie en cada población.
+La \textbf{disimilitud de Bray-Curtis} \citep{bray&curtis1957ordination} compara la composición de dos
+muestras ponderando cada taxón por su abundancia:
+$$d_{BC}(x, y) = \frac{\sum_{i=1}^{p} |x_i - y_i|}{\sum_{i=1}^{p} (x_i + y_i)}$$
+Toma valores en $[0, 1]$: vale $0$ cuando las dos muestras tienen exactamente las mismas abundancias y
+$1$ cuando no comparten ningún taxón. Cuando se calcula sobre abundancias relativas, el denominador es
+igual a $2$ y la disimilitud se reduce a $d_{BC}(p, q) = \frac{1}{2}\sum_i |p_i - q_i|$, es decir, la
+mitad de la distancia de Manhattan entre los dos vectores de proporciones. Los taxones abundantes dominan
+el valor de $d_{BC}$, mientras que los taxones raros apenas contribuyen. Bray-Curtis es simétrica y vale
+cero solo entre muestras iguales, pero no cumple la desigualdad del triángulo, por lo que es una
+semimétrica.\\
 
-La fórmula del índice de disimilitud de Bray-Curtis es:
-$$d_{BC} = 1 - \frac{2S}{(S_{a} + S_{b})}$$
-donde $d_{BC}$ es el índice de disimilitud de Bray-Curtis, $S$ es el número de especies compartidas entre 
-las poblaciones $a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, 
-respectivamente.\\
+La \textbf{disimilitud de Jaccard} tiene dos versiones. La versión clásica se basa únicamente en la
+presencia o ausencia de taxones. Si $A$ y $B$ son los conjuntos de taxones presentes en cada muestra,
+$$d_{J}(a, b) = 1 - \frac{|A \cap B|}{|A \cup B|} = 1 - \frac{S_{ab}}{S_a + S_b - S_{ab}}$$
+donde $S_{ab}$ es el número de taxones compartidos y $S_a$, $S_b$ son los números totales de taxones
+presentes en cada muestra. Vale $0$ cuando las dos muestras contienen los mismos taxones y $1$ cuando
+no comparten ninguno; esta versión sí es una métrica. La versión cuantitativa, también llamada
+disimilitud de Ru\v{z}i\v{c}ka, incorpora las abundancias:
+$$d_{J}^{\,q}(x, y) = \frac{\sum_{i=1}^{p} |x_i - y_i|}{\sum_{i=1}^{p} \max(x_i, y_i)} = \frac{2\, d_{BC}(x,y)}{1 + d_{BC}(x,y)}$$
+Esta es la versión que calculan phyloseq y vegan cuando se aplica el método ``jaccard'' sobre una
+tabla de abundancias sin binarizar, y es por lo tanto la que se utilizó en esta tesis. Como es una
+transformación monótona creciente de Bray-Curtis, ordena los pares de muestras exactamente igual que
+esta, por lo que las ordenaciones NMDS obtenidas con ambas medidas son muy parecidas.\\
 
-Este índice proporciona una medida cuantitativa de la diferencia relativa en términos de composición de especies y 
-abundancia entre dos poblaciones o muestras. Cuanto más cercano a 1 sea el valor del índice, mayor será la disimilitud 
-entre las poblaciones.\\
+La \textbf{distancia Euclidiana} es la distancia usual de $\mathbb{R}^p$ aplicada a los vectores de
+abundancia:
+$$d_{E}(x, y) = \sqrt{\sum_{i=1}^{p} (x_i - y_i)^2}$$
+Es una métrica. Al elevar al cuadrado las diferencias, los taxones muy abundantes dominan por completo
+su valor, y no está acotada superiormente por $1$.\\
 
-La \textbf{Distancia Jaccard} es un índice de disimilitud que se basa en la presencia o ausencia de especies en 
-diferentes poblaciones. Este índice compara la proporción de especies que son comunes entre dos poblaciones 
-en relación con el total de especies encontradas en ambas poblaciones. Resulta útil para comparar la diversidad de 
-especies entre diferentes poblaciones o evaluar la similitud en la composición de especies entre comunidades diversas.
+La \textbf{distancia de Manhattan} es la suma de las diferencias absolutas:
+$$d_{M}(x, y) = \sum_{i=1}^{p} |x_i - y_i|$$
+También es una métrica. Sobre abundancias relativas toma valores en $[0, 2]$ y, como se indicó arriba,
+coincide con el doble de la disimilitud de Bray-Curtis.\\
 
-La fórmula para el índice de disimilitud de Jaccard es la siguiente:
-$$d_{JC} = 1 - \frac{S}{(S_{a} + S_{b}-S)}$$
-donde $d_{JC}$ es el índice de disimilitud de Jaccard, $S$ es el número de especies compartidas entre las poblaciones 
-$a$ y $b$, y $S_{a}$ y $S_{b}$ son los números de especies exclusivas de los sitios $a$ y $b$, respectivamente.\\
+La \textbf{divergencia de Jensen-Shannon} compara dos muestras tratando sus abundancias relativas
+$P = (p_1, \dots, p_p)$ y $Q = (q_1, \dots, q_p)$ como distribuciones de probabilidad. Se construye a
+partir de la divergencia de Kullback-Leibler,
+$$D_{KL}(P \,\|\, Q) = \sum_{i=1}^{p} p_i \ln \frac{p_i}{q_i},$$
+que no es simétrica y es infinita cuando algún taxón está presente en $P$ y ausente en $Q$. Para evitar
+estos dos problemas se compara cada distribución con la mezcla $M = \frac{1}{2}(P + Q)$:
+$$JSD(P, Q) = \frac{1}{2} D_{KL}(P \,\|\, M) + \frac{1}{2} D_{KL}(Q \,\|\, M)$$
+La divergencia de Jensen-Shannon es simétrica, siempre finita y toma valores en $[0, \ln 2]$. No cumple
+la desigualdad del triángulo, pero su raíz cuadrada $\sqrt{JSD}$ sí es una métrica
+\citep{endres2003new}. El método ``jsd'' de phyloseq devuelve la divergencia $JSD$, sin raíz cuadrada,
+y esa es la cantidad que se utilizó en las ordenaciones de esta tesis.\\
 
-Este índice ofrece una medida de disimilitud que se centra en la presencia o ausencia de especies, siendo 0 cuando 
-las poblaciones comparten todas las especies y 1 cuando no comparten ninguna. Es especialmente útil para análisis 
-comparativos de la composición de especies entre diferentes comunidades.\\
-
-La distancia \textbf{Euclideana} es comúnmente utilizada en el análisis de datos numéricos y se fundamenta en la 
-diferencia de las abundancias o proporciones de diferentes especies en distintas muestras. Esta distancia mide la 
-separación entre dos muestras como la raíz cuadrada de la suma de las diferencias cuadráticas entre las proporciones 
-de cada especie en ambas muestras.
-
-La fórmula para la distancia Euclidiana entre dos muestras $A$ y $B$ es la siguiente:
-$$d_{euclidean} (A,B) = \sqrt{\sum(A_i - B_i)^2}$$
-Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente.\\
-
-La distancia Euclidiana es simétrica y cumple con la desigualdad del triángulo, lo que significa que satisface las 
-propiedades de una verdadera distancia. Esta métrica es especialmente adecuada para comparar muestras en términos de 
-diferencias numéricas en las abundancias de las especies.\\
-
-La distancia \textbf{Manhattan} también se emplea en el análisis de datos numéricos y se basa en la diferencia de 
-las abundancias o proporciones de diferentes especies en distintas muestras. En este caso, la distancia de Manhattan 
-entre dos muestras se define como la suma de las diferencias absolutas entre las proporciones de cada especie en ambas 
-muestras.
-
-La fórmula de la distancia de Manhattan entre dos muestras $A$ y $B$ se calcula como:
-$$d_{Manhattan}(A, B) = \sum{|A_i - B_i|}$$
-Donde $A_i$ y $B_i$ son las abundancias o proporciones de la especie $i$ en las muestras $A$ y $B$, respectivamente. \\
-
-Al igual que la distancia Euclidiana, la distancia de Manhattan es simétrica y satisface la desigualdad del triángulo. 
-Esta métrica es adecuada para comparar muestras en términos de las diferencias absolutas en las abundancias de las 
-especies.\\
-
-La \textbf{Divergencia de Jensen-Shannon (JSD)} se utiliza para comparar la similitud entre dos distribuciones 
-de probabilidad. En el contexto del análisis de datos de diversidad, estas distribuciones de probabilidad pueden 
-representar la proporción de diferentes especies en distintas muestras. La distancia de JSD entre dos distribuciones 
-de probabilidad se calcula como la raíz cuadrada de la divergencia de Kullback-Leibler entre las dos distribuciones, 
-dividida por dos. 
-
-La fórmula de la distancia de JSD entre dos distribuciones de probabilidad $P$ y $Q$ es la siguiente:
-$$d_{JSD}(P, Q) = \frac{\sqrt{(D_{KL}(P, M) + D_{KL}(Q, M))}}{2}$$
-Donde $D_{KL}(P, M)$ y $D_{KL}(Q, M)$ son las divergencias de Kullback-Leibler entre las distribuciones $P$ y $Q$ y 
-la media $M$ de ambas distribuciones, respectivamente. \\
-
-Al igual que las distancias anteriores, la distancia de JSD es simétrica y satisface la desigualdad del triángulo. 
-Esta métrica es especialmente útil cuando se quiere evaluar la similitud entre las proporciones de especies en 
-diferentes muestras.\\
-
-La metrica de \textbf{UniFrac} es un índice de disimilitud que se basa en la filogenia de las especies presentes 
-en diferentes sitios. Su objetivo es comparar la similitud entre dos sitios en términos de la diversidad filogenética 
-de las especies, teniendo en cuenta la contribución relativa de cada rama en el árbol filogenético. Esta métrica resulta 
-valiosa para evaluar la similitud en la evolución de las especies en diferentes comunidades o para comparar la estructura 
-filogenética de distintas comunidades.\\
-
-La fórmula del índice de disimilitud de UniFrac es más compleja en comparación con las de Bray-Curtis y Jaccard, 
-ya que se basa en un análisis de la distribución de ramas filogenéticas únicas o compartidas entre los sitios. 
-Este enfoque permite capturar la información sobre las relaciones evolutivas entre las especies, proporcionando una 
-medida más completa de la similitud o disimilitud entre las comunidades estudiadas. \\
+La disimilitud \textbf{UniFrac} \citep{lozupone2008species} incorpora las relaciones filogenéticas
+entre los taxones. Requiere un árbol filogenético con longitudes de rama en el que los taxones observados
+son las hojas. En su versión no ponderada, para cada rama $r$ del árbol con longitud $\ell_r$ se define
+$I_r(a) = 1$ si la rama conduce a al menos un taxón presente en la muestra $a$ y $I_r(a) = 0$ en caso
+contrario, y se calcula
+$$d_{UF}(a, b) = \frac{\sum_{r} \ell_r \, |I_r(a) - I_r(b)|}{\sum_{r} \ell_r},$$
+es decir, la fracción de la longitud total del árbol que corresponde a ramas exclusivas de una de las
+dos muestras. La versión ponderada sustituye los indicadores por las abundancias relativas acumuladas
+bajo cada rama. UniFrac toma valores en $[0,1]$ y considera más parecidas a dos muestras cuyos taxones,
+aunque distintos, sean filogenéticamente cercanos. En esta tesis no se utilizó UniFrac, porque la
+clasificación con Kraken proporciona una jerarquía taxonómica pero no un árbol filogenético con
+longitudes de rama.\\
 
 Estas métricas ofrecen diferentes perspectivas sobre la similitud o disimilitud entre muestras, permitiendo seleccionar 
 la más apropiada según el contexto del estudio y los objetivos específicos del análisis de diversidad beta.
@@ -512,52 +504,79 @@ $H_1$ : Existen diferencias significativas entre las muestras de cultivos saluda
 
 \subsection{Prueba t para comparar dos medias poblacionales (muestras pequeñas)}
 
-Suponemos dos poblaciones independientes con distibuciones normales con 
+Sean $Y_{11}, \dots, Y_{1n_1}$ y $Y_{21}, \dots, Y_{2n_2}$ dos muestras aleatorias independientes de
+poblaciones normales, $N(\mu_1, \sigma_1^2)$ y $N(\mu_2, \sigma_2^2)$ respectivamente. Se denota por
+$\bar{Y}_k$ y $S_k^2$ la media y la varianza muestral de la muestra $k$. Se desea contrastar
+$$H_{0} : \mu_{1} = \mu_{2} \qquad \text{frente a} \qquad H_{1} : \mu_{1} \neq \mu_{2}.$$
 
-$$\sigma_{1}^{2} = \sigma_{2}^{2}$$
-\\
-
-y queremos probar (tenemos como hipotesis nula):
-
-$$H_{0} : \mu_{1} = \mu _{2}$$
-
-respecto a la hipotesis alternativa:
-
-$$H_{a} : \mu_{1} \neq \mu _{2}$$
-
-tomando como estadistico de prueba:
-
+\textbf{Caso de varianzas iguales.} Si se supone $\sigma_1^2 = \sigma_2^2$, la varianza común se estima
+con la varianza combinada
+$$ S_{p}^2 = \frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}$$
+y el estadístico de prueba es
 \begin{equation}
-T = \frac{\bar{Y_{1}} - \bar{Y_{2}}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}
+T = \frac{\bar{Y}_{1} - \bar{Y}_{2}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}
 \label{eq:t-statistic}
 \end{equation}
+que bajo $H_0$ sigue una distribución $t$ de Student con $\nu = n_1 + n_2 - 2$ grados de libertad
+\citep{wackerly2002estadistica}. La región de rechazo al nivel $\alpha$ es $|T| > t_{\alpha/2,\,\nu}$,
+donde $t_{\alpha/2,\,\nu}$ es el cuantil que deja probabilidad $\alpha/2$ en la cola superior, y el
+p-valor es $2\,P(t_\nu \geq |t_{obs}|)$.
 
-donde:
-
-$$ S_{p} = \sqrt{\frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}}$$
-
-
-\subsection{Prueba F sobre las varianzas de dos poblaciones pequeñas} 
-Suponemos dos poblaciones independientes con distibuciones normales y queremos probar:
-
-$$H_{0} : \sigma_{1}^{2} = \sigma_{2}^{2}$$
-
-respecto a la hipotesis alternativa:
-
-$$H_{a} : \sigma_{1}^{2} \neq \sigma_{2}^{2}$$
-
-tomando como estadistico de prueba:
-
-$$ F = \frac{S_{1}^{2}}{S_{2}^{2}}$$
+\textbf{Caso de varianzas distintas (prueba de Welch).} Si no puede suponerse $\sigma_1^2 = \sigma_2^2$,
+se utiliza el estadístico
+\begin{equation}
+T' = \frac{\bar{Y}_{1} - \bar{Y}_{2}}{\sqrt{\frac{S_{1}^{2}}{n_{1}} + \frac{S_{2}^{2}}{n_{2}}}}
+\label{eq:welch-statistic}
+\end{equation}
+cuya distribución bajo $H_0$ se aproxima por una $t$ de Student con grados de libertad dados por la
+aproximación de Welch-Satterthwaite,
+$$\nu' = \frac{\left(\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}\right)^2}
+{\frac{(S_1^2/n_1)^2}{n_1 - 1} + \frac{(S_2^2/n_2)^2}{n_2 - 1}},$$
+que en general no es un entero y satisface $\min(n_1, n_2) - 1 \leq \nu' \leq n_1 + n_2 - 2$. La región
+de rechazo y el p-valor se calculan como en el caso anterior, con $\nu'$ en lugar de $\nu$. Esta es la
+versión que la función \texttt{t.test} de R aplica por defecto, y es la que se reporta en el Capítulo 4
+bajo el nombre ``varianzas diferentes''.
 
 
-\subsection{Prueba de Wilcolxon Mann-Whitney }
-Las pruebas de Wilcoxon y Mann-Whitney U son pruebas estadísticas no paramétricas, lo que significa que no asumen normalidad en los datos. \\
+\subsection{Prueba F sobre las varianzas de dos poblaciones pequeñas}
+Con las mismas hipótesis de normalidad e independencia, se desea contrastar
+$$H_{0} : \sigma_{1}^{2} = \sigma_{2}^{2} \qquad \text{frente a} \qquad H_{1} : \sigma_{1}^{2} \neq \sigma_{2}^{2}$$
+mediante el cociente de varianzas muestrales
+$$ F = \frac{S_{1}^{2}}{S_{2}^{2}},$$
+que bajo $H_0$ sigue una distribución $F$ de Fisher con $n_1 - 1$ grados de libertad en el numerador y
+$n_2 - 1$ en el denominador. La región de rechazo al nivel $\alpha$ es
+$F < F_{1-\alpha/2,\, n_1-1,\, n_2-1}$ o $F > F_{\alpha/2,\, n_1-1,\, n_2-1}$. El resultado de esta prueba
+se usa para decidir entre el estadístico (\ref{eq:t-statistic}) y el estadístico (\ref{eq:welch-statistic}).
+Debe tenerse en cuenta que la prueba F es sensible a desviaciones de la normalidad, por lo que su
+resultado es menos confiable cuando ese supuesto no se verifica.
 
-Wilcoxon es una prueba no parametrica para comparar el rango medio de dos muestras relacionadas y determinar si existen diferencias entre ellas. Se uso, ya que los datos no tienen una distribucion normal.
 
-La U de Mann-Whitney para comparar las medias de dos grupos independientes. 
-Prueba no parametrica o libre de distribución, es el analogo no parametrico a la t de Student para lacomparacion de dos medias independientes; solo que esta no requiere parametros y se puede emplear sin ninguna condicion de aplicación.
+\subsection{Prueba de suma de rangos de Wilcoxon (Mann-Whitney)}
+Cuando no puede suponerse que los datos provienen de poblaciones normales, se recurre a pruebas no
+paramétricas basadas en rangos. Conviene distinguir dos pruebas que llevan el nombre de Wilcoxon: la
+prueba de \emph{rangos con signo}, que compara dos muestras relacionadas o pareadas, y la prueba de
+\emph{suma de rangos}, equivalente a la prueba $U$ de Mann-Whitney, que compara dos muestras
+independientes. En esta tesis los grupos de plantas saludables y no saludables son independientes, por
+lo que se utiliza la segunda.\\
+
+Sean $X_1, \dots, X_{n_1}$ y $Y_1, \dots, Y_{n_2}$ dos muestras independientes de poblaciones con
+funciones de distribución continuas $F_X$ y $F_Y$. La hipótesis nula es que ambas distribuciones son
+iguales, $H_0 : F_X = F_Y$, frente a la alternativa de que una de ellas tiende a producir valores
+mayores que la otra. Se ordenan conjuntamente las $n_1 + n_2$ observaciones y se asigna a cada una su
+rango; si $R_1$ es la suma de los rangos de la primera muestra, el estadístico de Mann-Whitney es
+$$U = R_1 - \frac{n_1(n_1+1)}{2} = \#\{(i, j) : X_i > Y_j\},$$
+es decir, el número de pares en los que la observación de la primera muestra supera a la de la segunda
+(los empates cuentan como medio par). Bajo $H_0$, $U$ tiene distribución conocida, con
+$E(U) = n_1 n_2 / 2$ y $\mathrm{Var}(U) = n_1 n_2 (n_1 + n_2 + 1)/12$, y para muestras moderadas se
+aproxima por una distribución normal \citep{wilcox2010fundamentals}. La función \texttt{wilcox.test} de R
+reporta este estadístico con el nombre $W$.\\
+
+La prueba solo requiere que las observaciones sean independientes y medidas al menos en escala ordinal,
+y no supone normalidad. Sin embargo, para interpretar el rechazo de $H_0$ como una diferencia de
+medianas, o el intervalo de confianza que acompaña a la prueba como una estimación del desplazamiento
+entre grupos, se necesita suponer que ambas distribuciones tienen la misma forma y difieren únicamente
+por una traslación. Sin ese supuesto, un resultado significativo indica solamente que
+$P(X > Y) \neq 1/2$.
 
 
 \section{Normalización y Rarefacción}

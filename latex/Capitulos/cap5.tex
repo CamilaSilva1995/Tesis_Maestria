@@ -1,8 +1,215 @@
-\chapter{Conclusiones}
+\chapter{Discusión y conclusiones}
+\label{cap:discusion}
+%% ============================================================================
+%% BORRADOR - Capítulo 5
+%% Los comentarios que empiezan con "%% CAMI" son notas para revisar antes de
+%% la versión final (datos por verificar, figuras por agregar, etc.).
+%% ============================================================================
 
+En este capítulo se interpretan los resultados presentados en el Capítulo 4 a la luz de los
+objetivos planteados en el Capítulo 2. Primero se discuten los hallazgos sobre la calidad de los
+datos, la diversidad alfa y beta, la composición taxonómica y las pruebas estadísticas; después se
+señalan las limitaciones del estudio y se presentan las conclusiones. Las perspectivas y el trabajo
+a futuro que se derivan de estas conclusiones se presentan en el Capítulo \ref{cap:perspectivas}.
 
-Concluciones analisis de datos \\
+%% ----------------------------------------------------------------------------
+\section{Discusión}
+%% ----------------------------------------------------------------------------
 
-Concluciones simulador metagenomico \\
+\subsection{La calidad de los datos condiciona la interpretación}
 
-Trabajo a futuro, continuar con un programa de clasificacion de muestras con machine learning, posiblemente un random forest \\
+El primer resultado del análisis fue metodológico: la diversidad alfa calculada sobre los datos
+crudos no permitía distinguir entre plantas saludables y no saludables, mientras que, tras eliminar
+las cinco muestras con menos de 25 millones de lecturas (MP2079, MP2080, MP2088, MP2109 y MP2137),
+las tendencias entre grupos se hicieron visibles. Casos como el de la muestra MP2088, con solo dos
+lecturas, muestran que una única muestra defectuosa puede dominar la escala de los índices y ocultar
+la estructura del resto de los datos. El filtrado de calidad no es, por lo tanto, un paso
+accesorio, sino una condición necesaria para que las comparaciones posteriores tengan sentido.
+
+Sin embargo, aun después del filtrado persistió una diferencia sistemática en la profundidad de
+secuenciación: las muestras de plantas saludables tuvieron, en promedio, más lecturas que las de
+plantas no saludables. Los índices que dependen del número de taxones observados o de los
+\emph{singletons} y \emph{doubletons}, como Chao1, son sensibles a esta diferencia, porque una
+muestra con más lecturas tiene mayor probabilidad de detectar taxones raros. Por ello, parte de la
+mayor diversidad observada en las plantas saludables podría explicarse por el esfuerzo de muestreo
+y no únicamente por el estado de salud de la planta \citep{mcmurdie2014waste}. Este sesgo refuerza
+la necesidad de comparar los resultados con datos normalizados o rarificados antes de atribuir las
+diferencias a la condición biológica.
+%% CAMI: si ya tienes la diversidad alfa después de la rarefacción (Rmd 12 / script
+%% 20230425_Rarefaccion(Normalizacion).R), aquí conviene decir si la tendencia se mantiene o
+%% desaparece tras rarificar. Es el argumento más fuerte para separar biología de profundidad.
+
+\subsection{Diversidad alfa: una tendencia consistente pero débil}
+
+En todos los índices de diversidad alfa (Chao1, Shannon y Simpson) las plantas saludables
+mostraron valores ligeramente mayores que las no saludables, y esta tendencia se repitió al separar
+los datos por reino y al descender a los niveles de filo, familia, género y especie. Esta dirección
+coincide con lo reportado en otros estudios sobre la rizósfera de fresa y de otros cultivos, en los
+que la enfermedad se asocia con una pérdida de diversidad microbiana
+\citep{xiong2020rhizosphere, gao2021disease, yang2020comparison}.
+
+No obstante, la magnitud de la diferencia fue pequeña. Para el índice de Shannon calculado sobre la
+comunidad completa, las medias fueron 7.478 en el grupo saludable y 7.417 en el no saludable, una
+diferencia de apenas 0.061 unidades. Ni la prueba t con varianzas distintas ($p = 0.1501$) ni la
+prueba de Wilcoxon-Mann-Whitney ($p = 0.2586$) permitieron rechazar la hipótesis nula de igualdad
+entre grupos. La tendencia visual, por consistente que sea, no alcanzó a separarse del ruido propio
+de los datos.
+
+Un resultado que merece atención es la diferencia en la dispersión de los grupos. La desviación
+estándar del índice de Shannon fue de 0.061 en las plantas saludables y de 0.168 en las no
+saludables, y la prueba F rechazó con claridad la igualdad de varianzas ($F = 0.132$,
+$p < 0.001$). Es decir, las plantas no saludables no difieren tanto en su diversidad promedio como
+en su variabilidad: sus comunidades microbianas son más heterogéneas entre sí. Este patrón es
+consistente con el llamado \emph{principio de Anna Karenina} aplicado a microbiomas, según el cual
+los microbiomas de hospederos sanos tienden a parecerse entre sí, mientras que cada hospedero
+enfermo o estresado se desestabiliza a su manera \citep{zaneveld2017stress}. Desde el punto de vista
+estadístico, esta observación sugiere que comparar solo medias puede ser insuficiente y que la
+dispersión es, en sí misma, una característica diferenciadora entre los grupos.
+%% CAMI: una prueba de homogeneidad de dispersiones multivariada (betadisper de vegan) sobre la
+%% matriz de Bray-Curtis permitiría confirmar este patrón también en la diversidad beta.
+
+\subsection{Diversidad beta: gran superposición entre grupos}
+
+Ninguna de las métricas de distancia utilizadas (Bray-Curtis, Jaccard, Euclidiana, Manhattan y
+Jensen-Shannon) produjo una separación visible entre muestras saludables y no saludables en las
+ordenaciones. Para cuantificar esta observación se aplicó un análisis PERMANOVA sobre la matriz de
+disimilitud de Bray-Curtis de las abundancias relativas: el estado de la planta explicó solo el
+2.4\% de la variación total en la composición ($R^2 = 0.024$, $F = 1.26$, $p = 0.202$, 999
+permutaciones) \citep{anderson2011navigating}. Es decir, más del 97\% de la variación entre
+muestras se debe a factores distintos del estado sano o enfermo de la planta.
+%% CAMI: este PERMANOVA se calculó para este borrador con adonis2 (vegan), usando el mismo
+%% filtrado del Capítulo 4. Conviene agregarlo también como resultado en el Capítulo 4.
+
+Esta superposición indica que la composición global del microbioma rizosférico está dominada por
+otros factores, probablemente el tipo de suelo, el manejo agronómico, el sitio y el momento de
+muestreo, que no fueron registrados en los metadatos disponibles. Al restringir el análisis a
+niveles taxonómicos más finos, en particular género y especie, las diferencias en Bray-Curtis
+resultaron más evidentes, lo que sugiere que la señal asociada a la salud de la planta, si existe,
+no está en la estructura global de la comunidad sino en un subconjunto reducido de taxones.
+
+\subsection{Composición taxonómica: taxones candidatos, no biomarcadores}
+
+A nivel de filo, Actinobacteria y Proteobacteria fueron los grupos más abundantes en ambos tipos de
+muestras, lo que concuerda con la composición típica de la rizósfera de fresa
+\citep{yang2020comparison, xiong2020rhizosphere}. En los eucariotas se observó una menor abundancia
+de Oomycota y, dentro de este filo, de la familia Peronosporaceae en las plantas no saludables. En
+las bacterias, las plantas saludables presentaron mayor proporción de géneros comúnmente asociados
+con la promoción del crecimiento vegetal, como \textit{Bacillus} y \textit{Pseudomonas}, mientras
+que en las no saludables aparecieron con mayor peso géneros que incluyen fitopatógenos, como
+\textit{Ralstonia} y \textit{Fusarium}.
+%% CAMI: revisar la interpretación de Oomycota. Este filo incluye patógenos importantes de la
+%% fresa (Phytophthora, Pythium) y Phytophthora pertenece a Peronosporaceae, así que una MENOR
+%% abundancia en plantas enfermas es contraintuitiva. Vale la pena discutirlo con la Dra. Nelly:
+%% puede deberse a la etapa de la enfermedad, a la profundidad de secuenciación o a la
+%% clasificación de Kraken en eucariotas. Revisar también que las leyendas de las Figuras de
+%% barras de eucariotas no mencionen a Pseudomonas y Bacillus, que son bacterias.
+
+Estas diferencias deben interpretarse con cautela. Se identificaron a partir de gráficos de
+abundancia relativa y no mediante una prueba de abundancia diferencial con corrección por
+comparaciones múltiples. Además, los datos metagenómicos son composicionales: las abundancias
+relativas suman uno, de modo que el aumento de un taxón obliga a la disminución aparente de otros,
+aun cuando su abundancia absoluta no haya cambiado \citep{gloor2017microbiome, calle2019statistical}.
+Por ello, los géneros mencionados deben considerarse \emph{taxones candidatos} a biomarcadores, cuya
+asociación con el estado de la planta requiere confirmación.
+
+\subsection{Diversidad de eucariotas a nivel de género: la señal más clara}
+
+El único contraste que resultó estadísticamente significativo fue el del índice de Shannon calculado
+sobre los 58 géneros de eucariotas, grupo que incluye al hongo fitopatógeno \textit{Fusarium}. La
+diversidad fue mayor en las plantas saludables (media 3.101) que en las no saludables (media 2.988),
+tanto asumiendo varianzas iguales ($t = 3.31$, $p = 0.0017$) como distintas ($t = 2.71$,
+$p = 0.0130$), y en ambos casos el intervalo de confianza del 95\% para la diferencia de medias
+excluyó el cero.
+
+Este resultado es relevante porque apunta a que la diferencia entre plantas sanas y enfermas se
+concentra en la comunidad eucariota, y en particular en los hongos, más que en la comunidad
+bacteriana que domina numéricamente las muestras. Es biológicamente plausible: \textit{Fusarium} es
+uno de los agentes causales de la marchitez en fresa, y su proliferación en la rizósfera podría
+reducir la equidad de la comunidad fúngica. Aun así, debe tenerse en cuenta que este contraste fue
+uno de varios realizados sobre distintos subconjuntos y niveles taxonómicos. Al aumentar el número de
+pruebas aumenta la probabilidad de obtener algún resultado significativo por azar, por lo que este
+hallazgo debe confirmarse con una corrección por comparaciones múltiples, por ejemplo la de
+Benjamini-Hochberg \citep{benjamini1995controlling}, o en un conjunto de datos independiente.
+%% CAMI: contar cuántas pruebas se hicieron en total (niveles x reinos x índices) y aplicar
+%% p.adjust(p, method = "BH"). Con p = 0.0017 es probable que el resultado se mantenga.
+
+\subsection{Tamaño de muestra y potencia estadística}
+
+La ausencia de significancia en la comunidad completa no debe leerse como evidencia de que no exista
+diferencia entre los grupos. Con las medias y desviaciones estándar observadas del índice de
+Shannon, el tamaño del efecto estandarizado (\emph{d} de Cohen) fue de aproximadamente 0.56, un
+efecto de magnitud moderada. Con los 35 y 18 metagenomas disponibles, la potencia de una prueba t
+para detectar un efecto de ese tamaño con $\alpha = 0.05$ es de apenas 0.48 aproximadamente: aun si
+la diferencia fuera real, el diseño la detectaría menos de la mitad de las veces. Para alcanzar una
+potencia de 0.8 se necesitarían alrededor de 51 muestras por grupo, casi el triple del número
+actual de plantas no saludables \citep{xia2018statistical}.
+%% CAMI: potencia calculada con power.t.test usando la media armónica de los tamaños de grupo
+%% (n aprox. 24) y la desviación estándar combinada (0.109). Es una aproximación, dado que las
+%% varianzas no son iguales; puede incluirse como resultado en el Capítulo 4.
+
+Este cálculo reencuadra los resultados del Capítulo 4: la falta de significancia es compatible con
+un efecto real que el diseño no tiene potencia suficiente para detectar. El desbalance entre grupos,
+con casi el doble de muestras saludables que no saludables, y la mayor varianza precisamente en el
+grupo más pequeño agravan el problema. Esta limitación motiva directamente el trabajo a futuro
+descrito en el Capítulo \ref{cap:perspectivas}.
+
+\subsection{Limitaciones del estudio}
+
+Además del tamaño de muestra, el estudio presenta las siguientes limitaciones:
+
+\begin{itemize}
+    \item \textbf{Diseño observacional y metadatos limitados.} Solo se contó con la etiqueta
+    saludable o no saludable de cada planta. No se dispuso de variables como tipo de suelo, sitio,
+    fecha de muestreo, variedad o manejo agronómico, que podrían explicar buena parte de la
+    variación observada en la diversidad beta.
+    \item \textbf{Etiquetado binario de la enfermedad.} La categoría ``no saludable'' agrupa
+    plantas marchitas sin identificar el agente causal ni la severidad de la enfermedad, lo que
+    puede contribuir a la alta variabilidad observada en ese grupo.
+    \item \textbf{Clasificación taxonómica.} La asignación con Kraken depende de la base de datos
+    de referencia; los eucariotas, en particular los hongos, están menos representados que las
+    bacterias, lo que puede sesgar su detección y abundancia.
+    \item \textbf{Profundidad de secuenciación desigual.} Las muestras saludables tuvieron más
+    lecturas, lo que puede inflar los índices de riqueza en ese grupo.
+    \item \textbf{Asociación y no causalidad.} Las diferencias observadas son asociaciones; con el
+    diseño actual no es posible determinar si los cambios en el microbioma son causa o consecuencia
+    de la enfermedad.
+\end{itemize}
+
+%% ----------------------------------------------------------------------------
+\section{Conclusiones}
+%% ----------------------------------------------------------------------------
+
+En relación con los objetivos planteados, se concluye lo siguiente:
+
+\begin{enumerate}
+    \item \textbf{Caracterización de la composición y la diversidad.} Se caracterizó el microbioma
+    rizosférico de 53 plantas de fresa, 35 saludables y 18 no saludables, a los niveles de reino,
+    filo, familia, género y especie. La comunidad está dominada por bacterias, principalmente
+    Actinobacteria y Proteobacteria, en ambos grupos. Las plantas saludables mostraron de forma
+    consistente una diversidad alfa ligeramente mayor en todos los índices y niveles taxonómicos.
+    Además, el filtrado de calidad resultó indispensable para obtener comparaciones interpretables.
+
+    \item \textbf{Evaluación estadística de las diferencias.} A nivel de la comunidad completa, las
+    diferencias en diversidad alfa no fueron estadísticamente significativas, y el estado de la
+    planta explicó una fracción muy pequeña de la variación en la composición. En contraste, la
+    diversidad de géneros de eucariotas sí difirió significativamente entre grupos, lo que señala a
+    la comunidad fúngica como el componente más asociado con la salud de la planta. El análisis de
+    potencia muestra que el tamaño de muestra actual es insuficiente para detectar efectos
+    moderados en la comunidad completa, por lo que los resultados no significativos deben
+    interpretarse como no concluyentes y no como ausencia de efecto.
+
+    \item \textbf{Patrones asociados con el estado de salud.} Las plantas no saludables presentaron
+    comunidades más heterogéneas entre sí, con una varianza de la diversidad significativamente
+    mayor. Asimismo, se identificaron taxones candidatos asociados con cada condición, como
+    \textit{Bacillus} y \textit{Pseudomonas} en plantas saludables y \textit{Fusarium} y
+    \textit{Ralstonia} en plantas no saludables, cuya relevancia debe confirmarse con pruebas de
+    abundancia diferencial y modelos que capturen las relaciones entre microorganismos.
+\end{enumerate}
+
+En conjunto, este trabajo muestra que el análisis de datos metagenómicos requiere algo más que la
+aplicación directa de índices ecológicos: exige controlar la calidad y la profundidad de los datos,
+tener en cuenta su naturaleza composicional, evaluar la potencia estadística del diseño y considerar
+la dispersión, y no solo las medias, como una característica informativa. Las tendencias observadas
+son consistentes con la hipótesis de que la salud de la planta de fresa se asocia con un microbioma
+rizosférico más diverso y estable, pero confirmarla requiere más datos y modelos capaces de capturar
+la estructura de dependencia entre los microorganismos.

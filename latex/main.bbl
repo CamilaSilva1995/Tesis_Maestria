@@ -18,6 +18,13 @@ Beiko, R.~G., Hsiao, W., and Parkinson, J. (2018).
 \newblock {\em Microbiome analysis: methods and protocols}.
 \newblock Springer.
 
+\bibitem[Benjamini and Hochberg, 1995]{benjamini1995controlling}
+Benjamini, Y. and Hochberg, Y. (1995).
+\newblock Controlling the false discovery rate: a practical and powerful
+  approach to multiple testing.
+\newblock {\em Journal of the Royal Statistical Society: Series B
+  (Methodological)}, 57(1):289--300.
+
 \bibitem[Berry and Widder, 2014]{berry2014deciphering}
 Berry, D. and Widder, S. (2014).
 \newblock Deciphering microbial interactions and detecting keystone species
@@ -96,6 +103,11 @@ Eduardo Castro~Nallar, P. (2020).
 \newblock
   \texttt{http://www.castrolab.org/teaching/data_analysis/intro-phyloseq.html}.
 
+\bibitem[Endres and Schindelin, 2003]{endres2003new}
+Endres, D.~M. and Schindelin, J.~E. (2003).
+\newblock A new metric for probability distributions.
+\newblock {\em IEEE Transactions on Information Theory}, 49(7):1858--1860.
+
 \bibitem[Favila et~al., 2022]{favila2022micnet}
 Favila, N., Madrigal-Trejo, D., Legorreta, D., S{\'a}nchez-P{\'e}rez, J.,
   Espinosa-Asuar, L., Eguiarte, L.~E., and Souza, V. (2022).
@@ -119,6 +131,11 @@ Gao, M., Xiong, C., Gao, C., Tsui, C.~K., Wang, M.-M., Zhou, X., Zhang, A.-M.,
 \newblock Disease-induced changes in plant microbiome assembly and functional
   adaptation.
 \newblock {\em Microbiome}, 9:1--18.
+
+\bibitem[Gloor et~al., 2017]{gloor2017microbiome}
+Gloor, G.~B., Macklaim, J.~M., Pawlowsky-Glahn, V., and Egozcue, J.~J. (2017).
+\newblock Microbiome datasets are compositional: and this is not optional.
+\newblock {\em Frontiers in Microbiology}, 8:2224.
 
 \bibitem[Gonze et~al., 2018]{gonze2018microbial}
 Gonze, D., Coyte, K.~Z., Lahti, L., and Faust, K. (2018).
@@ -332,6 +349,11 @@ Rosenberg, E. (2021).
 \newblock {\em Microbiomes: Current Knowledge and Unanswered Questions}.
 \newblock Springer Nature.
 
+\bibitem[Scutari, 2010]{scutari2010bnlearn}
+Scutari, M. (2010).
+\newblock Learning {Bayesian} networks with the bnlearn {R} package.
+\newblock {\em Journal of Statistical Software}, 35(3):1--22.
+
 \bibitem[S{\'e}lem-Mojica et~al., 2019]{selem2019evomining}
 S{\'e}lem-Mojica, N., Aguilar, C., Guti{\'e}rrez-Garc{\'\i}a, K.,
   Mart{\'\i}nez-Guerrero, C.~E., and Barona-G{\'o}mez, F. (2019).
@@ -466,6 +488,12 @@ Yao, Y., Jin, Z., and Lee, J.~H. (2018).
 \newblock An improved statistical model for taxonomic assignment of
   metagenomics.
 \newblock {\em BMC genetics}, 19(1):1--11.
+
+\bibitem[Zaneveld et~al., 2017]{zaneveld2017stress}
+Zaneveld, J.~R., McMinds, R., and Vega~Thurber, R. (2017).
+\newblock Stress and stability: applying the {Anna Karenina} principle to
+  animal microbiomes.
+\newblock {\em Nature Microbiology}, 2(9):17121.
 
 \bibitem[Zhou et~al., 2014]{zhou2014assessment}
 Zhou, Q., Su, X., and Ning, K. (2014).

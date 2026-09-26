@@ -1,8 +1,108 @@
-\chapter{Perspectivas}
+\chapter{Perspectivas y trabajo a futuro}
+\label{cap:perspectivas}
+%% ============================================================================
+%% BORRADOR - Capítulo 6
+%% Los comentarios que empiezan con "%% CAMI" son notas para revisar.
+%% ============================================================================
 
+Las limitaciones identificadas en el Capítulo \ref{cap:discusion}, en particular la baja potencia estadística y la dificultad de
+separar los grupos con métricas globales, orientan el trabajo a futuro en dos líneas
+complementarias: una que se encuentra actualmente en desarrollo, la modelación con redes
+bayesianas, y otra de más largo plazo, la puesta en funcionamiento de un simulador de datos
+metagenómicos.
 
-Concluciones analisis de datos \\
+\section{Redes bayesianas (en desarrollo)}
 
-Concluciones simulador metagenomico \\
+Los índices de diversidad resumen toda la comunidad en un solo número y las pruebas de hipótesis
+comparan esos resúmenes entre grupos; ninguno de los dos enfoques describe cómo se relacionan los
+microorganismos entre sí ni cómo esas relaciones se vinculan con el estado de la planta. Para
+abordar esta pregunta se está desarrollando un modelo de redes bayesianas, un modelo gráfico
+probabilístico en el que un grafo acíclico dirigido $G = (V, E)$ codifica las dependencias
+condicionales entre variables, de modo que la distribución conjunta se factoriza como
+$$
+P(X_1, \dots, X_n) = \prod_{i=1}^{n} P\left(X_i \mid \mathrm{Pa}(X_i)\right),
+$$
+donde $\mathrm{Pa}(X_i)$ denota el conjunto de padres del nodo $X_i$ en el grafo.
 
-Trabajo a futuro, continuar con un programa de clasificacion de muestras con machine learning, posiblemente un random forest \\
+En este trabajo, los nodos de la red son la abundancia del género fúngico \textit{Fusarium}, el
+índice de Shannon como medida de diversidad alfa, la abundancia de los taxones más abundantes y el
+estado de salud de la planta. La estructura se aprende a partir de los datos, por ejemplo con el
+paquete \texttt{bnlearn} de R \citep{scutari2010bnlearn}, y su robustez se evalúa mediante
+\emph{bootstrapping}, conservando solo los arcos que aparecen en una proporción alta de las redes
+remuestreadas, y validación cruzada de $k$ particiones para medir la capacidad predictiva del
+modelo.
+%% CAMI: actualizar esta sección con lo que ya tengas: algoritmo de aprendizaje de estructura
+%% (hc, tabu, pc...), discretización o no de las abundancias, número de taxones, umbral de
+%% fuerza de arcos y primeros resultados.
+
+Este enfoque complementa los resultados de esta tesis en tres aspectos:
+\begin{itemize}
+    \item Permite pasar de preguntar \emph{si} los grupos difieren a preguntar \emph{qué}
+    variables están relacionadas con el estado de la planta y a través de qué otras variables.
+    \item Da continuación natural al hallazgo sobre la comunidad eucariota, al modelar
+    explícitamente el papel de \textit{Fusarium} y su relación con la diversidad y con los taxones
+    dominantes.
+    \item Extiende el análisis de redes de coocurrencia exploratorio, basado en correlaciones y
+    herramientas como MicNet \citep{favila2022micnet}, hacia un modelo probabilístico con el que
+    se puede hacer inferencia y predicción.
+\end{itemize}
+
+Cabe advertir que, con 53 muestras, el aprendizaje de la estructura de una red bayesiana es
+inestable cuando el número de nodos es grande; de ahí la importancia del \emph{bootstrapping} y de
+limitar la red a un número reducido de taxones. Esta restricción conecta directamente con la
+segunda línea de trabajo.
+
+\section{Simulador de datos metagenómicos}
+
+A más largo plazo, se propone contar con un simulador de datos metagenómicos plenamente funcional,
+que permita generar conjuntos de datos adicionales para fortalecer el análisis y llegar a
+resultados más significativos. Como parte de este proyecto se desarrolló una primera versión de
+PyMetaSeem, un simulador escrito en Python que genera lecturas a partir de genomas de referencia en
+formato FASTA. PyMetaSeem recibe un perfil taxonómico con la cantidad de lecturas por genoma, corta
+lecturas aleatorias de longitud determinada, calcula su reverso complementario y produce archivos
+FASTQ con la calidad asociada. Se concibió como una alternativa más sencilla de instalar y usar que
+simuladores como CAMISIM \citep{fritz2019camisim}.
+
+El flujo de trabajo propuesto consiste en:
+\begin{enumerate}
+    \item Estimar, a partir de los datos reales, los perfiles taxonómicos característicos de las
+    plantas saludables y no saludables: las abundancias medias de cada taxón, su variabilidad y
+    las relaciones entre taxones, incluidas las aprendidas por la red bayesiana.
+    \item Generar nuevos perfiles taxonómicos muestreando de esos modelos y convertirlos, con
+    PyMetaSeem, en metagenomas sintéticos, es decir, archivos de lecturas FASTQ.
+    \item Procesar los metagenomas sintéticos con el mismo flujo del Capítulo 3: clasificación con
+    Kraken, filtrado, índices de diversidad y pruebas de hipótesis.
+\end{enumerate}
+
+Este esquema cumple varios propósitos. En primer lugar, permite realizar análisis de potencia por
+simulación: generar conjuntos de datos con distintos tamaños de muestra y tamaños de efecto
+conocidos, y estimar cuántas muestras reales serían necesarias para detectar con confianza las
+diferencias observadas, lo que puede orientar el diseño de futuros muestreos. En segundo lugar,
+como en los datos simulados la composición verdadera es conocida, permite evaluar la exactitud del
+propio flujo de análisis: qué tanto sesgan la clasificación taxonómica, la profundidad de
+secuenciación desigual y la rarefacción los índices de diversidad. En tercer lugar, permite
+validar las redes bayesianas: si se simulan datos a partir de una red con estructura conocida, es
+posible medir qué tan bien los algoritmos de aprendizaje recuperan esa estructura con el tamaño de
+muestra disponible.
+
+Es importante precisar el alcance de esta línea de trabajo. Los datos simulados heredan los
+supuestos del modelo con el que se generan, por lo que no sustituyen a nuevas muestras biológicas
+como evidencia de una diferencia real entre plantas sanas y enfermas. Su valor está en cuantificar
+la incertidumbre, validar los métodos y diseñar mejores experimentos. La combinación de un
+simulador funcional, un modelo de redes bayesianas y nuevos muestreos dirigidos permitiría, en
+conjunto, llegar a conclusiones estadísticamente más sólidas sobre la relación entre el microbioma
+rizosférico y la salud de la fresa.
+
+\section{Otras líneas}
+
+Por último, se identifican otras extensiones naturales de este trabajo:
+\begin{itemize}
+    \item Aplicar pruebas de abundancia diferencial que consideren la naturaleza composicional de
+    los datos, con corrección por comparaciones múltiples, para confirmar los taxones candidatos.
+    \item Construir un clasificador de muestras saludables y no saludables con aprendizaje
+    automático, por ejemplo un bosque aleatorio (\emph{random forest}), que además permita ordenar
+    los taxones por su importancia para la clasificación.
+    \item Integrar los conjuntos de datos adicionales obtenidos, con cinco categorías según el tipo
+    de cultivo y el estado de la planta, para evaluar si los patrones observados se mantienen en
+    otros contextos agronómicos.
+\end{itemize}

@@ -17,14 +17,14 @@
 \contentsline {section}{\numberline {1.7}Índices de Diversidad}{12}{section.1.7}%
 \contentsline {subsection}{\numberline {1.7.1}Diversidad Alfa}{13}{subsection.1.7.1}%
 \contentsline {subsection}{\numberline {1.7.2}Diversidad Beta}{15}{subsection.1.7.2}%
-\contentsline {section}{\numberline {1.8}Prueba de Hipótesis}{19}{section.1.8}%
+\contentsline {section}{\numberline {1.8}Prueba de Hipótesis}{18}{section.1.8}%
 \contentsline {subsection}{\numberline {1.8.1}Prueba t para comparar dos medias poblacionales (muestras pequeñas)}{21}{subsection.1.8.1}%
 \contentsline {subsection}{\numberline {1.8.2}Prueba F sobre las varianzas de dos poblaciones pequeñas}{22}{subsection.1.8.2}%
-\contentsline {subsection}{\numberline {1.8.3}Prueba de Wilcolxon Mann-Whitney }{23}{subsection.1.8.3}%
-\contentsline {section}{\numberline {1.9}Normalización y Rarefacción}{23}{section.1.9}%
-\contentsline {subsection}{\numberline {1.9.1}Normalización}{23}{subsection.1.9.1}%
-\contentsline {subsection}{\numberline {1.9.2}Rarefacción}{23}{subsection.1.9.2}%
-\contentsline {section}{\numberline {1.10}Redes Bayesianas}{23}{section.1.10}%
+\contentsline {subsection}{\numberline {1.8.3}Prueba de suma de rangos de Wilcoxon (Mann-Whitney)}{23}{subsection.1.8.3}%
+\contentsline {section}{\numberline {1.9}Normalización y Rarefacción}{24}{section.1.9}%
+\contentsline {subsection}{\numberline {1.9.1}Normalización}{24}{subsection.1.9.1}%
+\contentsline {subsection}{\numberline {1.9.2}Rarefacción}{24}{subsection.1.9.2}%
+\contentsline {section}{\numberline {1.10}Redes Bayesianas}{24}{section.1.10}%
 \contentsline {chapter}{\numberline {2}objetivos}{25}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Objetivo general}{25}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Objetivos específicos}{25}{section.2.2}%
@@ -56,10 +56,22 @@
 \contentsline {section}{\numberline {4.2}Evaluar estadísticamente las diferencias entre los microbiomas de plantas saludables y no saludables}{55}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Pruebas con muestras pequeñas para comparar dos medias poblacionales}{55}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Prueba de los rangos con signos de Wilcolxon Mann-Whitney}{57}{subsection.4.2.2}%
-\contentsline {chapter}{\numberline {5}Conclusiones}{59}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Perspectivas}{61}{chapter.6}%
+\contentsline {chapter}{\numberline {5}Discusión y conclusiones}{59}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Discusión}{59}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}La calidad de los datos condiciona la interpretación}{59}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Diversidad alfa: una tendencia consistente pero débil}{60}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Diversidad beta: gran superposición entre grupos}{61}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Composición taxonómica: taxones candidatos, no biomarcadores}{61}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Diversidad de eucariotas a nivel de género: la señal más clara}{62}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6}Tamaño de muestra y potencia estadística}{63}{subsection.5.1.6}%
+\contentsline {subsection}{\numberline {5.1.7}Limitaciones del estudio}{63}{subsection.5.1.7}%
+\contentsline {section}{\numberline {5.2}Conclusiones}{64}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Perspectivas y trabajo a futuro}{67}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Redes bayesianas (en desarrollo)}{67}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Simulador de datos metagenómicos}{68}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Otras líneas}{70}{section.6.3}%
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Codigos}{65}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Imagenes}{67}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {A}Codigos}{73}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Imagenes}{75}{appendix.Alph2}%
 \vspace {2em}
-\contentsline {chapter}{Bibliograf\'{\i }a}{69}{appendix*.13}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{77}{appendix*.13}%
