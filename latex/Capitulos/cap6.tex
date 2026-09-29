@@ -19,9 +19,10 @@ microorganismos entre sí ni cómo esas relaciones se vinculan con el estado de 
 abordar esta pregunta se está desarrollando un modelo de redes bayesianas, un modelo gráfico
 probabilístico en el que un grafo acíclico dirigido $G = (V, E)$ codifica las dependencias
 condicionales entre variables, de modo que la distribución conjunta se factoriza como
-$$
+\begin{equation}
 P(X_1, \dots, X_n) = \prod_{i=1}^{n} P\left(X_i \mid \mathrm{Pa}(X_i)\right),
-$$
+\label{eq:factorizacion-bn}
+\end{equation}
 donde $\mathrm{Pa}(X_i)$ denota el conjunto de padres del nodo $X_i$ en el grafo.
 
 En este trabajo, los nodos de la red son la abundancia del género fúngico \textit{Fusarium}, el

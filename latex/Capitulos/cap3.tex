@@ -221,7 +221,10 @@ de normalidad no se cumplieron, se optó por la alternativa no paramétrica de W
 
 Se contrasta la hipótesis nula
 
-$$H_0: \mu_{\text{saludable}} = \mu_{\text{no saludable}}$$
+\begin{equation}
+H_0: \mu_{\text{saludable}} = \mu_{\text{no saludable}}
+\label{eq:hip-shannon}
+\end{equation}
 
 frente a la alternativa $H_1: \mu_{\text{saludable}} \neq \mu_{\text{no saludable}}$, usando el
 estadístico $T$ definido en la Ecuación \ref{eq:t-statistic}. Esta prueba se aplicó en dos escenarios:
@@ -251,7 +254,10 @@ Los resultados obtenidos al aplicar estas tres pruebas sobre los datos se presen
 
 Desde un punto de vista matemático, los datos metagenómicos pueden representarse como una matriz 
 de conteos:\\
-$$ X = (x_{ij}) \in \mathbb{N}^{n \times p}$$
+\begin{equation}
+X = (x_{ij}) \in \mathbb{N}^{n \times p}
+\label{eq:matriz-conteos-cap3}
+\end{equation}
 donde:
 \begin{itemize}
 \item $n$ es el número de muestras,
@@ -261,15 +267,17 @@ donde:
 
 Debido a que las muestras presentan distinta profundidad de secuenciación, se emplean abundancias 
 relativas:\\
-$$
+\begin{equation}
 a_{ij} = \frac{x_{ij}}{\sum_{k=1}^{p} x_{ik}},
 \quad
 \sum_{j=1}^{p} a_{ij} = 1.
-$$
+\label{eq:abundancia-relativa}
+\end{equation}
 Estas pertenecen al simplex composicional:
-$$
+\begin{equation}
 S^{p-1} = \left\{ x \in \mathbb{R}_+^p : \sum_{j=1}^{p} x_j = 1 \right\}.
-$$
+\label{eq:simplex}
+\end{equation}
 
 
 %\begin{figure}[!]

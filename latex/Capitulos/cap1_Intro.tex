@@ -66,6 +66,7 @@ los datos metagenómicos pueden representarse como una matriz de conteos, como l
 
 \begin{equation}
 X=(x_{ij}) \in \mathbb{N}^{n \times p}
+\label{eq:matriz-conteos}
 \end{equation} 
 
 En esta matriz, cada fila puede representar una muestra (por ejemplo, 
@@ -326,7 +327,10 @@ profundidad de secuenciación: una muestra con más lecturas tiende a detectar m
 individuo y, en consecuencia, a producir estimaciones de riqueza mayores.
 
 La forma del estimador corregida por sesgo, que es la que calcula phyloseq, es:
-$$S_{Chao1} = S_{obs} + \frac{F_1(F_1-1)}{2(F_2+1)}$$
+\begin{equation}
+S_{Chao1} = S_{obs} + \frac{F_1(F_1-1)}{2(F_2+1)}
+\label{eq:chao1}
+\end{equation}
 Donde:
 \begin{itemize}
     \item $S_{obs}$ es el número de especies observadas en la muestra.
@@ -345,7 +349,10 @@ El índice de \textbf{Shannon}, denotado por $H$, es la entropía de la distribu
 relativas de la comunidad \citep{shannon1948mathematical}. Mide la incertidumbre asociada con la identidad
 taxonómica de un individuo (una lectura) tomado al azar de la muestra, y por lo tanto tiene en cuenta
 tanto el número de especies como la uniformidad de sus abundancias. Se define como:
-$$H = -\sum_{i=1}^{S} p_i \ln p_i$$
+\begin{equation}
+H = -\sum_{i=1}^{S} p_i \ln p_i
+\label{eq:shannon}
+\end{equation}
 Donde:
 \begin{itemize}
     \item $S$ es el número de taxones observados en la muestra.
@@ -358,7 +365,10 @@ una distribución más equitativa de los individuos entre ellas, o ambas cosas. 
 Chao1 a las especies raras, porque estas aportan términos $p_i \ln p_i$ cercanos a cero.\\
 
 \textbf{Simpson.} Sea
-$$\lambda = \sum_{i=1}^{S} p_i^{2}$$
+\begin{equation}
+\lambda = \sum_{i=1}^{S} p_i^{2}
+\label{eq:simpson}
+\end{equation}
 la probabilidad de que dos individuos tomados al azar, con reemplazo, pertenezcan a la misma especie
 \citep{simpson1949measurement}. La cantidad $\lambda$ es un índice de \emph{dominancia}: se acerca a $1$ cuando
 una o pocas especies concentran casi toda la abundancia y decrece cuando la abundancia se reparte de
@@ -400,7 +410,10 @@ esto no impide usarlas en métodos de ordenación como NMDS, que solo requieren 
 
 La \textbf{disimilitud de Bray-Curtis} \citep{bray&curtis1957ordination} compara la composición de dos
 muestras ponderando cada taxón por su abundancia:
-$$d_{BC}(x, y) = \frac{\sum_{i=1}^{p} |x_i - y_i|}{\sum_{i=1}^{p} (x_i + y_i)}$$
+\begin{equation}
+d_{BC}(x, y) = \frac{\sum_{i=1}^{p} |x_i - y_i|}{\sum_{i=1}^{p} (x_i + y_i)}
+\label{eq:bray-curtis}
+\end{equation}
 Toma valores en $[0, 1]$: vale $0$ cuando las dos muestras tienen exactamente las mismas abundancias y
 $1$ cuando no comparten ningún taxón. Cuando se calcula sobre abundancias relativas, el denominador es
 igual a $2$ y la disimilitud se reduce a $d_{BC}(p, q) = \frac{1}{2}\sum_i |p_i - q_i|$, es decir, la
@@ -411,12 +424,18 @@ semimétrica.\\
 
 La \textbf{disimilitud de Jaccard} tiene dos versiones. La versión clásica se basa únicamente en la
 presencia o ausencia de taxones. Si $A$ y $B$ son los conjuntos de taxones presentes en cada muestra,
-$$d_{J}(a, b) = 1 - \frac{|A \cap B|}{|A \cup B|} = 1 - \frac{S_{ab}}{S_a + S_b - S_{ab}}$$
+\begin{equation}
+d_{J}(a, b) = 1 - \frac{|A \cap B|}{|A \cup B|} = 1 - \frac{S_{ab}}{S_a + S_b - S_{ab}}
+\label{eq:jaccard}
+\end{equation}
 donde $S_{ab}$ es el número de taxones compartidos y $S_a$, $S_b$ son los números totales de taxones
 presentes en cada muestra. Vale $0$ cuando las dos muestras contienen los mismos taxones y $1$ cuando
 no comparten ninguno; esta versión sí es una métrica. La versión cuantitativa, también llamada
 disimilitud de Ru\v{z}i\v{c}ka, incorpora las abundancias:
-$$d_{J}^{\,q}(x, y) = \frac{\sum_{i=1}^{p} |x_i - y_i|}{\sum_{i=1}^{p} \max(x_i, y_i)} = \frac{2\, d_{BC}(x,y)}{1 + d_{BC}(x,y)}$$
+\begin{equation}
+d_{J}^{\,q}(x, y) = \frac{\sum_{i=1}^{p} |x_i - y_i|}{\sum_{i=1}^{p} \max(x_i, y_i)} = \frac{2\, d_{BC}(x,y)}{1 + d_{BC}(x,y)}
+\label{eq:jaccard-cuant}
+\end{equation}
 Esta es la versión que calculan phyloseq y vegan cuando se aplica el método ``jaccard'' sobre una
 tabla de abundancias sin binarizar, y es por lo tanto la que se utilizó en esta tesis. Como es una
 transformación monótona creciente de Bray-Curtis, ordena los pares de muestras exactamente igual que
@@ -424,22 +443,34 @@ esta, por lo que las ordenaciones NMDS obtenidas con ambas medidas son muy parec
 
 La \textbf{distancia Euclidiana} es la distancia usual de $\mathbb{R}^p$ aplicada a los vectores de
 abundancia:
-$$d_{E}(x, y) = \sqrt{\sum_{i=1}^{p} (x_i - y_i)^2}$$
+\begin{equation}
+d_{E}(x, y) = \sqrt{\sum_{i=1}^{p} (x_i - y_i)^2}
+\label{eq:euclidiana}
+\end{equation}
 Es una métrica. Al elevar al cuadrado las diferencias, los taxones muy abundantes dominan por completo
 su valor, y no está acotada superiormente por $1$.\\
 
 La \textbf{distancia de Manhattan} es la suma de las diferencias absolutas:
-$$d_{M}(x, y) = \sum_{i=1}^{p} |x_i - y_i|$$
+\begin{equation}
+d_{M}(x, y) = \sum_{i=1}^{p} |x_i - y_i|
+\label{eq:manhattan}
+\end{equation}
 También es una métrica. Sobre abundancias relativas toma valores en $[0, 2]$ y, como se indicó arriba,
 coincide con el doble de la disimilitud de Bray-Curtis.\\
 
 La \textbf{divergencia de Jensen-Shannon} compara dos muestras tratando sus abundancias relativas
 $P = (p_1, \dots, p_p)$ y $Q = (q_1, \dots, q_p)$ como distribuciones de probabilidad. Se construye a
 partir de la divergencia de Kullback-Leibler,
-$$D_{KL}(P \,\|\, Q) = \sum_{i=1}^{p} p_i \ln \frac{p_i}{q_i},$$
+\begin{equation}
+D_{KL}(P \,\|\, Q) = \sum_{i=1}^{p} p_i \ln \frac{p_i}{q_i},
+\label{eq:kullback-leibler}
+\end{equation}
 que no es simétrica y es infinita cuando algún taxón está presente en $P$ y ausente en $Q$. Para evitar
 estos dos problemas se compara cada distribución con la mezcla $M = \frac{1}{2}(P + Q)$:
-$$JSD(P, Q) = \frac{1}{2} D_{KL}(P \,\|\, M) + \frac{1}{2} D_{KL}(Q \,\|\, M)$$
+\begin{equation}
+JSD(P, Q) = \frac{1}{2} D_{KL}(P \,\|\, M) + \frac{1}{2} D_{KL}(Q \,\|\, M)
+\label{eq:jensen-shannon}
+\end{equation}
 La divergencia de Jensen-Shannon es simétrica, siempre finita y toma valores en $[0, \ln 2]$. No cumple
 la desigualdad del triángulo, pero su raíz cuadrada $\sqrt{JSD}$ sí es una métrica
 \citep{endres2003new}. El método ``jsd'' de phyloseq devuelve la divergencia $JSD$, sin raíz cuadrada,
@@ -450,7 +481,10 @@ entre los taxones. Requiere un árbol filogenético con longitudes de rama en el
 son las hojas. En su versión no ponderada, para cada rama $r$ del árbol con longitud $\ell_r$ se define
 $I_r(a) = 1$ si la rama conduce a al menos un taxón presente en la muestra $a$ y $I_r(a) = 0$ en caso
 contrario, y se calcula
-$$d_{UF}(a, b) = \frac{\sum_{r} \ell_r \, |I_r(a) - I_r(b)|}{\sum_{r} \ell_r},$$
+\begin{equation}
+d_{UF}(a, b) = \frac{\sum_{r} \ell_r \, |I_r(a) - I_r(b)|}{\sum_{r} \ell_r},
+\label{eq:unifrac}
+\end{equation}
 es decir, la fracción de la longitud total del árbol que corresponde a ramas exclusivas de una de las
 dos muestras. La versión ponderada sustituye los indicadores por las abundancias relativas acumuladas
 bajo cada rama. UniFrac toma valores en $[0,1]$ y considera más parecidas a dos muestras cuyos taxones,
@@ -507,11 +541,17 @@ $H_1$ : Existen diferencias significativas entre las muestras de cultivos saluda
 Sean $Y_{11}, \dots, Y_{1n_1}$ y $Y_{21}, \dots, Y_{2n_2}$ dos muestras aleatorias independientes de
 poblaciones normales, $N(\mu_1, \sigma_1^2)$ y $N(\mu_2, \sigma_2^2)$ respectivamente. Se denota por
 $\bar{Y}_k$ y $S_k^2$ la media y la varianza muestral de la muestra $k$. Se desea contrastar
-$$H_{0} : \mu_{1} = \mu_{2} \qquad \text{frente a} \qquad H_{1} : \mu_{1} \neq \mu_{2}.$$
+\begin{equation}
+H_{0} : \mu_{1} = \mu_{2} \qquad \text{frente a} \qquad H_{1} : \mu_{1} \neq \mu_{2}.
+\label{eq:hip-medias}
+\end{equation}
 
 \textbf{Caso de varianzas iguales.} Si se supone $\sigma_1^2 = \sigma_2^2$, la varianza común se estima
 con la varianza combinada
-$$ S_{p}^2 = \frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}$$
+\begin{equation}
+S_{p}^2 = \frac{(n_{1}-1)S_{1}^{2} + (n_{2}-1)S_{2}^{2}}{n_{1} + n_{2} - 2}
+\label{eq:varianza-combinada}
+\end{equation}
 y el estadístico de prueba es
 \begin{equation}
 T = \frac{\bar{Y}_{1} - \bar{Y}_{2}}{S_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}}
@@ -530,8 +570,11 @@ T' = \frac{\bar{Y}_{1} - \bar{Y}_{2}}{\sqrt{\frac{S_{1}^{2}}{n_{1}} + \frac{S_{2
 \end{equation}
 cuya distribución bajo $H_0$ se aproxima por una $t$ de Student con grados de libertad dados por la
 aproximación de Welch-Satterthwaite,
-$$\nu' = \frac{\left(\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}\right)^2}
-{\frac{(S_1^2/n_1)^2}{n_1 - 1} + \frac{(S_2^2/n_2)^2}{n_2 - 1}},$$
+\begin{equation}
+\nu' = \frac{\left(\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}\right)^2}
+{\frac{(S_1^2/n_1)^2}{n_1 - 1} + \frac{(S_2^2/n_2)^2}{n_2 - 1}},
+\label{eq:welch-gl}
+\end{equation}
 que en general no es un entero y satisface $\min(n_1, n_2) - 1 \leq \nu' \leq n_1 + n_2 - 2$. La región
 de rechazo y el p-valor se calculan como en el caso anterior, con $\nu'$ en lugar de $\nu$. Esta es la
 versión que la función \texttt{t.test} de R aplica por defecto, y es la que se reporta en el Capítulo 4
@@ -540,9 +583,15 @@ bajo el nombre ``varianzas diferentes''.
 
 \subsection{Prueba F sobre las varianzas de dos poblaciones pequeñas}
 Con las mismas hipótesis de normalidad e independencia, se desea contrastar
-$$H_{0} : \sigma_{1}^{2} = \sigma_{2}^{2} \qquad \text{frente a} \qquad H_{1} : \sigma_{1}^{2} \neq \sigma_{2}^{2}$$
+\begin{equation}
+H_{0} : \sigma_{1}^{2} = \sigma_{2}^{2} \qquad \text{frente a} \qquad H_{1} : \sigma_{1}^{2} \neq \sigma_{2}^{2}
+\label{eq:hip-varianzas}
+\end{equation}
 mediante el cociente de varianzas muestrales
-$$ F = \frac{S_{1}^{2}}{S_{2}^{2}},$$
+\begin{equation}
+F = \frac{S_{1}^{2}}{S_{2}^{2}},
+\label{eq:estadistico-f}
+\end{equation}
 que bajo $H_0$ sigue una distribución $F$ de Fisher con $n_1 - 1$ grados de libertad en el numerador y
 $n_2 - 1$ en el denominador. La región de rechazo al nivel $\alpha$ es
 $F < F_{1-\alpha/2,\, n_1-1,\, n_2-1}$ o $F > F_{\alpha/2,\, n_1-1,\, n_2-1}$. El resultado de esta prueba
@@ -564,7 +613,10 @@ funciones de distribución continuas $F_X$ y $F_Y$. La hipótesis nula es que am
 iguales, $H_0 : F_X = F_Y$, frente a la alternativa de que una de ellas tiende a producir valores
 mayores que la otra. Se ordenan conjuntamente las $n_1 + n_2$ observaciones y se asigna a cada una su
 rango; si $R_1$ es la suma de los rangos de la primera muestra, el estadístico de Mann-Whitney es
-$$U = R_1 - \frac{n_1(n_1+1)}{2} = \#\{(i, j) : X_i > Y_j\},$$
+\begin{equation}
+U = R_1 - \frac{n_1(n_1+1)}{2} = \#\{(i, j) : X_i > Y_j\},
+\label{eq:mann-whitney}
+\end{equation}
 es decir, el número de pares en los que la observación de la primera muestra supera a la de la segunda
 (los empates cuentan como medio par). Bajo $H_0$, $U$ tiene distribución conocida, con
 $E(U) = n_1 n_2 / 2$ y $\mathrm{Var}(U) = n_1 n_2 (n_1 + n_2 + 1)/12$, y para muestras moderadas se
