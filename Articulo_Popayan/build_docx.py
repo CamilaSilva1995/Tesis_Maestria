@@ -1,12 +1,12 @@
 """Genera Articulo_RevistaCientifica_ES.docx a partir de articulo_ES.md y ajusta el
 formato a las normas de la Revista Científica (Universidad Distrital):
 Times New Roman 12, interlineado 1.5, A4, márgenes 2.5 cm arriba/abajo y 3 cm laterales.
-Uso: python3 build_docx.py
+Uso: python3 build_docx.py [entrada.md] [salida.docx]
 """
-import re, shutil, subprocess, zipfile, os
+import re, shutil, subprocess, zipfile, os, sys
 
-SRC = "articulo_ES.md"
-OUT = "Articulo_RevistaCientifica_ES.docx"
+SRC = sys.argv[1] if len(sys.argv) > 1 else "articulo_ES.md"
+OUT = sys.argv[2] if len(sys.argv) > 2 else "Articulo_RevistaCientifica_ES.docx"
 TMP = "_pandoc_tmp.docx"
 
 subprocess.run(["pandoc", SRC, "-o", TMP, "--from", "markdown+raw_attribute"], check=True)

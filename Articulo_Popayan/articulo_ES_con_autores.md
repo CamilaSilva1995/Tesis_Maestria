@@ -8,11 +8,11 @@
 
 **Análise estatística da diversidade microbiana em diferentes níveis taxonômicos em dados metagenômicos de alta dimensão**
 
-**Autor 1**
+**Paula Camila Silva Gómez**^[Posgrado Conjunto en Ciencias Matemáticas, Universidad Nacional Autónoma de México – Universidad Michoacana de San Nicolás de Hidalgo, Morelia, México. Contacto: csilva@universidadean.edu.co. ORCID: https://orcid.org/0009-0004-8054-2607]
 
-**Autor 2**
+**Nelly Sélem Mojica**^[Centro de Ciencias Matemáticas, Universidad Nacional Autónoma de México, Morelia, México. Contacto: nselem@matmor.unam.mx. ORCID: https://orcid.org/0000-0003-1697-3862]
 
-**Autor 3**
+**José Alexander Fuentes Montoya**^[Universidad EAN, Bogotá D.C., Colombia. Contacto: jamontoya.d@universidadean.edu.co. ORCID: https://orcid.org/0000-0001-6574-5677]
 
 **RESUMEN**
 
@@ -196,15 +196,15 @@ Como líneas de trabajo futuro se propone, en primer lugar, la incorporación de
 
 **DISPONIBILIDAD DE CÓDIGO Y DATOS**
 
-El código que reproduce los cálculos, los análisis estadísticos y las figuras de este artículo se distribuye como un flujo computacional en R y Bash, organizado por etapas (control de calidad, diversidad alfa, diversidad beta, exploración taxonómica y pruebas de hipótesis) y acompañado de documentación de reproducibilidad, en un repositorio público con control de versiones cuya dirección se indicará en la versión final del manuscrito para preservar el anonimato de la revisión. Los datos metagenómicos originales fueron proporcionados por Solena Ag y su disponibilidad está sujeta a las condiciones de dicha empresa.
+El código que reproduce los cálculos, los análisis estadísticos y las figuras de este artículo se distribuye como un flujo computacional en R y Bash, organizado por etapas (control de calidad, diversidad alfa, diversidad beta, exploración taxonómica y pruebas de hipótesis) y acompañado de documentación de reproducibilidad, en el repositorio público https://github.com/CamilaSilva1995/Tesis_Maestria (carpeta Articulo_Popayan). Los datos metagenómicos originales fueron proporcionados por Solena Ag y su disponibilidad está sujeta a las condiciones de dicha empresa.
 
 **CONTRIBUCIÓN DE LOS AUTORES**
 
-**Autor 1:** conceptualización, curación de datos, análisis formal, investigación, metodología, software, visualización y redacción del borrador original. **Autor 2:** conceptualización, supervisión, administración del proyecto, validación, redacción, revisión y edición. **Autor 3:** conceptualización, metodología, supervisión, validación, revisión y edición.
+**Paula Camila Silva Gómez:** conceptualización, curación de datos, análisis formal, investigación, metodología, software, visualización y redacción del borrador original. **Nelly Sélem Mojica:** conceptualización, supervisión, administración del proyecto, validación, redacción, revisión y edición. **José Alexander Fuentes Montoya:** conceptualización, metodología, supervisión, validación, revisión y edición.
 
 **AGRADECIMIENTOS**
 
-Los autores agradecen a la empresa Solena Ag por facilitar los datos metagenómicos de cultivos de fresa utilizados en este estudio, y en particular a Obed Ramírez Sánchez, contacto principal con la empresa, por su gestión para la obtención de los datos y su apoyo en la interpretación de los resultados. Los agradecimientos institucionales y las fuentes de financiación se indicarán en la versión final del manuscrito para preservar el anonimato de la revisión.
+Los autores agradecen a la empresa Solena Ag por facilitar los datos metagenómicos de cultivos de fresa utilizados en este estudio, y en particular a Obed Ramírez Sánchez, contacto principal con la empresa, por su gestión para la obtención de los datos y su apoyo en la interpretación de los resultados. Asimismo, agradecen al Posgrado Conjunto en Ciencias Matemáticas UMSNH-UNAM por el apoyo académico brindado durante el desarrollo de esta investigación. [Fuentes de financiación por indicar antes del envío final.]
 
 **REFERENCIAS BIBLIOGRÁFICAS**
 
