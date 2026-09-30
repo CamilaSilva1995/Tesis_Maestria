@@ -29,7 +29,7 @@ def fix_styles(xml):
     xml = re.sub(r'<w:rFonts [^/]*/>', f'<w:rFonts {FONT}/>', xml)
     xml = re.sub(r'<w:sz w:val="\d+"/>', '<w:sz w:val="24"/>', xml)
     xml = re.sub(r'<w:szCs w:val="\d+"/>', '<w:szCs w:val="24"/>', xml)
-    body_ppr = '<w:pPr><w:spacing w:before="0" w:after="120" w:line="360" w:lineRule="auto"/><w:jc w:val="both"/></w:pPr>'
+    body_ppr = '<w:pPr><w:spacing w:before="0" w:after="60" w:line="360" w:lineRule="auto"/><w:jc w:val="both"/></w:pPr>'
     body_rpr = f'<w:rPr>{RPR_BASE}</w:rPr>'
     for sid in ("Normal", "BodyText", "FirstParagraph", "Compact"):
         xml = set_style(xml, sid, body_ppr, body_rpr)
@@ -46,13 +46,57 @@ SECT = ('<w:sectPr><w:pgSz w:w="11906" w:h="16838" w:orient="portrait"/>'
         '<w:pgMar w:top="1417" w:right="1701" w:bottom="1417" w:left="1701" w:header="708" w:footer="708" w:gutter="0"/>'
         '<w:cols w:space="708"/></w:sectPr>')
 
+EQUATIONS = {
+    "1": r"S_{\mathrm{Chao1}} = S_{\mathrm{obs}} + \frac{F_1 (F_1 - 1)}{2 (F_2 + 1)}",
+    "2": r"H = -\sum_{i=1}^{S} p_i \ln p_i",
+    "3": r"D = 1 - \sum_{i=1}^{S} p_i^{2}",
+}
+
+def omml(latex):
+    """Convierte LaTeX a OMML (editor de ecuaciones de Word) usando pandoc."""
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        md = os.path.join(d, "eq.md"); dx = os.path.join(d, "eq.docx")
+        open(md, "w").write("$" + latex + "$\n")
+        subprocess.run(["pandoc", md, "-o", dx], check=True)
+        x = zipfile.ZipFile(dx).read("word/document.xml").decode("utf8")
+    om = re.search(r"<m:oMath>.*?</m:oMath>", x, re.S).group(0)
+    order = ["begChr", "sepChr", "endChr", "grow", "shp", "ctrlPr"]
+    def reorder(m):
+        kids = re.findall(r"<m:(\w+)(?: [^>]*)?/>|<m:(\w+)(?: [^>]*)?>.*?</m:\2>", m.group(1), re.S)
+        elems = re.findall(r"<m:\w+(?: [^>]*)?/>|<m:(\w+)(?: [^>]*)?>.*?</m:\1>", m.group(1), re.S)
+        elems = [e.group(0) for e in re.finditer(r"<m:(\w+)(?: [^>]*)?/>|<m:(\w+)(?: [^>]*)?>.*?</m:\2>", m.group(1), re.S)]
+        name = lambda e: re.match(r"<m:(\w+)", e).group(1)
+        elems.sort(key=lambda e: order.index(name(e)) if name(e) in order else 99)
+        return "<m:dPr>" + "".join(elems) + "</m:dPr>"
+    return re.sub(r"<m:dPr>(.*?)</m:dPr>", reorder, om, flags=re.S)
+
+def equation_paragraph(num, latex):
+    return ('<w:p><w:pPr><w:tabs><w:tab w:val="center" w:pos="4252"/><w:tab w:val="right" w:pos="8504"/></w:tabs>'
+            '<w:spacing w:before="120" w:after="120" w:line="360" w:lineRule="auto"/><w:jc w:val="left"/></w:pPr>'
+            '<w:r><w:tab/></w:r>' + omml(latex) +
+            f'<w:r><w:rPr>{RPR_BASE}</w:rPr><w:tab/><w:t>({num})</w:t></w:r></w:p>')
+
 def fix_document(xml):
+    if 'xmlns:m=' not in xml[:3000]:
+        xml = xml.replace('<w:document ', '<w:document xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" ', 1)
+    for num, latex in EQUATIONS.items():
+        xml = re.sub(r'<w:p>(?:(?!</w:p>).)*EQPLACEHOLDER' + num + r'(?:(?!</w:p>).)*</w:p>',
+                     lambda m: equation_paragraph(num, latex), xml, flags=re.S)
     xml = re.sub(r'<w:sectPr>.*?</w:sectPr>|<w:sectPr\s*/>', '', xml, flags=re.S)
     xml = xml.replace('</w:body>', SECT + '</w:body>')
     # Párrafos que contienen una imagen: centrados (spacing antes de jc, según el esquema)
     xml = re.sub(r'<w:p>(<w:pPr>(?:(?!</w:pPr>).)*</w:pPr>)?(<w:r>(?:(?!</w:r>).)*<w:drawing>)',
                  lambda m: '<w:p><w:pPr><w:spacing w:before="120" w:after="60"/><w:jc w:val="center"/></w:pPr>' + m.group(2),
                  xml, flags=re.S)
+    # Referencias: alineadas a la izquierda con sangria francesa (APA)
+    i = xml.find('REFERENCIAS BIBLIOGR')
+    if i > 0:
+        j = xml.find('</w:p>', i) + len('</w:p>')
+        head, tail = xml[:j], xml[j:]
+        ref_ppr = '<w:pPr><w:spacing w:before="0" w:after="60" w:line="360" w:lineRule="auto"/><w:ind w:left="720" w:hanging="720"/><w:jc w:val="left"/></w:pPr>'
+        tail = re.sub(r'<w:p>(<w:pPr>.*?</w:pPr>)?', lambda m: '<w:p>' + ref_ppr, tail, flags=re.S)
+        xml = head + tail
     return xml
 
 def fix_content_types(xml):

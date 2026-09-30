@@ -12,7 +12,8 @@ Introducción; Metodología; Resultados; Conclusiones; sin nombres de autores.
 2. `figuras/Figura1_DiversidadAlfa.jpg` a `Figura6_Wilcoxon_Shannon.jpg`: las seis figuras a
    300 dpi, cargadas por separado como exige la revista.
 3. `documentos_envio/`: carta de originalidad y formato de cesión de derechos, ya diligenciados
-   y enviados con la primera versión. Solo hay que volver a subirlos si la plataforma los pide.
+   y enviados con la primera versión, y la declaración de conflicto de intereses y financiación,
+   que la revista exige y no se envió en la primera ronda. Completar la financiación y firmarla.
 
 ## Contenido de la carpeta
 
@@ -27,7 +28,7 @@ Introducción; Metodología; Resultados; Conclusiones; sin nombres de autores.
 | `calculos/Figura1_*.R` a `Figura6_*.R` | Scripts de R que generan cada figura a partir de los datos de Solena (`Data/fresa_solena/Data1`). |
 | `calculos/Verificacion_formulas.R` | Comprueba que las ecuaciones 1 a 3, las medidas de diversidad beta y los estadísticos de las pruebas coinciden con lo que calculan phyloseq y vegan. |
 | `calculos/Potencia_estadistica.R` | Tamaño del efecto, potencia y PERMANOVA que respaldan la discusión sobre el tamaño de muestra. |
-| `documentos_envio/` | Carta de originalidad y formato de cesión de derechos diligenciados. |
+| `documentos_envio/` | Carta de originalidad y formato de cesión de derechos diligenciados, más la declaración de conflicto de intereses y financiación que la revista también exige, redactada y pendiente de completar y firmar. |
 | `original/Articulo_Diversidad_Microbiana_Fresa_EN_v2.docx` | Versión original en inglés enviada en la primera ronda. |
 | `original/envio_original_25531_submission-files.zip` | Paquete completo descargado de la plataforma con lo que se subió en la primera ronda. |
 | `original/Plantilla_RevistaCientifica.docx` | Plantilla oficial descargada de la página de la revista. |
@@ -50,6 +51,8 @@ python3 build_docx.py articulo_ES_con_autores.md Articulo_RevistaCientifica_ES_C
 - La prueba sobre *Fusarium* descrita como prueba sobre el índice de Shannon de los géneros de eucariotas, con sus valores p.
 - Bracken retirado de la metodología, porque la matriz BIOM se construyó solo con las salidas de Kraken.
 - Figuras reemplazadas por las versiones a 300 dpi con rótulos en español.
+- Ecuaciones como objetos del editor de ecuaciones de Word, centradas y numeradas a la derecha.
+- Texto ajustado para no superar las 20 páginas incluyendo bibliografía (límite de la revista).
 - Agradecimiento a Solena Ag y a Obed Ramírez Sánchez.
 
 ## Pendientes antes de la versión final (después de la revisión)
