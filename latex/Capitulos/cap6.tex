@@ -17,7 +17,7 @@ Los índices de diversidad resumen toda la comunidad en un solo número y las pr
 comparan esos resúmenes entre grupos; ninguno de los dos enfoques describe cómo se relacionan los
 microorganismos entre sí ni cómo esas relaciones se vinculan con el estado de la planta. Para
 abordar esta pregunta se está desarrollando un modelo de redes bayesianas, un modelo gráfico
-probabilístico en el que un grafo acíclico dirigido $G = (V, E)$ codifica las dependencias
+probabilístico \citep{pearl1988probabilistic, koller2009probabilistic} en el que un grafo acíclico dirigido $G = (V, E)$ codifica las dependencias
 condicionales entre variables, de modo que la distribución conjunta se factoriza como
 \begin{equation}
 P(X_1, \dots, X_n) = \prod_{i=1}^{n} P\left(X_i \mid \mathrm{Pa}(X_i)\right),
@@ -40,9 +40,9 @@ Este enfoque complementa los resultados de esta tesis en tres aspectos:
 \begin{itemize}
     \item Permite pasar de preguntar \emph{si} los grupos difieren a preguntar \emph{qué}
     variables están relacionadas con el estado de la planta y a través de qué otras variables.
-    \item Da continuación natural al hallazgo sobre la comunidad eucariota, al modelar
-    explícitamente el papel de \textit{Fusarium} y su relación con la diversidad y con los taxones
-    dominantes.
+    \item Permite examinar el papel de \textit{Fusarium}, cuya abundancia relativa es algo mayor
+    en las plantas no saludables pero cuya señal no se detectó con los índices agregados, a través
+    de su relación con la diversidad y con los taxones dominantes.
     \item Extiende el análisis de redes de coocurrencia exploratorio, basado en correlaciones y
     herramientas como MicNet \citep{favila2022micnet}, hacia un modelo probabilístico con el que
     se puede hacer inferencia y predicción.
@@ -62,7 +62,10 @@ PyMetaSeem, un simulador escrito en Python que genera lecturas a partir de genom
 formato FASTA. PyMetaSeem recibe un perfil taxonómico con la cantidad de lecturas por genoma, corta
 lecturas aleatorias de longitud determinada, calcula su reverso complementario y produce archivos
 FASTQ con la calidad asociada. Se concibió como una alternativa más sencilla de instalar y usar que
-simuladores como CAMISIM \citep{fritz2019camisim}.
+simuladores como CAMISIM \citep{fritz2019camisim}. El desempeño de este y otros simuladores de
+lecturas cortas ha sido evaluado de manera sistemática \citep{milhaven2023performance}, y los retos
+CAMI han mostrado el valor de los metagenomas simulados para comparar clasificadores y ensambladores
+\citep{meyer2022critical}.
 
 El flujo de trabajo propuesto consiste en:
 \begin{enumerate}
@@ -101,7 +104,7 @@ Por último, se identifican otras extensiones naturales de este trabajo:
     \item Aplicar pruebas de abundancia diferencial que consideren la naturaleza composicional de
     los datos, con corrección por comparaciones múltiples, para confirmar los taxones candidatos.
     \item Construir un clasificador de muestras saludables y no saludables con aprendizaje
-    automático, por ejemplo un bosque aleatorio (\emph{random forest}), que además permita ordenar
+    automático, por ejemplo un bosque aleatorio (\emph{random forest}; \citealp{breiman2001random}), que además permita ordenar
     los taxones por su importancia para la clasificación.
     \item Integrar los conjuntos de datos adicionales obtenidos, con cinco categorías según el tipo
     de cultivo y el estado de la planta, para evaluar si los patrones observados se mantienen en

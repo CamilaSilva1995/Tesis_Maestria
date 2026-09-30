@@ -321,6 +321,7 @@ Simp_OTU <- diversity(df, "simpson")
 Simp_OTU_df <- data.frame(Simpson=Simp_OTU)
 
 #unir con 
+## AVISO (2026-09-29): esta union no empareja por muestra; ver correccion en 20260919_RegenerarTTestFusarium413.R
 total_Shannon <-cbind(glom@sam_data,Shannon_OTU_df)
 total <-cbind(glom@sam_data,Shannon_OTU_df,Simp_OTU_df )
 write.csv(total_Shannon, "Medidas_Shannon_Genero.csv")

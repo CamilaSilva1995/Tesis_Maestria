@@ -48,7 +48,8 @@ python3 build_docx.py articulo_ES_con_autores.md Articulo_RevistaCientifica_ES_C
 - Fórmula de Simpson corregida a la forma de Gini-Simpson, que es la que calcula phyloseq.
 - Chao1 descrito como estimador que usa los singletons y doubletons, no que los elimina.
 - Prueba de Wilcoxon descrita como suma de rangos para muestras independientes.
-- La prueba sobre *Fusarium* descrita como prueba sobre el índice de Shannon de los géneros de eucariotas, con sus valores p.
+- La prueba sobre *Fusarium* descrita como prueba sobre el índice de Shannon de los géneros de eucariotas. Su resultado cambió: la versión en inglés reportaba p = 0.0017 por un error de emparejamiento de muestras en el script; con las muestras bien emparejadas no hay diferencia significativa (p = 0.26). Ver `calculos/Figura5_tStudent_Fusarium.R`.
+- Se agregaron los resultados de las pruebas de Shapiro-Wilk y F, que muestran que el grupo no saludable es significativamente más heterogéneo.
 - Bracken retirado de la metodología, porque la matriz BIOM se construyó solo con las salidas de Kraken.
 - Figuras reemplazadas por las versiones a 300 dpi con rótulos en español.
 - Ecuaciones como objetos del editor de ecuaciones de Word, centradas y numeradas a la derecha.

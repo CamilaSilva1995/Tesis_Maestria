@@ -112,26 +112,32 @@ aun cuando su abundancia absoluta no haya cambiado \citep{gloor2017microbiome, c
 Por ello, los géneros mencionados deben considerarse \emph{taxones candidatos} a biomarcadores, cuya
 asociación con el estado de la planta requiere confirmación.
 
-\subsection{Diversidad de eucariotas a nivel de género: la señal más clara}
+\subsection{Diversidad de eucariotas a nivel de género: una señal que no se confirmó}
 
-El único contraste que resultó estadísticamente significativo fue el del índice de Shannon calculado
-sobre los 58 géneros de eucariotas, grupo que incluye al hongo fitopatógeno \textit{Fusarium}. La
-diversidad fue mayor en las plantas saludables (media 3.101) que en las no saludables (media 2.988),
-tanto asumiendo varianzas iguales ($t = 3.31$, $p = 0.0017$) como distintas ($t = 2.71$,
-$p = 0.0130$), y en ambos casos el intervalo de confianza del 95\% para la diferencia de medias
-excluyó el cero.
+Se esperaba que la señal asociada con los fitopatógenos, diluida en la comunidad completa, resultara
+detectable al aislar la fracción eucariota, y en particular al índice de Shannon calculado sobre los
+58 géneros de eucariotas, grupo que incluye a \textit{Fusarium} y a \textit{Phytophthora}. No fue
+así: las medias fueron 3.077 en las plantas saludables y 3.035 en las no saludables, y ni la prueba
+t ($p = 0.260$ con varianzas iguales, $p = 0.378$ con Welch) ni la de Wilcoxon-Mann-Whitney
+($p = 0.963$) rechazaron la igualdad entre grupos.
 
-Este resultado es relevante porque apunta a que la diferencia entre plantas sanas y enfermas se
-concentra en la comunidad eucariota, y en particular en los hongos, más que en la comunidad
-bacteriana que domina numéricamente las muestras. Es biológicamente plausible: \textit{Fusarium} es
-uno de los agentes causales de la marchitez en fresa, y su proliferación en la rizósfera podría
-reducir la equidad de la comunidad fúngica. Aun así, debe tenerse en cuenta que este contraste fue
-uno de varios realizados sobre distintos subconjuntos y niveles taxonómicos. Al aumentar el número de
-pruebas aumenta la probabilidad de obtener algún resultado significativo por azar, por lo que este
-hallazgo debe confirmarse con una corrección por comparaciones múltiples, por ejemplo la de
-Benjamini-Hochberg \citep{benjamini1995controlling}, o en un conjunto de datos independiente.
-%% CAMI: contar cuántas pruebas se hicieron en total (niveles x reinos x índices) y aplicar
-%% p.adjust(p, method = "BH"). Con p = 0.0017 es probable que el resultado se mantenga.
+Este resultado tiene una historia que conviene dejar registrada. Una versión anterior del análisis
+reportaba para este mismo contraste una diferencia significativa ($p = 0.0017$), que llegó a
+presentarse como el hallazgo principal del trabajo. Al recalcularla se encontró que el script
+construía la tabla de abundancias con funciones que reordenan las muestras por abundancia y luego la
+unía a los metadatos sin emparejar por nombre de muestra, de modo que cada valor de diversidad
+quedaba asignado al estado de salud de otra planta. La ``diferencia'' era un artefacto de ese
+desemparejamiento. El error es instructivo desde el punto de vista del análisis de datos: una
+verificación tan simple como comprobar que los identificadores de muestra coinciden antes de unir
+dos tablas habría evitado un resultado espurio con un valor $p$ muy convincente. Por eso todas las
+cifras del Capítulo 4 se recalcularon con scripts que verifican explícitamente ese emparejamiento.
+
+Descartada esa señal, la conclusión es coherente con el resto del capítulo: la comunidad eucariota
+tampoco distingue a los grupos en su nivel medio de diversidad. Cabe recordar, además, que este
+contraste fue uno de varios realizados sobre distintos subconjuntos y niveles taxonómicos, de modo
+que cualquier resultado significativo que aparezca en análisis futuros deberá evaluarse con una
+corrección por comparaciones múltiples, por ejemplo la de Benjamini-Hochberg
+\citep{benjamini1995controlling}.
 
 \subsection{Tamaño de muestra y potencia estadística}
 
@@ -189,14 +195,14 @@ En relación con los objetivos planteados, se concluye lo siguiente:
     consistente una diversidad alfa ligeramente mayor en todos los índices y niveles taxonómicos.
     Además, el filtrado de calidad resultó indispensable para obtener comparaciones interpretables.
 
-    \item \textbf{Evaluación estadística de las diferencias.} A nivel de la comunidad completa, las
-    diferencias en diversidad alfa no fueron estadísticamente significativas, y el estado de la
-    planta explicó una fracción muy pequeña de la variación en la composición. En contraste, la
-    diversidad de géneros de eucariotas sí difirió significativamente entre grupos, lo que señala a
-    la comunidad fúngica como el componente más asociado con la salud de la planta. El análisis de
-    potencia muestra que el tamaño de muestra actual es insuficiente para detectar efectos
-    moderados en la comunidad completa, por lo que los resultados no significativos deben
-    interpretarse como no concluyentes y no como ausencia de efecto.
+    \item \textbf{Evaluación estadística de las diferencias.} Ni en la comunidad completa ni en la
+    fracción eucariota las diferencias en diversidad alfa fueron estadísticamente significativas, y
+    el estado de la planta explicó una fracción muy pequeña de la variación en la composición. La
+    única prueba que rechazó su hipótesis nula fue la de igualdad de varianzas: las plantas no
+    saludables son significativamente más heterogéneas entre sí. El análisis de potencia muestra que
+    el tamaño de muestra actual es insuficiente para detectar efectos moderados, por lo que los
+    resultados no significativos deben interpretarse como no concluyentes y no como ausencia de
+    efecto.
 
     \item \textbf{Patrones asociados con el estado de salud.} Las plantas no saludables presentaron
     comunidades más heterogéneas entre sí, con una varianza de la diversidad significativamente

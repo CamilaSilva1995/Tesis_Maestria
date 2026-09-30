@@ -15,7 +15,7 @@ realizan en laboratorios. Los avances tecnológicos han llevado al desarrollo de
 métodos de secuenciación de ADN. Una de las plataformas más utilizadas y 
 conocidas en el campo de la metagenómica es Illumina. Con este tipo de herramientas,
  es posible analizar el ADN extraído directamente de una muestra, en lugar de 
- trabajar únicamente con microorganismos cultivados individualmente.\\
+ trabajar únicamente con microorganismos cultivados individualmente \citep{oulas2015metagenomics}.\\
 
 La filogenética es el estudio de la evolución de la vida y las relaciones entre 
 organismos y grupos de organismos. Este análisis se centra en temas como la 
@@ -27,7 +27,7 @@ estudio es la identificación, clasificación y denominación de organismos biol
 Carl Linnaeus, considerado el padre de la taxonomía, propuso siete niveles 
 taxonómicos: Reino, Phylum, Clase, Orden, Familia, Género y Especie. Posteriormente,
  se añadió el Dominio como el octavo grupo taxonómico más amplio, dividido en 
- Arqueas, Bacterias y Eukarya.\\
+ Arqueas, Bacterias y Eukarya \citep{woese1990towards}.\\
 
 \begin{figure}[h]
 \centering
@@ -57,7 +57,9 @@ las capacidades funcionales y las interacciones de las comunidades microbianas c
 Se aplica comúnmente en el estudio de ecosistemas como el suelo, el agua, la microbiota humana 
 y otros hábitats microbianos complejos. La metagenómica utiliza tecnologías avanzadas de secuenciación, 
 como la secuenciación de nueva generación, para desentrañar la diversidad genética y funcional de estas 
-comunidades (Zhang, 2021).\\
+comunidades \citep{oulas2015metagenomics, breitwieser2019review}.\\
+%% CAMI: la cita original era (Zhang, 2021); no está en ref.bib y no pude identificarla. Se reemplazó
+%% por dos revisiones de metagenómica. Si tienes la referencia de Zhang, agrégala al .bib y aquí.
 
 La metagenómica permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, 
 sin necesidad de cultivarlos individualmente. El DNA es pasado por un secuenciador, que regresa lecturas que pueden después
@@ -91,7 +93,7 @@ fragmentación indiscriminada: en lugar de leer una única región conservada,
 se obtiene una cobertura dispersa de todo el metagenoma, de modo que cada lectura 
 puede provenir de cualquier parte del genoma de cualquier organismo presente en la muestra. 
 Gracias a ello se  detectan a la vez bacterias, hongos y otros eucariotas, que el enfoque 
-por amplicón 16S no alcanza a ver. \\
+por amplicón 16S no alcanza a ver \citep{ranjan2016shotgun, hall201816s}. \\
 
 En estre trabajo utilizaremos metagenomas shotgun de microorganismos relacionados con el
 cultivo de fresas. Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico correspondiente para cada secuencia. 
@@ -102,15 +104,15 @@ del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje 
 nivel de especie. Estos OTUs pueden obtenerse mediante clústering, para lo cual ya existen varios métodos y algoritmos 
 disponibles \citep{xia2018statistical}. La identificación taxonómica de los OTUs también 
 puede abordarse mediante clasificadores basados en $k$-meros, que descomponen cada secuencia en sus subcadenas de longitud $k$
-y las confrontan contra una base de referencia.
+y las confrontan contra una base de referencia \citep{wood2014kraken, menzel2016fast, breitwieser2019review}.
 
-Para el análisis de estos datos, se emplean herramientas bioinformáticas como kraken y braken. 
+Para el análisis de estos datos, se emplean herramientas bioinformáticas como Kraken \citep{wood2014kraken} y Bracken \citep{lu2017bracken}. 
 A los que posteriori, se pueden realizar análisis estadísticos y de diversidad 
 utilizando herramientas como R y Python. 
 En el entorno de R, herramientas 
 como phyloseq y vegan permiten calcular índices de diversidad (alfa: Shannon, Simpson, Chao1; beta: Bray-Curtis, UniFrac), 
 realizar pruebas estadísticas (Wilcoxon), análisis multivariado (NMDS, PCoA) y 
-análisis funcional (McMurdie  Holmes, 2013; Douglas et al., 2020). \\
+análisis funcional \citep{mcmurdie2013phyloseq, oksanen2022vegan, douglas2020picrust2}. \\
 
 
 \section{Microbioma de Fresa}
@@ -118,23 +120,30 @@ análisis funcional (McMurdie  Holmes, 2013; Douglas et al., 2020). \\
 La fresa \textit{(Fragaria x ananassa)} es un cultivo de gran relevancia 
 comercial y nutricional a nivel mundial. Sin embargo, su producción se ve afectada 
 por diversos factores, como la susceptibilidad a enfermedades y la influencia de las 
-prácticas agrícolas y del ambiente en la calidad del fruto (Geng et al., 2023). 
+prácticas agrícolas y del ambiente en la calidad del fruto \citep{yang2020comparison, nam2023multidisciplinary}. 
+%% CAMI: la cita original era (Geng et al., 2023); no está en ref.bib y no pude identificarla.
+%% Si la tienes, agrégala aquí y en el párrafo de agentes de biocontrol más abajo.
 En los últimos años, se he visto la importancia del estudio del microbioma vegetal, 
 entendido como la comunidad de microorganismos que coexiste con la planta e incluye bacterias, 
 hongos y arqueas, presentes en nichos como el suelo a granel, la rizósfera 
 (zona directamente influenciada por las raíces) 
-y los tejidos internos (Compant et al., 2019; Sieieda et al., 2024).  
+y los tejidos internos \citep{compant2019review, siegieda2024ecological}. 
 La composición del microbioma de fresa ha sido analizada mediante 
 diferentes métodos, mediante el estudio masivo del ADN microbiano directamente desde 
-las muestras ambientales (Bokulich et al., 2018). Particularmente, 
-la secuenciación de regiones como **16S rRNA** (bacterias) e **ITS1** (hongos) 
+las muestras ambientales \citep{bolyen2019reproducible, hall201816s}. Particularmente, 
+%% CAMI: la cita original era (Bokulich et al., 2018); no está en ref.bib. Probablemente es
+%% Bokulich et al. (2018), Microbiome 6:90 (q2-feature-classifier); confirmar antes de agregarla.
+la secuenciación de regiones como 16S rRNA (bacterias) e ITS1 (hongos) 
 ha permitido comenzar a caracterizar comunidades microbianas asociadas a distintos tejidos 
-de la planta (raíces, tallos, hojas) y diferentes estados de salud (Zhang et al., 2023). \\
+de la planta (raíces, tallos, hojas) y diferentes estados de salud \citep{yang2020comparison, siegieda2024ecological}. \\
+%% CAMI: la cita original era (Zhang et al., 2023); no está en ref.bib y no pude identificarla.
 
 La rizósfera constituye un entorno microbiano complejo que alberga una gran variedad 
 de organismos con funciones clave en el desarrollo vegetal, incluyendo la mineralización 
 de nutrientes, producción de hormonas, supresión de patógenos y estimulación de la 
-inmunidad vegetal (Berendsen et al., 2012; Wang et al., 2023). 
+inmunidad vegetal \citep{berendsen2012rhizosphere, wang2022characterization}. 
+%% CAMI: la cita original decía Wang et al. 2023. En ref.bib existe wang2022characterization
+%% (Wang et al., 2022, comunidad microbiana y redes de coocurrencia en tabaco). Confirmar que es la misma.
 Las comunidades microbianas no solo influyen en el crecimiento y 
 rendimiento de los cultivos, sino que también pueden reflejar su estado de salud, 
 lo cual hace posible identificar biomarcadores microbianos para clasificar
@@ -150,7 +159,7 @@ no saludables, mientras que \textit{Tepidisphaerales}, \textit{Hydrocarboniphaga
  Estas diferencias en abundancia sugieren que ciertos microorganismos pueden actuar 
  como indicadores microbianos del estado fisiológico de la planta. \\
 
-El estudio de Yang et al. (2020), utilizando secuenciación de alto rendimiento, 
+El estudio de \citet{yang2020comparison}, utilizando secuenciación de alto rendimiento, 
 mostró que la infección por oídio inducía cambios significativos en la estructura y 
 diversidad microbiana del suelo rizosférico de la fresa, incluyendo una reducción 
 general de la riqueza microbiana. Esto refuerza la idea de que las alteraciones 
@@ -164,7 +173,7 @@ rizobacterias promotoras del crecimiento (PGPR). Especies como \textit{Bacillus 
  \textit{B. amyloliquefaciens}, \textit{Pseudomonas monteilii}, \textit{Mortierella sp.} y levaduras
  como \textit{Rhodotorula} o \textit{Trichoderma asperellum} han mostrado eficacia en la mejora
  de la salud de la planta y en la calidad de la 
- fruta (Geng et al., 2023; Sieieda et al., 2024). \\
+ fruta \citep{nam2023multidisciplinary, siegieda2024ecological}. \\
 
 En conjunto, estos hallazgos destacan la importancia del análisis estadístico 
 y bioinformático del microbioma rizosférico, tanto para la comprensión ecológica 
@@ -207,8 +216,8 @@ delimitada por espacios que muestra el mapeo LCA (Lowest Common Ancestor) de cad
 Para obtener el ID taxonómico completo, Kraken dispone de la herramienta kraken\_translate, que, después de procesar 
 los resultados con la misma base de datos, genera una lista de los reads junto con el nombre completo del ID taxonómico. 
 Además, tiene una herramienta complementaria (-mpa), que presenta la salida ordenada por categoría taxonómica 
-(root\_Super Kingdom, d\_kingdom, p\_phylum, c\_class, o\_order, f\_family, g\_genus, s\_species). 
-\citep{wood2014kraken}.\\
+(root\_Super Kingdom, d\_kingdom, p\_phylum, c\_class, o\_order, f\_family, g\_genus, s\_species) 
+\citep{wood2014kraken, lu2022metagenome}.\\
 
 %\begin{figure}[h]
 %\centering
@@ -247,7 +256,7 @@ herramienta esencial en biología, ecología, genómica y otras disciplinas cien
 Su principal fortaleza radica en la disponibilidad de bibliotecas especializadas, como ggplot2 para visualización
 y phyloseq para análisis de microbiomas, además de su comunidad activa, que contribuye con paquetes de código abierto.
 R se utiliza ampliamente en análisis de datos complejos, modelado estadístico, aprendizaje automático y visualización
-avanzada, facilitando la reproducibilidad y el manejo de grandes volúmenes de datos.\\
+avanzada, facilitando la reproducibilidad y el manejo de grandes volúmenes de datos \citep{rcoreteam2023r, wickham2016ggplot2}.\\
 
 RStudio es un entorno de desarrollo integrado (IDE) diseñado para trabajar con el lenguaje de programación R.
 Ofrece una interfaz intuitiva que facilita la escritura, ejecución y depuración de código, así como la visualización
@@ -279,7 +288,7 @@ Este formato permite un análisis eficiente y completo de las comunidades microb
 JSON (JavaScript Object Notation) es un formato de texto ligero para el intercambio de datos estructurados, representado como pares clave-valor u objetos anidados. En bioinformática, se utiliza comúnmente para almacenar metadatos y resultados jerarquizados debido a su compatibilidad con múltiples lenguajes de programación y su facilidad de lectura. Se emplea frecuentemente para guardar información de taxonomía, anotaciones funcionales o resultados de herramientas como QIIME 2, que lo usa para almacenar objetos complejos, como árboles filogenéticos y tablas de abundancia.\\
 
 \subsection{BIOM}
-El formato BIOM (Biological Observation Matrix) es un estándar binario utilizado en bioinformática para almacenar matrices de datos biológicos, especialmente en estudios de microbiomas. Facilita el almacenamiento eficiente de datos de abundancia y metadatos asociados, y es compatible con herramientas como QIIME y Phyloseq. El formato contiene tablas de abundancia con taxones como filas, muestras como columnas y valores numéricos que representan abundancias relativas o absolutas. Además, permite incluir metadatos sobre muestras y taxones, como información ambiental o taxonómica.\\
+El formato BIOM (Biological Observation Matrix) es un estándar binario utilizado en bioinformática para almacenar matrices de datos biológicos, especialmente en estudios de microbiomas. Facilita el almacenamiento eficiente de datos de abundancia y metadatos asociados, y es compatible con herramientas como QIIME y Phyloseq. El formato contiene tablas de abundancia con taxones como filas, muestras como columnas y valores numéricos que representan abundancias relativas o absolutas. Además, permite incluir metadatos sobre muestras y taxones, como información ambiental o taxonómica \citep{mcdonald2012biom}.\\
 
 \subsection{FASTA}
 FASTA (Fast Alignment Search Tool-All) es un formato de texto plano que almacena secuencias de ADN, ARN o proteínas. Cada entrada contiene un encabezado (precedido por "\>") seguido de una línea con la secuencia biológica. Es ampliamente utilizado para compartir datos genómicos y transcriptómicos.\\
@@ -291,18 +300,19 @@ FASTQ es un formato que extiende FASTA, añadiendo información sobre la calidad
 \item Un separador "$+$".
 \item Una línea con la puntuación de calidad (en formato ASCII).
 \end{enumerate}
+El formato FASTQ y sus variantes se describen en \citet{cock2010sanger}.
 
 \subsection{BAM}
 BAM (Binary Alignment/Map) es un formato binario utilizado para almacenar datos de alineamiento de secuencias genómicas. Es una versión comprimida y binaria del formato SAM (Sequence Alignment/Map), que es un formato de texto para almacenar los mismos datos. BAM es ampliamente utilizado en bioinformática, especialmente en análisis de datos de secuenciación de próxima generación (NGS), debido a su eficiencia en el almacenamiento y procesamiento de grandes volúmenes de datos.\\
 
-Cada archivo BAM contiene información detallada sobre cómo las secuencias de ADN se alinean con una referencia genómica, incluyendo la posición de la secuencia en el genoma, la calidad del alineamiento, las secuencias de los nucleótidos y las puntuaciones de calidad. Dado que el formato BAM es binario, es más compacto y rápido de manejar en comparación con su contraparte en texto, SAM.
+Cada archivo BAM contiene información detallada sobre cómo las secuencias de ADN se alinean con una referencia genómica, incluyendo la posición de la secuencia en el genoma, la calidad del alineamiento, las secuencias de los nucleótidos y las puntuaciones de calidad. Dado que el formato BAM es binario, es más compacto y rápido de manejar en comparación con su contraparte en texto, SAM \citep{li2009sequence}.
 
 
 \section{Índices de Diversidad}
 
 Un índice de diversidad constituye una medida numérica empleada para cuantificar la variedad y la distribución 
 de especies en una comunidad biológica o un ecosistema. Estos índices son herramientas matemáticas diseñadas para 
-sintetizar y comparar la composición de especies en diversas comunidades.
+sintetizar y comparar la composición de especies en diversas comunidades \citep{magurran2021measuring, tuomisto2010consistent}.
 
 \subsection{Diversidad Alfa}
 \label{sec:diversidad_alfa}
@@ -310,8 +320,7 @@ sintetizar y comparar la composición de especies en diversas comunidades.
 La diversidad alfa refleja la riqueza de las muestras, es decir, el número de especies distintas presentes 
 en un determinado entorno, o la abundancia relativa de dichas especies en dicho entorno; es usada principalmente 
 para medir la diversidad local, haciendo referencia a la diversidad dentro de una muestra o 
-comunidad %(\cite{whittaker1960vegetation} & \cite{whittaker1972evolution})
-.Para cuantificar esta diversidad, se recurre a diversos índices de medida, cada uno con enfoques particulares.
+comunidad \citep{whittaker1960vegetation, whittaker1972evolution}. Para cuantificar esta diversidad, se recurre a diversos índices de medida, cada uno con enfoques particulares.
 
 
 En lo que sigue, para una muestra con $p$ taxones se denota por $x_i$ el número de lecturas asignadas
@@ -406,7 +415,7 @@ vectores de abundancia sobre los mismos $p$ taxones, ya sea en conteos o en abun
 función $d$ es una \emph{métrica} si es no negativa, simétrica, vale cero solo entre muestras iguales y
 cumple la desigualdad del triángulo $d(x,z) \leq d(x,y) + d(y,z)$. Varias de las medidas usadas en
 ecología no cumplen esta última propiedad, por lo que se las llama \emph{disimilitudes} y no distancias;
-esto no impide usarlas en métodos de ordenación como NMDS, que solo requieren el orden de las disimilitudes.\\
+esto no impide usarlas en métodos de ordenación como NMDS \citep{kruskal1964multidimensional}, que solo requieren el orden de las disimilitudes \citep{legendre2012numerical}.\\
 
 La \textbf{disimilitud de Bray-Curtis} \citep{bray&curtis1957ordination} compara la composición de dos
 muestras ponderando cada taxón por su abundancia:
@@ -422,7 +431,7 @@ el valor de $d_{BC}$, mientras que los taxones raros apenas contribuyen. Bray-Cu
 cero solo entre muestras iguales, pero no cumple la desigualdad del triángulo, por lo que es una
 semimétrica.\\
 
-La \textbf{disimilitud de Jaccard} tiene dos versiones. La versión clásica se basa únicamente en la
+La \textbf{disimilitud de Jaccard} \citep{jaccard1912distribution} tiene dos versiones. La versión clásica se basa únicamente en la
 presencia o ausencia de taxones. Si $A$ y $B$ son los conjuntos de taxones presentes en cada muestra,
 \begin{equation}
 d_{J}(a, b) = 1 - \frac{|A \cap B|}{|A \cup B|} = 1 - \frac{S_{ab}}{S_a + S_b - S_{ab}}
@@ -447,7 +456,7 @@ abundancia:
 d_{E}(x, y) = \sqrt{\sum_{i=1}^{p} (x_i - y_i)^2}
 \label{eq:euclidiana}
 \end{equation}
-Es una métrica. Al elevar al cuadrado las diferencias, los taxones muy abundantes dominan por completo
+Es una métrica \citep{legendre2012numerical}. Al elevar al cuadrado las diferencias, los taxones muy abundantes dominan por completo
 su valor, y no está acotada superiormente por $1$.\\
 
 La \textbf{distancia de Manhattan} es la suma de las diferencias absolutas:
@@ -460,7 +469,7 @@ coincide con el doble de la disimilitud de Bray-Curtis.\\
 
 La \textbf{divergencia de Jensen-Shannon} compara dos muestras tratando sus abundancias relativas
 $P = (p_1, \dots, p_p)$ y $Q = (q_1, \dots, q_p)$ como distribuciones de probabilidad. Se construye a
-partir de la divergencia de Kullback-Leibler,
+partir de la divergencia de Kullback-Leibler \citep{kullback1951information},
 \begin{equation}
 D_{KL}(P \,\|\, Q) = \sum_{i=1}^{p} p_i \ln \frac{p_i}{q_i},
 \label{eq:kullback-leibler}
@@ -471,7 +480,7 @@ estos dos problemas se compara cada distribución con la mezcla $M = \frac{1}{2}
 JSD(P, Q) = \frac{1}{2} D_{KL}(P \,\|\, M) + \frac{1}{2} D_{KL}(Q \,\|\, M)
 \label{eq:jensen-shannon}
 \end{equation}
-La divergencia de Jensen-Shannon es simétrica, siempre finita y toma valores en $[0, \ln 2]$. No cumple
+La divergencia de Jensen-Shannon \citep{lin1991divergence} es simétrica, siempre finita y toma valores en $[0, \ln 2]$. No cumple
 la desigualdad del triángulo, pero su raíz cuadrada $\sqrt{JSD}$ sí es una métrica
 \citep{endres2003new}. El método ``jsd'' de phyloseq devuelve la divergencia $JSD$, sin raíz cuadrada,
 y esa es la cantidad que se utilizó en las ordenaciones de esta tesis.\\
@@ -497,7 +506,7 @@ la más apropiada según el contexto del estudio y los objetivos específicos de
 
 \section{Prueba de Hipótesis}
 \label{sec:pruebas_hipotesis}
-Una hipótesis es una suposición sobre los datos que puede ser verdadera o falsa. Las pruebas de hipótesis son herramientas estadísticas esenciales en diversos campos, ya que permiten contrastar una teoría con la evidencia empírica. A través de un proceso riguroso, estas pruebas ayudan a evaluar la veracidad de una afirmación científica de manera objetiva y fundamentada.\\
+Una hipótesis es una suposición sobre los datos que puede ser verdadera o falsa. Las pruebas de hipótesis son herramientas estadísticas esenciales en diversos campos, ya que permiten contrastar una teoría con la evidencia empírica. A través de un proceso riguroso, estas pruebas ayudan a evaluar la veracidad de una afirmación científica de manera objetiva y fundamentada \citep{wackerly2002estadistica, larsen2005introduction}.\\
 
 Una prueba de hipótesis es un método estadístico utilizado para tomar decisiones sobre una población a partir de los datos obtenidos de una muestra representativa. Como técnica de inferencia estadística, permite evaluar suposiciones sobre los parámetros de una población basándose en la observación.\\
 
@@ -530,7 +539,7 @@ En una prueba de hipótesis, la hipótesis nula ($H_0$) será rechazada en favor
 Existen dos tipos de errores que pueden ocurrir en una prueba de hipótesis:\\
 Error tipo I ($\alpha$): Ocurre cuando se rechaza $H_0$ siendo en realidad verdadera.\\
 Error tipo II ($\beta$): Se produce cuando no se rechaza $H_0$ cuando en realidad es falsa.\\
-El balance entre estos errores es fundamental en el diseño de pruebas estadísticas.\\
+El balance entre estos errores es fundamental en el diseño de pruebas estadísticas \citep{larsen2005introduction}. En el contexto de datos de microbioma, \citet{xia2017hypothesis} revisan las pruebas de hipótesis de uso más frecuente.\\
 
 Las pruebas de hipótesis pueden aplicarse a diferentes contextos, como la comparación de grupos en estudios médicos o científicos. Por ejemplo, en un análisis sobre la salud de los cultivos, se podrían definir las siguientes hipótesis:\\
 $H_0$ : No hay diferencias entre muestras de cultivos saludables y no saludables.\\
@@ -563,7 +572,7 @@ donde $t_{\alpha/2,\,\nu}$ es el cuantil que deja probabilidad $\alpha/2$ en la 
 p-valor es $2\,P(t_\nu \geq |t_{obs}|)$.
 
 \textbf{Caso de varianzas distintas (prueba de Welch).} Si no puede suponerse $\sigma_1^2 = \sigma_2^2$,
-se utiliza el estadístico
+se utiliza el estadístico propuesto por \citet{welch1947generalization}
 \begin{equation}
 T' = \frac{\bar{Y}_{1} - \bar{Y}_{2}}{\sqrt{\frac{S_{1}^{2}}{n_{1}} + \frac{S_{2}^{2}}{n_{2}}}}
 \label{eq:welch-statistic}
@@ -604,7 +613,7 @@ resultado es menos confiable cuando ese supuesto no se verifica.
 Cuando no puede suponerse que los datos provienen de poblaciones normales, se recurre a pruebas no
 paramétricas basadas en rangos. Conviene distinguir dos pruebas que llevan el nombre de Wilcoxon: la
 prueba de \emph{rangos con signo}, que compara dos muestras relacionadas o pareadas, y la prueba de
-\emph{suma de rangos}, equivalente a la prueba $U$ de Mann-Whitney, que compara dos muestras
+\emph{suma de rangos}, equivalente a la prueba $U$ de Mann-Whitney \citep{wilcoxon1945individual, mann1947test}, que compara dos muestras
 independientes. En esta tesis los grupos de plantas saludables y no saludables son independientes, por
 lo que se utiliza la segunda.\\
 
@@ -640,12 +649,12 @@ $P(X > Y) \neq 1/2$.
 %\caption{Barras de abundancia de los datos en crudo}
 %\end{figure}
 
-La función edgeRnorm escala datos NGS normalizados utilizando la función de normalización provista en edgeR. Toma un objeto phyloseq y devuelve un objeto phyloseq cuya otu\_table se transforma.
+La función \texttt{edgeRnorm} escala los conteos con el método TMM (\emph{trimmed mean of M-values}) del paquete edgeR \citep{robinson2010edger, robinson2010scaling}. Toma un objeto phyloseq y devuelve otro cuya tabla de conteos ha sido transformada \citep{mcmurdie2014waste}.
 
 \subsection{Rarefacción}
-La rarefacción es una tecnica de normalización usada en el preprocesamiento de datos, para equilibrar el tamaño de las muestras en un conjunto de datos. Esta implica un submuestreo aleatorio de secuencias
+La rarefacción es una tecnica de normalización usada en el preprocesamiento de datos, para equilibrar el tamaño de las muestras en un conjunto de datos. Esta implica un submuestreo aleatorio de secuencias hasta una profundidad común \citep{hurlbert1971nonconcept}; su uso como método de normalización ha sido criticado por descartar datos válidos \citep{mcmurdie2014waste}.
 
 \section{Redes Bayesianas}
-Una red bayesiana es un grafo acìclico dirigiso (DAG) $G=(V,E)$ donde cada nodod representa una variable.
+Una red bayesiana es un grafo acíclico dirigido (DAG) $G=(V,E)$ en el que cada nodo representa una variable aleatoria y cada arco una dependencia condicional directa \citep{pearl1988probabilistic, koller2009probabilistic}. La distribución conjunta se factoriza como el producto de las distribuciones condicionales de cada nodo dados sus padres (Ecuación \ref{eq:factorizacion-bn} del Capítulo 6). En R, el paquete \texttt{bnlearn} implementa el aprendizaje de la estructura y de los parámetros \citep{scutari2010bnlearn}.
 
 

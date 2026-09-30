@@ -40,6 +40,11 @@ df <- dplyr::select(df, -Sample)
 Shannon_OTU <- diversity(df, "shannon")
 Shannon_OTU_df <- data.frame(sample = names(Shannon_OTU), value = Shannon_OTU,
                              measure = rep("Shannon", length(Shannon_OTU)))
+## CORRECCION (2026-09-29): psmelt/reshape ordenan las muestras por abundancia, por lo que
+## Shannon_OTU_df no esta en el mismo orden que sam_data. Se empareja por nombre de muestra
+## antes de unir; sin esto, cada valor quedaba asignado al tratamiento de otra muestra.
+Shannon_OTU_df <- Shannon_OTU_df[match(rownames(glom@sam_data), Shannon_OTU_df$sample), ]
+stopifnot(identical(as.character(Shannon_OTU_df$sample), rownames(glom@sam_data)))
 total_Shannon <- cbind(glom@sam_data, Shannon_OTU_df)
 
 ## Tratamiento en espanol
@@ -70,6 +75,7 @@ pruebat2 <- t.test(total_H$value, total_W$value, var.equal = FALSE, alternative 
 gl1 <- round(as.numeric(pruebat$parameter))
 gl2 <- round(as.numeric(pruebat2$parameter))
 cat("grados de libertad:", gl1, "y", gl2, "\n")
+print(mu_Shannon); print(pruebat); print(pruebat2)
 
 etiqueta_t <- function(p, gl, titulo) {
   g <- ggttest(p)

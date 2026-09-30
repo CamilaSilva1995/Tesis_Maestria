@@ -11,52 +11,46 @@ A level-1 auxiliary file: Apendices/Ap.aux
 A level-1 auxiliary file: Apendices/Bp.aux
 The style file: apalike.bst
 Database file #1: ref.bib
-Warning--entry type for "castro2020phyloseq" isn't style-file defined
---line 725 of file ref.bib
-Warning--entry type for "selem2022metagenomics" isn't style-file defined
---line 730 of file ref.bib
-Warning--entry type for "videvall2017n50" isn't style-file defined
---line 735 of file ref.bib
 Warning--empty publisher in wackerly2002estadistica
-You've used 86 entries,
+You've used 83 entries,
             1935 wiz_defined-function locations,
-            967 strings with 20805 characters,
-and the built_in function-call counts, 37572 in all, are:
-= -- 3590
-> -- 1922
-< -- 45
-+ -- 703
-- -- 674
-* -- 3472
-:= -- 6629
-add.period$ -- 254
-call.type$ -- 86
-change.case$ -- 746
-chr.to.int$ -- 85
-cite$ -- 87
-duplicate$ -- 1217
-empty$ -- 2399
-format.name$ -- 800
-if$ -- 7123
+            969 strings with 19387 characters,
+and the built_in function-call counts, 34960 in all, are:
+= -- 3360
+> -- 1687
+< -- 53
++ -- 627
+- -- 586
+* -- 3171
+:= -- 6169
+add.period$ -- 249
+call.type$ -- 83
+change.case$ -- 690
+chr.to.int$ -- 82
+cite$ -- 84
+duplicate$ -- 1174
+empty$ -- 2278
+format.name$ -- 713
+if$ -- 6647
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 92
-newline$ -- 429
-num.names$ -- 258
-pop$ -- 596
+missing$ -- 90
+newline$ -- 418
+num.names$ -- 249
+pop$ -- 540
 preamble$ -- 1
-purify$ -- 755
+purify$ -- 700
 quote$ -- 0
-skip$ -- 937
+skip$ -- 907
 stack$ -- 0
-substring$ -- 2652
-swap$ -- 111
+substring$ -- 2449
+swap$ -- 109
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 498
+type$ -- 476
 warning$ -- 1
-while$ -- 303
+while$ -- 286
 width$ -- 0
-write$ -- 1101
-(There were 4 warnings)
+write$ -- 1075
+(There was 1 warning)

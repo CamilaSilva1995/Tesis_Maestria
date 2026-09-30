@@ -1,312 +1,492 @@
 \chapter{Resultados}
-\section{Caracterización de la composición taxonómica
- de la microbiota asociada a plantas de fresa sanas y enfermas}
-% homogeneizar phylum y filo
+\label{cap:resultados}
+%% ============================================================================
+%% BORRADOR - Capítulo 4 (reescrito 2026-09-29)
+%% Organizado según los tres objetivos específicos del Capítulo 2.
+%% Todas las cifras fueron recalculadas a partir de Data/fresa_solena/Data1 con los scripts
+%% de Analisis_Comparativo/Fresa_Solena y Articulo_Popayan/calculos.
+%% Los comentarios "%% CAMI" señalan puntos por revisar.
+%% ============================================================================
 
-\subsection{Preprocesamiento y Filtrado de Calidad}
- Con el objetivo de identificar características distintivas entre los microorganismos 
- presentes en plantas 
-sanas y enfermas, se ha llevado a cabo un análisis exploratorio detallado de estos datos.
-Eliminamos las muestras con poco número de lecturas o de baja calidad, 
-usando el filtro de menos de 25 millones de lecturas luego del análisis de calidad.\\
-Después de realizar una revisión inicial de los datos, notamos la presencia de muestras 
-con conteos de ceros (número de lecturas por muestras), como en el caso de 'MP2088' que fue eliminada.
-La muestra MP2088 plantea un desafío evidente al contener solo 2 lecturas. Esta escasez de datos 
-representa un problema significativo durante el análisis, ya que la falta de información sustancial 
-puede afectar la validez y la interpretación de los resultados. Por lo tanto, esta muestra fue eliminada 
-utilizando el filtro de calidad establecido, que se basa en mantener muestras con un número mínimo de 
-lecturas después del análisis. Después de la aplicación de un filtro de calidad, se identificaron cinco muestras 
-que no cumplían con los criterios establecidos, lo que llevó a su eliminación del conjunto de datos.
-El criterio para eliminar muestras es que, 
-después del filtrado de calidad, contengan menos de 25 millones de lecturas. Bajo este filtro, 
-se eliminaron las muestras: MP2079, MP2080, MP2088, MP2109, MP2137.\\
+En este capítulo se presentan los resultados del análisis descrito en el Capítulo 3, organizados
+según los tres objetivos específicos planteados en el Capítulo 2. La Sección \ref{sec:res-caracterizacion}
+caracteriza la composición y la diversidad del microbioma rizosférico de plantas de fresa saludables y
+no saludables, primero sobre la comunidad completa y después por reino y por nivel taxonómico. La
+Sección \ref{sec:res-pruebas} contrasta estadísticamente las diferencias observadas y evalúa la
+potencia del diseño. La Sección \ref{sec:res-patrones} reúne los patrones taxonómicos y de estructura
+de la comunidad asociados con el estado de salud de la planta. En todo el capítulo se usan los
+términos \emph{saludable} y \emph{no saludable} para los dos grupos, que en los datos originales
+aparecen como \texttt{healthy} y \texttt{wilted} (planta marchita).
 
+%% ----------------------------------------------------------------------------
+\section{Caracterización de la composición taxonómica y la diversidad microbiana}
+\label{sec:res-caracterizacion}
+%% ----------------------------------------------------------------------------
 
-\subsubsection{El filtro por control de calidad mejora la comparación por Diversidad Alfa}
+\subsection{Preprocesamiento y filtro de calidad}
+
+El conjunto de datos original comprendía 58 metagenomas, 40 de plantas saludables y 18 de plantas
+no saludables. Antes de calcular cualquier medida de diversidad se revisó la tabla de control de
+calidad de cada muestra, que reporta el número de lecturas antes y después del filtrado con fastp,
+la proporción de bases con calidad Phred superior a 30 y el porcentaje de lecturas clasificadas por
+Kraken. Se estableció como criterio de exclusión un mínimo de 25 millones de lecturas después del
+filtrado de calidad. Cinco muestras, todas del grupo saludable, no cumplieron el criterio y fueron
+eliminadas: MP2079, MP2080, MP2088, MP2109 y MP2137. El caso extremo es MP2088, que conservó
+únicamente dos lecturas tras el filtrado; una muestra así no aporta información sobre la comunidad
+y, como se muestra a continuación, distorsiona la escala de todos los índices.
+
+Tras el filtro quedaron 53 muestras para el análisis: 35 saludables y 18 no saludables. La
+Figura \ref{fig:alpha-crudos-filtrados} compara la diversidad alfa antes y después del filtro. En
+los datos crudos (panel A) las cinco muestras de baja calidad comprimen la escala de los cuatro
+índices, de modo que ambos grupos parecen indistinguibles. En los datos filtrados (panel B) la
+escala se ajusta a la variación real entre muestras y se aprecia una ligera tendencia hacia
+valores mayores en el grupo saludable, más visible en la riqueza observada y en Chao1. El filtro de
+calidad no cambia los datos de las muestras que se conservan, pero sí determina si las diferencias
+entre grupos pueden verse.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/AlphaDiversity_CrudosFiltrados.png}
-\caption{La diversidad alfa en los datos crudos es similar en ambos tratamientos en todos los índices. Al realizar el filtro de calidad se obtienen una mejor visión de esta diversidad. A) Índices de diversidad alfa calculados antes de aplicar el filtro de calidad, las diferencias entre las muestras saludables y enfermas son poco claras debido a la influencia de datos ruidosos. B) Índices de diversidad alfa tras eliminar muestras de baja calidad o datos inconsistentes, mejora la claridad y permite una mejor percepción visual de las diferencias en la diversidad microbiana entre los grupos. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)} }
+\caption{Diversidad alfa (riqueza observada, Chao1, Shannon y Simpson) en muestras saludables y no
+saludables. A) Antes del filtro de calidad, las muestras con muy pocas lecturas dominan la escala y
+ocultan las diferencias entre grupos. B) Tras eliminar las cinco muestras con menos de 25 millones
+de lecturas, se aprecia una tendencia hacia mayor diversidad en las muestras saludables, en
+particular en la riqueza observada y en Chao1.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarAlphaCrudosFiltrados41.R}{(Script)}}
+\label{fig:alpha-crudos-filtrados}
 \end{figure}
 
-En la imagen, se pueden identificar que los datos con baja calidad afectan 
-la visualización de la diversidad alfa. Eliminar muestras de baja calidad resulta en una mejora 
-significativa en la claridad y la interpretación de la visualización. La diferencia es notable 
-después de descartar las muestras de baja calidad, lo que resalta la importancia de 
-un proceso de filtrado, permitiendo una interpretación más justa.\\
-%% Cual toma de desiciones CAMI? ¿por qué es notable la diferencia?
-Después de aplicar el filtro de calidad de los datos, la visualización de la 
-diversidad alfa en los conjuntos de muestras de plantas sanas y enfermas sugiere %no es revela% 
-una mayor diversidad en las muestras sanas en comparación con las muestras enfermas. 
-Esta observación es más fuerte con el estimador Chao1, que utiliza los conteos de
-singletons y doubletons para estimar la riqueza total, incluidas las especies no observadas,
-respaldando la percepción visual de una mayor diversidad en las muestras sanas. A pesar de la diferencia en las diversidades observadas, 
-esta disparidad no es visualmente grande, y sin una prueba estadística no se sabe 
-si existe una diferencia significativa entre las muestras sanas y enfermas. Este problema se aboradará 
-en la sección correspondiente a pruebas estadísticas.\\
-Así pues, la aplicación de un filtro de calidad en los datos metagenómicos 
-mejoró la visualización de la diversidad alfa en sus distintos índices. Después del preprocesamiento 
-de datos quedaron para el análisis 35 muestras de microbioma de rizósfera de plantas sanas y
-18 muestras correspondientes a rizósfera de plantas enfermas. En general los metagenomas provenientes 
-de plantas saludables contenían más lecturas, lo que puede sesgar su diversidad alfa, sobre todo 
-en los índices números de especies observadas y aquellos que dependen de conteo de singletons. 
-La rarefacción, es decir tomar muestras aleatorias con el mismo número de lecturas en cada metagenoma
-podría ayudar a mitigar este sesgo.\\
+Aun después del filtro persiste una diferencia en la profundidad de secuenciación entre grupos. La
+Figura \ref{fig:barras-lecturas} muestra el número de lecturas clasificadas por muestra: los
+metagenomas de plantas saludables contienen, en promedio, más lecturas que los de plantas no
+saludables. Esta diferencia debe tenerse presente al interpretar los índices que dependen del
+esfuerzo de muestreo, como la riqueza observada y Chao1, porque una muestra con más lecturas tiene
+mayor probabilidad de detectar taxones raros. Las curvas de rarefacción calculadas en el Capítulo 3
+indican, sin embargo, que todas las muestras conservadas alcanzan la saturación, es decir, que el
+número de taxones detectados deja de crecer con la profundidad.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Barras.png}
-\caption{Las muestras saludables (N=35) muestran, en promedio, 
-una mayor cantidad de lecturas en comparación con las no saludables (N=18).}
+\caption{Número de lecturas clasificadas por muestra tras el filtro de calidad. Las muestras
+saludables ($n = 35$) tienen en promedio más lecturas que las no saludables ($n = 18$).
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarBarrasLecturas42.R}{(Script)}}
+\label{fig:barras-lecturas}
 \end{figure}
 
-\subsubsection{Diversidad Beta}
-%% Los sujetos como diversidad beta no se deben omitir, ya que son importantes para la interpretación de los resultados.
-% Qué hiciste?
-Después de aplicar el filtro de calidad, y observar la diversidad alfa considerando
-todos los taxones, se procedió a analizar la diversidad beta de las muestras.
-En la diversidad beta no se observó tampoco una clara separación de los datos por las categorías
-enfermo y sano para ninguna métrica de distancia. Esto sugiere una gran superposición 
-en la composición microbiana entre las muestras saludables y enfermas, independientemente de 
-la métrica utilizada.
-Por esta razón se decidió dividir el análisis en conjuntos más pequeños. 
-Este enfoque puede ayudar a identificar patrones más específicos o diferencias 
-significativas en la composición de linajes taxonómicos entre subconjuntos de muestras. Debido 
-a la gran cantidad de %datos% 
-linajes, resulta difícil discernir diferencias entre las muestras. 
-Por lo tanto en las siguientes secciones, se crearon subdivisiones para analizar y visualizar los datos 
-en diferentes niveles taxonómicos como reino, phylum y familias.
+\subsection{Diversidad alfa de la comunidad completa}
+
+La Tabla \ref{tab:alfa-medias} resume los cuatro índices de diversidad alfa por grupo, calculados
+sobre las 53 muestras filtradas. En los cuatro índices el promedio del grupo saludable es mayor que
+el del grupo no saludable, pero las diferencias son pequeñas en relación con la escala de cada
+índice: 26 taxones observados de más de 8~600, 0.06 unidades de Shannon sobre un valor cercano a
+7.5, y una milésima en Simpson. El índice de Simpson está próximo a su máximo en todas las
+muestras, lo que indica comunidades sin dominancia marcada de ningún taxón. La diferencia más
+notable entre grupos no está en las medias sino en la dispersión: la desviación estándar del índice
+de Shannon en el grupo no saludable es casi tres veces la del grupo saludable. Este punto se
+retoma en la Sección \ref{sec:res-patrones}.
+
+\begin{table}[H]
+\centering
+\caption{Promedio de los índices de diversidad alfa por grupo sobre la comunidad completa
+(53 muestras filtradas). Entre paréntesis, la desviación estándar del índice de Shannon.}
+\label{tab:alfa-medias}
+\begin{tabular}{lcccc}
+\hline
+Grupo & Riqueza observada & Chao1 & Shannon & Simpson \\
+\hline
+Saludable ($n = 35$)    & 8639.9 & 8767.6 & 7.478 (0.061) & 0.998 \\
+No saludable ($n = 18$) & 8613.7 & 8751.6 & 7.417 (0.168) & 0.997 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Diversidad beta de la comunidad completa}
+
+La Figura \ref{fig:beta-global} muestra las ordenaciones NMDS \citep{kruskal1964multidimensional} de las 53 muestras para las cinco
+medidas de disimilitud calculadas sobre abundancias relativas: Bray-Curtis, Jaccard, Euclidiana,
+Manhattan y Jensen-Shannon. En ninguna de las cinco se observa una separación entre muestras
+saludables y no saludables: los dos grupos se superponen en el centro de la ordenación y las pocas
+muestras alejadas del núcleo pertenecen a ambos grupos. Las ordenaciones de Bray-Curtis, Jaccard y
+Manhattan son casi idénticas, lo cual es esperable porque, sobre abundancias relativas, Jaccard
+cuantitativo y Manhattan son transformaciones monótonas de Bray-Curtis (Capítulo 1). La ordenación
+Euclidiana tiene una escala mucho menor porque, al elevar al cuadrado las diferencias, queda dominada
+por los dos filos más abundantes. La ordenación de Jensen-Shannon queda determinada por una sola
+muestra atípica, lo que la hace poco informativa para este conjunto de datos.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/BetaDiversity.png}
-\caption{La diversidad beta no muestra que diferencias claras entre las muestras
-sanas y marchitas para ninguna métrica. A) Medida de disimilitud de Bray-Curtis B) Distancia de Jaccard 
-C) Distancia Euclidiana D) Distancia Manhattan E) Medida de divergencia de Jensen-Shannon. 
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Exploracion.Rmd)}}
+\caption{Ordenaciones NMDS de la diversidad beta de la comunidad completa para cinco medidas de
+disimilitud. A) Bray-Curtis. B) Jaccard. C) Euclidiana. D) Manhattan. E) Jensen-Shannon. Ninguna
+medida separa las muestras saludables de las no saludables.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarBetaDiversity43.R}{(Script)}}
+\label{fig:beta-global}
 \end{figure}
 
+Para cuantificar lo que muestran las ordenaciones se aplicó un análisis PERMANOVA \citep{anderson2001new} sobre la matriz
+de disimilitud de Bray-Curtis, con el estado de la planta como único factor y 999 permutaciones.
+El estado de la planta explicó el 2.4\% de la variación total en la composición ($R^2 = 0.024$,
+pseudo-$F = 1.26$, $p = 0.202$). Es decir, más del 97\% de la variación entre muestras se debe a
+factores distintos del estado saludable o no saludable, y la fracción atribuible a este no es
+distinguible de la que se obtendría asignando las etiquetas al azar.
+%% CAMI: el PERMANOVA está en Articulo_Popayan/calculos/Potencia_estadistica.R. Conviene
+%% agregar una frase en el Capítulo 3 diciendo que se aplicó (adonis2 de vegan).
 
-\subsubsection{Distribución y diversidad microbiana al separar por reino}
-En el análisis de diversos grupos taxonómicos, comenzamos examinando gráficos de 
-barras de abundancias como primer paso para seleccionar conjuntos específicos de 
-interés. Al representar las muestras en el eje x y las abundancias en el eje y, 
-obtenemos una visualización clara de las abundancias absolutas y relativas en cada 
-muestra. Este enfoque nos facilita identificar de manera eficiente conjuntos 
-particulares que pueden ser utilizados para un análisis más detallado y específico.\\
+\subsection{Composición taxonómica general}
 
-A nivel de phylum, ya podemos apreciar una mayor diversidad en nuestras muestras, 
-siendo la mayoría de los filos pertenecientes a bacterias. Podemos notar algunas diferencias 
-entre los diferentes filos, por ejemplo Actinobacteria y 
-Proteobacteria son en ambas los más abundantes ; sin embargo, 
-la gran cantidad de taxones dificulta distinguir adecuadamente el color de cada uno, 
-a menos que tengan una abundancia muy significativa. Dado que nuestro objetivo es 
-diferenciar entre muestras sanas y enfermas, agregaremos una distinción adicional 
-utilizando la variable 'Tratamiento': representaremos las muestras sanas en color 
-blanco y las muestras enfermas en color negro.\\
+A nivel de reino, la tabla de clasificación de Kraken contiene 8~822 taxones asignados a Bacteria y
+181 a Eukaryota, lo que refleja tanto el predominio bacteriano de los suelos como la menor
+representación de los eucariotas en la base de datos de referencia. A nivel de filo, la comunidad
+está dominada por Actinobacteria y Proteobacteria, que juntos suman en promedio más del 90\% de las
+lecturas clasificadas de cada muestra (48.3\% y 43.3\%, respectivamente). Les siguen, ya con
+abundancias relativas menores al 3\%, Planctomycetes, Firmicutes, Bacteroidetes y Acidobacteria. La
+Figura \ref{fig:barras-filo} muestra las abundancias absolutas y relativas por muestra, y la
+Figura \ref{fig:barras-filo-bn} las mismas abundancias relativas con las muestras separadas por
+grupo. A esta escala los dos grupos son prácticamente indistinguibles: los dos filos dominantes
+tienen proporciones semejantes en todas las muestras y los filos minoritarios no alcanzan a verse.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/BarrasFilo.png}
-\caption{Las barras de abundancia a nivel de FILO muestran a Actinobacteria y 
-Proteobacteria como los más abundantes  A) Las barras de abundancia absolutas, 
-representan el conteo total de lecturas asignadas a cada filo en las muestras.  
-B) Las barras de abundancia relativas, representan las proporciones de cada 
-filo dentro de la comunidad microbiana total para cada muestra}
+\caption{Abundancia por filo en las 53 muestras filtradas. A) Abundancia absoluta, en número de
+lecturas asignadas a cada filo. B) Abundancia relativa, en porcentaje por muestra. Actinobacteria y
+Proteobacteria dominan todas las muestras.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarBarrasFilo44.R}{(Script)}}
+\label{fig:barras-filo}
 \end{figure}
-
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/BarrasFilo_blackandwhite.png}
-\caption{A nivel de filo, se observa una menor presencia de ciertos taxones como Oomycota en las plantas enfermas, lo cual es consistente con la hipótesis de que la salud de las plantas está relacionada con una microbiota específica.}
+\caption{Abundancia relativa por filo con las muestras separadas por grupo: saludables (recuadro
+claro) y no saludables (recuadro oscuro). A nivel de filo y sobre la comunidad completa, la
+composición de ambos grupos es semejante.}
+\label{fig:barras-filo-bn}
 \end{figure}
 
-De igual manera, la cantidad de taxones continúa dificultando la distinción entre las muestras. 
-Por ello, hemos creado subconjuntos más pequeños para facilitar una observación más 
-clara de nuestros datos. También podríamos restringir sólo a los diez más abundantes por nivel taxonómico.
-jerárquico, pero decidimos primero explorar los diversos niveles taxonómicos 
-comenzando con los subconjuntos a nivel de reino, en este caso, Bacteriota y Eucariota.\\
+Dado que ni la diversidad ni la composición de la comunidad completa distinguen a los grupos, el
+análisis se desagregó por reino, Bacteria y Eukaryota, y dentro de cada reino por filo, familia,
+género y especie. Para las gráficas de barras se aplicó una aglomeración al 10\%, que agrupa bajo
+la etiqueta ``Others'' a los taxones cuya abundancia relativa no supera ese umbral en ninguna
+muestra, de modo que los taxones restantes puedan distinguirse por color.
 
-Podemos ver cuantos “Eukaryota” tenemos en “Kingdom”.
-\begin{lstlisting}[basicstyle=\small] 
-sum(fresa_kraken_fil@tax_table@.Data[,"Kingdom"]=="Eukaryota")
-## [1] 181
-\end{lstlisting}
-\begin{lstlisting}[basicstyle=\small] 
-sum(fresa_kraken_fil@tax_table@.Data[,"Kingdom"]=="Bacteria")
-## [1] 8822
-\end{lstlisting}
+\subsection{Eucariotas por nivel taxonómico}
 
-Al verificar lo observado anteriormente con la agrupación de subconjuntos, 
-confirmamos que hay una mayor cantidad de muestras clasificadas como bacterias en 
-comparación con las clasificadas como eucariotas. A partir de estos dos subconjuntos, 
-llevamos a cabo una agrupación adicional por filo, familia, género y especie. 
-La elección de estos niveles taxonómicos se basa en 
-diferentes propósitos: el filo se selecciona como el siguiente nivel después del 
-reino para proporcionar una visualización panorámica de los datos; mientras que la 
-familia, el género y la especie se seleccionan para obtener una visualización más 
-detallada y poder identificar diferencias significativas entre los grupos de datos.
-Además, con la función \textbf{GLOM10\%} se realiza una aglomeracion al diez por ciento
-(10\%)  para tener una mejor visibilidad y podernos enfocar en las muestras con
-menor (mayor) abundancia. \\
-
-\subsubsection{Distribución y diversidad microbiana en phyla Eucaryota}
+La Figura \ref{fig:barras-eukarya} muestra la composición de la fracción eucariota en los cuatro
+niveles taxonómicos. Los eucariotas representan una fracción muy pequeña de las lecturas
+clasificadas, por lo que sus abundancias relativas dentro del reino están sujetas a mayor
+variabilidad de muestreo que las bacterianas. A nivel de filo se observa una abundancia relativa
+ligeramente menor de Oomycota en las muestras no saludables, y a nivel de familia una menor
+presencia de Peronosporaceae, familia que pertenece a ese filo. A nivel de género y especie se
+identifican los hongos fitopatógenos \textit{Fusarium} y el oomiceto \textit{Phytophthora}, ambos
+documentados como agentes de marchitez y pudrición radicular en fresa \citep{yang2020comparison, siegieda2024ecological}. Sobre la comunidad completa,
+la abundancia relativa media de \textit{Fusarium} es de 0.144\% en las plantas saludables y de
+0.160\% en las no saludables; la de Oomycota es de 0.066\% y 0.061\%, y la de \textit{Phytophthora}
+de 0.063\% y 0.059\%. Se trata de diferencias pequeñas, que las gráficas de barras por reino
+amplifican al reescalar la fracción eucariota al 100\%.
+%% CAMI: Oomycota incluye a Phytophthora (Peronosporaceae) y Pythium, patógenos de fresa. Una
+%% MENOR abundancia en plantas marchitas es contraintuitiva y la diferencia es muy pequeña
+%% (0.066 frente a 0.061). Sugiero presentarlo solo como observación, sin interpretarlo como
+%% "pérdida de componentes clave para la resistencia", y discutirlo con la Dra. Nelly.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Barras_Eukarya10.png}
-\caption{La distribución de la abundancia relativa de microorganismos eucariotas 
-en muestras de plantas saludable y no saludables, desglosada en diferentes niveles 
-taxonómicos. A) Filo: Muestra una disminución significativa de algunos filos en 
-las muestras enfermas, destacando particularmente la baja abundancia de Oomycota, 
-un grupo importante asociado a la salud del suelo y de las plantas. B) Familia: 
-Resalta la disminución específica de familias como Peronosporaceae en las muestras 
-enfermas, lo cual podría indicar una pérdida de componentes microbianos clave para 
-la resistencia a enfermedades. C) Género: Ofrece una visualización más específica 
-que permite identificar  permiten identificar biomarcadores positivos, como 
-Pseudomonas y Bacillus, que se asocian con plantas saludables, así como Fusarium y 
-Phytophthora, que predominan en condiciones de enfermedad. D) Especie: 
-Se observan diferencias claras que pueden servir para identificar biomarcadores 
-asociados a la salud o enfermedad de las plantas. Como Pseudomonas o Bacillus en 
-muestras saludables y Phytophthora o Fusarium en muestras no saludables.  
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
+\caption{Abundancia relativa de eucariotas en muestras saludables (recuadro claro) y no saludables
+(recuadro oscuro), con aglomeración al 10\%. A) Filo: Oomycota muestra una abundancia relativa
+ligeramente menor en las muestras no saludables. B) Familia: la misma tendencia en Peronosporaceae.
+C) Género: \textit{Fusarium} y \textit{Phytophthora} entre los géneros distinguibles. D) Especie.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarBarrasEukarya46.R}{(Script)}}
+\label{fig:barras-eukarya}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{Img/cap3/Barras_Bacteria10.png}
-\caption{La distribución de la abundancia relativa de bacterias revela que las plantas saludables albergan una microbiota diversa y equilibrada, caracterizada por la dominancia de filos beneficiosos como Actinobacteria y Firmicutes. En contraste, las plantas enfermas presentan una mayor proporción de posibles patógenos, destacando especies como Ralstonia. A) Filo, La composición a nivel de filo sugiere diferencias en la dominancia de filos beneficiosos (e.g., Actinobacteria) frente a posibles patógenos o descomponedores en plantas enfermas (e.g., Bacteroidetes). B) Familia, A nivel de familia, se observa cómo las plantas saludables están asociadas con microbiota protectora (e.g., Bacillaceae), mientras que las plantas enfermas presentan familias que incluyen patógenos o microbios oportunistas. C) Género, La identificación de géneros específicos permite asociar Pseudomonas y Bacillus con la salud de las plantas, mientras que géneros como Ralstonia se relacionan con la enfermedad. D) Especie, La diferenciación a nivel de especie permite identificar microorganismos específicos que actúan como indicadores claros de la salud o enfermedad de las plantas. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}}
-\end{figure}
-
-En esta representación a nivel de filo, podemos destacar la disminución notable 
-de \textit{Oomycota} en las muestras enfermas en comparación con las muestras sanas. 
-Al profundizar a nivel de familia, observamos una disminución específica de 
-\textit{Peronosporaceae} en las muestras enfermas en comparación con las muestras 
-sanas.\\
-
-\textbf{Diversidad alfa para los niveles taxonomicos eucarya}
+La Figura \ref{fig:alpha-eukarya} presenta la diversidad alfa de los eucariotas en cada nivel. En
+los cuatro niveles, las muestras saludables muestran una tendencia hacia valores mayores de riqueza
+observada y de Chao1, mientras que Shannon y Simpson son semejantes entre grupos. En el nivel de
+género, el promedio del índice de Shannon calculado sobre los 58 géneros de eucariotas es de 3.077
+en el grupo saludable y de 3.035 en el no saludable; la significancia de esta diferencia se evalúa
+en la Sección \ref{sec:res-pruebas}. La diversidad beta por nivel, en la Figura \ref{fig:beta-eukarya},
+repite lo observado en la comunidad completa: las ordenaciones no separan los grupos en ningún nivel
+taxonómico.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Alpha_Eukarya.png}
-\caption{Diversidad alfa para eucariotas a nivel de: A) Filo B) Familia C) Género D) Especie}
-\hspace{1cm}
-\includegraphics[width=\textwidth]{Img/cap3/Alpha_Bacteria.png}
-\caption{Diversidad alfa para bacterias a nivel de: A) Filo B) Familia C) Género D) Especie}
+\caption{Diversidad alfa de los eucariotas por nivel taxonómico: A) filo, B) familia, C) género,
+D) especie. Las muestras saludables tienden a mayor riqueza observada y Chao1 en todos los niveles.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarAlphaEukarya48.R}{(Script)}}
+\label{fig:alpha-eukarya}
 \end{figure}
-
-La diversidad alfa de eucariotas revela que las plantas saludables presentan una 
-microbiota más equilibrada y diversa, mientras que las plantas enfermas están 
-dominadas por eucariotas patógenos, lo que las convierte en indicadores clave para 
-el diagnóstico y manejo de enfermedades en cultivos.
-
-La diversidad alfa de bacterias revela que las plantas saludables albergan una 
-comunidad bacteriana más diversa y equilibrada en todos los niveles taxonómicos, 
-con una prevalencia de microorganismos beneficiosos. Por otro lado, las plantas 
-enfermas muestran un aumento de patógenos específicos, lo que indica un desequilibrio 
-microbiano.
-
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}
-
-En esta imagen, podemos ver que con la diversidad Chao1 a nivel de especie se genera 
-una diferencia considerable de diversidades entre muestras sanas y enfermas, lo cual 
-se detallara mas adelante con una prueba de hipótesis. Tambien ...
-
-En esta imagen, podemos ver que con la diversidad Chao1 a nivel de género se 
-evidencia una diferencia considerable de diversidades entre muestras sanas y 
-enfermas, lo cual se detallara mas adelante con una prueba de hipótesis. 
-Tambien ...
-
-Después de aplicar el filtro de calidad de los datos, la visualización de la 
-diversidad alfa en los conjuntos de muestras de plantas sanas y enfermas 
-revela una mayor diversidad en las muestras sanas en comparación con las muestras enfermas. 
-Esta observación se refuerza con el estimador Chao1, que utiliza los conteos de
-singletons y doubletons para estimar la riqueza total, respaldando la percepción visual de una mayor
-diversidad en las muestras sanas. A pesar de la diferencia en las diversidades 
-observadas, cabe destacar que esta disparidad no es significativamente grande, 
-sugiriendo que no hay una diferencia sustancial en la diversidad entre las muestras 
-sanas y enfermas.\\
-
-Este análisis proporciona una evaluación más completa de la diversidad alfa, 
-indicando que aunque hay variaciones discernibles, estas no son lo 
-suficientemente notables como para afirmar una gran disparidad 
-en la diversidad entre los conjuntos de muestras. 
-Este tipo de conclusiones respaldadas por métricas 
-específicas y visualizaciones contribuyen a una interpretación 
-más precisa de la composición de las 
-comunidades microbianas en plantas sanas y enfermas\\
-
-
-\textbf{Diversidad beta para los niveles taxonomicos}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Beta_Eukarya.png}
-\caption{Diversidad beta para eucariota a nivel de A) Filo, B) Familia, C) Genero, D) Especie}
-\hspace{1cm}
-\includegraphics[width=\textwidth]{Img/cap3/Beta_Bacteria.png}
-\caption{Diversidad beta para bacteria a nivel de A) Filo, B) Familia, C) Genero, D) Especie}
+\caption{Diversidad beta (NMDS, Bray-Curtis) de los eucariotas por nivel taxonómico: A) filo,
+B) familia, C) género, D) especie. No hay separación entre grupos en ningún nivel.}
+\label{fig:beta-eukarya}
 \end{figure}
 
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones&Graficas.R}{(FuncionesGraficas.R)}
+\subsection{Bacterias por nivel taxonómico}
 
-La diversidad beta indica que, aunque hay variación entre los microbiomas de plantas 
-saludables y enfermas, estas no son lo suficientemente marcadas para dividir los grupos 
-de manera clara. Estos resultados destacan la necesidad de análisis adicionales para 
-identificar biomarcadores específicos o patrones clave en niveles taxonómicos más detallados.
+La Figura \ref{fig:barras-bacteria} muestra la composición bacteriana en los cuatro niveles. A
+nivel de filo, ambos grupos están dominados por Actinobacteria y Proteobacteria, con Firmicutes como
+tercer filo distinguible; la única diferencia visible es una proporción algo mayor de Firmicutes en
+algunas muestras no saludables. A nivel de familia y género, la aglomeración al 10\% deja visibles a
+Streptomycetaceae y su género \textit{Streptomyces}, presentes en proporciones semejantes en ambos
+grupos, y a Paenibacillaceae con su género \textit{Paenibacillus}, que aparece en unas pocas muestras
+de ambos grupos. A nivel de especie, \textit{Paenibacillus polymyxa}, una rizobacteria promotora del
+crecimiento vegetal \citep{lal2009ecology}, es la única que supera el umbral de aglomeración, y lo hace en muestras
+aisladas. Por debajo del umbral del 10\%, la exploración de las tablas de abundancia identificó a
+\textit{Pseudomonas} y \textit{Bacillus} con abundancias relativas algo mayores en las muestras
+saludables, y a \textit{Ralstonia}, género que incluye a los agentes de la marchitez bacteriana \citep{suhaimi2017diversity}, con abundancia algo mayor en las
+no saludables.
+%% CAMI: las diferencias de Pseudomonas, Bacillus y Ralstonia se identificaron por inspección de
+%% las tablas y no aparecen en la figura por estar bajo el umbral del 10 %. Conviene agregar sus
+%% abundancias relativas medias por grupo (el script cifras_cap4.R las calcula) o una figura.
 
-La métrica de Bray-Curtis demuestra que las diferencias en la composición son más 
-evidentes en niveles taxonómicos detallados (género y especie), destacando la 
-importancia de estos análisis para identificar biomarcadores y desarrollar estrategias 
-de manejo agrícola.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Img/cap3/Barras_Bacteria10.png}
+\caption{Abundancia relativa de bacterias en muestras saludables (recuadro claro) y no saludables
+(recuadro oscuro), con aglomeración al 10\%. A) Filo: predominio de Actinobacteria y Proteobacteria.
+B) Familia: Streptomycetaceae y Paenibacillaceae. C) Género: \textit{Streptomyces} y
+\textit{Paenibacillus}. D) Especie: \textit{Paenibacillus polymyxa} en muestras aisladas.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarBarrasBacteria47.R}{(Script)}}
+\label{fig:barras-bacteria}
+\end{figure}
 
-\section{Evaluar estadísticamente las diferencias entre los microbiomas de plantas saludables y no saludables}
+La diversidad alfa de las bacterias por nivel (Figura \ref{fig:alpha-bacteria}) reproduce el patrón
+de la comunidad completa, lo cual es esperable porque las bacterias constituyen casi la totalidad
+de las lecturas: tendencia hacia mayor riqueza en el grupo saludable y mayor dispersión en el grupo
+no saludable, sobre todo en Shannon a nivel de género y especie. La diversidad beta por nivel
+(Figura \ref{fig:beta-bacteria}) tampoco separa los grupos. Sí se observa que, con Bray-Curtis, la
+nube de puntos se vuelve más dispersa a medida que se desciende de filo a especie, porque en los
+niveles finos hay más taxones que pueden diferir entre muestras. Esa mayor dispersión, sin embargo,
+no se organiza según el estado de la planta.
 
-\subsection{Pruebas con muestras pequeñas para comparar dos medias poblacionales}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Img/cap3/Alpha_Bacteria.png}
+\caption{Diversidad alfa de las bacterias por nivel taxonómico: A) filo, B) familia, C) género,
+D) especie.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarAlphaBacteria49.R}{(Script)}}
+\label{fig:alpha-bacteria}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Img/cap3/Beta_Bacteria.png}
+\caption{Diversidad beta (NMDS, Bray-Curtis) de las bacterias por nivel taxonómico: A) filo,
+B) familia, C) género, D) especie. La dispersión aumenta en los niveles finos, pero no se organiza
+según el estado de la planta.}
+\label{fig:beta-bacteria}
+\end{figure}
+
+%% ----------------------------------------------------------------------------
+\section{Evaluación estadística de las diferencias entre grupos}
+\label{sec:res-pruebas}
+%% ----------------------------------------------------------------------------
+
+Las tendencias descritas en la sección anterior se contrastaron con las pruebas de hipótesis del
+Capítulo 3, usando el índice de Shannon como variable de respuesta y un nivel de significancia
+$\alpha = 0.05$. Todas las pruebas son bilaterales, con hipótesis nula de igualdad entre los grupos
+saludable y no saludable.
+
+\subsection{Verificación de supuestos}
+
+Antes de aplicar la prueba t se verificaron sus dos supuestos. La prueba de Shapiro-Wilk \citep{shapiro1965analysis} no rechaza
+la normalidad del índice de Shannon en el grupo saludable ($p = 0.130$), pero sí la rechaza en el
+grupo no saludable ($p < 0.001$), donde una muestra con valor muy bajo (6.82) se aleja del resto.
+La prueba F rechaza con claridad la igualdad de varianzas ($F = 0.132$ con 34 y 17 grados de
+libertad, $p < 0.001$): la varianza del grupo no saludable es unas siete veces mayor que la del
+saludable. En consecuencia, la versión apropiada de la prueba t es la de Welch, y la prueba de
+Wilcoxon-Mann-Whitney se aplica como alternativa que no requiere normalidad. Se reportan también
+los resultados con varianzas iguales para hacer explícito el efecto de ese supuesto.
+
+\subsection{Prueba t sobre el índice de Shannon de la comunidad completa}
+
+La Figura \ref{fig:ttest-shannon} resume la prueba t sobre la comunidad completa. Asumiendo
+varianzas iguales, el estadístico es $t = 1.939$ con 51 grados de libertad y $p = 0.058$; el
+intervalo de confianza del 95\% para la diferencia de medias, $(-0.002,\ 0.125)$, incluye al
+cero por un margen estrecho. Con la prueba de Welch \citep{welch1947generalization}, que es la que corresponde dados los supuestos,
+el estadístico es $t = 1.499$ con 19.3 grados de libertad y $p = 0.150$, con intervalo
+$(-0.024,\ 0.147)$. En ninguno de los dos casos se rechaza la hipótesis nula: la diferencia de
+0.061 unidades de Shannon a favor del grupo saludable no es distinguible del ruido con el tamaño
+de muestra disponible. Cabe notar que el supuesto de varianzas iguales, que los datos no cumplen,
+acerca artificialmente el resultado a la significancia.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/tTest_Shannon.png}
-\caption{Prueba t de Student sobre el Índice Shannon no muestra evidencia estadística suficiente para rechazar la hipótesis nula (Varianzas Iguales y Diferentes)  A) Los resultados de la prueba t sugieren que, aunque las muestras saludables muestran visualmente una mayor diversidad microbiana, no hay evidencia estadística suficiente para rechazar la hipótesis nula.
-B) Suponiendo  varianzas iguales, no se observa una diferencia significativa en las medias del índice de Shannon entre los grupos saludables y no saludables, ya que el valor p es mayor a 0.05, lo que lleva a no rechazar la hipótesis nula.
-C) Asumiendo las varianzas diferentes el valor p sigue siendo mayor que 0.05 (0.1501), lo que indica que no hay una diferencia significativa entre las medias del índice de Shannon entre los grupos "saludable" y "no saludable". }
+\caption{Prueba t de Student sobre el índice de Shannon de la comunidad completa. A) Distribución
+del índice en cada grupo, con la media señalada por la línea punteada. B) Asumiendo varianzas
+iguales: $t = 1.939$, 51 grados de libertad, $p = 0.058$. C) Asumiendo varianzas distintas (Welch):
+$t = 1.499$, 19.3 grados de libertad, $p = 0.150$. En ambos casos el estadístico queda fuera de la
+región de rechazo y no se rechaza la hipótesis nula.}
+\label{fig:ttest-shannon}
 \end{figure}
+
+\subsection{Prueba t sobre el índice de Shannon de los géneros de eucariotas}
+
+La misma prueba se aplicó al índice de Shannon calculado sobre los 58 géneros de eucariotas, grupo
+que incluye a \textit{Fusarium} y a \textit{Phytophthora}, con el fin de comprobar si la señal
+asociada con los fitopatógenos, diluida en la comunidad completa, resultaba detectable al aislar la
+fracción eucariota. La Figura \ref{fig:ttest-eucariotas} muestra el resultado. Las medias son 3.077
+en el grupo saludable y 3.035 en el no saludable. Asumiendo varianzas iguales, $t = 1.139$ con 51
+grados de libertad y $p = 0.260$; con la prueba de Welch, $t = 0.902$ con 20.2 grados de libertad y
+$p = 0.378$. La prueba de Wilcoxon-Mann-Whitney sobre estos mismos valores da $W = 318$ y
+$p = 0.963$. Los tres intervalos de confianza incluyen al cero. Por lo tanto, la diversidad de
+géneros de eucariotas tampoco difiere significativamente entre grupos.
+
+%% CAMI: IMPORTANTE. Una versión anterior de esta figura reportaba medias de 3.101 y 2.988 y un
+%% valor p de 0.0017 (varianzas iguales) y 0.0130 (Welch). Ese resultado era un artefacto: el
+%% script construía la tabla con psmelt() y reshape(), que ordenan las muestras por abundancia, y
+%% luego la unía a los metadatos con cbind() sin emparejar por nombre de muestra, de modo que las
+%% 53 filas quedaban con el tratamiento de otra muestra. El script
+%% 20260919_RegenerarTTestFusarium413.R fue corregido (empareja con match()) y la figura se
+%% regeneró. Hay que corregir también el Capítulo 5, el artículo de Articulo_Popayan y el
+%% resumen/introducción de main.tex donde se mencione este resultado.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/tTest_Shannon_Fusarium.png}
-\caption{Prueba t de Student sobre el índice de Shannon calculado a nivel de género en eucariotas (varianzas iguales y diferentes). El índice se obtuvo sobre los 58 géneros de eucariotas identificados en las muestras, entre los que se encuentra \textit{Fusarium}.
-A) Distribución del índice de Shannon en cada grupo, con la media señalada por la línea punteada. El grupo ``Saludable'' (n = 35, media 3.101) presenta una distribución más amplia y una mayor diversidad promedio que el grupo ``No Saludable'' (n = 18, media 2.988).
-B) Asumiendo varianzas iguales, el estadístico t = 3.3081 con 51 grados de libertad supera el valor crítico de 2.008, con un valor p de 0.0017 y un intervalo de confianza del 95$\%$ de (0.044, 0.181).
-C) Asumiendo varianzas diferentes, el estadístico t = 2.7089 con 21 grados de libertad supera el valor crítico de 2.077, con un valor p de 0.0130 y un intervalo de confianza del 95$\%$ de (0.026, 0.199).
-En ambos casos el valor p es menor que 0.05 y el intervalo de confianza no contiene al cero, por lo que se rechaza la hipótesis nula: la diversidad de géneros de eucariotas difiere significativamente entre plantas saludables y no saludables.}
+\caption{Prueba t de Student sobre el índice de Shannon calculado a nivel de género en eucariotas
+(58 géneros, entre ellos \textit{Fusarium}). A) Distribución del índice en cada grupo, con la media
+señalada por la línea punteada: 3.077 en el grupo saludable y 3.035 en el no saludable.
+B) Asumiendo varianzas iguales: $t = 1.139$, 51 grados de libertad, $p = 0.260$. C) Asumiendo
+varianzas distintas (Welch): $t = 0.902$, 20 grados de libertad, $p = 0.378$. En ambos casos el
+estadístico queda dentro de la región de no rechazo.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarTTestFusarium413.R}{(Script)}}
+\label{fig:ttest-eucariotas}
 \end{figure}
 
-\subsection{Prueba de los rangos con signos de Wilcolxon Mann-Whitney}
+\subsection{Prueba de Wilcoxon-Mann-Whitney}
+
+Dado que el índice de Shannon del grupo no saludable no es normal, se aplicó la prueba de suma de
+rangos de Wilcoxon-Mann-Whitney sobre la comunidad completa. La Figura \ref{fig:wilcoxon} muestra
+los 53 valores ordenados por rango: los dos grupos aparecen mezclados a lo largo de todo el
+recorrido, con las plantas no saludables algo más frecuentes en los rangos bajos y las saludables
+en los más altos, pero sin una zona en la que un grupo predomine. El estadístico es $W = 376$ con
+$p = 0.259$. La estimación de la diferencia de ubicación entre grupos es de 0.017 unidades de
+Shannon a favor del grupo saludable, con intervalo de confianza del 95\% $(-0.012,\ 0.056)$, que
+incluye al cero. La prueba no paramétrica coincide, por lo tanto, con la prueba t: no hay evidencia
+de una diferencia en la distribución del índice de Shannon entre plantas saludables y no
+saludables.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Wilcoxon_Shannon.png}
-\caption{La distribución de los rangos en la prueba de Mann-Whitney sobre las distribuciones de los valores de Shannon  indica que los valores de los grupos "Saludable" y "No saludable" están mezclados, aunque con algunas diferencias en los extremos. El resultado de la prueba arroja un p-valor de 0.2586, lo que sugiere que no hay suficiente evidencia estadística para afirmar una diferencia significativa en el índice de Shannon entre ambos grupos.}
+\caption{Valores del índice de Shannon de la comunidad completa ordenados por rango, coloreados por
+grupo. Los grupos aparecen mezclados en todo el recorrido. Prueba de Wilcoxon-Mann-Whitney:
+$W = 376$, $p = 0.259$.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarWilcoxonShannon414.R}{(Script)}}
+\label{fig:wilcoxon}
 \end{figure}
 
-Datos analizados: Se compararon dos grupos: healthy (saludables) y wilted (no saludables).\\
-Estadístico de prueba (W): 376. Este es el valor del estadístico de la prueba de Mann-Whitney.\\
-Valor p (p-value): 0.2586. Dado que este valor es mayor que el umbral típico de significancia 
-(por ejemplo, 0.05), no hay suficiente evidencia estadística para rechazar la hipótesis nula.\\
-Hipótesis alternativa: Se planteaba que había una diferencia en la distribución de los valores
-entre los grupos (healthy y wilted), es decir, que la ubicación central de los datos no es 
-la misma en ambos grupos.\\
-Intervalo de confianza del 95$\%$: (-0.01235350, 0.05609928). Esto indica que la 
-verdadera diferencia en la ubicación de los dos grupos podría estar entre -0.012 y 0.056. 
-Como este intervalo incluye el 0, no hay suficiente evidencia de que haya una diferencia significativa.\\
-Estimación de la diferencia en la ubicación central: 0.01706501. Esto significa que, 
-en promedio, los valores del grupo healthy son aproximadamente 0.017 unidades mayores que los del 
-grupo wilted. Sin embargo, como el intervalo de confianza incluye el 0, esta diferencia no es 
-estadísticamente significativa.\\
-En conclusión, no se encontró una diferencia estadísticamente significativa entre los grupos 
-saludable y no saludable, para las diversidades microbianas con indice Shannon. Es decir, con 
-los datos disponibles, no se puede concluir que haya una diferencia real en la distribución 
-de los valores entre ambos grupos.\\
+\subsection{Tamaño del efecto y potencia estadística}
 
+La ausencia de significancia debe leerse junto con la potencia del diseño. A partir de las medias y
+desviaciones estándar de la Tabla \ref{tab:alfa-medias}, el tamaño del efecto estandarizado
+(\emph{d} de Cohen) para el índice de Shannon de la comunidad completa es $d = 0.56$, un efecto de
+magnitud moderada según la convención usual \citep{cohen1988statistical}. Con 35 y 18 muestras, la potencia de la prueba t para
+detectar un efecto de ese tamaño al nivel $\alpha = 0.05$ es de 0.48 aproximadamente, calculada con la
+media armónica de los tamaños de grupo ($n \approx 24$) y la desviación estándar combinada
+($s_p = 0.109$). Para alcanzar una potencia de 0.8 se necesitarían alrededor de 51 muestras por
+grupo, casi el triple de las plantas no saludables disponibles. La Tabla \ref{tab:resumen-pruebas}
+resume todas las pruebas de esta sección.
+%% CAMI: potencia calculada con power.t.test; es una aproximación porque las varianzas no son
+%% iguales. Script: Articulo_Popayan/calculos/Potencia_estadistica.R.
+
+\begin{table}[H]
+\centering
+\caption{Resumen de las pruebas de hipótesis sobre el índice de Shannon. Nivel de significancia
+$\alpha = 0.05$; ninguna prueba rechaza la hipótesis nula de igualdad entre grupos.}
+\label{tab:resumen-pruebas}
+\begin{tabular}{llccc}
+\hline
+Conjunto & Prueba & Estadístico & g.l. & Valor $p$ \\
+\hline
+Comunidad completa & t, varianzas iguales & $t = 1.939$ & 51   & 0.058 \\
+Comunidad completa & t de Welch           & $t = 1.499$ & 19.3 & 0.150 \\
+Comunidad completa & Wilcoxon-Mann-Whitney & $W = 376$  & --   & 0.259 \\
+Comunidad completa & F de varianzas       & $F = 0.132$ & 34, 17 & $< 0.001$ \\
+Géneros de eucariotas & t, varianzas iguales & $t = 1.139$ & 51 & 0.260 \\
+Géneros de eucariotas & t de Welch        & $t = 0.902$ & 20.2 & 0.378 \\
+Géneros de eucariotas & Wilcoxon-Mann-Whitney & $W = 318$ & -- & 0.963 \\
+Composición (Bray-Curtis) & PERMANOVA     & $F = 1.26$, $R^2 = 0.024$ & 1, 51 & 0.202 \\
+\hline
+\end{tabular}
+\end{table}
+
+%% ----------------------------------------------------------------------------
+\section{Patrones asociados con el estado de salud de la planta}
+\label{sec:res-patrones}
+%% ----------------------------------------------------------------------------
+
+Aunque ninguna prueba sobre los índices agregados alcanzó significancia, el análisis por niveles
+dejó tres patrones consistentes que se reúnen aquí como respuesta al tercer objetivo. Son
+observaciones descriptivas, obtenidas por inspección de las abundancias relativas y de la dispersión
+de los índices, y no resultados de pruebas de abundancia diferencial; su valor es orientar los
+modelos y los muestreos futuros que se discuten en los Capítulos 5 y 6.
+
+\subsection{Taxones candidatos}
+
+La Tabla \ref{tab:taxones-candidatos} reúne los taxones cuya abundancia relativa mostró una
+tendencia consistente en un mismo sentido a lo largo de los niveles taxonómicos explorados. Los
+taxones asociados con el grupo saludable son géneros bacterianos documentados como promotores del
+crecimiento vegetal o agentes de biocontrol \citep{berendsen2012rhizosphere, nam2023multidisciplinary}; los asociados con el grupo no saludable son géneros
+que incluyen fitopatógenos de la fresa \citep{yang2020comparison}. Las diferencias de abundancia relativa entre grupos son
+pequeñas en todos los casos, y se identificaron sin corrección por comparaciones múltiples, por lo
+que deben considerarse hipótesis por confirmar.
+
+\begin{table}[H]
+\centering
+\caption{Taxones candidatos identificados por inspección de las abundancias relativas por nivel
+taxonómico. Se indica el grupo en el que la abundancia relativa tiende a ser mayor.}
+\label{tab:taxones-candidatos}
+\begin{tabular}{llll}
+\hline
+Reino & Nivel & Taxón & Mayor abundancia en \\
+\hline
+Bacteria  & Género  & \textit{Pseudomonas}            & Saludable \\
+Bacteria  & Género  & \textit{Bacillus}               & Saludable \\
+Bacteria  & Especie & \textit{Paenibacillus polymyxa} & Saludable (muestras aisladas) \\
+Bacteria  & Género  & \textit{Ralstonia}              & No saludable \\
+Eukaryota & Género  & \textit{Fusarium}               & No saludable (0.144\% frente a 0.160\%) \\
+Eukaryota & Filo    & Oomycota                        & Saludable (0.066\% frente a 0.061\%) \\
+Eukaryota & Familia & Peronosporaceae                 & Saludable \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Heterogeneidad del grupo no saludable}
+
+El patrón estadísticamente más sólido de este trabajo no está en las medias sino en las varianzas.
+El índice de Shannon de la comunidad completa tiene una desviación estándar de 0.061 en las plantas
+saludables y de 0.168 en las no saludables, y la prueba F rechaza la igualdad de varianzas con
+$p < 0.001$. El mismo patrón se repite en la diversidad alfa de bacterias por nivel
+(Figura \ref{fig:alpha-bacteria}), donde los valores del grupo no saludable se extienden mucho más
+que los del saludable en Shannon a nivel de género y especie. Es decir, las plantas saludables
+tienen comunidades parecidas entre sí, mientras que cada planta marchita se aleja de ese perfil a su
+manera: algunas conservan una diversidad indistinguible de la de las plantas sanas y otras la
+pierden de forma marcada. Este resultado sugiere que la variable que mejor distingue a los grupos
+no es el nivel de diversidad sino su estabilidad, y que el diagnóstico del estado de salud a partir
+del microbioma tendría que apoyarse en la distancia de cada muestra al perfil saludable, más que en
+un umbral de diversidad.
+%% CAMI: una prueba de homogeneidad de dispersión multivariada (betadisper de vegan sobre
+%% Bray-Curtis) permitiría confirmar si esta mayor heterogeneidad se da también en la composición.
+
+\subsection{Dónde está y dónde no está la señal}
+
+Los resultados de este capítulo delimitan con claridad dónde no está la señal del estado de salud:
+no está en la composición global de la comunidad, que el PERMANOVA atribuye en más del 97\% a
+otros factores; no está en el nivel medio de los índices de diversidad, ni en la comunidad completa
+ni en la fracción eucariota; y no está en los filos dominantes, que tienen proporciones semejantes
+en todas las muestras. Lo que sí se observa es una tendencia débil pero consistente hacia mayor
+riqueza en las plantas saludables, presente en todos los niveles y reinos, una mayor heterogeneidad
+de las plantas no saludables, y un conjunto reducido de géneros con abundancias relativas
+ligeramente distintas entre grupos. Con 53 muestras y una potencia cercana a 0.5 para efectos
+moderados, estas tendencias no pueden confirmarse ni descartarse con las herramientas de este
+capítulo; el Capítulo 6 describe cómo el modelado con redes bayesianas y la simulación de
+metagenomas pueden llevar la pregunta más lejos.

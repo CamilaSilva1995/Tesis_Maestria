@@ -1,5 +1,10 @@
 \begin{thebibliography}{}
 
+\bibitem[Anderson, 2001]{anderson2001new}
+Anderson, M.~J. (2001).
+\newblock A new method for non-parametric multivariate analysis of variance.
+\newblock {\em Austral Ecology}, 26(1):32--46.
+
 \bibitem[Anderson et~al., 2011]{anderson2011navigating}
 Anderson, M.~J., Crist, T.~O., Chase, J.~M., Vellend, M., Inouye, B.~D.,
   Freestone, A.~L., Sanders, N.~J., Cornell, H.~V., Comita, L.~S., Davies,
@@ -8,16 +13,6 @@ Anderson, M.~J., Crist, T.~O., Chase, J.~M., Vellend, M., Inouye, B.~D.,
   the practicing ecologist.
 \newblock {\em Ecology letters}, 14(1):19--28.
 
-\bibitem[Baselga and Orme, 2012]{baselga2012betapart}
-Baselga, A. and Orme, C. D.~L. (2012).
-\newblock betapart: an r package for the study of beta diversity.
-\newblock {\em Methods in ecology and evolution}, 3(5):808--812.
-
-\bibitem[Beiko et~al., 2018]{beiko2018microbiome}
-Beiko, R.~G., Hsiao, W., and Parkinson, J. (2018).
-\newblock {\em Microbiome analysis: methods and protocols}.
-\newblock Springer.
-
 \bibitem[Benjamini and Hochberg, 1995]{benjamini1995controlling}
 Benjamini, Y. and Hochberg, Y. (1995).
 \newblock Controlling the false discovery rate: a practical and powerful
@@ -25,18 +20,16 @@ Benjamini, Y. and Hochberg, Y. (1995).
 \newblock {\em Journal of the Royal Statistical Society: Series B
   (Methodological)}, 57(1):289--300.
 
+\bibitem[Berendsen et~al., 2012]{berendsen2012rhizosphere}
+Berendsen, R.~L., Pieterse, C. M.~J., and Bakker, P. A. H.~M. (2012).
+\newblock The rhizosphere microbiome and plant health.
+\newblock {\em Trends in Plant Science}, 17(8):478--486.
+
 \bibitem[Berry and Widder, 2014]{berry2014deciphering}
 Berry, D. and Widder, S. (2014).
 \newblock Deciphering microbial interactions and detecting keystone species
   with co-occurrence networks.
 \newblock {\em Frontiers in microbiology}, 5:219.
-
-\bibitem[Bettenfeld et~al., 2022]{bettenfeld2022microbiota}
-Bettenfeld, P., i~Canals, J.~C., Jacquens, L., Fernandez, O., Fontaine, F., van
-  Schaik, E., Courty, P.-E., and Trouvelot, S. (2022).
-\newblock The microbiota of the grapevine holobiont: A key component of plant
-  health.
-\newblock {\em Journal of Advanced Research}, 40:1--15.
 
 \bibitem[Bolyen et~al., 2019]{bolyen2019reproducible}
 Bolyen, E., Rideout, J.~R., Dillon, M.~R., Bokulich, N.~A., Abnet, C.~C.,
@@ -51,6 +44,11 @@ Bray, J.~R. and Curtis, J.~T. (1957).
 \newblock An ordination of the upland forest communities of southern wisconsin.
 \newblock {\em Ecological monographs}, 27(4):326--349.
 
+\bibitem[Breiman, 2001]{breiman2001random}
+Breiman, L. (2001).
+\newblock Random forests.
+\newblock {\em Machine Learning}, 45(1):5--32.
+
 \bibitem[Breitwieser et~al., 2019]{breitwieser2019review}
 Breitwieser, F.~P., Lu, J., and Salzberg, S.~L. (2019).
 \newblock A review of methods and databases for metagenomic classification and
@@ -61,19 +59,6 @@ Breitwieser, F.~P., Lu, J., and Salzberg, S.~L. (2019).
 Calle, M.~L. (2019).
 \newblock Statistical analysis of metagenomics data.
 \newblock {\em Genomics \& informatics}, 17(1).
-
-\bibitem[Caporaso et~al., 2010]{caporaso2010qiime}
-Caporaso, J.~G., Kuczynski, J., Stombaugh, J., Bittinger, K., Bushman, F.~D.,
-  Costello, E.~K., Fierer, N., Pe{\~n}a, A.~G., Goodrich, J.~K., Gordon, J.~I.,
-  et~al. (2010).
-\newblock Qiime allows analysis of high-throughput community sequencing data.
-\newblock {\em Nature methods}, 7(5):335--336.
-
-\bibitem[Castro and Ng, 2017]{castro2017u50}
-Castro, C.~J. and Ng, T. F.~F. (2017).
-\newblock U50: a new metric for measuring assembly output based on
-  non-overlapping, target-specific contigs.
-\newblock {\em Journal of Computational Biology}, 24(11):1071--1080.
 
 \bibitem[Chao, 1984]{chao1984nonparametric}
 Chao, A. (1984).
@@ -86,22 +71,44 @@ Chao, A. (1987).
   unequal catchability.
 \newblock {\em Biometrics}, pages 783--791.
 
-\bibitem[Danko et~al., 2021]{danko2021global}
-Danko, D., Bezdan, D., Afshin, E.~E., Ahsanuddin, S., Bhattacharya, C., Butler,
-  D.~J., Chng, K.~R., Donnellan, D., Hecht, J., Jackson, K., et~al. (2021).
-\newblock A global metagenomic map of urban microbiomes and antimicrobial
-  resistance.
-\newblock {\em Cell}, 184(13):3376--3393.
+\bibitem[Chen et~al., 2018]{chen2018fastp}
+Chen, S., Zhou, Y., Chen, Y., and Gu, J. (2018).
+\newblock fastp: an ultra-fast all-in-one {FASTQ} preprocessor.
+\newblock {\em Bioinformatics}, 34(17):i884--i890.
 
-\bibitem[Datta et~al., 2021]{datta2021statistical}
-Datta, S., Guha, S., et~al. (2021).
-\newblock {\em Statistical Analysis of Microbiome Data}.
-\newblock Springer.
+\bibitem[Cock et~al., 2010]{cock2010sanger}
+Cock, P. J.~A., Fields, C.~J., Goto, N., Heuer, M.~L., and Rice, P.~M. (2010).
+\newblock The {Sanger FASTQ} file format for sequences with quality scores, and
+  the {Solexa/Illumina FASTQ} variants.
+\newblock {\em Nucleic Acids Research}, 38(6):1767--1771.
 
-\bibitem[Eduardo Castro~Nallar, 2020]{castro2020phyloseq}
-Eduardo Castro~Nallar, P. (2020).
-\newblock
-  \texttt{http://www.castrolab.org/teaching/data_analysis/intro-phyloseq.html}.
+\bibitem[Cohen, 1988]{cohen1988statistical}
+Cohen, J. (1988).
+\newblock {\em Statistical Power Analysis for the Behavioral Sciences}.
+\newblock Lawrence Erlbaum Associates, Hillsdale, NJ, 2 edition.
+
+\bibitem[Compant et~al., 2019]{compant2019review}
+Compant, S., Samad, A., Faist, H., and Sessitsch, A. (2019).
+\newblock A review on the plant microbiome: Ecology, functions, and emerging
+  trends in microbial application.
+\newblock {\em Journal of Advanced Research}, 19:29--37.
+
+\bibitem[Csardi and Nepusz, 2006]{csardi2006igraph}
+Csardi, G. and Nepusz, T. (2006).
+\newblock The igraph software package for complex network research.
+\newblock {\em InterJournal, Complex Systems}, 1695.
+
+\bibitem[Dabdoub, 2016]{dabdoub2016krakenbiom}
+Dabdoub, S.~M. (2016).
+\newblock kraken-biom: Enabling interoperative format conversion for {Kraken}
+  results.
+\newblock \url{https://github.com/smdabdoub/kraken-biom}.
+
+\bibitem[Douglas et~al., 2020]{douglas2020picrust2}
+Douglas, G.~M., Maffei, V.~J., Zaneveld, J.~R., Yurgel, S.~N., Brown, J.~R.,
+  Taylor, C.~M., Huttenhower, C., and Langille, M. G.~I. (2020).
+\newblock {PICRUSt2} for prediction of metagenome functions.
+\newblock {\em Nature Biotechnology}, 38(6):685--688.
 
 \bibitem[Endres and Schindelin, 2003]{endres2003new}
 Endres, D.~M. and Schindelin, J.~E. (2003).
@@ -114,10 +121,10 @@ Favila, N., Madrigal-Trejo, D., Legorreta, D., S{\'a}nchez-P{\'e}rez, J.,
 \newblock Micnet toolbox: Visualizing and unraveling a microbial network.
 \newblock {\em Plos one}, 17(6):e0259756.
 
-\bibitem[Fernandez,  Jan]{selem2022metagenomics}
-Fernandez, N. S. M. D. G. G. C. Z. M. J. A. A. R. A. J. E. A. L. F. T. V.~A.
-  ((2022, Jan)).
-\newblock \texttt{https://doi.org/10.5281/zenodo.4285900}.
+\bibitem[Friedman and Alm, 2012]{friedman2012inferring}
+Friedman, J. and Alm, E.~J. (2012).
+\newblock Inferring correlation networks from genomic survey data.
+\newblock {\em PLoS Computational Biology}, 8(9):e1002687.
 
 \bibitem[Fritz et~al., 2019]{fritz2019camisim}
 Fritz, A., Hofmann, P., Majda, S., Dahms, E., Dr{\""o}ge, J., Fiedler, J.,
@@ -137,16 +144,11 @@ Gloor, G.~B., Macklaim, J.~M., Pawlowsky-Glahn, V., and Egozcue, J.~J. (2017).
 \newblock Microbiome datasets are compositional: and this is not optional.
 \newblock {\em Frontiers in Microbiology}, 8:2224.
 
-\bibitem[Gonze et~al., 2018]{gonze2018microbial}
-Gonze, D., Coyte, K.~Z., Lahti, L., and Faust, K. (2018).
-\newblock Microbial communities as dynamical systems.
-\newblock {\em Current opinion in microbiology}, 44:41--49.
-
-\bibitem[Good, 1953]{good1953population}
-Good, I.~J. (1953).
-\newblock The population frequencies of species and the estimation of
-  population parameters.
-\newblock {\em Biometrika}, 40(3-4):237--264.
+\bibitem[Gower, 1966]{gower1966some}
+Gower, J.~C. (1966).
+\newblock Some distance properties of latent root and vector methods used in
+  multivariate analysis.
+\newblock {\em Biometrika}, 53(3-4):325--338.
 
 \bibitem[Hall and Beiko, 2018]{hall201816s}
 Hall, M. and Beiko, R.~G. (2018).
@@ -159,28 +161,26 @@ Hurlbert, S.~H. (1971).
   parameters.
 \newblock {\em Ecology}, 52(4):577--586.
 
-\bibitem[Huson et~al., 2009]{huson2009methods}
-Huson, D.~H., Richter, D.~C., Mitra, S., Auch, A.~F., and Schuster, S.~C.
-  (2009).
-\newblock Methods for comparative metagenomics.
-\newblock {\em BMC bioinformatics}, 10:1--10.
+\bibitem[Jaccard, 1912]{jaccard1912distribution}
+Jaccard, P. (1912).
+\newblock The distribution of the flora in the alpine zone.
+\newblock {\em New Phytologist}, 11(2):37--50.
 
-\bibitem[Jauhal and Newcomb, 2021]{jauhal2021assessing}
-Jauhal, A.~A. and Newcomb, R.~D. (2021).
-\newblock Assessing genome assembly quality prior to downstream analysis: N50
-  versus busco.
-\newblock {\em Molecular Ecology Resources}, 21(5):1416--1421.
+\bibitem[Koller and Friedman, 2009]{koller2009probabilistic}
+Koller, D. and Friedman, N. (2009).
+\newblock {\em Probabilistic Graphical Models: Principles and Techniques}.
+\newblock MIT Press, Cambridge, MA.
 
-\bibitem[K{\""o}berl et~al., 2017]{koberl2017members}
-K{\""o}berl, M., Dita, M., Martinuz, A., Staver, C., and Berg, G. (2017).
-\newblock Members of gammaproteobacteria as indicator species of healthy banana
-  plants on fusarium wilt-infested fields in central america.
-\newblock {\em Scientific reports}, 7(1):45318.
+\bibitem[Kruskal, 1964]{kruskal1964multidimensional}
+Kruskal, J.~B. (1964).
+\newblock Multidimensional scaling by optimizing goodness of fit to a nonmetric
+  hypothesis.
+\newblock {\em Psychometrika}, 29(1):1--27.
 
-\bibitem[Koleff et~al., 2003]{koleff2003measuring}
-Koleff, P., Gaston, K.~J., and Lennon, J.~J. (2003).
-\newblock Measuring beta diversity for presence--absence data.
-\newblock {\em Journal of Animal Ecology}, 72(3):367--382.
+\bibitem[Kullback and Leibler, 1951]{kullback1951information}
+Kullback, S. and Leibler, R.~A. (1951).
+\newblock On information and sufficiency.
+\newblock {\em The Annals of Mathematical Statistics}, 22(1):79--86.
 
 \bibitem[Kumar et~al., 2019]{kumar2019microbiome}
 Kumar, V., Prasad, R., Kumar, M., and Choudhary, D.~K. (2019).
@@ -188,10 +188,33 @@ Kumar, V., Prasad, R., Kumar, M., and Choudhary, D.~K. (2019).
   Opportunities}.
 \newblock Springer.
 
+\bibitem[Lal and Tabacchioni, 2009]{lal2009ecology}
+Lal, S. and Tabacchioni, S. (2009).
+\newblock Ecology and biotechnological potential of \textit{Paenibacillus
+  polymyxa}: a minireview.
+\newblock {\em Indian Journal of Microbiology}, 49(1):2--10.
+
 \bibitem[Larsen and Marx, 2005]{larsen2005introduction}
 Larsen, R.~J. and Marx, M.~L. (2005).
 \newblock {\em An introduction to mathematical statistics}.
 \newblock Prentice Hall Hoboken, NJ.
+
+\bibitem[Legendre and Legendre, 2012]{legendre2012numerical}
+Legendre, P. and Legendre, L. (2012).
+\newblock {\em Numerical Ecology}.
+\newblock Elsevier, Amsterdam, 3 edition.
+
+\bibitem[Li et~al., 2009]{li2009sequence}
+Li, H., Handsaker, B., Wysoker, A., Fennell, T., Ruan, J., Homer, N., Marth,
+  G., Abecasis, G., Durbin, R., and {1000 Genome Project Data Processing
+  Subgroup} (2009).
+\newblock The {Sequence Alignment/Map} format and {SAMtools}.
+\newblock {\em Bioinformatics}, 25(16):2078--2079.
+
+\bibitem[Lin, 1991]{lin1991divergence}
+Lin, J. (1991).
+\newblock Divergence measures based on the {Shannon} entropy.
+\newblock {\em IEEE Transactions on Information Theory}, 37(1):145--151.
 
 \bibitem[Lozupone and Knight, 2008]{lozupone2008species}
 Lozupone, C.~A. and Knight, R. (2008).
@@ -209,39 +232,35 @@ Lu, J., Rincon, N., Wood, D.~E., Breitwieser, F.~P., Pockrandt, C., Langmead,
 \newblock Metagenome analysis using the kraken software suite.
 \newblock {\em Nature protocols}, 17(12):2815--2839.
 
-\bibitem[Ma et~al., 2019]{ma2019diversity}
-Ma, Z., Li, L., and Gotelli, N.~J. (2019).
-\newblock Diversity-disease relationships and shared species analyses for human
-  microbiome-associated diseases.
-\newblock {\em The ISME Journal}, 13(8):1911--1919.
-
 \bibitem[Magurran, 2021]{magurran2021measuring}
 Magurran, A.~E. (2021).
 \newblock Measuring biological diversity.
 \newblock {\em Current Biology}, 31(19):R1174--R1177.
 
-\bibitem[M{\""a}kinen et~al., 2012]{makinen2012normalized}
-M{\""a}kinen, V., Salmela, L., and Ylinen, J. (2012).
-\newblock Normalized n50 assembly metric using gap-restricted co-linear
-  chaining.
-\newblock {\em BMC bioinformatics}, 13:1--5.
-
-\bibitem[Mamet et~al., 2019]{mamet2019structural}
-Mamet, S.~D., Redlick, E., Brabant, M., Lamb, E.~G., Helgason, B.~L., Stanley,
-  K., and Siciliano, S.~D. (2019).
-\newblock Structural equation modeling of a winnowed soil microbiome identifies
-  how invasive plants re-structure microbial networks.
-\newblock {\em The ISME Journal}, 13(8):1988--1996.
+\bibitem[Mann and Whitney, 1947]{mann1947test}
+Mann, H.~B. and Whitney, D.~R. (1947).
+\newblock On a test of whether one of two random variables is stochastically
+  larger than the other.
+\newblock {\em The Annals of Mathematical Statistics}, 18(1):50--60.
 
 \bibitem[Marchesi and Ravel, 2015]{marchesi2015vocabulary}
 Marchesi, J.~R. and Ravel, J. (2015).
 \newblock The vocabulary of microbiome research: a proposal.
 \newblock {\em Microbiome}, 3:31.
 
-\bibitem[Matloff, 2019]{matloff2019probability}
-Matloff, N. (2019).
-\newblock {\em Probability and statistics for data science: Math+ R+ data}.
-\newblock CRC Press.
+\bibitem[McDonald et~al., 2012]{mcdonald2012biom}
+McDonald, D., Clemente, J.~C., Kuczynski, J., Rideout, J.~R., Stombaugh, J.,
+  Wendel, D., Wilke, A., Huse, S., Hufnagle, J., Meyer, F., Knight, R., and
+  Caporaso, J.~G. (2012).
+\newblock The {Biological Observation Matrix (BIOM)} format or: how {I} learned
+  to stop worrying and love the ome-ome.
+\newblock {\em GigaScience}, 1:7.
+
+\bibitem[McInnes et~al., 2018]{mcinnes2018umap}
+McInnes, L., Healy, J., and Melville, J. (2018).
+\newblock {UMAP}: Uniform manifold approximation and projection for dimension
+  reduction.
+\newblock arXiv:1802.03426.
 
 \bibitem[McMurdie and Holmes, 2013]{mcmurdie2013phyloseq}
 McMurdie, P.~J. and Holmes, S. (2013).
@@ -272,39 +291,18 @@ Milhaven, M. and Pfeifer, S.~P. (2023).
 \newblock Performance evaluation of six popular short-read simulators.
 \newblock {\em Heredity}, 130(2):55--63.
 
-\bibitem[Miller et~al., 2010]{miller2010assembly}
-Miller, J.~R., Koren, S., and Sutton, G. (2010).
-\newblock Assembly algorithms for next-generation sequencing data.
-\newblock {\em Genomics}, 95(6):315--327.
-
-\bibitem[Mineeva et~al., 2020]{mineeva2020deepmased}
-Mineeva, O., Rojas-Carulla, M., Ley, R.~E., Sch{\""o}lkopf, B., and Youngblut,
-  N.~D. (2020).
-\newblock Deepmased: evaluating the quality of metagenomic assemblies.
-\newblock {\em Bioinformatics}, 36(10):3011--3017.
-
-\bibitem[Morgan and Huttenhower, 2012]{morgan2012chapter}
-Morgan, X.~C. and Huttenhower, C. (2012).
-\newblock Chapter 12: Human microbiome analysis.
-\newblock {\em PLoS computational biology}, 8(12):e1002808.
-
 \bibitem[Nam et~al., 2023]{nam2023multidisciplinary}
 Nam, J.~H., Thibodeau, A., Qian, Y.~L., Qian, M.~C., and Park, S.~H. (2023).
 \newblock Multidisciplinary evaluation of plant growth promoting rhizobacteria
   on soil microbiome and strawberry quality.
 \newblock {\em Amb Express}, 13(1):18.
 
-\bibitem[Nayfach et~al., 2021]{nayfach2021genomic}
-Nayfach, S., Roux, S., Seshadri, R., Udwary, D., Varghese, N., Schulz, F., Wu,
-  D., Paez-Espino, D., Chen, I.-M., Huntemann, M., et~al. (2021).
-\newblock A genomic catalog of earth’s microbiomes.
-\newblock {\em Nature biotechnology}, 39(4):499--509.
-
-\bibitem[Oksanen and Tonteri, 1995]{oksanen1995rate}
-Oksanen, J. and Tonteri, T. (1995).
-\newblock Rate of compositional turnover along gradients and total gradient
-  length.
-\newblock {\em Journal of Vegetation Science}, 6(6):815--824.
+\bibitem[Oksanen et~al., 2022]{oksanen2022vegan}
+Oksanen, J., Simpson, G.~L., Blanchet, F.~G., Kindt, R., Legendre, P., Minchin,
+  P.~R., O'Hara, R.~B., Solymos, P., Stevens, M. H.~H., Szoecs, E., Wagner, H.,
+  et~al. (2022).
+\newblock vegan: Community ecology package. {R} package version 2.6-4.
+\newblock \url{https://CRAN.R-project.org/package=vegan}.
 
 \bibitem[Oulas et~al., 2015]{oulas2015metagenomics}
 Oulas, A., Pavloudi, C., Polymenakou, P., Pavlopoulos, G.~A., Papanikolaou, N.,
@@ -313,36 +311,36 @@ Oulas, A., Pavloudi, C., Polymenakou, P., Pavlopoulos, G.~A., Papanikolaou, N.,
   sequencing data derived from biodiversity studies.
 \newblock {\em Bioinformatics and biology insights}, 9:BBI--S12462.
 
-\bibitem[Pan, 2021]{pan2021statistical}
-Pan, A.~Y. (2021).
-\newblock Statistical analysis of microbiome data: the challenge of sparsity.
-\newblock {\em Current Opinion in Endocrine and Metabolic Research}, 19:35--40.
+\bibitem[Pearl, 1988]{pearl1988probabilistic}
+Pearl, J. (1988).
+\newblock {\em Probabilistic Reasoning in Intelligent Systems: Networks of
+  Plausible Inference}.
+\newblock Morgan Kaufmann, San Mateo, CA.
 
-\bibitem[Parks et~al., 2015]{parks2015checkm}
-Parks, D.~H., Imelfort, M., Skennerton, C.~T., Hugenholtz, P., and Tyson, G.~W.
-  (2015).
-\newblock Checkm: assessing the quality of microbial genomes recovered from
-  isolates, single cells, and metagenomes.
-\newblock {\em Genome research}, 25(7):1043--1055.
+\bibitem[{R Core Team}, 2023]{rcoreteam2023r}
+{R Core Team} (2023).
+\newblock {\em R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria.
+\newblock \url{https://www.R-project.org/}.
 
-\bibitem[Pflughoeft and Versalovic, 2012]{pflughoeft2012human}
-Pflughoeft, K.~J. and Versalovic, J. (2012).
-\newblock Human microbiome in health and disease.
-\newblock {\em Annual Review of Pathology: Mechanisms of Disease}, 7:99--122.
+\bibitem[Ranjan et~al., 2016]{ranjan2016shotgun}
+Ranjan, R., Rani, A., Metwally, A., McGee, H.~S., and Perkins, D.~L. (2016).
+\newblock Analysis of the microbiome: Advantages of whole genome shotgun versus
+  {16S} amplicon sequencing.
+\newblock {\em Biochemical and Biophysical Research Communications},
+  469(4):967--977.
 
-\bibitem[Plaza~Onate et~al., 2015]{plaza2015quality}
-Plaza~Onate, F., Batto, J.-M., Juste, C., Fadlallah, J., Fougeroux, C., Gouas,
-  D., Pons, N., Kennedy, S., Levenez, F., Dore, J., et~al. (2015).
-\newblock Quality control of microbiota metagenomics by k-mer analysis.
-\newblock {\em BMC genomics}, 16(1):1--10.
+\bibitem[Robinson et~al., 2010]{robinson2010edger}
+Robinson, M.~D., McCarthy, D.~J., and Smyth, G.~K. (2010).
+\newblock {edgeR}: a {Bioconductor} package for differential expression
+  analysis of digital gene expression data.
+\newblock {\em Bioinformatics}, 26(1):139--140.
 
-\bibitem[Popescu et~al., 2022]{popescu2022metagenomic}
-Popescu, S.~C., Tomaso-Peterson, M., Wilkerson, T., Bronzato-Badial, A.,
-  Wesser, U., and Popescu, G.~V. (2022).
-\newblock Metagenomic analyses of the soybean root mycobiome and microbiome
-  reveal signatures of the healthy and diseased plants affected by taproot
-  decline.
-\newblock {\em Microorganisms}, 10(5):856.
+\bibitem[Robinson and Oshlack, 2010]{robinson2010scaling}
+Robinson, M.~D. and Oshlack, A. (2010).
+\newblock A scaling normalization method for differential expression analysis
+  of {RNA-seq} data.
+\newblock {\em Genome Biology}, 11(3):R25.
 
 \bibitem[Rosenberg, 2021]{rosenberg2021microbiomes}
 Rosenberg, E. (2021).
@@ -354,23 +352,15 @@ Scutari, M. (2010).
 \newblock Learning {Bayesian} networks with the bnlearn {R} package.
 \newblock {\em Journal of Statistical Software}, 35(3):1--22.
 
-\bibitem[S{\'e}lem-Mojica et~al., 2019]{selem2019evomining}
-S{\'e}lem-Mojica, N., Aguilar, C., Guti{\'e}rrez-Garc{\'\i}a, K.,
-  Mart{\'\i}nez-Guerrero, C.~E., and Barona-G{\'o}mez, F. (2019).
-\newblock Evomining reveals the origin and fate of natural product biosynthetic
-  enzymes.
-\newblock {\em Microbial genomics}, 5(12).
-
-\bibitem[Seppey et~al., 2020]{seppey2020lemmi}
-Seppey, M., Manni, M., and Zdobnov, E.~M. (2020).
-\newblock Lemmi: a continuous benchmarking platform for metagenomics
-  classifiers.
-\newblock {\em Genome research}, 30(8):1208--1216.
-
 \bibitem[Shannon, 1948]{shannon1948mathematical}
 Shannon, C.~E. (1948).
 \newblock A mathematical theory of communication.
 \newblock {\em The Bell system technical journal}, 27(3):379--423.
+
+\bibitem[Shapiro and Wilk, 1965]{shapiro1965analysis}
+Shapiro, S.~S. and Wilk, M.~B. (1965).
+\newblock An analysis of variance test for normality (complete samples).
+\newblock {\em Biometrika}, 52(3-4):591--611.
 
 \bibitem[Siegieda et~al., 2024]{siegieda2024ecological}
 Siegieda, D., Panek, J., and Fr{\k{a}}c, M. (2024).
@@ -404,10 +394,6 @@ Tuomisto, H. (2010b).
   diversity.
 \newblock {\em Ecography}, 33(1):2--22.
 
-\bibitem[{Videvall, E. The Molecular Ecologist}, 2017]{videvall2017n50}
-{Videvall, E. The Molecular Ecologist} (29 de {M}arzo de 2017).
-\newblock \texttt{www.molecularecologist.com/2017/03/29/whats-n50/}.
-
 \bibitem[Wackerly et~al., 2002]{wackerly2002estadistica}
 Wackerly, D.~D., Mendenhall~III, W., Scheaffer, R.~L., Yescas~Milan{\'e}s, J.,
   et~al. (2002).
@@ -421,17 +407,11 @@ Wang, H., Wu, C., Zhang, H., Xiao, M., Ge, T., Zhou, Z., Liu, Y., Peng, S.,
   disease.
 \newblock {\em World Journal of Microbiology and Biotechnology}, 38(9):155.
 
-\bibitem[Wang et~al., 2020]{wang2020assessment}
-Wang, Z., Wang, Y., Fuhrman, J.~A., Sun, F., and Zhu, S. (2020).
-\newblock Assessment of metagenomic assemblers based on hybrid reads of real
-  and simulated metagenomic sequences.
-\newblock {\em Briefings in bioinformatics}, 21(3):777--790.
-
-\bibitem[Washington, 1984]{washington1984diversity}
-Washington, H. (1984).
-\newblock Diversity, biotic and similarity indices: a review with special
-  relevance to aquatic ecosystems.
-\newblock {\em Water research}, 18(6):653--694.
+\bibitem[Welch, 1947]{welch1947generalization}
+Welch, B.~L. (1947).
+\newblock The generalization of ``{Student's}'' problem when several different
+  population variances are involved.
+\newblock {\em Biometrika}, 34(1-2):28--35.
 
 \bibitem[Whittaker, 1960]{whittaker1960vegetation}
 Whittaker, R.~H. (1960).
@@ -443,15 +423,27 @@ Whittaker, R.~H. (1972).
 \newblock Evolution and measurement of species diversity.
 \newblock {\em Taxon}, 21(2-3):213--251.
 
+\bibitem[Wickham, 2016]{wickham2016ggplot2}
+Wickham, H. (2016).
+\newblock {\em ggplot2: Elegant Graphics for Data Analysis}.
+\newblock Springer-Verlag, New York.
+
 \bibitem[Wilcox, 2010]{wilcox2010fundamentals}
 Wilcox, R.~R. (2010).
 \newblock {\em Fundamentals of Modern Statistical Methods}.
 \newblock Springer New York, NY.
 
-\bibitem[Wilson and Mohler, 1983]{wilson1983measuring}
-Wilson, M.~V. and Mohler, C. (1983).
-\newblock Measuring compositional change along gradients.
-\newblock {\em Vegetatio}, 54:129--141.
+\bibitem[Wilcoxon, 1945]{wilcoxon1945individual}
+Wilcoxon, F. (1945).
+\newblock Individual comparisons by ranking methods.
+\newblock {\em Biometrics Bulletin}, 1(6):80--83.
+
+\bibitem[Woese et~al., 1990]{woese1990towards}
+Woese, C.~R., Kandler, O., and Wheelis, M.~L. (1990).
+\newblock Towards a natural system of organisms: proposal for the domains
+  {Archaea}, {Bacteria}, and {Eucarya}.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  87(12):4576--4579.
 
 \bibitem[Wood and Salzberg, 2014]{wood2014kraken}
 Wood, D.~E. and Salzberg, S.~L. (2014).
@@ -483,22 +475,10 @@ Yang, J., Wei, S., Su, D., Zhang, Z., Chen, S., Luo, Z., Shen, X., Lai, Y.,
   in a greenhouse by high-throughput sequencing technology.
 \newblock {\em Current Microbiology}, 77:1724--1736.
 
-\bibitem[Yao et~al., 2018]{yao2018improved}
-Yao, Y., Jin, Z., and Lee, J.~H. (2018).
-\newblock An improved statistical model for taxonomic assignment of
-  metagenomics.
-\newblock {\em BMC genetics}, 19(1):1--11.
-
 \bibitem[Zaneveld et~al., 2017]{zaneveld2017stress}
 Zaneveld, J.~R., McMinds, R., and Vega~Thurber, R. (2017).
 \newblock Stress and stability: applying the {Anna Karenina} principle to
   animal microbiomes.
 \newblock {\em Nature Microbiology}, 2(9):17121.
-
-\bibitem[Zhou et~al., 2014]{zhou2014assessment}
-Zhou, Q., Su, X., and Ning, K. (2014).
-\newblock Assessment of quality control approaches for metagenomic data
-  analysis.
-\newblock {\em Scientific reports}, 4(1):6957.
 
 \end{thebibliography}

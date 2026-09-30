@@ -24,7 +24,7 @@ Dentro de las etapas principales del análisis, se encuentra la adquisición de 
 se adquirió un conjunto de datos metagenómicos de cultivos de fresa proporcionados por Solena. 
 Estas secuencias se entregaron en formato FASTA y se encuentran almacenadas en archivos JSON, 
 los cuales contienen los resultados de la clasificación metagenómica realizada mediante el 
-clasificador Kraken. Con el objetivo de identificar características distintivas entre los frutos 
+clasificador Kraken \citep{wood2014kraken}. Con el objetivo de identificar características distintivas entre los frutos 
 sanos y enfermos, se ha llevado a cabo un análisis exploratorio detallado de estos datos.\\
 
 \begin{figure}[H]
@@ -36,13 +36,13 @@ Desde la Recolección de Datos hasta la Interpretación de Resultados.}
 
 Dentro de este preprocesamiento es necesario realizar una limpieza y trasformación de los datos 
 para que estos sean adecuados para el análisis. En este caso se realizó un cambio de formato a 
-objeto BIOM, para un mejor manejo de los datos; luego fue necesario renombrar columnas, agregar 
+objeto BIOM \citep{mcdonald2012biom} con la herramienta kraken-biom \citep{dabdoub2016krakenbiom}, para un mejor manejo de los datos; luego fue necesario renombrar columnas, agregar 
 los metadatos y realizar un filtro de calidad.\\
 
 Para iniciar el análisis de estos datos, llevamos a cabo una exploración general utilizando 
 índices ecológicos, especialmente centrándonos en las diversidades alfa y beta. \\
 
-Se Importaron los datos como un objeto Phyloseq, que puede incluir cuatro componentes: 
+Se importaron los datos como un objeto phyloseq \citep{mcmurdie2013phyloseq}, que puede incluir cuatro componentes: 
 la matriz de abundancias, la tabla de taxonomía, los metadatos y el árbol filogenético. 
 Este enfoque nos permite obtener una comprensión más profunda de la estructura de la 
 comunidad microbiana presente en los datos metagenómicos, empleando medidas de diversidad 
@@ -76,7 +76,7 @@ MP2139 & MP2140 \\
 
 \subsection{Filtrado de Calidad}
 
-A través de Solena, obtuvimos una tabla que refleja la calidad de las muestras 
+A través de Solena, obtuvimos una tabla generada con fastp \citep{chen2018fastp} que refleja la calidad de las muestras 
 (fastp.kraken.summary \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.pdf}). 
 Esta información es crucial para determinar qué muestras pueden ser eliminadas de nuestro conjunto 
 de datos, ya que no cumplen con ciertos estándares de calidad. La identificación y exclusión de 
@@ -174,10 +174,10 @@ Usamos “ordinate” para asignar las distancias entre muestras, iniciando y to
 la diversidad beta.\\
 
 Para visualizar y presentar los resultados de este análisis, se opta por el uso de NMDS 
-(Non-metric Multidimensional Scaling), una herramienta de análisis exploratorio de datos que se emplea 
+(Non-metric Multidimensional Scaling; \citealp{kruskal1964multidimensional}), una herramienta de análisis exploratorio de datos que se emplea 
 para visualizar la similitud o disimilitud entre una colección de objetos (por ejemplo, especies, 
 sitios, genes) en un espacio de baja dimensionalidad. Entre otros, se utilizan ampliamente los análisis 
-PCA, PCoA o NMDS.\\
+PCA, PCoA \citep{gower1966some} o NMDS.\\
 
 Tomando los datos con filtro de calidad y utilizando la distancia de Jaccard, la cual es la más 
 comúnmente utilizada en este tipo de estudios, se observa que las muestras, tanto sanas como enfermas, 
@@ -213,7 +213,7 @@ Sección \ref{sec:pruebas_hipotesis}, por lo que aquí no se redefinen y solo se
 aplicación directa sobre los datos.
 
 Todas las pruebas se realizaron con un nivel de significancia $\alpha = 0.05$, utilizando el lenguaje
-R y las funciones \texttt{t.test}, \texttt{var.test} y \texttt{wilcox.test}. Antes de aplicar la prueba
+R \citep{rcoreteam2023r} y las funciones \texttt{t.test}, \texttt{var.test} y \texttt{wilcox.test}. Antes de aplicar la prueba
 t se verificó el supuesto de homogeneidad de varianzas mediante la prueba F; cuando este supuesto o el
 de normalidad no se cumplieron, se optó por la alternativa no paramétrica de Wilcoxon-Mann-Whitney.
 
@@ -243,11 +243,22 @@ o varianzas diferentes.
 \subsection{Prueba de Wilcoxon-Mann-Whitney}
 
 Cuando el supuesto de normalidad de los datos no se cumple, la prueba t deja de ser apropiada y se
-recurre a su alternativa no paramétrica: la prueba de rangos con signo de Wilcoxon-Mann-Whitney, que
+recurre a su alternativa no paramétrica: la prueba de suma de rangos de Wilcoxon-Mann-Whitney \citep{mann1947test}, que
 compara las distribuciones del índice de Shannon entre los grupos saludable y no saludable sin asumir
 normalidad.
 
 Los resultados obtenidos al aplicar estas tres pruebas sobre los datos se presentan en el Capítulo 4.
+
+\subsection{Análisis complementarios}
+
+La normalidad del índice de Shannon en cada grupo se verificó con la prueba de Shapiro-Wilk
+\citep{shapiro1965analysis}. Para contrastar si la composición global de la comunidad difiere entre
+grupos se aplicó un análisis de varianza multivariado por permutaciones (PERMANOVA;
+\citealp{anderson2001new, anderson2011navigating}) sobre la matriz de disimilitud de Bray-Curtis de las
+abundancias relativas, con 999 permutaciones, mediante la función \texttt{adonis2} del paquete vegan
+\citep{oksanen2022vegan}. Finalmente, se calcularon el tamaño del efecto estandarizado (\emph{d} de
+Cohen) y la potencia de la prueba t con la función \texttt{power.t.test}
+\citep{cohen1988statistical, xia2018statistical}.
 
 
 \subsection{Normalización}
@@ -286,13 +297,14 @@ S^{p-1} = \left\{ x \in \mathbb{R}_+^p : \sum_{j=1}^{p} x_j = 1 \right\}.
 %\caption{Barras de abundancia de los datos en crudo}
 %\end{figure}
 
-La función edgeRnorm escala datos NGS normalizados utilizando la función de normalización provista 
-en edgeR. Toma un objeto phyloseq y devuelve un objeto phyloseq cuya otu\_table se transforma.
+La función \texttt{edgeRnorm} escala los conteos con el método TMM del paquete edgeR
+\citep{robinson2010edger, robinson2010scaling}. Toma un objeto phyloseq y devuelve otro cuya tabla de
+conteos ha sido transformada \citep{mcmurdie2014waste}.
 
 \subsection{Rarefacción}
 La rarefacción es una tecnica de normalización usada en el preprocesamiento de datos, para 
 equilibrar el tamaño de las muestras en un conjunto de datos. Esta implica un submuestreo aleatorio de 
-secuencias
+secuencias hasta una profundidad común \citep{hurlbert1971nonconcept, mcmurdie2014waste}.
 
 Rarefy 
 
@@ -351,7 +363,7 @@ del objeto phyloseq.\\
 
 Hay dos funciones en el paquete phyloseq para trazar la red del microbioma usando “ggplot2”: 
 plot\_network() y plot\_net().
-Se crea un grafo basado en “igraph”, basado en el método de distancia por defecto, Jaccard 
+Se crea un grafo basado en igraph \citep{csardi2006igraph}, basado en el método de distancia por defecto, Jaccard 
 y una distancia
 máxima entre nodos conectados de 0,8. El “Treatment” se utiliza para los mapeos de color y forma para
 visualizar la estructura de las muestras.
@@ -394,14 +406,14 @@ identificar datos especiales.
 Luego de una breve visualizacion de redes simples, tenemos dos opciones para utilizar ls redes de 
 coocurrencia
 
-El analisis de co-ocurrencia utiliza la matriz de interacciones
+El analisis de co-ocurrencia utiliza la matriz de interacciones \citep{berry2014deciphering}.
 Redes de co-ocurrencia - El total de nodos de la red es el numero de OTU's en una tabla; 
 se quiere ver las relaciones entre nodos. LAs aristas representan co-ocurrencia entre de nodos.
 
-MicNet - Microbial Network
+MicNet - Microbial Network \citep{favila2022micnet}
 Esta herramienta nos pide un documento BIOM (la tabla de abundancias) en formato .csv para poder entregar las matriz de correlaciones usando normalizacion de Dirichlet, esta herramienta se divide en tres: 
-UMAP - Cluster - Este algoritmo permite ver los datos en el plano.
-Sparcc - Matriz de correlación
+UMAP \citep{mcinnes2018umap} - Cluster - Este algoritmo permite ver los datos en el plano.
+SparCC \citep{friedman2012inferring} - Matriz de correlación
 Network - pide los dos anteriores y genera la red completa
 
 Redes en Alnitak
@@ -420,7 +432,7 @@ vio anteriormente es un genero importante entre los datos de Eucariota…
 fundamentos teóricos utilizados para modelar la estructura de dependencia probabilística entre el 
 género fúngico Fusarium, el Índice de Shannon (como métrica de diversidad alfa) y los taxones 
 microbianos más abundantes en muestras de fresa. El análisis se basa en Redes Bayesianas (BN), 
-una herramienta de modelado gráfico que permite inferir relaciones direccionales y condicionales. 
+una herramienta de modelado gráfico que permite inferir relaciones direccionales y condicionales \citep{pearl1988probabilistic, scutari2010bnlearn}. 
 La robustez de los hallazgos se garantiza mediante la aplicación de técnicas avanzadas de validación, 
 incluyendo Bootstrapping y Validación Cruzada K-fold,
 
