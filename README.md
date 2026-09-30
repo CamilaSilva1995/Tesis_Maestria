@@ -1,7 +1,6 @@
 # Tesis de Maestría en Ciencias Matemáticas
 
-Repositorio de la tesis *Análisis estadístico de datos metagenómicos del microbioma rizosférico
-en cultivos de fresa*, del Posgrado Conjunto en Ciencias Matemáticas UMSNH-UNAM (Morelia, México).
+Repositorio de la tesis *Análisis estadístico de la diversidad microbiana a distintos niveles taxonómicos en el microbioma rizosférico de plantas de fresa saludables y no saludables*, del Posgrado Conjunto en Ciencias Matemáticas UMSNH-UNAM (Morelia, México).
 Autora: Paula Camila Silva Gómez. Asesora: Dra. Nelly Sélem Mojica.
 
 El trabajo compara el microbioma de la rizósfera de plantas de fresa saludables y no saludables a
