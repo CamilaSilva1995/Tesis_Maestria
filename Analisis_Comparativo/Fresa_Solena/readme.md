@@ -1,167 +1,95 @@
-# Análisis exploratorio de datos metagenómicos
+# Análisis exploratorio de datos metagenómicos de fresa (Solena)
 
-El objetivo general de este análisis, es encontrar características diferenciadoras (marcadores funcionales) entre microbiomas de plantas sanas vs enfermas, usando datos metagenómicos. Para esto obtuvimos datos metagenómicos de <a href="https://solena.ag/home/us" >Solena</a>, estos son datos de microrganismos en cultivos de fresa, para los cuales, inicialmente tenemos dos poblaciones, estas muestras están etiquetadas como sanqs y enfermas.
+Objetivo: encontrar características diferenciadoras entre los microbiomas rizosféricos de plantas
+de fresa saludables y no saludables, a partir de metagenomas *shotgun* proporcionados por
+[Solena](https://solena.ag). Tras el filtro de calidad quedan 53 muestras: 35 saludables
+(`healthy`) y 18 no saludables (`wilted`).
 
-Primero, se realizó un preprocesamiento de datos, tanto en Bash como en R; luego de esto se comenzó con el analisis exploratorio de los datos, el cual está principalmente dividido en tres partes: en primer lugar se realizó una exploración con diversidades alfa y beta, lo que llevo a un análisis estadístico con pruebas de hipótesis, en segundo lugar una visualización de correlación con redes y por ultimo una clasificación con machine learning.
+El análisis se divide en tres partes: exploración con diversidades alfa y beta y composición por
+nivel taxonómico; validación con pruebas de hipótesis; y una exploración preliminar de redes de
+coocurrencia y de clasificación con aprendizaje automático.
 
-A continuación, se muestra un resumen del análisis realizado y a las conclusiones obtenidas, explicando brevemente el contenido de cada script y markdown que contiene esta carpeta, en los reportes de markdown se encuentran algunos de los scripts usados para diferentes tipos de análisis y con los diferentes conjuntos de datos; empezando por los scripts:
+**Datos de entrada:** `Data/fresa_solena/Data1/fresa_kraken.biom` y `metadata.csv`. Los datos
+adicionales por tipo de cultivo están en `Data2/`, `Data3/` y `Data_all/`.
 
-## Scripts
-<table class="default">
-  <tr>
-    <th scope="row">Nombre</th>
-    <th>Explicación</th>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230130_PreprocesamientoDatos.R">Preprocesamiento de Datos</a></td>
-    <td>En este script empezamos con un preprocesamiento de los datos, muestra como se descargaron los datos y como fue creado el archivo BIOM para poder leerlos desde R. Una vez se obtiene el archivo BIOM, este se carga en R como un objeto phyloseq. Y con este ya se procede a hacer un reconocimiento de los datos y primera observación de medidas ecologicas como las diversidades alfa y beta. </td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230213_DiversidadesAlfa%26Beta.R">Diversidades Alfa y Beta</a></td>
-    <td>Aquí se puede ver la grafica de barras de abundancias de los datos y de los porcentajes de los datos en total, y también se empezó con distintas aglomeraciones de datos dependiendo del nivel taxonómico. También se empiezan a ver las alfa y beta diversidad a los diferentes niveles taxonómicos.</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230220_Funciones.R">Funciones</a></td>
-    <td>Como mejora al anterior script, aquí se crean tres funciones automatizando el proceso de aglomeración por niveles taxonómicos y sus respectivas graficas de barras de abundancia, alfa diversidad y beta diversidad.  </td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230227_Funciones%26Graficas.R">Funciones automatizadas</a></td>
-    <td>Mejora de las funciones del script anterior, y crse crean todas las graficas, a niveles de filo (Phylum), género (Genus), especie (Specie) y familia (family), separando por bacteria y eucariota.</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230306_Potencia%26PruebaHipotesis.R">Potencia</a></td>
-    <td>Análisis de potencia</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230314_Redes.R">Redes</a></td>
-    <td>En este script se realizó un breve acercamiento a las redes simples y redes de coocurrencia; las redes simples usadas para la visualización, y las redes de coocurrencia tomando Fusarium como género de interés en correlación. </td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230320_NuevosDatos.R">Nuevos datos</a></td>
-    <td>Se obtuvieron nuevos datos, los cuales estan divididos en tres nuevas categorí as respecto a lugar donde se tomaron las muestras.</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230321_NuevosDatosAll.R">Nuevos datos</a></td>
-    <td>Tomando los nuevos datos del anterior script y los anteriores, se obtuvieron 5 categorías en total, tomando tanto el tipo de cultivo y si son muestras sanas o enfermas.</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230327_PruebasOrden.R">PruebasOrden</a></td>
-    <td>En este scrip se realizó un reordenamiendo de las 5 categorías para poder visualizar mejor las gráficas de barras.</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230403_Actinobacteria.R">Actinobacteria</a></td>
-    <td>Aquí vemos las gráficas de barras de abundania y beta diversidad para Actinobacteria como filo de interes.</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230403_Oomycota%26Fusarium.R">Fusarium</a></td>
-    <td>Aquí vemos las gráficas de barras de abundania y beta diversidad para Fusarium y Oomycota, como género y filo de interes, respectivamente. </td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230410_PruebasdeHipotesis.R">Pruebas e Hipotesis</a></td>
-    <td>Primer exploración con pruebas de hipótesis de medias, sobre los índices Shannon.</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230411_Preprocesamiento%26Normalizaci%C3%B3n.R">Preprocesamiento y normalización</a></td>
-    <td>Se realizó una normalización usando el paquete de R, "edgeR"</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230419_Rarefaccion.R">Rarefaccion</a></td>
-    <td>Se realizó una rarefacción de saturación, la cual nos indica que tenemos la cantidad necesaria de muestras para continuar con el análisis de los datos.</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230425_Rarefaccion(Normalizacion).R">Rarefaccion</a></td>
-    <td>Se realizó una normalización tipo rarefacción.</td>
-  </tr>
-   <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230427_PruebasdeHipotesisVarianzas.R">Prueba de hipótesis sobre varianzas</a></td>
-     <td>Se realizó una prueba de hipótesis de varianzas, sobre los índices Chao1.</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230428_ML.ipynb">Clasificación con machine learning</a></td>
-    <td>Esss</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230502_NuevosDatos.R">Exproración de nuevos datos</a></td>
-    <td>Se repitio el análisis de datos para un tercer conjunto de datos, el cual contiene dos categorías (cultivo vs. nativos crudos).</td>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230510_PruebaWilcoxon.R">Prueba de wilcoxon</a></td>
-    <td>Esss</td>
-  </tr>
-</table>
+## Reportes (R Markdown)
 
+Los cuadernos numerados son la versión ordenada y comentada del análisis. Varios tienen su PDF compilado junto al `.Rmd`.
 
-## Reportes (R-MarkDown)
-Luego los scripts mostrados en la tabla anterior, se compilan en los siguientes reportes, en los cuales se ordenan y se explican un poco mas los procesos, y sus respectivos resultados.
+| Reporte | Contenido |
+|---|---|
+| `01_Exploracion.Rmd` | Preprocesamiento, descripción del formato BIOM y del objeto phyloseq, filtro de calidad (25 millones de lecturas), diversidad alfa y beta con todas las medidas sobre el conjunto completo, y una primera visualización con redes simples. No hay separación clara entre grupos. |
+| `02_ExploracionSubconjuntos.Rmd` | Subconjuntos por reino (Bacteria y Eukaryota) y por nivel taxonómico, con sus diversidades alfa y beta. |
+| `03_FuncionesAutomatizacion.Rmd` | Funciones que automatizan la aglomeración por nivel taxonómico y las gráficas de barras, alfa y beta. |
+| `04_PruebasdeHipotesis.Rmd` | Pruebas t de Student (varianzas iguales y de Welch), F sobre varianzas y Wilcoxon-Mann-Whitney sobre Shannon y Chao1, en el conjunto completo y en subconjuntos. |
+| `05_FusariumActinobacteria.Rmd` | Barras de abundancia y diversidad beta para *Fusarium* (género) y Actinobacteria (filo) como taxones de interés. |
+| `06_DiversidadesAlfa10%.Rmd` | Diversidad alfa con aglomeración al 10 % para mejorar la visualización. |
+| `07_RedesCoocurrencia.Rmd` | Redes de coocurrencia con MicNet (UMAP, SparCC) y Alnitak, tomando *Fusarium* como taxón principal. Las salidas están en `Data/fresa_solena/Data1/Redes/`. |
+| `08_ExploracionDatosNuevos.Rmd` | Exploración del segundo conjunto de datos, con tres categorías por tipo de cultivo. |
+| `09_ExploracionDatosTotal.Rmd` | Exploración de los dos conjuntos unidos, con cinco categorías. |
+| `10_Normalización.Rmd` | Normalización de la tabla de conteos con edgeR. |
+| `11_ExploraciondDatosNormalizados.Rmd` | Repetición del análisis principal sobre los datos normalizados. |
+| `12_RarefacciónSaturacionDeMuestra.Rmd` | Curvas de rarefacción: las muestras están saturadas, hay lecturas suficientes. |
+| `13_FuncionesAutomatizacionNormalizados.Rmd` | Funciones automatizadas aplicadas a los datos normalizados. |
 
-<table class="default">
-  <tr>
-    <th scope="row">Nombre</th>
-    <th>Explicación</th>
-  </tr>
-  <tr>
-    <td><a href="https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd">Exploración</a></td>
-    <td>En este documento podemos ver el preprocesamiento de los datos, una breve explicación del tipo de datos y tipo de formato en el cual se trabajaron, junto con una exploración inicial de los índices de diversidad alfa y beta, con diferentes medidas, a la totalidad de los datos; los cuales no mostraron una buena separación de los datos entre muestras sanas y enfermas. También se tiene una pequeña vizualización de correlación con redes simples.</td>
-  </tr>
-  <tr>
-    <td><a href="https">Exploración en conjuntos pequeños</a></td>
-    <td>No se obtuvo una separación visible de los datos en general, por lo tanto, en este reporte se realizaron subconjuntos por diferentes niveles taxonómicos, a los cuales tambien se visualizaron las diversidades alfa y beta.</td>
-  </tr>
-  <tr>
-    <td><a href="https">Funciones automatizadas</a></td>
-    <td>Se crearon funciones automatizadas para el análisis en conjuntos pequeños que se hizo en el reporte anterior.</td>
-  </tr>
-  <tr>
-    <td><a href="https">Pruebas de Hipótesis</a></td>
-    <td>Se realizaron distintas pruebas estadísticas, tanto al conjunto total de datos, sobre diferentes indices de diversidad; como a subconjuntos a distintos niveles taxonomicos de interes. Se realizo: prueba de Wilcoxon, pueba de hipótesis sobre las medias del indice Shannon y prueba de hipótesis sobre las varianzas de las medidas Chao1.</td>
-  </tr>
-  <tr>
-    <td><a href="https">Aglomerados para Fusarium y Actinobacteria</a></td>
-    <td>An...ia</td>
-  </tr>
-  <tr>
-    <td><a href="https">Diversidades aglomerado 10%</a></td>
-    <td>En...ción. </td>
-  </tr>
-  <tr>
-    <td><a href="https">Redes de coocurrencia</a></td>
-    <td>Se utilizaron los software (**AlnitaK** y MicNet) para crear las matrices de coocurrencia, tomando Fusarium como taxon principal,  y tambien de los datos en total.</td>
-  </tr>
-  <tr>
-    <td><a href="https">Exploración para el segundo conjunto de datos (tres categorias) </a></td>
-    <td>Tomando como referencia la primeta visualización, se repitio en su gran mayoria  para ver como se comportan los datos nuevos.</td>
-  </tr>
-  <tr>
-    <td><a href="https">Exploración juntando los dos conjuntos de datos (cinco categorias) </a></td>
-    <td>Se tomaron los datos nuevos unidos con los principales, obteniendo cinco categorias, y con esto se realizo un nuevo análisis  exploratorio.  .</td>
-  </tr>
-  <tr>
-    <td><a href="https">Normalización </a></td>
-    <td>Explorando diferntes tipos de rarefacción.</td>
-  </tr>
-  <tr>
-    <td><a href="https">Exploración de datos normalizados</a></td>
-    <td>Tomando los datos normalizados,realizamos de nuevo todo el análisis principal, para posibles comparaciones entre resultados.</td>
-  </tr>
-  <tr>
-    <td><a href="https">Pruebas e Hipotesis</a></td>
-    <td>Se realizaron diferentes tipos de pruebas de </td>
-  </tr>
-  <tr>
-    <td><a href="https">Preprocesamiento y Normalización</a></td>
-    <td>SR</td>
-  </tr>
-  <tr>
-    <td><a href="https">Rarefaccion</a></<td>
-    <td>Explorando diferntes tipos de rarefacción.</td>
-  </tr>
-  <tr>
-    <td><a href="https">Funciones automatizadas para el análisis en conjuntos pequeños, con datos normalizados</a></td>
-    <td>Tomando las funciones creadas anteriormente, se realizó de nuevo un análisis, pero esta vez con los datos normalizados.</td>
-  </tr>
-    <tr>
-    <td><a href="https">Datos normalizados</a></td>
-    <td>Pruebas de hipótesis con los datos normalizados.</td>
-  </tr>
-</table>
+## Scripts de desarrollo (2023)
 
+Scripts de R con fecha, en el orden en que se hizo el análisis. Los reportes anteriores los recopilan.
+
+| Script | Contenido |
+|---|---|
+| `20230130_PreprocesamientoDatos.R` | Descarga de los datos, creación del BIOM y carga como objeto phyloseq. Primera vista de las diversidades. |
+| `20230213_DiversidadesAlfa&Beta.R` | Barras de abundancia, porcentajes y diversidades por nivel taxonómico. |
+| `20230220_Funciones.R` | Tres funciones para aglomerar por nivel y graficar barras, alfa y beta. |
+| `20230227_Funciones&Graficas.R` | Versión mejorada de las funciones; genera todas las gráficas por filo, familia, género y especie, separando Bacteria y Eukaryota. |
+| `20230306_Potencia&PruebaHipotesis.R` | Análisis de potencia siguiendo a Xia et al., *Statistical Analysis of Microbiome Data with R*. |
+| `20230314_Redes.R` | Redes simples con phyloseq y redes de coocurrencia con *Fusarium* como género de interés. |
+| `20230320_NuevosDatos.R` | Segundo conjunto de datos, tres categorías por sitio de muestreo. |
+| `20230321_NuevosDatosAll.R` | Unión de los dos conjuntos: cinco categorías por tipo de cultivo y estado. |
+| `20230327_PruebasOrden.R` | Reordenamiento de las cinco categorías para las gráficas de barras. |
+| `20230403_Actinobacteria.R` | Barras y diversidad beta para Actinobacteria. |
+| `20230403_Oomycota&Fusarium.R` | Barras y diversidad beta para Oomycota y *Fusarium*. |
+| `20230410_PruebasdeHipotesisMedias.R` | Prueba t sobre las medias del índice de Shannon y prueba de normalidad de Shapiro-Wilk. |
+| `20230411_Preprocesamiento&Normalización.R` | Normalización con edgeR. |
+| `20230419_Rarefaccion.R` | Curvas de rarefacción como medida de saturación de las muestras. |
+| `20230425_Rarefaccion(Normalizacion).R` | Rarefacción como método de normalización. |
+| `20230427_PruebasdeHipotesisVarianzas.R` | Prueba F sobre las varianzas de Chao1. |
+| `20230428_ML.ipynb` | Primer intento de clasificación saludable frente a no saludable con scikit-learn. Exploratorio. |
+| `20230502_NuevosDatos.R` | Tercer conjunto de datos: cultivo frente a nativo. |
+| `20230510_PruebaWilcoxon.R` | Prueba de Wilcoxon-Mann-Whitney sobre Shannon (W = 376, p = 0.2586). |
+| `Mann-Whitney.R` | Versión resumida de la prueba anterior. |
+
+## Scripts que regeneran las figuras de la tesis (2026)
+
+Cada script reproduce una figura a 300 dpi con rótulos en español y la guarda en `latex/Img/cap3/`
+y en `Results_img/`. El número al final del nombre es la figura de la tesis.
+
+| Script | Figura | Archivo |
+|---|---|---|
+| `20260919_RegenerarPruebatExplicacion13.R` | 1.3 | `pruebat_explicacion.png` |
+| `20260924_RegenerarAlphaCrudosFiltrados41.R` | 4.1 | `AlphaDiversity_CrudosFiltrados.png` |
+| `20260924_RegenerarBarrasLecturas42.R` | 4.2 | `Barras.png` |
+| `20260924_RegenerarBetaDiversity43.R` | 4.3 | `BetaDiversity.png` |
+| `20260919_RegenerarBarrasFilo44.R` | 4.4 | `BarrasFilo.png` |
+| `20260924_RegenerarBarrasEukarya46.R` | 4.6 | `Barras_Eukarya10.png` |
+| `20260919_RegenerarBarrasBacteria47.R` | 4.7 | `Barras_Bacteria10.png` |
+| `20260919_RegenerarAlphaEukarya48.R` | 4.8 | `Alpha_Eukarya.png` |
+| `20260919_RegenerarAlphaBacteria49.R` | 4.9 | `Alpha_Bacteria.png` |
+| `20260919_RegenerarTTestFusarium413.R` | 4.13 | `tTest_Shannon_Fusarium.png` |
+| `20260919_RegenerarWilcoxonShannon414.R` | 4.14 | `Wilcoxon_Shannon.png` |
+
+`20260906_RegenerarBarrasFilo.R` es una versión anterior del script de la figura 4.4.
+
+## Otros archivos
+
+- `Results_img/`: todas las figuras generadas, incluidas las versiones antiguas y las de los datos adicionales.
+- `percentages_df.csv`: tabla de abundancias relativas en formato largo, exportada desde phyloseq.
+- `Presentacion.qmd` y `Presentacion1.qmd`: presentación en Quarto del análisis. La segunda se presentó en el Congreso Colombiano de Matemáticas 2025.
+
+## Resultados principales
+
+- El filtro de calidad es indispensable: sin él, las muestras con muy pocas lecturas ocultan cualquier diferencia.
+- Las plantas saludables muestran mayor diversidad alfa en todos los índices y niveles, pero la diferencia es pequeña y no es significativa en la comunidad completa (Welch p = 0.1501, Mann-Whitney p = 0.2586).
+- La diversidad beta no separa los grupos con ninguna medida.
+- La diversidad de Shannon de los géneros de eucariotas, grupo que incluye a *Fusarium*, sí difiere significativamente (p = 0.0017 con varianzas iguales, p = 0.0130 con Welch).
+- Las plantas no saludables son más heterogéneas entre sí: la prueba F rechaza la igualdad de varianzas de Shannon (p < 0.001).

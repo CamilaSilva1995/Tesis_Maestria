@@ -1,6 +1,15 @@
-# Análisis Comparativo
+# Análisis comparativo
 
-En esta secion se hace un análisis comparativo de muestras de diferentes tipos, usando varias herramientas ecologicas, bioinformaticas y estadisticas para realizar comparación entre muestras o poblaciones.
-Tenemos datos de clavibacter, de fresa de solena y fresa del paper <a href="https://link.springer.com/article/10.1007/s00284-020-01948-x">Comparison of the Rhizosphere Soil Microbial Community Structure and Diversity Between Powdery Mildew-Infected and Noninfected Strawberry Plants in a Greenhouse by High-Throughput Sequencing Technology</a>
+Análisis exploratorio y estadístico de comunidades microbianas a partir de tablas de abundancia
+generadas con Kraken. En todos los casos el flujo es el mismo: cargar el archivo BIOM como objeto
+phyloseq en R, filtrar por calidad, calcular diversidades alfa y beta, explorar la composición por
+nivel taxonómico y, cuando corresponde, contrastar diferencias con pruebas de hipótesis.
 
-Primero se hace un analisis exploratorio con medidas ecologicas como las diversidades alfa y beta. Luego dependiendo de los resultados se pueden hacer diferentes analisis; como analisis de resdes de coocurrencia, clousterización con machine learning, y análisis con metodos estadísticos, como pruebas de hipótesis. 
+| Subcarpeta | Datos | Contenido |
+|---|---|---|
+| [`Fresa_Solena/`](Fresa_Solena/) | `Data/fresa_solena/` | Análisis principal de la tesis: rizósfera de fresa, plantas saludables frente a no saludables. Cuadernos R Markdown numerados, scripts de R y scripts que regeneran las figuras de la tesis. |
+| [`Fresa_paper/`](Fresa_paper/) | `Data/fresa_paper/` | Réplica del análisis sobre los datos públicos de Yang et al. (2020), fresa con y sin oídio. |
+| [`Clavi_Solena/`](Clavi_Solena/) | `Data/solena/` | Primer ejercicio con datos de Solena: *Clavibacter michiganensis* en cultivos de chile, maíz y tomate. |
+
+El análisis de `Fresa_Solena/` es el que se reporta en los capítulos 3 a 5 de la tesis y en el
+artículo de `Articulo_Popayan/`.
