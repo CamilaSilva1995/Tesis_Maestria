@@ -45,7 +45,7 @@ panel_alpha <- function(phy) {
                             labels = c("Observado", "Chao1", "Shannon", "Simpson"))
   p +
     labs(x = NULL, y = NULL) +
-    scale_color_discrete(name = "Tratamiento") +
+    scale_colour_manual(name = "Tratamiento", values = c("Saludable" = "#F8766D", "No saludable" = "#00BFC4")) +
     theme(legend.position = "bottom",
           legend.direction = "horizontal",
           legend.title = element_text(size = 11, face = "bold"),

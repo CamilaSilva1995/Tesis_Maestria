@@ -12,45 +12,45 @@ A level-1 auxiliary file: Apendices/Bp.aux
 The style file: apalike.bst
 Database file #1: ref.bib
 Warning--empty publisher in wackerly2002estadistica
-You've used 83 entries,
+You've used 99 entries,
             1935 wiz_defined-function locations,
-            969 strings with 19387 characters,
-and the built_in function-call counts, 34960 in all, are:
-= -- 3360
-> -- 1687
-< -- 53
-+ -- 627
-- -- 586
-* -- 3171
-:= -- 6169
-add.period$ -- 249
-call.type$ -- 83
-change.case$ -- 690
-chr.to.int$ -- 82
-cite$ -- 84
-duplicate$ -- 1174
-empty$ -- 2278
-format.name$ -- 713
-if$ -- 6647
+            1051 strings with 22560 characters,
+and the built_in function-call counts, 42680 in all, are:
+= -- 4089
+> -- 2131
+< -- 60
++ -- 789
+- -- 746
+* -- 3888
+:= -- 7530
+add.period$ -- 298
+call.type$ -- 99
+change.case$ -- 848
+chr.to.int$ -- 98
+cite$ -- 100
+duplicate$ -- 1420
+empty$ -- 2748
+format.name$ -- 891
+if$ -- 8117
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 90
-newline$ -- 418
-num.names$ -- 249
-pop$ -- 540
+missing$ -- 106
+newline$ -- 498
+num.names$ -- 297
+pop$ -- 671
 preamble$ -- 1
-purify$ -- 700
+purify$ -- 858
 quote$ -- 0
-skip$ -- 907
+skip$ -- 1090
 stack$ -- 0
-substring$ -- 2449
-swap$ -- 109
-text.length$ -- 4
+substring$ -- 2955
+swap$ -- 139
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 476
+type$ -- 572
 warning$ -- 1
-while$ -- 286
+while$ -- 347
 width$ -- 0
-write$ -- 1075
+write$ -- 1285
 (There was 1 warning)

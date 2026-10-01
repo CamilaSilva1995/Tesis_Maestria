@@ -1,4 +1,4 @@
-## Figura 4.14 - Prueba de Mann-Whitney sobre el indice de Shannon (Img/cap3/Wilcoxon_Shannon.png)
+## Figura 4.15 - Prueba de Mann-Whitney sobre el indice de Shannon (Img/cap3/Wilcoxon_Shannon.png)
 ## Regenera la figura en alta resolucion (300 dpi) con etiquetas en espanol.
 ## La version anterior estaba a 960x540 px y sin informacion en el eje Y.
 

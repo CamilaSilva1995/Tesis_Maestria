@@ -1,25 +1,27 @@
 \chapter{Resultados}
+\label{Resultados}
 \label{cap:resultados}
 %% ============================================================================
 %% BORRADOR - Capítulo 4 (reescrito 2026-09-29)
-%% Organizado según los tres objetivos específicos del Capítulo 2.
+%% Organizado según los cuatro objetivos específicos del Capítulo 2.
 %% Todas las cifras fueron recalculadas a partir de Data/fresa_solena/Data1 con los scripts
 %% de Analisis_Comparativo/Fresa_Solena y Articulo_Popayan/calculos.
 %% Los comentarios "%% CAMI" señalan puntos por revisar.
 %% ============================================================================
 
 En este capítulo se presentan los resultados del análisis descrito en el Capítulo 3, organizados
-según los tres objetivos específicos planteados en el Capítulo 2. La Sección \ref{sec:res-caracterizacion}
+según los cuatro objetivos específicos planteados en el Capítulo 2. La Sección \ref{sec:res-caracterizacion}
 caracteriza la composición y la diversidad del microbioma rizosférico de plantas de fresa saludables y
 no saludables, primero sobre la comunidad completa y después por reino y por nivel taxonómico. La
 Sección \ref{sec:res-pruebas} contrasta estadísticamente las diferencias observadas y evalúa la
 potencia del diseño. La Sección \ref{sec:res-patrones} reúne los patrones taxonómicos y de estructura
-de la comunidad asociados con el estado de salud de la planta. En todo el capítulo se usan los
+de la comunidad asociados con el estado de salud de la planta, y la Sección \ref{sec:res-taller}
+describe el material didáctico construido a partir del análisis. En todo el capítulo se usan los
 términos \emph{saludable} y \emph{no saludable} para los dos grupos, que en los datos originales
 aparecen como \texttt{healthy} y \texttt{wilted} (planta marchita).
 
 %% ----------------------------------------------------------------------------
-\section{Caracterización de la composición taxonómica y la diversidad microbiana}
+\section[Composición taxonómica y diversidad]{Caracterización de la composición taxonómica y la diversidad microbiana}
 \label{sec:res-caracterizacion}
 %% ----------------------------------------------------------------------------
 
@@ -52,7 +54,7 @@ saludables. A) Antes del filtro de calidad, las muestras con muy pocas lecturas 
 ocultan las diferencias entre grupos. B) Tras eliminar las cinco muestras con menos de 25 millones
 de lecturas, se aprecia una tendencia hacia mayor diversidad en las muestras saludables, en
 particular en la riqueza observada y en Chao1.
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarAlphaCrudosFiltrados41.R}{(Script)}}
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarAlphaCrudosFiltrados41.R}{(Script: \texttt{20260924\_RegenerarAlphaCrudosFiltrados41.R})}}
 \label{fig:alpha-crudos-filtrados}
 \end{figure}
 
@@ -61,16 +63,16 @@ Figura \ref{fig:barras-lecturas} muestra el número de lecturas clasificadas por
 metagenomas de plantas saludables contienen, en promedio, más lecturas que los de plantas no
 saludables. Esta diferencia debe tenerse presente al interpretar los índices que dependen del
 esfuerzo de muestreo, como la riqueza observada y Chao1, porque una muestra con más lecturas tiene
-mayor probabilidad de detectar taxones raros. Las curvas de rarefacción calculadas en el Capítulo 3
-indican, sin embargo, que todas las muestras conservadas alcanzan la saturación, es decir, que el
-número de taxones detectados deja de crecer con la profundidad.
+mayor probabilidad de detectar taxones raros. En la Sección \ref{sec:res-normalizacion} se
+evalúa, con curvas de rarefacción y con los datos rarificados a profundidad común, cuánto de la
+tendencia observada se debe a esta diferencia.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Barras.png}
 \caption{Número de lecturas clasificadas por muestra tras el filtro de calidad. Las muestras
 saludables ($n = 35$) tienen en promedio más lecturas que las no saludables ($n = 18$).
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarBarrasLecturas42.R}{(Script)}}
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarBarrasLecturas42.R}{(Script: \texttt{20260924\_RegenerarBarrasLecturas42.R})}}
 \label{fig:barras-lecturas}
 \end{figure}
 
@@ -89,11 +91,13 @@ retoma en la Sección \ref{sec:res-patrones}.
 \begin{table}[H]
 \centering
 \caption{Promedio de los índices de diversidad alfa por grupo sobre la comunidad completa
-(53 muestras filtradas). Entre paréntesis, la desviación estándar del índice de Shannon.}
+(53 muestras filtradas). Entre paréntesis, la desviación estándar del índice de Shannon. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarAlphaCrudosFiltrados41.R}{(Script: \texttt{20260924\_RegenerarAlphaCrudosFiltrados41.R})}}
 \label{tab:alfa-medias}
+\small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lcccc}
 \hline
-Grupo & Riqueza observada & Chao1 & Shannon & Simpson \\
+Grupo & Riqueza obs. & Chao1 & Shannon & Simpson \\
 \hline
 Saludable ($n = 35$)    & 8639.9 & 8767.6 & 7.478 (0.061) & 0.998 \\
 No saludable ($n = 18$) & 8613.7 & 8751.6 & 7.417 (0.168) & 0.997 \\
@@ -120,18 +124,39 @@ muestra atípica, lo que la hace poco informativa para este conjunto de datos.
 \caption{Ordenaciones NMDS de la diversidad beta de la comunidad completa para cinco medidas de
 disimilitud. A) Bray-Curtis. B) Jaccard. C) Euclidiana. D) Manhattan. E) Jensen-Shannon. Ninguna
 medida separa las muestras saludables de las no saludables.
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarBetaDiversity43.R}{(Script)}}
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarBetaDiversity43.R}{(Script: \texttt{20260924\_RegenerarBetaDiversity43.R})}}
 \label{fig:beta-global}
 \end{figure}
 
 Para cuantificar lo que muestran las ordenaciones se aplicó un análisis PERMANOVA \citep{anderson2001new} sobre la matriz
 de disimilitud de Bray-Curtis, con el estado de la planta como único factor y 999 permutaciones.
 El estado de la planta explicó el 2.4\% de la variación total en la composición ($R^2 = 0.024$,
-pseudo-$F = 1.26$, $p = 0.202$). Es decir, más del 97\% de la variación entre muestras se debe a
-factores distintos del estado saludable o no saludable, y la fracción atribuible a este no es
-distinguible de la que se obtendría asignando las etiquetas al azar.
-%% CAMI: el PERMANOVA está en Articulo_Popayan/calculos/Potencia_estadistica.R. Conviene
-%% agregar una frase en el Capítulo 3 diciendo que se aplicó (adonis2 de vegan).
+pseudo-$F = 1.26$, $p = 0.167$). Con la disimilitud de Jaccard cuantitativa el resultado es
+prácticamente idéntico ($R^2 = 0.024$, pseudo-$F = 1.24$, $p = 0.170$). Es decir, más del 97\% de la
+variación entre muestras se debe a factores distintos del estado saludable o no saludable, y la
+fracción atribuible a este no es distinguible de la que se obtendría asignando las etiquetas al
+azar. El panel A de la Figura \ref{fig:permanova} muestra las muestras en el espacio de coordenadas
+principales con el centroide de cada grupo: los dos centroides están casi superpuestos.
+
+Como el PERMANOVA puede reaccionar a diferencias de dispersión y los grupos son desbalanceados, se
+aplicó la prueba PERMDISP sobre la misma matriz de Bray-Curtis. La distancia media de cada muestra al
+centroide de su grupo fue de 0.077 en las plantas saludables y de 0.100 en las no saludables, y la
+prueba rechazó la igualdad de dispersiones ($F = 5.10$ con 1 y 51 grados de libertad, $p = 0.023$;
+panel B de la Figura \ref{fig:permanova}). Los grupos no difieren, por lo tanto, en su composición
+promedio, pero sí en cuánto varía la composición dentro de cada uno: las plantas no saludables son
+más heterogéneas entre sí. Este resultado se retoma en la Sección \ref{sec:res-patrones}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Img/cap3/PERMANOVA_PERMDISP.png}
+\caption{PERMANOVA y PERMDISP sobre la disimilitud de Bray-Curtis de la comunidad completa.
+A) Muestras en los dos primeros ejes de coordenadas principales, con el centroide de cada grupo
+(rombos) y un segmento de cada muestra a su centroide. Los centroides casi coinciden
+(pseudo-$F = 1.26$, $R^2 = 0.024$, $p = 0.167$). B) Distancia de cada muestra al centroide de su
+grupo. Las plantas no saludables están más dispersas ($F = 5.10$, $p = 0.023$).
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260930_RegenerarPermanovaPermdisp44.R}{(Script: \texttt{20260930\_RegenerarPermanovaPermdisp44.R})}}
+\label{fig:permanova}
+\end{figure}
 
 \subsection{Composición taxonómica general}
 
@@ -141,34 +166,40 @@ representación de los eucariotas en la base de datos de referencia. A nivel de 
 está dominada por Actinobacteria y Proteobacteria, que juntos suman en promedio más del 90\% de las
 lecturas clasificadas de cada muestra (48.3\% y 43.3\%, respectivamente). Les siguen, ya con
 abundancias relativas menores al 3\%, Planctomycetes, Firmicutes, Bacteroidetes y Acidobacteria. La
-Figura \ref{fig:barras-filo} muestra las abundancias absolutas y relativas por muestra, y la
-Figura \ref{fig:barras-filo-bn} las mismas abundancias relativas con las muestras separadas por
-grupo. A esta escala los dos grupos son prácticamente indistinguibles: los dos filos dominantes
-tienen proporciones semejantes en todas las muestras y los filos minoritarios no alcanzan a verse.
+Figura \ref{fig:barras-filo} muestra las abundancias absolutas y relativas por muestra, con las
+muestras separadas por grupo, y la Figura \ref{fig:barras-filo-bn} resume la composición media
+de cada grupo y muestra en escala logarítmica los filos minoritarios, que en las barras apiladas
+no alcanzan a verse. A esta escala los dos grupos son prácticamente indistinguibles: los dos filos
+dominantes tienen proporciones semejantes en todas las muestras y ninguno de los diez filos
+principales difiere entre grupos una vez ajustados los valores $p$ por comparaciones múltiples.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/BarrasFilo.png}
-\caption{Abundancia por filo en las 53 muestras filtradas. A) Abundancia absoluta, en número de
-lecturas asignadas a cada filo. B) Abundancia relativa, en porcentaje por muestra. Actinobacteria y
-Proteobacteria dominan todas las muestras.
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarBarrasFilo44.R}{(Script)}}
+\caption{Abundancia por filo en las 53 muestras filtradas, separadas por grupo. A) Abundancia
+absoluta, en millones de lecturas asignadas a cada filo. B) Abundancia relativa, en porcentaje por
+muestra. Se muestran los diez filos de mayor abundancia media y el resto se agrupa en ``Otros'';
+cada filo conserva el mismo color en todas las figuras de la tesis. Actinobacteria y Proteobacteria
+dominan todas las muestras.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarBarrasFilo45.R}{(Script: \texttt{20260919\_RegenerarBarrasFilo45.R})}}
 \label{fig:barras-filo}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/BarrasFilo_blackandwhite.png}
-\caption{Abundancia relativa por filo con las muestras separadas por grupo: saludables (recuadro
-claro) y no saludables (recuadro oscuro). A nivel de filo y sobre la comunidad completa, la
-composición de ambos grupos es semejante.}
+\caption{Composición por filo en cada grupo. A) Abundancia relativa media de los diez filos
+principales en las muestras saludables y no saludables. B) Los mismos filos, muestra por muestra y
+en escala logarítmica, con el valor $p$ de Mann-Whitney ajustado por Benjamini-Hochberg. Ningún
+filo difiere entre grupos tras el ajuste.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260906_RegenerarBarrasFiloBN46.R}{(Script: \texttt{20260906\_RegenerarBarrasFiloBN46.R})}}
 \label{fig:barras-filo-bn}
 \end{figure}
 
 Dado que ni la diversidad ni la composición de la comunidad completa distinguen a los grupos, el
 análisis se desagregó por reino, Bacteria y Eukaryota, y dentro de cada reino por filo, familia,
 género y especie. Para las gráficas de barras se aplicó una aglomeración al 10\%, que agrupa bajo
-la etiqueta ``Others'' a los taxones cuya abundancia relativa no supera ese umbral en ninguna
+la etiqueta ``Otros'' a los taxones cuya abundancia relativa no supera ese umbral en ninguna
 muestra, de modo que los taxones restantes puedan distinguirse por color.
 
 \subsection{Eucariotas por nivel taxonómico}
@@ -181,23 +212,20 @@ ligeramente menor de Oomycota en las muestras no saludables, y a nivel de famili
 presencia de Peronosporaceae, familia que pertenece a ese filo. A nivel de género y especie se
 identifican los hongos fitopatógenos \textit{Fusarium} y el oomiceto \textit{Phytophthora}, ambos
 documentados como agentes de marchitez y pudrición radicular en fresa \citep{yang2020comparison, siegieda2024ecological}. Sobre la comunidad completa,
-la abundancia relativa media de \textit{Fusarium} es de 0.144\% en las plantas saludables y de
-0.160\% en las no saludables; la de Oomycota es de 0.066\% y 0.061\%, y la de \textit{Phytophthora}
-de 0.063\% y 0.059\%. Se trata de diferencias pequeñas, que las gráficas de barras por reino
-amplifican al reescalar la fracción eucariota al 100\%.
-%% CAMI: Oomycota incluye a Phytophthora (Peronosporaceae) y Pythium, patógenos de fresa. Una
-%% MENOR abundancia en plantas marchitas es contraintuitiva y la diferencia es muy pequeña
-%% (0.066 frente a 0.061). Sugiero presentarlo solo como observación, sin interpretarlo como
-%% "pérdida de componentes clave para la resistencia", y discutirlo con la Dra. Nelly.
+la abundancia relativa media de \textit{Fusarium} es de 0.136\% en las plantas saludables y de
+0.151\% en las no saludables; la de Oomycota es de 0.066\% y 0.061\%, y la de \textit{Phytophthora}
+de 0.060\% y 0.055\%. Se trata de diferencias pequeñas, que las gráficas de barras por reino
+amplifican al reescalar la fracción eucariota al 100\%. La Sección \ref{sec:res-patrones} las
+contrasta formalmente entre grupos.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Barras_Eukarya10.png}
-\caption{Abundancia relativa de eucariotas en muestras saludables (recuadro claro) y no saludables
-(recuadro oscuro), con aglomeración al 10\%. A) Filo: Oomycota muestra una abundancia relativa
+\caption{Abundancia relativa de eucariotas por nivel taxonómico, con las muestras separadas por
+grupo y aglomeración al 10\%. A) Filo: Oomycota muestra una abundancia relativa
 ligeramente menor en las muestras no saludables. B) Familia: la misma tendencia en Peronosporaceae.
 C) Género: \textit{Fusarium} y \textit{Phytophthora} entre los géneros distinguibles. D) Especie.
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarBarrasEukarya46.R}{(Script)}}
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260924_RegenerarBarrasEukarya47.R}{(Script: \texttt{20260924\_RegenerarBarrasEukarya47.R})}}
 \label{fig:barras-eukarya}
 \end{figure}
 
@@ -215,7 +243,7 @@ taxonómico.
 \includegraphics[width=\textwidth]{Img/cap3/Alpha_Eukarya.png}
 \caption{Diversidad alfa de los eucariotas por nivel taxonómico: A) filo, B) familia, C) género,
 D) especie. Las muestras saludables tienden a mayor riqueza observada y Chao1 en todos los niveles.
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarAlphaEukarya48.R}{(Script)}}
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarAlphaEukarya48.R}{(Script: \texttt{20260919\_RegenerarAlphaEukarya48.R})}}
 \label{fig:alpha-eukarya}
 \end{figure}
 
@@ -223,7 +251,10 @@ D) especie. Las muestras saludables tienden a mayor riqueza observada y Chao1 en
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Beta_Eukarya.png}
 \caption{Diversidad beta (NMDS, Bray-Curtis) de los eucariotas por nivel taxonómico: A) filo,
-B) familia, C) género, D) especie. No hay separación entre grupos en ningún nivel.}
+B) familia, C) género, D) especie. Las elipses cubren el 68\% de cada grupo. A nivel de filo
+solo hay cuatro taxones, por lo que la ordenación es degenerada (estrés cero) y se omite la elipse.
+No hay separación entre grupos en ningún nivel.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarBetaEukarya49.R}{(Script: \texttt{20260919\_RegenerarBetaEukarya49.R})}}
 \label{fig:beta-eukarya}
 \end{figure}
 
@@ -237,22 +268,21 @@ Streptomycetaceae y su género \textit{Streptomyces}, presentes en proporciones 
 grupos, y a Paenibacillaceae con su género \textit{Paenibacillus}, que aparece en unas pocas muestras
 de ambos grupos. A nivel de especie, \textit{Paenibacillus polymyxa}, una rizobacteria promotora del
 crecimiento vegetal \citep{lal2009ecology}, es la única que supera el umbral de aglomeración, y lo hace en muestras
-aisladas. Por debajo del umbral del 10\%, la exploración de las tablas de abundancia identificó a
-\textit{Pseudomonas} y \textit{Bacillus} con abundancias relativas algo mayores en las muestras
-saludables, y a \textit{Ralstonia}, género que incluye a los agentes de la marchitez bacteriana \citep{suhaimi2017diversity}, con abundancia algo mayor en las
-no saludables.
-%% CAMI: las diferencias de Pseudomonas, Bacillus y Ralstonia se identificaron por inspección de
-%% las tablas y no aparecen en la figura por estar bajo el umbral del 10 %. Conviene agregar sus
-%% abundancias relativas medias por grupo (el script cifras_cap4.R las calcula) o una figura.
+aisladas. Por debajo del umbral del 10\%, la inspección de las gráficas de barras de los
+reportes exploratorios sugería una presencia algo mayor de \textit{Pseudomonas} y \textit{Bacillus}
+en las muestras saludables, y de \textit{Ralstonia}, género que incluye a los agentes de la marchitez
+bacteriana \citep{suhaimi2017diversity}, en las no saludables. La comparación cuantitativa de esas
+proporciones, en la Sección \ref{sec:res-patrones}, muestra que esas impresiones visuales no se
+sostienen.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Barras_Bacteria10.png}
-\caption{Abundancia relativa de bacterias en muestras saludables (recuadro claro) y no saludables
-(recuadro oscuro), con aglomeración al 10\%. A) Filo: predominio de Actinobacteria y Proteobacteria.
+\caption{Abundancia relativa de bacterias por nivel taxonómico, con las muestras separadas por
+grupo y aglomeración al 10\%. A) Filo: predominio de Actinobacteria y Proteobacteria.
 B) Familia: Streptomycetaceae y Paenibacillaceae. C) Género: \textit{Streptomyces} y
 \textit{Paenibacillus}. D) Especie: \textit{Paenibacillus polymyxa} en muestras aisladas.
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarBarrasBacteria47.R}{(Script)}}
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarBarrasBacteria410.R}{(Script: \texttt{20260919\_RegenerarBarrasBacteria410.R})}}
 \label{fig:barras-bacteria}
 \end{figure}
 
@@ -270,7 +300,7 @@ no se organiza según el estado de la planta.
 \includegraphics[width=\textwidth]{Img/cap3/Alpha_Bacteria.png}
 \caption{Diversidad alfa de las bacterias por nivel taxonómico: A) filo, B) familia, C) género,
 D) especie.
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarAlphaBacteria49.R}{(Script)}}
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarAlphaBacteria411.R}{(Script: \texttt{20260919\_RegenerarAlphaBacteria411.R})}}
 \label{fig:alpha-bacteria}
 \end{figure}
 
@@ -279,12 +309,13 @@ D) especie.
 \includegraphics[width=\textwidth]{Img/cap3/Beta_Bacteria.png}
 \caption{Diversidad beta (NMDS, Bray-Curtis) de las bacterias por nivel taxonómico: A) filo,
 B) familia, C) género, D) especie. La dispersión aumenta en los niveles finos, pero no se organiza
-según el estado de la planta.}
+según el estado de la planta. Las elipses cubren el 68\% de cada grupo.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarBetaBacteria412.R}{(Script: \texttt{20260919\_RegenerarBetaBacteria412.R})}}
 \label{fig:beta-bacteria}
 \end{figure}
 
 %% ----------------------------------------------------------------------------
-\section{Evaluación estadística de las diferencias entre grupos}
+\section[Evaluación estadística entre grupos]{Evaluación estadística de las diferencias entre grupos}
 \label{sec:res-pruebas}
 %% ----------------------------------------------------------------------------
 
@@ -323,7 +354,8 @@ acerca artificialmente el resultado a la significancia.
 del índice en cada grupo, con la media señalada por la línea punteada. B) Asumiendo varianzas
 iguales: $t = 1.939$, 51 grados de libertad, $p = 0.058$. C) Asumiendo varianzas distintas (Welch):
 $t = 1.499$, 19.3 grados de libertad, $p = 0.150$. En ambos casos el estadístico queda fuera de la
-región de rechazo y no se rechaza la hipótesis nula.}
+región de rechazo y no se rechaza la hipótesis nula.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarTTestShannon413.R}{(Script: \texttt{20260919\_RegenerarTTestShannon413.R})}}
 \label{fig:ttest-shannon}
 \end{figure}
 
@@ -344,7 +376,7 @@ géneros de eucariotas tampoco difiere significativamente entre grupos.
 %% script construía la tabla con psmelt() y reshape(), que ordenan las muestras por abundancia, y
 %% luego la unía a los metadatos con cbind() sin emparejar por nombre de muestra, de modo que las
 %% 53 filas quedaban con el tratamiento de otra muestra. El script
-%% 20260919_RegenerarTTestFusarium413.R fue corregido (empareja con match()) y la figura se
+%% 20260919_RegenerarTTestFusarium414.R fue corregido (empareja con match()) y la figura se
 %% regeneró. Hay que corregir también el Capítulo 5, el artículo de Articulo_Popayan y el
 %% resumen/introducción de main.tex donde se mencione este resultado.
 
@@ -357,7 +389,7 @@ señalada por la línea punteada: 3.077 en el grupo saludable y 3.035 en el no s
 B) Asumiendo varianzas iguales: $t = 1.139$, 51 grados de libertad, $p = 0.260$. C) Asumiendo
 varianzas distintas (Welch): $t = 0.902$, 20 grados de libertad, $p = 0.378$. En ambos casos el
 estadístico queda dentro de la región de no rechazo.
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarTTestFusarium413.R}{(Script)}}
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarTTestFusarium414.R}{(Script: \texttt{20260919\_RegenerarTTestFusarium414.R})}}
 \label{fig:ttest-eucariotas}
 \end{figure}
 
@@ -380,7 +412,7 @@ saludables.
 \caption{Valores del índice de Shannon de la comunidad completa ordenados por rango, coloreados por
 grupo. Los grupos aparecen mezclados en todo el recorrido. Prueba de Wilcoxon-Mann-Whitney:
 $W = 376$, $p = 0.259$.
-\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarWilcoxonShannon414.R}{(Script)}}
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarWilcoxonShannon415.R}{(Script: \texttt{20260919\_RegenerarWilcoxonShannon415.R})}}
 \label{fig:wilcoxon}
 \end{figure}
 
@@ -401,8 +433,14 @@ resume todas las pruebas de esta sección.
 \begin{table}[H]
 \centering
 \caption{Resumen de las pruebas de hipótesis sobre el índice de Shannon. Nivel de significancia
-$\alpha = 0.05$; ninguna prueba rechaza la hipótesis nula de igualdad entre grupos.}
+$\alpha = 0.05$. Solo las dos pruebas de dispersión, F de varianzas y PERMDISP, rechazan su hipótesis nula.
+Scripts: \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarTTestShannon413.R}{\texttt{20260919\_RegenerarTTestShannon413.R}} (comunidad completa),
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarTTestFusarium414.R}{\texttt{20260919\_RegenerarTTestFusarium414.R}} (géneros de eucariotas),
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarWilcoxonShannon415.R}{\texttt{20260919\_RegenerarWilcoxonShannon415.R}} (Mann-Whitney) y
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260930_RegenerarPermanovaPermdisp44.R}{\texttt{20260930\_RegenerarPermanovaPermdisp44.R}} (PERMANOVA y PERMDISP).}
 \label{tab:resumen-pruebas}
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{llccc}
 \hline
 Conjunto & Prueba & Estadístico & g.l. & Valor $p$ \\
@@ -414,48 +452,201 @@ Comunidad completa & F de varianzas       & $F = 0.132$ & 34, 17 & $< 0.001$ \\
 Géneros de eucariotas & t, varianzas iguales & $t = 1.139$ & 51 & 0.260 \\
 Géneros de eucariotas & t de Welch        & $t = 0.902$ & 20.2 & 0.378 \\
 Géneros de eucariotas & Wilcoxon-Mann-Whitney & $W = 318$ & -- & 0.963 \\
-Composición (Bray-Curtis) & PERMANOVA     & $F = 1.26$, $R^2 = 0.024$ & 1, 51 & 0.202 \\
+Composición (Bray-Curtis) & PERMANOVA     & $F = 1.26$, $R^2 = 0.024$ & 1, 51 & 0.167 \\
+Composición (Jaccard)     & PERMANOVA     & $F = 1.24$, $R^2 = 0.024$ & 1, 51 & 0.170 \\
+Dispersión (Bray-Curtis)  & PERMDISP      & $F = 5.10$ & 1, 51 & 0.023 \\
+\hline
+\end{tabular}}
+\end{table}
+
+\subsection{Sensibilidad a la normalización y la rarefacción}
+\label{sec:res-normalizacion}
+
+Las muestras saludables tienen más lecturas que las no saludables (Figura \ref{fig:barras-lecturas}),
+y los índices de riqueza dependen del esfuerzo de muestreo. Para separar el efecto de la profundidad
+del efecto del estado de la planta se aplicaron las tres estrategias descritas en la Sección
+\ref{sec:met-normalizacion}; la Figura \ref{fig:rarefaccion} y la Tabla \ref{tab:rarefaccion}
+resumen los resultados.
+
+Las curvas de rarefacción (panel A) se aplanan mucho antes de la profundidad mínima del conjunto,
+4.05 millones de lecturas: a esa profundidad cada muestra ya ha detectado en promedio el 96.6\% de
+su riqueza observada final, y la que menos, el 94.8\%. El muestreo está saturado en todas las
+muestras, de modo que secuenciar más no habría cambiado sustancialmente el inventario de taxones. Las
+curvas de los dos grupos se superponen por completo; no hay un grupo que acumule taxones más rápido
+que el otro.
+
+Al rarificar todas las muestras a 4~053~295 lecturas con la semilla 2026 se perdieron 44 de los
+9~003 taxones, que quedaron sin lecturas en todas las muestras. El panel B muestra la diversidad alfa
+sobre los datos rarificados. Los índices de Shannon y Simpson no cambian, como corresponde a
+medidas que dependen solo de las proporciones: las medias de Shannon pasan de 7.478 y 7.417 a 7.478 y
+7.416, y la prueba de Welch da exactamente el mismo valor ($t = 1.499$, $p = 0.150$). Los índices
+de riqueza sí cambian, y en la dirección esperada: la diferencia de riqueza observada entre grupos
+se reduce de 26 a 12 taxones y la de Chao1 de 16 a 3, y los valores $p$ de Welch suben de 0.39 a
+0.55 y de 0.41 a 0.84, respectivamente. Es decir, la parte de la tendencia hacia mayor riqueza en las
+plantas saludables que se observaba en los datos originales se explica en buena medida por su mayor
+profundidad, mientras que la tendencia en Shannon, pequeña y no significativa, es independiente de
+ella. La mayor varianza del grupo no saludable se mantiene tras rarificar ($F = 0.133$, $p < 0.001$).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Img/cap3/Rarefaccion_Normalizacion.png}
+\caption{Rarefacción. A) Curvas de rarefacción de las 53 muestras filtradas: número esperado de
+taxones en función del número de lecturas submuestreadas. La línea punteada marca la profundidad
+mínima del conjunto, a la que se rarificaron todas las muestras. Las curvas se aplanan antes de esa
+profundidad y los dos grupos se superponen. B) Diversidad alfa calculada sobre los datos rarificados
+a 4.05 millones de lecturas. Shannon y Simpson son idénticos a los de los datos originales; la
+diferencia de riqueza entre grupos se reduce.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261001_RegenerarRarefaccionNormalizacion416.R}{(Script: \texttt{20261001\_RegenerarRarefaccionNormalizacion416.R})}}
+\label{fig:rarefaccion}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\caption{Efecto de la rarefacción sobre los índices de diversidad alfa y las pruebas entre grupos.
+Medias por grupo y valores $p$ de la prueba de Welch y de Mann-Whitney, sobre los datos originales y
+sobre los datos rarificados a 4~053~295 lecturas. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261001_RegenerarRarefaccionNormalizacion416.R}{(Script: \texttt{20261001\_RegenerarRarefaccionNormalizacion416.R})}}
+\label{tab:rarefaccion}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llcccc}
+\hline
+Índice & Datos & \multicolumn{2}{c}{Media} & \multicolumn{2}{c}{Valor $p$} \\
+       &       & saludable & no saludable & Welch & Mann-Whitney \\
+\hline
+Riqueza observada & originales  & 8639.9 & 8613.7 & 0.394 & 0.606 \\
+Riqueza observada & rarificados & 8342.9 & 8331.3 & 0.546 & 0.293 \\
+Chao1             & originales  & 8767.6 & 8751.6 & 0.407 & 0.583 \\
+Chao1             & rarificados & 8590.1 & 8587.1 & 0.843 & 0.993 \\
+Shannon           & originales  & 7.478  & 7.417  & 0.150 & 0.259 \\
+Shannon           & rarificados & 7.478  & 7.416  & 0.150 & 0.275 \\
+Simpson           & originales  & 0.998  & 0.997  & 0.261 & 0.635 \\
+Simpson           & rarificados & 0.998  & 0.997  & 0.261 & 0.596 \\
+\hline
+\end{tabular}
+\end{table}
+
+La normalización TMM produjo factores de escala entre 0.83 y 1.20, es decir, correcciones
+composicionales moderadas. Como se anticipó en la Sección \ref{sec:normalizacion}, no altera los
+índices de diversidad alfa, por lo que su efecto se evaluó sobre el PERMANOVA
+(Tabla \ref{tab:normalizacion-permanova}). Con abundancias relativas y con datos rarificados el
+resultado es el mismo ($R^2 = 0.024$, $p = 0.167$); con TMM la fracción explicada baja a 0.020 y el
+valor $p$ sube a 0.364. En ninguna de las tres versiones el estado de la planta explica una fracción
+distinguible del azar. La conclusión sobre la composición no depende, por lo tanto, de la estrategia
+de normalización elegida.
+
+\begin{table}[H]
+\centering
+\caption{PERMANOVA sobre la disimilitud de Bray-Curtis con tres normalizaciones de la tabla de
+conteos. Un factor (estado de la planta), 999 permutaciones, semilla 2026. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261001_RegenerarRarefaccionNormalizacion416.R}{(Script: \texttt{20261001\_RegenerarRarefaccionNormalizacion416.R})}}
+\label{tab:normalizacion-permanova}
+\begin{tabular}{lccc}
+\hline
+Normalización & pseudo-$F$ & $R^2$ & $p$ \\
+\hline
+Abundancias relativas (TSS)      & 1.26 & 0.024 & 0.167 \\
+TMM                              & 1.04 & 0.020 & 0.364 \\
+Rarefacción a profundidad común  & 1.26 & 0.024 & 0.167 \\
 \hline
 \end{tabular}
 \end{table}
 
 %% ----------------------------------------------------------------------------
-\section{Patrones asociados con el estado de salud de la planta}
+\section[Patrones asociados con el estado de salud]{Patrones asociados con el estado de salud de la planta}
 \label{sec:res-patrones}
 %% ----------------------------------------------------------------------------
 
 Aunque ninguna prueba sobre los índices agregados alcanzó significancia, el análisis por niveles
-dejó tres patrones consistentes que se reúnen aquí como respuesta al tercer objetivo. Son
-observaciones descriptivas, obtenidas por inspección de las abundancias relativas y de la dispersión
-de los índices, y no resultados de pruebas de abundancia diferencial; su valor es orientar los
-modelos y los muestreos futuros que se discuten en los Capítulos 5 y 6.
+dejó algunos patrones que se reúnen aquí como respuesta al tercer objetivo. Primero se contrasta
+cuantitativamente la proporción de \textit{Fusarium} y de los demás géneros candidatos identificados
+en la exploración, y después se describe el patrón de heterogeneidad del grupo no saludable, que es
+el resultado más sólido del trabajo. Su valor es orientar los modelos y los muestreos futuros que
+se discuten en los Capítulos 5 y 6.
 
 \subsection{Taxones candidatos}
+\label{sec:res-candidatos}
 
-La Tabla \ref{tab:taxones-candidatos} reúne los taxones cuya abundancia relativa mostró una
-tendencia consistente en un mismo sentido a lo largo de los niveles taxonómicos explorados. Los
-taxones asociados con el grupo saludable son géneros bacterianos documentados como promotores del
-crecimiento vegetal o agentes de biocontrol \citep{berendsen2012rhizosphere, nam2023multidisciplinary}; los asociados con el grupo no saludable son géneros
-que incluyen fitopatógenos de la fresa \citep{yang2020comparison}. Las diferencias de abundancia relativa entre grupos son
-pequeñas en todos los casos, y se identificaron sin corrección por comparaciones múltiples, por lo
-que deben considerarse hipótesis por confirmar.
+\subsubsection{Proporción de \textit{Fusarium}}
+
+\textit{Fusarium} es el género que motivó buena parte del análisis: incluye a los agentes causales de
+la marchitez de la fresa, y las plantas del grupo no saludable fueron etiquetadas precisamente por
+estar marchitas. Si la marchitez observada se debiera a \textit{Fusarium}, sería esperable una mayor
+proporción de lecturas de ese género en la rizósfera de esas plantas. Para comprobarlo se calculó,
+para cada muestra, el porcentaje de lecturas clasificadas asignadas a \textit{Fusarium} con dos
+denominadores: todas las lecturas clasificadas de la muestra y únicamente las lecturas asignadas a
+eucariotas (Figura \ref{fig:fusarium}, paneles A y B). El denominador importa porque los eucariotas
+representan en promedio solo el 0.64\% de las lecturas clasificadas, de modo que un mismo número de
+lecturas de \textit{Fusarium} es una fracción minúscula de la comunidad completa pero una fracción
+grande de la comunidad eucariota.
+
+Sobre la comunidad completa, \textit{Fusarium} representa en promedio el 0.136\% de las lecturas en
+las plantas saludables y el 0.151\% en las no saludables, con medianas de 0.119\% y 0.127\%. Las
+distribuciones se superponen casi por completo: el rango de las plantas saludables, de 0.07\% a
+0.23\%, contiene a la mayoría de las no saludables, y solo dos plantas marchitas tienen proporciones
+claramente mayores, de 0.31\% y 0.39\%. La prueba de Mann-Whitney no detecta diferencia
+($U = 317$, $p = 0.978$); el valor de $U$ es casi exactamente la mitad de los $35 \times 18 = 630$
+pares posibles, que es lo esperado si los dos grupos tuvieran la misma distribución. Dentro de la
+fracción eucariota el cuadro es el mismo: \textit{Fusarium} es el género eucariota dominante, con el
+21.1\% de las lecturas de eucariotas en las plantas saludables y el 22.3\% en las no saludables
+($p = 0.889$). La ligera diferencia de medias se debe por completo a las dos plantas marchitas
+atípicas, y desaparece en las medianas.
+
+\subsubsection{Géneros candidatos}
+
+El mismo procedimiento se aplicó a los seis géneros que la exploración por niveles había señalado
+como candidatos: los fitopatógenos \textit{Phytophthora} y \textit{Ralstonia}, y los géneros
+asociados con la promoción del crecimiento o el biocontrol \textit{Pseudomonas}, \textit{Bacillus},
+\textit{Streptomyces} y \textit{Paenibacillus} \citep{berendsen2012rhizosphere, nam2023multidisciplinary,
+spooren2024plant}. La Figura \ref{fig:fusarium}, panel C, y la Tabla \ref{tab:taxones-candidatos}
+muestran el resultado, que corrige las impresiones obtenidas de las gráficas de barras. Para
+\textit{Pseudomonas}, \textit{Bacillus}, \textit{Streptomyces} y \textit{Ralstonia} las medianas de los
+dos grupos difieren en menos del 10\% de su valor y ningún valor $p$ se acerca a la significancia;
+\textit{Pseudomonas} es incluso ligeramente más abundante en las plantas no saludables. La media de
+\textit{Paenibacillus} en el grupo no saludable, 0.95\%, está inflada por una sola muestra con 11.6\%;
+su mediana, 0.32\%, es igual a la del grupo saludable. El único género con una diferencia nominal es
+\textit{Phytophthora}: 0.060\% frente a 0.055\%, $p = 0.013$, y lo mismo ocurre con el filo Oomycota
+($p = 0.016$) y la familia Peronosporaceae ($p = 0.013$) que lo contienen. La dirección, sin embargo,
+es la contraria a la esperada para un patógeno, con mayor proporción en las plantas saludables, y la
+diferencia es pequeña. Al corregir los siete contrastes por comparaciones múltiples con el método de
+Benjamini-Hochberg \citep{benjamini1995controlling}, el valor $p$ ajustado de \textit{Phytophthora}
+es 0.10 y ninguna diferencia se mantiene.
+
+En conjunto, la comparación cuantitativa no respalda la existencia de géneros biomarcadores del
+estado de salud en estos datos: ni los patógenos esperados están enriquecidos en las plantas
+marchitas, ni los géneros benéficos lo están en las saludables. Las diferencias que sugerían las
+gráficas de barras eran efectos de la escala, de la aglomeración al 10\% y de unas pocas muestras
+atípicas.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Img/cap3/Proporciones_Fusarium.png}
+\caption{Proporción de \textit{Fusarium} y de los géneros candidatos por grupo. A) Porcentaje de las
+lecturas clasificadas de cada muestra asignadas a \textit{Fusarium}. B) El mismo porcentaje calculado
+sobre las lecturas asignadas a eucariotas. C) Porcentaje de las lecturas clasificadas asignadas a cada
+uno de los seis géneros candidatos; cada panel tiene su propia escala. En cada panel se indica el
+valor $p$ de la prueba de Mann-Whitney sin corrección.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261001_RegenerarProporcionesFusarium417.R}{(Script: \texttt{20261001\_RegenerarProporcionesFusarium417.R})}}
+\label{fig:fusarium}
+\end{figure}
 
 \begin{table}[H]
 \centering
-\caption{Taxones candidatos identificados por inspección de las abundancias relativas por nivel
-taxonómico. Se indica el grupo en el que la abundancia relativa tiende a ser mayor.}
+\caption{Porcentaje de lecturas clasificadas asignadas a \textit{Fusarium} y a los géneros candidatos,
+por grupo. Media y mediana por grupo, estadístico $U$ y valor $p$ de Mann-Whitney, y valor $p$
+ajustado por Benjamini-Hochberg sobre los siete contrastes. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261001_RegenerarProporcionesFusarium417.R}{(Script: \texttt{20261001\_RegenerarProporcionesFusarium417.R})}}
 \label{tab:taxones-candidatos}
-\begin{tabular}{llll}
+\small
+\begin{tabular}{lcccccc}
 \hline
-Reino & Nivel & Taxón & Mayor abundancia en \\
+Género & \multicolumn{2}{c}{Saludable} & \multicolumn{2}{c}{No saludable} & $p$ & $p$ ajustado \\
+       & media & mediana & media & mediana & & \\
 \hline
-Bacteria  & Género  & \textit{Pseudomonas}            & Saludable \\
-Bacteria  & Género  & \textit{Bacillus}               & Saludable \\
-Bacteria  & Especie & \textit{Paenibacillus polymyxa} & Saludable (muestras aisladas) \\
-Bacteria  & Género  & \textit{Ralstonia}              & No saludable \\
-Eukaryota & Género  & \textit{Fusarium}               & No saludable (0.144\% frente a 0.160\%) \\
-Eukaryota & Filo    & Oomycota                        & Saludable (0.066\% frente a 0.061\%) \\
-Eukaryota & Familia & Peronosporaceae                 & Saludable \\
+\textit{Fusarium}      & 0.136 & 0.119 & 0.151 & 0.127 & 0.978 & 0.978 \\
+\textit{Phytophthora}  & 0.060 & 0.062 & 0.055 & 0.056 & 0.013 & 0.100 \\
+\textit{Ralstonia}     & 0.195 & 0.185 & 0.191 & 0.174 & 0.221 & 0.589 \\
+\textit{Pseudomonas}   & 1.940 & 1.886 & 2.016 & 1.950 & 0.418 & 0.776 \\
+\textit{Bacillus}      & 0.113 & 0.107 & 0.115 & 0.093 & 0.485 & 0.776 \\
+\textit{Streptomyces}  & 12.95 & 12.99 & 12.50 & 12.41 & 0.609 & 0.812 \\
+\textit{Paenibacillus} & 0.349 & 0.338 & 0.955 & 0.320 & 0.147 & 0.587 \\
 \hline
 \end{tabular}
 \end{table}
@@ -467,15 +658,15 @@ El índice de Shannon de la comunidad completa tiene una desviación estándar d
 saludables y de 0.168 en las no saludables, y la prueba F rechaza la igualdad de varianzas con
 $p < 0.001$. El mismo patrón se repite en la diversidad alfa de bacterias por nivel
 (Figura \ref{fig:alpha-bacteria}), donde los valores del grupo no saludable se extienden mucho más
-que los del saludable en Shannon a nivel de género y especie. Es decir, las plantas saludables
-tienen comunidades parecidas entre sí, mientras que cada planta marchita se aleja de ese perfil a su
+que los del saludable en Shannon a nivel de género y especie. Y se repite en la composición
+completa: la prueba PERMDISP sobre Bray-Curtis (Figura \ref{fig:permanova}) muestra que las plantas no
+saludables están significativamente más lejos del centroide de su grupo ($p = 0.023$). Es decir, las
+plantas saludables tienen comunidades parecidas entre sí, mientras que cada planta marchita se aleja de ese perfil a su
 manera: algunas conservan una diversidad indistinguible de la de las plantas sanas y otras la
 pierden de forma marcada. Este resultado sugiere que la variable que mejor distingue a los grupos
 no es el nivel de diversidad sino su estabilidad, y que el diagnóstico del estado de salud a partir
 del microbioma tendría que apoyarse en la distancia de cada muestra al perfil saludable, más que en
 un umbral de diversidad.
-%% CAMI: una prueba de homogeneidad de dispersión multivariada (betadisper de vegan sobre
-%% Bray-Curtis) permitiría confirmar si esta mayor heterogeneidad se da también en la composición.
 
 \subsection{Dónde está y dónde no está la señal}
 
@@ -484,9 +675,40 @@ no está en la composición global de la comunidad, que el PERMANOVA atribuye en
 otros factores; no está en el nivel medio de los índices de diversidad, ni en la comunidad completa
 ni en la fracción eucariota; y no está en los filos dominantes, que tienen proporciones semejantes
 en todas las muestras. Lo que sí se observa es una tendencia débil pero consistente hacia mayor
-riqueza en las plantas saludables, presente en todos los niveles y reinos, una mayor heterogeneidad
-de las plantas no saludables, y un conjunto reducido de géneros con abundancias relativas
-ligeramente distintas entre grupos. Con 53 muestras y una potencia cercana a 0.5 para efectos
+riqueza en las plantas saludables, que la rarefacción atribuye en buena parte a la profundidad de
+secuenciación, y una mayor heterogeneidad de las plantas no saludables, confirmada tanto en la
+diversidad como en la composición. La señal tampoco está en los géneros candidatos: ni
+\textit{Fusarium} ni ningún otro género difiere entre grupos una vez que se cuantifica su
+proporción. Con 53 muestras y una potencia cercana a 0.5 para efectos
 moderados, estas tendencias no pueden confirmarse ni descartarse con las herramientas de este
 capítulo; el Capítulo 6 describe cómo el modelado con redes bayesianas y la simulación de
 metagenomas pueden llevar la pregunta más lejos.
+
+%% ----------------------------------------------------------------------------
+\section[Material didáctico: taller práctico]{Material didáctico: taller práctico del análisis estadístico}
+\label{sec:res-taller}
+%% ----------------------------------------------------------------------------
+
+El cuarto objetivo específico fue convertir el análisis de este capítulo en una clase práctica que
+pueda impartirse y reproducirse sin más requisitos que un navegador. El resultado es el cuaderno
+\texttt{Taller\_Practico\_\allowbreak Analisis\_estadistico\_\allowbreak de\_Datos\_\allowbreak Metagenomicos.ipynb}, disponible en la
+carpeta \texttt{Taller\_Practico} del repositorio de la tesis, escrito en Python para ejecutarse en
+Google Colab (Sección 1.5.3). Está diseñado para una sesión de 50 minutos y se organiza en ocho
+secciones que siguen el orden de este capítulo: carga y filtro de los datos; la idea de prueba de
+hipótesis y del valor $p$ construida con una simulación por permutaciones; diversidad de Shannon
+con las pruebas t y de Welch, incluida la verificación de supuestos; las pruebas de Mann-Whitney y
+de Wilcoxon de rangos con signo, con énfasis en cuándo corresponde cada una; la proporción de
+\textit{Fusarium} por grupo; el PERMANOVA y el PERMDISP programados paso a paso a partir de la
+matriz de Bray-Curtis; y un cierre con la tabla resumen de todas las pruebas.
+
+Los datos del taller son los mismos de la tesis, reducidos a tres tablas de texto que se descargan
+desde el repositorio con una sola instrucción: los metadatos de las 58 muestras, los cuatro índices
+de diversidad alfa por muestra calculados con phyloseq, y los conteos por género. Todos los
+resultados que obtiene el estudiante coinciden con los de la Tabla \ref{tab:resumen-pruebas}. El
+cuaderno incluye siete ejercicios con la solución oculta en un desplegable, que van desde explorar
+los datos hasta redactar un párrafo de resultados, y aprovecha dos lecciones surgidas durante la
+tesis: la comprobación de que los identificadores de muestra coinciden antes de unir dos tablas, y
+el hecho de que los mismos datos producen valores $p$ de 0.04, 0.058, 0.15 y 0.26 según la prueba
+que se aplique, de modo que la respuesta válida es la de la prueba cuyos supuestos se cumplen y no
+la que da el valor $p$ más pequeño. Todos los procedimientos aleatorios del taller usan la misma
+semilla que la tesis.

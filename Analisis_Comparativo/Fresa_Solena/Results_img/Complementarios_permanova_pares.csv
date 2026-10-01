@@ -1,0 +1,11 @@
+"grupo1","grupo2","R2","p","p_BH"
+"Cultivo saludable","Cultivo marchito",0.024,0.167,0.186
+"Cultivo saludable","Cerca del cultivo",0.326,0.001,0.002
+"Cultivo saludable","Suelo no cultivado",0.302,0.001,0.002
+"Cultivo saludable","Bosque degradado",0.245,0.001,0.002
+"Cultivo marchito","Cerca del cultivo",0.303,0.001,0.002
+"Cultivo marchito","Suelo no cultivado",0.271,0.001,0.002
+"Cultivo marchito","Bosque degradado",0.222,0.001,0.002
+"Cerca del cultivo","Suelo no cultivado",0.06,0.257,0.257
+"Cerca del cultivo","Bosque degradado",0.237,0.003,0.004
+"Suelo no cultivado","Bosque degradado",0.18,0.008,0.01

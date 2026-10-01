@@ -1,3 +1,100 @@
-\chapter{Codigos}
+\chapter[Procedencia de figuras y tablas]{Procedencia de las figuras, tablas y resultados}
+\label{ap:procedencia}
 
-Cosas.
+Todas las figuras y tablas con resultados de esta tesis se generan con scripts de R que están en
+la carpeta \texttt{Analisis\_Comparativo/\allowbreak Fresa\_Solena/} del repositorio público de la tesis:
+\begin{center}
+\url{https://github.com/CamilaSilva1995/Tesis_Maestria}
+\end{center} Cada leyenda incluye el enlace
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/tree/main/Analisis_Comparativo/Fresa_Solena}{(Script)}
+al archivo que la produjo. Los scripts de 2026 siguen la convención
+\texttt{AAAAMMDD\_Regenerar<Contenido><Figura>.R}, donde el sufijo numérico es el número de la
+figura en la tesis sin el punto (por ejemplo, \texttt{...BarrasFilo45.R} genera la Figura 4.5 y
+\texttt{...RedesMuestras32.R} la Figura 3.2). Todos fijan la semilla 2026 antes de cualquier
+procedimiento aleatorio, guardan la imagen a 300 dpi en \texttt{latex/Img/} y una copia en
+\texttt{Results\_img/}, y toman la paleta de colores, el tema gráfico y el cargador de datos del
+archivo común \texttt{\_paleta\_tesis.R} (o \texttt{\_cargar\_complementarios.R} para los conjuntos
+complementarios). Los scripts de 2023 (prefijo \texttt{2023MMDD\_}) y los reportes
+\texttt{01\_} a \texttt{13\_*.Rmd} son el análisis exploratorio original; las versiones de 2026
+reproducen sus cálculos sobre los mismos datos y corrigen los errores descritos en el
+Capítulo~\ref{Resultados}. Las Tablas \ref{tab:proc-figuras} y \ref{tab:proc-tablas} indican de
+dónde sale cada figura y cada tabla.
+
+\begin{table}[H]
+\centering
+\caption{Script y archivo de imagen de cada figura (archivos en \texttt{latex/Img/cap1/}, \texttt{cap2/} o \texttt{cap3/} según el capítulo; scripts en \texttt{Analisis\_Comparativo/Fresa\_Solena/}). Los diagramas de los capítulos 1 y 3 son de
+elaboración propia y no tienen script. ``Data1'' es el conjunto principal (53 muestras filtradas);
+``Data\_all'' y ``Data3'' son los conjuntos complementarios de la Sección \ref{sec:met-complementarios}.}
+\label{tab:proc-figuras}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{cp{4.3cm}p{4.9cm}p{1.5cm}}
+\hline
+Fig. & Archivo & Script & Datos \\
+\hline
+1.1 & \texttt{taxonomic.png} & diagrama propio & -- \\
+1.2 & \texttt{Phyloseq.png} & diagrama propio & -- \\
+1.3 & \texttt{pruebat\_explicacion.png} & \texttt{20260919\_Regenerar}\newline\texttt{PruebatExplicacion13.R} & -- \\
+3.1 & \texttt{preprosecamiento.png} & diagrama propio (\texttt{01\_Exploracion.Rmd}) & Data1 \\
+3.2 & \texttt{Redes\_muestras.png} & \texttt{20261002\_Regenerar}\newline\texttt{RedesMuestras32.R} & Data1 \\
+3.3 & \texttt{Redes\_coocurrencia.png} & \texttt{20261002\_Regenerar}\newline\texttt{RedesCoocurrencia33.R} & Data1, Redes/ \\
+3.4 & \texttt{Complementarios\_alfa.png} & \texttt{20261002\_Regenerar}\newline\texttt{Complementarios34.R} & Data\_all \\
+3.5 & \texttt{Complementarios\_beta.png} & \texttt{20261002\_Regenerar}\newline\texttt{Complementarios35.R} & Data\_all \\
+3.6 & \texttt{Complementarios\_nativo.png} & \texttt{20261002\_Regenerar}\newline\texttt{Complementarios36.R} & Data3 \\
+4.1 & \texttt{AlphaDiversity\_}\newline\texttt{CrudosFiltrados.png} & \texttt{20260924\_Regenerar}\newline\texttt{AlphaCrudosFiltrados41.R} & Data1 \\
+4.2 & \texttt{Barras.png} & \texttt{20260924\_Regenerar}\newline\texttt{BarrasLecturas42.R} & Data1 \\
+4.3 & \texttt{BetaDiversity.png} & \texttt{20260924\_Regenerar}\newline\texttt{BetaDiversity43.R} & Data1 \\
+4.4 & \texttt{PERMANOVA\_PERMDISP.png} & \texttt{20260930\_Regenerar}\newline\texttt{PermanovaPermdisp44.R} & Data1 \\
+4.5 & \texttt{BarrasFilo.png} & \texttt{20260919\_Regenerar}\newline\texttt{BarrasFilo45.R} & Data1 \\
+4.6 & \texttt{BarrasFilo\_}\newline\texttt{blackandwhite.png} & \texttt{20260906\_Regenerar}\newline\texttt{BarrasFiloBN46.R} & Data1 \\
+4.7 & \texttt{Barras\_Eukarya10.png} & \texttt{20260924\_Regenerar}\newline\texttt{BarrasEukarya47.R} & Data1 \\
+4.8 & \texttt{Alpha\_Eukarya.png} & \texttt{20260919\_Regenerar}\newline\texttt{AlphaEukarya48.R} & Data1 \\
+4.9 & \texttt{Beta\_Eukarya.png} & \texttt{20260919\_Regenerar}\newline\texttt{BetaEukarya49.R} & Data1 \\
+4.10 & \texttt{Barras\_Bacteria10.png} & \texttt{20260919\_Regenerar}\newline\texttt{BarrasBacteria410.R} & Data1 \\
+4.11 & \texttt{Alpha\_Bacteria.png} & \texttt{20260919\_Regenerar}\newline\texttt{AlphaBacteria411.R} & Data1 \\
+4.12 & \texttt{Beta\_Bacteria.png} & \texttt{20260919\_Regenerar}\newline\texttt{BetaBacteria412.R} & Data1 \\
+4.13 & \texttt{tTest\_Shannon.png} & \texttt{20260919\_Regenerar}\newline\texttt{TTestShannon413.R} & Data1 \\
+4.14 & \texttt{tTest\_Shannon\_Fusarium.png} & \texttt{20260919\_Regenerar}\newline\texttt{TTestFusarium414.R} & Data1 \\
+4.15 & \texttt{Wilcoxon\_Shannon.png} & \texttt{20260919\_Regenerar}\newline\texttt{WilcoxonShannon415.R} & Data1 \\
+4.16 & \texttt{Rarefaccion\_}\newline\texttt{Normalizacion.png} & \texttt{20261001\_Regenerar}\newline\texttt{RarefaccionNormalizacion416.R} & Data1 \\
+4.17 & \texttt{Proporciones\_Fusarium.png} & \texttt{20261001\_Regenerar}\newline\texttt{ProporcionesFusarium417.R} & Data1 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Script que calcula los valores de cada tabla y archivo \texttt{.csv} con los resultados,
+guardado en \texttt{Analisis\_Comparativo/Fresa\_Solena/Results\_img/}. Los valores de la
+Tabla \ref{tab:resumen-pruebas} se imprimen en la consola de los scripts indicados.}
+\label{tab:proc-tablas}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{cp{3.0cm}p{4.7cm}p{3.0cm}}
+\hline
+Tabla & Contenido & Script & Resultados (\texttt{.csv}) \\
+\hline
+\ref{tab:lecturas-muestra} & Lecturas por muestra & \texttt{01\_Exploracion.Rmd} (\texttt{sample\_sums}) & -- \\
+\ref{tab:redes-metricas} & Métricas de la red SparCC & \texttt{20261002\_Regenerar}\newline\texttt{RedesCoocurrencia33.R} & \texttt{Redes\_metricas.csv} \\
+\ref{tab:comp-pares} & PERMANOVA por pares, cinco categorías & \texttt{20261002\_Regenerar}\newline\texttt{Complementarios35.R} & \texttt{Complementarios\_}\newline\texttt{permanova\_pares.csv}, \texttt{Complementarios\_}\newline\texttt{permanova.csv} \\
+\ref{tab:alfa-medias} & Medias de diversidad alfa por grupo & \texttt{20260924\_Regenerar}\newline\texttt{AlphaCrudosFiltrados41.R} & -- \\
+\ref{tab:resumen-pruebas} & Resumen de pruebas de hipótesis & \texttt{...TTestShannon413.R}, \texttt{...TTestFusarium414.R}, \texttt{...WilcoxonShannon415.R}, \texttt{...PermanovaPermdisp44.R} & \texttt{PERMANOVA\_PERMDISP\_}\newline\texttt{resultados.csv} \\
+\ref{tab:rarefaccion} & Efecto de la rarefacción & \texttt{20261001\_Regenerar}\newline\texttt{RarefaccionNormalizacion416.R} & \texttt{Rarefaccion\_}\newline\texttt{pruebas.csv} \\
+\ref{tab:normalizacion-permanova} & PERMANOVA con tres normalizaciones & \texttt{20261001\_Regenerar}\newline\texttt{RarefaccionNormalizacion416.R} & \texttt{Normalizacion\_}\newline\texttt{PERMANOVA.csv} \\
+\ref{tab:taxones-candidatos} & Proporciones de \textit{Fusarium} y géneros candidatos & \texttt{20261001\_Regenerar}\newline\texttt{ProporcionesFusarium417.R} & \texttt{Proporciones\_generos\_}\newline\texttt{candidatos.csv} \\
+\hline
+\end{tabular}
+\end{table}
+
+Los resultados numéricos citados en el texto que no están en una tabla (potencia estadística,
+tamaño del efecto, prueba de Shapiro-Wilk, fracción de aristas dentro de cada grupo en las redes
+de muestras, Kruskal-Wallis y Mann-Whitney de los conjuntos complementarios) se imprimen en la
+consola de los scripts correspondientes:
+\begin{itemize}
+\item \texttt{Articulo\_Popayan/calculos/Potencia\_estadistica.R}:\\ potencia y tamaño del efecto;
+\item \texttt{20260919\_RegenerarTTestShannon413.R}:\\ Shapiro-Wilk, prueba F y Mann-Whitney sobre Shannon;
+\item \texttt{20261002\_RegenerarRedesMuestras32.R}:\\ fracción de aristas dentro de cada grupo;
+\item \texttt{20261002\_RegenerarComplementarios34.R} y \texttt{...36.R}:\\ Kruskal-Wallis y Mann-Whitney de los conjuntos complementarios.
+\end{itemize}
+Las fórmulas del Capítulo~\ref{Preliminares} se verificaron numéricamente contra phyloseq y vegan
+en \texttt{Articulo\_Popayan/calculos/Verificacion\_formulas.R}.

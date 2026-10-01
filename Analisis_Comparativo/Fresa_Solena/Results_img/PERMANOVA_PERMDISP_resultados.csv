@@ -1,0 +1,4 @@
+"prueba","disimilitud","estadistico","R2","gl","permutaciones","p"
+"PERMANOVA","Bray-Curtis",1.262,0.0242,"1, 51",999,0.167
+"PERMANOVA","Jaccard cuantitativo",1.236,0.0237,"1, 51",999,0.17
+"PERMDISP","Bray-Curtis",5.095,NA,"1, 51",999,0.023

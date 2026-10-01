@@ -1,3 +1,62 @@
-\chapter{Imagenes}
+\chapter[Datos, entorno y reproducción]{Datos, entorno de cómputo y reproducción}
+\label{ap:datos}
 
-Cosas.
+\section*{Datos}
+
+Los metagenomas de rizósfera de fresa fueron proporcionados por la empresa Solena, con Obed
+Ramírez Sánchez como contacto, ya clasificados taxonómicamente con Kraken. En el repositorio,
+la carpeta \texttt{Data/fresa\_solena/} contiene los reportes de Kraken por muestra, las estadísticas
+de calidad de fastp y las tablas BIOM construidas con \texttt{kraken-biom}
+(Tabla \ref{tab:datos-conjuntos}). El conjunto \texttt{Data1} es el que se analiza en los
+Capítulos \ref{Metodologia} y \ref{Resultados}; \texttt{Data\_all} y \texttt{Data3} se usan solo en
+la Sección \ref{sec:met-complementarios}.
+
+\begin{table}[H]
+\centering
+\caption{Conjuntos de datos del repositorio. En \texttt{Data1} el filtro de calidad elimina las
+muestras con menos de 25 millones de lecturas tras fastp (columna \texttt{Reads\_A} de
+\texttt{fastp\_kraken\_summary.csv}): MP2079, MP2080, MP2088, MP2109 y MP2137.}
+\label{tab:datos-conjuntos}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lcp{3.1cm}p{4.0cm}}
+\hline
+Carpeta & Muestras & Archivo BIOM & Categorías \\
+\hline
+\texttt{Data1/} & 58 (53 filtradas) & \texttt{fresa\_kraken.biom} & saludable (35), no saludable (18) \\
+\texttt{Data2/} & 27 & \texttt{fresa\_kraken.biom} & cerca del cultivo (10), suelo no cultivado (10), bosque degradado (7) \\
+\texttt{Data3/} & 8 & \texttt{crop\_vs\_native\_}\newline\texttt{kraken.biom} & cultivo (4), suelo nativo (4) \\
+\texttt{Data\_all/} & 85 (80 filtradas) & \texttt{fresa\_kraken\_}\newline\texttt{all.biom} & las de Data1 y Data2, cinco categorías \\
+\hline
+\end{tabular}
+\end{table}
+
+Los metadatos de cada conjunto están en su \texttt{metadata.csv}, con el identificador de la
+muestra y su categoría. Las salidas de MicNet y Alnitak para las redes de coocurrencia están en
+\texttt{Data1/Redes/}.
+
+\section*{Entorno de cómputo}
+
+Los análisis se ejecutaron en R 4.3.3 con phyloseq 1.46.0, vegan 2.6.8, ggplot2 3.5.1,
+igraph 2.1.3, edgeR 4.0.16, cowplot 1.1.3, reshape2 1.4.4 y RColorBrewer 1.1.3. Las redes de
+coocurrencia SparCC se calcularon con MicNet y Alnitak (Sección \ref{sec:met-redes}). El taller de la
+Sección \ref{sec:res-taller} usa Python 3 con numpy, pandas, scipy y matplotlib en Google Colab.
+La semilla de todos los procedimientos aleatorios (NMDS, permutaciones del PERMANOVA y del
+PERMDISP, rarefacción, trazado de redes) es 2026.
+
+\section*{Cómo reproducir una figura}
+
+Desde la raíz del repositorio, cada figura se regenera ejecutando su script; por ejemplo, para la
+Figura \ref{fig:permanova}:
+
+\begin{lstlisting}[basicstyle=\small\ttfamily]
+cd Analisis_Comparativo/Fresa_Solena
+Rscript 20260930_RegenerarPermanovaPermdisp44.R
+\end{lstlisting}
+
+El script imprime los resultados numéricos en la consola, guarda la imagen en
+\texttt{latex/Img/cap3/PERMANOVA\_PERMDISP.png} y en \texttt{Results\_img/}, y escribe los valores
+en \texttt{Results\_img/PERMANOVA\_PERMDISP\_resultados.csv}. Las ordenaciones NMDS, que tardan
+varios minutos, se guardan en archivos \texttt{.rds} dentro de \texttt{Results\_img/}; borrarlos
+fuerza el recálculo. La tesis se compila con \texttt{pdflatex} y \texttt{bibtex} desde
+\texttt{latex/main.tex}.

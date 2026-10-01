@@ -29,6 +29,7 @@
 
 \usepackage{svg}
 \usepackage{listings}
+\lstset{breaklines=true, breakatwhitespace=false, postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space}}
 
 \begin{document}
 
@@ -221,9 +222,9 @@ Para describir y modelar los datos metagenómicos, se calcularon índices de div
 
 Para la validación estadística, se aplicaron pruebas de hipótesis como Mann-Whitney \cite{wackerly2002estadistica}. Los resultados mostraron que las plantas saludables presentan una mayor diversidad microbiana en comparación con las no saludables. Sin embargo, las pruebas de hipótesis no fueron concluyentes, ya que las diferencias observadas en la diversidad microbiana no alcanzaron un nivel de significancia suficiente para establecer una separación categórica entre los grupos. \\
 
-A pesar de esto, las métricas de diversidad alfa y beta permitieron identificar tendencias generales en la composición microbiana, sugiriendo que otros factores pueden influir en la estructura de la comunidad rizosférica. A nivel taxonómico, se observó una reducción en la abundancia de ciertos filos microbianos en plantas no saludables, lo que indica una posible relación entre la composición del microbioma y la estabilidad agronómica del cultivo. \\
+A pesar de esto, el análisis permitió identificar un patrón consistente: las plantas no saludables son significativamente más heterogéneas entre sí, tanto en su diversidad como en su composición, mientras que las saludables se parecen unas a otras. En cambio, la proporción de \textit{Fusarium} y de otros géneros candidatos, patógenos y benéficos, resultó prácticamente igual en ambos grupos, de modo que el estado de salud no se refleja en la abundancia de taxones particulares sino en la estabilidad del conjunto. \\
 
-En particular, las plantas saludables albergan una microbiota más diversa y equilibrada, mientras que las no saludables presentan un incremento de microorganismos patógenos, reflejando un desequilibrio microbiano que podría comprometer la productividad agrícola. \\
+Estos resultados indican que, con el tamaño de muestra disponible, la señal del estado de salud es débil y se concentra en la variabilidad de la comunidad; la tesis cuantifica esa limitación mediante un análisis de potencia y propone, como trabajo futuro, modelos de redes bayesianas y la simulación de metagenomas para fortalecer el análisis. \\
 
 Este estudio enfatiza la importancia de integrar herramientas matemáticas, estadísticas avanzadas y ciencia de datos en la caracterización del microbioma rizosférico, permitiendo modelar y predecir su influencia en la salud del suelo agrícola. Los hallazgos pueden contribuir a la optimización de prácticas agrícolas basadas en microbiomas, promoviendo la sostenibilidad y eficiencia en la producción de cultivos. \\
 

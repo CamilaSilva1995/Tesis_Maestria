@@ -1,4 +1,5 @@
 \chapter{Preliminares}
+\label{Preliminares}
 La ciencia de datos es el campo que aplica técnicas analíticas avanzadas y 
 principios científicos para extraer información valiosa de los datos. 
 Su objetivo principal es la extracción, el análisis y la comunicación de 
@@ -32,11 +33,11 @@ taxonómicos: Reino, Phylum, Clase, Orden, Familia, Género y Especie. Posterior
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.3]{Img/cap1/taxonomic.png}
+\caption{Representación jerárquica de los niveles taxonómicos usados para la clasificación y el análisis de datos metagenómicos. Diagrama de elaboración propia.}
 \label{Fig 1.1}
-\caption{Representación Jerárquica de los Niveles Taxonómicos para la Clasificación y Análisis de Datos Metagenómicos}
 \end{figure}
 
-Los niveles taxonómicos \ref{Fig 1.1} son categorías jerárquicas utilizadas para clasificar organismos, desde los grupos más generales hasta los más específicos. El Reino es el nivel más amplio y agrupa organismos según características fundamentales, como ser procariotas o eucariotas. Dentro de cada reino, los organismos se subdividen en Filos, que los organizan según estructuras o procesos biológicos compartidos. Estos se clasifican en Clases, que reúnen grupos más específicos de organismos. A su vez, las clases se dividen en Órdenes, que contienen familias relacionadas. Las Familias agrupan Géneros, que son conjuntos de especies estrechamente relacionadas. Finalmente, la Especie es el nivel más específico, que incluye organismos capaces de reproducirse entre sí y producir descendencia viable. Esta jerarquía es esencial para organizar la biodiversidad y estudiar las relaciones evolutivas entre los organismos.\\
+Los niveles taxonómicos (Figura \ref{Fig 1.1}) son categorías jerárquicas utilizadas para clasificar organismos, desde los grupos más generales hasta los más específicos. El Reino es el nivel más amplio y agrupa organismos según características fundamentales, como ser procariotas o eucariotas. Dentro de cada reino, los organismos se subdividen en Filos, que los organizan según estructuras o procesos biológicos compartidos. Estos se clasifican en Clases, que reúnen grupos más específicos de organismos. A su vez, las clases se dividen en Órdenes, que contienen familias relacionadas. Las Familias agrupan Géneros, que son conjuntos de especies estrechamente relacionadas. Finalmente, la Especie es el nivel más específico, que incluye organismos capaces de reproducirse entre sí y producir descendencia viable. Esta jerarquía es esencial para organizar la biodiversidad y estudiar las relaciones evolutivas entre los organismos.\\
 
 \section{Microbioma}
 El microbioma se define como la comunidad completa de microorganismos (incluyendo bacterias, arqueas, hongos, 
@@ -165,6 +166,19 @@ diversidad microbiana del suelo rizosférico de la fresa, incluyendo una reducci
 general de la riqueza microbiana. Esto refuerza la idea de que las alteraciones 
 en el microbioma pueden estar asociadas con la aparición o progresión de enfermedades. \\
 
+Trabajos más recientes han precisado este cuadro. En fresa, la invasión por \textit{Fusarium}
+reduce la diversidad bacteriana y fúngica de los tejidos y la rizósfera, y disminuye la abundancia
+relativa de géneros benéficos como \textit{Bacillus}, \textit{Streptomyces} y \textit{Trichoderma}
+\citep{yang2023fusarium}; la pudrición radicular produce cambios semejantes en la rizósfera
+\citep{zhang2023rhizosphere}. Un metaanálisis de rizósferas con marchitez por \textit{Fusarium} en
+distintos cultivos encontró que la infección modifica de forma reproducible la composición
+bacteriana \citep{su2025general}. A escala continental, se ha mostrado que las plantas enfermas no
+solo cambian de composición sino que se vuelven más heterogéneas entre sí, en concordancia con el
+principio de Anna Karenina \citep{li2026anna}. Estos resultados se enmarcan en la idea de que la
+planta recluta activamente microbiomas supresores de enfermedad, en los que \textit{Pseudomonas},
+\textit{Bacillus} y \textit{Streptomyces} tienen un papel central \citep{spooren2024plant}, y de que la
+pérdida de ese equilibrio, o disbiosis, favorece a los patógenos \citep{du2024microbiome}. \\
+
 Además, diversas especies de bacterias y hongos han sido identificadas como patógenos
 relevantes en fresa, como \textit{Colletotrichum sp.}, \textit{Alternaria sp.}, \textit{Botrytis cinerea}
 y \textit{Dactylonectria sp.}. No obstante, también se han reportado microorganismos benéficos
@@ -278,9 +292,32 @@ de los datos metagenómicos. \citep{mcmurdie2013phyloseq}\\
 \includegraphics[width=\textwidth]{Img/cap1/Phyloseq.png}
 \caption{Estructura del Objeto Phyloseq: Organización Integral de Datos Metagenómicos para Análisis de Diversidad
 Microbiana, que integra tablas de abundancia, datos taxonómicos, metadatos de las muestras y árboles filogenéticos.
-Este formato permite un análisis eficiente y completo de las comunidades microbianas.}
-%\citep{castro2020phyloseq})}
+Este formato permite un análisis eficiente y completo de las comunidades microbianas. Diagrama de elaboración propia a partir de \citet{mcmurdie2013phyloseq}.}
+\label{fig:phyloseq}
 \end{figure}
+
+\subsection{Python y Google Colab}
+Python es un lenguaje de programación de propósito general que se ha convertido en una de las
+herramientas más usadas en ciencia de datos, gracias a un ecosistema de bibliotecas de código
+abierto: NumPy para el cálculo numérico con arreglos \citep{harris2020array}, pandas para la
+manipulación de tablas \citep{mckinney2010data}, SciPy para estadística y cómputo científico
+\citep{virtanen2020scipy} y Matplotlib para la visualización \citep{hunter2007matplotlib}. A
+diferencia de R, cuyo ecosistema para microbiomas está más desarrollado (phyloseq, vegan), Python
+destaca por su sintaxis legible, su uso extendido en aprendizaje automático y la facilidad para
+escribir desde cero los algoritmos que se quieren enseñar. En esta tesis Python se utilizó para
+el simulador de lecturas PyMetaSeem (Capítulo 6), para las herramientas de comparación de
+clasificadores taxonómicos y para el taller práctico que acompaña a este trabajo, en el que las
+pruebas de hipótesis, la prueba de Mann-Whitney y el PERMANOVA se implementan paso a paso con
+estas bibliotecas.
+
+Google Colab (\emph{Colaboratory}) es un servicio gratuito que ejecuta cuadernos de Jupyter en la
+nube, con Python y sus bibliotecas científicas preinstalados, sin necesidad de instalar nada en la
+computadora del usuario \citep{bisong2019google}. Un cuaderno combina celdas de texto, código y
+resultados en un mismo documento, lo que lo hace adecuado para la enseñanza y para compartir
+análisis reproducibles. El taller práctico derivado de esta tesis, disponible en el repositorio
+del proyecto, está diseñado para abrirse directamente en Colab: los datos se descargan desde
+GitHub y los estudiantes pueden ejecutar y modificar cada paso del análisis sin configuración
+previa.
 
 \section{Formatos}
 
@@ -533,13 +570,15 @@ En este contexto, el p-valor se considera como una medida de la probabilidad de 
 \centering
 \includegraphics[width=\textwidth]{Img/cap1/pruebat_explicacion.png}
 \caption{Se ilustra el concepto esencial de una prueba de hipótesis, mostrando la distribución teórica de la estadística de prueba bajo la hipótesis nula ($H_0$) y destacando la región de rechazo. La posición del dato observado con respecto a esta región determinará si se rechaza o no $H_0$ en cada una de las pruebas estadísticas a realizar.\\
-En una prueba de hipótesis, la hipótesis nula ($H_0$) será rechazada en favor de la hipótesis alternativa ($H_1$) solo si la evidencia muestral proporciona suficiente soporte para considerar que $H_0$ es falsa. Si los datos no contradicen significativamente a $H_0$, se concluye que no hay suficiente evidencia para rechazarla, y se mantiene su validez.\\}%\citep{castro2020phyloseq})}
+En una prueba de hipótesis, la hipótesis nula ($H_0$) será rechazada en favor de la hipótesis alternativa ($H_1$) solo si la evidencia muestral proporciona suficiente soporte para considerar que $H_0$ es falsa. Si los datos no contradicen significativamente a $H_0$, se concluye que no hay suficiente evidencia para rechazarla, y se mantiene su validez.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarPruebatExplicacion13.R}{(Script: \texttt{20260919\_RegenerarPruebatExplicacion13.R})}}
+\label{fig:prueba-hipotesis}
 \end{figure}
 
 Existen dos tipos de errores que pueden ocurrir en una prueba de hipótesis:\\
 Error tipo I ($\alpha$): Ocurre cuando se rechaza $H_0$ siendo en realidad verdadera.\\
 Error tipo II ($\beta$): Se produce cuando no se rechaza $H_0$ cuando en realidad es falsa.\\
-El balance entre estos errores es fundamental en el diseño de pruebas estadísticas \citep{larsen2005introduction}. En el contexto de datos de microbioma, \citet{xia2017hypothesis} revisan las pruebas de hipótesis de uso más frecuente.\\
+El balance entre estos errores es fundamental en el diseño de pruebas estadísticas \citep{larsen2005introduction}. En el contexto de datos de microbioma, \citet{xia2017hypothesis}, \citet{aldirawi2023univariate} y \citet{peterson2024analysis} revisan las pruebas de hipótesis de uso más frecuente y las precauciones que exige la naturaleza composicional y dispersa de los datos.\\
 
 Las pruebas de hipótesis pueden aplicarse a diferentes contextos, como la comparación de grupos en estudios médicos o científicos. Por ejemplo, en un análisis sobre la salud de los cultivos, se podrían definir las siguientes hipótesis:\\
 $H_0$ : No hay diferencias entre muestras de cultivos saludables y no saludables.\\
@@ -609,7 +648,7 @@ Debe tenerse en cuenta que la prueba F es sensible a desviaciones de la normalid
 resultado es menos confiable cuando ese supuesto no se verifica.
 
 
-\subsection{Prueba de suma de rangos de Wilcoxon (Mann-Whitney)}
+\subsection{Prueba de rangos de Wilcoxon (Mann-Whitney)}
 Cuando no puede suponerse que los datos provienen de poblaciones normales, se recurre a pruebas no
 paramétricas basadas en rangos. Conviene distinguir dos pruebas que llevan el nombre de Wilcoxon: la
 prueba de \emph{rangos con signo}, que compara dos muestras relacionadas o pareadas, y la prueba de
@@ -640,19 +679,147 @@ por una traslación. Sin ese supuesto, un resultado significativo indica solamen
 $P(X > Y) \neq 1/2$.
 
 
-\section{Normalización y Rarefacción}
-\subsection{Normalización}
+\section{Análisis multivariado por permutaciones: PERMANOVA y PERMDISP}
+\label{sec:permanova}
 
-%\begin{figure}[!]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/Barras_Abundancia.png}
-%\caption{Barras de abundancia de los datos en crudo}
-%\end{figure}
+Las pruebas de las secciones anteriores comparan una sola variable por muestra, como el índice de
+Shannon. Para comparar la \emph{composición completa} de las comunidades entre grupos se necesita
+una prueba que trabaje directamente sobre la matriz de disimilitudes entre muestras. El análisis
+de varianza multivariado por permutaciones, PERMANOVA \citep{anderson2001new}, es el método más
+usado con este fin en estudios de microbioma \citep{kleinebardenhorst2021data, aldirawi2023univariate}.
 
-La función \texttt{edgeRnorm} escala los conteos con el método TMM (\emph{trimmed mean of M-values}) del paquete edgeR \citep{robinson2010edger, robinson2010scaling}. Toma un objeto phyloseq y devuelve otro cuya tabla de conteos ha sido transformada \citep{mcmurdie2014waste}.
+\textbf{Partición de la variación.} Sean $N$ muestras repartidas en $a$ grupos, con $n_g$
+muestras en el grupo $g$, y sea $d_{ij}$ la disimilitud entre las muestras $i$ y $j$, por
+ejemplo Bray-Curtis (Ecuación \ref{eq:bray-curtis}). La suma de cuadrados total y la suma de
+cuadrados dentro de los grupos se calculan directamente a partir de las disimilitudes, sin
+necesidad de coordenadas:
+\begin{equation}
+SS_T = \frac{1}{N} \sum_{i<j} d_{ij}^{2}, \qquad
+SS_W = \sum_{g=1}^{a} \frac{1}{n_g} \sum_{\substack{i<j \\ i,j \in g}} d_{ij}^{2},
+\label{eq:permanova-ss}
+\end{equation}
+y la suma de cuadrados entre grupos es $SS_A = SS_T - SS_W$. Cuando $d$ es la distancia
+euclidiana, estas cantidades coinciden con las del análisis de varianza clásico; para cualquier
+otra disimilitud, la partición sigue siendo válida en el espacio definido por $d$. La hipótesis
+nula es que los centroides de los grupos coinciden en ese espacio.
+
+\textbf{Estadístico.} Se forma el cociente
+\begin{equation}
+F = \frac{SS_A / (a-1)}{SS_W / (N-a)},
+\label{eq:pseudo-f}
+\end{equation}
+llamado pseudo-$F$ porque, al no suponerse normalidad multivariada, no sigue la distribución $F$
+de Fisher. La fracción $R^2 = SS_A / SS_T$ mide la proporción de la variación total atribuible al
+factor y es el tamaño del efecto que debe reportarse junto con el valor $p$.
+
+\textbf{Valor $p$ por permutaciones.} Bajo $H_0$ las etiquetas de grupo son intercambiables, de
+modo que la distribución de referencia de $F$ se obtiene reasignando las etiquetas al azar $B$
+veces y recalculando el estadístico en cada reasignación. Si $F_{obs}$ es el valor observado y
+$F^{(b)}$ el de la permutación $b$, el valor $p$ es
+\begin{equation}
+p = \frac{1 + \#\{b : F^{(b)} \geq F_{obs}\}}{1 + B},
+\label{eq:p-permutacion}
+\end{equation}
+donde el 1 del numerador y del denominador cuenta la configuración observada como una permutación
+más. Con $B = 999$ la resolución del valor $p$ es de una milésima.
+
+\textbf{Supuesto y limitación.} La única suposición es la intercambiabilidad de las etiquetas
+bajo $H_0$, que incluye que los grupos tengan la misma dispersión. El PERMANOVA es sensible a
+diferencias de dispersión entre grupos, sobre todo cuando los tamaños de grupo son desiguales:
+puede rechazar $H_0$ aunque los centroides coincidan, si un grupo es más heterogéneo que otro
+\citep{anderson2001new, kleinebardenhorst2021data}. Por esta razón debe acompañarse siempre de
+una prueba de homogeneidad de dispersiones.
+
+\textbf{PERMDISP.} La prueba de homogeneidad de dispersiones multivariadas \citep{anderson2006distance}
+proyecta las muestras en el espacio de coordenadas principales (PCoA) de la matriz de
+disimilitudes, calcula para cada muestra $i$ la distancia $z_i$ al centroide de su grupo, y
+contrasta la igualdad de las distancias medias entre grupos con un estadístico $F$ de análisis de
+varianza sobre los $z_i$, cuyo valor $p$ se obtiene también por permutaciones. Un resultado
+significativo indica que los grupos difieren en su variabilidad interna. En el contexto de
+microbiomas, una mayor dispersión en el grupo enfermo es un patrón descrito con frecuencia y se
+conoce como principio de Anna Karenina: los hospederos sanos se parecen entre sí, mientras que
+cada hospedero enfermo se desvía de un modo distinto \citep{zaneveld2017stress, li2026anna}. En R,
+ambas pruebas están implementadas en el paquete vegan \citep{oksanen2022vegan}: PERMANOVA en la
+función \texttt{adonis2} y PERMDISP en \texttt{betadisper}.
+
+\section{Normalización y rarefacción}
+\label{sec:normalizacion}
+
+Las muestras de un estudio metagenómico nunca tienen la misma profundidad de secuenciación: en los
+datos de esta tesis el número de lecturas clasificadas por muestra varía entre 4 y 21 millones
+(Capítulo 4). Esa diferencia no es biológica, es un artefacto del esfuerzo de muestreo, y afecta de
+manera directa a lo que se quiere medir. Una muestra con más lecturas detecta más taxones raros,
+así que su riqueza observada y su Chao1 son mayores por construcción, y cualquier disimilitud
+calculada sobre conteos crudos confunde diferencias de composición con diferencias de tamaño.
+La normalización es el conjunto de procedimientos que buscan hacer comparables las muestras
+eliminando el efecto de la profundidad \citep{mcmurdie2014waste, weiss2017normalization}.
+
+\subsection{Escalado por el total: abundancias relativas}
+La estrategia más simple es dividir cada fila de la matriz de conteos (Ecuación \ref{eq:matriz-conteos})
+por su total, $a_{ij} = x_{ij} / N_i$ con $N_i = \sum_j x_{ij}$, de modo que cada muestra pasa a ser
+un vector de proporciones que suma uno. Este escalado, llamado \emph{total-sum scaling} (TSS), es el
+que se usa en esta tesis para las medidas de diversidad beta y para las ordenaciones. Tiene dos
+consecuencias que conviene tener claras. La primera es que los índices de Shannon y de Simpson
+(Ecuaciones \ref{eq:shannon} y \ref{eq:simpson}) dependen únicamente de las proporciones $p_i$ dentro
+de cada muestra, por lo que son \emph{invariantes} ante cualquier escalado por muestra: calcularlos
+sobre conteos crudos, sobre abundancias relativas o sobre conteos multiplicados por un factor da
+exactamente el mismo valor. La segunda es que las proporciones viven en el simplex $S^{p-1}$ y son
+datos composicionales: el aumento de un taxón obliga a la disminución aparente de los demás, lo que
+impone precauciones en el análisis de abundancia diferencial \citep{gloor2017microbiome}. El escalado
+no corrige, en cambio, la dependencia de la riqueza observada y de Chao1 respecto de la profundidad,
+porque ambos se basan en el número de taxones detectados y en los conteos enteros de
+\emph{singletons} y \emph{doubletons}, no en proporciones.
 
 \subsection{Rarefacción}
-La rarefacción es una tecnica de normalización usada en el preprocesamiento de datos, para equilibrar el tamaño de las muestras en un conjunto de datos. Esta implica un submuestreo aleatorio de secuencias hasta una profundidad común \citep{hurlbert1971nonconcept}; su uso como método de normalización ha sido criticado por descartar datos válidos \citep{mcmurdie2014waste}.
+La rarefacción es un submuestreo aleatorio sin reemplazo de las lecturas de cada muestra hasta una
+profundidad común $m$, de modo que todas las muestras queden con el mismo esfuerzo de muestreo
+\citep{hurlbert1971nonconcept}. Es el único de los procedimientos descritos aquí que hace comparables
+los índices de riqueza. Tiene dos usos distintos.
+
+El primero es diagnóstico. Para una muestra con $N$ lecturas repartidas en taxones con conteos
+$x_1, \dots, x_p$, el número esperado de taxones distintos en un submuestreo de tamaño $m \leq N$ es
+\begin{equation}
+E[S_m] = \sum_{j=1}^{p} \left[ 1 - \frac{\binom{N - x_j}{m}}{\binom{N}{m}} \right],
+\label{eq:rarefaccion}
+\end{equation}
+donde el cociente de combinatorios es la probabilidad hipergeométrica de que el taxón $j$ no
+aparezca en el submuestreo. La \emph{curva de rarefacción} grafica $E[S_m]$ en función de $m$. Si la
+curva se aplana antes de llegar a $N$, el muestreo está saturado: secuenciar más lecturas apenas
+descubriría taxones nuevos y la riqueza observada es una buena estimación de la riqueza real. Si
+sigue creciendo, la riqueza observada está subestimada y depende de la profundidad.
+
+El segundo uso es la normalización: se fija $m$ igual a la profundidad de la muestra más pequeña,
+se extrae de cada muestra una submuestra aleatoria de $m$ lecturas, y todos los índices se calculan
+sobre las submuestras. Esto iguala el esfuerzo de detección entre muestras, al precio de descartar
+lecturas de las muestras más profundas e introducir una componente aleatoria, por lo que debe
+fijarse una semilla. \citet{mcmurdie2014waste} criticaron este uso por el desperdicio de datos y la
+pérdida de potencia que implica, sobre todo en el análisis de abundancia diferencial;
+\citet{weiss2017normalization} mostraron, sin embargo, que para comparar diversidad alfa y para las
+ordenaciones la rarefacción sigue siendo una opción razonable cuando las profundidades difieren
+mucho entre grupos, como ocurre en esta tesis. En phyloseq la función \texttt{rarefy\_even\_depth}
+realiza el submuestreo y \texttt{rarecurve}, de vegan, calcula las curvas.
+
+\subsection{Normalización por factores de escala: TMM}
+Un tercer tipo de normalización, desarrollado para datos de expresión génica y adoptado en
+metagenómica, estima para cada muestra un factor de escala $f_i$ que corrige no solo la profundidad
+sino también la composición. El método TMM (\emph{trimmed mean of M-values};
+\citealp{robinson2010scaling}), implementado en el paquete edgeR \citep{robinson2010edger}, elige una
+muestra de referencia $r$ y, para cada muestra $i$, calcula para cada taxón $j$ presente en ambas el
+logaritmo del cociente de proporciones, $M_j = \log_2 (a_{ij} / a_{rj})$, y la intensidad media,
+$A_j = \tfrac{1}{2}\log_2 (a_{ij} \, a_{rj})$. Después recorta el 30\% de los taxones con valores
+extremos de $M$ y el 5\% con valores extremos de $A$, para que unos pocos taxones muy abundantes o
+muy variables no dominen el ajuste, y toma la media ponderada de los $M_j$ restantes, con pesos
+inversamente proporcionales a su varianza aproximada. El factor es $f_i = 2^{\bar{M}_i}$ y el tamaño
+de biblioteca efectivo de la muestra es $N_i f_i$. La idea es que la mayoría de los taxones no
+cambia entre muestras, de modo que el desplazamiento típico de los $M_j$ refleja un sesgo
+composicional que debe corregirse.
+
+Como TMM es un escalado por muestra, no modifica las proporciones internas de una muestra y, por lo
+tanto, no cambia los índices de Shannon ni de Simpson. Su efecto está en las comparaciones
+\emph{entre} muestras: en las disimilitudes, las ordenaciones y las pruebas de abundancia
+diferencial, donde la referencia común que establece puede mover los resultados cuando las
+composiciones difieren mucho. Por eso en esta tesis TMM se evalúa como análisis de sensibilidad del
+PERMANOVA y no como sustituto de la rarefacción para la diversidad alfa.
 
 \section{Redes Bayesianas}
 Una red bayesiana es un grafo acíclico dirigido (DAG) $G=(V,E)$ en el que cada nodo representa una variable aleatoria y cada arco una dependencia condicional directa \citep{pearl1988probabilistic, koller2009probabilistic}. La distribución conjunta se factoriza como el producto de las distribuciones condicionales de cada nodo dados sus padres (Ecuación \ref{eq:factorizacion-bn} del Capítulo 6). En R, el paquete \texttt{bnlearn} implementa el aprendizaje de la estructura y de los parámetros \citep{scutari2010bnlearn}.

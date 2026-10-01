@@ -1,4 +1,5 @@
-|\chapter{Análisis Exploratorio de Datos, metodología}
+\chapter[Análisis exploratorio y metodología]{Análisis Exploratorio de Datos, metodología}
+\label{Metodologia}
 %% Camila revisa que todo esté en pasado, son métodos que ya utilizaste
 %% Solo estás describiendo qué hiciste, no los tienes que volver a explicar
 El propósito de este análisis es identificar características diferenciadoras 
@@ -18,7 +19,7 @@ microbiomas en las plantas de fresa, sino que también permite identificar patro
 en las diferencias de presencia-ausencia o abundancia de microorganismos, que podrían ser 
 fundamentales para distinguir entre la salud y la enfermedad en estos cultivos \citep{yang2020comparison}. \\
 
-\section{Métodos para caracterización de la diversidad microbiana}
+\section[Métodos para caracterizar la diversidad]{Métodos para caracterización de la diversidad microbiana}
 \subsection{Preprocesamiento}
 Dentro de las etapas principales del análisis, se encuentra la adquisición de datos.En este caso 
 se adquirió un conjunto de datos metagenómicos de cultivos de fresa proporcionados por Solena. 
@@ -30,8 +31,11 @@ sanos y enfermos, se ha llevado a cabo un análisis exploratorio detallado de es
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/preprosecamiento.png}
-\caption{Flujo de Trabajo para el Análisis Metagenómico de Microbiomas en Cultivos de Fresa: 
-Desde la Recolección de Datos hasta la Interpretación de Resultados.}
+\caption{Flujo de trabajo del preprocesamiento: de los reportes de Kraken al objeto phyloseq con
+metadatos y filtro de calidad. Diagrama de elaboración propia; el código correspondiente está en
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{01\_Exploracion.Rmd} y
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230130_PreprocesamientoDatos.R}{20230130\_PreprocesamientoDatos.R}.}
+\label{fig:preprocesamiento}
 \end{figure}
 
 Dentro de este preprocesamiento es necesario realizar una limpieza y trasformación de los datos 
@@ -52,26 +56,35 @@ para evaluar la variabilidad intra e inter-muestral. A continuación se listan l
 \begin{lstlisting}[basicstyle=\small] 
 sample_sums(fresa_kraken)
 \end{lstlisting}
-\resizebox{0.9\textwidth}{!} {
-\begin{tabular}{ c c c c c c c c }
+\begin{table}[H]
+\centering
+\caption{Lecturas clasificadas por Kraken en cada una de las 58 muestras originales, obtenidas con
+\texttt{sample\_sums}. En negrita, las cinco muestras eliminadas por el filtro de calidad
+(menos de 25 millones de lecturas tras fastp). \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{(Script: \texttt{01\_Exploracion.Rmd})}}
+\label{tab:lecturas-muestra}
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{rrrrrrrr}
+\hline
 MD2055 & MD2056 & MD2065 & MD2066 & MD2075 & MD2076 & MD2085 & MD2086 \\
-9782432 & 12468526 & 11297600 & 15580959 & 12310781 & 16067839 & 10524919 & 9931297 \\
+9\,782\,432 & 12\,468\,526 & 11\,297\,600 & 15\,580\,959 & 12\,310\,781 & 16\,067\,839 & 10\,524\,919 & 9\,931\,297 \\[2pt]
 MD2095 & MD2096 & MD2105 & MD2106 & MD2115 & MD2116 & MD2125 & MD2126 \\
-18009912 & 14998268 & 11792397 & 4053295 & 13102554 & 12451637 & 8355853 & 14307309 \\
+18\,009\,912 & 14\,998\,268 & 11\,792\,397 & 4\,053\,295 & 13\,102\,554 & 12\,451\,637 & 8\,355\,853 & 14\,307\,309 \\[2pt]
 MD2135 & MD2136 & MP2047 & MP2048 & MP2049 & MP2050 & MP2057 & MP2058 \\
-7280751 & 6172369 & 9199079 & 12146967 & 13075806 & 16098757 & 17141427 & 20923502 \\
+7\,280\,751 & 6\,172\,369 & 9\,199\,079 & 12\,146\,967 & 13\,075\,806 & 16\,098\,757 & 17\,141\,427 & 20\,923\,502 \\[2pt]
 MP2059 & MP2060 & MP2067 & MP2068 & MP2069 & MP2070 & MP2077 & MP2078 \\
-14129981 & 13786630 & 16924218 & 20873789 & 15537530 & 12462356 & 9617847 & 7588787 \\
-MP2079 & MP2080 & MP2087 & MP2088 & MP2089 & MP2090 & MP2097 & MP2098 \\
-745830 & 3125701 & 20632320 & 2 & 16582404 & 11176782 & 11714000 & 16595897 \\
-MP2099 & MP2100 & MP2107 & MP2108 & MP2109 & MP2110 & MP2117 & MP2118 \\
-14844038 & 13342326 & 11014462 & 6728020 & 1405462 & 6901265 & 12624002 & 14711376 \\
-MP2119 & MP2120 & MP2127 & MP2128 & MP2129 & MP2130 & MP2137 & MP2138 \\
-9835326 & 10975712 & 7106567 & 9974861 & 8348307 & 6196725 & 2169734 & 8220431 \\
-MP2139 & MP2140 \\
-6158581 & 5267510
-\end{tabular}
-}
+14\,129\,981 & 13\,786\,630 & 16\,924\,218 & 20\,873\,789 & 15\,537\,530 & 12\,462\,356 & 9\,617\,847 & 7\,588\,787 \\[2pt]
+\textbf{MP2079} & \textbf{MP2080} & MP2087 & \textbf{MP2088} & MP2089 & MP2090 & MP2097 & MP2098 \\
+\textbf{745\,830} & \textbf{3\,125\,701} & 20\,632\,320 & \textbf{2} & 16\,582\,404 & 11\,176\,782 & 11\,714\,000 & 16\,595\,897 \\[2pt]
+MP2099 & MP2100 & MP2107 & MP2108 & \textbf{MP2109} & MP2110 & MP2117 & MP2118 \\
+14\,844\,038 & 13\,342\,326 & 11\,014\,462 & 6\,728\,020 & \textbf{1\,405\,462} & 6\,901\,265 & 12\,624\,002 & 14\,711\,376 \\[2pt]
+MP2119 & MP2120 & MP2127 & MP2128 & MP2129 & MP2130 & \textbf{MP2137} & MP2138 \\
+9\,835\,326 & 10\,975\,712 & 7\,106\,567 & 9\,974\,861 & 8\,348\,307 & 6\,196\,725 & \textbf{2\,169\,734} & 8\,220\,431 \\[2pt]
+MP2139 & MP2140 & & & & & & \\
+6\,158\,581 & 5\,267\,510 & & & & & & \\
+\hline
+\end{tabular}}
+\end{table}
 
 
 \subsection{Filtrado de Calidad}
@@ -133,10 +146,10 @@ Para explorar la diversidad alfa de las muestras utilizamos los índices Chao1, 
 descritos en la Sección \ref{sec:diversidad_alfa}, ya que en conjunto capturan tanto la riqueza
 de especies como su abundancia y dominancia relativa.\\
 
-Los índices se calcularon con las funciones \texttt{estimate\_richness} y \texttt{plot\_richness}
-del paquete Phyloseq, aplicadas sobre el objeto \texttt{fresa\_kraken} tanto en los datos crudos como
+{\sloppy Los índices se calcularon con las funciones \texttt{estimate\_richness} y
+\texttt{plot\_richness} de Phyloseq, aplicadas sobre el objeto \texttt{fresa\_kraken} tanto en los datos crudos como
 en los datos con filtro de calidad, agrupando y coloreando las muestras según el tratamiento
-(sana o enferma) para poder comparar visualmente ambos grupos.
+(sana o enferma) para poder comparar visualmente ambos grupos.\par}
 
 \begin{lstlisting}[basicstyle=\small]
 index = estimate_richness(fresa_kraken_fil)
@@ -254,91 +267,72 @@ Los resultados obtenidos al aplicar estas tres pruebas sobre los datos se presen
 La normalidad del índice de Shannon en cada grupo se verificó con la prueba de Shapiro-Wilk
 \citep{shapiro1965analysis}. Para contrastar si la composición global de la comunidad difiere entre
 grupos se aplicó un análisis de varianza multivariado por permutaciones (PERMANOVA;
-\citealp{anderson2001new, anderson2011navigating}) sobre la matriz de disimilitud de Bray-Curtis de las
-abundancias relativas, con 999 permutaciones, mediante la función \texttt{adonis2} del paquete vegan
-\citep{oksanen2022vegan}. Finalmente, se calcularon el tamaño del efecto estandarizado (\emph{d} de
+\citealp{anderson2001new, anderson2011navigating}), descrito en la Sección \ref{sec:permanova}, sobre las
+matrices de disimilitud de Bray-Curtis y de Jaccard cuantitativo de las abundancias relativas, con 999
+permutaciones, mediante la función \texttt{adonis2} del paquete vegan
+\citep{oksanen2022vegan}. Como el PERMANOVA es sensible a diferencias de dispersión entre grupos
+desbalanceados, se acompañó de la prueba de homogeneidad de dispersiones PERMDISP
+\citep{anderson2006distance}, con la función \texttt{betadisper} y 999 permutaciones. El script
+correspondiente es \texttt{20260930\_RegenerarPermanovaPermdisp44.R}, en la carpeta de análisis del
+repositorio. Todos los procedimientos con componente aleatoria de esta tesis, las ordenaciones NMDS
+y las pruebas por permutaciones, se ejecutaron con la semilla \texttt{set.seed(2026)}, de modo que
+las figuras y los valores $p$ reportados son reproducibles exactamente con los scripts del repositorio. Finalmente, se calcularon el tamaño del efecto estandarizado (\emph{d} de
 Cohen) y la potencia de la prueba t con la función \texttt{power.t.test}
 \citep{cohen1988statistical, xia2018statistical}.
 
 
-\subsection{Normalización}
+\subsection{Normalización y rarefacción}
+\label{sec:met-normalizacion}
 
-Desde un punto de vista matemático, los datos metagenómicos pueden representarse como una matriz 
-de conteos:\\
+Desde un punto de vista matemático, los datos metagenómicos pueden representarse como una matriz
+de conteos:
 \begin{equation}
 X = (x_{ij}) \in \mathbb{N}^{n \times p}
 \label{eq:matriz-conteos-cap3}
 \end{equation}
-donde:
-\begin{itemize}
-\item $n$ es el número de muestras,
-\item $p$ el número de taxones,
-\item $x_{ij}$ el número de lecturas asignadas al taxón $j$ en la muestra $i$.
-\end{itemize}
+donde $n$ es el número de muestras, $p$ el número de taxones y $x_{ij}$ el número de lecturas
+asignadas al taxón $j$ en la muestra $i$. Como las muestras tienen distinta profundidad de
+secuenciación, se emplearon tres estrategias de normalización, descritas en la Sección
+\ref{sec:normalizacion}, cada una con un propósito distinto.
 
-Debido a que las muestras presentan distinta profundidad de secuenciación, se emplean abundancias 
-relativas:\\
+\textbf{Abundancias relativas.} Para la diversidad beta, las ordenaciones NMDS y el PERMANOVA se
+transformaron los conteos a abundancias relativas por muestra,
 \begin{equation}
 a_{ij} = \frac{x_{ij}}{\sum_{k=1}^{p} x_{ik}},
 \quad
-\sum_{j=1}^{p} a_{ij} = 1.
+\sum_{j=1}^{p} a_{ij} = 1,
 \label{eq:abundancia-relativa}
 \end{equation}
-Estas pertenecen al simplex composicional:
+que pertenecen al simplex composicional
 \begin{equation}
 S^{p-1} = \left\{ x \in \mathbb{R}_+^p : \sum_{j=1}^{p} x_j = 1 \right\}.
 \label{eq:simplex}
 \end{equation}
+Esta transformación se hizo con la función \texttt{transform\_sample\_counts} de phyloseq. Los
+índices de Shannon y Simpson son invariantes ante ella, por lo que la diversidad alfa de las
+Secciones 4.1 y 4.2 se calculó directamente sobre los conteos filtrados.
+
+\textbf{Rarefacción.} Se usó con dos fines. Primero, como diagnóstico de saturación: se calcularon
+las curvas de rarefacción de las 53 muestras filtradas con la función \texttt{rarecurve} de vegan,
+en pasos de 200~000 lecturas, y se evaluó qué fracción de la riqueza observada de cada muestra se
+alcanza ya a la profundidad de la muestra más pequeña. Segundo, como normalización: con
+\texttt{rarefy\_even\_depth} de phyloseq se submuestrearon sin reemplazo todas las muestras a la
+profundidad mínima del conjunto filtrado, 4~053~295 lecturas (muestra MD2106), con la semilla 2026.
+Sobre los datos rarificados se recalcularon los cuatro índices de diversidad alfa y se repitieron la
+prueba F, la prueba de Welch y la de Mann-Whitney, con el fin de comprobar si la tendencia observada
+en los datos originales depende de la diferencia de profundidad entre grupos.
+
+\textbf{Normalización TMM.} Se calcularon los factores de escala TMM con la función
+\texttt{calcNormFactors} del paquete edgeR \citep{robinson2010edger} y se obtuvieron los conteos
+normalizados dividiendo cada muestra por su tamaño de biblioteca efectivo. Como TMM no altera los
+índices de diversidad alfa, su efecto se evaluó donde sí puede influir: se repitió el PERMANOVA sobre
+la disimilitud de Bray-Curtis con tres versiones de la tabla, abundancias relativas, conteos
+normalizados por TMM y conteos rarificados, como análisis de sensibilidad de la conclusión sobre la
+composición. El script correspondiente es
+\texttt{20261001\_RegenerarRarefaccionNormalizacion416.R}; los resultados se presentan en la
+Sección \ref{sec:res-normalizacion}.
 
 
-%\begin{figure}[!]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/Barras_Abundancia.png}
-%\caption{Barras de abundancia de los datos en crudo}
-%\end{figure}
-
-La función \texttt{edgeRnorm} escala los conteos con el método TMM del paquete edgeR
-\citep{robinson2010edger, robinson2010scaling}. Toma un objeto phyloseq y devuelve otro cuya tabla de
-conteos ha sido transformada \citep{mcmurdie2014waste}.
-
-\subsection{Rarefacción}
-La rarefacción es una tecnica de normalización usada en el preprocesamiento de datos, para 
-equilibrar el tamaño de las muestras en un conjunto de datos. Esta implica un submuestreo aleatorio de 
-secuencias hasta una profundidad común \citep{hurlbert1971nonconcept, mcmurdie2014waste}.
-
-Rarefy 
-
-Se eliminaron 670 OTUs
-
-
-
-%\begin{figure}[!]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/Rarefaccion.png}
-%\caption{Barras de abundancia, luego de la rarefacción}
-%\end{figure}
-
-%\begin{figure}[!]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/Rarefaccion_diversidadAlfa.png}
-%\caption{Diversidad alfa luego de la rarefacción}
-%\end{figure}
-
-%\begin{figure}[!]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/Rarefaccion_diversidadBeta.png}
-%\caption{Diversidad beta luego de la rarefacción}
-%\end{figure}
-
-
-
-
-
-
-
-
-\section{Rarefacción}
-La rarefacción se usa como una medida de saturacion de muestras, es decir, 
 
 
 
@@ -348,84 +342,300 @@ La rarefacción se usa como una medida de saturacion de muestras, es decir,
 
 
 \section{Redes}
+\label{sec:met-redes}
 
+Los índices de diversidad resumen cada muestra en un número y las ordenaciones muestran las
+muestras como puntos; ninguna de las dos representaciones dice cómo se relacionan los elementos
+entre sí. Una red, o grafo, $G = (V, E)$ consta de un conjunto de nodos $V$ y un conjunto de aristas
+$E$ que unen pares de nodos. En este trabajo se exploraron dos tipos de redes: las \emph{redes de
+muestras}, en las que los nodos son las 53 muestras y dos muestras se unen si su composición es
+parecida, y las \emph{redes de coocurrencia}, en las que los nodos son taxones y dos taxones se unen
+si sus abundancias varían de forma coordinada a lo largo de las muestras
+\citep{berry2014deciphering}. Las primeras sirven para preguntar si las muestras saludables y no
+saludables forman comunidades separadas; las segundas, para preguntar qué taxones acompañan a un
+taxón de interés, en este caso \textit{Fusarium}. Ambas se construyeron sobre los datos filtrados
+del Capítulo 3.1 y los scripts que las regeneran son
+\texttt{20261002\_RegenerarRedesMuestras32.R} y \texttt{20261002\_RegenerarRedesCoocurrencia33.R}.
 
+\subsection{Redes de muestras}
 
+Con la función \texttt{make\_network} de phyloseq \citep{mcmurdie2013phyloseq} se construyó un grafo
+en el que cada nodo es una muestra y existe una arista entre dos muestras cuando su disimilitud de
+Jaccard cuantitativa (Ecuación \ref{eq:jaccard-cuant}), calculada sobre abundancias relativas, no
+supera un umbral $d_{\max}$. El grafo se dibujó con \texttt{plot\_network} y \texttt{plot\_net},
+usando el trazado de Fruchterman-Reingold de igraph \citep{csardi2006igraph}, con la semilla 2026,
+y coloreando los nodos por tratamiento. Los umbrales de la exploración original, 0.8 y 0.5, resultaron
+inútiles con estos datos: la disimilitud de Jaccard entre las 53 muestras va de 0.08 a 0.47, de
+modo que ambos umbrales producen el grafo completo de 1~378 aristas. Por eso los umbrales se fijaron
+a partir de la distribución de las distancias: $d_{\max} = 0.16$ conserva el 25\% de los pares más
+parecidos y $d_{\max} = 0.13$ el 10\%. Para cuantificar si las muestras del mismo grupo tienden a
+conectarse entre sí se calculó la fracción de aristas que unen muestras del mismo tratamiento y se
+comparó con la fracción esperada si las etiquetas se repartieran al azar, mediante una prueba de
+permutación con 999 barajadas.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/Redes_muestras.png}
+\caption{Redes de muestras construidas con la disimilitud de Jaccard cuantitativa. Cada nodo es una
+muestra, coloreada por tratamiento, y cada arista une dos muestras cuya disimilitud no supera el
+umbral. A) Umbral $d \leq 0.16$, que conserva el 25\% de los pares más parecidos: 39 muestras
+conectadas y 338 aristas. B) Umbral $d \leq 0.13$, el 10\% de los pares: 30 muestras y 113 aristas;
+el grosor de la arista indica la distancia. En ninguna de las dos los colores se separan.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261002_RegenerarRedesMuestras32.R}{(Script: \texttt{20261002\_RegenerarRedesMuestras32.R})}}
+\label{fig:redes-muestras}
+\end{figure}
 
-Para poder visualizar las redes de nuestros datos, podemos hacer un data.frame uniendo toda la 
-informacion
-del objeto phyloseq.\\
+La Figura \ref{fig:redes-muestras} muestra el resultado. En ambos umbrales las muestras saludables y
+no saludables aparecen entremezcladas en un solo componente, sin subgrupos por tratamiento. La
+fracción de aristas que unen muestras del mismo grupo fue de 55.6\% con el umbral de 0.16 y de
+52.2\% con el de 0.13, frente a un 54.3\% esperado por azar; la prueba de permutación no detecta
+asortatividad por grupo ($p = 0.34$ y $p = 0.60$). Es decir, una muestra saludable no tiene más
+probabilidad de parecerse a otra saludable que a una no saludable, lo que coincide con el PERMANOVA
+del Capítulo 4. Sí se observa un detalle que anticipa el patrón de heterogeneidad: la disimilitud
+media entre pares de muestras saludables es de 0.199, mientras que entre pares de muestras no
+saludables es de 0.255, y entre grupos de 0.227. Las plantas saludables se parecen más entre sí que
+las no saludables, que es lo que la prueba PERMDISP confirma formalmente.
 
-\begin{lstlisting}
-    df <- psmelt(fresa_kraken_fil)
-\end{lstlisting}
+\subsection{Redes de coocurrencia}
 
-Hay dos funciones en el paquete phyloseq para trazar la red del microbioma usando “ggplot2”: 
-plot\_network() y plot\_net().
-Se crea un grafo basado en igraph \citep{csardi2006igraph}, basado en el método de distancia por defecto, Jaccard 
-y una distancia
-máxima entre nodos conectados de 0,8. El “Treatment” se utiliza para los mapeos de color y forma para
-visualizar la estructura de las muestras.
+Para construir redes entre taxones no basta con calcular correlaciones ordinarias entre
+abundancias relativas: como las proporciones de cada muestra suman uno, dos taxones no relacionados
+muestran correlaciones negativas espurias, y las correlaciones positivas pueden deberse a cambios en
+un tercer taxón \citep{gloor2017microbiome}. SparCC \citep{friedman2012inferring} estima la
+correlación entre taxones a partir de las razones logarítmicas entre pares, lo que elimina el
+efecto de la suma constante, bajo el supuesto de que la mayoría de los pares no están
+correlacionados. Se usó la herramienta MicNet \citep{favila2022micnet}, que recibe la tabla de
+abundancias aglomerada a nivel de género, 1~795 géneros, y realiza tres pasos: una reducción de
+dimensión con UMAP \citep{mcinnes2018umap} seguida de agrupamiento con HDBSCAN, que asignó los
+géneros a 32 grupos y dejó 501 sin asignar; el cálculo de la matriz de correlaciones SparCC entre
+los 1~795 géneros; y la construcción de la red. Las matrices de salida de MicNet, obtenidas en
+marzo de 2023, se conservan en el repositorio y son la entrada de la figura que sigue. La red
+reportada por MicNet con su umbral por defecto tenía 845~248 aristas y una densidad de 0.53, es
+decir, era casi completa; para obtener una red legible se fijó aquí el umbral $|r| \geq 0.8$,
+que conserva 7~757 aristas entre 650 géneros, y se analizó su componente gigante con igraph.
 
-Hacemos un grafo a partir de el objeto phyloseq
+Como análisis complementario centrado en \textit{Fusarium}, se usó la herramienta Alnitak, que
+calcula los vecinos de un taxón de interés contra el resto de la tabla completa, no aglomerada,
+y conserva únicamente los pares con correlación de Spearman mayor o igual a 0.7 y disimilitud de
+Bray-Curtis menor o igual a 0.3, con valores $p$ ajustados por permutación.
+%% CAMI: agregar la referencia o la dirección del repositorio de Alnitak (herramienta del
+%% laboratorio de la Dra. Nelly, usada en marzo de 2023).
 
-\begin{lstlisting}
-    ig <- make_network(fresa_kraken_fil, max.dist=0.8)
-\end{lstlisting}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/Redes_coocurrencia.png}
+\caption{Redes de coocurrencia entre taxones. A) Componente gigante de la red de géneros con
+correlación SparCC $|r| \geq 0.8$: 482 géneros y 7~395 aristas; el color indica el filo y el
+tamaño el número de vecinos. Los grupos de Actinobacteria, Proteobacteria y Planctomycetes
+forman módulos casi separados. \textit{Fusarium} no tiene vecinos a este umbral. B) Vecindario de
+\textit{Fusarium} con $|r| \geq 0.5$: sus 40 géneros más correlacionados, con los seis mayores
+etiquetados; la correlación máxima es 0.63. C) Vecinos de \textit{Fusarium} según Alnitak sobre
+la tabla completa, con la correlación de Spearman $\rho$ y la disimilitud de Bray-Curtis $d$ de
+cada par.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261002_RegenerarRedesCoocurrencia33.R}{(Script: \texttt{20261002\_RegenerarRedesCoocurrencia33.R})}}
+\label{fig:redes-coocurrencia}
+\end{figure}
 
-Y luego lo graficamos.
+La Figura \ref{fig:redes-coocurrencia} resume los tres resultados. La red de géneros (panel A) tiene
+una estructura modular clara: con $|r| \geq 0.8$ el componente gigante reúne 482 géneros con un
+coeficiente de agrupamiento de 0.69 y una modularidad de 0.55, y sus módulos coinciden en buena
+medida con los filos, con Actinobacteria, Proteobacteria y Planctomycetes formando bloques casi
+separados. Al bajar el umbral la red se vuelve rápidamente densa: con $|r| \geq 0.5$ hay 94~455
+aristas entre 1~357 géneros y la modularidad cae a 0.34. La Tabla \ref{tab:redes-metricas} resume
+estas métricas. Que los módulos sigan a la taxonomía indica que la coocurrencia entre géneros
+cercanos está dominada por su detección conjunta, es decir, por lecturas que Kraken reparte entre
+géneros del mismo linaje, más que por interacciones ecológicas.
 
-\begin{lstlisting}
-    plot_network(ig, fresa_kraken_fil, color="Treatment", shape="Treatment")
-\end{lstlisting}
+\begin{table}[H]
+\centering
+\caption{Métricas de la red de coocurrencia SparCC entre géneros según el umbral de correlación.
+``Neg.'' es el número de aristas con correlación negativa, ``Gigante'' el tamaño del componente
+gigante, ``Agrup.'' el coeficiente de agrupamiento y la modularidad se calcula con el método de
+Louvain; el grado de \textit{Fusarium} es su número de vecinos. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261002_RegenerarRedesCoocurrencia33.R}{(Script: \texttt{20261002\_RegenerarRedesCoocurrencia33.R})}}
+\label{tab:redes-metricas}
+\setlength{\tabcolsep}{4pt}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ccccccccc}
+\hline
+$|r| \geq$ & Géneros & Aristas & Neg. & Densidad & Gigante & Agrup. & Modularidad & Grado \textit{Fus.} \\
+\hline
+0.5 & 1357 & 94455 & 17370 & 0.103 & 1352 & 0.58 & 0.34 & 40 \\
+0.6 & 1131 & 44734 & 3623  & 0.070 & 1119 & 0.59 & 0.41 & 5 \\
+0.7 & 906  & 19911 & 270   & 0.049 & 863  & 0.64 & 0.52 & 0 \\
+0.8 & 650  & 7757  & 0     & 0.037 & 482  & 0.69 & 0.55 & 0 \\
+\hline
+\end{tabular}}
+\end{table}
 
-\textbf{INSERTAR AQUI IMAGEN DEL GRAFO}
+\textit{Fusarium} resulta ser un género poco conectado. Con $|r| \geq 0.7$ no tiene ningún vecino y
+su correlación más alta con otro género es 0.63 (panel B), con un conjunto heterogéneo de géneros
+sin un patrón ecológico reconocible: bacterias de Firmicutes como \textit{Pelosinus} y
+\textit{Neobacillus}, levaduras como \textit{Kluyveromyces}, \textit{Candida} y \textit{Tetrapisispora},
+y Planctomycetes como \textit{Paludisphaera}. Alnitak, que trabaja sobre la tabla completa, señala
+como vecinos de \textit{Fusarium} (panel C) a cuatro taxones que son todos hongos del mismo linaje:
+el orden Hypocreales al que pertenece, la especie \textit{Fusarium decemcellulare}, y los hongos
+\textit{Beauveria felina} y \textit{Neurospora crassa}, con correlaciones de Spearman entre 0.72 y 0.82.
+Esto confirma la lectura anterior: la coocurrencia más fuerte de \textit{Fusarium} es con taxones
+filogenéticamente cercanos, lo que refleja cómo el clasificador reparte las lecturas de hongos
+Sordariomycetes, y no una asociación con bacterias benéficas o patógenas.
 
-En este grafo podemos ver la complejidad de los datos y las conexiones entre nuestras muestras.\\
+En conjunto, las redes exploratorias no revelan una separación entre muestras saludables y no
+saludables ni un conjunto de taxones asociados con \textit{Fusarium} que apunte a una interacción
+ecológica, pero sí dejan dos ideas que orientan el trabajo posterior. La primera es que las
+muestras no saludables son más dispersas entre sí, lo que las pruebas del Capítulo 4 confirman.
+La segunda es que las correlaciones entre taxones están fuertemente estructuradas por la
+taxonomía, de modo que un modelo que busque dependencias entre \textit{Fusarium}, la diversidad y
+el estado de la planta, como las redes bayesianas del Capítulo 6, debe trabajar con un número
+reducido de variables elegidas por su sentido biológico y no con la red completa.
 
-En comparacion con la función plot\_network(), la nueva función plot\_net() no requiere una 
-llamada separada a la función make\_network(), o un objeto igraph separado. Los siguientes códigos 
-crean una red basada en una distancia máxima entre los nodos conectados de 0,5.
+\section{Rs}
+\label{sec:met-complementarios}
 
-\begin{lstlisting}
-    plot_net(fresa_kraken_fil, maxdist = 0.5, color = "Treatment", shape="Treatment
-\end{lstlisting}
+Además del conjunto principal de 58 metagenomas de rizósfera de fresa, Solena Ag proporcionó dos
+conjuntos complementarios que permiten situar la comparación entre plantas saludables y no
+saludables en un contexto más amplio: ¿cuánto difieren entre sí las dos clases de plantas de
+cultivo, comparado con cuánto difieren ambas de los suelos que las rodean? Esta sección describe
+esos conjuntos, el análisis que se les aplicó y lo que mostraron. Las figuras las regeneran los
+scripts \texttt{20261002\_RegenerarComplementarios34.R}, \texttt{35.R} y \texttt{36.R}, que
+comparten el cargador \texttt{\_cargar\_complementarios.R}.
 
-\textbf{INSERTAR AQUI IMAGEN DEL GRAFO}
+\subsection{Conjuntos de datos}
 
-En conclusion para esta observación general de los datos, no es posible ver una separacion entre muestras
-sanas y enfermas claramente con la diversidad beta,y con los graficos de barras y redes, no es posible
-identificar datos especiales.
+El segundo conjunto contiene 27 metagenomas de suelo tomados en tres tipos de sitio: cerca del
+cultivo de fresa (10 muestras), suelo no cultivado (10) y bosque degradado (7). Al unirlo con el
+conjunto principal se obtiene una tabla de 85 muestras y 9~027 taxones con cinco categorías:
+cultivo saludable, cultivo marchito, cerca del cultivo, suelo no cultivado y bosque degradado. Se
+aplicó el mismo filtro de calidad de la Sección 3.1.2, que elimina las cinco muestras ya conocidas
+del conjunto principal; ninguna de las 27 muestras nuevas quedó por debajo de los 25 millones de
+lecturas, de modo que el análisis se hizo con 80 muestras. Los nombres de muestra de los dos
+conjuntos tienen formatos distintos, por lo que la unión con los metadatos se hizo por identificador
+y se verificó explícitamente. El tercer conjunto es más pequeño: 8 metagenomas, cuatro de suelo de
+cultivo y cuatro de suelo nativo no intervenido, tomados en los mismos cuatro sitios.
 
+Las muestras de suelo tienen una profundidad de secuenciación mayor que las del cultivo: entre 18
+y 21 millones de lecturas clasificadas en promedio, frente a 11 y 12 millones en las plantas
+saludables y marchitas (Figura \ref{fig:comp-alfa}, panel A). Por ello, como en el resto de la tesis,
+las comparaciones de composición se hicieron sobre abundancias relativas y las de diversidad con
+los índices de Shannon y Simpson, que no dependen de la profundidad.
 
+\subsection{Diversidad alfa}
 
+Para las cinco categorías se calcularon los cuatro índices de diversidad alfa y se contrastaron con
+la prueba de Kruskal-Wallis, la generalización no paramétrica de Mann-Whitney a más de dos grupos,
+seguida de comparaciones por pares con Mann-Whitney y corrección de Benjamini-Hochberg. La
+Figura \ref{fig:comp-alfa}, panel B, muestra el resultado. La riqueza observada, Chao1 y Simpson no
+difieren entre categorías ($p = 0.46$, $0.42$ y $0.13$). Shannon sí alcanza significancia global
+($p = 0.037$): las dos clases de cultivo tienen las medias más altas, 7.478 y 7.417, y los tres
+suelos no cultivados valores algo menores, de 7.405 a 7.439. Sin embargo, ninguna de las diez
+comparaciones por pares sobrevive a la corrección (el menor valor $p$ ajustado es 0.11), de modo que
+la diferencia global es pequeña y no puede atribuirse a un par de categorías en particular. La
+diversidad alfa, en suma, es notablemente homogénea entre el cultivo y los suelos de su entorno.
 
-\textbf{PONER GRAFOS Y DATOS DE REDES HECHAS CON FONTY}
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/Complementarios_alfa.png}
+\caption{Conjunto complementario de cinco categorías, 80 muestras. A) Lecturas clasificadas por
+muestra, agrupadas por categoría: los suelos no cultivados tienen mayor profundidad que las
+muestras de cultivo. B) Diversidad alfa por categoría, con el valor $p$ de la prueba de
+Kruskal-Wallis en cada índice. Solo Shannon difiere globalmente, sin diferencias por pares tras la
+corrección por comparaciones múltiples.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261002_RegenerarComplementarios34.R}{(Script: \texttt{20261002\_RegenerarComplementarios34.R})}}
+\label{fig:comp-alfa}
+\end{figure}
 
-Luego de una breve visualizacion de redes simples, tenemos dos opciones para utilizar ls redes de 
-coocurrencia
+\subsection{Composición y diversidad beta}
 
-El analisis de co-ocurrencia utiliza la matriz de interacciones \citep{berry2014deciphering}.
-Redes de co-ocurrencia - El total de nodos de la red es el numero de OTU's en una tabla; 
-se quiere ver las relaciones entre nodos. LAs aristas representan co-ocurrencia entre de nodos.
+La composición por filo (Figura \ref{fig:comp-beta}, panel A) es parecida en las cinco categorías,
+con Actinobacteria y Proteobacteria sumando más del 90\% de las lecturas en todas las muestras,
+pero con un cambio de proporción: en los suelos cercanos al cultivo y no cultivados Actinobacteria
+sube a cerca del 55\% y Proteobacteria baja al 39\%, mientras que en el cultivo y en el bosque
+degradado ambos filos están más equilibrados, en torno al 47\% y 44\%. La ordenación NMDS sobre la
+disimilitud de Bray-Curtis (panel B, estrés 0.12) muestra lo que las barras sugieren: las muestras
+de cultivo, saludables y marchitas por igual, ocupan una misma región del plano, los suelos
+cercanos al cultivo y no cultivados ocupan otra, superpuesta entre sí, y el bosque degradado queda
+disperso entre ambas.
 
-MicNet - Microbial Network \citep{favila2022micnet}
-Esta herramienta nos pide un documento BIOM (la tabla de abundancias) en formato .csv para poder entregar las matriz de correlaciones usando normalizacion de Dirichlet, esta herramienta se divide en tres: 
-UMAP \citep{mcinnes2018umap} - Cluster - Este algoritmo permite ver los datos en el plano.
-SparCC \citep{friedman2012inferring} - Matriz de correlación
-Network - pide los dos anteriores y genera la red completa
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/Complementarios_beta.png}
+\caption{Composición y diversidad beta del conjunto de cinco categorías. A) Abundancia relativa
+de los ocho filos más abundantes por muestra, agrupadas por categoría. B) Ordenación NMDS de la
+disimilitud de Bray-Curtis entre las 80 muestras, con el centroide de cada categoría (rombos). Las
+dos clases de cultivo se superponen entre sí y se separan de los suelos no cultivados.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261002_RegenerarComplementarios35.R}{(Script: \texttt{20261002\_RegenerarComplementarios35.R})}}
+\label{fig:comp-beta}
+\end{figure}
 
-Redes en Alnitak
-Esta herramienta calcula los vecinos de un taxon especifico contra el resto de los taxones, 
-midiendo el taxon de interes con dos metricas diferentes.
-Aqui pide el documento BIOM cortado por nivel taxonomico del taxon escojido, junto con el TaxID del 
-mismo; entregando una matriz de correlaciones filtrada por el taxon de interes, que solo reporta 
-las correlaciones con el taxon escojido al nivel taxonomico tomado, que pasen los umbrales de correlacion 
-mayor a un 0.7 y disimilitud de bray curis menor a un 0.3. 
-Asi la primera red creada con esta herramienta es tomando Fusarium a nivel de genero, ya que como se 
-vio anteriormente es un genero importante entre los datos de Eucariota…
+El PERMANOVA con la categoría como factor (Sección \ref{sec:permanova}) confirma la lectura visual y
+la pone en escala: el tipo de sitio explica el 33\% de la variación en composición
+(pseudo-$F = 9.25$, $R^2 = 0.330$, $p = 0.001$, 999 permutaciones), frente al 2.4\% que explicaba el
+estado de salud dentro del cultivo. Los PERMANOVA por pares, con corrección de Benjamini-Hochberg
+(Tabla \ref{tab:comp-pares}), precisan de dónde viene esa variación: todas las comparaciones entre
+una categoría de cultivo y una de suelo son significativas, con $R^2$ entre 0.22 y 0.33; la
+comparación entre suelo cercano al cultivo y suelo no cultivado no lo es ($R^2 = 0.06$, $p = 0.26$);
+y la comparación entre cultivo saludable y cultivo marchito es exactamente la del Capítulo 4
+($R^2 = 0.024$, $p = 0.17$). El PERMDISP también fue significativo ($F = 3.33$, $p = 0.027$), lo
+que indica que las categorías difieren además en su dispersión interna, por lo que parte del
+resultado del PERMANOVA puede deberse a diferencias de heterogeneidad y no solo de centroide.
 
+\begin{table}[H]
+\centering
+\caption{PERMANOVA por pares entre las cinco categorías sobre la disimilitud de Bray-Curtis, con
+999 permutaciones y valores $p$ ajustados por Benjamini-Hochberg. \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261002_RegenerarComplementarios35.R}{(Script: \texttt{20261002\_RegenerarComplementarios35.R})}}
+\label{tab:comp-pares}
+\small
+\begin{tabular}{llccc}
+\hline
+Categoría 1 & Categoría 2 & $R^2$ & $p$ & $p$ ajustado \\
+\hline
+Cultivo saludable  & Cultivo marchito   & 0.024 & 0.167 & 0.186 \\
+Cultivo saludable  & Cerca del cultivo  & 0.326 & 0.001 & 0.002 \\
+Cultivo saludable  & Suelo no cultivado & 0.302 & 0.001 & 0.002 \\
+Cultivo saludable  & Bosque degradado   & 0.245 & 0.001 & 0.002 \\
+Cultivo marchito   & Cerca del cultivo  & 0.303 & 0.001 & 0.002 \\
+Cultivo marchito   & Suelo no cultivado & 0.271 & 0.001 & 0.002 \\
+Cultivo marchito   & Bosque degradado   & 0.222 & 0.001 & 0.002 \\
+Cerca del cultivo  & Suelo no cultivado & 0.060 & 0.257 & 0.257 \\
+Cerca del cultivo  & Bosque degradado   & 0.237 & 0.003 & 0.004 \\
+Suelo no cultivado & Bosque degradado   & 0.180 & 0.008 & 0.010 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Cultivo frente a suelo nativo}
+
+El tercer conjunto, con cuatro muestras de cultivo y cuatro de suelo nativo, repite el contraste a
+pequeña escala (Figura \ref{fig:comp-nativo}). Con cuatro muestras por grupo, el valor $p$ más
+pequeño que puede dar la prueba exacta de Mann-Whitney es 0.029, que es precisamente el que se
+obtiene para Shannon y Simpson: las cuatro muestras de cultivo tienen mayor diversidad que las
+cuatro nativas, con medias de Shannon de 7.57 frente a 7.28. La riqueza observada y Chao1 no
+difieren. El PERMANOVA sobre Bray-Curtis da $R^2 = 0.38$ y $p = 0.032$, en línea con el conjunto de
+cinco categorías. Con un tamaño de muestra tan reducido estos resultados solo tienen valor
+confirmatorio de la tendencia general; por eso la ordenación se hizo con PCoA, que es determinista,
+en lugar de NMDS, que con ocho puntos produce un estrés cercano a cero y no es interpretable.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Img/cap2/Complementarios_nativo.png}
+\caption{Tercer conjunto complementario: cuatro muestras de suelo de cultivo y cuatro de suelo
+nativo. A) Diversidad alfa, con el valor $p$ de la prueba exacta de Mann-Whitney en cada índice.
+B) Ordenación PCoA de la disimilitud de Bray-Curtis, con el resultado del PERMANOVA.
+\href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20261002_RegenerarComplementarios36.R}{(Script: \texttt{20261002\_RegenerarComplementarios36.R})}}
+\label{fig:comp-nativo}
+\end{figure}
+
+\subsection{Lo que aportan los conjuntos complementarios}
+
+Los conjuntos complementarios sirven como control de escala para el resultado central de la tesis.
+El método es capaz de detectar diferencias de composición cuando existen: entre el cultivo y los
+suelos de su entorno el PERMANOVA explica un tercio de la variación con valores $p$ de 0.001, y lo
+hace con los mismos datos, el mismo clasificador y las mismas disimilitudes con que no detecta
+diferencia entre plantas saludables y marchitas. La ausencia de señal del estado de salud no es,
+por lo tanto, un problema de sensibilidad del análisis, sino una propiedad de los datos: el cultivo
+de fresa, saludable o marchito, tiene un microbioma rizosférico propio y distinto del suelo
+circundante, y dentro de ese microbioma la marchitez no se refleja en la composición promedio. Esto
+refuerza la conclusión del Capítulo 5 de que la señal, si existe, está en la heterogeneidad y en
+las dependencias entre taxones, y no en la abundancia de taxones aislados.
 
 \section{Redes bayesianas}
 
@@ -438,19 +648,3 @@ incluyendo Bootstrapping y Validación Cruzada K-fold,
 
 
 
-\section{Rs}
-
-Se obtuvo un nuevo conjunto de datos complementario, el cual se divide en cinco categorias, 
-respecto al tipo de cultivo de las fresas,
-
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/AllData_Alfa_diversidad.png}
-%\caption{Diversidad Alfa, }
-%\end{figure}
-
-%\begin{figure}[H]
-%\centering
-%\includegraphics[width=\textwidth]{Img/cap2/AllData_Beta_diversidad.png}
-%\caption{Diversidad Beta, }
-%\end{figure}

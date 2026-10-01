@@ -21,6 +21,7 @@ print(power.t.test(n = nh, delta = m[1] - m[2], sd = sp, sig.level = 0.05))
 print(power.t.test(power = 0.8, delta = m[1] - m[2], sd = sp, sig.level = 0.05))
 
 print(var.test(H ~ g))
-set.seed(1)
+## Semilla unica de la tesis para todo procedimiento aleatorio (NMDS, permutaciones): 2026
+set.seed(2026)
 rel <- t(fk@otu_table@.Data) / colSums(fk@otu_table@.Data)
 print(adonis2(vegdist(rel, "bray") ~ g, permutations = 999))

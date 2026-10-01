@@ -1,9 +1,20 @@
 \begin{thebibliography}{}
 
+\bibitem[Aldirawi and Morales, 2023]{aldirawi2023univariate}
+Aldirawi, H. and Morales, F.~G. (2023).
+\newblock Univariate and multivariate statistical analysis of microbiome data:
+  an overview.
+\newblock {\em Applied Microbiology}, 3(2):322--338.
+
 \bibitem[Anderson, 2001]{anderson2001new}
 Anderson, M.~J. (2001).
 \newblock A new method for non-parametric multivariate analysis of variance.
 \newblock {\em Austral Ecology}, 26(1):32--46.
+
+\bibitem[Anderson, 2006]{anderson2006distance}
+Anderson, M.~J. (2006).
+\newblock Distance-based tests for homogeneity of multivariate dispersions.
+\newblock {\em Biometrics}, 62(1):245--253.
 
 \bibitem[Anderson et~al., 2011]{anderson2011navigating}
 Anderson, M.~J., Crist, T.~O., Chase, J.~M., Vellend, M., Inouye, B.~D.,
@@ -30,6 +41,12 @@ Berry, D. and Widder, S. (2014).
 \newblock Deciphering microbial interactions and detecting keystone species
   with co-occurrence networks.
 \newblock {\em Frontiers in microbiology}, 5:219.
+
+\bibitem[Bisong, 2019]{bisong2019google}
+Bisong, E. (2019).
+\newblock Google {Colaboratory}.
+\newblock In {\em Building Machine Learning and Deep Learning Models on Google
+  Cloud Platform}, pages 59--64. Apress, Berkeley, CA.
 
 \bibitem[Bolyen et~al., 2019]{bolyen2019reproducible}
 Bolyen, E., Rideout, J.~R., Dillon, M.~R., Bokulich, N.~A., Abnet, C.~C.,
@@ -110,6 +127,12 @@ Douglas, G.~M., Maffei, V.~J., Zaneveld, J.~R., Yurgel, S.~N., Brown, J.~R.,
 \newblock {PICRUSt2} for prediction of metagenome functions.
 \newblock {\em Nature Biotechnology}, 38(6):685--688.
 
+\bibitem[Du et~al., 2024]{du2024microbiome}
+Du, Y., Han, X., and Tsuda, K. (2024).
+\newblock Microbiome-mediated plant disease resistance: recent advances and
+  future directions.
+\newblock {\em Journal of General Plant Pathology}, 91(1):1--17.
+
 \bibitem[Endres and Schindelin, 2003]{endres2003new}
 Endres, D.~M. and Schindelin, J.~E. (2003).
 \newblock A new metric for probability distributions.
@@ -155,6 +178,16 @@ Hall, M. and Beiko, R.~G. (2018).
 \newblock 16s rrna gene analysis with qiime2.
 \newblock {\em Microbiome analysis: methods and protocols}, pages 113--129.
 
+\bibitem[Harris et~al., 2020]{harris2020array}
+Harris, C.~R., Millman, K.~J., van~der Walt, S.~J., et~al. (2020).
+\newblock Array programming with {NumPy}.
+\newblock {\em Nature}, 585:357--362.
+
+\bibitem[Hunter, 2007]{hunter2007matplotlib}
+Hunter, J.~D. (2007).
+\newblock Matplotlib: a {2D} graphics environment.
+\newblock {\em Computing in Science \& Engineering}, 9(3):90--95.
+
 \bibitem[Hurlbert, 1971]{hurlbert1971nonconcept}
 Hurlbert, S.~H. (1971).
 \newblock The nonconcept of species diversity: a critique and alternative
@@ -165,6 +198,13 @@ Hurlbert, S.~H. (1971).
 Jaccard, P. (1912).
 \newblock The distribution of the flora in the alpine zone.
 \newblock {\em New Phytologist}, 11(2):37--50.
+
+\bibitem[Kleine~Bardenhorst et~al., 2021]{kleinebardenhorst2021data}
+Kleine~Bardenhorst, S., Berger, T., Klawonn, F., Vital, M., Karch, A., and
+  R{\"u}bsamen, N. (2021).
+\newblock Data analysis strategies for microbiome studies in human populations:
+  a systematic review of current practice.
+\newblock {\em mSystems}, 6(1):e01154--20.
 
 \bibitem[Koller and Friedman, 2009]{koller2009probabilistic}
 Koller, D. and Friedman, N. (2009).
@@ -203,6 +243,12 @@ Larsen, R.~J. and Marx, M.~L. (2005).
 Legendre, P. and Legendre, L. (2012).
 \newblock {\em Numerical Ecology}.
 \newblock Elsevier, Amsterdam, 3 edition.
+
+\bibitem[Li et~al., 2026]{li2026anna}
+Li, D., Qu, Z., Wang, C., Peng, Z., Zhou, X., and Cai, L. (2026).
+\newblock The {Anna Karenina} principle in the assembly of plant microbiome
+  under pathogen stress.
+\newblock {\em npj Biofilms and Microbiomes}, 12:91.
 
 \bibitem[Li et~al., 2009]{li2009sequence}
 Li, H., Handsaker, B., Wysoker, A., Fennell, T., Ruan, J., Homer, N., Marth,
@@ -262,6 +308,12 @@ McInnes, L., Healy, J., and Melville, J. (2018).
   reduction.
 \newblock arXiv:1802.03426.
 
+\bibitem[McKinney, 2010]{mckinney2010data}
+McKinney, W. (2010).
+\newblock Data structures for statistical computing in {Python}.
+\newblock In {\em Proceedings of the 9th Python in Science Conference}, pages
+  56--61.
+
 \bibitem[McMurdie and Holmes, 2013]{mcmurdie2013phyloseq}
 McMurdie, P.~J. and Holmes, S. (2013).
 \newblock phyloseq: an r package for reproducible interactive analysis and
@@ -316,6 +368,11 @@ Pearl, J. (1988).
 \newblock {\em Probabilistic Reasoning in Intelligent Systems: Networks of
   Plausible Inference}.
 \newblock Morgan Kaufmann, San Mateo, CA.
+
+\bibitem[Peterson et~al., 2024]{peterson2024analysis}
+Peterson, C.~B., Saha, S., and Do, K.-A. (2024).
+\newblock Analysis of microbiome data.
+\newblock {\em Annual Review of Statistics and Its Application}, 11:483--504.
 
 \bibitem[{R Core Team}, 2023]{rcoreteam2023r}
 {R Core Team} (2023).
@@ -373,6 +430,18 @@ Simpson, E.~H. (1949).
 \newblock Measurement of diversity.
 \newblock {\em nature}, 163(4148):688--688.
 
+\bibitem[Spooren et~al., 2024]{spooren2024plant}
+Spooren, J., van Bentum, S., Thomashow, L.~S., Pieterse, C. M.~J., Weller,
+  D.~M., and Berendsen, R.~L. (2024).
+\newblock Plant-driven assembly of disease-suppressive soil microbiomes.
+\newblock {\em Annual Review of Phytopathology}, 62:1--30.
+
+\bibitem[Su et~al., 2025]{su2025general}
+Su, L., Feng, H., Li, H., Yang, F., Yan, X., Wang, X., Li, P., Wang, K., Shu,
+  X., Liu, Y., Shen, Q., Yan, Y., and Zhang, R. (2025).
+\newblock General variation in the {Fusarium} wilt rhizosphere microbiome.
+\newblock {\em Nature Communications}, 17:1017.
+
 \bibitem[Suhaimi et~al., 2017]{suhaimi2017diversity}
 Suhaimi, N. S.~M., Goh, S.-Y., Ajam, N., Othman, R.~Y., Chan, K.-G., and Thong,
   K.~L. (2017).
@@ -394,6 +463,12 @@ Tuomisto, H. (2010b).
   diversity.
 \newblock {\em Ecography}, 33(1):2--22.
 
+\bibitem[Virtanen et~al., 2020]{virtanen2020scipy}
+Virtanen, P., Gommers, R., Oliphant, T.~E., et~al. (2020).
+\newblock {SciPy} 1.0: fundamental algorithms for scientific computing in
+  {Python}.
+\newblock {\em Nature Methods}, 17:261--272.
+
 \bibitem[Wackerly et~al., 2002]{wackerly2002estadistica}
 Wackerly, D.~D., Mendenhall~III, W., Scheaffer, R.~L., Yescas~Milan{\'e}s, J.,
   et~al. (2002).
@@ -406,6 +481,14 @@ Wang, H., Wu, C., Zhang, H., Xiao, M., Ge, T., Zhou, Z., Liu, Y., Peng, S.,
   co-occurrence networks of tobacco plants infected with bacterial wilt
   disease.
 \newblock {\em World Journal of Microbiology and Biotechnology}, 38(9):155.
+
+\bibitem[Weiss et~al., 2017]{weiss2017normalization}
+Weiss, S., Xu, Z.~Z., Peddada, S., Amir, A., Bittinger, K., Gonzalez, A.,
+  Lozupone, C., Zaneveld, J.~R., V{\'a}zquez-Baeza, Y., Birmingham, A., Hyde,
+  E.~R., and Knight, R. (2017).
+\newblock Normalization and microbial differential abundance strategies depend
+  upon data characteristics.
+\newblock {\em Microbiome}, 5:27.
 
 \bibitem[Welch, 1947]{welch1947generalization}
 Welch, B.~L. (1947).
@@ -467,6 +550,13 @@ Xiong, W., Song, Y., Yang, K., Gu, Y., Wei, Z., Kowalchuk, G.~A., Xu, Y.,
 \newblock Rhizosphere protists are key determinants of plant health.
 \newblock {\em Microbiome}, 8:1--9.
 
+\bibitem[Yang et~al., 2023]{yang2023fusarium}
+Yang, H., Zhang, X., Qiu, X., Chen, J., Wang, Y., Zhang, G., Jia, S., Shen, X.,
+  Ye, W., and Yan, Z. (2023).
+\newblock {Fusarium} wilt invasion results in a strong impact on strawberry
+  microbiomes.
+\newblock {\em Plants}, 12(24):4153.
+
 \bibitem[Yang et~al., 2020]{yang2020comparison}
 Yang, J., Wei, S., Su, D., Zhang, Z., Chen, S., Luo, Z., Shen, X., Lai, Y.,
   Jamil, A., Tong, J., et~al. (2020).
@@ -480,5 +570,11 @@ Zaneveld, J.~R., McMinds, R., and Vega~Thurber, R. (2017).
 \newblock Stress and stability: applying the {Anna Karenina} principle to
   animal microbiomes.
 \newblock {\em Nature Microbiology}, 2(9):17121.
+
+\bibitem[Zhang et~al., 2023]{zhang2023rhizosphere}
+Zhang, M., Kong, Z., Fu, H., Shu, X., Xue, Q., Lai, H., and Guo, Q. (2023).
+\newblock Rhizosphere microbial ecological characteristics of strawberry root
+  rot.
+\newblock {\em Frontiers in Microbiology}, 14:1286740.
 
 \end{thebibliography}

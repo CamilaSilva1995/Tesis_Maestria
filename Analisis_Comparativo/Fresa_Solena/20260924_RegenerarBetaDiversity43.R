@@ -37,7 +37,8 @@ sample_data(fresa_kraken_fil) <- sam
 percentages_fil <- transform_sample_counts(fresa_kraken_fil, function(x) x * 100 / sum(x))
 
 ## NMDS es estocastico: la semilla fija hace reproducible la figura
-set.seed(20260924)
+## Semilla unica de la tesis para todo procedimiento aleatorio (NMDS, permutaciones): 2026
+set.seed(2026)
 
 ## Las ordenaciones NMDS tardan varios minutos; se cachean en disco para poder
 ## reajustar la figura sin recalcularlas. Borrar el .rds fuerza el recalculo.
@@ -48,7 +49,7 @@ panel_beta <- function(distancia) {
   cat("  ", distancia, "- stress:", round(ord$stress, 4), "\n")
   p <- plot_ordination(physeq = percentages_fil, ordination = ord, color = "Treatment") +
     geom_point(size = 2.2) +
-    scale_color_discrete(name = "Tratamiento") +
+    scale_colour_manual(name = "Tratamiento", values = c("Saludable" = "#F8766D", "No saludable" = "#00BFC4")) +
     theme_bw() +
     theme(legend.position = "bottom",
           legend.direction = "horizontal",

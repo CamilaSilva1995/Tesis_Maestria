@@ -404,7 +404,7 @@ mwf = stats.mannwhitneyu(xf, yf, alternative="two-sided", method="exact")
 print(f"Mann-Whitney sobre % Fusarium: U = {mwf.statistic:.0f}, p = {mwf.pvalue:.4f}")
 """)
 md(r"""
-*Fusarium* representa en promedio alrededor del 0.15 % de las lecturas, un poco más en las plantas no saludables, pero con una enorme superposición entre grupos y sin diferencia significativa. ¿Significa que *Fusarium* no tiene que ver con la enfermedad? No necesariamente:
+*Fusarium* representa en promedio alrededor del 0.14 % de las lecturas en ambos grupos, con una superposición casi total y sin diferencia significativa. ¿Significa que *Fusarium* no tiene que ver con la enfermedad? No necesariamente:
 
 - Kraken asigna lecturas al **género**; no distingue las cepas patógenas de las inocuas.
 - Un porcentaje puede bajar aunque el número de células suba, si otros taxones subieron más.

@@ -1,0 +1,7 @@
+## Figura 4.11 - Diversidad alfa de bacterias por nivel taxonomico (Img/cap3/Alpha_Bacteria.png)
+source("/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/_paleta_tesis.R")
+source("/home/camila/GIT/Tesis_Maestria/Analisis_Comparativo/Fresa_Solena/_alfa_por_nivel.R")
+datos <- cargar_fresa()
+bac <- subset_taxa(datos$fil, Kingdom == "Bacteria")
+fig <- figura_alfa_niveles(bac)
+guardar_figura("Alpha_Bacteria.png", fig, out_cap3, ancho = 30, alto = 19)

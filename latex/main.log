@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.28)  29 SEP 2026 21:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.28)  30 SEP 2026 21:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -556,24 +556,24 @@ LaTeX Info: Redefining \% on input line 12.
 (./Capitulos/cap6.aux) (./Apendices/Ap.aux) (./Apendices/Bp.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -609,8 +609,8 @@ LaTeX Font Info:    ... okay on input line 33.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \. on input line 33.
-LaTeX Info: Redefining \% on input line 33.
+LaTeX Info: Redefining \. on input line 34.
+LaTeX Info: Redefining \% on input line 34.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count331
@@ -633,7 +633,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 33.
+Package hyperref Info: Link coloring OFF on input line 34.
 
 (./main.out) (./main.out)
 \@outlinefile=\write4
@@ -641,35 +641,35 @@ Package hyperref Info: Link coloring OFF on input line 33.
 
 \c@lstlisting=\count337
 \c@teo=\count338
-LaTeX Font Info:    Trying to load font information for U+msa on input line 75.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 76.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 75.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 76.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<Img/UNAMlogo.png, id=328, 300.83122pt x 338.14134pt>
+<Img/UNAMlogo.png, id=368, 300.83122pt x 338.14134pt>
 File: Img/UNAMlogo.png Graphic file (type png)
 <use Img/UNAMlogo.png>
-Package pdftex.def Info: Img/UNAMlogo.png  used on input line 76.
+Package pdftex.def Info: Img/UNAMlogo.png  used on input line 77.
 (pdftex.def)             Requested size: 53.17595pt x 59.76897pt.
-<Img/UMSNHlogo.png, id=330, 1011.78pt x 1051.93pt>
+<Img/UMSNHlogo.png, id=370, 1011.78pt x 1051.93pt>
 File: Img/UMSNHlogo.png Graphic file (type png)
 <use Img/UMSNHlogo.png>
-Package pdftex.def Info: Img/UMSNHlogo.png  used on input line 78.
+Package pdftex.def Info: Img/UMSNHlogo.png  used on input line 79.
 (pdftex.def)             Requested size: 53.17595pt x 55.28012pt.
 
-Overfull \hbox (0.54573pt too wide) in paragraph at lines 75--80
+Overfull \hbox (0.54573pt too wide) in paragraph at lines 76--81
 [][] 
  []
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-11.
+12.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 ) [1
@@ -678,7 +678,7 @@ File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf/fonts/enc/
 dvips/cm-super/cm-super-t1.enc} <./Img/UNAMlogo.png> <./Img/UMSNHlogo.png>] [2]
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
 
  []
 
@@ -689,100 +689,94 @@ Underfull \hbox (badness 10000) in paragraph at lines 187--188
 ] (./main.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
-
-Overfull \hbox (3.17464pt too wide) in paragraph at lines 23--23
- [][] [][]\T1/cmr/m/n/10.95 Prueba de su-ma de ran-gos de Wil-co-xon (Mann-Whit
-ney)[] [][]  
- []
-
-[5]
-LaTeX Info: Redefining \. on input line 61.
-LaTeX Info: Redefining \% on input line 61.
- [6])
+ [5]
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+ [6]
+LaTeX Info: Redefining \. on input line 90.
+LaTeX Info: Redefining \% on input line 90.
+ [7])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
-LaTeX Info: Redefining \. on input line 202.
-LaTeX Info: Redefining \% on input line 202.
- [7]
-LaTeX Info: Redefining \. on input line 202.
-LaTeX Info: Redefining \% on input line 202.
- [8
+LaTeX Info: Redefining \. on input line 203.
+LaTeX Info: Redefining \% on input line 203.
+ [8]
+Underfull \hbox (badness 10000) in paragraph at lines 206--207
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
+
+ []
+
+[9
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 207--208
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 209--210
-
- []
-
-[9]
-LaTeX Info: Redefining \. on input line 213.
-LaTeX Info: Redefining \% on input line 213.
+LaTeX Info: Redefining \. on input line 214.
+LaTeX Info: Redefining \% on input line 214.
  [10
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 216--217
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--221
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 222--223
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--227
+Underfull \hbox (badness 10000) in paragraph at lines 227--228
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--229
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
-LaTeX Info: Redefining \. on input line 230.
-LaTeX Info: Redefining \% on input line 230.
+LaTeX Info: Redefining \. on input line 231.
+LaTeX Info: Redefining \% on input line 231.
 [12]
 \openout2 = `Capitulos/cap1_Intro.aux'.
 
  (./Capitulos/cap1_Intro.tex
 Cap\'{\i }tulo 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 2--11
+Underfull \hbox (badness 10000) in paragraph at lines 3--12
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 12--19
+Underfull \hbox (badness 10000) in paragraph at lines 13--20
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--26
+Underfull \hbox (badness 10000) in paragraph at lines 21--27
 
  []
 
@@ -791,195 +785,190 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.26 
+l.27 
       [1
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 27--31
+Underfull \hbox (badness 10000) in paragraph at lines 28--32
 
  []
 
-<Img/cap1/taxonomic.png, id=512, 638.385pt x 560.0925pt>
+<Img/cap1/taxonomic.png, id=563, 638.385pt x 560.0925pt>
 File: Img/cap1/taxonomic.png Graphic file (type png)
 <use Img/cap1/taxonomic.png>
-Package pdftex.def Info: Img/cap1/taxonomic.png  used on input line 34.
+Package pdftex.def Info: Img/cap1/taxonomic.png  used on input line 35.
 (pdftex.def)             Requested size: 191.51697pt x 168.02904pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
 
  []
 
-LaTeX Info: Redefining \. on input line 40.
-LaTeX Info: Redefining \% on input line 40.
+LaTeX Info: Redefining \. on input line 41.
+LaTeX Info: Redefining \% on input line 41.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.40 
+l.41 
       [2 <./Img/cap1/taxonomic.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 42--49
+Underfull \hbox (badness 10000) in paragraph at lines 43--50
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 52--63
+Underfull \hbox (badness 10000) in paragraph at lines 53--64
 
  []
 
-LaTeX Info: Redefining \. on input line 68.
-LaTeX Info: Redefining \% on input line 68.
+LaTeX Info: Redefining \. on input line 69.
+LaTeX Info: Redefining \% on input line 69.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.68 
+l.69 
       [3]
-Underfull \hbox (badness 10000) in paragraph at lines 80--97
+Underfull \hbox (badness 10000) in paragraph at lines 81--98
 
  []
 
-LaTeX Info: Redefining \. on input line 108.
-LaTeX Info: Redefining \% on input line 108.
+LaTeX Info: Redefining \. on input line 109.
+LaTeX Info: Redefining \% on input line 109.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.108 
+l.109 
        [4]
-Underfull \hbox (badness 10000) in paragraph at lines 109--116
+Underfull \hbox (badness 10000) in paragraph at lines 110--117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--140
+Underfull \hbox (badness 10000) in paragraph at lines 121--141
 
  []
 
-LaTeX Info: Redefining \. on input line 140.
-LaTeX Info: Redefining \% on input line 140.
+LaTeX Info: Redefining \. on input line 141.
+LaTeX Info: Redefining \% on input line 141.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.140 
+l.141 
        [5]
-Underfull \hbox (badness 10000) in paragraph at lines 141--151
+Underfull \hbox (badness 10000) in paragraph at lines 142--152
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--161
+Underfull \hbox (badness 10000) in paragraph at lines 154--162
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--167
+Underfull \hbox (badness 10000) in paragraph at lines 163--168
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--177
+Underfull \hbox (badness 10000) in paragraph at lines 169--181
 
  []
 
-LaTeX Info: Redefining \. on input line 177.
-LaTeX Info: Redefining \% on input line 177.
+LaTeX Info: Redefining \. on input line 181.
+LaTeX Info: Redefining \% on input line 181.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.177 
+l.181 
        [6]
-Underfull \hbox (badness 10000) in paragraph at lines 178--185
+Underfull \hbox (badness 10000) in paragraph at lines 182--191
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--206
+Underfull \hbox (badness 10000) in paragraph at lines 192--199
 
  []
 
-LaTeX Info: Redefining \. on input line 206.
-LaTeX Info: Redefining \% on input line 206.
+LaTeX Info: Redefining \. on input line 211.
+LaTeX Info: Redefining \% on input line 211.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.206 
+l.211 
        [7]
-Underfull \hbox (badness 10000) in paragraph at lines 207--208
+Underfull \hbox (badness 10000) in paragraph at lines 216--220
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--215
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 216--221
+Underfull \hbox (badness 10000) in paragraph at lines 223--229
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 231--234
+Underfull \hbox (badness 10000) in paragraph at lines 230--235
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--251
-
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 251.
-LaTeX Info: Redefining \% on input line 251.
+LaTeX Info: Redefining \. on input line 235.
+LaTeX Info: Redefining \% on input line 235.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.8}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.251 
+l.235 
        [8]
-Underfull \hbox (badness 10000) in paragraph at lines 253--260
+Underfull \hbox (badness 10000) in paragraph at lines 245--248
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 261--266
+Underfull \hbox (badness 10000) in paragraph at lines 258--265
 
  []
 
-LaTeX Info: Redefining \. on input line 266.
-LaTeX Info: Redefining \% on input line 266.
+
+Underfull \hbox (badness 10000) in paragraph at lines 267--274
+
+ []
+
+
+Underfull \vbox (badness 6910) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 274.
+LaTeX Info: Redefining \% on input line 274.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.266 
+l.274 
        [9]
-Underfull \hbox (badness 10000) in paragraph at lines 268--275
+Underfull \hbox (badness 10000) in paragraph at lines 275--280
 
  []
 
-<Img/cap1/Phyloseq.png, id=653, 946.53625pt x 335.2525pt>
-File: Img/cap1/Phyloseq.png Graphic file (type png)
-<use Img/cap1/Phyloseq.png>
-Package pdftex.def Info: Img/cap1/Phyloseq.png  used on input line 278.
-(pdftex.def)             Requested size: 354.52077pt x 125.5659pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
+Underfull \hbox (badness 10000) in paragraph at lines 282--289
 
  []
 
@@ -991,225 +980,243 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.10}) has
 <to be read again> 
                    \relax 
 l.289 
-       [10 <./Img/cap1/Phyloseq.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 291--292
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 294--295
-
- []
-
-LaTeX Info: Redefining \. on input line 298.
-LaTeX Info: Redefining \% on input line 298.
+       [10]
+<Img/cap1/Phyloseq.png, id=728, 946.53625pt x 335.2525pt>
+File: Img/cap1/Phyloseq.png Graphic file (type png)
+<use Img/cap1/Phyloseq.png>
+Package pdftex.def Info: Img/cap1/Phyloseq.png  used on input line 292.
+(pdftex.def)             Requested size: 354.52077pt x 125.5659pt.
+LaTeX Info: Redefining \. on input line 313.
+LaTeX Info: Redefining \% on input line 313.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.11}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.298 \item
-            Un identificador de la secuencia. [11]
-Underfull \hbox (badness 10000) in paragraph at lines 306--307
+l.313 G
+       oogle Colab (\emph{Colaboratory}) es un servicio gratuito que ejecuta...
+[11 <./Img/cap1/Phyloseq.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
 
  []
 
-LaTeX Info: Redefining \. on input line 324.
-LaTeX Info: Redefining \% on input line 324.
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--329
+
+ []
+
+LaTeX Info: Redefining \. on input line 329.
+LaTeX Info: Redefining \% on input line 329.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.12}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.324 
+l.329 
        [12]
-Underfull \hbox (badness 10000) in paragraph at lines 350--356
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 
  []
 
-LaTeX Info: Redefining \. on input line 356.
-LaTeX Info: Redefining \% on input line 356.
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
+
+ []
+
+LaTeX Info: Redefining \. on input line 346.
+LaTeX Info: Redefining \% on input line 346.
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 371--375
-
- []
-
-LaTeX Info: Redefining \. on input line 389.
-LaTeX Info: Redefining \% on input line 389.
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 393--398
+LaTeX Info: Redefining \. on input line 379.
+LaTeX Info: Redefining \% on input line 379.
+ [14]
+Underfull \hbox (badness 10000) in paragraph at lines 387--393
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 399--403
+Underfull \hbox (badness 10000) in paragraph at lines 408--412
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 406--411
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 412--419
-
- []
-
-LaTeX Info: Redefining \. on input line 419.
-LaTeX Info: Redefining \% on input line 419.
+LaTeX Info: Redefining \. on input line 412.
+LaTeX Info: Redefining \% on input line 412.
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 425--433
+Underfull \hbox (badness 10000) in paragraph at lines 430--435
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 447--452
+Underfull \hbox (badness 10000) in paragraph at lines 436--440
 
  []
 
-LaTeX Info: Redefining \. on input line 452.
-LaTeX Info: Redefining \% on input line 452.
+LaTeX Info: Redefining \. on input line 442.
+LaTeX Info: Redefining \% on input line 442.
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 458--461
+Underfull \hbox (badness 10000) in paragraph at lines 443--448
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 466--469
+Underfull \hbox (badness 10000) in paragraph at lines 449--456
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 482--487
+Underfull \hbox (badness 10000) in paragraph at lines 462--470
 
  []
 
-LaTeX Info: Redefining \. on input line 487.
-LaTeX Info: Redefining \% on input line 487.
+LaTeX Info: Redefining \. on input line 470.
+LaTeX Info: Redefining \% on input line 470.
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 496--503
+Underfull \hbox (badness 10000) in paragraph at lines 484--489
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 509--510
+Underfull \hbox (badness 10000) in paragraph at lines 495--498
 
  []
 
-LaTeX Info: Redefining \. on input line 510.
-LaTeX Info: Redefining \% on input line 510.
+
+Underfull \hbox (badness 10000) in paragraph at lines 503--506
+
+ []
+
+LaTeX Info: Redefining \. on input line 506.
+LaTeX Info: Redefining \% on input line 506.
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 511--512
+Underfull \hbox (badness 10000) in paragraph at lines 519--524
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 513--514
+Underfull \hbox (badness 10000) in paragraph at lines 533--540
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 515--516
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 517--518
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 519--520
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 521--522
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 523--524
-
- []
-
-LaTeX Info: Redefining \. on input line 524.
-LaTeX Info: Redefining \% on input line 524.
+LaTeX Info: Redefining \. on input line 540.
+LaTeX Info: Redefining \% on input line 540.
 [19]
-Underfull \hbox (badness 10000) in paragraph at lines 525--526
+Underfull \hbox (badness 10000) in paragraph at lines 546--547
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 528--531
+Underfull \hbox (badness 10000) in paragraph at lines 548--549
 
  []
 
-<Img/cap1/pruebat_explicacion.png, id=778, 853.5087pt x 426.6339pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 550--551
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 552--553
+
+ []
+
+LaTeX Info: Redefining \. on input line 554.
+LaTeX Info: Redefining \% on input line 554.
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 554--555
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 556--557
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 558--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 560--561
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 562--563
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 565--568
+
+ []
+
+<Img/cap1/pruebat_explicacion.png, id=873, 853.5087pt x 426.6339pt>
 File: Img/cap1/pruebat_explicacion.png Graphic file (type png)
 <use Img/cap1/pruebat_explicacion.png>
 Package pdftex.def Info: Img/cap1/pruebat_explicacion.png  used on input line 5
-34.
+71.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 536--536
-
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 539--543
+LaTeX Info: Redefining \. on input line 576.
+LaTeX Info: Redefining \% on input line 576.
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 578--582
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 544--547
+Underfull \vbox (badness 1097) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 582.
+LaTeX Info: Redefining \% on input line 582.
+ [22 <./Img/cap1/pruebat_explicacion.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 583--586
 
  []
 
-LaTeX Info: Redefining \. on input line 548.
-LaTeX Info: Redefining \% on input line 548.
-[20]
-LaTeX Info: Redefining \. on input line 560.
-LaTeX Info: Redefining \% on input line 560.
- [21 <./Img/cap1/pruebat_explicacion.png>]
-LaTeX Info: Redefining \. on input line 603.
-LaTeX Info: Redefining \% on input line 603.
- [22]
-Overfull \hbox (19.65578pt too wide) in paragraph at lines 612--612
-[]\T1/cmr/bx/n/12 Prueba de su-ma de ran-gos de Wil-co-xon (Mann-Whitney) 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 613--619
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 628--634
-
- []
-
-LaTeX Info: Redefining \. on input line 634.
-LaTeX Info: Redefining \% on input line 634.
+LaTeX Info: Redefining \. on input line 618.
+LaTeX Info: Redefining \% on input line 618.
 [23]
-LaTeX Info: Redefining \. on input line 659.
-LaTeX Info: Redefining \% on input line 659.
- [24])
-LaTeX Info: Redefining \. on input line 235.
-LaTeX Info: Redefining \% on input line 235.
+Underfull \hbox (badness 10000) in paragraph at lines 652--658
+
+ []
+
+LaTeX Info: Redefining \. on input line 658.
+LaTeX Info: Redefining \% on input line 658.
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 667--673
+
+ []
+
+
+Overfull \hbox (8.09482pt too wide) in paragraph at lines 682--682
+[]\T1/cmr/bx/n/14.4 Análisis mul-ti-va-ria-do por per-mu-ta-cio-nes: PER-
+ []
+
+
+Underfull \vbox (badness 1226) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 690.
+LaTeX Info: Redefining \% on input line 690.
  [25]
+LaTeX Info: Redefining \. on input line 722.
+LaTeX Info: Redefining \% on input line 722.
+
+[26]
+LaTeX Info: Redefining \. on input line 756.
+LaTeX Info: Redefining \% on input line 756.
+ [27]
+LaTeX Info: Redefining \. on input line 784.
+LaTeX Info: Redefining \% on input line 784.
+ [28]
+LaTeX Info: Redefining \. on input line 816.
+LaTeX Info: Redefining \% on input line 816.
+ [29])
+LaTeX Info: Redefining \. on input line 236.
+LaTeX Info: Redefining \% on input line 236.
+ [30]
 \openout2 = `Capitulos/cap2.aux'.
 
- (./Capitulos/cap2.tex [26
-
-
-
-
-]
+ (./Capitulos/cap2.tex
 Cap\'{\i }tulo 2.
 
 Overfull \hbox (1.85767pt too wide) in paragraph at lines 12--13
@@ -1217,517 +1224,660 @@ Overfull \hbox (1.85767pt too wide) in paragraph at lines 12--13
 s mi-cro-bio-mas de plan-
  []
 
-) [27]
+[31
+
+
+
+
+])
+LaTeX Info: Redefining \. on input line 239.
+LaTeX Info: Redefining \% on input line 239.
+ [32]
 \openout2 = `Capitulos/cap3.aux'.
 
- (./Capitulos/cap3.tex [28
-
-
-
-]
+ (./Capitulos/cap3.tex
 Cap\'{\i }tulo 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 4--9
+Underfull \hbox (badness 10000) in paragraph at lines 5--10
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--20
+Underfull \hbox (badness 10000) in paragraph at lines 17--21
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--29
+Underfull \hbox (badness 10000) in paragraph at lines 24--30
 
  []
 
 
 Underfull \vbox (badness 2302) has occurred while \output is active []
 
- [29
+ [33
+
+
+
 
 ]
-<Img/cap2/preprosecamiento.png, id=885, 1900.09875pt x 807.015pt>
+<Img/cap2/preprosecamiento.png, id=1043, 1900.09875pt x 807.015pt>
 File: Img/cap2/preprosecamiento.png Graphic file (type png)
 <use Img/cap2/preprosecamiento.png>
-Package pdftex.def Info: Img/cap2/preprosecamiento.png  used on input line 32.
+Package pdftex.def Info: Img/cap2/preprosecamiento.png  used on input line 33.
 (pdftex.def)             Requested size: 354.52077pt x 150.56378pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 37--41
+Underfull \hbox (badness 10000) in paragraph at lines 41--45
 
  []
 
-LaTeX Info: Redefining \. on input line 42.
-LaTeX Info: Redefining \% on input line 42.
-
-Overfull \hbox (24.70866pt too wide) has occurred while \output is active
-\T1/cmr/m/n/10.95 30 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  ANÁLISIS EXPLORATORIO DE D
-ATOS, METODOLOGÍA
- []
-
-[30 <./Img/cap2/preprosecamiento.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 42--44
+LaTeX Info: Redefining \. on input line 45.
+LaTeX Info: Redefining \% on input line 45.
+[34 <./Img/cap2/preprosecamiento.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 46--48
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--50
+Underfull \hbox (badness 10000) in paragraph at lines 49--54
 
  []
 
-LaTeX Info: Redefining \. on input line 92.
-LaTeX Info: Redefining \% on input line 92.
-
-Overfull \hbox (64.98141pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 3.1.  MÉTODOS PARA CARACTERIZACIÓN DE LA DIVERSIDAD MICROBIA
-NA \T1/cmr/m/n/10.95 31
- []
-
-[31]
-Underfull \hbox (badness 10000) in paragraph at lines 109--119
-
- []
-
-LaTeX Info: Redefining \. on input line 119.
-LaTeX Info: Redefining \% on input line 119.
-
-Overfull \hbox (24.70866pt too wide) has occurred while \output is active
-\T1/cmr/m/n/10.95 32 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  ANÁLISIS EXPLORATORIO DE D
-ATOS, METODOLOGÍA
- []
-
-[32]
-Underfull \hbox (badness 10000) in paragraph at lines 123--128
+LaTeX Info: Redefining \. on input line 105.
+LaTeX Info: Redefining \% on input line 105.
+[35]
+LaTeX Info: Redefining \. on input line 117.
+LaTeX Info: Redefining \% on input line 117.
+ [36]
+Underfull \hbox (badness 10000) in paragraph at lines 122--132
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--135
+Underfull \hbox (badness 10000) in paragraph at lines 136--141
 
  []
 
 
-Overfull \hbox (39.13228pt too wide) in paragraph at lines 136--140
-[]\T1/cmr/m/n/10.95 Los ín-di-ces se cal-cu-la-ron con las fun-cio-nes \T1/cmtt
-/m/n/10.95 estimate_richness \T1/cmr/m/n/10.95 y \T1/cmtt/m/n/10.95 plot_richne
-ss
+Underfull \hbox (badness 10000) in paragraph at lines 145--148
+
  []
 
-LaTeX Info: Redefining \. on input line 141.
-LaTeX Info: Redefining \% on input line 141.
-
-Overfull \hbox (64.98141pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 3.1.  MÉTODOS PARA CARACTERIZACIÓN DE LA DIVERSIDAD MICROBIA
-NA \T1/cmr/m/n/10.95 33
- []
-
-[33]
-Overfull \hbox (47.38416pt too wide) in paragraph at lines 144--145
-[][][][][][][][][][][][][][][][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 150--156
+LaTeX Info: Redefining \. on input line 148.
+LaTeX Info: Redefining \% on input line 148.
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 163--169
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 157--162
+Underfull \hbox (badness 10000) in paragraph at lines 170--175
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--166
+Underfull \hbox (badness 10000) in paragraph at lines 176--179
+
+ []
+
+LaTeX Info: Redefining \. on input line 179.
+LaTeX Info: Redefining \% on input line 179.
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 185--188
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--175
+Underfull \hbox (badness 10000) in paragraph at lines 189--194
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--181
-
- []
-
-LaTeX Info: Redefining \. on input line 181.
-LaTeX Info: Redefining \% on input line 181.
-
-Overfull \hbox (24.70866pt too wide) has occurred while \output is active
-\T1/cmr/m/n/10.95 34 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  ANÁLISIS EXPLORATORIO DE D
-ATOS, METODOLOGÍA
- []
-
-[34{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Underfull \hbox (badness 10000) in paragraph at lines 182--187
+Underfull \hbox (badness 10000) in paragraph at lines 195--200
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--191
+Underfull \hbox (badness 10000) in paragraph at lines 201--204
 
  []
 
 
-Overfull \hbox (8.06091pt too wide) in paragraph at lines 192--196
+Overfull \hbox (8.06091pt too wide) in paragraph at lines 205--209
 \T1/cmr/bx/n/10.95 Disimilitud de Bray-Curtis\T1/cmr/m/n/10.95 , \T1/cmr/bx/n/1
 0.95 Dis-tan-cia Jac-card\T1/cmr/m/n/10.95 , \T1/cmr/bx/n/10.95 Eu-cli-dea-na\T
 1/cmr/m/n/10.95 , \T1/cmr/bx/n/10.95 Manhat-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--203
+Underfull \hbox (badness 10000) in paragraph at lines 214--216
 
  []
 
-LaTeX Info: Redefining \. on input line 214.
-LaTeX Info: Redefining \% on input line 214.
-[35]
-LaTeX Info: Redefining \. on input line 249.
-LaTeX Info: Redefining \% on input line 249.
+LaTeX Info: Redefining \. on input line 216.
+LaTeX Info: Redefining \% on input line 216.
+[39{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+LaTeX Info: Redefining \. on input line 255.
+LaTeX Info: Redefining \% on input line 255.
+ [40]
+LaTeX Info: Redefining \. on input line 292.
+LaTeX Info: Redefining \% on input line 292.
+ [41]
+LaTeX Info: Redefining \. on input line 325.
+LaTeX Info: Redefining \% on input line 325.
 
-Overfull \hbox (24.70866pt too wide) has occurred while \output is active
-\T1/cmr/m/n/10.95 36 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  ANÁLISIS EXPLORATORIO DE D
-ATOS, METODOLOGÍA
+[42]
+LaTeX Info: Redefining \. on input line 375.
+LaTeX Info: Redefining \% on input line 375.
+ [43]
+<Img/cap2/Redes_muestras.png, id=1177, 853.5087pt x 426.6339pt>
+File: Img/cap2/Redes_muestras.png Graphic file (type png)
+<use Img/cap2/Redes_muestras.png>
+Package pdftex.def Info: Img/cap2/Redes_muestras.png  used on input line 378.
+(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+LaTeX Info: Redefining \. on input line 398.
+LaTeX Info: Redefining \% on input line 398.
+ [44 <./Img/cap2/Redes_muestras.png>]
+LaTeX Info: Redefining \. on input line 423.
+LaTeX Info: Redefining \% on input line 423.
+ [45]
+<Img/cap2/Redes_coocurrencia.png, id=1202, 853.5087pt x 853.5087pt>
+File: Img/cap2/Redes_coocurrencia.png Graphic file (type png)
+<use Img/cap2/Redes_coocurrencia.png>
+Package pdftex.def Info: Img/cap2/Redes_coocurrencia.png  used on input line 42
+6.
+(pdftex.def)             Requested size: 354.52077pt x 354.51207pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 438.
+LaTeX Info: Redefining \% on input line 438.
+ [46]
+Overfull \vbox (11.01712pt too high) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 438.
+LaTeX Info: Redefining \% on input line 438.
+
+[47 <./Img/cap2/Redes_coocurrencia.png>]
+LaTeX Info: Redefining \. on input line 482.
+LaTeX Info: Redefining \% on input line 482.
+ [48]
+Overfull \hbox (3.97107pt too wide) in paragraph at lines 494--501
+\T1/cmr/m/n/10.95 fi-gu-ras las re-ge-ne-ran los scripts \T1/cmtt/m/n/10.95 202
+61002_RegenerarComplementarios34.R\T1/cmr/m/n/10.95 ,
  []
 
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 266--268
+LaTeX Info: Redefining \. on input line 514.
+LaTeX Info: Redefining \% on input line 514.
+[49]
+<Img/cap2/Complementarios_alfa.png, id=1232, 853.5087pt x 682.7106pt>
+File: Img/cap2/Complementarios_alfa.png Graphic file (type png)
+<use Img/cap2/Complementarios_alfa.png>
+Package pdftex.def Info: Img/cap2/Complementarios_alfa.png  used on input line 
+536.
+(pdftex.def)             Requested size: 354.52077pt x 283.56963pt.
 
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
+LaTeX Info: Redefining \. on input line 545.
+LaTeX Info: Redefining \% on input line 545.
+ [50]
+LaTeX Info: Redefining \. on input line 557.
+LaTeX Info: Redefining \% on input line 557.
 
-Underfull \hbox (badness 10000) in paragraph at lines 279--281
+[51 <./Img/cap2/Complementarios_alfa.png>]
+<Img/cap2/Complementarios_beta.png, id=1247, 853.5087pt x 739.563pt>
+File: Img/cap2/Complementarios_beta.png Graphic file (type png)
+<use Img/cap2/Complementarios_beta.png>
+Package pdftex.def Info: Img/cap2/Complementarios_beta.png  used on input line 
+560.
+(pdftex.def)             Requested size: 354.52077pt x 307.18376pt.
 
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 291.
-LaTeX Info: Redefining \% on input line 291.
-[37]
-Underfull \hbox (badness 10000) in paragraph at lines 356--359
+LaTeX Info: Redefining \. on input line 568.
+LaTeX Info: Redefining \% on input line 568.
+ [52]
+Underfull \vbox (badness 4543) has occurred while \output is active []
 
- []
-
-LaTeX Info: Redefining \. on input line 373.
-LaTeX Info: Redefining \% on input line 373.
-
-Overfull \hbox (24.70866pt too wide) has occurred while \output is active
-\T1/cmr/m/n/10.95 38 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  ANÁLISIS EXPLORATORIO DE D
-ATOS, METODOLOGÍA
- []
-
-[38]
-Overfull \hbox (141.97136pt too wide) in paragraph at lines 380--381
-[][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 385--386
-
- []
-
-
-Overfull \hbox (15.00473pt too wide) in paragraph at lines 387--390
-[]\T1/cmr/m/n/10.95 En com-pa-ra-cion con la fun-ción plot_network(), la nue-va
- fun-ción plot_net()
- []
-
-
-Overfull \hbox (187.7009pt too wide) in paragraph at lines 392--393
-[][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-LaTeX Info: Redefining \. on input line 419.
-LaTeX Info: Redefining \% on input line 419.
-[39])
-LaTeX Info: Redefining \. on input line 241.
-LaTeX Info: Redefining \% on input line 241.
-
-Overfull \hbox (24.70866pt too wide) has occurred while \output is active
-\T1/cmr/m/n/10.95 40 \T1/cmr/m/sl/10.95 CAPÍTULO 3.  ANÁLISIS EXPLORATORIO DE D
-ATOS, METODOLOGÍA
- []
-
-[40]
+LaTeX Info: Redefining \. on input line 580.
+LaTeX Info: Redefining \% on input line 580.
+ [53 <./Img/cap2/Complementarios_beta.png>]
+LaTeX Info: Redefining \. on input line 616.
+LaTeX Info: Redefining \% on input line 616.
+ [54]
+<Img/cap2/Complementarios_nativo.png, id=1271, 910.3611pt x 369.7815pt>
+File: Img/cap2/Complementarios_nativo.png Graphic file (type png)
+<use Img/cap2/Complementarios_nativo.png>
+Package pdftex.def Info: Img/cap2/Complementarios_nativo.png  used on input lin
+e 619.
+(pdftex.def)             Requested size: 354.52077pt x 144.00542pt.
+LaTeX Info: Redefining \. on input line 648.
+LaTeX Info: Redefining \% on input line 648.
+ [55 <./Img/cap2/Complementarios_nativo.png>])
+LaTeX Info: Redefining \. on input line 242.
+LaTeX Info: Redefining \% on input line 242.
+ [56]
 \openout2 = `Capitulos/cap4.aux'.
 
  (./Capitulos/cap4.tex
 Cap\'{\i }tulo 4.
-[41
+[57
 
 
 
 
 ]
-<Img/cap3/AlphaDiversity_CrudosFiltrados.png, id=1051, 853.5087pt x 426.6339pt>
+<Img/cap3/AlphaDiversity_CrudosFiltrados.png, id=1297, 853.5087pt x 426.6339pt>
 
 File: Img/cap3/AlphaDiversity_CrudosFiltrados.png Graphic file (type png)
 <use Img/cap3/AlphaDiversity_CrudosFiltrados.png>
 Package pdftex.def Info: Img/cap3/AlphaDiversity_CrudosFiltrados.png  used on i
-nput line 49.
+nput line 51.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 67.
-LaTeX Info: Redefining \% on input line 67.
- [42 <./Img/cap3/AlphaDiversity_CrudosFiltrados.png>]
-<Img/cap3/Barras.png, id=1060, 853.5087pt x 426.6339pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 60.
+LaTeX Info: Redefining \% on input line 60.
+ [58]
+<Img/cap3/Barras.png, id=1307, 853.5087pt x 426.6339pt>
 File: Img/cap3/Barras.png Graphic file (type png)
 <use Img/cap3/Barras.png>
-Package pdftex.def Info: Img/cap3/Barras.png  used on input line 70.
+Package pdftex.def Info: Img/cap3/Barras.png  used on input line 72.
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 88.
-LaTeX Info: Redefining \% on input line 88.
 
-Overfull \hbox (164.14354pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 4.1.  CARACTERIZACIÓN DE LA COMPOSICIÓN TAXONÓMICA Y LA DIVE
-RSIDAD MICROBIANA \T1/cmr/m/n/10.95 43
+Underfull \hbox (badness 1320) in paragraph at lines 75--75
+\T1/cmr/m/n/10.95 tro de ca-li-dad. Las mues-tras sa-lu-da-bles ($\OML/cmm/m/it
+/10.95 n \OT1/cmr/m/n/10.95 = 35$\T1/cmr/m/n/10.95 ) tie-nen en pro-
  []
 
-[43 <./Img/cap3/Barras.png>]
-Overfull \hbox (31.61511pt too wide) in paragraph at lines 94--102
- [][] 
+
+Underfull \hbox (badness 4366) in paragraph at lines 75--75
+\T1/cmr/m/n/10.95 me-dio más lec-tu-ras que las no sa-lu-da-bles ($\OML/cmm/m/i
+t/10.95 n \OT1/cmr/m/n/10.95 = 18$\T1/cmr/m/n/10.95 ). [](Script:
  []
 
-<Img/cap3/BetaDiversity.png, id=1075, 853.5087pt x 455.0601pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 78.
+LaTeX Info: Redefining \% on input line 78.
+ [59 <./Img/cap3/AlphaDiversity_CrudosFiltrados.png>]
+Underfull \hbox (badness 2478) in paragraph at lines 94--94
+[]\T1/cmr/m/n/10.95 Cuadro 4.1: []Promedio de los ín-di-ces de di-ver-si-dad al
+-fa por gru-
+ []
+
+
+Underfull \hbox (badness 1173) in paragraph at lines 94--94
+\T1/cmr/m/n/10.95 po so-bre la co-mu-ni-dad com-ple-ta (53 mues-tras fil-tra-da
+s). En-tre pa-
+ []
+
+
+Underfull \hbox (badness 5924) in paragraph at lines 94--94
+\T1/cmr/m/n/10.95 rén-te-sis, la des-via-ción es-tán-dar del ín-di-ce de Shan-n
+on. [](Script:
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 107.
+LaTeX Info: Redefining \% on input line 107.
+ [60 <./Img/cap3/Barras.png>]
+<Img/cap3/BetaDiversity.png, id=1329, 853.5087pt x 455.0601pt>
 File: Img/cap3/BetaDiversity.png Graphic file (type png)
 <use Img/cap3/BetaDiversity.png>
-Package pdftex.def Info: Img/cap3/BetaDiversity.png  used on input line 119.
+Package pdftex.def Info: Img/cap3/BetaDiversity.png  used on input line 123.
 (pdftex.def)             Requested size: 354.52077pt x 189.01306pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 126.
-LaTeX Info: Redefining \% on input line 126.
- [44]
+LaTeX Info: Redefining \. on input line 130.
+LaTeX Info: Redefining \% on input line 130.
+ [61]
 LaTeX Info: Redefining \. on input line 148.
 LaTeX Info: Redefining \% on input line 148.
 
-Overfull \hbox (164.14354pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 4.1.  CARACTERIZACIÓN DE LA COMPOSICIÓN TAXONÓMICA Y LA DIVE
-RSIDAD MICROBIANA \T1/cmr/m/n/10.95 45
- []
-
-[45 <./Img/cap3/BetaDiversity.png>]
-<Img/cap3/BarrasFilo.png, id=1091, 853.5087pt x 540.5796pt>
+[62 <./Img/cap3/BetaDiversity.png>]
+<Img/cap3/PERMANOVA_PERMDISP.png, id=1350, 853.5087pt x 398.2077pt>
+File: Img/cap3/PERMANOVA_PERMDISP.png Graphic file (type png)
+<use Img/cap3/PERMANOVA_PERMDISP.png>
+Package pdftex.def Info: Img/cap3/PERMANOVA_PERMDISP.png  used on input line 15
+1.
+(pdftex.def)             Requested size: 354.52077pt x 165.39894pt.
+LaTeX Info: Redefining \. on input line 175.
+LaTeX Info: Redefining \% on input line 175.
+ [63 <./Img/cap3/PERMANOVA_PERMDISP.png>]
+<Img/cap3/BarrasFilo.png, id=1359, 853.5087pt x 682.7106pt>
 File: Img/cap3/BarrasFilo.png Graphic file (type png)
 <use Img/cap3/BarrasFilo.png>
-Package pdftex.def Info: Img/cap3/BarrasFilo.png  used on input line 151.
-(pdftex.def)             Requested size: 354.52077pt x 224.53432pt.
-<Img/cap3/BarrasFilo_blackandwhite.png, id=1094, 853.5087pt x 426.6339pt>
+Package pdftex.def Info: Img/cap3/BarrasFilo.png  used on input line 178.
+(pdftex.def)             Requested size: 354.52077pt x 283.56963pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 187.
+LaTeX Info: Redefining \% on input line 187.
+ [64]
+<Img/cap3/BarrasFilo_blackandwhite.png, id=1368, 853.5087pt x 739.563pt>
 File: Img/cap3/BarrasFilo_blackandwhite.png Graphic file (type png)
 <use Img/cap3/BarrasFilo_blackandwhite.png>
 Package pdftex.def Info: Img/cap3/BarrasFilo_blackandwhite.png  used on input l
-ine 161.
-(pdftex.def)             Requested size: 354.52077pt x 177.206pt.
+ine 190.
+(pdftex.def)             Requested size: 354.52077pt x 307.18376pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 167.
-LaTeX Info: Redefining \% on input line 167.
- [46 <./Img/cap3/BarrasFilo.png>]
-LaTeX Info: Redefining \. on input line 192.
-LaTeX Info: Redefining \% on input line 192.
+LaTeX Info: Redefining \. on input line 198.
+LaTeX Info: Redefining \% on input line 198.
+ [65 <./Img/cap3/BarrasFilo.png>]
+Underfull \vbox (badness 4543) has occurred while \output is active []
 
-Overfull \hbox (164.14354pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 4.1.  CARACTERIZACIÓN DE LA COMPOSICIÓN TAXONÓMICA Y LA DIVE
-RSIDAD MICROBIANA \T1/cmr/m/n/10.95 47
- []
-
-[47 <./Img/cap3/BarrasFilo_blackandwhite.png>]
-<Img/cap3/Barras_Eukarya10.png, id=1111, 853.5087pt x 483.4863pt>
+LaTeX Info: Redefining \. on input line 205.
+LaTeX Info: Redefining \% on input line 205.
+ [66 <./Img/cap3/BarrasFilo_blackandwhite.png>]
+<Img/cap3/Barras_Eukarya10.png, id=1386, 853.5087pt x 569.0058pt>
 File: Img/cap3/Barras_Eukarya10.png Graphic file (type png)
 <use Img/cap3/Barras_Eukarya10.png>
-Package pdftex.def Info: Img/cap3/Barras_Eukarya10.png  used on input line 195.
+Package pdftex.def Info: Img/cap3/Barras_Eukarya10.png  used on input line 223.
 
-(pdftex.def)             Requested size: 354.52077pt x 200.82013pt.
-LaTeX Info: Redefining \. on input line 212.
-LaTeX Info: Redefining \% on input line 212.
- [48 <./Img/cap3/Barras_Eukarya10.png>]
-<Img/cap3/Alpha_Eukarya.png, id=1123, 853.5087pt x 540.5796pt>
+(pdftex.def)             Requested size: 354.52077pt x 236.34138pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 231.
+LaTeX Info: Redefining \% on input line 231.
+ [67]
+<Img/cap3/Alpha_Eukarya.png, id=1399, 853.5087pt x 540.5796pt>
 File: Img/cap3/Alpha_Eukarya.png Graphic file (type png)
 <use Img/cap3/Alpha_Eukarya.png>
-Package pdftex.def Info: Img/cap3/Alpha_Eukarya.png  used on input line 215.
+Package pdftex.def Info: Img/cap3/Alpha_Eukarya.png  used on input line 243.
 (pdftex.def)             Requested size: 354.52077pt x 224.53432pt.
-<Img/cap3/Beta_Eukarya.png, id=1126, 963.6pt x 542.025pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 249.
+LaTeX Info: Redefining \% on input line 249.
+ [68 <./Img/cap3/Barras_Eukarya10.png>]
+<Img/cap3/Beta_Eukarya.png, id=1408, 853.5087pt x 540.5796pt>
 File: Img/cap3/Beta_Eukarya.png Graphic file (type png)
 <use Img/cap3/Beta_Eukarya.png>
-Package pdftex.def Info: Img/cap3/Beta_Eukarya.png  used on input line 224.
-(pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 229.
-LaTeX Info: Redefining \% on input line 229.
-
-Overfull \hbox (164.14354pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 4.1.  CARACTERIZACIÓN DE LA COMPOSICIÓN TAXONÓMICA Y LA DIVE
-RSIDAD MICROBIANA \T1/cmr/m/n/10.95 49
- []
-
-[49 <./Img/cap3/Alpha_Eukarya.png>]
-<Img/cap3/Barras_Bacteria10.png, id=1138, 853.5087pt x 483.4863pt>
-File: Img/cap3/Barras_Bacteria10.png Graphic file (type png)
-<use Img/cap3/Barras_Bacteria10.png>
-Package pdftex.def Info: Img/cap3/Barras_Bacteria10.png  used on input line 250
-.
-(pdftex.def)             Requested size: 354.52077pt x 200.82013pt.
-LaTeX Info: Redefining \. on input line 258.
-LaTeX Info: Redefining \% on input line 258.
- [50 <./Img/cap3/Beta_Eukarya.png (PNG copy)>]
-<Img/cap3/Alpha_Bacteria.png, id=1150, 853.5087pt x 540.5796pt>
-File: Img/cap3/Alpha_Bacteria.png Graphic file (type png)
-<use Img/cap3/Alpha_Bacteria.png>
-Package pdftex.def Info: Img/cap3/Alpha_Bacteria.png  used on input line 270.
+Package pdftex.def Info: Img/cap3/Beta_Eukarya.png  used on input line 252.
 (pdftex.def)             Requested size: 354.52077pt x 224.53432pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 276.
-LaTeX Info: Redefining \% on input line 276.
+LaTeX Info: Redefining \. on input line 260.
+LaTeX Info: Redefining \% on input line 260.
+ [69 <./Img/cap3/Alpha_Eukarya.png>]
+LaTeX Info: Redefining \. on input line 277.
+LaTeX Info: Redefining \% on input line 277.
+ [70 <./Img/cap3/Beta_Eukarya.png>]
+<Img/cap3/Barras_Bacteria10.png, id=1429, 853.5087pt x 569.0058pt>
+File: Img/cap3/Barras_Bacteria10.png Graphic file (type png)
+<use Img/cap3/Barras_Bacteria10.png>
+Package pdftex.def Info: Img/cap3/Barras_Bacteria10.png  used on input line 280
+.
+(pdftex.def)             Requested size: 354.52077pt x 236.34138pt.
+LaTeX Info: Redefining \. on input line 297.
+LaTeX Info: Redefining \% on input line 297.
+ [71 <./Img/cap3/Barras_Bacteria10.png>]
+<Img/cap3/Alpha_Bacteria.png, id=1441, 853.5087pt x 540.5796pt>
+File: Img/cap3/Alpha_Bacteria.png Graphic file (type png)
+<use Img/cap3/Alpha_Bacteria.png>
+Package pdftex.def Info: Img/cap3/Alpha_Bacteria.png  used on input line 300.
+(pdftex.def)             Requested size: 354.52077pt x 224.53432pt.
 
-Overfull \hbox (164.14354pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 4.1.  CARACTERIZACIÓN DE LA COMPOSICIÓN TAXONÓMICA Y LA DIVE
-RSIDAD MICROBIANA \T1/cmr/m/n/10.95 51
+Underfull \hbox (badness 10000) in paragraph at lines 303--303
+[]\T1/cmr/m/n/10.95 Figura 4.11: []Diversidad al-fa de las bac-te-rias por ni-v
+el ta-xo-
  []
 
-[51 <./Img/cap3/Barras_Bacteria10.png>]
-<Img/cap3/Beta_Bacteria.png, id=1159, 963.6pt x 542.025pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 303--303
+\T1/cmr/m/n/10.95 nó-mi-co: A) fi-lo, B) fa-mi-lia, C) gé-ne-ro, D) es-pe-cie. 
+[](Script:
+ []
+
+<Img/cap3/Beta_Bacteria.png, id=1444, 853.5087pt x 540.5796pt>
 File: Img/cap3/Beta_Bacteria.png Graphic file (type png)
 <use Img/cap3/Beta_Bacteria.png>
-Package pdftex.def Info: Img/cap3/Beta_Bacteria.png  used on input line 279.
-(pdftex.def)             Requested size: 354.52077pt x 199.41302pt.
+Package pdftex.def Info: Img/cap3/Beta_Bacteria.png  used on input line 309.
+(pdftex.def)             Requested size: 354.52077pt x 224.53432pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 285.
-LaTeX Info: Redefining \% on input line 285.
- [52 <./Img/cap3/Alpha_Bacteria.png>]
-LaTeX Info: Redefining \. on input line 306.
-LaTeX Info: Redefining \% on input line 306.
+LaTeX Info: Redefining \. on input line 316.
+LaTeX Info: Redefining \% on input line 316.
+ [72 <./Img/cap3/Alpha_Bacteria.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Overfull \hbox (39.368pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 4.2.  EVALUACIÓN ESTADÍSTICA DE LAS DIFERENCIAS ENTRE GRUPOS
- \T1/cmr/m/n/10.95 53
- []
-
-[53 <./Img/cap3/Beta_Bacteria.png (PNG copy)>]
-<Img/cap3/tTest_Shannon.png, id=1173, 963.6pt x 508.90125pt>
+LaTeX Info: Redefining \. on input line 337.
+LaTeX Info: Redefining \% on input line 337.
+ [73 <./Img/cap3/Beta_Bacteria.png>]
+<Img/cap3/tTest_Shannon.png, id=1464, 853.5087pt x 455.0601pt>
 File: Img/cap3/tTest_Shannon.png Graphic file (type png)
 <use Img/cap3/tTest_Shannon.png>
-Package pdftex.def Info: Img/cap3/tTest_Shannon.png  used on input line 321.
-(pdftex.def)             Requested size: 354.52077pt x 187.22668pt.
+Package pdftex.def Info: Img/cap3/tTest_Shannon.png  used on input line 352.
+(pdftex.def)             Requested size: 354.52077pt x 189.01306pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Info: Redefining \. on input line 329.
-LaTeX Info: Redefining \% on input line 329.
- [54]
-<Img/cap3/tTest_Shannon_Fusarium.png, id=1180, 853.5087pt x 455.0601pt>
+LaTeX Info: Redefining \. on input line 361.
+LaTeX Info: Redefining \% on input line 361.
+ [74]
+<Img/cap3/tTest_Shannon_Fusarium.png, id=1473, 853.5087pt x 455.0601pt>
 File: Img/cap3/tTest_Shannon_Fusarium.png Graphic file (type png)
 <use Img/cap3/tTest_Shannon_Fusarium.png>
 Package pdftex.def Info: Img/cap3/tTest_Shannon_Fusarium.png  used on input lin
-e 353.
+e 385.
 (pdftex.def)             Requested size: 354.52077pt x 189.01306pt.
-LaTeX Info: Redefining \. on input line 363.
-LaTeX Info: Redefining \% on input line 363.
+LaTeX Info: Redefining \. on input line 394.
+LaTeX Info: Redefining \% on input line 394.
 
-Overfull \hbox (39.368pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 4.2.  EVALUACIÓN ESTADÍSTICA DE LAS DIFERENCIAS ENTRE GRUPOS
- \T1/cmr/m/n/10.95 55
- []
-
-[55 <./Img/cap3/tTest_Shannon.png>]
-<Img/cap3/Wilcoxon_Shannon.png, id=1190, 853.5087pt x 426.6339pt>
+[75 <./Img/cap3/tTest_Shannon.png>]
+LaTeX Info: Redefining \. on input line 408.
+LaTeX Info: Redefining \% on input line 408.
+ [76 <./Img/cap3/tTest_Shannon_Fusarium.png>]
+<Img/cap3/Wilcoxon_Shannon.png, id=1488, 853.5087pt x 426.6339pt>
 File: Img/cap3/Wilcoxon_Shannon.png Graphic file (type png)
 <use Img/cap3/Wilcoxon_Shannon.png>
-Package pdftex.def Info: Img/cap3/Wilcoxon_Shannon.png  used on input line 379.
+Package pdftex.def Info: Img/cap3/Wilcoxon_Shannon.png  used on input line 411.
 
 (pdftex.def)             Requested size: 354.52077pt x 177.206pt.
-LaTeX Info: Redefining \. on input line 385.
-LaTeX Info: Redefining \% on input line 385.
- [56 <./Img/cap3/tTest_Shannon_Fusarium.png>]
-Overfull \hbox (121.8612pt too wide) in paragraph at lines 406--420
- [][] 
+
+Underfull \hbox (badness 2020) in paragraph at lines 440--440
+[]\T1/cmr/m/n/10.95 Cuadro 4.2: []Resumen de las prue-bas de hi-pó-te-sis so-br
+e el ín-di-ce
  []
 
 
-Underfull \vbox (badness 5077) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 421.
-LaTeX Info: Redefining \% on input line 421.
-
-Overfull \hbox (39.368pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 4.2.  EVALUACIÓN ESTADÍSTICA DE LAS DIFERENCIAS ENTRE GRUPOS
- \T1/cmr/m/n/10.95 57
+Underfull \hbox (badness 1590) in paragraph at lines 440--440
+\T1/cmr/m/n/10.95 de Shan-non. Ni-vel de sig-ni-fi-can-cia $\OML/cmm/m/it/10.95
+  \OT1/cmr/m/n/10.95 = 0[]05$\T1/cmr/m/n/10.95 . So-lo las dos prue-
  []
 
-[57 <./Img/cap3/Wilcoxon_Shannon.png>]
-Overfull \hbox (76.52605pt too wide) in paragraph at lines 448--461
- [][] 
+LaTeX Info: Redefining \. on input line 460.
+LaTeX Info: Redefining \% on input line 460.
+[77 <./Img/cap3/Wilcoxon_Shannon.png>]
+LaTeX Info: Redefining \. on input line 489.
+LaTeX Info: Redefining \% on input line 489.
+ [78]
+<Img/cap3/Rarefaccion_Normalizacion.png, id=1518, 910.3611pt x 369.7815pt>
+File: Img/cap3/Rarefaccion_Normalizacion.png Graphic file (type png)
+<use Img/cap3/Rarefaccion_Normalizacion.png>
+Package pdftex.def Info: Img/cap3/Rarefaccion_Normalizacion.png  used on input 
+line 492.
+(pdftex.def)             Requested size: 354.52077pt x 144.00542pt.
+
+Underfull \hbox (badness 2065) in paragraph at lines 507--507
+[]\T1/cmr/m/n/10.95 Cuadro 4.3: []Efecto de la ra-re-fac-ción so-bre los ín-di-
+ces de di-ver-si-
  []
 
-LaTeX Info: Redefining \. on input line 462.
-LaTeX Info: Redefining \% on input line 462.
-[58])
-LaTeX Info: Redefining \. on input line 244.
-LaTeX Info: Redefining \% on input line 244.
 
-Overfull \hbox (38.39479pt too wide) has occurred while \output is active
-\T1/cmr/m/sl/10.95 4.3.  PATRONES ASOCIADOS CON EL ESTADO DE SALUD DE LA PLANTA
- \T1/cmr/m/n/10.95 59
+Underfull \hbox (badness 1590) in paragraph at lines 507--507
+\T1/cmr/m/n/10.95 dad al-fa y las prue-bas en-tre gru-pos. Me-dias por gru-po y
+ va-lo-res
  []
 
-[59]
-LaTeX Info: Redefining \. on input line 244.
-LaTeX Info: Redefining \% on input line 244.
- [60]
+
+Underfull \hbox (badness 1168) in paragraph at lines 507--507
+\T1/cmr/m/n/10.95 gi-na-les y so-bre los da-tos ra-ri-fi-ca-dos a 4 053 295 lec
+-tu-ras. [](Script:
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 527.
+LaTeX Info: Redefining \% on input line 527.
+ [79 <./Img/cap3/Rarefaccion_Normalizacion.png>]
+Underfull \hbox (badness 7433) in paragraph at lines 540--540
+[]\T1/cmr/m/n/10.95 Cuadro 4.4: []PERMANOVA so-bre la di-si-mi-li-tud de Bray-C
+urtis
+ []
+
+
+Underfull \hbox (badness 3281) in paragraph at lines 540--540
+\T1/cmr/m/n/10.95 con tres nor-ma-li-za-cio-nes de la ta-bla de con-teos. Un fa
+c-tor (es-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 540--540
+\T1/cmr/m/n/10.95 ta-do de la plan-ta), 999 per-mu-ta-cio-nes, se-mi-lla 2026. 
+[](Script:
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 564.
+LaTeX Info: Redefining \% on input line 564.
+ [80]
+Overfull \hbox (9.95409pt too wide) in paragraph at lines 581--592
+[]\T1/cmr/m/n/10.95 Sobre la co-mu-ni-dad com-ple-ta, \T1/cmr/m/it/10.95 Fu-sa-
+rium \T1/cmr/m/n/10.95 re-pre-sen-ta en pro-me-dio el 0.136$ $%
+ []
+
+LaTeX Info: Redefining \. on input line 592.
+LaTeX Info: Redefining \% on input line 592.
+[81]
+<Img/cap3/Proporciones_Fusarium.png, id=1561, 853.5087pt x 682.7106pt>
+File: Img/cap3/Proporciones_Fusarium.png Graphic file (type png)
+<use Img/cap3/Proporciones_Fusarium.png>
+Package pdftex.def Info: Img/cap3/Proporciones_Fusarium.png  used on input line
+ 621.
+(pdftex.def)             Requested size: 354.52077pt x 283.56963pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 630.
+LaTeX Info: Redefining \% on input line 630.
+ [82]
+Underfull \hbox (badness 3029) in paragraph at lines 635--635
+[]\T1/cmr/m/n/10.95 Cuadro 4.5: []Porcentaje de lec-tu-ras cla-si-fi-ca-das asi
+g-na-das a \T1/cmr/m/it/10.95 Fu-sa-
+ []
+
+
+Underfull \hbox (badness 3635) in paragraph at lines 635--635
+\T1/cmr/m/it/10.95 rium \T1/cmr/m/n/10.95 y a los gé-ne-ros can-di-da-tos, por 
+gru-po. Me-dia y me-dia-na
+ []
+
+
+Underfull \hbox (badness 2119) in paragraph at lines 635--635
+\T1/cmr/m/n/10.95 por gru-po, es-ta-dís-ti-co $\OML/cmm/m/it/10.95 U$ \T1/cmr/m
+/n/10.95 y va-lor $\OML/cmm/m/it/10.95 p$ \T1/cmr/m/n/10.95 de Mann-Whitney, y 
+va-lor $\OML/cmm/m/it/10.95 p$
+ []
+
+
+Underfull \hbox (badness 1281) in paragraph at lines 635--635
+\T1/cmr/m/n/10.95 ajus-ta-do por Benjamini-Hochberg so-bre los sie-te con-tras-
+tes. [](Script:
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 653.
+LaTeX Info: Redefining \% on input line 653.
+ [83 <./Img/cap3/Proporciones_Fusarium.png>]
+Underfull \vbox (badness 3989) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 686.
+LaTeX Info: Redefining \% on input line 686.
+ [84]
+Overfull \hbox (0.54242pt too wide) in paragraph at lines 692--703
+\T1/cmtt/m/n/10.95 Analisis_estadistico_de_Datos_Metagenomicos.ipynb\T1/cmr/m/n
+/10.95 , dis-po-ni-ble en la
+ []
+
+LaTeX Info: Redefining \. on input line 704.
+LaTeX Info: Redefining \% on input line 704.
+[85])
+LaTeX Info: Redefining \. on input line 245.
+LaTeX Info: Redefining \% on input line 245.
+ [86]
 \openout2 = `Capitulos/cap5.aux'.
 
  (./Capitulos/cap5.tex
 Cap\'{\i }tulo 5.
-[61
+[87
 
 
 
 
 ]
-LaTeX Info: Redefining \. on input line 70.
-LaTeX Info: Redefining \% on input line 70.
- [62]
-LaTeX Info: Redefining \. on input line 107.
-LaTeX Info: Redefining \% on input line 107.
- [63]
-LaTeX Info: Redefining \. on input line 141.
-LaTeX Info: Redefining \% on input line 141.
- [64]
-LaTeX Info: Redefining \. on input line 174.
-LaTeX Info: Redefining \% on input line 174.
- [65]
-LaTeX Info: Redefining \. on input line 206.
-LaTeX Info: Redefining \% on input line 206.
- [66])
-LaTeX Info: Redefining \. on input line 247.
-LaTeX Info: Redefining \% on input line 247.
- [67]
+LaTeX Info: Redefining \. on input line 75.
+LaTeX Info: Redefining \% on input line 75.
+ [88]
+LaTeX Info: Redefining \. on input line 97.
+LaTeX Info: Redefining \% on input line 97.
+ [89]
+LaTeX Info: Redefining \. on input line 129.
+LaTeX Info: Redefining \% on input line 129.
+ [90]
+LaTeX Info: Redefining \. on input line 156.
+LaTeX Info: Redefining \% on input line 156.
+ [91]
+LaTeX Info: Redefining \. on input line 189.
+LaTeX Info: Redefining \% on input line 189.
+ [92]
+LaTeX Info: Redefining \. on input line 225.
+LaTeX Info: Redefining \% on input line 225.
+ [93])
+LaTeX Info: Redefining \. on input line 248.
+LaTeX Info: Redefining \% on input line 248.
+ [94]
+LaTeX Info: Redefining \. on input line 248.
+LaTeX Info: Redefining \% on input line 248.
+ [95]
 \openout2 = `Capitulos/cap6.aux'.
 
- (./Capitulos/cap6.tex [68
+ (./Capitulos/cap6.tex [96
 
 
 
 
 ]
 Cap\'{\i }tulo 6.
-[69]
+[97]
 LaTeX Info: Redefining \. on input line 69.
 LaTeX Info: Redefining \% on input line 69.
- [70]
+ [98]
 LaTeX Info: Redefining \. on input line 99.
 LaTeX Info: Redefining \% on input line 99.
- [71])
-LaTeX Info: Redefining \. on input line 250.
-LaTeX Info: Redefining \% on input line 250.
- [72] [73
+ [99])
+LaTeX Info: Redefining \. on input line 251.
+LaTeX Info: Redefining \% on input line 251.
+ [100] [101
 
 
 
@@ -1737,100 +1887,249 @@ LaTeX Info: Redefining \% on input line 250.
  (./Apendices/Ap.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [74
+ [102
 
 
 ]
 Ap\'{e}ndice A.
-) [75]
+
+Overfull \hbox (3.35144pt too wide) in paragraph at lines 4--6
+\T1/cmr/m/n/10.95 scripts de R que es-tán en la car-pe-ta \T1/cmtt/m/n/10.95 An
+alisis_Comparativo/Fresa_Solena/
+ []
+
+
+Overfull \hbox (3.8445pt too wide) in paragraph at lines 8--22
+\T1/cmr/m/n/10.95 de 2026 si-guen la con-ven-ción \T1/cmtt/m/n/10.95 AAAAMMDD_R
+egenerar<Contenido><Figura>.R\T1/cmr/m/n/10.95 ,
+ []
+
+
+Overfull \hbox (1.69533pt too wide) in paragraph at lines 8--22
+\T1/cmr/m/n/10.95 ejem-plo, \T1/cmtt/m/n/10.95 ...BarrasFilo45.R \T1/cmr/m/n/10
+.95 ge-ne-ra la Fi-gu-ra 4.5 y \T1/cmtt/m/n/10.95 ...RedesMuestras32.R
+ []
+
+
+Overfull \hbox (0.72935pt too wide) in paragraph at lines 8--22
+\T1/cmr/m/n/10.95 da-tos del ar-chi-vo co-mún \T1/cmtt/m/n/10.95 _paleta_tesis.
+R \T1/cmr/m/n/10.95 (o \T1/cmtt/m/n/10.95 _cargar_complementarios.R
+ []
+
+
+Overfull \hbox (3.0349pt too wide) in paragraph at lines 8--22
+\T1/cmr/m/n/10.95 pa-ra los con-jun-tos com-ple-men-ta-rios). Los scripts de 20
+23 (pre-fi-jo \T1/cmtt/m/n/10.95 2023MMDD_\T1/cmr/m/n/10.95 )
+ []
+
+
+Underfull \hbox (badness 1824) in paragraph at lines 27--27
+[]\T1/cmr/m/n/10.95 Cuadro A.1: []Script y ar-chi-vo de ima-gen de ca-da fi-gu-
+ra (ar-chi-vos
+ []
+
+
+Underfull \hbox (badness 1888) in paragraph at lines 27--27
+\T1/cmr/m/n/10.95 en \T1/cmtt/m/n/10.95 latex/Img/cap1/\T1/cmr/m/n/10.95 , \T1/
+cmtt/m/n/10.95 cap2/ \T1/cmr/m/n/10.95 o \T1/cmtt/m/n/10.95 cap3/ \T1/cmr/m/n/1
+0.95 se-gún el ca-pí-tu-lo; scripts en
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--38
+[]|\T1/cmr/m/n/8 diagrama pro-pio
+ []
+
+
+Underfull \vbox (badness 2932) has occurred while \output is active []
+
+ [103]
+Overfull \vbox (82.80692pt too high) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 64.
+LaTeX Info: Redefining \% on input line 64.
+
+[104]
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+[]\T1/cmr/m/n/10.95 Cuadro A.2: []Script que cal-cu-la los va-lo-res de ca-da t
+a-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--69
+\T1/cmr/m/n/10.95 bla y ar-chi-vo \T1/cmtt/m/n/10.95 .csv \T1/cmr/m/n/10.95 con
+ los re-sul-ta-dos, guar-da-do en
+ []
+
+
+Underfull \hbox (badness 5274) in paragraph at lines 69--69
+\T1/cmtt/m/n/10.95 Analisis_Comparativo/Fresa_Solena/Results_img/\T1/cmr/m/n/10
+.95 . Los va-lo-res de
+ []
+
+
+Underfull \hbox (badness 7631) in paragraph at lines 78--78
+[]|\T1/cmr/m/n/8 Métricas de la red
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+\T1/cmtt/m/n/8 permanova_pares.csv\T1/cmr/m/n/8 ,
+ []
+
+
+Underfull \hbox (badness 1590) in paragraph at lines 80--80
+[]|\T1/cmr/m/n/8 Medias de di-ver-si-dad
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--81
+[]|\T1/cmtt/m/n/8 ...TTestShannon413.R\T1/cmr/m/n/8 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--81
+\T1/cmtt/m/n/8 ...TTestFusarium414.R\T1/cmr/m/n/8 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--81
+\T1/cmtt/m/n/8 ...WilcoxonShannon415.R\T1/cmr/m/n/8 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--83
+[]|\T1/cmr/m/n/8 PERMANOVA con
+ []
+
+
+Overfull \hbox (3.86995pt too wide) in paragraph at lines 84--85
+[]|\T1/cmtt/m/n/8 Proporciones_generos_ 
+ []
+
+) [105]
+LaTeX Info: Redefining \. on input line 268.
+LaTeX Info: Redefining \% on input line 268.
+ [106]
 \openout2 = `Apendices/Bp.aux'.
 
- (./Apendices/Bp.tex [76
-
-
-
-
-]
+ (./Apendices/Bp.tex
 Ap\'{e}ndice B.
-) [77] [78
+
+Overfull \hbox (13.11577pt too wide) in paragraph at lines 6--13
+\T1/cmr/m/n/10.95 xo-nó-mi-ca-men-te con Kra-ken. En el re-po-si-to-rio, la car
+-pe-ta \T1/cmtt/m/n/10.95 Data/fresa_solena/
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [107
 
 
 
-] (./main.bbl [79
+
+])
+Overfull \hbox (1.3231pt too wide) in paragraph at lines 57--270
+\T1/cmr/m/n/10.95 es-cri-be los va-lo-res en \T1/cmtt/m/n/10.95 Results_img/PER
+MANOVA_PERMDISP_resultados.csv\T1/cmr/m/n/10.95 .
+ []
+
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
+[108] [109] [110
+
+
+
+] (./main.bbl [111
 
 ]
-Underfull \hbox (badness 1342) in paragraph at lines 102--106
+LaTeX Info: Redefining \. on input line 117.
+LaTeX Info: Redefining \% on input line 117.
+ [112]
+Underfull \hbox (badness 1342) in paragraph at lines 119--123
 []\T1/cmr/m/n/10.95 Dabdoub, S. M. (2016).  kraken-biom: Enabling in-ter-ope-ra
 -ti-ve for-
  []
 
-LaTeX Info: Redefining \. on input line 117.
-LaTeX Info: Redefining \% on input line 117.
-[80]
-LaTeX Info: Redefining \. on input line 184.
-LaTeX Info: Redefining \% on input line 184.
- [81]
-LaTeX Info: Redefining \. on input line 250.
-LaTeX Info: Redefining \% on input line 250.
- [82]
-LaTeX Info: Redefining \. on input line 313.
-LaTeX Info: Redefining \% on input line 313.
- [83]
-LaTeX Info: Redefining \. on input line 375.
-LaTeX Info: Redefining \% on input line 375.
- [84]
-LaTeX Info: Redefining \. on input line 441.
-LaTeX Info: Redefining \% on input line 441.
- [85])
-LaTeX Info: Redefining \. on input line 290.
-LaTeX Info: Redefining \% on input line 290.
- [86] (./main.aux
+LaTeX Info: Redefining \. on input line 176.
+LaTeX Info: Redefining \% on input line 176.
+[113]
+LaTeX Info: Redefining \. on input line 246.
+LaTeX Info: Redefining \% on input line 246.
+ [114]
+LaTeX Info: Redefining \. on input line 310.
+LaTeX Info: Redefining \% on input line 310.
+ [115]
+LaTeX Info: Redefining \. on input line 365.
+LaTeX Info: Redefining \% on input line 365.
+ [116]
+LaTeX Info: Redefining \. on input line 427.
+LaTeX Info: Redefining \% on input line 427.
+ [117]
+LaTeX Info: Redefining \. on input line 485.
+LaTeX Info: Redefining \% on input line 485.
+ [118]
+LaTeX Info: Redefining \. on input line 547.
+LaTeX Info: Redefining \% on input line 547.
+ [119])
+LaTeX Info: Redefining \. on input line 291.
+LaTeX Info: Redefining \% on input line 291.
+ [120] (./main.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
- (./Capitulos/cap1_Intro.aux)
-(./Capitulos/cap2.aux) (./Capitulos/cap3.aux) (./Capitulos/cap4.aux)
-(./Capitulos/cap5.aux) (./Capitulos/cap6.aux) (./Apendices/Ap.aux)
-(./Apendices/Bp.aux))
+
+(./Capitulos/cap1_Intro.aux) (./Capitulos/cap2.aux) (./Capitulos/cap3.aux)
+(./Capitulos/cap4.aux) (./Capitulos/cap5.aux) (./Capitulos/cap6.aux)
+(./Apendices/Ap.aux) (./Apendices/Bp.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1BE684B9781C889918FF8151E61DA0F6;16097.
+(rerunfilecheck)             Checksum: EC3952D8C733258EFE61126303012E5D;18580.
  ) 
 Here is how much of TeX's memory you used:
- 17978 strings out of 474222
- 294258 string characters out of 5748733
- 1943975 words of memory out of 5000000
- 39555 multiletter control sequences out of 15000+600000
- 576606 words of font info for 74 fonts, out of 8000000 for 9000
+ 18251 strings out of 474222
+ 300013 string characters out of 5748733
+ 1957975 words of memory out of 5000000
+ 39734 multiletter control sequences out of 15000+600000
+ 583286 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,15n,93p,1006b,1075s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,15n,93p,1238b,1128s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095
-.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/tex
-mf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/publi
-c/cm-super/sfbx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.
-pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texm
-f/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public
-/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.p
-fb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf
-/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/
-cm-super/sfrm2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsl1095.pf
-b></usr/share/texmf/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/
-fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/c
-m-super/sftt1095.pfb>
-Output written on main.pdf (98 pages, 4249123 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.p
+fb></usr/share/texmf/fonts/type1/public/cm-super/sfbi1095.pfb></usr/share/texmf
+/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/
+cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pf
+b></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb></usr/share/texmf/
+fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fonts/type1/public/c
+m-super/sfcc1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb
+></usr/share/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/f
+onts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm
+-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
+</usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fo
+nts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf/fonts/type1/public/cm-
+super/sfsl1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0800.pfb><
+/usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fon
+ts/type1/public/cm-super/sfti1095.pfb></usr/share/texmf/fonts/type1/public/cm-s
+uper/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0800.pfb></
+usr/share/texmf/fonts/type1/public/cm-super/sftt0900.pfb></usr/share/texmf/font
+s/type1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/public/cm-su
+per/sftt1095.pfb>
+Output written on main.pdf (132 pages, 9687136 bytes).
 PDF statistics:
- 1590 PDF objects out of 1728 (max. 8388607)
- 1389 compressed objects within 14 object streams
- 335 named destinations out of 1000 (max. 500000)
- 753 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2102 PDF objects out of 2487 (max. 8388607)
+ 1805 compressed objects within 19 object streams
+ 417 named destinations out of 1000 (max. 500000)
+ 873 words of extra memory for PDF output out of 10000 (max. 10000000)
 
