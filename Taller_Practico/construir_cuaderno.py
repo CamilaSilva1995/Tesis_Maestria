@@ -25,6 +25,7 @@ DESCANSO = (3, 10)           # (después de qué episodio, cuántos minutos)
 EPISODIOS = []               # un diccionario por episodio, en orden
 CIERRE = []                  # celdas que van después del último episodio (referencias y créditos)
 n_ejercicios = 0             # los ejercicios se numeran de corrido en todo el taller
+n_laboratorios = 0           # y los laboratorios también
 
 def episodio(titulo, datos, preguntas, objetivos):
     "Abre un episodio: lo que se agregue después con md(), code(), pausa()... queda dentro de él."
@@ -53,6 +54,28 @@ def pausa(texto):
     ep = EPISODIOS[-1]
     ep["celdas"].append(nbf.v4.new_markdown_cell(f"> 💬 **Para pensar (1 min).** {texto.strip()}"))
     ep["pausas"] += 1
+
+def quiz(pregunta, opciones, correcta, explicacion):
+    "Agrega una pregunta de opción múltiple; la respuesta, con el porqué de las otras opciones, va en un desplegable."
+    ep = EPISODIOS[-1]
+    letras = "ABCD"
+    s = (f"> ✅ **Comprueba (1 min).** {pregunta.strip()}\n>\n"
+         + "\n".join(f"> - **{letras[i]})** {opcion}" for i, opcion in enumerate(opciones))
+         + "\n\n<details>\n<summary><b>👉 Ver respuesta</b> (elige primero una opción)</summary>\n\n"
+         + f"La correcta es la **{letras[correcta]}**. {explicacion.strip()}\n\n</details>")
+    ep["celdas"].append(nbf.v4.new_markdown_cell(s))
+    ep["pausas"] += 1                      # cuenta un minuto, igual que una pregunta «Para pensar»
+
+def laboratorio(titulo, minutos, intro, tareas, que_ver, codigo):
+    "Agrega un laboratorio: tareas guiadas y una celda con controles para cambiar valores y volver a ejecutar."
+    global n_laboratorios
+    n_laboratorios += 1
+    ep = EPISODIOS[-1]
+    ep["celdas"].append(nbf.v4.new_markdown_cell(
+        f"### 🎛️ Laboratorio {n_laboratorios}: {titulo}\n\n⏱️ *{minutos} min*\n\n{intro.strip()}\n\n{tareas.strip()}\n\n"
+        f"<details>\n<summary><b>👉 Qué deberías ver</b> (haz clic para desplegar)</summary>\n\n{que_ver.strip()}\n\n</details>"))
+    ep["celdas"].append(nbf.v4.new_code_cell(codigo.strip()))
+    ep["ejercicios"].append(minutos)       # un laboratorio es práctica: su tiempo se suma al de los ejercicios
 
 def ejercicio(titulo, minutos, enunciado, solucion_md, solucion_code=None):
     "Agrega un ejercicio: el enunciado y la solución (texto y, si hay, código) dentro de un desplegable."
@@ -146,7 +169,7 @@ De ese camino hay tres cosas que afectan a la estadística y conviene tener pres
 ### 1.3 El caso real: tres tablas
 
 - **`metadatos.csv`**: una fila por muestra, con su grupo (`Saludable` o `No saludable`) y el número de lecturas que Kraken logró clasificar.
-- **`diversidad_alfa.csv`**: para cada muestra, cuatro índices de diversidad alfa calculados con phyloseq sobre los 9 003 taxones de la tabla original: riqueza observada, Chao1, Shannon y Simpson.
+- **`diversidad_alfa.csv`**: para cada muestra, cuatro índices de diversidad alfa calculados con phyloseq sobre los 9 003 taxones de la tabla original: la riqueza observada (cuántos taxones se detectaron), Chao1 (una estimación de cuántos hay en realidad, contando los que no se alcanzaron a ver) y Shannon y Simpson (que combinan cuántos taxones hay y qué tan repartidos están; Simpson da más peso a los dominantes).
 - **`conteos_por_genero.csv`**: cuántas lecturas de cada muestra se asignaron a cada género. Hay 1 795 géneros (1 737 bacterianos y 58 eucariotas).
 
 Cada muestra tiene un identificador como `MD2055` o `MP2099`. **Ese identificador es la llave que une las tres tablas.** Lo repetiremos varias veces: nunca se unen tablas «por posición», siempre por identificador.
@@ -199,7 +222,35 @@ print(datos.groupby("grupo").lecturas_clasificadas.mean().round(0))
 """, figuras=1)
 md(r"""
 Los grupos no tienen la misma profundidad. Si comparáramos conteos crudos, esa diferencia técnica se confundiría con una diferencia biológica; por eso de aquí en adelante trabajamos con **proporciones** y con índices.
+""")
+quiz("Dos muestras tienen 9 y 15 millones de lecturas clasificadas. Un género tiene 90 000 lecturas en la primera y 120 000 en la segunda. ¿En cuál es más abundante?",
+     ["En la segunda, porque tiene más lecturas de ese género.",
+      "En la primera: allí es el 1 % de las lecturas y en la segunda, el 0.8 %.",
+      "No se puede saber sin conocer el número de células."], 1,
+     "La A compara conteos crudos, que dependen de cuánto se secuenció cada muestra. La C va demasiado lejos: no conocemos el número de células, pero sí podemos comparar proporciones, que es lo que haremos en todo el taller.")
+ejercicio("Conocer los datos", 8,
+r"""
+Con las tablas ya cargadas, responde con código:
 
+1. ¿Cuántos géneros de eucariotas hay en `generos`? ¿Y cuántos de bacterias?
+2. ¿Cuál es el género con más lecturas en total? ¿De qué filo es?
+3. ¿Por qué el filtro de calidad eliminó solo muestras saludables? Mira `meta.loc[excluir]`.
+""",
+r"""
+1. Hay 58 géneros de eucariotas y 1 737 de bacterias. Los eucariotas están subrepresentados en la base de datos de Kraken, no necesariamente en el suelo.
+2. *Streptomyces* (Actinobacteria), con diferencia. Es el género más abundante de la rizósfera de fresa en estos datos.
+3. Las cinco muestras excluidas estaban etiquetadas como saludables. El filtro no «elige» grupo: simplemente esas cinco tuvieron pocas lecturas. Por eso el grupo saludable pasó de 40 a 35 muestras y el no saludable se quedó en 18.
+""",
+r"""
+# 1. Géneros por reino: reset_index devuelve 'reino' a una columna para poder contarlo
+print(generos.reset_index().reino.value_counts())
+# 2. Lecturas totales de cada género (suma por fila, axis=1), de mayor a menor
+total = generos.sum(axis=1).sort_values(ascending=False)
+print(total.head(3))
+# 3. Metadatos de las cinco muestras excluidas: mira la columna grupo
+print(meta.loc[excluir])
+""")
+md(r"""
 ### 1.4 De una columna de conteos a un número: el índice de Shannon
 
 El índice de Shannon de una muestra es $H = -\sum_i p_i \ln p_i$, donde $p_i$ es la proporción de lecturas del taxón $i$. Resume en un número la riqueza (cuántos taxones hay) y la equidad (qué tan repartidas están las lecturas). Ya está calculado en la columna `shannon`; comprobemos la fórmula con una muestra usando la tabla de géneros.
@@ -226,6 +277,9 @@ Los datos reales rara vez se portan como piden los libros. Para ver cómo funcio
 - **Composición:** 40 géneros. En las plantas no saludables un género, `G05`, es cuatro veces más abundante. La variabilidad entre muestras es la misma en los dos grupos.
 
 Como conocemos la verdad, sabremos si cada prueba acierta. Empezamos por el índice de diversidad.
+""")
+pausa(r"""
+Vamos a pedir una diferencia verdadera de 0.06 entre las medias. Antes de ejecutar: ¿crees que en las 60 muestras simuladas la diferencia saldrá exactamente 0.06?
 """)
 code(r"""
 rng_sim = np.random.default_rng(2026)          # generador aleatorio con semilla: todos obtenemos los mismos datos
@@ -294,28 +348,6 @@ ax.legend(); plt.show()
 md(r"""
 En la figura está la verdad que elegimos: `G05` pasa de cerca del 5 % al 16 % de las lecturas. Los demás géneros bajan un poco aunque no los tocamos: es la composicionalidad en acción.
 """)
-ejercicio("Conocer los datos", 8,
-r"""
-Con las tablas ya cargadas, responde con código:
-
-1. ¿Cuántos géneros de eucariotas hay en `generos`? ¿Y cuántos de bacterias?
-2. ¿Cuál es el género con más lecturas en total? ¿De qué filo es?
-3. ¿Por qué el filtro de calidad eliminó solo muestras saludables? Mira `meta.loc[excluir]`.
-""",
-r"""
-1. Hay 58 géneros de eucariotas y 1 737 de bacterias. Los eucariotas están subrepresentados en la base de datos de Kraken, no necesariamente en el suelo.
-2. *Streptomyces* (Actinobacteria), con diferencia. Es el género más abundante de la rizósfera de fresa en estos datos.
-3. Las cinco muestras excluidas estaban etiquetadas como saludables. El filtro no «elige» grupo: simplemente esas cinco tuvieron pocas lecturas. Por eso el grupo saludable pasó de 40 a 35 muestras y el no saludable se quedó en 18.
-""",
-r"""
-# 1. Géneros por reino: reset_index devuelve 'reino' a una columna para poder contarlo
-print(generos.reset_index().reino.value_counts())
-# 2. Lecturas totales de cada género (suma por fila, axis=1), de mayor a menor
-total = generos.sum(axis=1).sort_values(ascending=False)
-print(total.head(3))
-# 3. Metadatos de las cinco muestras excluidas: mira la columna grupo
-print(meta.loc[excluir])
-""")
 puntos_clave([
     "Una tabla de conteos dice cuántas lecturas de cada muestra se asignaron a cada taxón; llega después del control de calidad y de la asignación taxonómica.",
     "Las tablas se unen por el identificador de la muestra, nunca por posición, y se comprueba con `assert`.",
@@ -337,6 +369,8 @@ Antes de usar ninguna fórmula, hagamos el razonamiento a mano.
 **Qué hacemos.** Comparamos el índice de Shannon promedio de los dos grupos y preguntamos: **¿la diferencia observada es más grande de lo que se obtendría por puro azar?**
 
 **Por qué así.** La **hipótesis nula** $H_0$ dice que el grupo no importa: la etiqueta «saludable» o «no saludable» es intercambiable. Si eso fuera cierto, podríamos **barajar las etiquetas** entre las muestras y la diferencia de medias cambiaría solo por azar. Repitiendo la barajada 5 000 veces obtenemos la distribución de la diferencia bajo $H_0$. El **valor p** es la fracción de barajadas que producen una diferencia tan grande, o más, que la observada.
+
+La **hipótesis alternativa** $H_1$ dice lo contrario que $H_0$: el grupo sí importa. Una prueba no demuestra $H_1$; mide qué tan difícil es explicar los datos con $H_0$. Para decidir se fija de antemano un umbral, el **nivel de significancia** $\alpha$ (lo habitual es 0.05): si el valor p queda por debajo, se rechaza $H_0$.
 
 Este razonamiento por permutaciones es exactamente el que usa el PERMANOVA en el Episodio 6.
 
@@ -423,22 +457,57 @@ Tres ideas que vale la pena fijar:
 - Un p mayor que 0.05 **no demuestra** que los grupos sean iguales. Solo dice que no tenemos evidencia suficiente para distinguirlos.
 - El umbral $\alpha = 0.05$ se fija **antes** de mirar los datos.
 """)
-ejercicio("Interpretar el valor p", 6,
+laboratorio("¿De qué depende el valor p?", 5,
+r"""
+Ahora decides tú la verdad. La celda siguiente simula un estudio nuevo con los tres valores de arriba y le aplica la prueba de permutaciones. **En Colab aparecen tres controles deslizantes** y la celda se vuelve a ejecutar sola cada vez que mueves uno; fuera de Colab, cambia el número y ejecuta la celda con Shift + Enter. Nada de esto modifica los datos del taller.
+""",
+r"""
+1. Ejecútala como está: es un estudio como el del caso ideal.
+2. Pon `diferencia_verdadera` en **0**: ya no hay nada que detectar. ¿Qué valor p obtienes?
+3. Vuelve a 0.06 y baja `muestras_por_grupo` a **5**. Después súbelo a **100**.
+4. Con 30 muestras por grupo, sube `desviacion_de_los_datos` a **0.15**.
+
+Anota en cada caso si la prueba detecta la diferencia.
+""",
+r"""
+| Diferencia verdadera | Desviación | Muestras por grupo | Valor p | ¿Qué pasa? |
+|---|---|---|---|---|
+| 0.06 | 0.05 | 30 | 0.0005 | La detecta |
+| 0 | 0.05 | 30 | 0.65 | No hay nada que detectar, y la prueba acierta |
+| 0.06 | 0.05 | 5 | 0.77 | No la detecta: muy pocas muestras |
+| 0.06 | 0.05 | 100 | menor que 0.0005 | La detecta sin dudas |
+| 0.06 | 0.15 | 30 | 0.32 | No la detecta: los datos varían demasiado |
+
+La diferencia verdadera es la misma en cuatro de las cinco filas, pero solo se detecta cuando hay suficientes muestras y poca variabilidad. Por eso un valor p grande no demuestra que los grupos sean iguales: puede faltar **potencia**, que es la probabilidad de detectar una diferencia que sí existe.
+""",
+r"""
+#@title 🎛️ Laboratorio 1: mueve los controles (en Colab la celda se vuelve a ejecutar sola) { run: "auto" }
+diferencia_verdadera = 0.06  #@param {type:"slider", min:0, max:0.2, step:0.01}
+desviacion_de_los_datos = 0.05  #@param {type:"slider", min:0.02, max:0.2, step:0.01}
+muestras_por_grupo = 30  #@param {type:"slider", min:3, max:200, step:1}
+
+# Un estudio simulado nuevo con esos valores (otra semilla y otros nombres: no cambia los datos del taller)
+rng_lab = np.random.default_rng(14)
+a_lab = rng_lab.normal(7.48, desviacion_de_los_datos, muestras_por_grupo)                         # grupo saludable
+b_lab = rng_lab.normal(7.48 - diferencia_verdadera, desviacion_de_los_datos, muestras_por_grupo)  # grupo no saludable
+dif_lab, barajadas_lab, p_lab = prueba_permutacion(a_lab, b_lab, n_perm=2000)
+
+# con 2 000 barajadas el valor p más pequeño que se puede medir es 1/2000 = 0.0005
+texto_p = f"p = {p_lab:.4f}" if p_lab > 0 else "p menor que 0.0005"
+print(f"Diferencia verdadera = {diferencia_verdadera} | diferencia observada = {dif_lab:.3f} | {texto_p}")
+grafica_nula(barajadas_lab, dif_lab, "Diferencia de medias con las etiquetas barajadas",
+             f"Laboratorio: {muestras_por_grupo} muestras por grupo, desviación {desviacion_de_los_datos}: {texto_p}")
+""")
+ejercicio("Interpretar el valor p", 4,
 r"""
 1. Si repitiéramos las 5 000 barajadas con otra semilla, ¿el valor p sería exactamente el mismo? ¿Por qué?
 2. Un compañero dice: «p = 0.15 significa que hay 15 % de probabilidad de que los grupos sean iguales». ¿Qué está mal?
-3. Con código: repite la prueba sobre los datos simulados usando solo las **cinco primeras muestras** de cada grupo, `prueba_permutacion(x_sim[:5], y_sim[:5])`. La diferencia verdadera sigue siendo la misma. ¿Qué pasa con el valor p y por qué?
+3. En el laboratorio, con una diferencia verdadera de 0.06 y cinco muestras por grupo, la prueba dio p = 0.77. ¿Demuestra eso que no hay diferencia?
 """,
 r"""
 1. No exactamente. El valor p por permutaciones es una estimación de Monte Carlo: cambia un poco con la semilla. Con 5 000 barajadas la variación es de unas milésimas; con 99 barajadas sería mucho mayor. Por eso se reporta el número de permutaciones.
 2. Confunde $P(\text{datos} \mid H_0)$ con $P(H_0 \mid \text{datos})$. El valor p se calcula suponiendo que $H_0$ es cierta; no dice nada sobre la probabilidad de $H_0$.
-3. Con cinco muestras por grupo el valor p sube y deja de ser significativo, aunque la diferencia verdadera no cambió. Con pocas muestras el promedio de cada grupo varía mucho de una barajada a otra, la distribución bajo $H_0$ se ensancha y la diferencia observada ya no queda en la cola. La significancia depende del tamaño de muestra tanto como del tamaño del efecto: no detectar una diferencia no demuestra que no exista.
-""",
-r"""
-# [2] es el tercer resultado de la función: el valor p
-dif5, _, p5 = prueba_permutacion(x_sim[:5], y_sim[:5])
-print(f"Con 5 muestras por grupo: diferencia = {dif5:.3f}, p = {p5:.3f}")
-print(f"Con 30 muestras por grupo: diferencia = {dif_sim:.3f}, p = {p_perm_sim:.4f}")
+3. No. Sabemos que la diferencia existe, porque la pusimos nosotros. Con pocas muestras el promedio de cada grupo varía mucho de una barajada a otra, la distribución bajo $H_0$ se ensancha y la diferencia observada ya no queda en la cola. La significancia depende del tamaño de muestra tanto como del **tamaño del efecto** (cuánto difieren los grupos): no detectar una diferencia no demuestra que no exista.
 """)
 puntos_clave([
     "La hipótesis nula dice que el grupo no importa: las etiquetas son intercambiables.",
@@ -460,12 +529,16 @@ md(r"""
 
 $$t = \frac{\bar{x} - \bar{y}}{\text{error estándar de la diferencia}}$$
 
+El **error estándar** dice cuánto cambiaría esa diferencia de una muestra a otra por puro azar: si la diferencia observada es varias veces mayor, es difícil atribuirla al azar.
+
 Es la misma idea del episodio anterior, con un cambio: en lugar de barajar, la distribución bajo $H_0$ sale de una fórmula, la distribución t. Esa fórmula solo vale si se cumplen ciertos **supuestos**.
 
 **Por qué hay dos versiones.** Difieren en cómo calculan el error estándar:
 
 - **Student (varianzas iguales):** combina las dos varianzas en una sola y usa $n_1 + n_2 - 2$ grados de libertad.
 - **Welch (varianzas distintas):** usa cada varianza por separado y corrige los grados de libertad.
+
+Los **grados de libertad** indican con cuánta información se estimó la variabilidad: con más muestras hay más grados de libertad y la prueba es más precisa.
 
 Las dos suponen que cada grupo es aproximadamente **normal** y que las muestras son **independientes**. Por eso, antes de aplicar la prueba, se comprueban los supuestos: la normalidad con **Shapiro-Wilk** y la igualdad de varianzas con la **prueba F**.
 
@@ -502,6 +575,9 @@ def gl_welch(x, y):
 
 print(f"t de Student: t = {t_student_sim.statistic:.3f}, gl = {len(x_sim) + len(y_sim) - 2}, p = {t_student_sim.pvalue:.4f}")
 print(f"t de Welch:   t = {t_welch_sim.statistic:.3f}, gl = {gl_welch(x_sim, y_sim):.1f}, p = {t_welch_sim.pvalue:.4f}")
+""")
+md(r"""
+**Cómo leer la figura siguiente.** En un diagrama de caja, la línea del centro es la **mediana** (la mitad de las muestras queda por debajo), la caja va del primer al tercer **cuartil** (contiene la mitad central de las muestras) y los bigotes llegan hasta los valores más alejados que no se consideran atípicos. Cada punto es una muestra.
 """)
 code(r"""
 def grafica_cajas(x, y, etiqueta_y, titulo, semilla=1):
@@ -567,6 +643,61 @@ Compara las dos columnas de la tabla:
 
 Y la prueba F dio algo más interesante que la t: las plantas no saludables **son más variables entre sí**. Eso es un hallazgo en sí mismo.
 """)
+laboratorio("¿Cuántas veces se equivoca cada prueba?", 5,
+r"""
+Aquí la verdad es que **no hay diferencia**: los dos grupos tienen la misma media. Se simulan 4 000 estudios y se cuenta en cuántos cada prueba dice, equivocadamente, que sí la hay. Una prueba bien usada debería equivocarse cerca del 5 % de las veces: eso es lo que significa $\alpha = 0.05$. Los controles empiezan con el diseño de los datos reales: 35 y 18 muestras, y el grupo pequeño mucho más variable.
+""",
+r"""
+1. Ejecútala como está. ¿Qué prueba se mantiene cerca del 5 %?
+2. Iguala las dos desviaciones (0.06 y 0.06).
+3. Vuelve a 0.06 y 0.17 e iguala los tamaños (35 y 35).
+4. Con 35 y 18 muestras, intercambia las desviaciones (0.17 y 0.06): ahora el grupo grande es el más variable.
+""",
+r"""
+| Muestras | Desviaciones | t de Student | t de Welch | Mann-Whitney |
+|---|---|---|---|---|
+| 35 y 18 | 0.06 y 0.17 | 14 % | 5 % | 11 % |
+| 35 y 18 | 0.06 y 0.06 | 5 % | 5 % | 5 % |
+| 35 y 35 | 0.06 y 0.17 | 5 % | 5 % | 7 % |
+| 35 y 18 | 0.17 y 0.06 | 1 % | 5 % | 3 % |
+
+Con el diseño de los datos reales, la t de Student «encuentra» una diferencia que no existe casi tres veces más de lo debido: por eso su $p = 0.058$ no era de fiar. Welch se mantiene en el 5 % en los cuatro casos. Mann-Whitney no supone normalidad, pero tampoco es inmune: su hipótesis nula es que los dos grupos tienen la **misma distribución**, y dos varianzas muy distintas ya la incumplen. Con grupos del mismo tamaño el problema casi desaparece: una buena razón para diseñar estudios balanceados.
+""",
+r"""
+#@title 🎛️ Laboratorio 2: mueve los controles (en Colab la celda se vuelve a ejecutar sola) { run: "auto" }
+n_saludables = 35  #@param {type:"slider", min:5, max:60, step:1}
+n_no_saludables = 18  #@param {type:"slider", min:5, max:60, step:1}
+desviacion_saludables = 0.06  #@param {type:"slider", min:0.02, max:0.3, step:0.01}
+desviacion_no_saludables = 0.17  #@param {type:"slider", min:0.02, max:0.3, step:0.01}
+
+# 4 000 estudios en los que NO hay diferencia: los dos grupos tienen la misma media (7.45)
+rng_lab = np.random.default_rng(11)
+n_estudios = 4000
+A = rng_lab.normal(7.45, desviacion_saludables, (n_saludables, n_estudios))          # una columna por estudio
+B = rng_lab.normal(7.45, desviacion_no_saludables, (n_no_saludables, n_estudios))
+
+# cada prueba se aplica a los 4 000 estudios a la vez (una por columna) y se cuenta en cuántos da p < 0.05
+falsas_alarmas = {
+    "t de Student": np.mean(stats.ttest_ind(A, B, equal_var=True).pvalue < 0.05),
+    "t de Welch":   np.mean(stats.ttest_ind(A, B, equal_var=False).pvalue < 0.05),
+    "Mann-Whitney": np.mean(stats.mannwhitneyu(A, B, alternative="two-sided").pvalue < 0.05),
+}
+for prueba, proporcion in falsas_alarmas.items():
+    print(f"{prueba:13s}: dice que hay diferencia en el {100 * proporcion:4.1f} % de los estudios")
+
+# en rojo, las pruebas que se equivocan bastante más (o bastante menos) de lo debido
+fig, ax = plt.subplots(figsize=(8, 3))
+porcentajes = [100 * v for v in falsas_alarmas.values()]
+ax.barh(list(falsas_alarmas), porcentajes, color=["#D9534F" if abs(v - 5) > 2 else "#4C9F70" for v in porcentajes])
+ax.axvline(5, color="black", ls="--", label="5 %: lo esperado con α = 0.05")
+ax.set_xlabel("% de estudios en los que la prueba ve una diferencia que no existe")
+ax.invert_yaxis(); ax.legend(); plt.show()
+""")
+quiz("Tienes dos grupos de 20 y 8 muestras. Shapiro-Wilk no rechaza la normalidad en ninguno ($p = 0.40$ y $0.62$) y la prueba F da $p = 0.002$. ¿Qué prueba corresponde para comparar las medias?",
+     ["La t de Student, porque los datos son normales.",
+      "La t de Welch: los datos son normales, pero las varianzas difieren.",
+      "Ninguna: con varianzas distintas no se pueden comparar las medias."], 1,
+     "La A olvida el segundo supuesto de Student, las varianzas iguales, que la prueba F acaba de rechazar. La C exagera: Welch existe justamente para ese caso.")
 ejercicio("Repetir la comparación con otro índice", 8,
 r"""
 Repite el análisis de este episodio con el estimador de riqueza **Chao1** de los datos reales (columna `chao1`):
@@ -615,6 +746,8 @@ Hay dos pruebas con el nombre de Wilcoxon y se confunden con frecuencia:
 | **Rangos con signo** | Wilcoxon signed-rank | Dos medidas **pareadas** sobre las mismas unidades (antes y después, o dos índices de la misma muestra) | `stats.wilcoxon` |
 
 Para comparar los dos grupos de plantas la correcta es **Mann-Whitney**. Su estadístico $U$ cuenta en cuántos pares (una muestra saludable, una no saludable) el valor mayor es el de la saludable. Si los grupos fueran iguales, $U$ estaría cerca de la mitad de los pares posibles.
+
+Un matiz: Mann-Whitney no supone normalidad, pero su hipótesis nula es que los dos grupos tienen la **misma distribución**. Si las varianzas son muy distintas también puede dar falsas alarmas, como mostró el Laboratorio 2.
 
 ### 4.1 Caso ideal
 """)
@@ -678,7 +811,14 @@ Para cada situación, di qué prueba corresponde (Mann-Whitney o Wilcoxon de ran
 2. Comparar, en las mismas 53 muestras, el índice de Simpson con el de Shannon.
 3. Comparar el porcentaje de *Fusarium* en 10 plantas antes y después de aplicar un biocontrol.
 
-Después, aplica la prueba del punto 1 con código.
+Después, aplica la prueba del punto 1. Copia este código en una celda nueva y completa el hueco:
+
+```python
+xo = datos.loc[datos.grupo == "Saludable", "observados"]
+yo = datos.loc[datos.grupo == "No saludable", "observados"]
+r = stats.________(xo, yo, alternative="two-sided", method="exact")   # ¿qué función va aquí?
+print(f"U = {r.statistic:.0f}, p = {r.pvalue:.4f}")
+```
 """,
 r"""
 1. **Mann-Whitney**: son dos grupos de plantas distintas, independientes.
@@ -742,6 +882,11 @@ print(f"Mann-Whitney sobre % de G05: U = {mw_pat.statistic:.0f} (de {len(xp) * l
 md(r"""
 Así se ve un taxón que realmente difiere: las cajas no se superponen, $U = 0$ (en ningún par gana una planta saludable) y el valor p es minúsculo. `G05` pasa de cerca del 5 % al 15 % de las lecturas, muy cerca de lo que simulamos.
 """)
+quiz("En una muestra, un género pasa del 5 % al 20 % de las lecturas. Los demás géneros no cambiaron en número de células. ¿Qué pasa con sus porcentajes?",
+     ["No cambian, porque esos géneros no cambiaron.",
+      "Bajan, porque todos los porcentajes de la muestra tienen que sumar 100.",
+      "Suben, porque ahora hay más lecturas en total."], 1,
+     "La A sería cierta si contáramos células, pero un metagenoma solo da proporciones. La C confunde la abundancia con la profundidad de secuenciación. Es lo que viste en el caso simulado: solo cambiamos `G05` y todos los demás bajaron.")
 pausa(r"""
 *Fusarium* es un género de hongos que incluye a los causantes de la marchitez de la fresa. Si las plantas no saludables están enfermas por *Fusarium*, ¿qué esperas ver en los datos reales?
 """)
@@ -772,7 +917,7 @@ md(r"""
 
 - Kraken asigna lecturas al **género**; no distingue las cepas patógenas de las inocuas.
 - Un porcentaje puede bajar aunque el número de células suba, si otros taxones subieron más.
-- Con 18 plantas no saludables, la potencia para detectar diferencias pequeñas es baja.
+- Con 18 plantas no saludables, la **potencia** (la probabilidad de detectar una diferencia que sí existe) es baja para diferencias pequeñas.
 
 **Una lección de este análisis.** Una versión anterior reportaba una diferencia muy significativa (p = 0.0017) en la diversidad de los géneros eucariotas, el grupo que contiene a *Fusarium*. Era un error: el script unía la tabla de diversidad con los metadatos **por posición**, y como una de las dos tablas estaba ordenada de otra manera, cada valor quedó asignado al grupo de otra muestra. Por eso en este taller hay un `assert` cada vez que se unen tablas. Comprobar que los identificadores coinciden toma un segundo y evita un resultado falso con un valor p muy convincente.
 """)
@@ -982,6 +1127,72 @@ md(r"""
 
 **Datos reales:** las nubes se superponen y la de las plantas no saludables es más amplia. Esas plantas están, en promedio, más lejos de su centroide (0.092 frente a 0.069) y PERMDISP lo confirma con $p \approx 0.005$: **son más heterogéneas en composición**, igual que lo eran en Shannon. Ese es el patrón que hay que reportar junto con el PERMANOVA: los grupos no difieren en su composición promedio, pero sí en cuánto varían. Es el resultado estadísticamente más sólido de los datos reales.
 """)
+quiz("En otro estudio, el PERMANOVA da $p = 0.01$ y PERMDISP da $p = 0.004$. ¿Qué se puede concluir?",
+     ["Los grupos difieren en su composición promedio.",
+      "Los grupos difieren, pero no se puede asegurar si es por su composición promedio, por su dispersión o por las dos.",
+      "Los grupos son iguales, porque PERMDISP anula al PERMANOVA."], 1,
+     "La A ignora que el PERMANOVA también reacciona a la dispersión. La C va al otro extremo: una diferencia de dispersión es una diferencia real entre los grupos. Lo honesto es reportar las dos pruebas y mirar la ordenación.")
+laboratorio("¿Composición, dispersión o las dos?", 5,
+r"""
+Ahora controlas las dos cosas que pueden diferir entre comunidades: cuánto cambia el género `G05` (la **composición**) y cuánto varían las muestras de cada grupo (la **dispersión**). La celda simula un estudio de 30 y 30 muestras, le aplica PERMANOVA y PERMDISP y dibuja la ordenación. Empieza sin ninguna diferencia.
+""",
+r"""
+1. Ejecútala como está: no hay ninguna diferencia.
+2. Sube `veces_mas_G05` a **4**: solo cambia la composición.
+3. Vuelve a 1 y sube `variabilidad_no_saludables` a **0.6**: solo cambia la dispersión.
+4. Deja las dos cosas: 4 y 0.6.
+
+En cada caso mira qué dicen las dos pruebas y cómo se ven las nubes.
+""",
+r"""
+| `G05` | Variabilidad | PERMANOVA | PERMDISP | Lo que es verdad |
+|---|---|---|---|---|
+| ×1 | 0.25 y 0.25 | p ≈ 0.70, R² ≈ 0.01 | p ≈ 0.38 | Nada difiere |
+| ×4 | 0.25 y 0.25 | p = 0.002, R² ≈ 0.33 | p ≈ 0.55 | Solo la composición |
+| ×1 | 0.25 y 0.60 | p ≈ 0.50, R² ≈ 0.02 | p = 0.002 | Solo la dispersión |
+| ×4 | 0.25 y 0.60 | p = 0.002, R² ≈ 0.18 | p = 0.002 | Las dos |
+
+La tercera fila es la que se parece a los datos reales: nubes con el mismo centro y una más amplia que la otra. Fíjate también en la cuarta: el cambio de `G05` es el mismo que en la segunda, pero el R² baja casi a la mitad, porque ahora hay más variación que el grupo no explica.
+""",
+r"""
+#@title 🎛️ Laboratorio 3: mueve los controles (en Colab la celda se vuelve a ejecutar sola) { run: "auto" }
+veces_mas_G05 = 1  #@param {type:"slider", min:1, max:6, step:0.5}
+variabilidad_saludables = 0.25  #@param {type:"slider", min:0.1, max:0.8, step:0.05}
+variabilidad_no_saludables = 0.25  #@param {type:"slider", min:0.1, max:0.8, step:0.05}
+
+rng_lab = np.random.default_rng(14)                      # otra semilla y otros nombres: no cambia los datos del taller
+
+def muestras_lab(composicion, n_muestras, variabilidad_grupo):
+    "Como simular_muestras, pero con el generador del laboratorio y la variabilidad que se le indique."
+    columnas = []
+    for _ in range(n_muestras):
+        p = composicion.to_numpy() * np.exp(rng_lab.normal(0, variabilidad_grupo, len(composicion)))
+        p = p / p.sum()
+        columnas.append(rng_lab.multinomial(lecturas_sim, p))
+    return np.array(columnas).T
+
+# La composición del segundo grupo: la de las saludables, con G05 multiplicado por el valor del control
+comp_lab = comp_sal.copy()
+comp_lab[patogeno] = veces_mas_G05 * comp_lab[patogeno]
+comp_lab = comp_lab / comp_lab.sum()
+tabla_lab = np.hstack([muestras_lab(comp_sal, n_sim, variabilidad_saludables),
+                       muestras_lab(comp_lab, n_sim, variabilidad_no_saludables)])
+D_lab = squareform(pdist((tabla_lab / tabla_lab.sum(axis=0)).T, metric="braycurtis"))
+
+# Las dos pruebas (con 499 permutaciones, para que la celda responda rápido)
+F_lab, R2_lab, p_permanova_lab, _ = permanova(D_lab, etiquetas_sim, n_perm=499)
+dist_lab, F_disp_lab, p_disp_lab = permdisp(D_lab, etiquetas_sim, n_perm=499)
+print(f"PERMANOVA: R2 = {R2_lab:.3f}, p = {p_permanova_lab:.3f}   |   PERMDISP: p = {p_disp_lab:.3f}")
+
+# La ordenación de este estudio
+coords_lab = pcoa(D_lab)
+fig, ax = plt.subplots(figsize=(6.5, 4.5))
+for g in GRUPOS:
+    ax.scatter(coords_lab[etiquetas_sim == g, 0], coords_lab[etiquetas_sim == g, 1], color=COLORES[g], label=g, alpha=0.8)
+ax.set_xlabel("Eje 1"); ax.set_ylabel("Eje 2"); ax.legend()
+ax.set_title(f"G05 ×{veces_mas_G05}; variabilidad {variabilidad_saludables} y {variabilidad_no_saludables}")
+plt.show()
+""")
 ejercicio("Cambiar la distancia y el nivel taxonómico", 10,
 r"""
 Con los datos reales:
@@ -1071,7 +1282,7 @@ print("* = se rechaza H0 con α = 0.05")
 md(r"""
 **Lo que muestra el caso ideal.** Todas las pruebas sobre el índice de Shannon coinciden, porque sus supuestos se cumplen: la prueba F no detecta diferencia de varianzas y permutación, Student, Welch y Mann-Whitney dan valores p parecidos. El género que hicimos más abundante se detecta sin dudas, y la composición difiere (PERMANOVA) sin que difiera la dispersión (PERMDISP).
 
-**Lo que muestra el caso real.** La diversidad promedio es un poco mayor en las plantas saludables, pero las pruebas no coinciden ($p = 0.04$, $0.058$, $0.15$ y $0.26$) porque los supuestos fallan. Las que respetan los datos, Welch y Mann-Whitney, no encuentran diferencia. Lo que sí es sólido es que las plantas no saludables **son más variables entre sí**, tanto en diversidad (prueba F) como en composición (PERMDISP). El estado de la planta explica solo un 2 % de la variación en la composición y la proporción de *Fusarium* no difiere.
+**Lo que muestra el caso real.** La diversidad promedio es un poco mayor en las plantas saludables, pero las pruebas no coinciden ($p = 0.04$, $0.058$, $0.15$ y $0.26$) porque los supuestos fallan. Welch, que no supone varianzas iguales, no encuentra diferencia, y Mann-Whitney tampoco. Lo que sí es sólido es que las plantas no saludables **son más variables entre sí**, tanto en diversidad (prueba F) como en composición (PERMDISP). El estado de la planta explica solo un 2 % de la variación en la composición y la proporción de *Fusarium* no difiere.
 
 **Lo que enseña verlos juntos.** La diferencia observada entre las medias era mayor en los datos reales (0.061) que en los simulados (0.037), y aun así solo en los simulados es clara. Un valor p no mide el tamaño de una diferencia: mide qué tan compatible es con el azar, dada la variabilidad y el número de muestras.
 
@@ -1086,7 +1297,7 @@ md(r"""
 | ¿Difiere la composición completa? | Matriz de distancias; dispersiones parecidas | PERMANOVA | `permanova(D, etiquetas)` |
 | ¿Difiere la variabilidad de la composición? | Matriz de distancias | PERMDISP | `permdisp(D, etiquetas)` |
 
-En todos los casos: se elige la prueba **antes** de ver los valores p, se comprueban sus supuestos y se reporta el tamaño del efecto (diferencia de medias, $R^2$) junto con el estadístico y el valor p.
+En todos los casos: se elige la prueba **antes** de ver los valores p, se comprueban sus supuestos y se reporta el **tamaño del efecto**, es decir, cuánto difieren los grupos (diferencia de medias, $R^2$), junto con el estadístico y el valor p.
 """)
 ejercicio("Redactar el resultado", 8,
 r"""
@@ -1106,6 +1317,34 @@ puntos_clave([
     "Se reporta siempre el tamaño del efecto, el estadístico y el valor p, no solo «significativo» o «no significativo».",
     "Las tablas se unen por identificador, nunca por posición.",
 ])
+
+# ================================================================== GLOSARIO
+CIERRE.append(nbf.v4.new_markdown_cell(r"""
+---
+## Glosario
+
+| Término | Qué significa |
+|---|---|
+| **Atípico (valor)** | Un valor muy alejado del resto de su grupo. |
+| **Bray-Curtis** | Medida de cuánto difiere la composición de dos muestras: 0 si son iguales y 1 si no comparten ningún taxón. |
+| **Centroide** | El punto medio de un grupo de muestras; PERMDISP mide la distancia de cada muestra a él. |
+| **Composicional (dato)** | Proporciones que suman un total fijo: si una sube, las demás bajan. |
+| **Cuartiles** | Los tres valores que parten los datos ordenados en cuatro partes iguales; el segundo es la mediana. |
+| **Diversidad alfa** | La diversidad dentro de una muestra, resumida en un índice (riqueza, Chao1, Shannon, Simpson). |
+| **Error estándar** | Cuánto cambiaría una estimación, como una diferencia de medias, de una muestra a otra por puro azar. |
+| **Grados de libertad** | Con cuánta información se estimó la variabilidad; aumentan con el número de muestras. |
+| **Hipótesis nula ($H_0$)** | La afirmación de que el grupo no importa; es la que se pone a prueba. |
+| **Hipótesis alternativa ($H_1$)** | La afirmación contraria: el grupo sí importa. |
+| **Lectura** | Cada fragmento de ADN que produce el secuenciador. |
+| **Nivel de significancia ($\alpha$)** | El umbral, fijado antes de mirar los datos, por debajo del cual se rechaza $H_0$; lo habitual es 0.05. |
+| **Ordenación** | Figura que ubica las muestras en un plano respetando lo mejor posible las distancias entre ellas. |
+| **Permutación** | Reordenar al azar las etiquetas de grupo para ver qué produce el azar cuando el grupo no importa. |
+| **Potencia** | La probabilidad de detectar una diferencia que sí existe; crece con el número de muestras. |
+| **Rango** | La posición de un valor cuando se ordenan todos de menor a mayor. |
+| **Tamaño del efecto** | Cuánto difieren los grupos: una diferencia de medias, un $R^2$. |
+| **Taxón** | Un grupo de organismos de cualquier nivel: reino, filo, género, especie. |
+| **Valor p** | La proporción de resultados que, si $H_0$ fuera cierta, serían al menos tan extremos como el observado. |
+""".strip()))
 
 # ================================================================== REFERENCIAS
 CIERRE.append(nbf.v4.new_markdown_cell(r"""
@@ -1192,7 +1431,7 @@ filas.append(f"| {reloj(inicio)} | *Fin* | | | | |")
 total_exp, total_ej = sum(ep["exp"] for ep in EPISODIOS), sum(ep["ej"] for ep in EPISODIOS)
 bloque1 = sum(ep["exp"] + ep["ej"] for ep in EPISODIOS[:DESCANSO[0]])
 bloque2 = sum(ep["exp"] + ep["ej"] for ep in EPISODIOS[DESCANSO[0]:])
-INDICE = ("| Inicio | Episodio | Pregunta que responde | Datos | Explicación | Ejercicios |\n|---|---|---|---|---|---|\n"
+INDICE = ("| Inicio | Episodio | Pregunta que responde | Datos | Explicación | Práctica |\n|---|---|---|---|---|---|\n"
           + "\n".join(filas))
 
 PORTADA = r"""
@@ -1239,9 +1478,9 @@ Al terminar el taller podrás:
 
 «INDICE»
 
-Son «TOTAL_EXP» de explicación y «TOTAL_EJ» de ejercicios. Puede darse en una sola sesión con descanso o en dos sesiones: los episodios 1 a «CORTE» («BLOQUE1») y los restantes («BLOQUE2»).
+Son «TOTAL_EXP» de explicación y «TOTAL_EJ» de práctica (ejercicios y laboratorios). Puede darse en una sola sesión con descanso o en dos sesiones: los episodios 1 a «CORTE» («BLOQUE1») y los restantes («BLOQUE2»).
 
-Hay **«N_EJ» ejercicios**, uno por episodio. Cada uno tiene la solución escondida: intenta resolverlo antes de abrirla.
+Hay **«N_EJ» ejercicios**, uno por episodio, y **«N_LAB» laboratorios**. Cada ejercicio tiene la solución escondida: intenta resolverlo antes de abrirla.
 
 ## Los datos: dos casos
 
@@ -1259,9 +1498,12 @@ Con los dos casos compararemos los grupos de tres maneras: por su **diversidad**
 
 1. **Preguntas y objetivos:** qué vas a poder responder y hacer al terminar el episodio.
 2. **Explicación paso a paso:** primero qué se hace y por qué; después el código, con un comentario en cada paso. Cada prueba se aplica primero a los datos simulados y luego a los reales.
-3. **Para pensar:** una pregunta rápida para predecir el resultado antes de ejecutar la celda.
-4. **Ejercicio**, con la solución desplegable.
-5. **Puntos clave:** lo que conviene recordar.
+3. **Para pensar** y **Comprueba:** preguntas rápidas para predecir un resultado antes de ejecutar la celda, o para comprobar una idea eligiendo entre varias opciones.
+4. **Laboratorio:** una celda con controles para cambiar la verdad de los datos simulados y ver cómo responde cada prueba.
+5. **Ejercicio**, con la solución desplegable.
+6. **Puntos clave:** lo que conviene recordar.
+
+Al final del cuaderno hay un **glosario** con los términos que aparecen en negrita.
 
 ## Cómo usar este cuaderno
 
@@ -1274,14 +1516,15 @@ Los datos reales fueron facilitados por la empresa [Solena Ag](https://www.solen
 """
 for marca, valor in {"«TOTAL»": duracion(inicio), "«N_EP»": str(len(EPISODIOS)), "«INDICE»": INDICE,
                      "«TOTAL_EXP»": duracion(total_exp), "«TOTAL_EJ»": duracion(total_ej), "«CORTE»": str(DESCANSO[0]),
-                     "«BLOQUE1»": duracion(bloque1), "«BLOQUE2»": duracion(bloque2), "«N_EJ»": str(n_ejercicios)}.items():
+                     "«BLOQUE1»": duracion(bloque1), "«BLOQUE2»": duracion(bloque2), "«N_EJ»": str(n_ejercicios),
+                     "«N_LAB»": str(n_laboratorios)}.items():
     PORTADA = PORTADA.replace(marca, valor)
 
 # Las celdas del cuaderno, en orden: portada, episodios (encabezado + contenido) y cierre
 C = [nbf.v4.new_markdown_cell(PORTADA.strip())]
 for i, ep in enumerate(EPISODIOS, 1):
     C.append(nbf.v4.new_markdown_cell(
-        f"---\n## Episodio {i}. {ep['titulo']}\n\n⏱️ **Explicación: {ep['exp']} min · Ejercicios: {ep['ej']} min**\n\n"
+        f"---\n## Episodio {i}. {ep['titulo']}\n\n⏱️ **Explicación: {ep['exp']} min · Práctica: {ep['ej']} min**\n\n"
         f"> **❓ Preguntas**\n{lista(ep['preguntas'])}\n>\n> **🎯 Objetivos**\n{lista(ep['objetivos'])}"))
     C.extend(ep["celdas"])
 C.extend(CIERRE)
@@ -1297,7 +1540,7 @@ nbf.write(nb, NOMBRE)
 
 # Resumen para quien prepara la clase: de dónde sale el tiempo de cada episodio
 print("cuaderno escrito con", len(C), "celdas")
-print("ep  palabras  celdas  figuras  pausas  explicación  ejercicios")
+print("ep  palabras  celdas  figuras  pausas  explicación  práctica")
 for i, ep in enumerate(EPISODIOS, 1):
     print(f"{i:2d}  {ep['palabras']:8d}  {ep['codigo']:6d}  {ep['figuras']:7d}  {ep['pausas']:6d}  {ep['exp']:8d} min  {ep['ej']:7d} min")
-print(f"total: {duracion(total_exp)} de explicación + {duracion(total_ej)} de ejercicios + {DESCANSO[1]} min de descanso = {duracion(inicio)}")
+print(f"total: {duracion(total_exp)} de explicación + {duracion(total_ej)} de práctica + {DESCANSO[1]} min de descanso = {duracion(inicio)}")

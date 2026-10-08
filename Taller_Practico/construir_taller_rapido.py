@@ -26,6 +26,7 @@ REDONDEO = 5                 # la explicación se redondea hacia arriba al múlt
 EPISODIOS = []               # un diccionario por episodio, en orden
 CIERRE = []                  # celdas que van después del último episodio (para profundizar, referencias, créditos)
 n_ejercicios = 0             # los ejercicios se numeran de corrido en todo el taller
+n_laboratorios = 0           # y los laboratorios también
 
 def episodio(titulo, datos, preguntas, objetivos):
     "Abre un episodio: lo que se agregue después con md(), code(), pausa()... queda dentro de él."
@@ -54,6 +55,28 @@ def pausa(texto):
     ep = EPISODIOS[-1]
     ep["celdas"].append(nbf.v4.new_markdown_cell(f"> 💬 **Para pensar (1 min).** {texto.strip()}"))
     ep["pausas"] += 1
+
+def quiz(pregunta, opciones, correcta, explicacion):
+    "Agrega una pregunta de opción múltiple; la respuesta, con el porqué de las otras opciones, va en un desplegable."
+    ep = EPISODIOS[-1]
+    letras = "ABCD"
+    s = (f"> ✅ **Comprueba (1 min).** {pregunta.strip()}\n>\n"
+         + "\n".join(f"> - **{letras[i]})** {opcion}" for i, opcion in enumerate(opciones))
+         + "\n\n<details>\n<summary><b>👉 Ver respuesta</b> (elige primero una opción)</summary>\n\n"
+         + f"La correcta es la **{letras[correcta]}**. {explicacion.strip()}\n\n</details>")
+    ep["celdas"].append(nbf.v4.new_markdown_cell(s))
+    ep["pausas"] += 1                      # cuenta un minuto, igual que una pregunta «Para pensar»
+
+def laboratorio(titulo, minutos, intro, tareas, que_ver, codigo):
+    "Agrega un laboratorio: tareas guiadas y una celda con controles para cambiar valores y volver a ejecutar."
+    global n_laboratorios
+    n_laboratorios += 1
+    ep = EPISODIOS[-1]
+    ep["celdas"].append(nbf.v4.new_markdown_cell(
+        f"### 🎛️ Laboratorio {n_laboratorios}: {titulo}\n\n⏱️ *{minutos} min*\n\n{intro.strip()}\n\n{tareas.strip()}\n\n"
+        f"<details>\n<summary><b>👉 Qué deberías ver</b> (haz clic para desplegar)</summary>\n\n{que_ver.strip()}\n\n</details>"))
+    ep["celdas"].append(nbf.v4.new_code_cell(codigo.strip()))
+    ep["ejercicios"].append(minutos)       # un laboratorio es práctica: su tiempo se suma al de los ejercicios
 
 def ejercicio(titulo, minutos, enunciado, solucion_md, solucion_code=None):
     "Agrega un ejercicio: el enunciado y la solución (texto y, si hay, código) dentro de un desplegable."
@@ -158,6 +181,9 @@ md(r"""
 - **Diversidad:** el índice de Shannon es **normal**, con la **misma desviación estándar** (0.05) en los dos grupos y medias distintas: 7.48 y 7.42, las que se observan en los datos reales.
 - **Composición:** 40 géneros; en las no saludables uno de ellos, `G05`, es cuatro veces más abundante.
 """)
+pausa(r"""
+La diferencia verdadera entre las medias será 0.06. Antes de ejecutar: ¿crees que en las 60 muestras simuladas saldrá exactamente 0.06?
+""")
 code(r"""
 rng_sim = np.random.default_rng(2026)          # generador aleatorio con semilla: todos obtenemos los mismos datos
 n_sim = 30                                     # muestras por grupo: diseño balanceado
@@ -219,7 +245,7 @@ episodio("¿Diferencia real o azar? El valor p", "Simulados y reales",
 md(r"""
 **Qué hacemos.** Comparamos el índice de Shannon promedio de los dos grupos y preguntamos si la diferencia observada es mayor que la que daría el azar.
 
-**Por qué así.** La **hipótesis nula** $H_0$ dice que el grupo no importa: la etiqueta «saludable» o «no saludable» es intercambiable. Si fuera cierta, podríamos **barajar las etiquetas** y la diferencia de medias cambiaría solo por azar. Barajando 5 000 veces obtenemos lo que el azar produce bajo $H_0$. El **valor p** es la fracción de barajadas con una diferencia tan grande, o más, que la observada.
+**Por qué así.** La **hipótesis nula** $H_0$ dice que el grupo no importa: la etiqueta «saludable» o «no saludable» es intercambiable. Si fuera cierta, podríamos **barajar las etiquetas** y la diferencia de medias cambiaría solo por azar. Barajando 5 000 veces obtenemos lo que el azar produce bajo $H_0$. El **valor p** es la fracción de barajadas con una diferencia tan grande, o más, que la observada. Si queda por debajo de un umbral fijado de antemano, el **nivel de significancia** $\alpha$ (lo habitual es 0.05), se rechaza $H_0$ en favor de la **hipótesis alternativa** $H_1$: el grupo sí importa.
 
 Empezamos con los datos simulados, donde sabemos que la diferencia existe.
 """)
@@ -277,19 +303,52 @@ En los datos reales $p \approx 0.04$: significativo, pero menos contundente que 
 
 Dos ideas para fijar: un valor p **no** es la probabilidad de que $H_0$ sea cierta, y un p mayor que 0.05 **no demuestra** que los grupos sean iguales.
 """)
-ejercicio("Interpretar el valor p", 4,
+laboratorio("¿De qué depende el valor p?", 4,
+r"""
+Ahora decides tú la verdad. La celda simula un estudio nuevo con los tres valores de arriba y le aplica la prueba de permutaciones. **En Colab aparecen tres controles deslizantes** y la celda se vuelve a ejecutar sola al mover uno; fuera de Colab, cambia el número y ejecuta la celda. No modifica los datos del taller.
+""",
+r"""
+1. Pon `diferencia_verdadera` en **0**: ya no hay nada que detectar. ¿Qué valor p obtienes?
+2. Vuelve a 0.06 y baja `muestras_por_grupo` a **5**. Después súbelo a **100**.
+3. Con 30 muestras por grupo, sube `desviacion_de_los_datos` a **0.15**.
+""",
+r"""
+| Diferencia verdadera | Desviación | Muestras por grupo | Valor p | ¿Qué pasa? |
+|---|---|---|---|---|
+| 0.06 | 0.05 | 30 | 0.0005 | La detecta |
+| 0 | 0.05 | 30 | 0.65 | No hay nada que detectar, y la prueba acierta |
+| 0.06 | 0.05 | 5 | 0.77 | No la detecta: muy pocas muestras |
+| 0.06 | 0.05 | 100 | menor que 0.0005 | La detecta sin dudas |
+| 0.06 | 0.15 | 30 | 0.32 | No la detecta: los datos varían demasiado |
+
+La misma diferencia verdadera se detecta o no según cuántas muestras haya y cuánto varíen. Un valor p grande no demuestra que los grupos sean iguales: puede faltar **potencia**, la probabilidad de detectar una diferencia que sí existe.
+""",
+r"""
+#@title 🎛️ Laboratorio 1: mueve los controles (en Colab la celda se vuelve a ejecutar sola) { run: "auto" }
+diferencia_verdadera = 0.06  #@param {type:"slider", min:0, max:0.2, step:0.01}
+desviacion_de_los_datos = 0.05  #@param {type:"slider", min:0.02, max:0.2, step:0.01}
+muestras_por_grupo = 30  #@param {type:"slider", min:3, max:200, step:1}
+
+# Un estudio simulado nuevo con esos valores (otra semilla y otros nombres: no cambia los datos del taller)
+rng_lab = np.random.default_rng(14)
+a_lab = rng_lab.normal(7.48, desviacion_de_los_datos, muestras_por_grupo)                         # grupo saludable
+b_lab = rng_lab.normal(7.48 - diferencia_verdadera, desviacion_de_los_datos, muestras_por_grupo)  # grupo no saludable
+dif_lab, barajadas_lab, p_lab = prueba_permutacion(a_lab, b_lab, n_perm=2000)
+
+# con 2 000 barajadas el valor p más pequeño que se puede medir es 1/2000 = 0.0005
+texto_p = f"p = {p_lab:.4f}" if p_lab > 0 else "p menor que 0.0005"
+print(f"Diferencia verdadera = {diferencia_verdadera} | diferencia observada = {dif_lab:.3f} | {texto_p}")
+grafica_nula(barajadas_lab, dif_lab, "Diferencia de medias con las etiquetas barajadas",
+             f"Laboratorio: {muestras_por_grupo} muestras por grupo, desviación {desviacion_de_los_datos}: {texto_p}")
+""")
+ejercicio("Interpretar el valor p", 3,
 r"""
 1. Un compañero dice: «p = 0.15 significa que hay 15 % de probabilidad de que los grupos sean iguales». ¿Qué está mal?
-2. Ejecuta `prueba_permutacion(x_sim[:5], y_sim[:5])[2]`, que repite la prueba con solo cinco muestras simuladas por grupo. La diferencia verdadera no cambió. ¿Qué pasa con el valor p y por qué?
+2. En el laboratorio, con una diferencia verdadera de 0.06 y cinco muestras por grupo, la prueba dio p = 0.77. ¿Demuestra eso que no hay diferencia?
 """,
 r"""
 1. Confunde $P(\text{datos} \mid H_0)$ con $P(H_0 \mid \text{datos})$. El valor p se calcula suponiendo que $H_0$ es cierta; no dice nada sobre la probabilidad de $H_0$.
-2. El valor p sube a cerca de 0.28 y deja de ser significativo. Con pocas muestras el promedio de cada grupo varía mucho de una barajada a otra y la diferencia observada ya no queda en la cola. No detectar una diferencia no demuestra que no exista.
-""",
-r"""
-# [2] es el tercer resultado de la función: el valor p
-print("Con 5 muestras por grupo: p =", round(prueba_permutacion(x_sim[:5], y_sim[:5])[2], 3))
-print("Con 30 muestras por grupo: p =", round(p_perm_sim, 4))
+2. No. Sabemos que la diferencia existe, porque la pusimos nosotros. Con pocas muestras el promedio de cada grupo varía mucho de una barajada a otra y la diferencia observada ya no queda en la cola. No detectar una diferencia no demuestra que no exista.
 """)
 puntos_clave([
     "La hipótesis nula dice que el grupo no importa: las etiquetas son intercambiables.",
@@ -313,7 +372,7 @@ md(r"""
 | **t de Welch** | Las medias | Grupos normales; **no** supone varianzas iguales |
 | **Mann-Whitney** | Los rangos (el orden de los valores) | **No** supone normalidad; resiste los valores atípicos |
 
-**Por qué así.** Los supuestos se comprueban antes de mirar el valor p: la normalidad con **Shapiro-Wilk** y la igualdad de varianzas con la **prueba F**. En las dos, un p pequeño significa que el supuesto **no** se cumple. Y antes que cualquier prueba, se miran los datos.
+**Por qué así.** Los supuestos se comprueban antes de mirar el valor p: la normalidad con **Shapiro-Wilk** y la igualdad de varianzas con la **prueba F**. En las dos, un p pequeño significa que el supuesto **no** se cumple. Y antes que cualquier prueba, se miran los datos: en la figura, la línea central de cada caja es la **mediana**, la caja contiene la mitad central de las muestras y cada punto es una muestra.
 """)
 code(r"""
 # Un panel por caso: diagrama de caja de cada grupo con el punto de cada muestra encima
@@ -358,10 +417,15 @@ display(pd.DataFrame({"Datos simulados": comparar_grupos(x_sim, y_sim), "Datos r
 md(r"""
 **Caso ideal.** Los supuestos se cumplen (ningún p de supuesto es pequeño) y las tres pruebas coinciden con la permutación: $p$ entre 0.003 y 0.006. **Cuando los supuestos se cumplen, las pruebas cuentan la misma historia.**
 
-**Caso real.** El grupo no saludable no es normal y su varianza es más de siete veces mayor. Las pruebas ya no coinciden: Student da 0.058, Welch 0.150 y Mann-Whitney 0.259; la permutación había dado 0.04. Valen las que respetan los datos, Welch y Mann-Whitney: **no hay evidencia de que la diversidad promedio difiera.** La respuesta correcta no es la de la prueba con el p más pequeño, sino la de la prueba cuyos supuestos se cumplen.
+**Caso real.** El grupo no saludable no es normal y su varianza es más de siete veces mayor. Las pruebas ya no coinciden: Student da 0.058, Welch 0.150 y Mann-Whitney 0.259; la permutación había dado 0.04. Vale Welch, que no supone varianzas iguales, y Mann-Whitney coincide: **no hay evidencia de que la diversidad promedio difiera.** La respuesta correcta no es la de la prueba con el p más pequeño, sino la de la prueba cuyos supuestos se cumplen.
 
 Lo que sí es claro en los datos reales es otra cosa: las plantas no saludables **son más variables entre sí**. Eso es un resultado, no solo un problema.
 """)
+quiz("Tienes dos grupos de 20 y 8 muestras. Shapiro-Wilk no rechaza la normalidad en ninguno y la prueba F da $p = 0.002$. ¿Qué prueba corresponde para comparar las medias?",
+     ["La t de Student, porque los datos son normales.",
+      "La t de Welch: los datos son normales, pero las varianzas difieren.",
+      "Ninguna: con varianzas distintas no se pueden comparar las medias."], 1,
+     "La A olvida el segundo supuesto de Student, las varianzas iguales, que la prueba F acaba de rechazar. La C exagera: Welch existe justamente para ese caso.")
 ejercicio("La misma decisión con otro índice", 4,
 r"""
 Aplica `comparar_grupos` al estimador de riqueza **Chao1** de los datos reales (columna `chao1`). Según los supuestos, ¿qué prueba corresponde? ¿Cuál es la conclusión?
@@ -508,6 +572,11 @@ md(r"""
 
 La prueba se elige **antes** de ver los valores p, y se reporta siempre el tamaño del efecto (diferencia de medias, $R^2$) junto con el valor p.
 """)
+quiz("En otro estudio, el PERMANOVA da $p = 0.01$ y PERMDISP da $p = 0.004$. ¿Qué se puede concluir?",
+     ["Los grupos difieren en su composición promedio.",
+      "Los grupos difieren, pero no se puede asegurar si es por su composición promedio, por su dispersión o por las dos.",
+      "Los grupos son iguales, porque PERMDISP anula al PERMANOVA."], 1,
+     "La A ignora que el PERMANOVA también reacciona a la dispersión. La C va al otro extremo: una diferencia de dispersión es una diferencia real entre los grupos. Lo honesto es reportar las dos pruebas y mirar la ordenación.")
 ejercicio("¿Cuántas permutaciones?", 4,
 r"""
 Repite el PERMANOVA de los datos reales con solo **99 permutaciones** y tres semillas distintas: `permanova(D, etiquetas, n_perm=99, semilla=1)[2]`, y lo mismo con `semilla=2` y `semilla=3`. ¿Qué observas? ¿Por qué se usan al menos 999?
@@ -526,6 +595,27 @@ puntos_clave([
     "El PERMANOVA también reacciona a diferencias de dispersión: se acompaña con PERMDISP y con una ordenación.",
     "Cuando las pruebas no coinciden, hay que averiguar qué supuesto falló.",
 ])
+
+# ================================================================== GLOSARIO
+CIERRE.append(nbf.v4.new_markdown_cell(r"""
+---
+## Glosario
+
+| Término | Qué significa |
+|---|---|
+| **Bray-Curtis** | Medida de cuánto difiere la composición de dos muestras: 0 si son iguales y 1 si no comparten ningún taxón. |
+| **Hipótesis nula ($H_0$)** | La afirmación de que el grupo no importa; es la que se pone a prueba. |
+| **Hipótesis alternativa ($H_1$)** | La afirmación contraria: el grupo sí importa. |
+| **Mediana** | El valor que deja la mitad de las muestras por debajo. |
+| **Nivel de significancia ($\alpha$)** | El umbral, fijado antes de mirar los datos, por debajo del cual se rechaza $H_0$; lo habitual es 0.05. |
+| **Ordenación** | Figura que ubica las muestras en un plano respetando lo mejor posible las distancias entre ellas. |
+| **Permutación** | Reordenar al azar las etiquetas de grupo para ver qué produce el azar cuando el grupo no importa. |
+| **Potencia** | La probabilidad de detectar una diferencia que sí existe; crece con el número de muestras. |
+| **Rango** | La posición de un valor cuando se ordenan todos de menor a mayor. |
+| **Tamaño del efecto** | Cuánto difieren los grupos: una diferencia de medias, un $R^2$. |
+| **Taxón** | Un grupo de organismos de cualquier nivel: reino, filo, género, especie. |
+| **Valor p** | La proporción de resultados que, si $H_0$ fuera cierta, serían al menos tan extremos como el observado. |
+""".strip()))
 
 # ================================================================== CIERRE
 CIERRE.append(nbf.v4.new_markdown_cell(rf"""
@@ -602,7 +692,7 @@ for i, ep in enumerate(EPISODIOS, 1):
 filas.append(f"| {reloj(inicio)} | *Fin* | | | |")
 total_exp, total_ej = sum(ep["exp"] for ep in EPISODIOS), sum(ep["ej"] for ep in EPISODIOS)
 assert inicio <= LIMITE, f"el taller rápido dura {inicio} min: se pasa del límite de {LIMITE}"
-INDICE = "| Inicio | Episodio | Pregunta que responde | Explicación | Ejercicio |\n|---|---|---|---|---|\n" + "\n".join(filas)
+INDICE = "| Inicio | Episodio | Pregunta que responde | Explicación | Práctica |\n|---|---|---|---|---|\n" + "\n".join(filas)
 
 PORTADA = r"""
 # 🍓 Taller rápido: pruebas de hipótesis con datos metagenómicos
@@ -640,9 +730,9 @@ Al terminar el taller podrás:
 
 «INDICE»
 
-Son «TOTAL_EXP» min de explicación y «TOTAL_EJ» min de ejercicios. Hay **«N_EJ» ejercicios** cortos, con la solución escondida: intenta resolver cada uno antes de abrirla.
+Son «TOTAL_EXP» min de explicación y «TOTAL_EJ» min de práctica. Hay **«N_EJ» ejercicios** cortos, con la solución escondida, y **un laboratorio** con controles para cambiar los datos simulados.
 
-Cada episodio tiene la misma organización: **preguntas y objetivos**, **explicación paso a paso** (qué se hace, por qué, y el código comentado), una pregunta **para pensar** antes de ver el resultado real, un **ejercicio** y los **puntos clave**.
+Cada episodio tiene la misma organización: **preguntas y objetivos**, **explicación paso a paso** (qué se hace, por qué, y el código comentado), preguntas rápidas (**para pensar** y **comprueba**) antes de seguir, un **ejercicio** y los **puntos clave**. Al final hay un **glosario**.
 
 ## Cómo usar este cuaderno
 
@@ -660,7 +750,7 @@ for marca, valor in {"«TOTAL»": str(inicio), "«N_EP»": str(len(EPISODIOS)), 
 # Las celdas del cuaderno, en orden: portada, episodios (encabezado + contenido) y cierre
 C = [nbf.v4.new_markdown_cell(PORTADA.strip())]
 for i, ep in enumerate(EPISODIOS, 1):
-    tiempo = f"Explicación: {ep['exp']} min" + (f" · Ejercicio: {ep['ej']} min" if ep["ej"] else "")
+    tiempo = f"Explicación: {ep['exp']} min" + (f" · Práctica: {ep['ej']} min" if ep["ej"] else "")
     C.append(nbf.v4.new_markdown_cell(
         f"---\n## Episodio {i}. {ep['titulo']}\n\n⏱️ **{tiempo}**\n\n"
         f"> **❓ Preguntas**\n{lista(ep['preguntas'])}\n>\n> **🎯 Objetivos**\n{lista(ep['objetivos'])}"))
@@ -678,7 +768,7 @@ nbf.write(nb, NOMBRE)
 
 # Resumen para quien prepara la clase: de dónde sale el tiempo de cada episodio
 print("cuaderno escrito con", len(C), "celdas")
-print("ep  palabras  celdas  figuras  pausas  explicación  ejercicios")
+print("ep  palabras  celdas  figuras  pausas  explicación  práctica")
 for i, ep in enumerate(EPISODIOS, 1):
     print(f"{i:2d}  {ep['palabras']:8d}  {ep['codigo']:6d}  {ep['figuras']:7d}  {ep['pausas']:6d}  {ep['exp']:8d} min  {ep['ej']:7d} min")
-print(f"total: {total_exp} min de explicación + {total_ej} min de ejercicios = {inicio} min (límite: {LIMITE})")
+print(f"total: {total_exp} min de explicación + {total_ej} min de práctica = {inicio} min (límite: {LIMITE})")
