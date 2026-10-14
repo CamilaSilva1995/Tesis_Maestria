@@ -48,6 +48,12 @@ Bisong, E. (2019).
 \newblock In {\em Building Machine Learning and Deep Learning Models on Google
   Cloud Platform}, pages 59--64. Apress, Berkeley, CA.
 
+\bibitem[Blondel et~al., 2008]{blondel2008fast}
+Blondel, V.~D., Guillaume, J.-L., Lambiotte, R., and Lefebvre, E. (2008).
+\newblock Fast unfolding of communities in large networks.
+\newblock {\em Journal of Statistical Mechanics: Theory and Experiment},
+  2008(10):P10008.
+
 \bibitem[Bolyen et~al., 2019]{bolyen2019reproducible}
 Bolyen, E., Rideout, J.~R., Dillon, M.~R., Bokulich, N.~A., Abnet, C.~C.,
   Al-Ghalith, G.~A., Alexander, H., Alm, E.~J., Arumugam, M., Asnicar, F.,
@@ -154,6 +160,11 @@ Fritz, A., Hofmann, P., Majda, S., Dahms, E., Dr{\""o}ge, J., Fiedler, J.,
   Lesker, T.~R., Belmann, P., DeMaere, M.~Z., Darling, A.~E., et~al. (2019).
 \newblock Camisim: simulating metagenomes and microbial communities.
 \newblock {\em Microbiome}, 7(1):1--12.
+
+\bibitem[Fruchterman and Reingold, 1991]{fruchterman1991graph}
+Fruchterman, T.~M. and Reingold, E.~M. (1991).
+\newblock Graph drawing by force-directed placement.
+\newblock {\em Software: Practice and Experience}, 21(11):1129--1164.
 
 \bibitem[Gao et~al., 2021]{gao2021disease}
 Gao, M., Xiong, C., Gao, C., Tsui, C.~K., Wang, M.-M., Zhou, X., Zhang, A.-M.,
@@ -349,6 +360,11 @@ Nam, J.~H., Thibodeau, A., Qian, Y.~L., Qian, M.~C., and Park, S.~H. (2023).
   on soil microbiome and strawberry quality.
 \newblock {\em Amb Express}, 13(1):18.
 
+\bibitem[Newman, 2003]{newman2003mixing}
+Newman, M.~E. (2003).
+\newblock Mixing patterns in networks.
+\newblock {\em Physical Review E}, 67(2):026126.
+
 \bibitem[Oksanen et~al., 2022]{oksanen2022vegan}
 Oksanen, J., Simpson, G.~L., Blanchet, F.~G., Kindt, R., Legendre, P., Minchin,
   P.~R., O'Hara, R.~B., Solymos, P., Stevens, M. H.~H., Szoecs, E., Wagner, H.,
@@ -368,11 +384,6 @@ Pearl, J. (1988).
 \newblock {\em Probabilistic Reasoning in Intelligent Systems: Networks of
   Plausible Inference}.
 \newblock Morgan Kaufmann, San Mateo, CA.
-
-\bibitem[Peterson et~al., 2024]{peterson2024analysis}
-Peterson, C.~B., Saha, S., and Do, K.-A. (2024).
-\newblock Analysis of microbiome data.
-\newblock {\em Annual Review of Statistics and Its Application}, 11:483--504.
 
 \bibitem[{R Core Team}, 2023]{rcoreteam2023r}
 {R Core Team} (2023).
@@ -533,11 +544,6 @@ Wood, D.~E. and Salzberg, S.~L. (2014).
 \newblock Kraken: ultrafast metagenomic sequence classification using exact
   alignments.
 \newblock {\em Genome biology}, 15(3):1--12.
-
-\bibitem[Xia and Sun, 2017]{xia2017hypothesis}
-Xia, Y. and Sun, J. (2017).
-\newblock Hypothesis testing and statistical analysis of microbiome.
-\newblock {\em Genes \& diseases}, 4(3):138--148.
 
 \bibitem[Xia et~al., 2018]{xia2018statistical}
 Xia, Y., Sun, J., Chen, D.-G., et~al. (2018).

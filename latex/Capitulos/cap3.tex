@@ -2,56 +2,141 @@
 \label{Metodologia}
 %% Camila revisa que todo esté en pasado, son métodos que ya utilizaste
 %% Solo estás describiendo qué hiciste, no los tienes que volver a explicar
-El propósito de este análisis es identificar características diferenciadoras 
-entre los microbiomas de plantas sanas y enfermas mediante el uso de datos metagenómicos. 
-Para ello, se obtuvieron datos de microorganismos presentes en cultivos de fresa, proporcionados 
-por la empresa Solena (véase sección ??). Las muestras se dividieron en dos grupos: las etiquetadas 
-como $"$sanas$"$ y las etiquetadas como $"$enfermas$"$.\\
+El propósito de este análisis es identificar características que diferencien al microbioma
+rizosférico de las plantas de fresa saludables del de las no saludables, a partir de datos
+metagenómicos. Es la pregunta con la que cerró el Capítulo \ref{Preliminares} y que el
+Capítulo \ref{Objetivos} desdobló en cuatro objetivos: caracterizar la composición y la diversidad
+de las comunidades, contrastar estadísticamente las diferencias entre grupos, identificar patrones
+taxonómicos y de estructura asociados con el estado de la planta, y convertir el análisis en una
+clase práctica. Este capítulo describe cómo se abordaron los tres primeros; el cuarto se presenta
+con los resultados \citep{yang2020comparison}.
 
-En la primera etapa, se realizó un proceso exhaustivo de preprocesamiento de los datos utilizando 
-lenguajes de programación como BASH y R. Luego, el análisis exploratorio se estructuró en tres partes 
-principales. Primero, se exploraron las diversidades alfa y beta, seguidas de un análisis estadístico 
-respaldado por pruebas de hipótesis. En segundo lugar, se visualizó la correlación entre variables a 
-través de redes.
-
-Este enfoque integral no solo proporciona una comprensión detallada de la composición de los 
-microbiomas en las plantas de fresa, sino que también permite identificar patrones significativos 
-en las diferencias de presencia-ausencia o abundancia de microorganismos, que podrían ser 
-fundamentales para distinguir entre la salud y la enfermedad en estos cultivos \citep{yang2020comparison}. \\
+El trabajo se organizó en etapas que el capítulo recorre en orden. En la primera se obtuvo el
+conjunto de datos principal, 58 metagenomas de rizósfera de fresa proporcionados por la empresa
+Solena, y se sometió a un preprocesamiento exhaustivo en Bash y R que terminó con un filtro de
+calidad. Sobre los datos ya preparados, el análisis exploratorio se estructuró en tres partes:
+primero se exploraron las diversidades alfa y beta a distintos niveles taxonómicos, seguidas de un
+análisis estadístico respaldado por pruebas de hipótesis, por análisis multivariado por
+permutaciones y por una evaluación de la sensibilidad a la normalización; en segundo lugar se
+examinaron las relaciones entre muestras y entre taxones mediante redes; y, en tercer lugar, se
+incorporaron dos conjuntos de datos complementarios que sitúan la comparación entre plantas
+saludables y marchitas frente a la variación entre tipos de suelo. Este enfoque busca no solo una
+descripción detallada de la composición de los microbiomas, sino también patrones en la presencia,
+la abundancia y la estructura de la comunidad que ayuden a distinguir la salud de la enfermedad en
+el cultivo. Los resultados de cada etapa se presentan en el Capítulo \ref{Resultados}.
 
 \section[Métodos para caracterizar la diversidad]{Métodos para caracterización de la diversidad microbiana}
+
+\subsection{Conjunto de datos principal}
+\label{sec:met-datos}
+
+El conjunto principal consta de 58 metagenomas \emph{shotgun} de rizósfera de fresa
+(\textit{Fragaria $\times$ ananassa}) proporcionados por Solena Ag, una empresa de biotecnología
+agrícola dedicada al análisis del microbioma del suelo, con Obed Ramírez Sánchez como contacto. Cada
+muestra proviene de la rizósfera de una planta distinta y lleva una sola etiqueta: 40 plantas
+estaban saludables y 18 presentaban marchitez. Esa etiqueta, saludable o no saludable, es la única
+variable explicativa del estudio, y la pregunta que atraviesa todo el trabajo es si el microbioma
+permite distinguirla.
+
+Los identificadores de muestra llevan la etiqueta incorporada: las 40 plantas saludables se
+nombran \texttt{MP} seguido de un número (\texttt{MP2047}, \ldots, \texttt{MP2140}) y las 18
+marchitas \texttt{MD} (\texttt{MD2055}, \ldots, \texttt{MD2136}). Los metadatos entregados
+contienen únicamente ese identificador y la etiqueta; no se dispone de información sobre lotes,
+fechas de muestreo, localización de las plantas ni prácticas de manejo, de modo que esas fuentes de
+variación no pueden controlarse en el análisis y toda diferencia o ausencia de diferencia entre
+grupos debe leerse con esa limitación en mente.
+
+Los datos son metagenomas \emph{shotgun}: se secuenció el ADN total extraído de la rizósfera, sin
+amplificar un gen marcador como el 16S o el ITS, lo que permite ver a la vez bacterias, hongos y
+otros eucariotas. La secuenciación fue de extremos pareados, con lecturas de entre 111 y 127 pares
+de bases tras el recorte de calidad. Solena realizó por su cuenta las dos primeras etapas del
+procesamiento y entregó sus productos. La primera es el control de calidad con fastp
+\citep{chen2018fastp}, que elimina adaptadores, bases ambiguas y lecturas cortas o de baja
+calidad; en las muestras que superan el filtro, el 97\% de las bases conserva una calidad Phred
+superior a 30 y la duplicación es de apenas el 3\%. Cada muestra pasó de una mediana de 118 millones
+de lecturas crudas a 98 millones tras fastp. La segunda es la clasificación taxonómica con Kraken 2
+\citep{wood2014kraken}, que asigna cada lectura al taxón más específico compatible con sus k-mers
+dentro de la jerarquía del NCBI. Solo entre el 25\% y el 35\% de las lecturas de cada muestra
+encuentra coincidencia en la base de referencia, una proporción normal en suelos, donde buena parte
+de los microorganismos no tiene genoma secuenciado; el resto queda sin clasificar y no interviene en
+el análisis. Quedan así entre 4 y 21 millones de lecturas clasificadas por muestra
+(Figura \ref{fig:barras-lecturas}).
+
+Lo que recibió este trabajo fueron, por tanto, tres cosas por muestra: el reporte de calidad de
+fastp, el reporte de Kraken con el número de lecturas asignadas a cada taxón de la jerarquía, y la
+etiqueta de la planta. No se trabajó con las lecturas crudas, sino con su clasificación. Reunidos los
+58 reportes, la tabla de abundancias contiene 9~003 taxones, 8~822 de Bacteria y 181 de Eukaryota;
+esa desproporción refleja tanto el predominio bacteriano de los suelos como la menor representación
+de hongos y oomicetos en la base de referencia, y es la razón por la que la fracción eucariota, que
+incluye a \textit{Fusarium}, se analiza por separado en varios puntos del trabajo.
+
+Dos rasgos de este conjunto condicionan todo lo que sigue. El primero es el desbalance: hay más del
+doble de plantas saludables que marchitas, lo que reduce la potencia de cualquier comparación y
+obliga a usar pruebas que no supongan varianzas iguales. El segundo es que la profundidad varía
+cinco veces entre la muestra más pequeña y la más grande, con cinco muestras muy por debajo del
+resto; de ahí el filtro de calidad de la Sección \ref{sec:met-filtrado}, que reduce el conjunto a
+53 muestras, 35 saludables y 18 no saludables, y la atención a la normalización de la
+Sección \ref{sec:met-normalizacion}. Los archivos del conjunto están documentados en el
+Apéndice \ref{ap:datos}.
+
 \subsection{Preprocesamiento}
-Dentro de las etapas principales del análisis, se encuentra la adquisición de datos.En este caso 
-se adquirió un conjunto de datos metagenómicos de cultivos de fresa proporcionados por Solena. 
-Estas secuencias se entregaron en formato FASTA y se encuentran almacenadas en archivos JSON, 
-los cuales contienen los resultados de la clasificación metagenómica realizada mediante el 
-clasificador Kraken \citep{wood2014kraken}. Con el objetivo de identificar características distintivas entre los frutos 
-sanos y enfermos, se ha llevado a cabo un análisis exploratorio detallado de estos datos.\\
+\label{sec:met-preprocesamiento}
+
+Los reportes de Kraken descritos en la sección anterior no se pueden analizar tal como llegan: son
+58 archivos de texto independientes, uno por muestra, y la etiqueta de cada planta está en otro
+archivo. Antes de calcular cualquier índice hubo que reunirlos en una sola estructura de datos
+consistente. Ese proceso de preparación se describe aquí como un flujo ETL, siglas en inglés de
+\emph{Extract, Transform, Load} (extraer, transformar, cargar), el esquema habitual en ingeniería de
+datos para llevar información desde sus fuentes originales hasta el formato en que se analiza:
+primero se extraen los datos de donde están, después se transforman para limpiarlos, unificarlos y
+darles estructura, y por último se cargan en el sistema donde se van a usar. La
+Figura \ref{fig:preprocesamiento} resume las tres etapas tal como se aplicaron en este trabajo; el
+código está en los scripts que indica su leyenda.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/preprosecamiento.png}
-\caption{Flujo de trabajo del preprocesamiento: de los reportes de Kraken al objeto phyloseq con
-metadatos y filtro de calidad. Diagrama de elaboración propia; el código correspondiente está en
+\caption{Flujo de trabajo del preprocesamiento, de los reportes de Kraken al objeto phyloseq con
+metadatos y filtro de calidad: extracción de los reportes, transformación a una tabla BIOM y
+carga en R. Diagrama de elaboración propia; el código correspondiente está en
 \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.Rmd}{01\_Exploracion.Rmd} y
 \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20230130_PreprocesamientoDatos.R}{20230130\_PreprocesamientoDatos.R}.}
 \label{fig:preprocesamiento}
 \end{figure}
 
-Dentro de este preprocesamiento es necesario realizar una limpieza y trasformación de los datos 
-para que estos sean adecuados para el análisis. En este caso se realizó un cambio de formato a 
-objeto BIOM \citep{mcdonald2012biom} con la herramienta kraken-biom \citep{dabdoub2016krakenbiom}, para un mejor manejo de los datos; luego fue necesario renombrar columnas, agregar 
-los metadatos y realizar un filtro de calidad.\\
+\textbf{Extracción.} Solena entregó los resultados en una carpeta compartida con tres archivos
+comprimidos: los reportes de Kraken, los de Bracken y los de fastp, además del archivo de
+metadatos. Se descargaron, se copiaron al servidor de cómputo del Centro de Ciencias Matemáticas
+y se descomprimieron desde Bash. En ese punto los datos ya estaban en el entorno de trabajo, pero
+seguían siendo 58 reportes separados, con nombres de archivo largos
+(\texttt{MD2055.kraken2.report}) y cada uno con su propia lista de taxones.
 
-Para iniciar el análisis de estos datos, llevamos a cabo una exploración general utilizando 
-índices ecológicos, especialmente centrándonos en las diversidades alfa y beta. \\
+\textbf{Transformación.} Esta es la etapa que más trabajo exige, porque es donde los datos cambian
+de forma. Con la herramienta kraken-biom \citep{dabdoub2016krakenbiom}, ejecutada desde Bash en un
+entorno de conda, los 58 reportes se combinaron en una única matriz en formato BIOM
+\citep{mcdonald2012biom}: una fila por taxón, una columna por muestra y, en cada celda, el número de
+lecturas asignadas. El BIOM guarda además, para cada taxón, su linaje completo desde el reino hasta
+la especie. Una vez en R, la tabla necesitó cuatro ajustes para quedar lista. Primero, las columnas
+de la tabla de taxonomía, que kraken-biom numera genéricamente, se renombraron con los niveles
+taxonómicos (\texttt{Kingdom}, \texttt{Phylum}, \ldots, \texttt{Species}). Segundo, se eliminó el
+prefijo de tres caracteres que Kraken antepone a cada nombre (\texttt{k\_\_}, \texttt{p\_\_}, etc.),
+para que los taxones aparezcan por su nombre en figuras y tablas. Tercero, los nombres de muestra se
+acortaron a su identificador de seis caracteres (\texttt{MD2055}, \texttt{MP2047}), que es el que
+usan los metadatos. Cuarto, se leyó el archivo de metadatos, se verificó que cada identificador de
+muestra tuviera una etiqueta y se unieron ambas tablas por ese identificador, de modo que a cada
+columna de conteos le correspondiera su estado, saludable o no saludable. Esta verificación es
+importante: un emparejamiento por posición en lugar de por nombre fue, de hecho, el origen de un
+error que se detectó y corrigió más adelante en el trabajo (Capítulo \ref{Resultados}).
 
-Se importaron los datos como un objeto phyloseq \citep{mcmurdie2013phyloseq}, que puede incluir cuatro componentes: 
-la matriz de abundancias, la tabla de taxonomía, los metadatos y el árbol filogenético. 
-Este enfoque nos permite obtener una comprensión más profunda de la estructura de la 
-comunidad microbiana presente en los datos metagenómicos, empleando medidas de diversidad 
-para evaluar la variabilidad intra e inter-muestral. A continuación se listan las muestras utilizadas.\\
-
+\textbf{Carga.} El destino de los datos es un objeto phyloseq \citep{mcmurdie2013phyloseq}, la
+estructura de R descrita en la Sección \ref{sec:lenguajes} que mantiene unidas la tabla de conteos,
+la tabla de taxonomía y los metadatos de las muestras. La función \texttt{import\_biom} lee el
+archivo BIOM y construye las dos primeras; los metadatos se añaden como tercer componente. A partir
+de ese objeto se calcularon todos los índices, distancias, pruebas y figuras de los capítulos
+siguientes, y de él se derivan los subconjuntos por reino y por nivel taxonómico. El objeto
+contiene las 58 muestras originales; la Tabla \ref{tab:lecturas-muestra} lista cuántas lecturas
+clasificadas tiene cada una, obtenidas con \texttt{sample\_sums}, y anticipa el último paso del
+preprocesamiento, el filtro de calidad, que se describe en la sección siguiente.
 
 \begin{lstlisting}[basicstyle=\small] 
 sample_sums(fresa_kraken)
@@ -87,7 +172,8 @@ MP2139 & MP2140 & & & & & & \\
 \end{table}
 
 
-\subsection{Filtrado de Calidad}
+\subsection{Filtrado de calidad}
+\label{sec:met-filtrado}
 
 A través de Solena, obtuvimos una tabla generada con fastp \citep{chen2018fastp} que refleja la calidad de las muestras 
 (fastp.kraken.summary \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/01_Exploracion.pdf}). 
@@ -274,7 +360,7 @@ permutaciones, mediante la función \texttt{adonis2} del paquete vegan
 desbalanceados, se acompañó de la prueba de homogeneidad de dispersiones PERMDISP
 \citep{anderson2006distance}, con la función \texttt{betadisper} y 999 permutaciones. El script
 correspondiente es \texttt{20260930\_RegenerarPermanovaPermdisp44.R}, en la carpeta de análisis del
-repositorio. Todos los procedimientos con componente aleatoria de esta tesis, las ordenaciones NMDS
+repositorio. Todos los procedimientos con componente aleatoria de este trabajo, las ordenaciones NMDS
 y las pruebas por permutaciones, se ejecutaron con la semilla \texttt{set.seed(2026)}, de modo que
 las figuras y los valores $p$ reportados son reproducibles exactamente con los scripts del repositorio. Finalmente, se calcularon el tamaño del efecto estandarizado (\emph{d} de
 Cohen) y la potencia de la prueba t con la función \texttt{power.t.test}
@@ -287,7 +373,7 @@ Cohen) y la potencia de la prueba t con la función \texttt{power.t.test}
 Desde un punto de vista matemático, los datos metagenómicos pueden representarse como una matriz
 de conteos:
 \begin{equation}
-X = (x_{ij}) \in \mathbb{N}^{n \times p}
+X = (x_{ij}) \in \mathbb{N}^{n \times p},
 \label{eq:matriz-conteos-cap3}
 \end{equation}
 donde $n$ es el número de muestras, $p$ el número de taxones y $x_{ij}$ el número de lecturas
@@ -341,20 +427,19 @@ Sección \ref{sec:res-normalizacion}.
 
 
 
-\section{Redes}
+\section[Redes de muestras y de coocurrencia]{Análisis de redes: similitud entre muestras y coocurrencia de taxones}
 \label{sec:met-redes}
 
 Los índices de diversidad resumen cada muestra en un número y las ordenaciones muestran las
 muestras como puntos; ninguna de las dos representaciones dice cómo se relacionan los elementos
-entre sí. Una red, o grafo, $G = (V, E)$ consta de un conjunto de nodos $V$ y un conjunto de aristas
-$E$ que unen pares de nodos. En este trabajo se exploraron dos tipos de redes: las \emph{redes de
+entre sí. Con las definiciones de la Sección \ref{sec:redes}, en este trabajo se exploraron dos tipos de redes: las \emph{redes de
 muestras}, en las que los nodos son las 53 muestras y dos muestras se unen si su composición es
 parecida, y las \emph{redes de coocurrencia}, en las que los nodos son taxones y dos taxones se unen
 si sus abundancias varían de forma coordinada a lo largo de las muestras
 \citep{berry2014deciphering}. Las primeras sirven para preguntar si las muestras saludables y no
 saludables forman comunidades separadas; las segundas, para preguntar qué taxones acompañan a un
 taxón de interés, en este caso \textit{Fusarium}. Ambas se construyeron sobre los datos filtrados
-del Capítulo 3.1 y los scripts que las regeneran son
+de la Sección \ref{sec:met-filtrado} y los scripts que las regeneran son
 \texttt{20261002\_RegenerarRedesMuestras32.R} y \texttt{20261002\_RegenerarRedesCoocurrencia33.R}.
 
 \subsection{Redes de muestras}
@@ -488,7 +573,7 @@ taxonomía, de modo que un modelo que busque dependencias entre \textit{Fusarium
 el estado de la planta, como las redes bayesianas del Capítulo 6, debe trabajar con un número
 reducido de variables elegidas por su sentido biológico y no con la red completa.
 
-\section{Rs}
+\section[Conjuntos de datos complementarios]{Conjuntos de datos complementarios: cultivo, suelos circundantes y suelo nativo}
 \label{sec:met-complementarios}
 
 Además del conjunto principal de 58 metagenomas de rizósfera de fresa, Solena Ag proporcionó dos
@@ -505,7 +590,7 @@ El segundo conjunto contiene 27 metagenomas de suelo tomados en tres tipos de si
 cultivo de fresa (10 muestras), suelo no cultivado (10) y bosque degradado (7). Al unirlo con el
 conjunto principal se obtiene una tabla de 85 muestras y 9~027 taxones con cinco categorías:
 cultivo saludable, cultivo marchito, cerca del cultivo, suelo no cultivado y bosque degradado. Se
-aplicó el mismo filtro de calidad de la Sección 3.1.2, que elimina las cinco muestras ya conocidas
+aplicó el mismo filtro de calidad de la Sección \ref{sec:met-filtrado}, que elimina las cinco muestras ya conocidas
 del conjunto principal; ninguna de las 27 muestras nuevas quedó por debajo de los 25 millones de
 lecturas, de modo que el análisis se hizo con 80 muestras. Los nombres de muestra de los dos
 conjuntos tienen formatos distintos, por lo que la unión con los metadatos se hizo por identificador
@@ -636,15 +721,3 @@ de fresa, saludable o marchito, tiene un microbioma rizosférico propio y distin
 circundante, y dentro de ese microbioma la marchitez no se refleja en la composición promedio. Esto
 refuerza la conclusión del Capítulo 5 de que la señal, si existe, está en la heterogeneidad y en
 las dependencias entre taxones, y no en la abundancia de taxones aislados.
-
-\section{Redes bayesianas}
-
-fundamentos teóricos utilizados para modelar la estructura de dependencia probabilística entre el 
-género fúngico Fusarium, el Índice de Shannon (como métrica de diversidad alfa) y los taxones 
-microbianos más abundantes en muestras de fresa. El análisis se basa en Redes Bayesianas (BN), 
-una herramienta de modelado gráfico que permite inferir relaciones direccionales y condicionales \citep{pearl1988probabilistic, scutari2010bnlearn}. 
-La robustez de los hallazgos se garantiza mediante la aplicación de técnicas avanzadas de validación, 
-incluyendo Bootstrapping y Validación Cruzada K-fold,
-
-
-

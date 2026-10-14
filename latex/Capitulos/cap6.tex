@@ -12,46 +12,58 @@ bayesianas, y otra de más largo plazo, la puesta en funcionamiento de un simula
 metagenómicos.
 
 \section{Redes bayesianas (en desarrollo)}
+\label{sec:bayesianas}
 
-Los índices de diversidad resumen toda la comunidad en un solo número y las pruebas de hipótesis
-comparan esos resúmenes entre grupos; ninguno de los dos enfoques describe cómo se relacionan los
-microorganismos entre sí ni cómo esas relaciones se vinculan con el estado de la planta. Para
-abordar esta pregunta se está desarrollando un modelo de redes bayesianas, un modelo gráfico
-probabilístico \citep{pearl1988probabilistic, koller2009probabilistic} en el que un grafo acíclico dirigido $G = (V, E)$ codifica las dependencias
-condicionales entre variables, de modo que la distribución conjunta se factoriza como
+Todo el análisis de este trabajo responde a una misma clase de pregunta: ¿difieren los grupos? Los
+índices de diversidad resumen cada comunidad en un número, las pruebas de hipótesis comparan esos
+números y el PERMANOVA compara composiciones completas, pero ninguno dice \emph{cómo} se relacionan
+las piezas entre sí. Los resultados del Capítulo \ref{Resultados} dejan precisamente esa pregunta
+abierta: la proporción de \textit{Fusarium} no distingue a las plantas enfermas, y sin embargo las
+plantas enfermas son más heterogéneas, de modo que si \textit{Fusarium} interviene en la marchitez
+no lo hace solo, sino a través de su relación con el resto de la comunidad. Para formular esa
+hipótesis como un modelo se está desarrollando una red bayesiana.
+
+Una red bayesiana es un modelo gráfico probabilístico \citep{pearl1988probabilistic,
+koller2009probabilistic}: un grafo acíclico dirigido $G = (V, E)$ cuyos nodos son variables
+aleatorias y cuyos arcos representan dependencias condicionales directas. Su propiedad central es
+que la distribución conjunta de todas las variables se factoriza en términos locales,
 \begin{equation}
 P(X_1, \dots, X_n) = \prod_{i=1}^{n} P\left(X_i \mid \mathrm{Pa}(X_i)\right),
 \label{eq:factorizacion-bn}
 \end{equation}
-donde $\mathrm{Pa}(X_i)$ denota el conjunto de padres del nodo $X_i$ en el grafo.
+donde $\mathrm{Pa}(X_i)$ es el conjunto de padres del nodo $X_i$ en el grafo. Cada variable
+depende solo de sus padres, y eso convierte el grafo en una afirmación legible sobre qué influye en
+qué: si el estado de la planta tiene como padre al índice de Shannon y este a su vez a
+\textit{Fusarium}, el modelo dice que \textit{Fusarium} afecta a la salud de la planta a través de
+la diversidad y no directamente. A diferencia de una red de coocurrencia como las de la
+Sección \ref{sec:met-redes}, que solo registra qué taxones varían juntos, una red bayesiana permite
+calcular probabilidades condicionales, hacer predicciones y comparar hipótesis sobre la estructura
+de dependencia.
 
-En este trabajo, los nodos de la red son la abundancia del género fúngico \textit{Fusarium}, el
-índice de Shannon como medida de diversidad alfa, la abundancia de los taxones más abundantes y el
-estado de salud de la planta. La estructura se aprende a partir de los datos, por ejemplo con el
-paquete \texttt{bnlearn} de R \citep{scutari2010bnlearn}, y su robustez se evalúa mediante
-\emph{bootstrapping}, conservando solo los arcos que aparecen en una proporción alta de las redes
-remuestreadas, y validación cruzada de $k$ particiones para medir la capacidad predictiva del
-modelo.
+En el modelo que se está construyendo, los nodos son la abundancia relativa de \textit{Fusarium},
+el índice de Shannon como resumen de la diversidad alfa, las abundancias de los taxones dominantes
+de la comunidad y el estado de salud de la planta. La estructura, es decir, qué arcos existen, no
+se fija de antemano sino que se aprende de los datos con el paquete \texttt{bnlearn} de R
+\citep{scutari2010bnlearn}, mediante algoritmos de búsqueda que puntúan cada grafo candidato por
+qué tan bien explica las 53 muestras. Con tan pocas muestras, el grafo aprendido es inestable: un
+cambio pequeño en los datos puede añadir o quitar arcos. Para no leer como hallazgo lo que es
+ruido, la estructura se valida de dos maneras. Con \emph{bootstrapping} se reaprende la red sobre
+cientos de remuestreos de los datos y se conservan solo los arcos que aparecen en una fracción alta
+de ellas; con validación cruzada de $k$ particiones se mide si el modelo predice el estado de salud
+de plantas que no vio durante el aprendizaje. Un arco que sobrevive al bootstrapping y mejora la
+predicción fuera de muestra es una relación en la que se puede confiar.
 %% CAMI: actualizar esta sección con lo que ya tengas: algoritmo de aprendizaje de estructura
 %% (hc, tabu, pc...), discretización o no de las abundancias, número de taxones, umbral de
 %% fuerza de arcos y primeros resultados.
 
-Este enfoque complementa los resultados de esta tesis en tres aspectos:
-\begin{itemize}
-    \item Permite pasar de preguntar \emph{si} los grupos difieren a preguntar \emph{qué}
-    variables están relacionadas con el estado de la planta y a través de qué otras variables.
-    \item Permite examinar el papel de \textit{Fusarium}, cuya proporción no difiere entre grupos
-    pero que podría asociarse con el estado de la planta de forma indirecta, a través de su
-    relación con la diversidad y con los taxones dominantes.
-    \item Extiende el análisis de redes de coocurrencia exploratorio, basado en correlaciones y
-    herramientas como MicNet \citep{favila2022micnet}, hacia un modelo probabilístico con el que
-    se puede hacer inferencia y predicción.
-\end{itemize}
-
-Cabe advertir que, con 53 muestras, el aprendizaje de la estructura de una red bayesiana es
-inestable cuando el número de nodos es grande; de ahí la importancia del \emph{bootstrapping} y de
-limitar la red a un número reducido de taxones. Esta restricción conecta directamente con la
-segunda línea de trabajo.
+Lo que este enfoque aporta sobre lo ya hecho es un cambio de pregunta. En lugar de preguntar
+\emph{si} los grupos difieren, pregunta \emph{qué} variables se relacionan con el estado de la
+planta y por medio de cuáles otras; permite examinar el papel indirecto de \textit{Fusarium}, cuya
+proporción no difiere entre grupos pero cuya relación con la diversidad y con los taxones dominantes
+sí podría hacerlo; y lleva las redes de coocurrencia exploratorias, construidas con correlaciones y
+herramientas como MicNet \citep{favila2022micnet}, hacia un modelo probabilístico con el que se
+puede hacer inferencia. Su limitación es la misma que atraviesa todo el trabajo: con 53 muestras el
+número de nodos debe mantenerse pequeño, y de ahí que esta línea dependa de la siguiente.
 
 \section{Simulador de datos metagenómicos}
 
