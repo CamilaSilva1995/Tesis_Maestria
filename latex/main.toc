@@ -19,78 +19,78 @@
 \contentsline {section}{\numberline {1.7}Índices de diversidad}{14}{section.1.7}%
 \contentsline {subsection}{\numberline {1.7.1}Diversidad alfa}{14}{subsection.1.7.1}%
 \contentsline {subsection}{\numberline {1.7.2}Diversidad beta}{15}{subsection.1.7.2}%
-\contentsline {section}{\numberline {1.8}Pruebas de hipótesis}{17}{section.1.8}%
-\contentsline {subsection}{\numberline {1.8.1}Prueba t para dos medias}{19}{subsection.1.8.1}%
+\contentsline {section}{\numberline {1.8}Pruebas de hipótesis}{18}{section.1.8}%
+\contentsline {subsection}{\numberline {1.8.1}Prueba t para dos medias}{20}{subsection.1.8.1}%
 \contentsline {subsection}{\numberline {1.8.2}Prueba F para dos varianzas}{21}{subsection.1.8.2}%
-\contentsline {subsection}{\numberline {1.8.3}Prueba de Wilcoxon-Mann-Whitney}{21}{subsection.1.8.3}%
-\contentsline {section}{\numberline {1.9}PERMANOVA y PERMDISP}{22}{section.1.9}%
+\contentsline {subsection}{\numberline {1.8.3}Prueba de Wilcoxon-Mann-Whitney}{22}{subsection.1.8.3}%
+\contentsline {section}{\numberline {1.9}PERMANOVA y PERMDISP}{23}{section.1.9}%
 \contentsline {section}{\numberline {1.10}Normalización y rarefacción}{24}{section.1.10}%
-\contentsline {section}{\numberline {1.11}Redes de muestras y de coocurrencia}{25}{section.1.11}%
-\contentsline {chapter}{\numberline {2}Objetivos}{27}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Objetivo general}{27}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Objetivos específicos}{27}{section.2.2}%
-\contentsline {chapter}{\numberline {3}Análisis exploratorio y metodología}{29}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Métodos para caracterizar la diversidad}{30}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Conjunto de datos principal}{30}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Preprocesamiento}{31}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Filtrado de calidad}{34}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Índices de diversidad}{36}{subsection.3.1.4}%
-\contentsline {subsubsection}{Diversidad Alfa}{36}{section*.6}%
-\contentsline {subsubsection}{Diversidad Beta}{36}{section*.7}%
-\contentsline {subsection}{\numberline {3.1.5}Exploración a distintos niveles taxonómicos}{38}{subsection.3.1.5}%
-\contentsline {section}{\numberline {3.2}Prueba de Hipótesis}{38}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Prueba t de Student sobre el índice de Shannon}{39}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Prueba F sobre las varianzas}{39}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Prueba de Wilcoxon-Mann-Whitney}{39}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Análisis complementarios}{40}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Normalización y rarefacción}{40}{subsection.3.2.5}%
-\contentsline {section}{\numberline {3.3}Redes de muestras y de coocurrencia}{42}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Redes de muestras}{42}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Redes de coocurrencia}{44}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Conjuntos de datos complementarios}{47}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Conjuntos de datos}{47}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Diversidad alfa}{48}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Composición y diversidad beta}{49}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Cultivo frente a suelo nativo}{52}{subsection.3.4.4}%
-\contentsline {subsection}{\numberline {3.4.5}Lo que aportan los conjuntos complementarios}{53}{subsection.3.4.5}%
-\contentsline {chapter}{\numberline {4}Resultados}{55}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Composición taxonómica y diversidad}{55}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Preprocesamiento y filtro de calidad}{55}{subsection.4.1.1}%
+\contentsline {section}{\numberline {1.11}Redes de muestras y de coocurrencia}{26}{section.1.11}%
+\contentsline {chapter}{\numberline {2}Objetivos}{29}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Objetivo general}{29}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Objetivos específicos}{29}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Análisis exploratorio y metodología}{31}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Métodos para caracterizar la diversidad}{32}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Conjunto de datos principal}{32}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Preprocesamiento}{33}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Filtrado de calidad}{36}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Índices de diversidad}{38}{subsection.3.1.4}%
+\contentsline {subsubsection}{Diversidad Alfa}{38}{section*.6}%
+\contentsline {subsubsection}{Diversidad Beta}{39}{section*.7}%
+\contentsline {subsection}{\numberline {3.1.5}Exploración a distintos niveles taxonómicos}{40}{subsection.3.1.5}%
+\contentsline {section}{\numberline {3.2}Prueba de Hipótesis}{41}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Prueba t de Student sobre el índice de Shannon}{41}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Prueba F sobre las varianzas}{42}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Prueba de Wilcoxon-Mann-Whitney}{42}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Análisis complementarios}{42}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Normalización y rarefacción}{43}{subsection.3.2.5}%
+\contentsline {section}{\numberline {3.3}Redes de muestras y de coocurrencia}{44}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Redes de muestras}{45}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Redes de coocurrencia}{45}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Conjuntos de datos complementarios}{50}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Conjuntos de datos}{50}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Diversidad alfa}{51}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Composición y diversidad beta}{51}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Cultivo frente a suelo nativo}{54}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.5}Lo que aportan los conjuntos complementarios}{55}{subsection.3.4.5}%
+\contentsline {chapter}{\numberline {4}Resultados}{57}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Composición taxonómica y diversidad}{57}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Preprocesamiento y filtro de calidad}{57}{subsection.4.1.1}%
 \contentsline {subsection}{\numberline {4.1.2}Diversidad alfa de la comunidad completa}{58}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Diversidad beta de la comunidad completa}{59}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}Composición taxonómica general}{61}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}Eucariotas por nivel taxonómico}{65}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.3}Diversidad beta de la comunidad completa}{60}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Composición taxonómica general}{62}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Eucariotas por nivel taxonómico}{66}{subsection.4.1.5}%
 \contentsline {subsection}{\numberline {4.1.6}Bacterias por nivel taxonómico}{68}{subsection.4.1.6}%
-\contentsline {section}{\numberline {4.2}Evaluación estadística entre grupos}{71}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Verificación de supuestos}{72}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Prueba t sobre el índice de Shannon de la comunidad completa}{72}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Prueba t sobre el índice de Shannon de los géneros de eucariotas}{73}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Prueba de Wilcoxon-Mann-Whitney}{74}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Tamaño del efecto y potencia estadística}{75}{subsection.4.2.5}%
-\contentsline {subsection}{\numberline {4.2.6}Sensibilidad a la normalización y la rarefacción}{76}{subsection.4.2.6}%
-\contentsline {section}{\numberline {4.3}Patrones asociados con el estado de salud}{79}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Taxones candidatos}{79}{subsection.4.3.1}%
-\contentsline {subsubsection}{Proporción de \textit {Fusarium}}{79}{section*.8}%
-\contentsline {subsubsection}{Géneros candidatos}{80}{section*.9}%
-\contentsline {subsection}{\numberline {4.3.2}Heterogeneidad del grupo no saludable}{82}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Dónde está y dónde no está la señal}{83}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Material didáctico: taller práctico}{83}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Discusión y conclusiones}{85}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Discusión}{85}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}La calidad de los datos condiciona la interpretación}{85}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Diversidad alfa: una tendencia consistente pero débil}{86}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Diversidad beta: gran superposición entre grupos}{87}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Composición taxonómica: taxones candidatos, no biomarcadores}{88}{subsection.5.1.4}%
-\contentsline {subsection}{\numberline {5.1.5}Diversidad de eucariotas a nivel de género: una señal que no se confirmó}{89}{subsection.5.1.5}%
-\contentsline {subsection}{\numberline {5.1.6}Tamaño de muestra y potencia estadística}{90}{subsection.5.1.6}%
-\contentsline {subsection}{\numberline {5.1.7}Limitaciones del estudio}{90}{subsection.5.1.7}%
-\contentsline {section}{\numberline {5.2}Conclusiones}{91}{section.5.2}%
-\contentsline {chapter}{\numberline {6}Perspectivas y trabajo a futuro}{95}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Redes bayesianas (en desarrollo)}{95}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Simulador de datos metagenómicos}{97}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Otras líneas}{98}{section.6.3}%
+\contentsline {section}{\numberline {4.2}Evaluación estadística entre grupos}{72}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Verificación de supuestos}{74}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Prueba t sobre el índice de Shannon de la comunidad completa}{74}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Prueba t sobre el índice de Shannon de los géneros de eucariotas}{75}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Prueba de Wilcoxon-Mann-Whitney}{76}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Tamaño del efecto y potencia estadística}{77}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}Sensibilidad a la normalización y la rarefacción}{78}{subsection.4.2.6}%
+\contentsline {section}{\numberline {4.3}Patrones asociados con el estado de salud}{81}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Taxones candidatos}{81}{subsection.4.3.1}%
+\contentsline {subsubsection}{Proporción de \textit {Fusarium}}{81}{section*.8}%
+\contentsline {subsubsection}{Géneros candidatos}{82}{section*.9}%
+\contentsline {subsection}{\numberline {4.3.2}Heterogeneidad del grupo no saludable}{83}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Dónde está y dónde no está la señal}{85}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Material didáctico: taller práctico}{86}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Discusión y conclusiones}{89}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Discusión}{89}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}La calidad de los datos condiciona la interpretación}{89}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Diversidad alfa: una tendencia consistente pero débil}{90}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Diversidad beta: gran superposición entre grupos}{91}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Composición taxonómica: taxones candidatos, no biomarcadores}{92}{subsection.5.1.4}%
+\contentsline {subsection}{\numberline {5.1.5}Diversidad de eucariotas a nivel de género: una señal que no se confirmó}{93}{subsection.5.1.5}%
+\contentsline {subsection}{\numberline {5.1.6}Tamaño de muestra y potencia estadística}{94}{subsection.5.1.6}%
+\contentsline {subsection}{\numberline {5.1.7}Limitaciones del estudio}{94}{subsection.5.1.7}%
+\contentsline {section}{\numberline {5.2}Conclusiones}{95}{section.5.2}%
+\contentsline {chapter}{\numberline {6}Perspectivas y trabajo a futuro}{99}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Redes bayesianas (en desarrollo)}{99}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Simulador de datos metagenómicos}{101}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Otras líneas}{102}{section.6.3}%
+\contentsline {chapter}{\numberline {A}Procedencia de figuras y tablas}{105}{appendix.Alph1}%
 \vspace {2em}
-\contentsline {chapter}{\numberline {A}Procedencia de figuras y tablas}{103}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Datos, entorno y reproducción}{107}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {B}Datos, entorno y reproducción}{109}{appendix.Alph2}%
 \vspace {2em}
-\contentsline {chapter}{Bibliograf\'{\i }a}{111}{appendix*.14}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{113}{appendix*.13}%

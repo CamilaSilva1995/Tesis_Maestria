@@ -11,50 +11,49 @@ A level-1 auxiliary file: Apendices/Ap.aux
 A level-1 auxiliary file: Apendices/Bp.aux
 The style file: apalike.bst
 Database file #1: ref.bib
-Repeated entry---line 1264 of file ref.bib
+Repeated entry---line 1268 of file ref.bib
  : @article{friedman2012inferring
  :                               ,
 I'm skipping whatever remains of this entry
-Warning--empty publisher in wackerly2002estadistica
-You've used 100 entries,
+You've used 104 entries,
             1935 wiz_defined-function locations,
-            1060 strings with 22765 characters,
-and the built_in function-call counts, 43053 in all, are:
-= -- 4121
-> -- 2143
-< -- 61
-+ -- 793
-- -- 750
-* -- 3924
-:= -- 7596
-add.period$ -- 301
-call.type$ -- 100
-change.case$ -- 855
-chr.to.int$ -- 99
-cite$ -- 101
-duplicate$ -- 1434
-empty$ -- 2779
-format.name$ -- 896
-if$ -- 8190
+            1081 strings with 23911 characters,
+and the built_in function-call counts, 45078 in all, are:
+= -- 4306
+> -- 2289
+< -- 62
++ -- 849
+- -- 804
+* -- 4119
+:= -- 7970
+add.period$ -- 315
+call.type$ -- 104
+change.case$ -- 903
+chr.to.int$ -- 103
+cite$ -- 104
+duplicate$ -- 1486
+empty$ -- 2879
+format.name$ -- 954
+if$ -- 8561
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 107
-newline$ -- 503
-num.names$ -- 300
-pop$ -- 675
+missing$ -- 110
+newline$ -- 525
+num.names$ -- 312
+pop$ -- 709
 preamble$ -- 1
-purify$ -- 865
+purify$ -- 912
 quote$ -- 0
-skip$ -- 1101
+skip$ -- 1140
 stack$ -- 0
-substring$ -- 2984
-swap$ -- 140
+substring$ -- 3092
+swap$ -- 143
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 578
-warning$ -- 1
-while$ -- 349
+type$ -- 602
+warning$ -- 0
+while$ -- 361
 width$ -- 0
-write$ -- 1298
+write$ -- 1355
 (There was 1 error message)

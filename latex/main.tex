@@ -18,7 +18,7 @@
 \usepackage[nottoc]{tocbibind}
 \usepackage{natbib}
 \usepackage[pdftex,
-            pdfauthor={Paula Camila Silva Gómez},
+            pdfauthor={Paula Camila Silva Gomez},
             pdftitle={Análisis estadístico de la diversidad microbiana a distintos niveles taxonómicos en el microbioma rizosférico de plantas de fresa saludables y no saludables},
             pdfsubject={Biomatemáticas y análisis estadístico de datos metagenómicos},
             pdfkeywords={metagenómica, microbioma rizosférico, diversidad alfa, diversidad beta, pruebas de hipótesis, fresa},
@@ -57,6 +57,7 @@
 \newtheorem{obs}[teo]{Observación}
 
 \allowdisplaybreaks
+\raggedbottom % evita que LaTeX estire el espacio entre parrafos cuando una figura [H] no cabe en la pagina
 
 
 
@@ -180,17 +181,20 @@ Doctor José Alexander Fuentes Montoya \\
 
 \chapter*{Agradecimientos}
 %\markboth{AGRADECIMIENTOS23}{AGRADECIMIENTOS} % encabezado 
-%%% CAMI Aqui también a Solena y al dr Obed por los datos de metagenómica y por su apoyo en la interpretación de los resultados.\\
 
 Principalmente, agradezco a la Dra. Nelly por su infinita paciencia, dedicación y todo el tiempo y esfuerzo que me brindó a lo largo de este proceso. Su apoyo ha sido invaluable.
 
 Agradezco al Dr. José Alexander Fuentes Montoya, de la Universidad EAN, coasesor de este trabajo y coautor del artículo derivado de él, por su acompañamiento en la metodología, su supervisión y la revisión cuidadosa de los resultados.
+
+Agradezco a la empresa Solena Ag, y en particular al Dr. Obed Ramírez Sánchez, por facilitar los datos metagenómicos de los cultivos de fresa que hicieron posible este trabajo y por su apoyo en la interpretación de los resultados.
 
 Agradezco al universo por enseñarme a mejorar cada día y por recordarme que, aunque el camino no siempre fue fácil y fue más largo de lo esperado, encontré la fortaleza para no rendirme y seguir adelante.
 
 Gracias a las carnitas, los elotes y las nieves, por hacerme enamorar de una cultura que, aunque no soy fan del picante, llevaré siempre en mi corazón con mucho cariño.
 
 Y un agradecimiento inmenso a cada una de las personitas, amigos, compañeros, y mis roomies, que me acompañaron en este camino. Gracias por estar ahí, ya sea desde cerca o a la distancia, con palabras de aliento, compañía y apoyo en esos días difíciles, que, siendo honesta, fueron muchos.\\
+
+Por último, hago constar que en la edición del texto de este trabajo me apoyé en herramientas de inteligencia artificial, como Claude y ChatGPT, para revisar la redacción, la ortografía y la consistencia del documento. Las ideas, el análisis, los resultados y las conclusiones son míos.
 
 ¡Gracias totales!
 
@@ -210,7 +214,7 @@ Y un agradecimiento inmenso a cada una de las personitas, amigos, compañeros, y
 
 El microbioma rizosférico es un factor clave en la estabilidad y productividad agrícola, influyendo en la disponibilidad de nutrientes y la interacción de las plantas con su entorno. Su análisis mediante enfoques metagenómicos genera grandes volúmenes de datos, cuya interpretación requiere métodos matemáticos y estadísticos avanzados para identificar patrones de diversidad microbiana.\\
 
-Este estudio explora las diferencias en la composición del microbioma rizosférico entre plantas saludables y no saludables en cultivos de fresa (Fragaria ananassa), aplicando métricas de diversidad alfa y beta, junto con pruebas de hipótesis para evaluar variaciones significativas. Si bien los resultados indican una mayor diversidad microbiana en plantas saludables, las diferencias no fueron concluyentes desde un punto de vista estadístico. No obstante, se identificaron tendencias generales en la estructura microbiana, sugiriendo que otros factores podrían estar modulando la comunidad rizosférica.\\
+Este estudio explora las diferencias en la composición del microbioma rizosférico entre plantas saludables y no saludables en cultivos de fresa (Fragaria ananassa), aplicando métricas de diversidad alfa y beta, junto con pruebas de hipótesis para evaluar variaciones significativas. Las plantas saludables mostraron una diversidad microbiana ligeramente mayor, pero la diferencia no fue estadísticamente significativa y el estado de la planta explicó una fracción muy pequeña de la variación en la composición. El hallazgo más consistente fue otro: las plantas no saludables son significativamente más heterogéneas entre sí, tanto en diversidad como en composición, mientras que las saludables se parecen unas a otras; la proporción de \textit{Fusarium} y de otros géneros candidatos no difirió entre grupos. Un análisis de potencia muestra que el tamaño de muestra disponible es insuficiente para detectar efectos moderados, por lo que los resultados no significativos deben leerse como no concluyentes.\\
 
 Los hallazgos resaltan la importancia de combinar herramientas de modelado estadístico y ciencia de datos en el estudio del microbioma agrícola, proporcionando bases cuantitativas para el diseño de estrategias de manejo del suelo orientadas a mejorar la resiliencia y sostenibilidad de los cultivos.\\
 
@@ -225,7 +229,7 @@ En este estudio, se analizan las diferencias en la composición y estructura del
 
 Para describir y modelar los datos metagenómicos, se calcularon índices de diversidad alfa (Chao1, Shannon y Simpson) para estimar la riqueza y equidad de especies en función del estado de la planta, mientras que la diversidad beta se evaluó mediante medidas de disimilitud (Bray-Curtis, Jaccard, Euclidiana, Manhattan y Jensen-Shannon) para determinar la variación en la composición microbiana entre grupos. \\
 
-Para la validación estadística, se aplicaron pruebas de hipótesis como Mann-Whitney \cite{wackerly2002estadistica}. Los resultados mostraron que las plantas saludables presentan una mayor diversidad microbiana en comparación con las no saludables. Sin embargo, las pruebas de hipótesis no fueron concluyentes, ya que las diferencias observadas en la diversidad microbiana no alcanzaron un nivel de significancia suficiente para establecer una separación categórica entre los grupos. \\
+Para la validación estadística, se aplicaron pruebas de hipótesis como Mann-Whitney \cite{wackerly2002estadistica}. Los resultados mostraron que las plantas saludables presentan una diversidad microbiana ligeramente mayor que las no saludables sobre la comunidad completa, pero las pruebas de hipótesis no fueron concluyentes: las diferencias observadas no alcanzaron un nivel de significancia suficiente para establecer una separación entre los grupos, y parte de la diferencia en riqueza se explica por la mayor profundidad de secuenciación de las plantas saludables. \\
 
 A pesar de esto, el análisis permitió identificar un patrón consistente: las plantas no saludables son significativamente más heterogéneas entre sí, tanto en su diversidad como en su composición, mientras que las saludables se parecen unas a otras. En cambio, la proporción de \textit{Fusarium} y de otros géneros candidatos, patógenos y benéficos, resultó prácticamente igual en ambos grupos, de modo que el estado de salud no se refleja en la abundancia de taxones particulares sino en la estabilidad del conjunto. \\
 
@@ -255,10 +259,6 @@ Este estudio enfatiza la importancia de integrar herramientas matemáticas, esta
 
 \include{Capitulos/cap6}
 \thispagestyle{empty}
-
-\chapter*{Conclusiones}
-\thispagestyle{empty}
-
 
 %----------------------------------------------------------------------------------------
 %	APÉNDICES

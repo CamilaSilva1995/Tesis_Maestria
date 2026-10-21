@@ -31,7 +31,7 @@ taxonómicos: Reino, Phylum, Clase, Orden, Familia, Género y Especie. Posterior
  se añadió el Dominio como el octavo grupo taxonómico más amplio, dividido en 
  Arqueas, Bacterias y Eukarya \citep{woese1990towards}.\\
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[scale=0.3]{Img/cap1/taxonomic.png}
 \caption{Representación jerárquica de los niveles taxonómicos usados para la clasificación y el análisis de datos metagenómicos. Diagrama de elaboración propia.}
@@ -60,9 +60,7 @@ las capacidades funcionales y las interacciones de las comunidades microbianas c
 Se aplica comúnmente en el estudio de ecosistemas como el suelo, el agua, la microbiota humana 
 y otros hábitats microbianos complejos. La metagenómica utiliza tecnologías avanzadas de secuenciación, 
 como la secuenciación de nueva generación, para desentrañar la diversidad genética y funcional de estas 
-comunidades \citep{oulas2015metagenomics, breitwieser2019review}.\\
-%% CAMI: la cita original era (Zhang, 2021); no está en ref.bib y no pude identificarla. Se reemplazó
-%% por dos revisiones de metagenómica. Si tienes la referencia de Zhang, agrégala al .bib y aquí.
+comunidades \citep{zhang2021advances, oulas2015metagenomics, breitwieser2019review}.\\
 
 La metagenómica permite analizar el genoma colectivo (metagenoma) de todos los microorganismos presentes en un ambiente determinado, 
 sin necesidad de cultivarlos individualmente. El DNA es pasado por un secuenciador, que regresa lecturas que pueden después
@@ -80,37 +78,41 @@ El elemento $x_{ij}$ indica el número de lecturas asignadas al taxón $j$ en la
 Debido a que las muestras presentan distinta profundidad de secuenciación, 
 se suelen emplear abundancias relativas.
 
-Existen dos enfoques para la secuenciación de DNA ambiental de microorganismos: 
-“Amplicón 16S rRNA” y “Shotgun”. 
-La secuenciación por amplicón 16S fue el primer método de secuenciación metagenómica altamente aceptado. 
-Tiene muchas ventajas: el gen 16S está presente en todas las bacterias y arqueas, contiene las regiones 
-necesarias para un buen análisis de PCR (Polymerase Chain Reaction - Reacción en Cadena de la Polimerasa) 
-altamente conservadas, existen conjuntos de primers altamente estudiados para amplificar la mayoría de los 
-organismos, ya se encuentran disponibles bases de datos públicas y bien seleccionadas que permiten una buena 
-comparación, y la secuenciación por 16S es relativamente barata y simple. Sin embargo, posee algunas desventajas: 
-el gen 16S no está presente en los hongos, por lo que este método no es adecuado cuando se desea trabajar con hongos. 
-Además, existe la posibilidad de que se incremente el error de sesgo si no se elige el conjunto de primers adecuado 
-para el organismo a analizar. La secuenciación shotgun corta al azar todo el ADN  presente en la muestra y lee esos fragmentos, 
-sin amplificar  previamente ninguna región en particular. El nombre alude a esa 
-fragmentación indiscriminada: en lugar de leer una única región conservada, 
-se obtiene una cobertura dispersa de todo el metagenoma, de modo que cada lectura 
-puede provenir de cualquier parte del genoma de cualquier organismo presente en la muestra. 
-Gracias a ello se  detectan a la vez bacterias, hongos y otros eucariotas, que el enfoque 
-por amplicón 16S no alcanza a ver \citep{ranjan2016shotgun, hall201816s}. \\
+Existen dos enfoques para la secuenciación de DNA ambiental de microorganismos:
+``Amplicón 16S rRNA'' y ``Shotgun''.
 
-En estre trabajo utilizaremos metagenomas shotgun de microorganismos relacionados con el
-cultivo de fresas. Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico correspondiente para cada secuencia. 
-Para esto, se realiza un enfoque basado en OTUs (Unidades Taxonómicas Operacionales), que agrupa 
-las secuencias según la similitud entre OTUs. El método de agrupación por OTUs presenta ciertas limitaciones, 
-ya que es relativamente costoso computacionalmente y requiere mucha memoria. Un OTU puede definirse dentro 
-del mismo clúster por un porcentaje de similitud, siendo el 97\% un porcentaje común a 
-nivel de especie. Estos OTUs pueden obtenerse mediante clústering, para lo cual ya existen varios métodos y algoritmos 
-disponibles \citep{xia2018statistical}. La identificación taxonómica de los OTUs también 
-puede abordarse mediante clasificadores basados en \emph{k-mers}. Un k-mer es una subcadena de longitud fija $k$
-de una secuencia de ADN; por ejemplo, la secuencia ACGTAC contiene los 3-mers ACG, CGT, GTA y TAC, y en general una
-lectura de longitud $L$ contiene $L - k + 1$ k-mers consecutivos. Estos clasificadores descomponen cada secuencia en
-sus k-mers y los confrontan contra una base de referencia en la que cada k-mer está asociado a un taxón, lo que
-resulta mucho más rápido que alinear la lectura completa \citep{wood2014kraken, menzel2016fast, breitwieser2019review}.
+La secuenciación por amplicón 16S fue el primer método de secuenciación metagenómica ampliamente
+aceptado, y tiene varias ventajas: el gen 16S está presente en todas las bacterias y arqueas;
+contiene regiones altamente conservadas, necesarias para un buen análisis de PCR (\emph{Polymerase
+Chain Reaction}, reacción en cadena de la polimerasa); existen conjuntos de \emph{primers} bien
+estudiados para amplificar la mayoría de los organismos y bases de datos públicas bien curadas con
+las que comparar; y es relativamente barata y simple. Tiene, sin embargo, dos desventajas
+importantes: el gen 16S no está presente en los hongos, por lo que el método no sirve cuando se
+quiere trabajar con los mismos, y la elección de los \emph{primers} puede introducir sesgo si no es la
+adecuada para los organismos de interés.
+
+La secuenciación \emph{shotgun} corta al azar todo el ADN presente en la muestra y lee esos
+fragmentos, sin amplificar previamente ninguna región en particular. El nombre alude a esa
+fragmentación indiscriminada: en lugar de leer una única región conservada, se obtiene una cobertura
+dispersa de todo el metagenoma, de modo que cada lectura puede provenir de cualquier parte del genoma
+de cualquier organismo presente en la muestra. Gracias a ello se detectan a la vez bacterias, hongos
+y otros eucariotas, que el enfoque por amplicón 16S no alcanza a ver
+\citep{ranjan2016shotgun, hall201816s}. En este trabajo se utilizan metagenomas \emph{shotgun} de
+microorganismos asociados al cultivo de fresa.
+
+Una vez obtenidas las secuencias, es necesario identificar el grupo taxonómico al que corresponde
+cada una. Un primer enfoque se basa en OTUs (unidades taxonómicas operacionales): las secuencias se
+agrupan por similitud, de modo que un OTU reúne a las que se parecen más de cierto porcentaje,
+siendo el 97\% un umbral habitual a nivel de especie. Los OTUs se obtienen mediante clústering, para
+lo cual existen varios métodos y algoritmos \citep{xia2018statistical}, aunque el procedimiento es
+relativamente costoso en cómputo y en memoria.
+
+Un segundo enfoque son los clasificadores basados en \emph{k-mers}. Un k-mer es una subcadena de
+longitud fija $k$ de una secuencia de ADN; por ejemplo, la secuencia ACGTAC contiene los 3-mers ACG,
+CGT, GTA y TAC, y en general una lectura de longitud $L$ contiene $L - k + 1$ k-mers consecutivos.
+Estos clasificadores descomponen cada secuencia en sus k-mers y los confrontan contra una base de
+referencia en la que cada k-mer está asociado a un taxón, lo que resulta mucho más rápido que
+alinear la lectura completa \citep{wood2014kraken, menzel2016fast, breitwieser2019review}.
 
 Para el análisis de estos datos, se emplean herramientas bioinformáticas como Kraken \citep{wood2014kraken} y Bracken \citep{lu2017bracken}. 
 A los que posteriori, se pueden realizar análisis estadísticos y de diversidad 
@@ -126,9 +128,7 @@ análisis funcional \citep{mcmurdie2013phyloseq, oksanen2022vegan, douglas2020pi
 La fresa \textit{(Fragaria x ananassa)} es un cultivo de gran relevancia 
 comercial y nutricional a nivel mundial. Sin embargo, su producción se ve afectada 
 por diversos factores, como la susceptibilidad a enfermedades y la influencia de las 
-prácticas agrícolas y del ambiente en la calidad del fruto \citep{yang2020comparison, nam2023multidisciplinary}. 
-%% CAMI: la cita original era (Geng et al., 2023); no está en ref.bib y no pude identificarla.
-%% Si la tienes, agrégala aquí y en el párrafo de agentes de biocontrol más abajo.
+prácticas agrícolas y del ambiente en la calidad del fruto \citep{yang2020comparison, nam2023multidisciplinary, yang2023fusarium}. 
 En los últimos años, se he visto la importancia del estudio del microbioma vegetal, 
 entendido como la comunidad de microorganismos que coexiste con la planta e incluye bacterias, 
 hongos y arqueas, presentes en nichos como el suelo a granel, la rizósfera 
@@ -136,20 +136,15 @@ hongos y arqueas, presentes en nichos como el suelo a granel, la rizósfera
 y los tejidos internos \citep{compant2019review, siegieda2024ecological}. 
 La composición del microbioma de fresa ha sido analizada mediante 
 diferentes métodos, mediante el estudio masivo del ADN microbiano directamente desde 
-las muestras ambientales \citep{bolyen2019reproducible, hall201816s}. Particularmente, 
-%% CAMI: la cita original era (Bokulich et al., 2018); no está en ref.bib. Probablemente es
-%% Bokulich et al. (2018), Microbiome 6:90 (q2-feature-classifier); confirmar antes de agregarla.
+las muestras ambientales \citep{bolyen2019reproducible, bokulich2018optimizing, hall201816s}. Particularmente, 
 la secuenciación de regiones como 16S rRNA (bacterias) e ITS1 (hongos) 
 ha permitido comenzar a caracterizar comunidades microbianas asociadas a distintos tejidos 
-de la planta (raíces, tallos, hojas) y diferentes estados de salud \citep{yang2020comparison, siegieda2024ecological}. \\
-%% CAMI: la cita original era (Zhang et al., 2023); no está en ref.bib y no pude identificarla.
+de la planta (raíces, tallos, hojas) y diferentes estados de salud \citep{yang2020comparison, zhang2023rhizosphere, siegieda2024ecological}. \\
 
 La rizósfera constituye un entorno microbiano complejo que alberga una gran variedad 
 de organismos con funciones clave en el desarrollo vegetal, incluyendo la mineralización 
 de nutrientes, producción de hormonas, supresión de patógenos y estimulación de la 
-inmunidad vegetal \citep{berendsen2012rhizosphere, wang2022characterization}. 
-%% CAMI: la cita original decía Wang et al. 2023. En ref.bib existe wang2022characterization
-%% (Wang et al., 2022, comunidad microbiana y redes de coocurrencia en tabaco). Confirmar que es la misma.
+inmunidad vegetal \citep{berendsen2012rhizosphere, trivedi2020plant}. 
 Las comunidades microbianas no solo influyen en el crecimiento y 
 rendimiento de los cultivos, sino que también pueden reflejar su estado de salud, 
 lo cual hace posible identificar biomarcadores microbianos para clasificar
@@ -192,7 +187,7 @@ rizobacterias promotoras del crecimiento (PGPR). Especies como \textit{Bacillus 
  \textit{B. amyloliquefaciens}, \textit{Pseudomonas monteilii}, \textit{Mortierella sp.} y levaduras
  como \textit{Rhodotorula} o \textit{Trichoderma asperellum} han mostrado eficacia en la mejora
  de la salud de la planta y en la calidad de la 
- fruta \citep{nam2023multidisciplinary, siegieda2024ecological}. \\
+ fruta \citep{nam2023multidisciplinary, siegieda2024ecological, drobek2021use}. \\
 
 En conjunto, estos hallazgos destacan la importancia del análisis estadístico 
 y bioinformático del microbioma rizosférico, tanto para la comprensión ecológica 
@@ -245,7 +240,7 @@ Además, tiene una herramienta complementaria (-mpa), que presenta la salida ord
 (root\_Super Kingdom, d\_kingdom, p\_phylum, c\_class, o\_order, f\_family, g\_genus, s\_species) 
 \citep{wood2014kraken, lu2022metagenome}.\\
 
-%\begin{figure}[h]
+%\begin{figure}[!htbp]
 %\centering
 %\includegraphics[scale=0.3]{Img/cap1/kraken.png}
 %\label{Fig 1.2}
@@ -300,7 +295,7 @@ componentes unidos garantiza que, al filtrar muestras o aglomerar taxones a un n
 todas las tablas se actualicen de manera consistente, y permite calcular índices de diversidad,
 distancias y ordenaciones directamente sobre el objeto.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap1/Phyloseq.png}
 \caption{Estructura del objeto phyloseq, que integra la tabla de abundancias, la tabla de taxonomía,
@@ -425,10 +420,15 @@ El índice de \textbf{Shannon} es la entropía de las abundancias relativas
 \citep{shannon1948mathematical}: la incertidumbre sobre a qué taxón pertenece una lectura tomada al
 azar,
 \begin{equation}
-H = -\sum_{i=1}^{S} p_i \ln p_i,
+H = -\sum_{i=1}^{S} h(p_i), \qquad
+h(p) =
+\begin{cases}
+p \ln p & \text{si } p > 0, \\
+0 & \text{si } p = 0,
+\end{cases}
 \label{eq:shannon}
 \end{equation}
-con la convención $0 \ln 0 = 0$. Vale $0$ si toda la muestra es un solo taxón y $\ln S$ si los $S$
+de modo que los taxones ausentes de la muestra no aportan nada a la suma. Vale $0$ si toda la muestra es un solo taxón y $\ln S$ si los $S$
 taxones son equiprobables, así que combina riqueza y equitatividad. Los taxones raros aportan términos
 cercanos a cero, por lo que es mucho menos sensible que Chao1 a la profundidad. Es el índice sobre el
 que se hacen las pruebas de hipótesis de este trabajo.
@@ -495,21 +495,29 @@ Ambas son métricas, pero la euclidiana, al elevar al cuadrado, queda dominada p
 dos o tres taxones más abundantes; la de Manhattan sobre abundancias relativas es el doble de
 Bray-Curtis.
 
-La \textbf{divergencia de Jensen-Shannon} trata las abundancias relativas $P$ y $Q$ de dos muestras
-como distribuciones de probabilidad. Parte de la divergencia de Kullback-Leibler
-\citep{kullback1951information},
+La \textbf{divergencia de Jensen-Shannon} trata las abundancias relativas $P = (p_1, \dots, p_p)$
+y $Q = (q_1, \dots, q_p)$ de dos muestras como distribuciones de probabilidad y mide cuánto se
+parecen. Parte de la divergencia de Kullback-Leibler \citep{kullback1951information},
 \begin{equation}
 D_{KL}(P \,\|\, Q) = \sum_{i=1}^{p} p_i \ln \frac{p_i}{q_i},
 \label{eq:kullback-leibler}
 \end{equation}
-que no es simétrica y es infinita cuando un taxón falta en $Q$; comparar cada distribución con la
-mezcla $M = \frac{1}{2}(P + Q)$ resuelve ambos problemas:
+donde la doble barra es solo notación: se lee ``divergencia de $P$ respecto de $Q$'' e indica cuál
+distribución se evalúa y cuál sirve de referencia. Taxón por taxón, $\ln(p_i / q_i)$ es positivo si
+el taxón es más abundante en $P$ que en $Q$, negativo si lo es menos y cero si tiene la misma
+proporción; cada término se pondera por $p_i$ y la suma es cero solo cuando $P = Q$. Por ejemplo,
+con $P = (0.5, 0.3, 0.2)$ y $Q = (0.3, 0.3, 0.4)$ se obtiene $D_{KL}(P \,\|\, Q) = 0.117$, pero
+$D_{KL}(Q \,\|\, P) = 0.124$: el orden importa, no es simétrica. Además, si un taxón de $P$ falta en
+$Q$, el cociente $p_i/0$ la hace infinita, algo frecuente en tablas de abundancias. Jensen-Shannon
+resuelve ambos problemas comparando cada muestra con el promedio de las dos,
+$M = \frac{1}{2}(P + Q)$, que contiene todo taxón presente en cualquiera de ellas:
 \begin{equation}
 JSD(P, Q) = \frac{1}{2} D_{KL}(P \,\|\, M) + \frac{1}{2} D_{KL}(Q \,\|\, M).
 \label{eq:jensen-shannon}
 \end{equation}
-Es simétrica, finita y acotada por $\ln 2$ \citep{lin1991divergence}; su raíz cuadrada es una
-métrica \citep{endres2003new}. Phyloseq devuelve $JSD$ sin raíz, que es lo que se usó.
+En el ejemplo, $JSD(P, Q) = 0.030$. Es simétrica, finita y acotada por $\ln 2$
+\citep{lin1991divergence}; su raíz cuadrada es una métrica \citep{endres2003new}. Phyloseq devuelve
+$JSD$ sin raíz, que es lo que se usó.
 
 Por último, \textbf{UniFrac} \citep{lozupone2008species} mide la fracción de longitud de un árbol
 filogenético que es exclusiva de una de las dos muestras, de modo que dos muestras con taxones
@@ -567,7 +575,7 @@ diferencia exista y que con 35 y 18 muestras la prueba simplemente no tenga pote
 Esa es, en buena medida, la situación de este trabajo, y por eso el Capítulo \ref{Resultados}
 acompaña las pruebas con un cálculo de potencia.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap1/pruebat_explicacion.png}
 \caption{Esquema de una prueba de hipótesis: distribución del estadístico bajo $H_0$, región de
@@ -627,9 +635,11 @@ y aproximar su distribución por una $t$ con los grados de libertad de Welch-Sat
 \end{equation}
 que en general no es entero y es menor que $\nu$: la prueba paga la incertidumbre adicional con
 menos grados de libertad y, por tanto, con un umbral de rechazo más exigente. Es la versión que
-\texttt{t.test} de R aplica por defecto. En este trabajo se reportan las dos, precisamente para
-mostrar cómo el supuesto de varianzas iguales acerca el resultado a la significancia cuando los
-datos no lo cumplen.
+\texttt{t.test} de R aplica por defecto. En este trabajo la versión con varianzas iguales fue la
+primera que se aplicó, en la fase exploratoria y antes de verificar los supuestos; una vez
+comprobado que las varianzas difieren, la prueba de Welch pasó a ser la prueba principal. Se reportan
+las dos, precisamente para mostrar cómo el supuesto de varianzas iguales acerca el resultado a la
+significancia cuando los datos no lo cumplen.
 
 \subsection{Prueba F para dos varianzas}
 Para saber cuál versión de la prueba $t$ corresponde hay que preguntar primero si las varianzas
@@ -679,7 +689,8 @@ muestra, $R_1$, y se calcula
 U = R_1 - \frac{n_1(n_1+1)}{2} = \#\{(i, j) : X_i > Y_j\},
 \label{eq:mann-whitney}
 \end{equation}
-el número de pares, uno de cada grupo, en los que la primera observación supera a la segunda. Si los
+donde $\#A$ denota el número de elementos del conjunto $A$; $U$ es, por tanto, el número de pares,
+uno de cada grupo, en los que la primera observación supera a la segunda. Si los
 grupos no difieren, $U$ ronda la mitad de los $n_1 n_2$ pares; bajo $H_0$ su media es $n_1 n_2 / 2$,
 su varianza $n_1 n_2 (n_1 + n_2 + 1)/12$ y para muestras moderadas se aproxima por una normal
 \citep{wilcox2010fundamentals}. La función \texttt{wilcox.test} de R lo reporta como $W$. El precio
@@ -722,7 +733,10 @@ de grupo son intercambiables, así que se barajan $B$ veces, se recalcula $F$ en
 p = \frac{1 + \#\{b : F^{(b)} \geq F_{obs}\}}{1 + B},
 \label{eq:p-permutacion}
 \end{equation}
-donde el $1$ cuenta la configuración observada. Con $B = 999$ la resolución es de una milésima.
+donde $\#\{b : F^{(b)} \geq F_{obs}\}$ es el número de permutaciones cuyo estadístico iguala o
+supera al observado (el símbolo $\#$ cuenta los elementos de un conjunto, como en la
+Ecuación \ref{eq:mann-whitney}) y el $1$ cuenta la configuración observada. Con $B = 999$ la
+resolución es de una milésima.
 
 El PERMANOVA tiene una limitación que importa en este trabajo: supone que los grupos tienen la misma
 dispersión y, si no es así, puede rechazar $H_0$ aunque los centroides coincidan, sobre todo con

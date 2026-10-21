@@ -38,6 +38,15 @@ Para que el estudiante participe, cada taller combina cuatro recursos:
 
 Los dos cierran con un glosario de los términos estadísticos.
 
+## Nota sobre el uso de inteligencia artificial
+
+En la elaboración de este taller se utilizó Claude Code (Anthropic) como herramienta de apoyo para
+construir el cuaderno a partir de la primera versión escrita por la autora (`original/`): redacción
+y organización de las celdas, generación de los ejercicios con solución oculta y verificación de que
+el cuaderno se ejecuta sin errores en Google Colab. El diseño pedagógico, las pruebas que se enseñan,
+los datos y los resultados provienen del análisis de la tesis, y todo el contenido generado fue
+revisado y validado por la autora.
+
 ## Conocimientos previos
 
 El taller empieza donde terminan estas lecciones de The Carpentries, que el cuaderno cita como punto

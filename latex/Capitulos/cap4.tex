@@ -1,13 +1,6 @@
 \chapter{Resultados}
 \label{Resultados}
 \label{cap:resultados}
-%% ============================================================================
-%% BORRADOR - Capítulo 4 (reescrito 2026-09-29)
-%% Organizado según los cuatro objetivos específicos del Capítulo 2.
-%% Todas las cifras fueron recalculadas a partir de Data/fresa_solena/Data1 con los scripts
-%% de Analisis_Comparativo/Fresa_Solena y Articulo_Popayan/calculos.
-%% Los comentarios "%% CAMI" señalan puntos por revisar.
-%% ============================================================================
 
 En este capítulo se presentan los resultados del análisis descrito en el Capítulo 3, organizados
 según los cuatro objetivos específicos planteados en el Capítulo 2. La Sección \ref{sec:res-caracterizacion}
@@ -46,7 +39,7 @@ valores mayores en el grupo saludable, más visible en la riqueza observada y en
 calidad no cambia los datos de las muestras que se conservan, pero sí determina si las diferencias
 entre grupos pueden verse.
 
-\begin{figure}[H]
+\begin{figure}[!tbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/AlphaDiversity_CrudosFiltrados.png}
 \caption{Diversidad alfa (riqueza observada, Chao1, Shannon y Simpson) en muestras saludables y no
@@ -67,7 +60,7 @@ mayor probabilidad de detectar taxones raros. En la Sección \ref{sec:res-normal
 evalúa, con curvas de rarefacción y con los datos rarificados a profundidad común, cuánto de la
 tendencia observada se debe a esta diferencia.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Barras.png}
 \caption{Número de lecturas clasificadas por muestra tras el filtro de calidad. Las muestras
@@ -118,7 +111,7 @@ Euclidiana tiene una escala mucho menor porque, al elevar al cuadrado las difere
 por los dos filos más abundantes. La ordenación de Jensen-Shannon queda determinada por una sola
 muestra atípica, lo que la hace poco informativa para este conjunto de datos.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/BetaDiversity.png}
 \caption{Ordenaciones NMDS de la diversidad beta de la comunidad completa para cinco medidas de
@@ -146,7 +139,7 @@ panel B de la Figura \ref{fig:permanova}). Los grupos no difieren, por lo tanto,
 promedio, pero sí en cuánto varía la composición dentro de cada uno: las plantas no saludables son
 más heterogéneas entre sí. Este resultado se retoma en la Sección \ref{sec:res-patrones}.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/PERMANOVA_PERMDISP.png}
 \caption{PERMANOVA y PERMDISP sobre la disimilitud de Bray-Curtis de la comunidad completa.
@@ -173,7 +166,7 @@ no alcanzan a verse. A esta escala los dos grupos son prácticamente indistingui
 dominantes tienen proporciones semejantes en todas las muestras y ninguno de los diez filos
 principales difiere entre grupos una vez ajustados los valores $p$ por comparaciones múltiples.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/BarrasFilo.png}
 \caption{Abundancia por filo en las 53 muestras filtradas, separadas por grupo. A) Abundancia
@@ -185,7 +178,7 @@ dominan todas las muestras.
 \label{fig:barras-filo}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/BarrasFilo_blackandwhite.png}
 \caption{Composición por filo en cada grupo. A) Abundancia relativa media de los diez filos
@@ -198,7 +191,12 @@ filo difiere entre grupos tras el ajuste.
 
 Dado que ni la diversidad ni la composición de la comunidad completa distinguen a los grupos, el
 análisis se desagregó por reino, Bacteria y Eukaryota, y dentro de cada reino por filo, familia,
-género y especie. Para las gráficas de barras se aplicó una aglomeración al 10\%, que agrupa bajo
+género y especie. El propósito de esta desagregación, que corresponde al primer objetivo específico,
+es comprobar si una diferencia entre grupos que no se aprecia sobre la comunidad completa aparece al
+mirar un reino o un nivel taxonómico en particular: una señal concentrada en unos pocos taxones, por
+ejemplo en los hongos patógenos, puede quedar diluida entre los miles de taxones bacterianos que
+dominan los índices globales. Para cada reino se presentan, en ese orden, la composición, la
+diversidad alfa y la diversidad beta en los cuatro niveles. Para las gráficas de barras se aplicó una aglomeración al 10\%, que agrupa bajo
 la etiqueta ``Otros'' a los taxones cuya abundancia relativa no supera ese umbral en ninguna
 muestra, de modo que los taxones restantes puedan distinguirse por color.
 
@@ -218,7 +216,7 @@ de 0.060\% y 0.055\%. Se trata de diferencias pequeñas, que las gráficas de ba
 amplifican al reescalar la fracción eucariota al 100\%. La Sección \ref{sec:res-patrones} las
 contrasta formalmente entre grupos.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Barras_Eukarya10.png}
 \caption{Abundancia relativa de eucariotas por nivel taxonómico, con las muestras separadas por
@@ -229,25 +227,31 @@ C) Género: \textit{Fusarium} y \textit{Phytophthora} entre los géneros disting
 \label{fig:barras-eukarya}
 \end{figure}
 
-La Figura \ref{fig:alpha-eukarya} presenta la diversidad alfa de los eucariotas en cada nivel. En
-los cuatro niveles, las muestras saludables muestran una tendencia hacia valores mayores de riqueza
-observada y de Chao1, mientras que Shannon y Simpson son semejantes entre grupos. En el nivel de
-género, el promedio del índice de Shannon calculado sobre los 58 géneros de eucariotas es de 3.077
-en el grupo saludable y de 3.035 en el no saludable; la significancia de esta diferencia se evalúa
-en la Sección \ref{sec:res-pruebas}. La diversidad beta por nivel, en la Figura \ref{fig:beta-eukarya},
+La Figura \ref{fig:alpha-eukarya} presenta la diversidad alfa de los eucariotas en cada nivel. La
+riqueza observada y Chao1 no distinguen a los grupos: tras aglomerar los conteos, todas las muestras
+contienen los mismos 4 filos, 35 familias y 58 géneros de eucariotas, y 144 o 145 de las 145
+especies, de modo que ambos índices son prácticamente constantes y Chao1 coincide con la riqueza
+observada por ausencia de \emph{singletons}. La información está en Shannon y Simpson, cuyas
+medianas son semejantes entre grupos en los cuatro niveles; lo que difiere es la dispersión, mayor en
+el grupo no saludable, que en todos los niveles incluye una o dos muestras con valores muy bajos. En
+el nivel de género, el promedio del índice de Shannon calculado sobre los 58 géneros de eucariotas
+es de 3.077 en el grupo saludable y de 3.035 en el no saludable; la significancia de esta diferencia
+se evalúa en la Sección \ref{sec:res-pruebas}. La diversidad beta por nivel, en la Figura \ref{fig:beta-eukarya},
 repite lo observado en la comunidad completa: las ordenaciones no separan los grupos en ningún nivel
 taxonómico.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Alpha_Eukarya.png}
 \caption{Diversidad alfa de los eucariotas por nivel taxonómico: A) filo, B) familia, C) género,
-D) especie. Las muestras saludables tienden a mayor riqueza observada y Chao1 en todos los niveles.
+D) especie. La riqueza observada y Chao1 son constantes en ambos grupos, porque todas las muestras
+contienen los mismos taxones a cada nivel; Shannon y Simpson tienen medianas semejantes y mayor
+dispersión en el grupo no saludable.
 \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarAlphaEukarya48.R}{(Script: \texttt{20260919\_RegenerarAlphaEukarya48.R})}}
 \label{fig:alpha-eukarya}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Beta_Eukarya.png}
 \caption{Diversidad beta (NMDS, Bray-Curtis) de los eucariotas por nivel taxonómico: A) filo,
@@ -275,7 +279,7 @@ bacteriana \citep{suhaimi2017diversity}, en las no saludables. La comparación c
 proporciones, en la Sección \ref{sec:res-patrones}, muestra que esas impresiones visuales no se
 sostienen.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Barras_Bacteria10.png}
 \caption{Abundancia relativa de bacterias por nivel taxonómico, con las muestras separadas por
@@ -288,23 +292,38 @@ B) Familia: Streptomycetaceae y Paenibacillaceae. C) Género: \textit{Streptomyc
 
 La diversidad alfa de las bacterias por nivel (Figura \ref{fig:alpha-bacteria}) reproduce el patrón
 de la comunidad completa, lo cual es esperable porque las bacterias constituyen casi la totalidad
-de las lecturas: tendencia hacia mayor riqueza en el grupo saludable y mayor dispersión en el grupo
-no saludable, sobre todo en Shannon a nivel de género y especie. La diversidad beta por nivel
+de las lecturas. A nivel de filo y familia la riqueza es constante (39 filos y 448 familias en todas
+las muestras) y solo a nivel de especie reaparece la ligera tendencia hacia mayor riqueza en el grupo
+saludable, con una media de 7~471 especies frente a 7~450; en Shannon y Simpson las medianas son
+semejantes y la dispersión es mayor en el grupo no saludable, sobre todo a nivel de género y especie. La diversidad beta por nivel
 (Figura \ref{fig:beta-bacteria}) tampoco separa los grupos. Sí se observa que, con Bray-Curtis, la
 nube de puntos se vuelve más dispersa a medida que se desciende de filo a especie, porque en los
 niveles finos hay más taxones que pueden diferir entre muestras. Esa mayor dispersión, sin embargo,
 no se organiza según el estado de la planta.
 
-\begin{figure}[H]
+En conjunto, la desagregación por reino y por nivel taxonómico no reveló ninguna diferencia entre
+grupos que no se viera ya sobre la comunidad completa. Ni la riqueza, que a los niveles gruesos es
+idéntica en todas las muestras, ni las medianas de Shannon y Simpson, ni las ordenaciones separan a
+las plantas saludables de las no saludables en ningún reino ni nivel. Lo único que se repite en todos
+los niveles es la mayor dispersión del grupo no saludable, que las pruebas de la
+Sección \ref{sec:res-pruebas} confirman formalmente sobre la comunidad completa. Las diferencias de
+composición que las gráficas de barras sugerían a simple vista, Oomycota y \textit{Phytophthora}
+algo menores y \textit{Fusarium} algo mayor en las no saludables, \textit{Pseudomonas} y
+\textit{Bacillus} en las saludables y \textit{Ralstonia} en las enfermas, quedan como candidatas a
+contrastar en la Sección \ref{sec:res-patrones}, donde se comprueba que ninguna sobrevive a la
+comparación cuantitativa.
+
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Alpha_Bacteria.png}
 \caption{Diversidad alfa de las bacterias por nivel taxonómico: A) filo, B) familia, C) género,
-D) especie.
+D) especie. La riqueza es constante a nivel de filo y familia y solo varía entre muestras a nivel de
+género y especie; la mayor dispersión del grupo no saludable se repite en todos los niveles.
 \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarAlphaBacteria411.R}{(Script: \texttt{20260919\_RegenerarAlphaBacteria411.R})}}
 \label{fig:alpha-bacteria}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Beta_Bacteria.png}
 \caption{Diversidad beta (NMDS, Bray-Curtis) de las bacterias por nivel taxonómico: A) filo,
@@ -332,29 +351,36 @@ grupo no saludable ($p < 0.001$), donde una muestra con valor muy bajo (6.82) se
 La prueba F rechaza con claridad la igualdad de varianzas ($F = 0.132$ con 34 y 17 grados de
 libertad, $p < 0.001$): la varianza del grupo no saludable es unas siete veces mayor que la del
 saludable. En consecuencia, la versión apropiada de la prueba t es la de Welch, y la prueba de
-Wilcoxon-Mann-Whitney se aplica como alternativa que no requiere normalidad. Se reportan también
-los resultados con varianzas iguales para hacer explícito el efecto de ese supuesto.
+Wilcoxon-Mann-Whitney se aplica como alternativa que no requiere normalidad. Conviene aclarar el
+orden en que ocurrieron las cosas: en la fase exploratoria del trabajo la primera prueba aplicada fue
+la t de Student con varianzas iguales, antes de verificar los supuestos; la verificación posterior
+mostró que ese supuesto no se cumple. El resultado exploratorio se conserva en las figuras y en la
+Tabla \ref{tab:resumen-pruebas}, identificado como tal, por dos razones: hace trazable cómo cambió
+la conclusión al corregir el procedimiento, y muestra cuánto depende el valor $p$ de un supuesto que
+los datos no cumplen.
 
 \subsection{Prueba t sobre el índice de Shannon de la comunidad completa}
 
-La Figura \ref{fig:ttest-shannon} resume la prueba t sobre la comunidad completa. Asumiendo
-varianzas iguales, el estadístico es $t = 1.939$ con 51 grados de libertad y $p = 0.058$; el
-intervalo de confianza del 95\% para la diferencia de medias, $(-0.002,\ 0.125)$, incluye al
-cero por un margen estrecho. Con la prueba de Welch \citep{welch1947generalization}, que es la que corresponde dados los supuestos,
-el estadístico es $t = 1.499$ con 19.3 grados de libertad y $p = 0.150$, con intervalo
-$(-0.024,\ 0.147)$. En ninguno de los dos casos se rechaza la hipótesis nula: la diferencia de
-0.061 unidades de Shannon a favor del grupo saludable no es distinguible del ruido con el tamaño
-de muestra disponible. Cabe notar que el supuesto de varianzas iguales, que los datos no cumplen,
-acerca artificialmente el resultado a la significancia.
+La Figura \ref{fig:ttest-shannon} resume la prueba t sobre la comunidad completa. Con la prueba
+de Welch \citep{welch1947generalization}, que es la que corresponde dados los supuestos, el
+estadístico es $t = 1.499$ con 19.3 grados de libertad y $p = 0.150$, con intervalo de confianza del
+95\% para la diferencia de medias de $(-0.024,\ 0.147)$. No se rechaza la hipótesis nula: la
+diferencia de 0.061 unidades de Shannon a favor del grupo saludable no es distinguible del ruido con
+el tamaño de muestra disponible. La prueba exploratoria inicial, con varianzas iguales, había dado
+$t = 1.939$ con 51 grados de libertad y $p = 0.058$, con intervalo $(-0.002,\ 0.125)$, que incluye
+al cero por un margen estrecho. La comparación es instructiva: el supuesto de varianzas iguales, que
+los datos no cumplen, acerca artificialmente el resultado a la significancia, y de haberse detenido
+el análisis en esa primera prueba la conclusión habría quedado en el límite.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/tTest_Shannon.png}
 \caption{Prueba t de Student sobre el índice de Shannon de la comunidad completa. A) Distribución
-del índice en cada grupo, con la media señalada por la línea punteada. B) Asumiendo varianzas
-iguales: $t = 1.939$, 51 grados de libertad, $p = 0.058$. C) Asumiendo varianzas distintas (Welch):
-$t = 1.499$, 19.3 grados de libertad, $p = 0.150$. En ambos casos el estadístico queda fuera de la
-región de rechazo y no se rechaza la hipótesis nula.
+del índice en cada grupo, con la media señalada por la línea punteada. B) Prueba exploratoria
+inicial, asumiendo varianzas iguales: $t = 1.939$, 51 grados de libertad, $p = 0.058$. C) Prueba
+apropiada dados los supuestos, con varianzas distintas (Welch): $t = 1.499$, 19.3 grados de libertad,
+$p = 0.150$. En ambos casos el estadístico queda fuera de la región de rechazo y no se rechaza la
+hipótesis nula.
 \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarTTestShannon413.R}{(Script: \texttt{20260919\_RegenerarTTestShannon413.R})}}
 \label{fig:ttest-shannon}
 \end{figure}
@@ -365,29 +391,21 @@ La misma prueba se aplicó al índice de Shannon calculado sobre los 58 géneros
 que incluye a \textit{Fusarium} y a \textit{Phytophthora}, con el fin de comprobar si la señal
 asociada con los fitopatógenos, diluida en la comunidad completa, resultaba detectable al aislar la
 fracción eucariota. La Figura \ref{fig:ttest-eucariotas} muestra el resultado. Las medias son 3.077
-en el grupo saludable y 3.035 en el no saludable. Asumiendo varianzas iguales, $t = 1.139$ con 51
-grados de libertad y $p = 0.260$; con la prueba de Welch, $t = 0.902$ con 20.2 grados de libertad y
-$p = 0.378$. La prueba de Wilcoxon-Mann-Whitney sobre estos mismos valores da $W = 318$ y
-$p = 0.963$. Los tres intervalos de confianza incluyen al cero. Por lo tanto, la diversidad de
+en el grupo saludable y 3.035 en el no saludable. Con la prueba de Welch, $t = 0.902$ con 20.2
+grados de libertad y $p = 0.378$; la prueba exploratoria con varianzas iguales había dado
+$t = 1.139$ con 51 grados de libertad y $p = 0.260$. La prueba de Wilcoxon-Mann-Whitney sobre estos
+mismos valores da $W = 318$ y $p = 0.963$. Los tres intervalos de confianza incluyen al cero. Por lo tanto, la diversidad de
 géneros de eucariotas tampoco difiere significativamente entre grupos.
 
-%% CAMI: IMPORTANTE. Una versión anterior de esta figura reportaba medias de 3.101 y 2.988 y un
-%% valor p de 0.0017 (varianzas iguales) y 0.0130 (Welch). Ese resultado era un artefacto: el
-%% script construía la tabla con psmelt() y reshape(), que ordenan las muestras por abundancia, y
-%% luego la unía a los metadatos con cbind() sin emparejar por nombre de muestra, de modo que las
-%% 53 filas quedaban con el tratamiento de otra muestra. El script
-%% 20260919_RegenerarTTestFusarium414.R fue corregido (empareja con match()) y la figura se
-%% regeneró. Hay que corregir también el Capítulo 5, el artículo de Articulo_Popayan y el
-%% resumen/introducción de main.tex donde se mencione este resultado.
-
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/tTest_Shannon_Fusarium.png}
 \caption{Prueba t de Student sobre el índice de Shannon calculado a nivel de género en eucariotas
 (58 géneros, entre ellos \textit{Fusarium}). A) Distribución del índice en cada grupo, con la media
 señalada por la línea punteada: 3.077 en el grupo saludable y 3.035 en el no saludable.
-B) Asumiendo varianzas iguales: $t = 1.139$, 51 grados de libertad, $p = 0.260$. C) Asumiendo
-varianzas distintas (Welch): $t = 0.902$, 20 grados de libertad, $p = 0.378$. En ambos casos el
+B) Prueba exploratoria inicial, asumiendo varianzas iguales: $t = 1.139$, 51 grados de libertad,
+$p = 0.260$. C) Prueba apropiada, con varianzas distintas (Welch): $t = 0.902$, 20.2 grados de
+libertad, $p = 0.378$. En ambos casos el
 estadístico queda dentro de la región de no rechazo.
 \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Analisis_Comparativo/Fresa_Solena/20260919_RegenerarTTestFusarium414.R}{(Script: \texttt{20260919\_RegenerarTTestFusarium414.R})}}
 \label{fig:ttest-eucariotas}
@@ -406,7 +424,7 @@ incluye al cero. La prueba no paramétrica coincide, por lo tanto, con la prueba
 de una diferencia en la distribución del índice de Shannon entre plantas saludables y no
 saludables.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Wilcoxon_Shannon.png}
 \caption{Valores del índice de Shannon de la comunidad completa ordenados por rango, coloreados por
@@ -427,8 +445,6 @@ media armónica de los tamaños de grupo ($n \approx 24$) y la desviación está
 ($s_p = 0.109$). Para alcanzar una potencia de 0.8 se necesitarían alrededor de 51 muestras por
 grupo, casi el triple de las plantas no saludables disponibles. La Tabla \ref{tab:resumen-pruebas}
 resume todas las pruebas de esta sección.
-%% CAMI: potencia calculada con power.t.test; es una aproximación porque las varianzas no son
-%% iguales. Script: Articulo_Popayan/calculos/Potencia_estadistica.R.
 
 \begin{table}[H]
 \centering
@@ -445,11 +461,11 @@ Scripts: \href{https://github.com/CamilaSilva1995/Tesis_Maestria/blob/main/Anali
 \hline
 Conjunto & Prueba & Estadístico & g.l. & Valor $p$ \\
 \hline
-Comunidad completa & t, varianzas iguales & $t = 1.939$ & 51   & 0.058 \\
+Comunidad completa & t, varianzas iguales (exploratoria) & $t = 1.939$ & 51   & 0.058 \\
 Comunidad completa & t de Welch           & $t = 1.499$ & 19.3 & 0.150 \\
 Comunidad completa & Wilcoxon-Mann-Whitney & $W = 376$  & --   & 0.259 \\
 Comunidad completa & F de varianzas       & $F = 0.132$ & 34, 17 & $< 0.001$ \\
-Géneros de eucariotas & t, varianzas iguales & $t = 1.139$ & 51 & 0.260 \\
+Géneros de eucariotas & t, varianzas iguales (exploratoria) & $t = 1.139$ & 51 & 0.260 \\
 Géneros de eucariotas & t de Welch        & $t = 0.902$ & 20.2 & 0.378 \\
 Géneros de eucariotas & Wilcoxon-Mann-Whitney & $W = 318$ & -- & 0.963 \\
 Composición (Bray-Curtis) & PERMANOVA     & $F = 1.26$, $R^2 = 0.024$ & 1, 51 & 0.167 \\
@@ -487,7 +503,7 @@ plantas saludables que se observaba en los datos originales se explica en buena 
 profundidad, mientras que la tendencia en Shannon, pequeña y no significativa, es independiente de
 ella. La mayor varianza del grupo no saludable se mantiene tras rarificar ($F = 0.133$, $p < 0.001$).
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Rarefaccion_Normalizacion.png}
 \caption{Rarefacción. A) Curvas de rarefacción de las 53 muestras filtradas: número esperado de
@@ -616,7 +632,7 @@ marchitas, ni los géneros benéficos lo están en las saludables. Las diferenci
 gráficas de barras eran efectos de la escala, de la aglomeración al 10\% y de unas pocas muestras
 atípicas.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap3/Proporciones_Fusarium.png}
 \caption{Proporción de \textit{Fusarium} y de los géneros candidatos por grupo. A) Porcentaje de las
@@ -690,25 +706,54 @@ metagenomas pueden llevar la pregunta más lejos.
 %% ----------------------------------------------------------------------------
 
 El cuarto objetivo específico fue convertir el análisis de este capítulo en una clase práctica que
-pueda impartirse y reproducirse sin más requisitos que un navegador. El resultado es el cuaderno
-\texttt{Taller\_Practico\_\allowbreak Analisis\_estadistico\_\allowbreak de\_Datos\_\allowbreak Metagenomicos.ipynb}, disponible en la
-carpeta \texttt{Taller\_Practico} del repositorio de la tesis, escrito en Python para ejecutarse en
-Google Colab (Sección \ref{sec:python-colab}). Está diseñado para una sesión de 50 minutos y se organiza en ocho
-secciones que siguen el orden de este capítulo: carga y filtro de los datos; la idea de prueba de
-hipótesis y del valor $p$ construida con una simulación por permutaciones; diversidad de Shannon
-con las pruebas t y de Welch, incluida la verificación de supuestos; las pruebas de Mann-Whitney y
-de Wilcoxon de rangos con signo, con énfasis en cuándo corresponde cada una; la proporción de
-\textit{Fusarium} por grupo; el PERMANOVA y el PERMDISP programados paso a paso a partir de la
-matriz de Bray-Curtis; y un cierre con la tabla resumen de todas las pruebas.
+pueda impartirse y reproducirse sin más requisitos que un navegador. El resultado son dos cuadernos
+de Python para Google Colab (Sección \ref{sec:python-colab}), disponibles en la carpeta
+\texttt{Taller\_Practico} del repositorio de la tesis, pensados para que cada docente elija según el
+tiempo y el curso de que disponga:
 
-Los datos del taller son los mismos de la tesis, reducidos a tres tablas de texto que se descargan
-desde el repositorio con una sola instrucción: los metadatos de las 58 muestras, los cuatro índices
-de diversidad alfa por muestra calculados con phyloseq, y los conteos por género. Todos los
-resultados que obtiene el estudiante coinciden con los de la Tabla \ref{tab:resumen-pruebas}. El
-cuaderno incluye siete ejercicios con la solución oculta en un desplegable, que van desde explorar
-los datos hasta redactar un párrafo de resultados, y aprovecha dos lecciones surgidas durante la
-tesis: la comprobación de que los identificadores de muestra coinciden antes de unir dos tablas, y
-el hecho de que los mismos datos producen valores $p$ de 0.04, 0.058, 0.15 y 0.26 según la prueba
-que se aplique, de modo que la respuesta válida es la de la prueba cuyos supuestos se cumplen y no
-la que da el valor $p$ más pequeño. Todos los procedimientos aleatorios del taller usan la misma
-semilla que la tesis.
+\begin{itemize}
+    \item \textbf{Taller completo}, archivo\\
+    {\footnotesize\texttt{Taller\_Practico\_Analisis\_estadistico\_de\_Datos\_Metagenomicos.ipynb}},\\
+    de unas tres horas y media con descanso, que puede darse en dos sesiones. Está organizado en siete
+    episodios al estilo de las lecciones de The Carpentries, cada uno con preguntas y objetivos al
+    inicio, explicación paso a paso, un ejercicio y sus puntos clave: los datos, con un caso real y
+    uno simulado; la lógica de una prueba de hipótesis y el valor $p$ construido por permutaciones;
+    las pruebas t de Student y de Welch con la verificación de supuestos; las pruebas de rangos de
+    Mann-Whitney y de Wilcoxon, con énfasis en cuándo corresponde cada una; la proporción de un
+    género de interés (\textit{Fusarium}) por grupo; el PERMANOVA y el PERMDISP programados a partir
+    de la matriz de Bray-Curtis; y un cierre sobre cómo reportar y comparar los dos casos. Incluye
+    siete ejercicios con la solución oculta en un desplegable, preguntas de opción múltiple cuya
+    respuesta explica por qué fallan las otras opciones, tres laboratorios con controles deslizantes
+    para cambiar la verdad de los datos simulados y ver cómo responde cada prueba, y un glosario.
+    \item \textbf{Taller rápido}, archivo\\
+    {\footnotesize\texttt{Taller\_Rapido\_Pruebas\_de\_hipotesis\_con\_Datos\_Metagenomicos.ipynb}},\\
+    una versión de 60 minutos en cuatro episodios con los mismos datos y los mismos resultados: los
+    dos casos y la pregunta; diferencia real o azar; elegir la prueba (supuestos, Welch y
+    Mann-Whitney); y comparar comunidades completas con PERMANOVA y PERMDISP. Tiene tres ejercicios y
+    un laboratorio, y el script que lo genera se detiene si el contenido pasa de una hora.
+\end{itemize}
+
+Cada prueba se aplica a dos casos. El primero son los datos reales de este trabajo, reducidos a
+tablas de texto que se descargan desde el repositorio con una sola instrucción: los metadatos de las
+58 muestras, los cuatro índices de diversidad alfa por muestra calculados con phyloseq y los conteos
+por género y por filo. El segundo es un conjunto simulado dentro del cuaderno, de 60 muestras que
+cumplen los supuestos de las pruebas y en el que la verdad se conoce porque la elige quien simula; el
+contraste entre ambos es lo que permite ver qué hace cada prueba cuando los supuestos se cumplen y
+cuando no. Todos los resultados que obtiene el estudiante con los datos reales coinciden con los de
+la Tabla \ref{tab:resumen-pruebas}, y los procedimientos aleatorios usan la misma semilla que la
+tesis. El taller recoge además las dos lecciones que más pesaron en este trabajo: la comprobación de
+que los identificadores de muestra coinciden antes de unir dos tablas, y el hecho de que los mismos
+datos producen valores $p$ de 0.04, 0.058, 0.15 y 0.26 según la prueba que se aplique, de modo que la
+respuesta válida es la de la prueba cuyos supuestos se cumplen y no la que da el valor $p$ más
+pequeño. Un laboratorio lo muestra con simulaciones sin diferencia verdadera y el diseño de los datos
+reales: la t de Student declara una diferencia en el 14\% de los estudios simulados, Mann-Whitney en
+el 11\% y Welch en el 5\%. Acompañan a los cuadernos un explorador interactivo con figuras de Plotly
+y una encuesta para los estudiantes, antes y después del taller.
+
+\textbf{Nota sobre el uso de inteligencia artificial.} Para construir este taller me apoyé en
+Claude Code, el asistente de programación de Anthropic. Partí de una primera versión del cuaderno
+que escribí yo misma y usé la herramienta para organizar y redactar las celdas de texto y de código,
+preparar los ejercicios con su solución oculta y comprobar que todo se ejecuta sin errores en Google
+Colab. El diseño de la clase, la elección de las pruebas que se enseñan, los datos y los resultados
+que el cuaderno reproduce son los de mi análisis, y revisé y validé cada celda antes de incluirla.
+Esta nota se refiere únicamente al taller.

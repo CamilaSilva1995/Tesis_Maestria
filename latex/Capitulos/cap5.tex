@@ -1,10 +1,6 @@
 \chapter{Discusión y conclusiones}
 \label{cap:discusion}
-%% ============================================================================
-%% BORRADOR - Capítulo 5
-%% Los comentarios que empiezan con "%% CAMI" son notas para revisar antes de
-%% la versión final (datos por verificar, figuras por agregar, etc.).
-%% ============================================================================
+
 
 En este capítulo se interpretan los resultados presentados en el Capítulo 4 a la luz de los
 objetivos planteados en el Capítulo 2. Primero se discuten los hallazgos sobre la calidad de los
@@ -44,9 +40,13 @@ normalización \citep{weiss2017normalization}.
 
 \subsection{Diversidad alfa: una tendencia consistente pero débil}
 
-En todos los índices de diversidad alfa (Chao1, Shannon y Simpson) las plantas saludables
-mostraron valores ligeramente mayores que las no saludables, y esta tendencia se repitió al separar
-los datos por reino y al descender a los niveles de filo, familia, género y especie. Esta dirección
+Sobre la comunidad completa, en todos los índices de diversidad alfa (riqueza observada, Chao1,
+Shannon y Simpson) las plantas saludables mostraron valores ligeramente mayores que las no
+saludables. Al separar los datos por reino y descender a los niveles de filo, familia, género y
+especie, la tendencia no se mantuvo: la riqueza resultó idéntica en todas las muestras a los niveles
+gruesos y las medianas de Shannon y Simpson fueron semejantes entre grupos en todos los niveles, de
+modo que la diferencia es una propiedad del conjunto completo y no de un reino o nivel en
+particular. La dirección de la tendencia global
 coincide con lo reportado en otros estudios sobre la rizósfera de fresa y de otros cultivos, en los
 que la enfermedad se asocia con una pérdida de diversidad microbiana
 \citep{xiong2020rhizosphere, gao2021disease, yang2020comparison}.
@@ -133,7 +133,7 @@ Se esperaba que la señal asociada con los fitopatógenos, diluida en la comunid
 detectable al aislar la fracción eucariota, y en particular al índice de Shannon calculado sobre los
 58 géneros de eucariotas, grupo que incluye a \textit{Fusarium} y a \textit{Phytophthora}. No fue
 así: las medias fueron 3.077 en las plantas saludables y 3.035 en las no saludables, y ni la prueba
-t ($p = 0.260$ con varianzas iguales, $p = 0.378$ con Welch) ni la de Wilcoxon-Mann-Whitney
+t ($p = 0.378$ con Welch; $p = 0.260$ en la versión exploratoria con varianzas iguales) ni la de Wilcoxon-Mann-Whitney
 ($p = 0.963$) rechazaron la igualdad entre grupos.
 
 Este resultado tiene una historia que conviene dejar registrada. Una versión anterior del análisis
@@ -164,9 +164,6 @@ para detectar un efecto de ese tamaño con $\alpha = 0.05$ es de apenas 0.48 apr
 la diferencia fuera real, el diseño la detectaría menos de la mitad de las veces. Para alcanzar una
 potencia de 0.8 se necesitarían alrededor de 51 muestras por grupo, casi el triple del número
 actual de plantas no saludables \citep{xia2018statistical}.
-%% CAMI: potencia calculada con power.t.test usando la media armónica de los tamaños de grupo
-%% (n aprox. 24) y la desviación estándar combinada (0.109). Es una aproximación, dado que las
-%% varianzas no son iguales; puede incluirse como resultado en el Capítulo 4.
 
 Este cálculo reencuadra los resultados del Capítulo 4: la falta de significancia es compatible con
 un efecto real que el diseño no tiene potencia suficiente para detectar. El desbalance entre grupos,
@@ -206,8 +203,10 @@ En relación con los objetivos planteados, se concluye lo siguiente:
     \item \textbf{Caracterización de la composición y la diversidad.} Se caracterizó el microbioma
     rizosférico de 53 plantas de fresa, 35 saludables y 18 no saludables, a los niveles de reino,
     filo, familia, género y especie. La comunidad está dominada por bacterias, principalmente
-    Actinobacteria y Proteobacteria, en ambos grupos. Las plantas saludables mostraron de forma
-    consistente una diversidad alfa ligeramente mayor en todos los índices y niveles taxonómicos.
+    Actinobacteria y Proteobacteria, en ambos grupos. Sobre la comunidad completa, las plantas
+    saludables mostraron una diversidad alfa ligeramente mayor en los cuatro índices, diferencia que
+    no se mantuvo al desagregar por reino y nivel taxonómico, donde las medianas de los grupos
+    coinciden y lo único que se repite es la mayor dispersión del grupo no saludable.
     Además, el filtrado de calidad resultó indispensable para obtener comparaciones interpretables,
     y la rarefacción mostró que la diferencia de riqueza se debe en buena parte a la mayor
     profundidad de secuenciación de las plantas saludables, mientras que la diferencia en Shannon es
@@ -233,9 +232,11 @@ En relación con los objetivos planteados, se concluye lo siguiente:
     taxón particular sino en la estabilidad del conjunto, lo que orienta hacia modelos que capturen
     las relaciones entre microorganismos.
 
-    \item \textbf{Clase práctica.} El análisis se convirtió en un taller de 50 minutos, en forma de
-    cuaderno de Google Colab de acceso abierto, que reproduce con los mismos datos cada prueba de
-    este trabajo y la explica con ejercicios resueltos. El taller enseña a elegir la prueba según el
+    \item \textbf{Clase práctica.} El análisis se convirtió en un taller en forma de cuadernos de
+    Google Colab de acceso abierto, en dos versiones según la necesidad del curso o del docente: una
+    completa de siete episodios y unas tres horas y media, y una rápida de cuatro episodios y una
+    hora, que reproducen con los mismos datos cada prueba de este trabajo y la explican con
+    ejercicios resueltos y laboratorios interactivos. El taller enseña a elegir la prueba según el
     diseño y los supuestos, a construir un valor $p$ por permutaciones y a reportar tamaño del
     efecto, estadístico y valor $p$, y recoge como lecciones los dos problemas que más pesaron en
     este trabajo: el emparejamiento de tablas por identificador y la dependencia del valor $p$

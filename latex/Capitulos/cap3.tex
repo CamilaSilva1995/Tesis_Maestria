@@ -1,7 +1,5 @@
 \chapter[Análisis exploratorio y metodología]{Análisis Exploratorio de Datos, metodología}
 \label{Metodologia}
-%% Camila revisa que todo esté en pasado, son métodos que ya utilizaste
-%% Solo estás describiendo qué hiciste, no los tienes que volver a explicar
 El propósito de este análisis es identificar características que diferencien al microbioma
 rizosférico de las plantas de fresa saludables del de las no saludables, a partir de datos
 metagenómicos. Es la pregunta con la que cerró el Capítulo \ref{Preliminares} y que el
@@ -93,7 +91,7 @@ darles estructura, y por último se cargan en el sistema donde se van a usar. La
 Figura \ref{fig:preprocesamiento} resume las tres etapas tal como se aplicaron en este trabajo; el
 código está en los scripts que indica su leyenda.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/preprosecamiento.png}
 \caption{Flujo de trabajo del preprocesamiento, de los reportes de Kraken al objeto phyloseq con
@@ -205,16 +203,23 @@ diversos parámetros clave:
 \end{itemize}
 
 
-Este enfoque de eliminación se basa en mantener un umbral mínimo de calidad, contribuyendo 
-así a garantizar la robustez y confiabilidad de las muestras seleccionadas para análisis subsiguientes. 
-Además, se puede realizar un recuento de lecturas por muestra para evaluar la calidad relativa entre 
-las diferentes muestras. La eliminación de muestras con un conteo bajo es crucial para garantizar la integridad y 
-la confiabilidad de los resultados del análisis. Al eliminar muestras con datos insuficientes, 
-se mejora la calidad general del conjunto de datos y se evitan posibles distorsiones o sesgos 
-que podrían surgir debido a la falta de información significativa. Este enfoque de eliminación 
-selectiva respalda la robustez del análisis de datos metagenómicos, 
-permitiendo una interpretación más precisa y confiable de la diversidad microbiana en las muestras 
-restantes.\\
+Este enfoque de eliminación se basa en mantener un umbral mínimo de calidad. Las columnas de la
+tabla provienen del reporte de fastp \citep{chen2018fastp}, que es la herramienta habitual para el
+control de calidad de lecturas cortas, y el número de lecturas que sobreviven a ese filtro es el
+indicador más directo de cuánta información aporta cada muestra. Eliminar las muestras con muy pocas
+lecturas no es un detalle cosmético: la riqueza observada y Chao1 crecen con la profundidad de
+secuenciación, de modo que una muestra con un conteo muy bajo aparece como artificialmente pobre y
+distorsiona cualquier comparación entre grupos (Sección \ref{sec:normalizacion};
+\citealp{mcmurdie2014waste, weiss2017normalization}). En este conjunto el caso extremo es la muestra
+MP2088, que conservó únicamente dos lecturas (Tabla \ref{tab:lecturas-muestra}). El efecto del filtro
+se aprecia en la Figura \ref{fig:alpha-crudos-filtrados}: antes de aplicarlo, las muestras de baja
+profundidad dominan la escala de los índices y ocultan las diferencias entre grupos; después, la
+comparación es legible. Fijar un umbral de profundidad y documentar qué muestras se excluyen es
+práctica recomendada en el análisis de datos de microbioma \citep{xia2018statistical,
+kleinebardenhorst2021data}. El umbral de 25 millones de lecturas tras fastp deja fuera a cinco
+muestras, con entre 0 y 24 millones de lecturas, y conserva 53, la menor de ellas con 39 millones; la
+muestra excluida más cercana al umbral, MP2080, está en cualquier caso lejos de la mediana del
+conjunto, que es de 98 millones.\\
 
 
 \subsection{Índices de diversidad}
@@ -278,9 +283,11 @@ para visualizar la similitud o disimilitud entre una colección de objetos (por 
 sitios, genes) en un espacio de baja dimensionalidad. Entre otros, se utilizan ampliamente los análisis 
 PCA, PCoA \citep{gower1966some} o NMDS.\\
 
-Tomando los datos con filtro de calidad y utilizando la distancia de Jaccard, la cual es la más 
-comúnmente utilizada en este tipo de estudios, se observa que las muestras, tanto sanas como enfermas, 
-están bastante mezcladas. Ante esta observación, se procede a realizar pruebas con distintas distancias 
+Tomando los datos con filtro de calidad y utilizando la disimilitud de Jaccard cuantitativa
+(Ecuación \ref{eq:jaccard-cuant}), que junto con Bray-Curtis es una de las medidas de uso más
+extendido para comparar la composición de comunidades microbianas entre muestras
+\citep{legendre2012numerical, kleinebardenhorst2021data}, se observa que las muestras, tanto sanas
+como enfermas, están bastante mezcladas. Ante esta observación, se procede a realizar pruebas con distintas distancias 
 para explorar si alguna otra métrica puede proporcionar una separación más clara o revelar patrones 
 específicos en la composición de especies entre las muestras.\\
 
@@ -312,9 +319,12 @@ Sección \ref{sec:pruebas_hipotesis}, por lo que aquí no se redefinen y solo se
 aplicación directa sobre los datos.
 
 Todas las pruebas se realizaron con un nivel de significancia $\alpha = 0.05$, utilizando el lenguaje
-R \citep{rcoreteam2023r} y las funciones \texttt{t.test}, \texttt{var.test} y \texttt{wilcox.test}. Antes de aplicar la prueba
-t se verificó el supuesto de homogeneidad de varianzas mediante la prueba F; cuando este supuesto o el
-de normalidad no se cumplieron, se optó por la alternativa no paramétrica de Wilcoxon-Mann-Whitney.
+R \citep{rcoreteam2023r} y las funciones \texttt{t.test}, \texttt{var.test} y \texttt{wilcox.test}. El orden de
+aplicación fue el del propio trabajo: en la fase exploratoria se aplicó primero la prueba t clásica;
+después se verificaron sus supuestos, la normalidad con Shapiro-Wilk y la homogeneidad de varianzas
+con la prueba F, y como no se cumplieron se adoptaron la prueba de Welch y la alternativa no
+paramétrica de Wilcoxon-Mann-Whitney como pruebas principales, conservando el resultado exploratorio
+como referencia.
 
 \subsection{Prueba t de Student sobre el índice de Shannon}
 
@@ -329,7 +339,11 @@ frente a la alternativa $H_1: \mu_{\text{saludable}} \neq \mu_{\text{no saludabl
 estadístico $T$ definido en la Ecuación \ref{eq:t-statistic}. Esta prueba se aplicó en dos escenarios:
 (a) sobre el índice de Shannon calculado a nivel general de la comunidad microbiana, y (b) sobre el
 índice de Shannon calculado a nivel de género dentro de los eucariotas, grupo que incluye a los
-hongos fitopatógenos de interés como \textit{Fusarium}.
+hongos fitopatógenos de interés como \textit{Fusarium}. En la fase exploratoria se aplicó primero la
+versión clásica de la prueba, con varianzas iguales; después de verificar los supuestos con las
+pruebas de Shapiro-Wilk y F (Sección \ref{sec:met-complementarios-pruebas}) se adoptó la prueba de
+Welch (Ecuación \ref{eq:welch-statistic}) como prueba principal, y el resultado exploratorio se
+conservó como referencia para mostrar el efecto del supuesto.
 
 \subsection{Prueba F sobre las varianzas}
 
@@ -349,6 +363,7 @@ normalidad.
 Los resultados obtenidos al aplicar estas tres pruebas sobre los datos se presentan en el Capítulo 4.
 
 \subsection{Análisis complementarios}
+\label{sec:met-complementarios-pruebas}
 
 La normalidad del índice de Shannon en cada grupo se verificó con la prueba de Shapiro-Wilk
 \citep{shapiro1965analysis}. Para contrastar si la composición global de la comunidad difiere entre
@@ -458,7 +473,7 @@ conectarse entre sí se calculó la fracción de aristas que unen muestras del m
 comparó con la fracción esperada si las etiquetas se repartieran al azar, mediante una prueba de
 permutación con 999 barajadas.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Redes_muestras.png}
 \caption{Redes de muestras construidas con la disimilitud de Jaccard cuantitativa. Cada nodo es una
@@ -499,14 +514,14 @@ reportada por MicNet con su umbral por defecto tenía 845~248 aristas y una dens
 decir, era casi completa; para obtener una red legible se fijó aquí el umbral $|r| \geq 0.8$,
 que conserva 7~757 aristas entre 650 géneros, y se analizó su componente gigante con igraph.
 
-Como análisis complementario centrado en \textit{Fusarium}, se usó la herramienta Alnitak, que
+Como análisis complementario centrado en \textit{Fusarium}, se usó la herramienta Alnitak
+\citep{alnitak2023}, desarrollada en el laboratorio de la Dra. Nelly Sélem Mojica, que
 calcula los vecinos de un taxón de interés contra el resto de la tabla completa, no aglomerada,
 y conserva únicamente los pares con correlación de Spearman mayor o igual a 0.7 y disimilitud de
 Bray-Curtis menor o igual a 0.3, con valores $p$ ajustados por permutación.
-%% CAMI: agregar la referencia o la dirección del repositorio de Alnitak (herramienta del
-%% laboratorio de la Dra. Nelly, usada en marzo de 2023).
+%% CAMI: confirmar en ref.bib (entrada alnitak2023) los autores de Alnitak y, si existe, su repositorio o publicación.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Redes_coocurrencia.png}
 \caption{Redes de coocurrencia entre taxones. A) Componente gigante de la red de géneros con
@@ -616,7 +631,7 @@ comparaciones por pares sobrevive a la corrección (el menor valor $p$ ajustado 
 la diferencia global es pequeña y no puede atribuirse a un par de categorías en particular. La
 diversidad alfa, en suma, es notablemente homogénea entre el cultivo y los suelos de su entorno.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Complementarios_alfa.png}
 \caption{Conjunto complementario de cinco categorías, 80 muestras. A) Lecturas clasificadas por
@@ -640,7 +655,7 @@ de cultivo, saludables y marchitas por igual, ocupan una misma región del plano
 cercanos al cultivo y no cultivados ocupan otra, superpuesta entre sí, y el bosque degradado queda
 disperso entre ambas.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Complementarios_beta.png}
 \caption{Composición y diversidad beta del conjunto de cinco categorías. A) Abundancia relativa
@@ -699,7 +714,7 @@ cinco categorías. Con un tamaño de muestra tan reducido estos resultados solo 
 confirmatorio de la tendencia general; por eso la ordenación se hizo con PCoA, que es determinista,
 en lugar de NMDS, que con ocho puntos produce un estrés cercano a cero y no es interpretable.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \centering
 \includegraphics[width=\textwidth]{Img/cap2/Complementarios_nativo.png}
 \caption{Tercer conjunto complementario: cuatro muestras de suelo de cultivo y cuatro de suelo
