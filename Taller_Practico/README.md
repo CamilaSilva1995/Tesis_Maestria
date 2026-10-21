@@ -11,9 +11,11 @@ Hay además un **taller rápido**, una versión resumida de 60 minutos en cuatro
 mismos datos y los mismos resultados, para cuando solo se dispone de una hora.
 
 El tercer cuaderno es un **explorador interactivo**: toma esos mismos resultados y los convierte en
-figuras de Plotly (violines, un deslizador de tamaño de muestra, un menú de géneros, un gráfico de
-volcán con corrección por comparaciones múltiples y una ordenación) que reúne en una página HTML con
-fondo azul noche, lista para abrir en cualquier navegador.
+ocho figuras de Plotly (violines, un deslizador de tamaño de muestra, otro de falsas alarmas para
+elegir la prueba, un menú de géneros, un gráfico de volcán con corrección por comparaciones múltiples,
+una ordenación y una tabla resumen) que reúne, en el orden del taller y cada una con un «qué mirar» y un
+«qué concluir», en una página HTML con fondo azul noche, lista para abrir en cualquier navegador o
+proyectar en clase.
 
 Cada prueba se aplica a dos casos:
 
@@ -82,9 +84,9 @@ También puede abrirse en Jupyter o VS Code desde esta carpeta; en ese caso los 
 | `construir_cuaderno.py` | Script que genera el cuaderno episodio por episodio y calcula el tiempo de cada uno. Para cambiar el texto, el código o los ejercicios, edita este archivo y vuelve a ejecutarlo. |
 | `Taller_Rapido_Pruebas_de_hipotesis_con_Datos_Metagenomicos.ipynb` | El taller rápido: la versión resumida de una hora, también con las salidas ya ejecutadas. |
 | `construir_taller_rapido.py` | Script que genera el taller rápido. Se detiene con un error si el contenido pasa de 60 minutos. |
-| `Explorador_Interactivo_Pruebas_de_hipotesis_con_Plotly.ipynb` | El explorador interactivo: construye siete figuras de Plotly y arma con ellas una página HTML. |
+| `Explorador_Interactivo_Pruebas_de_hipotesis_con_Plotly.ipynb` | El explorador interactivo: construye ocho figuras de Plotly y arma con ellas una página HTML. |
 | `construir_explorador_interactivo.py` | Script que genera el explorador interactivo. |
-| `explorador_pruebas_de_hipotesis.html` | La página que produce el explorador al ejecutarse. Se abre con doble clic; carga Plotly desde internet. |
+| `explorador_pruebas_de_hipotesis.html` | La página que produce el explorador al ejecutarse. Se abre con doble clic; solo necesita internet para cargar Plotly y se adapta a pantallas angostas. |
 | `Encuesta_pre_post_Taller_Practico.xlsx` | Encuesta para los estudiantes, antes y después del taller: perfil, autopercepción, 12 preguntas de conocimiento y valoración del taller. Incluye la clave, las hojas para registrar respuestas y una hoja de resultados que se calcula sola. |
 | `datos/metadatos.csv` | Una fila por muestra (58): grupo y número de lecturas clasificadas. El cuaderno aplica el filtro de calidad que deja 53. |
 | `datos/diversidad_alfa.csv` | Riqueza observada, Chao1, Shannon y Simpson por muestra, calculados con phyloseq sobre la tabla completa, igual que en la tesis. |
@@ -175,19 +177,21 @@ coinciden. Deja fuera Wilcoxon de rangos con signo, la comparación de un géner
 comparaciones múltiples, la construcción paso a paso del pseudo-F y la redacción del resultado; el
 cuaderno remite al taller completo para esos temas.
 
-### Explorador interactivo (1 h 08 min)
+### Explorador interactivo (1 h 13 min)
 
 | Inicio | Episodio | Explicación | Ejercicio |
 |---|---|---|---|
 | 0:00 | 1. Los datos y las pruebas, listos para dibujar | 10 min | |
-| 0:10 | 2. De una figura estática a una interactiva | 15 min | 4 min |
-| 0:29 | 3. Muchos géneros a la vez | 10 min | 4 min |
-| 0:43 | 4. La comunidad completa y el resumen | 10 min | |
-| 0:53 | 5. Armar y guardar la página HTML | 10 min | 5 min |
-| 1:08 | Fin | | |
+| 0:10 | 2. De una figura estática a una interactiva | 20 min | 4 min |
+| 0:34 | 3. Muchos géneros a la vez | 10 min | 4 min |
+| 0:48 | 4. La comunidad completa y el resumen | 10 min | |
+| 0:58 | 5. Armar y guardar la página HTML | 10 min | 5 min |
+| 1:13 | Fin | | |
 
 Necesita Plotly, que ya viene en Colab. El aspecto se elige en la primera celda con `TEMA`: `"noche"`
 (fondo azul noche, el valor por defecto) o `"claro"`. Con `PLOTLY_JS = True` la página queda utilizable
-sin conexión, a cambio de pesar unos 5 MB más. La página muestra lo mismo que los talleres y agrega una
-comparación de los 1 795 géneros: 134 tienen p < 0.05 y ninguno sigue siendo significativo tras la
-corrección de Benjamini-Hochberg.
+sin conexión, a cambio de pesar unos 5 MB más. La página muestra lo mismo que los talleres y agrega dos
+cosas: el laboratorio de las falsas alarmas como deslizador (con la semilla 2026 y 10 000 estudios:
+Student ≈ 13 %, Mann-Whitney ≈ 10 %, Welch ≈ 5 %) y una comparación de los 1 795 géneros: 134 tienen
+p < 0.05 y ninguno sigue siendo significativo tras la corrección de Benjamini-Hochberg. La barra de
+herramientas de Plotly queda en español y las secciones indican a qué episodio del taller corresponden.

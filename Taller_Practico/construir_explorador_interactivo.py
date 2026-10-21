@@ -120,18 +120,22 @@ def formato_p(p):
     "Escribe un valor p con cuatro decimales; los muy pequeños, en notación científica."
     return f"{p:.4f}" if p >= 1e-4 else f"{p:.1e}"
 
+def p_en_texto(p):
+    "Escribe un valor p para un párrafo: tres decimales, o «p < 0.001» si es más pequeño."
+    return "p < 0.001" if p < 0.001 else f"p = {p:.3f}"
+
 # Aspecto de las figuras y de la página: "noche" (fondo azul noche) o "claro". Cambia el tema y vuelve a ejecutar todo
 TEMA = "noche"
 PALETAS = {
     "noche": dict(fondo="#0B1026", panel="#111A3B", rejilla="#27335F", texto="#E8ECF8", suave="#9AA6CF", enlace="#7DD3FC",
-                  neutro="#4A5A8F", acento="#FFD166", alerta="#FF4D8D", aviso="#FFB703", saludable="#FF7A6B", no_saludable="#22D3EE",
+                  neutro="#4A5A8F", acento="#FFD166", alerta="#FF4D8D", aviso="#FFB703", bien="#7CFFB2", saludable="#F8766D", no_saludable="#00BFC4",
                   control="#B9C4EC", control_texto="#0B1026"),
     "claro": dict(fondo="#F5F7FB", panel="#FFFFFF", rejilla="#E3E7F0", texto="#1F2937", suave="#6B7280", enlace="#0B6E99",
-                  neutro="#B8BDCB", acento="#E09F00", alerta="#D62768", aviso="#F08C00", saludable="#F8766D", no_saludable="#00BFC4",
+                  neutro="#B8BDCB", acento="#E09F00", alerta="#D62768", aviso="#F08C00", bien="#4C9F70", saludable="#F8766D", no_saludable="#00BFC4",
                   control="#E8ECF6", control_texto="#1F2937"),
 }
 P = PALETAS[TEMA]                                       # los colores del tema elegido
-# Un color fijo por grupo, de la misma familia que en los talleres (coral y turquesa)
+# Un color fijo por grupo, el mismo de los talleres y de la tesis (coral y turquesa) en los dos temas
 COLORES = {"Saludable": P["saludable"], "No saludable": P["no_saludable"]}
 GRUPOS = ["Saludable", "No saludable"]                  # el orden de los grupos en las figuras
 
@@ -152,6 +156,12 @@ def estilo(fig, titulo, alto=480):
     fig.update_xaxes(gridcolor=P["rejilla"], zerolinecolor=P["rejilla"], linecolor=P["rejilla"])
     fig.update_yaxes(gridcolor=P["rejilla"], zerolinecolor=P["rejilla"], linecolor=P["rejilla"])
     return fig
+
+def paneles_relativos(fig):
+    "Ancla el título de cada panel de make_subplots a su propio panel (y no a la figura): así los paneles se pueden apilar en pantallas angostas."
+    for i, anotacion in enumerate(fig.layout.annotations[:2]):
+        eje = "" if i == 0 else "2"
+        anotacion.update(xref=f"x{eje} domain", x=0.5, yref=f"y{eje} domain", y=1.0, yanchor="bottom")
 
 def violin(valores, g, unidad, visible=True, leyenda=True):
     "Medio violín con su caja y, al lado, todos los puntos; al pasar el cursor por un punto se lee qué muestra es."
@@ -335,12 +345,18 @@ for filo, color in zip(tabla_filos.index, vivos):
                                hovertemplate="%{x}<br>" + filo + ": %{y:.1f} %<extra></extra>"))
 estilo(fig_filos, "Datos reales: composición por filo de las 53 muestras", alto=520)
 fig_filos.update_layout(barmode="stack", bargap=0.06, yaxis_title="% de las lecturas con filo asignado",
-                        xaxis=dict(showticklabels=False, title="Cada barra es una muestra"), margin=dict(t=100))
-# una línea separa los dos grupos y un rótulo los nombra
+                        xaxis=dict(showticklabels=False, title="Cada barra es una muestra"), margin=dict(t=100),
+                        legend_traceorder="normal")                  # la leyenda en el mismo orden en que se apilan las barras
+# la muestra con más Firmicutes se sale del patrón; se señala porque volverá a aparecer en las demás figuras
+atipica = pct_filo.loc["Firmicutes"].idxmax()
+fig_filos.add_annotation(x=atipica, y=100, ax=-80, ay=55, text=f"{atipica}: {pct_filo.loc['Firmicutes', atipica]:.0f} % de Firmicutes",
+                         showarrow=True, arrowcolor=P["texto"], font=dict(color=P["texto"], size=12),
+                         bgcolor=P["fondo"], bordercolor=P["texto"], borderpad=3)
+# una línea separa los dos grupos y un rótulo en cada extremo los nombra
 fig_filos.add_vline(x=n_sal - 0.5, line_color=P["texto"], line_dash="dot")
-for g, centro in zip(GRUPOS, [(n_sal - 1) / 2, n_sal + (len(orden) - n_sal - 1) / 2]):
-    fig_filos.add_annotation(x=centro, y=1.07, yref="paper", showarrow=False, font=dict(color=COLORES[g], size=14),
-                             text=f"<b>{g}s ({int((datos.grupo == g).sum())})</b>")
+for g, lado, x_rotulo in zip(GRUPOS, ["left", "right"], [0, 1]):
+    fig_filos.add_annotation(x=x_rotulo, xref="paper", xanchor=lado, y=1.04, yref="paper", yanchor="bottom", showarrow=False,
+                             font=dict(color=COLORES[g], size=14), text=f"<b>{g}s ({int((datos.grupo == g).sum())})</b>")
 fig_filos.show()
 """, figuras=1)
 pausa(r"""
@@ -362,15 +378,23 @@ for columna, tabla in enumerate([datos_sim, datos], start=1):
         # leyenda solo en el primer panel: una sola entrada por grupo
         fig_cajas.add_trace(violin(valores, g, "Shannon = %{y:.3f}", leyenda=(columna == 1)), row=1, col=columna)
 
-# Debajo de cada panel, el resultado de Welch (no supone varianzas iguales) y de Mann-Whitney (no supone normalidad)
+# Debajo de cada panel: la desviación de cada grupo con la prueba F (¿varían lo mismo?), y el resultado de Welch
+# (no supone varianzas iguales) y de Mann-Whitney (no supone normalidad)
 for columna, (a, b) in enumerate([(x_sim, y_sim), (x, y)], start=1):
+    F = a.var(ddof=1) / b.var(ddof=1)                                       # cociente de varianzas
+    cola = stats.f.cdf(F, len(a) - 1, len(b) - 1)
+    p_F = 2 * min(cola, 1 - cola)                                           # prueba F bilateral
     welch = stats.ttest_ind(a, b, equal_var=False).pvalue
     mw = stats.mannwhitneyu(a, b, alternative="two-sided", method="exact").pvalue
-    fig_cajas.add_annotation(text=f"Welch p = {formato_p(welch)} · Mann-Whitney p = {formato_p(mw)}",
-                             xref="x domain" if columna == 1 else "x2 domain", x=0.5,
-                             yref="paper", y=-0.12, showarrow=False, font=dict(color=P["acento"]))
+    fig_cajas.add_annotation(text=(f"DE = {a.std(ddof=1):.3f} y {b.std(ddof=1):.3f} (prueba F p = {formato_p(p_F)})<br>"
+                                   f"Welch p = {formato_p(welch)} · Mann-Whitney p = {formato_p(mw)}"),
+                             xref="x domain" if columna == 1 else "x2 domain", x=0.5,          # relativa a su panel
+                             yref="y domain" if columna == 1 else "y2 domain", y=-0.13, yanchor="top",
+                             showarrow=False, font=dict(color=P["acento"]))
 fig_cajas.update_yaxes(title_text="Índice de Shannon", row=1, col=1)
-estilo(fig_cajas, "Diversidad por grupo: pasa el cursor sobre un punto para ver qué muestra es")
+estilo(fig_cajas, "Diversidad por grupo: cada punto es una muestra", alto=500)
+fig_cajas.update_layout(showlegend=False, margin=dict(b=90))   # los ejes ya nombran los grupos; abajo van las anotaciones
+paneles_relativos(fig_cajas)
 fig_cajas.show()
 """, figuras=1)
 pausa(r"""
@@ -396,11 +420,13 @@ for i, (etiqueta, a, b, descripcion) in enumerate(casos):
     # el histograma se calcula aquí y se dibuja como barras: la página pesa mucho menos que con 5 000 valores
     alturas, bordes = np.histogram(barajadas, bins=40)
     centros = (bordes[:-1] + bordes[1:]) / 2
-    # las barras de las colas (tan extremas como lo observado) llevan el color de alerta: su proporción es el valor p
-    colores_barras = [P["alerta"] if abs(centro) >= abs(observada) else P["neutro"] for centro in centros]
-    fig_perm.add_trace(go.Bar(x=centros, y=alturas, width=bordes[1] - bordes[0], marker_color=colores_barras,
-                              name="lo que produce el azar (H0)", visible=(i == inicial), showlegend=False,
-                              hovertemplate="diferencia ≈ %{x:.3f}<br>%{y} barajadas<extra></extra>"))
+    extremas = np.abs(centros) >= abs(observada)         # las barras de las colas: tan extremas como lo observado
+    # dos trazas de barras, para que cada una tenga su entrada en la leyenda: el centro y, en color de alerta, las colas
+    for nombre, mascara, color in (("lo que produce el azar (H0)", ~extremas, P["neutro"]),
+                                   ("tan extremas como lo observado: su proporción es el valor p", extremas, P["alerta"])):
+        fig_perm.add_trace(go.Bar(x=centros[mascara], y=alturas[mascara], width=bordes[1] - bordes[0], marker_color=color,
+                                  name=nombre, visible=(i == inicial),
+                                  hovertemplate="diferencia ≈ %{x:.3f}<br>%{y} barajadas<extra></extra>"))
     # la diferencia observada y su opuesta (prueba bilateral), como líneas verticales
     for signo, raya in ((1, "solid"), (-1, "dash")):
         fig_perm.add_trace(go.Scatter(x=[signo * observada] * 2, y=[0, alturas.max()], mode="lines",
@@ -409,20 +435,74 @@ for i, (etiqueta, a, b, descripcion) in enumerate(casos):
     titulos.append(f"{descripcion}: diferencia = {observada:.3f}, p = {formato_p(p)}")
     limite = max(limite, np.abs(barajadas).max(), abs(observada))
 
-# Cada paso del deslizador enciende las tres trazas de su caso (barras y dos líneas) y cambia el título
+# Cada paso del deslizador enciende las cuatro trazas de su caso (dos de barras y dos líneas) y cambia el título
 pasos = [dict(method="update", label=etiqueta,
-              args=[{"visible": [k // 3 == i for k in range(3 * len(casos))]}, {"title.text": titulos[i]}])
+              args=[{"visible": [k // 4 == i for k in range(4 * len(casos))]}, {"title.text": titulos[i]}])
          for i, (etiqueta, *_) in enumerate(casos)]
 estilo(fig_perm, titulos[inicial], alto=520)
 fig_perm.update_layout(sliders=[dict(active=inicial, steps=pasos, currentvalue=dict(prefix="Muestras: "), pad=dict(t=60),
                                      bgcolor=P["rejilla"], activebgcolor=P["acento"], bordercolor=P["rejilla"], font=dict(color=P["texto"]))],
-                       bargap=0, yaxis_title="Número de barajadas", legend=dict(y=1.0, yanchor="bottom"),
+                       bargap=0, barmode="overlay", yaxis_title="Número de barajadas", legend=dict(y=1.0, yanchor="bottom"),
                        xaxis=dict(title="Diferencia de medias de Shannon con las etiquetas barajadas",
                                   range=[-1.1 * limite, 1.1 * limite]))   # mismo eje en todos los pasos, para poder comparar
 fig_perm.show()
 """, figuras=1)
 md(r"""
-Mueve el deslizador de izquierda a derecha. La diferencia verdadera es siempre la misma, pero con más muestras el histograma del azar se **estrecha**, la diferencia observada va quedando en la cola y las barras resaltadas son cada vez menos: el valor p baja. La última posición muestra los datos reales, con su histograma asimétrico.
+Mueve el deslizador de izquierda a derecha. La diferencia verdadera es siempre la misma, pero con más muestras el histograma del azar se **estrecha**, la diferencia observada va quedando en la cola y las barras resaltadas son cada vez menos: el valor p baja. La última posición muestra los datos reales, con su histograma asimétrico y un p ≈ 0.04 que, como se ve en el taller, no es de fiar: barajar etiquetas supone que bajo $H_0$ los dos grupos tienen la misma distribución, varianza incluida.
+
+### 2.4 El mismo deslizador, otra pregunta: ¿qué prueba elegir?
+
+En los datos reales las pruebas no coinciden: permutación p ≈ 0.04, t de Student 0.058, Welch 0.150 y Mann-Whitney 0.259. ¿A cuál creer? A la que cumple sus supuestos. El Laboratorio 2 del taller completo lo muestra simulando miles de estudios **sin ninguna diferencia verdadera** y contando cuántas veces cada prueba «encuentra» una: lo correcto es cerca del 5 %. Aquí ese laboratorio se vuelve un deslizador con cuatro diseños del estudio; cada posición enciende las barras de su diseño.
+""")
+code(r"""
+# Cuatro diseños: (etiqueta del deslizador, muestras saludables, no saludables, DE saludables, DE no saludables, descripción)
+disenos = [("como los reales", 35, 18, 0.06, 0.17, "35 y 18 muestras, DE 0.06 y 0.17 (como los datos reales: el grupo pequeño es el más variable)"),
+           ("DE iguales", 35, 18, 0.06, 0.06, "35 y 18 muestras, DE 0.06 y 0.06 (los dos grupos varían lo mismo)"),
+           ("n iguales", 35, 35, 0.06, 0.17, "35 y 35 muestras, DE 0.06 y 0.17 (grupos del mismo tamaño)"),
+           ("DE al revés", 35, 18, 0.17, 0.06, "35 y 18 muestras, DE 0.17 y 0.06 (el grupo grande es el más variable)")]
+n_estudios = 10_000
+pruebas = ["t de Student", "t de Welch", "Mann-Whitney"]
+
+fig_alarmas = go.Figure()
+titulos, alarmas = [], {}
+for i, (etiqueta, n_a, n_b, de_a, de_b, descripcion) in enumerate(disenos):
+    rng_lab = np.random.default_rng(2026)
+    A = rng_lab.normal(7.45, de_a, (n_a, n_estudios))       # una columna por estudio; la media es la misma en los dos grupos
+    B = rng_lab.normal(7.45, de_b, (n_b, n_estudios))
+    # cada prueba se aplica a los 10 000 estudios a la vez (una columna por estudio) y se cuenta en cuántos da p < 0.05
+    porcentajes = [100 * np.mean(stats.ttest_ind(A, B, equal_var=True).pvalue < 0.05),
+                   100 * np.mean(stats.ttest_ind(A, B, equal_var=False).pvalue < 0.05),
+                   100 * np.mean(stats.mannwhitneyu(A, B, alternative="two-sided").pvalue < 0.05)]
+    alarmas[etiqueta] = porcentajes
+    # una traza de barras por diseño; en color de alerta las pruebas que se alejan más de dos puntos del 5 %
+    fig_alarmas.add_trace(go.Bar(x=pruebas, y=porcentajes, text=[f"{v:.1f} %" for v in porcentajes], textposition="outside",
+                                 marker_color=[P["alerta"] if abs(v - 5) > 2 else P["bien"] for v in porcentajes],
+                                 textfont=dict(color=P["texto"], size=14), visible=(i == 0), showlegend=False,
+                                 hovertemplate="%{x}: ve una diferencia que no existe en el %{y:.1f} % de los estudios<extra></extra>"))
+    titulos.append(f"Sin diferencia verdadera: {descripcion}")
+# la línea del 5 % se dibuja como una traza más (siempre visible), para que tenga su entrada en la leyenda
+fig_alarmas.add_trace(go.Scatter(x=[-0.5, len(pruebas) - 0.5], y=[5, 5], mode="lines", line=dict(color=P["acento"], dash="dot", width=2),
+                                 name="5 %: lo esperado con α = 0.05", hoverinfo="skip"))
+
+# Cada paso enciende la traza de barras de su diseño; la última traza (la línea del 5 %) queda siempre encendida
+pasos = [dict(method="update", label=etiqueta,
+              args=[{"visible": [k == i for k in range(len(disenos))] + [True]}, {"title.text": titulos[i]}])
+         for i, (etiqueta, *_) in enumerate(disenos)]
+estilo(fig_alarmas, titulos[0], alto=480)
+fig_alarmas.update_layout(sliders=[dict(active=0, steps=pasos, currentvalue=dict(prefix="Diseño: "), pad=dict(t=50),
+                                        bgcolor=P["rejilla"], activebgcolor=P["acento"], bordercolor=P["rejilla"], font=dict(color=P["texto"]))],
+                          yaxis=dict(title="% de estudios en que la prueba ve una diferencia", range=[0, 1.3 * max(max(v) for v in alarmas.values())]),
+                          xaxis=dict(title="Prueba (la verdad: los dos grupos tienen la misma media)", range=[-0.5, len(pruebas) - 0.5]),
+                          legend=dict(y=1.0, yanchor="bottom"))
+fig_alarmas.show()
+for etiqueta, porcentajes in alarmas.items():
+    print(f"{etiqueta:16s}", " | ".join(f"{prueba}: {v:4.1f} %" for prueba, v in zip(pruebas, porcentajes)))
+""", figuras=1)
+pausa(r"""
+¿Qué prueba se queda cerca del 5 % en los cuatro diseños? ¿Con qué diseño se equivocan poco las tres?
+""")
+md(r"""
+Con el diseño de los datos reales, la t de Student y Mann-Whitney ven diferencias que no existen bastante más del 5 % de las veces; Welch se mantiene cerca del 5 % en los cuatro diseños. Con grupos del mismo tamaño el problema casi desaparece: una buena razón para diseñar estudios balanceados. Por eso, en los datos reales, el resultado que vale es el de Welch: p = 0.150, no hay evidencia de que la diversidad promedio difiera.
 """)
 ejercicio("Un paso más en el deslizador", 4,
 r"""
@@ -462,11 +542,12 @@ mas_abundantes = por_genero.sum(axis=1).sort_values(ascending=False).index[:12]
 candidatos = del_taller + [g for g in mas_abundantes if g not in del_taller]
 
 fig_genero = go.Figure()
-titulos = []
+titulos, p_menu = [], {}                                 # p_menu: el valor p de cada género del menú
 for i, genero in enumerate(candidatos):
     valores = pct.loc[genero]                            # % de lecturas de ese género en cada muestra
     a, b = valores[datos.grupo == "Saludable"], valores[datos.grupo == "No saludable"]
     p = stats.mannwhitneyu(a, b, alternative="two-sided", method="exact").pvalue
+    p_menu[genero] = p
     for g, v in zip(GRUPOS, (a, b)):
         # al abrir solo se ve el primer género
         fig_genero.add_trace(violin(v, g, "%{y:.3f} % de las lecturas", visible=(i == 0), leyenda=False))
@@ -607,13 +688,17 @@ for caso, matriz, grupo in [("Simulados", D_sim, etiquetas_sim), ("Reales", D, e
     resultados[caso] = dict(F=F_caso, R2=R2_caso, p=p_caso, F_disp=F_disp, p_disp=p_disp)
 
 fig_ord = make_subplots(rows=1, cols=2, subplot_titles=[
-    f"{caso}: R² = {r['R2']:.3f} (p = {r['p']:.3f}); dispersión p = {r['p_disp']:.3f}" for caso, r in resultados.items()])
+    f"{caso}<br>PERMANOVA R² = {r['R2']:.3f}, p = {r['p']:.3f} · PERMDISP p = {r['p_disp']:.3f}"
+    for caso, r in zip(["Datos simulados (caso ideal)", "Datos reales (fresa)"], resultados.values())])
 for columna, (tabla, matriz) in enumerate([(datos_sim, D_sim), (datos, D)], start=1):
     coords = pcoa(matriz)                                # columna 0 = eje 1, columna 1 = eje 2
     explicado = 100 * (coords ** 2).sum(axis=0) / (coords ** 2).sum()   # % de la variación que recoge cada eje
+    lejanas = []                                         # la muestra más alejada de su centroide, por grupo
     for g in GRUPOS:
         m = (tabla.grupo == g).to_numpy()                # máscara: True en las muestras del grupo g
         cx, cy = coords[m, 0].mean(), coords[m, 1].mean()   # centroide del grupo: el promedio de sus coordenadas
+        distancia = np.hypot(coords[m, 0] - cx, coords[m, 1] - cy)
+        lejanas.append((distancia.max(), tabla.index[m][distancia.argmax()], coords[m, 0][distancia.argmax()], coords[m, 1][distancia.argmax()]))
         # una línea de cada muestra a su centroide: su longitud es lo que mide PERMDISP (None corta la línea entre muestras)
         rayos_x = [v for px in coords[m, 0] for v in (cx, px, None)]
         rayos_y = [v for py in coords[m, 1] for v in (cy, py, None)]
@@ -630,9 +715,15 @@ for columna, (tabla, matriz) in enumerate([(datos_sim, D_sim), (datos, D)], star
             x=[cx], y=[cy], mode="markers", name="centroide",
             marker=dict(symbol="star", size=20, color=COLORES[g], line=dict(color=P["texto"], width=1.5)),
             hovertemplate="centroide de " + g.lower() + "<extra></extra>", legendgroup=g, showlegend=False), row=1, col=columna)
+    if columna == 2:                                     # en los datos reales se nombra la muestra más alejada de su centroide
+        _, lejana, px, py = max(lejanas)
+        fig_ord.add_annotation(x=px, y=py, text=f"<b>{lejana}</b>", ax=-45, ay=-28, showarrow=True, arrowcolor=P["texto"],
+                               font=dict(color=P["texto"], size=12), row=1, col=2)
     fig_ord.update_xaxes(title_text=f"Eje 1 ({explicado[0]:.0f} % de la variación)", row=1, col=columna)
     fig_ord.update_yaxes(title_text=f"Eje 2 ({explicado[1]:.0f} %)", row=1, col=columna)
-estilo(fig_ord, "Ordenación (PCoA) sobre distancias de Bray-Curtis; ★ = centroide de cada grupo", alto=520)
+estilo(fig_ord, "Ordenación (PCoA) sobre distancias de Bray-Curtis; ★ = centroide de cada grupo", alto=540)
+fig_ord.update_layout(margin=dict(t=110))                # sitio para los títulos de dos líneas de los paneles
+paneles_relativos(fig_ord)
 fig_ord.show()
 """, figuras=1)
 pausa(r"""
@@ -661,7 +752,7 @@ def pruebas_de_un_caso(x, y, porcentaje_x, porcentaje_y, D, etiquetas):
             ("Índice de Shannon", "t de Student", f"t = {student.statistic:.2f}", student.pvalue),
             ("Índice de Shannon", "t de Welch", f"t = {welch.statistic:.2f}", welch.pvalue),
             ("Índice de Shannon", "Mann-Whitney", f"U = {mw.statistic:.0f}", mw.pvalue),
-            ("Género de interés (%)", "Mann-Whitney", f"U = {mw_genero.statistic:.0f}", mw_genero.pvalue),
+            ("Género de interés (%): G05 · <i>Fusarium</i>", "Mann-Whitney", f"U = {mw_genero.statistic:.0f}", mw_genero.pvalue),
             ("Composición (Bray-Curtis)", "PERMANOVA", f"F = {F_perm:.2f}, R² = {R2:.3f}", p_permanova),
             ("Composición (Bray-Curtis)", "PERMDISP", f"F = {F_disp:.2f}", p_disp)]
 
@@ -673,7 +764,7 @@ filas_real = pruebas_de_un_caso(x, y, pct.loc["Fusarium"].to_numpy()[sal], pct.l
 # Colores de la tabla, tomados del tema: fondo normal, celdas con p < 0.05 resaltadas y cabecera
 fondo, resaltado, cabecera, texto = P["panel"], con_alfa(P["alerta"], 0.35), P["rejilla"], P["texto"]
 fig_tabla = go.Figure(go.Table(
-    columnwidth=[1.3, 1.2, 1.6, 1.6],
+    columnwidth=[1.5, 1.1, 1.6, 1.6],
     header=dict(values=["<b>Variable</b>", "<b>Prueba</b>", "<b>Datos simulados (caso ideal)</b>", "<b>Datos reales (fresa)</b>"],
                 fill_color=cabecera, line_color=P["rejilla"], font=dict(color=texto, size=13), align="left", height=34),
     cells=dict(values=[[f[0] for f in filas_sim], [f[1] for f in filas_sim],
@@ -707,59 +798,216 @@ episodio("Armar y guardar la página HTML",
 md(r"""
 **Qué hacemos.** Cada figura de Plotly sabe escribirse como un bloque de HTML con `fig.to_html()`. Una página es, entonces, una plantilla de texto en la que se pegan esos bloques entre títulos y párrafos.
 
-**Dos decisiones.**
+**Tres decisiones.**
 
-- **La biblioteca de Plotly.** La página la necesita para dibujar. Con `"cdn"` se descarga de internet al abrir la página (archivo pequeño, necesita conexión); con `True` va dentro del archivo (pesa unos 5 MB más, funciona sin conexión).
-- **El texto.** Cada sección lleva un título, una explicación breve y una instrucción de qué explorar. Una figura interactiva sin esa guía se queda sin usar.
+- **La biblioteca de Plotly.** La página la necesita para dibujar; se carga una sola vez en la cabecera y todas las figuras la reutilizan. Con `"cdn"` se descarga de internet al abrir la página (archivo pequeño, necesita conexión); con `True` va dentro del archivo (pesa unos 5 MB más, funciona sin conexión).
+- **El texto.** Cada sección lleva un título, un **qué mirar** antes de la figura (con la instrucción de qué control usar) y un **qué concluir** después. Una figura interactiva sin esa guía se queda sin usar. Los números que citan los textos se toman de las variables calculadas arriba, para que texto y figura nunca se contradigan.
+- **El orden.** Las secciones siguen el del taller: los datos, el valor p, elegir la prueba, un género de interés, todos los géneros, la composición completa y el resumen. Cada una indica a qué episodio del taller corresponde.
 
-La página abre con unas **tarjetas de cifras**, que resumen el análisis antes de la primera figura, y toma sus colores del mismo tema que las figuras.
+La página abre con unas **tarjetas de cifras**, que resumen el análisis antes de la primera figura, lleva un índice y toma sus colores del mismo tema que las figuras. Un detalle más: los botones de la barra de herramientas de Plotly vienen en inglés, así que la página registra una traducción (`Plotly.register`) y cada figura la pide con `locale: "es"`.
 """)
 code(r"""
 PLOTLY_JS = "cdn"        # "cdn": la página carga Plotly de internet; True: Plotly va dentro del archivo (sin conexión)
 TITULO = "Pruebas de hipótesis con datos metagenómicos: explorador interactivo"
+REPOSITORIO = "https://github.com/CamilaSilva1995/Tesis_Maestria"
 
-# Cada sección: (ancla para el menú, título, explicación en HTML, figura)
+# ---------- Los números que citan los textos: salen de las pruebas de arriba, así los textos y las figuras no se contradicen
+p_real = dict(zip(["permutación", "F", "Student", "Welch", "Mann-Whitney", "Fusarium", "PERMANOVA", "PERMDISP"], [f[3] for f in filas_real]))
+p_sim = dict(zip(["permutación", "F", "Student", "Welch", "Mann-Whitney", "G05", "PERMANOVA", "PERMDISP"], [f[3] for f in filas_sim]))
+r_sim, r_real = resultados["Simulados"], resultados["Reales"]
+fus = comparacion.loc["Fusarium"]                                        # medias y valor p de Fusarium
+alarma_real = dict(zip(pruebas, alarmas[disenos[0][0]]))                 # falsas alarmas con el diseño de los datos reales
+menu_p05 = [g for g in candidatos if p_menu[g] < 0.05]                   # géneros del menú con p < 0.05
+n_p05, n_bh = int((comparacion.p < 0.05).sum()), int((comparacion.p_ajustado < 0.05).sum())
+n_bh_sim = int((comparacion_sim.p_ajustado < 0.05).sum())
+miles = lambda n: f"{n:,}".replace(",", " ")                             # 1795 -> "1 795"
+pct_txt = lambda v: f"{v:.0f} %"
+
+# ---------- Las secciones, en el orden del taller: datos → valor p → elegir la prueba → un género → todos → composición → resumen
+# Cada una: (ancla, nombre corto para el índice, título, episodio del taller, qué mirar, figura, qué concluir)
 secciones = [
-    ("comunidad", "1. La comunidad de un vistazo",
-     "<p>Cada barra es una muestra real y cada color, un filo. <b>Haz clic en la leyenda</b> para ocultar un filo, y doble clic para dejarlo solo. "
-     "A simple vista las plantas saludables y las no saludables se parecen: por eso hacen falta las pruebas.</p>",
-     fig_filos),
-    ("diversidad", "2. ¿Difiere la diversidad?",
-     "<p>Cada punto es una muestra; el violín muestra la forma de la distribución y la caja, sus cuartiles. <b>Pasa el cursor</b> sobre un punto "
-     "para ver qué muestra es. En el caso ideal los dos grupos varían lo mismo; en los datos reales, una planta no saludable queda muy por debajo de las demás.</p>",
-     fig_cajas),
-    ("permutaciones", "3. ¿Diferencia real o azar?",
-     "<p>El histograma es lo que produce el azar cuando el grupo no importa; las líneas amarillas, la diferencia observada. Las barras resaltadas "
-     "son las barajadas tan extremas como lo observado: su proporción es el valor p. <b>Mueve el deslizador</b>: con más muestras el histograma "
-     "se estrecha y el valor p baja, aunque la diferencia verdadera sea la misma. La última posición son los datos reales.</p>",
-     fig_perm),
-    ("genero", "4. Un género a la vez",
-     "<p><b>Elige un género</b> en el menú para comparar su proporción de lecturas entre plantas saludables y no saludables. "
-     "El título muestra las medias y el valor p de Mann-Whitney.</p>",
-     fig_genero),
-    ("volcan", "5. Todos los géneros a la vez",
-     "<p>Cada burbuja es un género y su tamaño, su abundancia: a la derecha, más abundante en las plantas no saludables; más arriba, valor p más pequeño. "
-     "Por puro azar, cerca del 5 % de los géneros supera la línea de p = 0.05. Solo los de color más intenso siguen siendo significativos "
-     "después de corregir por comparaciones múltiples. <b>Cambia de caso</b> con los botones y pasa el cursor para ver cada género.</p>",
-     fig_volcan),
-    ("ordenacion", "6. La comunidad completa",
-     "<p>Dos muestras cercanas tienen una composición parecida. La estrella marca el centroide de cada grupo y las líneas, la distancia de cada muestra a él. "
-     "En el caso ideal las nubes se separan; en los datos reales se superponen y la de las plantas no saludables es más amplia.</p>",
-     fig_ord),
-    ("resumen", "7. Resumen de las pruebas",
-     "<p>Cuando los supuestos se cumplen, las pruebas coinciden. Cuando no coinciden, hay que averiguar qué supuesto falló.</p>",
-     fig_tabla),
+    ("comunidad", "Los datos: la comunidad", "1. Los datos: la comunidad de un vistazo", "Episodio 1 del taller",
+     f"<p><b>Qué mirar.</b> Cada barra es una de las {len(datos)} muestras reales y cada color, un filo (los ocho más abundantes; el resto, en «Otros filos»). "
+     "<b>Haz clic</b> en un filo de la leyenda para ocultarlo y doble clic para dejarlo solo; pasa el cursor para leer el porcentaje.</p>",
+     fig_filos,
+     f"<p class='conclusion'><b>Qué concluir.</b> Los mismos filos dominan en los dos grupos: a simple vista no hay diferencia, y por eso hacen falta las pruebas. "
+     f"Una planta no saludable, {atipica}, se sale del patrón con un {pct_filo.loc['Firmicutes', atipica]:.0f} % de Firmicutes; vuelve a aparecer en las secciones 2 y 7.</p>"),
+    ("diversidad", "Los datos: la diversidad", "2. Los datos: la diversidad que vamos a comparar", "Episodios 1 y 3 del taller",
+     "<p><b>Qué mirar.</b> El índice de Shannon de cada muestra: el violín dibuja la distribución, la caja los cuartiles y la línea punteada, la media. "
+     "<b>Pasa el cursor</b> sobre un punto para ver qué muestra es. Compara la escala de los dos paneles y cuánto se dispersan los puntos turquesa en los datos reales.</p>",
+     fig_cajas,
+     f"<p class='conclusion'><b>Qué concluir.</b> En el caso ideal los dos grupos varían lo mismo y las pruebas coinciden (Welch {p_en_texto(p_sim['Welch'])}). "
+     f"En los datos reales la media es un poco mayor en las saludables, pero la diferencia no se distingue del azar (Welch {p_en_texto(p_real['Welch'])}; "
+     f"Mann-Whitney {p_en_texto(p_real['Mann-Whitney'])}). Lo que sí es distinto es la dispersión: las plantas no saludables son más heterogéneas "
+     f"(prueba F {p_en_texto(p_real['F'])}), y una de ellas, {atipica}, queda muy por debajo de las demás.</p>"),
+    ("valor-p", "El valor p", "3. ¿Diferencia real o azar? El valor p", "Episodio 2 del taller",
+     "<p><b>Qué mirar.</b> El histograma es lo que produce el azar cuando el grupo no importa (las etiquetas, barajadas 5 000 veces); las líneas amarillas, "
+     "la diferencia observada y su opuesta. Las barras rosas son las barajadas tan extremas como lo observado: <b>su proporción es el valor p</b>. "
+     "<b>Mueve el deslizador</b> de izquierda a derecha.</p>",
+     fig_perm,
+     f"<p class='conclusion'><b>Qué concluir.</b> La diferencia verdadera es siempre la misma, pero con más muestras el histograma del azar se estrecha y el valor p baja: "
+     "el valor p depende de la diferencia, de cuánto varían los datos y de cuántas muestras hay. En la última posición, los datos reales dan "
+     f"{p_en_texto(p_real['permutación'])} con un histograma asimétrico; guarda ese número: la siguiente sección muestra por qué no es de fiar.</p>"),
+    ("elegir", "Elegir la prueba", "4. Elegir la prueba: ¿cuántas veces se equivoca cada una?", "Episodios 3 y 4 del taller",
+     f"<p><b>Qué mirar.</b> Aquí no hay ninguna diferencia verdadera: se simulan {miles(n_estudios)} estudios con la misma media en los dos grupos y se cuenta "
+     "en cuántos cada prueba dice que sí la hay. Lo correcto es cerca del 5 %, la línea amarilla. El primer diseño copia a los datos reales: 35 y 18 muestras "
+     "y el grupo pequeño mucho más variable. <b>Mueve el deslizador</b> para cambiar el diseño del estudio.</p>",
+     fig_alarmas,
+     f"<p class='conclusion'><b>Qué concluir.</b> Con el diseño de los datos reales, la t de Student ve diferencias que no existen en el {alarma_real['t de Student']:.0f} % "
+     f"de los estudios y Mann-Whitney en el {alarma_real['Mann-Whitney']:.0f} %; Welch se queda en el {alarma_real['t de Welch']:.0f} %, y lo hace en los cuatro diseños. "
+     "Barajar etiquetas (sección 3) y la t de Student suponen que los dos grupos tienen la misma distribución, varianza incluida, y en los datos reales eso falla "
+     f"(prueba F {p_en_texto(p_real['F'])}). Por eso el resultado que vale es el de Welch, {p_en_texto(p_real['Welch'])}: no hay evidencia de que la diversidad promedio difiera. "
+     "Con grupos del mismo tamaño el problema casi desaparece: una razón para diseñar estudios balanceados.</p>"),
+    ("genero", "Un género: Fusarium", "5. Un género de interés: ¿es más abundante en un grupo?", "Episodio 5 del taller",
+     f"<p><b>Qué mirar.</b> La proporción de lecturas de un género en cada muestra. <b>Elige un género</b> en el menú: los del taller y los doce con más lecturas. "
+     "El título da las medias de los dos grupos y el valor p de Mann-Whitney; pasa el cursor para ver cada muestra.</p>",
+     fig_genero,
+     f"<p class='conclusion'><b>Qué concluir.</b> <i>Fusarium</i>, el patógeno sospechoso, no es más abundante en las plantas no saludables: "
+     f"{fus.media_sal:.3f} % frente a {fus.media_no:.3f} % de las lecturas, {p_en_texto(fus.p)}. De los {len(candidatos)} géneros del menú, "
+     f"{'solo ' + ' y '.join(f'<i>{g}</i>' for g in menu_p05) + ' tiene' if len(menu_p05) == 1 else str(len(menu_p05)) + ' tienen'} p &lt; 0.05, "
+     f"y entre {len(candidatos)} pruebas se espera cerca de uno por puro azar: un p pequeño aislado, sin corrección, no es un hallazgo.</p>"),
+    ("volcan", "Todos los géneros", "6. Todos los géneros a la vez", "Episodio 5 del taller",
+     f"<p><b>Qué mirar.</b> Cada burbuja es un género ({miles(len(comparacion))} en los datos reales) y su tamaño, su abundancia: a la derecha, más abundante "
+     "en las plantas no saludables; más arriba, valor p más pequeño. La línea punteada es p = 0.05. <b>Cambia de caso</b> con los botones y pasa el cursor "
+     "para leer el nombre del género, sus medias y su p ajustado por Benjamini-Hochberg.</p>",
+     fig_volcan,
+     f"<p class='conclusion'><b>Qué concluir.</b> Datos reales: {n_p05} géneros superan p = 0.05, cerca de los {round(0.05 * len(comparacion))} que se esperan por azar "
+     f"entre {miles(len(comparacion))} pruebas, y tras corregir no queda {'ninguno' if n_bh == 0 else n_bh}: no hay evidencia de que algún género difiera entre grupos. "
+     f"Datos simulados: G05, el género que hicimos cuatro veces más abundante, destaca arriba a la derecha, pero otros {n_bh_sim - 1} sobreviven a la corrección sin que los "
+     "tocáramos: las proporciones suman 100 y un taxón que sube hace bajar a los demás (composicionalidad).</p>"),
+    ("composicion", "La composición completa", "7. La composición completa: PERMANOVA y PERMDISP", "Episodio 6 del taller",
+     "<p><b>Qué mirar.</b> Cada punto es una muestra y dos puntos cercanos tienen composiciones parecidas (ordenación PCoA sobre distancias de Bray-Curtis). "
+     "La estrella es el centroide de cada grupo y cada línea une una muestra con el suyo: la separación entre estrellas es lo que mide PERMANOVA y la longitud "
+     "de las líneas, lo que compara PERMDISP. <b>Pasa el cursor</b> sobre un punto para ver qué muestra es y su Shannon.</p>",
+     fig_ord,
+     f"<p class='conclusion'><b>Qué concluir.</b> En el caso ideal las nubes se separan (PERMANOVA R² = {r_sim['R2']:.2f}, p = {r_sim['p']:.3f}) y se dispersan igual "
+     f"(PERMDISP p = {r_sim['p_disp']:.2f}). En los datos reales el grupo explica solo el {100 * r_real['R2']:.0f} % de la variación (p = {r_real['p']:.2f}), "
+     f"pero la nube turquesa es más amplia (PERMDISP p = {r_real['p_disp']:.3f}): las plantas no saludables no tienen otra composición, sino composiciones más distintas "
+     f"entre sí. {atipica} es, otra vez, la más alejada.</p>"),
+    ("resumen", "Resumen", "8. Resumen: todas las pruebas, lado a lado", "Episodio 7 del taller",
+     "<p><b>Qué mirar.</b> Cada fila es una prueba y cada columna, un caso; se resaltan las celdas con p &lt; 0.05.</p>",
+     fig_tabla,
+     f"<p class='conclusion'><b>Qué concluir.</b> Cuando los supuestos se cumplen (caso ideal) todas las pruebas coinciden. En el caso real no coinciden: permutación y "
+     f"Student dan {p_en_texto(p_real['permutación'])} y {p_real['Student']:.3f}; Welch y Mann-Whitney, {p_real['Welch']:.3f} y "
+     f"{p_real['Mann-Whitney']:.3f}, y la sección 4 explica a cuáles creer. Lo que queda en pie es que las plantas no saludables son más heterogéneas, "
+     "en diversidad (prueba F) y en composición (PERMDISP); el estado de la planta explica el "
+     f"{100 * r_real['R2']:.0f} % de la variación en la composición y <i>Fusarium</i> no difiere.</p>"),
 ]
 
 # Las cifras de la cabecera: (número, qué significa)
-miles = lambda n: f"{n:,}".replace(",", " ")           # 1795 -> "1 795"
 cifras = [
     (str(len(datos)), f"muestras reales: {int(sal.sum())} saludables y {int(no_sal.sum())} no saludables"),
     (str(len(datos_sim)), "muestras simuladas: 30 y 30"),
     (miles(len(comparacion)), "géneros comparados en los datos reales"),
-    (f"{int((comparacion.p < 0.05).sum())} → {int((comparacion.p_ajustado < 0.05).sum())}", "géneros con p < 0.05, antes y después de corregir"),
-    (f"{100 * resultados['Simulados']['R2']:.0f} % · {100 * resultados['Reales']['R2']:.0f} %", "de la variación la explica el grupo: caso ideal y caso real"),
+    (f"{n_p05} → {n_bh}", "géneros con p < 0.05, antes y después de corregir"),
+    (f"{pct_txt(100 * r_sim['R2'])} · {pct_txt(100 * r_real['R2'])}", "de la variación en la composición la explica el grupo: caso ideal y caso real"),
 ]
+
+# ---------- La biblioteca de Plotly se carga una sola vez, en la cabecera, y todas las figuras la reutilizan
+from plotly.offline import get_plotlyjs, get_plotlyjs_version
+if PLOTLY_JS == "cdn":
+    plotly_js = f'<script charset="utf-8" src="https://cdn.plot.ly/plotly-{get_plotlyjs_version()}.min.js"></script>'
+else:
+    plotly_js = "<script>" + get_plotlyjs() + "</script>"
+# Los botones de la barra de herramientas de Plotly vienen en inglés: se registra una traducción y cada figura la pide con locale="es"
+TRADUCCION = '''<script>
+Plotly.register({moduleType: "locale", name: "es", dictionary: {
+  "Zoom": "Ampliar: arrastra un rectángulo", "Pan": "Desplazar", "Zoom in": "Acercar", "Zoom out": "Alejar",
+  "Autoscale": "Ajustar los ejes", "Reset axes": "Volver a la vista inicial",
+  "Download plot as a png": "Descargar la figura como PNG", "Download plot as a PNG": "Descargar la figura como PNG",
+  "Download plot": "Descargar la figura", "Box Select": "Seleccionar con un rectángulo", "Lasso Select": "Seleccionar con lazo",
+  "Toggle Spike Lines": "Líneas guía", "Show closest data on hover": "Mostrar el dato más cercano", "Compare data on hover": "Comparar los datos",
+  "Double-click on legend to isolate one trace": "Doble clic en la leyenda para dejar una sola serie",
+  "Double-click to zoom back out": "Doble clic para volver", "Produced with Plotly.js": "Hecho con Plotly.js",
+  "Reset view": "Volver a la vista inicial", "Reset views": "Volver a la vista inicial",
+  "Taking snapshot - this may take a few seconds": "Generando la imagen; puede tardar unos segundos", "Snapshot succeeded": "Imagen generada",
+  "Sorry, there was a problem downloading your snapshot!": "No se pudo descargar la imagen",
+  "Preparing image - this may take a few seconds": "Generando la imagen; puede tardar unos segundos", "Image download succeeded": "Imagen descargada",
+  "Sorry, there was a problem downloading your image!": "No se pudo descargar la imagen", "Share chart...": "Compartir",
+  "new text": "nuevo texto", "trace": "serie"
+}});
+</script>'''
+# En pantallas angostas (celulares) Plotly no parte los títulos ni reacomoda los paneles: este pequeño script lo hace al cargar
+# la página y al cambiar el ancho de la ventana. En una pantalla ancha no cambia nada.
+ADAPTAR = '''<script>
+(function () {
+  const originales = new Map();                    // por figura: lo que hay que restaurar al volver a una pantalla ancha
+  function partirLinea(texto, maximo) {            // inserta <br> en un espacio (fuera de etiquetas) cuando la línea pasa de «maximo» letras
+    let salida = "", linea = 0, enEtiqueta = false;
+    for (let i = 0; i < texto.length; i++) {
+      const c = texto[i];
+      if (c === "<" && /[A-Za-z\\/]/.test(texto[i + 1] || "")) enEtiqueta = true;   // «p < 0.05» no es una etiqueta
+      if (c === " " && !enEtiqueta && linea >= maximo) { salida += "<br>"; linea = 0; continue; }
+      salida += c;
+      if (!enEtiqueta) linea += 1;
+      if (c === ">") enEtiqueta = false;
+    }
+    return salida;
+  }
+  function partir(texto, maximo) {                 // respeta los saltos de línea que ya trae el texto y parte cada línea por separado
+    if (!texto) return texto;
+    return texto.split(/<br\\s*\\/?>/).map(function (linea) { return partirLinea(linea, maximo); }).join("<br>");
+  }
+  const EJES = ["xaxis", "xaxis2", "yaxis", "yaxis2"];
+  function tituloEje(diseno, eje) { return diseno[eje] && diseno[eje].title && diseno[eje].title.text; }
+  function adaptar() {
+    document.querySelectorAll(".plotly-graph-div").forEach(function (figura) {
+      const diseno = figura.layout;
+      if (!diseno) return;
+      if (!originales.has(figura)) {
+        originales.set(figura, JSON.parse(JSON.stringify({
+          alto: diseno.height, margen: diseno.margin && diseno.margin.t, letra: diseno.font && diseno.font.size,
+          titulo: diseno.title && diseno.title.font && diseno.title.font.size,
+          dominios: diseno.yaxis2 ? [diseno.xaxis.domain, diseno.xaxis2.domain, diseno.yaxis.domain, diseno.yaxis2.domain] : null,
+          ejes: EJES.map(function (eje) { return tituloEje(diseno, eje) || null; }),
+          anotaciones: (diseno.annotations || []).map(function (a) { return a.text || ""; }),
+          letraAnotaciones: (diseno.annotations || []).map(function (a) { return (a.font && a.font.size) || null; }),
+          leyendaY: diseno.legend && diseno.legend.y, margenB: diseno.margin && diseno.margin.b,
+          deslizadores: diseno.sliders || null, menus: diseno.updatemenus || null })));
+      }
+      const o = originales.get(figura);
+      const angosta = figura.clientWidth < 640;
+      const maximo = Math.floor(figura.clientWidth / (angosta ? 10 : 9));      // letras que caben en una línea del título
+      const cambios = { "font.size": angosta ? 11 : o.letra, "title.font.size": angosta ? 14 : o.titulo, "height": o.alto, "margin.t": o.margen };
+      // los títulos largos se parten: el que se ve y los que cambian los deslizadores y los menús
+      cambios["title.text"] = partir(diseno.title && diseno.title.text, maximo);
+      const retitular = function (control) { control.args[1]["title.text"] = partir(control.args[1]["title.text"], maximo); };
+      if (o.deslizadores) cambios["sliders"] = JSON.parse(JSON.stringify(o.deslizadores)).map(function (s) {
+        s.steps.forEach(retitular);
+        if (angosta) s.pad = Object.assign({}, s.pad, { t: ((s.pad && s.pad.t) || 0) + 30 });   // sitio para un título de eje de dos líneas
+        return s;
+      });
+      if (o.menus) cambios["updatemenus"] = JSON.parse(JSON.stringify(o.menus)).map(function (m) { m.buttons.forEach(retitular); return m; });
+      EJES.forEach(function (eje, i) {                                           // los títulos de los ejes, igual
+        if (o.ejes[i]) cambios[eje + ".title.text"] = angosta ? partir(o.ejes[i], eje[0] === "x" ? maximo : 34) : o.ejes[i];
+      });
+      o.anotaciones.forEach(function (texto, i) {                                // y los títulos de los paneles y demás rótulos
+        if (texto) cambios["annotations[" + i + "].text"] = angosta ? partir(texto, 52) : texto;
+        cambios["annotations[" + i + "].font.size"] = angosta ? 11 : o.letraAnotaciones[i];
+      });
+      if (typeof o.leyendaY === "number" && o.leyendaY < 0) {                    // leyenda debajo: más abajo si el título del eje crece
+        cambios["legend.y"] = angosta ? o.leyendaY - 0.1 : o.leyendaY;
+        cambios["margin.b"] = angosta ? (o.margenB || 60) + 40 : o.margenB;
+      }
+      const lineas = (cambios["title.text"] || "").split("<br>").length;
+      const leyendaArriba = diseno.legend && diseno.legend.y >= 1;
+      if (angosta) cambios["margin.t"] = o.margen + 18 * (lineas - 1) + (leyendaArriba ? 60 : 0);
+      if (o.dominios) {                                                          // dos paneles: lado a lado o apilados
+        const d = angosta ? [[0, 1], [0, 1], [0.58, 1], [0, 0.42]] : o.dominios;
+        cambios["xaxis.domain"] = d[0]; cambios["xaxis2.domain"] = d[1]; cambios["yaxis.domain"] = d[2]; cambios["yaxis2.domain"] = d[3];
+        if (angosta) { cambios["height"] = Math.round(o.alto * 1.75); cambios["margin.t"] += 25; }   // sitio para el título del panel de arriba
+      }
+      Plotly.relayout(figura, cambios);
+    });
+  }
+  let espera;
+  window.addEventListener("resize", function () { clearTimeout(espera); espera = setTimeout(adaptar, 200); });
+  window.addEventListener("load", adaptar);
+})();
+</script>'''
+CONFIG = {"displaylogo": False, "responsive": True, "locale": "es",            # sin logo, se adapta al ancho, botones en español
+          "modeBarButtonsToRemove": ["lasso2d", "select2d", "toggleSpikelines", "hoverCompareCartesian", "hoverClosestCartesian",
+                                     "toggleHover", "sendChartToCloud"]}       # fuera los botones que no se necesitan (y el de subir a la nube)
 
 PLANTILLA_HTML = '''<!DOCTYPE html>
 <html lang="es">
@@ -767,6 +1015,8 @@ PLANTILLA_HTML = '''<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>__TITULO__</title>
+__PLOTLY__
+__TRADUCCION__
 <style>
   * { box-sizing: border-box; }
   body { margin: 0; font-family: system-ui, "Segoe UI", Roboto, Arial, sans-serif; color: __TEXTO__; line-height: 1.55;
@@ -778,6 +1028,7 @@ PLANTILLA_HTML = '''<!DOCTYPE html>
   p { margin: 0.4em 0 0.9em; }
   b { color: __ACENTO__; }
   a { color: __ENLACE__; }
+  .docente { color: __SUAVE__; font-size: 0.95rem; }
   .cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 1.2em 0; }
   .cifra { background: __PANEL__; border: 1px solid __REJILLA__; border-radius: 14px; padding: 14px 16px; }
   .cifra strong { display: block; font-size: 1.9rem; line-height: 1.1; color: __ACENTO__; }
@@ -787,39 +1038,51 @@ PLANTILLA_HTML = '''<!DOCTYPE html>
   nav a:hover { border-color: __ACENTO__; color: __ACENTO__; }
   section { background: __PANEL__; border: 1px solid __REJILLA__; border-radius: 16px; padding: 18px 18px 8px; margin: 0 0 22px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); overflow: hidden; }
-  .nota { color: __SUAVE__; font-size: 0.9rem; text-align: center; }
+  .cabecera { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; }
+  .episodio { font-size: 0.8rem; color: __SUAVE__; border: 1px solid __REJILLA__; border-radius: 999px; padding: 2px 10px; white-space: nowrap; }
+  .conclusion { border-left: 3px solid __ACENTO__; padding: 6px 12px; margin: 0.6em 0 0.8em; background: rgba(127, 127, 127, 0.08); border-radius: 0 8px 8px 0; }
+  .nota { color: __SUAVE__; font-size: 0.9rem; text-align: center; line-height: 1.5; }
+  @media (max-width: 600px) { main { padding: 12px 10px 30px; } section { padding: 12px 10px 4px; border-radius: 12px; } .cifra strong { font-size: 1.5rem; } }
 </style>
 </head>
 <body>
 <main>
 <h1>__TITULO__</h1>
-<p>Las mismas pruebas, aplicadas a dos casos: unos datos <b>simulados</b>, en los que conocemos la verdad y los supuestos se cumplen,
-y unos datos <b>reales</b>, metagenomas de la rizósfera de la fresa. Todas las figuras son interactivas: pasa el cursor,
-amplía una zona arrastrando y haz doble clic para volver.</p>
+<p>Las mismas pruebas, aplicadas a dos casos: unos datos <b>simulados</b> (60 muestras, 30 por grupo), en los que conocemos la verdad y los supuestos
+se cumplen, y unos datos <b>reales</b>: 53 metagenomas <i>shotgun</i> de la rizósfera de fresa, 35 de plantas saludables y 18 de plantas no saludables,
+facilitados por Solena Ag. Todas las figuras son interactivas: pasa el cursor sobre un punto, amplía una zona arrastrando y haz doble clic para volver.</p>
+<p class="docente">Para la clase: las ocho secciones siguen el orden del taller (los datos, el valor p, elegir la prueba, un género de interés, todos los géneros
+y la composición completa). En cada una, pide una predicción antes de usar el control y lee la conclusión después.</p>
 <div class="cifras">__CIFRAS__</div>
 <nav>__MENU__</nav>
 __SECCIONES__
-<p class="nota">Datos reales facilitados por Solena Ag. Página generada con Python y Plotly.</p>
+<p class="nota">Fuente: Silva Gomez, P. C. (2026). <i>Análisis estadístico de la diversidad microbiana a distintos niveles taxonómicos en el microbioma
+rizosférico de plantas de fresa saludables y no saludables</i>. Tesis de Maestría en Ciencias Matemáticas, Posgrado Conjunto UMSNH-UNAM.
+Datos facilitados por Solena Ag (2023).<br>Código, datos y talleres: <a href="__REPOSITORIO__">__REPOSITORIO_CORTO__</a>.
+Página generada con Python y Plotly; __CONEXION__.</p>
 </main>
+__ADAPTAR__
 </body>
 </html>'''
 
 bloques = []
-for i, (ancla, titulo, explicacion, fig) in enumerate(secciones):
-    # la biblioteca de Plotly se incluye solo con la primera figura; las demás la reutilizan
-    figura_html = fig.to_html(full_html=False, include_plotlyjs=(PLOTLY_JS if i == 0 else False),
-                              config={"displaylogo": False, "responsive": True})
-    bloques.append(f'<section id="{ancla}"><h2>{titulo}</h2>{explicacion}{figura_html}</section>')
-menu = " ".join(f'<a href="#{ancla}">{titulo}</a>' for ancla, titulo, _, _ in secciones)
+for ancla, corto, titulo, episodio_taller, mirar, fig, concluir in secciones:
+    figura_html = fig.to_html(full_html=False, include_plotlyjs=False, config=CONFIG)   # la biblioteca ya está en la cabecera
+    bloques.append(f'<section id="{ancla}"><div class="cabecera"><h2>{titulo}</h2><span class="episodio">{episodio_taller}</span></div>'
+                   f'{mirar}{figura_html}{concluir}</section>')
+menu = " ".join(f'<a href="#{ancla}">{i}. {corto}</a>' for i, (ancla, corto, *_) in enumerate(secciones, 1))
 tarjetas = "".join(f'<div class="cifra"><strong>{numero}</strong><span>{significado}</span></div>' for numero, significado in cifras)
 
 pagina = PLANTILLA_HTML
 # Cada marca de la plantilla se cambia por su contenido o por un color del tema
 marcas = {"__TITULO__": TITULO, "__MENU__": menu, "__CIFRAS__": tarjetas, "__SECCIONES__": "\n".join(bloques),
+          "__PLOTLY__": plotly_js, "__TRADUCCION__": TRADUCCION, "__ADAPTAR__": ADAPTAR, "__REPOSITORIO__": REPOSITORIO, "__REPOSITORIO_CORTO__": REPOSITORIO.replace("https://", ""),
+          "__CONEXION__": "solo necesita internet para cargar Plotly" if PLOTLY_JS == "cdn" else "funciona sin conexión",
           "__BRILLO__": "#1B2A6B" if TEMA == "noche" else "#FFFFFF"}
 marcas.update({f"__{nombre.upper()}__": color for nombre, color in P.items()})   # __FONDO__, __PANEL__, __ACENTO__...
 for marca, valor in marcas.items():
     pagina = pagina.replace(marca, valor)
+assert "__" not in pagina.replace("__plotly", ""), "quedó una marca sin sustituir"
 
 RUTA_HTML = "explorador_pruebas_de_hipotesis.html"
 with open(RUTA_HTML, "w", encoding="utf-8") as archivo:
@@ -857,7 +1120,7 @@ r"""
 Al ejecutar todo de nuevo, las figuras y la página pasan al fondo claro, porque todos sus colores salen de la paleta del tema elegido (`P = PALETAS[TEMA]`). Para que funcione sin conexión basta con `PLOTLY_JS = True`: la biblioteca de Plotly queda dentro del archivo, que pasa a pesar unos 5 MB más.
 """)
 puntos_clave([
-    "`fig.to_html()` convierte una figura en un bloque de HTML; una página es una plantilla con esos bloques.",
+    "`fig.to_html()` convierte una figura en un bloque de HTML; una página es una plantilla con esos bloques y la biblioteca de Plotly cargada una sola vez.",
     "La interactividad viaja en el archivo: no hace falta Python ni un servidor para abrirlo.",
     "Una figura interactiva necesita una frase que diga qué explorar.",
 ])
@@ -882,7 +1145,7 @@ CIERRE.append(nbf.v4.new_markdown_cell(r"""
 
 **Fuente de los datos y del análisis**
 
-- Silva Gómez, P. C. (2026). *Análisis estadístico de la diversidad microbiana a distintos niveles taxonómicos en el microbioma rizosférico de plantas de fresa saludables y no saludables*. Tesis de Maestría en Ciencias Matemáticas, Posgrado Conjunto UMSNH-UNAM. Código y datos: https://github.com/CamilaSilva1995/Tesis_Maestria. Datos metagenómicos facilitados por Solena Ag.
+- Silva Gomez, P. C. (2026). *Análisis estadístico de la diversidad microbiana a distintos niveles taxonómicos en el microbioma rizosférico de plantas de fresa saludables y no saludables*. Tesis de Maestría en Ciencias Matemáticas, Posgrado Conjunto UMSNH-UNAM. Código y datos: https://github.com/CamilaSilva1995/Tesis_Maestria. Datos metagenómicos facilitados por Solena Ag.
 - Solena Ag. (2023). [Metagenomas *shotgun* de la rizósfera de plantas de fresa saludables y no saludables] [Conjunto de datos no publicado]. https://www.solena.ag
 """.strip()))
 
@@ -924,7 +1187,7 @@ PORTADA = r"""
 
 **Python · Plotly · Google Colab · «N_EP» episodios · «TOTAL»**
 
-Los talleres terminan con figuras que se miran. Este cuaderno las convierte en figuras que **se exploran**, sobre un fondo azul noche: al pasar el cursor cada punto dice qué muestra es, un deslizador cambia el tamaño de la muestra y un menú cambia el género. Al final, todas quedan reunidas en **una página HTML** que se abre en cualquier navegador, sin Python ni conexión a un servidor.
+Los talleres terminan con figuras que se miran. Este cuaderno las convierte en figuras que **se exploran**, sobre un fondo azul noche: al pasar el cursor cada punto dice qué muestra es, un deslizador cambia el tamaño de la muestra, otro el diseño del estudio y un menú cambia el género. Al final, todas quedan reunidas en **una página HTML** que se abre en cualquier navegador, sin Python ni conexión a un servidor.
 
 Es el tercer cuaderno de la serie y usa los mismos dos casos, datos **simulados** y datos **reales**, con los mismos resultados:
 

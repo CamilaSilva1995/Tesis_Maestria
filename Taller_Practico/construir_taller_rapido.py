@@ -107,11 +107,11 @@ episodio("Dos casos y una pregunta", "Reales y simulados",
           "Generar un caso simulado en el que conocemos la verdad."])
 
 md(r"""
-La pregunta de todo el taller es una sola: **¿las plantas saludables y las no saludables difieren, o la diferencia que vemos es azar?** La vamos a responder en dos casos.
+La pregunta del taller es una sola: **¿las plantas saludables y las no saludables difieren, o la diferencia que vemos es azar?** La vamos a responder en dos casos.
 
-**Caso real.** 53 metagenomas de la rizósfera de la fresa: 35 de plantas saludables y 18 de no saludables. Llegan en tres tablas: los metadatos de cada muestra, sus índices de diversidad alfa (entre ellos el de Shannon, que resume en un número cuántos taxones hay y qué tan repartidas están las lecturas) y los conteos de lecturas por género. Cómo se obtienen esas tablas a partir de las lecturas está explicado en la lección [*Data Processing and Visualization for Metagenomics*](https://carpentries-lab.github.io/metagenomics-analysis/) de The Carpentries; aquí empezamos con las tablas ya hechas.
+**Caso real.** 53 metagenomas de la rizósfera de la fresa: 35 de plantas saludables y 18 de no saludables. Llegan en tres tablas: los metadatos de cada muestra, sus índices de diversidad alfa (entre ellos el de Shannon, que resume en un número cuántos taxones hay y qué tan repartidas están las lecturas) y los conteos de lecturas por género. Cómo se llega de las lecturas a esas tablas lo explica la lección [*Data Processing and Visualization for Metagenomics*](https://carpentries-lab.github.io/metagenomics-analysis/); aquí empezamos con las tablas ya hechas.
 
-La primera celda prepara las herramientas: no hace falta leerla en detalle.
+La primera celda prepara las herramientas; no hace falta leerla en detalle.
 """)
 code(r"""
 # Para que las figuras se dibujen dentro del cuaderno, debajo de la celda que las crea
@@ -161,7 +161,8 @@ meta = cargar("metadatos.csv").set_index("muestra")          # grupo y lecturas 
 alfa = cargar("diversidad_alfa.csv").set_index("muestra")    # índices de diversidad alfa (Shannon, Chao1...)
 conteos = cargar("conteos_por_genero.csv")                   # una fila por género y una columna por muestra
 
-# Filtro de calidad: se descartan cinco muestras con menos de 25 millones de lecturas
+# Filtro de calidad de la tesis: se descartan cinco muestras con menos de 25 millones de lecturas
+# tras el control de calidad (la tabla muestra solo las lecturas clasificadas, que son menos)
 excluir = ["MP2079", "MP2080", "MP2088", "MP2109", "MP2137"]
 datos = meta.join(alfa, how="inner").drop(index=excluir)     # une por identificador y quita esas cinco
 muestras = list(datos.index)                                 # las 53 muestras reales del taller
@@ -175,11 +176,11 @@ print(datos.grupo.value_counts())                            # cuántas muestras
 display(datos[["grupo", "lecturas_clasificadas", "shannon", "chao1"]].head())
 """)
 md(r"""
-**Caso ideal (simulado).** Los datos reales rara vez se portan como piden los libros. Para ver cómo funciona cada prueba **cuando todo se cumple**, fabricamos un segundo estudio en el que nosotros decidimos la verdad:
+**Caso ideal (simulado).** Los datos reales rara vez se portan como piden los libros. Para ver cómo funciona cada prueba **cuando todo se cumple**, fabricamos un segundo estudio en el que decidimos la verdad:
 
 - **Diseño balanceado:** 30 plantas saludables y 30 no saludables.
-- **Diversidad:** el índice de Shannon es **normal**, con la **misma desviación estándar** (0.05) en los dos grupos y medias distintas: 7.48 y 7.42, las que se observan en los datos reales.
-- **Composición:** 40 géneros; en las no saludables uno de ellos, `G05`, es cuatro veces más abundante.
+- **Diversidad:** el índice de Shannon es **normal**, con la **misma desviación estándar** (0.05) en los dos grupos y medias distintas, 7.48 y 7.42, como en los datos reales.
+- **Composición:** 40 géneros; en las no saludables uno, `G05`, es cuatro veces más abundante.
 """)
 pausa(r"""
 La diferencia verdadera entre las medias será 0.06. Antes de ejecutar: ¿crees que en las 60 muestras simuladas saldrá exactamente 0.06?
@@ -227,8 +228,13 @@ assert list(generos_sim.columns) == list(datos_sim.index)        # emparejadas p
 display(datos_sim.groupby("grupo").shannon.agg(["count", "mean", "std"]).round(3))
 """)
 md(r"""
-La verdad es una diferencia de 0.06 entre las medias; en estas 60 muestras se observa una de 0.037. Esa distancia entre la verdad y lo observado es la **variación de muestreo**, y es lo que una prueba de hipótesis tiene que tener en cuenta.
+La verdad es una diferencia de 0.06 entre las medias; en estas 60 muestras se observa una de 0.037. Esa distancia entre la verdad y lo observado es la **variación de muestreo**, y es lo que una prueba de hipótesis debe tener en cuenta.
 """)
+quiz("¿Para qué sirve el caso simulado?",
+     ["Para sustituir a los datos reales, que son pocos y desbalanceados.",
+      "Para ver cómo responde cada prueba cuando conocemos la verdad y sus supuestos se cumplen, y compararlo con lo que pasa en los datos reales.",
+      "Para demostrar que las plantas no saludables tienen menos diversidad."], 1,
+     "La A confunde el papel de la simulación: no reemplaza a los datos reales, que son los que responden la pregunta biológica. La C invierte la lógica: en los simulados la diferencia no se demuestra, se impone (la elegimos nosotros); lo que se pone a prueba no son las plantas, sino la prueba.")
 puntos_clave([
     "Las tablas se unen por el identificador de la muestra, nunca por posición, y se comprueba con `assert`.",
     "En los datos simulados conocemos la verdad porque la elegimos: sirven para ver cómo se comporta una prueba cuando sus supuestos se cumplen.",
@@ -300,9 +306,12 @@ grafica_nula(barajadas_real, dif_real, "Diferencia de medias de Shannon con las 
 """, figuras=1)
 md(r"""
 En los datos reales $p \approx 0.04$: significativo, pero menos contundente que en los simulados, aunque la diferencia es mayor. **El valor p no depende solo de la diferencia: depende también de cuánto varían los datos y de cuántas muestras hay.** El histograma asimétrico delata una planta no saludable con un Shannon muy bajo. Guarda ese 0.04: en el siguiente episodio otras pruebas darán otra cosa.
-
-Dos ideas para fijar: un valor p **no** es la probabilidad de que $H_0$ sea cierta, y un p mayor que 0.05 **no demuestra** que los grupos sean iguales.
 """)
+quiz(r"En los datos reales, la prueba de permutaciones dio $p \approx 0.04$. ¿Qué significa exactamente ese número?",
+     ["Hay un 4 % de probabilidad de que los grupos sean iguales.",
+      "Si el grupo no importara, solo el 4 % de las barajadas daría una diferencia tan grande como la observada.",
+      "La diferencia entre los grupos es del 4 %."], 1,
+     r"La A confunde $P(\text{datos} \mid H_0)$ con $P(H_0 \mid \text{datos})$: el valor p se calcula suponiendo que $H_0$ es cierta, así que no puede decir qué tan probable es $H_0$. La C confunde el valor p con el tamaño del efecto: la diferencia observada es 0.061 unidades de Shannon; el valor p no mide cuánto difieren los grupos, sino qué tan raro sería el resultado si $H_0$ fuera cierta.")
 laboratorio("¿De qué depende el valor p?", 4,
 r"""
 Ahora decides tú la verdad. La celda simula un estudio nuevo con los tres valores de arriba y le aplica la prueba de permutaciones. **En Colab aparecen tres controles deslizantes** y la celda se vuelve a ejecutar sola al mover uno; fuera de Colab, cambia el número y ejecuta la celda. No modifica los datos del taller.
@@ -341,19 +350,20 @@ print(f"Diferencia verdadera = {diferencia_verdadera} | diferencia observada = {
 grafica_nula(barajadas_lab, dif_lab, "Diferencia de medias con las etiquetas barajadas",
              f"Laboratorio: {muestras_por_grupo} muestras por grupo, desviación {desviacion_de_los_datos}: {texto_p}")
 """)
-ejercicio("Interpretar el valor p", 3,
+ejercicio("Pocas muestras, en los dos sentidos", 3,
 r"""
-1. Un compañero dice: «p = 0.15 significa que hay 15 % de probabilidad de que los grupos sean iguales». ¿Qué está mal?
-2. En el laboratorio, con una diferencia verdadera de 0.06 y cinco muestras por grupo, la prueba dio p = 0.77. ¿Demuestra eso que no hay diferencia?
+1. En el laboratorio, con una diferencia verdadera de 0.06 y **cinco** muestras por grupo, la prueba dio p = 0.77. ¿Demuestra eso que no hay diferencia?
+2. Ahora pon `diferencia_verdadera` en **0** y deja `muestras_por_grupo` en **5**. La diferencia observada sale −0.071, **mayor** que la verdadera del punto anterior. ¿Cómo es posible, si ahora la verdad es 0? ¿Qué valor p da?
 """,
 r"""
-1. Confunde $P(\text{datos} \mid H_0)$ con $P(H_0 \mid \text{datos})$. El valor p se calcula suponiendo que $H_0$ es cierta; no dice nada sobre la probabilidad de $H_0$.
-2. No. Sabemos que la diferencia existe, porque la pusimos nosotros. Con pocas muestras el promedio de cada grupo varía mucho de una barajada a otra y la diferencia observada ya no queda en la cola. No detectar una diferencia no demuestra que no exista.
+1. No. Sabemos que la diferencia existe, porque la pusimos nosotros. Con pocas muestras el promedio de cada grupo varía mucho de una barajada a otra y la diferencia observada ya no queda en la cola. No detectar una diferencia no demuestra que no exista.
+2. Es la variación de muestreo del Episodio 1: con cinco muestras por grupo, el promedio de cada grupo se aleja mucho de la verdad, y una diferencia de 0.07 aparece por puro azar. La prueba lo sabe: da p = 0.06, no significativo, porque bajo $H_0$ las barajadas también producen diferencias así de grandes. Con pocas muestras no hay que fiarse ni de un p grande (punto 1) ni de una diferencia grande (punto 2).
 """)
 puntos_clave([
     "La hipótesis nula dice que el grupo no importa: las etiquetas son intercambiables.",
     "El valor p es la fracción de resultados que, si la hipótesis nula fuera cierta, serían al menos tan extremos como el observado.",
     "El valor p depende de la diferencia, de la variabilidad y del tamaño de muestra.",
+    "Un valor p no es la probabilidad de que la hipótesis nula sea cierta, y un p mayor que 0.05 no demuestra que los grupos sean iguales.",
 ])
 
 # ================================================================== EPISODIO 3
@@ -397,6 +407,10 @@ def comparar_grupos(x, y):
     "Supuestos y tres pruebas para dos grupos: devuelve una columna de resultados."
     F = x.var(ddof=1) / y.var(ddof=1)                    # cociente de varianzas muestrales (ddof=1 divide entre n - 1)
     cola = stats.f.cdf(F, len(x) - 1, len(y) - 1)        # probabilidad a la izquierda de F
+    # cada prueba devuelve su estadístico (t o U) y su valor p; se muestran los dos
+    student = stats.ttest_ind(x, y, equal_var=True)
+    welch = stats.ttest_ind(x, y, equal_var=False)
+    mw = stats.mannwhitneyu(x, y, alternative="two-sided", method="exact")   # U de scipy = W de wilcox.test en R
     return {
         "Muestras (saludable, no saludable)":            f"{len(x)}, {len(y)}",
         "Media (saludable, no saludable)":               f"{x.mean():.3f}, {y.mean():.3f}",
@@ -406,9 +420,9 @@ def comparar_grupos(x, y):
         "Supuesto de normalidad, no saludable: p":       formato_p(stats.shapiro(y).pvalue),
         "Supuesto de varianzas iguales (prueba F): p":   formato_p(2 * min(cola, 1 - cola)),   # bilateral
         # pruebas: un p pequeño indica que los grupos difieren
-        "t de Student: p":                               formato_p(stats.ttest_ind(x, y, equal_var=True).pvalue),
-        "t de Welch: p":                                 formato_p(stats.ttest_ind(x, y, equal_var=False).pvalue),
-        "Mann-Whitney: p":                               formato_p(stats.mannwhitneyu(x, y, alternative="two-sided", method="exact").pvalue),
+        "t de Student: t, p":                            f"t = {student.statistic:.3f}, p = {formato_p(student.pvalue)}",
+        "t de Welch: t, p":                              f"t = {welch.statistic:.3f}, p = {formato_p(welch.pvalue)}",
+        "Mann-Whitney: U, p":                            f"U = {mw.statistic:.0f}, p = {formato_p(mw.pvalue)}",
     }
 
 # Una columna por caso: las filas quedan alineadas porque las dos columnas tienen los mismos nombres
@@ -417,7 +431,7 @@ display(pd.DataFrame({"Datos simulados": comparar_grupos(x_sim, y_sim), "Datos r
 md(r"""
 **Caso ideal.** Los supuestos se cumplen (ningún p de supuesto es pequeño) y las tres pruebas coinciden con la permutación: $p$ entre 0.003 y 0.006. **Cuando los supuestos se cumplen, las pruebas cuentan la misma historia.**
 
-**Caso real.** El grupo no saludable no es normal y su varianza es más de siete veces mayor. Las pruebas ya no coinciden: Student da 0.058, Welch 0.150 y Mann-Whitney 0.259; la permutación había dado 0.04. Vale Welch, que no supone varianzas iguales, y Mann-Whitney coincide: **no hay evidencia de que la diversidad promedio difiera.** La respuesta correcta no es la de la prueba con el p más pequeño, sino la de la prueba cuyos supuestos se cumplen.
+**Caso real.** El grupo no saludable no es normal (por la planta con Shannon 6.8) y su varianza es más de siete veces mayor. Las pruebas ya no coinciden: Student da 0.058, Welch 0.150 y Mann-Whitney 0.259; la permutación había dado 0.04. ¿Por qué? Student y la permutación suponen que bajo $H_0$ los dos grupos tienen la **misma distribución** (por eso las etiquetas eran intercambiables); si un grupo varía más que el otro, ese supuesto falla aunque las medias sean iguales, y un p pequeño puede reflejar la diferencia de varianzas, no de medias. Welch no supone varianzas iguales y Mann-Whitney no supone ni eso ni normalidad; los dos coinciden: **no hay evidencia de que la diversidad difiera entre los grupos.** La respuesta correcta no es la de la prueba con el p más pequeño, sino la de la prueba cuyos supuestos se cumplen.
 
 Lo que sí es claro en los datos reales es otra cosa: las plantas no saludables **son más variables entre sí**. Eso es un resultado, no solo un problema.
 """)
@@ -502,18 +516,20 @@ def permanova(D, etiquetas, n_perm=999, semilla=2026):
     return F_obs, R2, p
 
 def pcoa(D):
-    "Coordenadas principales a partir de una matriz de distancias; las primeras columnas recogen más variación."
+    "Coordenadas principales a partir de una matriz de distancias, y el % de variación que recoge cada eje."
     n = D.shape[0]
     J = np.eye(n) - np.ones((n, n)) / n        # matriz de centrado
     B = J @ (-0.5 * D ** 2) @ J                # doble centrado de -1/2 por las distancias al cuadrado
     val, vec = np.linalg.eigh(B)               # valores y vectores propios (B es simétrica), de menor a mayor
     val, vec = val[::-1], vec[:, ::-1]         # se invierte el orden: primero los ejes más importantes
-    keep = val > 1e-10                         # se descartan los valores propios nulos o negativos
-    return vec[:, keep] * np.sqrt(val[keep])   # coordenadas: vector propio por la raíz de su valor propio
+    positivos = val > 1e-10                    # se descartan los valores propios nulos o negativos
+    val, vec = val[positivos], vec[:, positivos]
+    # coordenadas: vector propio por la raíz de su valor propio; porcentaje: cuánta variación recoge cada eje
+    return vec * np.sqrt(val), 100 * val / val.sum()
 
 def permdisp(D, etiquetas, n_perm=999, semilla=2026):
     "PERMDISP: compara entre grupos la distancia de cada muestra al centroide de su grupo."
-    coords = pcoa(D)
+    coords, _ = pcoa(D)                        # solo hacen falta las coordenadas
     dist_centro = np.empty(len(etiquetas))     # aquí va la distancia de cada muestra a su centroide
     for g in np.unique(etiquetas):
         m = etiquetas == g                     # máscara: True en las muestras del grupo g
@@ -547,10 +563,11 @@ code(r"""
 # Un panel por caso: las dos primeras coordenadas principales de cada muestra, coloreadas por grupo
 fig, paneles = plt.subplots(1, 2, figsize=(12, 4.5))
 for ax, (caso, matriz, grupo) in zip(paneles, [("Datos simulados", D_sim, etiquetas_sim), ("Datos reales", D, etiquetas)]):
-    coords = pcoa(matriz)                                # columna 0 = eje 1, columna 1 = eje 2
+    coords, pct = pcoa(matriz)                           # columna 0 = eje 1, columna 1 = eje 2
     for g in GRUPOS:
         ax.scatter(coords[grupo == g, 0], coords[grupo == g, 1], color=COLORES[g], label=g, alpha=0.8)
-    ax.set_xlabel("Eje 1"); ax.set_ylabel("Eje 2"); ax.set_title(caso)
+    # cada eje lleva el porcentaje de la variación total que recoge
+    ax.set_xlabel(f"Eje 1 ({pct[0]:.0f} % de la variación)"); ax.set_ylabel(f"Eje 2 ({pct[1]:.0f} %)"); ax.set_title(caso)
 paneles[0].legend()
 fig.tight_layout()                                       # acomoda los paneles para que los rótulos no se monten
 plt.show()
@@ -558,19 +575,7 @@ plt.show()
 md(r"""
 **Caso ideal:** dos nubes separadas y de tamaño parecido. El grupo explica cerca del 28 % de la variación, el PERMANOVA es significativo y PERMDISP no: los grupos difieren en su **composición promedio**, no en cuánto varían.
 
-**Caso real:** las nubes se superponen. El grupo explica solo un 2 % y el PERMANOVA no es significativo, pero PERMDISP sí ($p \approx 0.005$): las plantas no saludables **son más heterogéneas en composición**, igual que lo eran en Shannon. Ese es el resultado más sólido de los datos reales.
-
-### Para llevar: ¿qué prueba uso?
-
-| Pregunta | Supuestos | Prueba |
-|---|---|---|
-| ¿Difieren las medias de un índice? | Normalidad y varianzas iguales | t de Student |
-| ¿Difieren las medias de un índice? | Normalidad; varianzas distintas o en duda | t de Welch |
-| ¿Un grupo tiende a tener valores mayores? | Ninguno sobre la distribución | Mann-Whitney |
-| ¿Difiere la composición completa? | Dispersiones parecidas | PERMANOVA |
-| ¿Difiere la variabilidad de la composición? | — | PERMDISP |
-
-La prueba se elige **antes** de ver los valores p, y se reporta siempre el tamaño del efecto (diferencia de medias, $R^2$) junto con el valor p.
+**Caso real:** las nubes se superponen. El grupo explica solo un 2 % y el PERMANOVA no es significativo, pero PERMDISP sí ($p \approx 0.005$): las plantas no saludables **son más heterogéneas en composición**, igual que lo eran en Shannon. El punto aislado abajo a la derecha es `MD2086`, la misma planta no saludable del Shannon 6.8: en composición también es distinta de todas las demás. Ese es el resultado más sólido de los datos reales.
 """)
 quiz("En otro estudio, el PERMANOVA da $p = 0.01$ y PERMDISP da $p = 0.004$. ¿Qué se puede concluir?",
      ["Los grupos difieren en su composición promedio.",
@@ -595,6 +600,19 @@ puntos_clave([
     "El PERMANOVA también reacciona a diferencias de dispersión: se acompaña con PERMDISP y con una ordenación.",
     "Cuando las pruebas no coinciden, hay que averiguar qué supuesto falló.",
 ])
+md(r"""
+### Cierre del taller: ¿qué prueba uso?
+
+| Pregunta | Supuestos | Prueba |
+|---|---|---|
+| ¿Difieren las medias de un índice? | Normalidad y varianzas iguales | t de Student |
+| ¿Difieren las medias de un índice? | Normalidad; varianzas distintas o en duda | t de Welch |
+| ¿Un grupo tiende a tener valores mayores? | Ninguno sobre la distribución | Mann-Whitney |
+| ¿Difiere la composición completa? | Dispersiones parecidas | PERMANOVA |
+| ¿Difiere la variabilidad de la composición? | — | PERMDISP |
+
+Tres reglas para llevarse: la prueba se elige **antes** de ver los valores p; se reporta siempre el **tamaño del efecto** (diferencia de medias, $R^2$) junto con el valor p y, si es por permutaciones, cuántas se hicieron; y cuando dos pruebas no coinciden, la respuesta está en los **supuestos**, no en el p más pequeño. En los datos reales de este taller la respuesta es: no hay evidencia de que la diversidad ni la composición promedio difieran, pero las plantas no saludables son más heterogéneas en las dos.
+""")
 
 # ================================================================== GLOSARIO
 CIERRE.append(nbf.v4.new_markdown_cell(r"""
@@ -604,17 +622,32 @@ CIERRE.append(nbf.v4.new_markdown_cell(r"""
 | Término | Qué significa |
 |---|---|
 | **Bray-Curtis** | Medida de cuánto difiere la composición de dos muestras: 0 si son iguales y 1 si no comparten ningún taxón. |
+| **Centroide** | El punto medio de las muestras de un grupo en la ordenación; PERMDISP mide la distancia de cada muestra al centroide de su grupo. |
+| **Chao1** | Estimador de la riqueza (número de taxones) que corrige por los taxones que no se alcanzaron a ver. |
+| **Desviación estándar** | Cuánto se alejan los valores de su media, en las unidades de los datos; la **varianza** es su cuadrado. |
+| **Distribución normal** | La campana simétrica alrededor de la media que suponen la t de Student y la de Welch; se comprueba con Shapiro-Wilk. |
 | **Hipótesis nula ($H_0$)** | La afirmación de que el grupo no importa; es la que se pone a prueba. |
 | **Hipótesis alternativa ($H_1$)** | La afirmación contraria: el grupo sí importa. |
+| **Mann-Whitney** | Prueba que compara los rangos de dos grupos en lugar de sus valores; no supone normalidad. |
 | **Mediana** | El valor que deja la mitad de las muestras por debajo. |
 | **Nivel de significancia ($\alpha$)** | El umbral, fijado antes de mirar los datos, por debajo del cual se rechaza $H_0$; lo habitual es 0.05. |
-| **Ordenación** | Figura que ubica las muestras en un plano respetando lo mejor posible las distancias entre ellas. |
+| **Ordenación** | Figura que ubica las muestras en un plano respetando lo mejor posible las distancias entre ellas; aquí, por coordenadas principales (PCoA). |
+| **PERMANOVA** | Prueba que compara la composición completa de los grupos a partir de una matriz de distancias; su valor p sale de permutaciones. |
+| **PERMDISP** | Prueba que compara la dispersión de los grupos: la distancia de cada muestra al centroide del suyo. |
 | **Permutación** | Reordenar al azar las etiquetas de grupo para ver qué produce el azar cuando el grupo no importa. |
 | **Potencia** | La probabilidad de detectar una diferencia que sí existe; crece con el número de muestras. |
+| **Prueba F** | Compara las varianzas de dos grupos; un p pequeño indica que difieren. |
+| **Pseudo-F** | El estadístico del PERMANOVA: la variación entre grupos dividida entre la variación dentro de ellos. |
+| **$R^2$** | La fracción de la variación total que explica el grupo; va de 0 a 1. |
 | **Rango** | La posición de un valor cuando se ordenan todos de menor a mayor. |
+| **Shannon** | Índice de diversidad alfa: crece con el número de taxones y con lo repartidas que estén las lecturas entre ellos. |
+| **Shapiro-Wilk** | Prueba de normalidad; un p pequeño indica que los datos no son normales. |
+| **Supuesto** | Condición que los datos deben cumplir para que el valor p de una prueba sea válido. |
+| **t de Student, t de Welch** | Pruebas que comparan las medias de dos grupos; Student supone varianzas iguales y Welch no. |
 | **Tamaño del efecto** | Cuánto difieren los grupos: una diferencia de medias, un $R^2$. |
 | **Taxón** | Un grupo de organismos de cualquier nivel: reino, filo, género, especie. |
 | **Valor p** | La proporción de resultados que, si $H_0$ fuera cierta, serían al menos tan extremos como el observado. |
+| **Variación de muestreo** | La distancia entre lo que se observa en una muestra y la verdad; cambia de una muestra a otra. |
 """.strip()))
 
 # ================================================================== CIERRE
@@ -647,8 +680,12 @@ CIERRE.append(nbf.v4.new_markdown_cell(r"""
 - Anderson, M. J. (2001). A new method for non-parametric multivariate analysis of variance. *Austral Ecology*, 26(1), 32–46. https://doi.org/10.1111/j.1442-9993.2001.01070.x
 - Anderson, M. J. (2006). Distance-based tests for homogeneity of multivariate dispersions. *Biometrics*, 62(1), 245–253. https://doi.org/10.1111/j.1541-0420.2005.00440.x
 - Bray, J. R., & Curtis, J. T. (1957). An ordination of the upland forest communities of southern Wisconsin. *Ecological Monographs*, 27(4), 325–349. https://doi.org/10.2307/1942268
+- Chao, A. (1984). Nonparametric estimation of the number of classes in a population. *Scandinavian Journal of Statistics*, 11(4), 265–270.
+- Fisher, R. A. (1935). *The design of experiments*. Oliver & Boyd.
+- Gower, J. C. (1966). Some distance properties of latent root and vector methods used in multivariate analysis. *Biometrika*, 53(3-4), 325–338. https://doi.org/10.1093/biomet/53.3-4.325
 - Mann, H. B., & Whitney, D. R. (1947). On a test of whether one of two random variables is stochastically larger than the other. *The Annals of Mathematical Statistics*, 18(1), 50–60. https://doi.org/10.1214/aoms/1177730491
 - Shannon, C. E. (1948). A mathematical theory of communication. *The Bell System Technical Journal*, 27(3), 379–423. https://doi.org/10.1002/j.1538-7305.1948.tb01338.x
+- Student. (1908). The probable error of a mean. *Biometrika*, 6(1), 1–25. https://doi.org/10.1093/biomet/6.1.1
 - Shapiro, S. S., & Wilk, M. B. (1965). An analysis of variance test for normality (complete samples). *Biometrika*, 52(3-4), 591–611. https://doi.org/10.1093/biomet/52.3-4.591
 - Welch, B. L. (1947). The generalization of "Student's" problem when several different population variances are involved. *Biometrika*, 34(1-2), 28–35. https://doi.org/10.1093/biomet/34.1-2.28
 
@@ -662,7 +699,7 @@ CIERRE.append(nbf.v4.new_markdown_cell(r"""
 
 **Fuente de los datos y del análisis**
 
-- Silva Gómez, P. C. (2026). *Análisis estadístico de la diversidad microbiana a distintos niveles taxonómicos en el microbioma rizosférico de plantas de fresa saludables y no saludables*. Tesis de Maestría en Ciencias Matemáticas, Posgrado Conjunto UMSNH-UNAM. Código y datos: https://github.com/CamilaSilva1995/Tesis_Maestria. Datos metagenómicos facilitados por Solena Ag.
+- Silva Gomez, P. C. (2026). *Análisis estadístico de la diversidad microbiana a distintos niveles taxonómicos en el microbioma rizosférico de plantas de fresa saludables y no saludables*. Tesis de Maestría en Ciencias Matemáticas, Posgrado Conjunto UMSNH-UNAM. Código y datos: https://github.com/CamilaSilva1995/Tesis_Maestria. Datos metagenómicos facilitados por Solena Ag.
 - Solena Ag. (2023). [Metagenomas *shotgun* de la rizósfera de plantas de fresa saludables y no saludables] [Conjunto de datos no publicado]. https://www.solena.ag
 """.strip()))
 
@@ -732,7 +769,7 @@ Al terminar el taller podrás:
 
 Son «TOTAL_EXP» min de explicación y «TOTAL_EJ» min de práctica. Hay **«N_EJ» ejercicios** cortos, con la solución escondida, y **un laboratorio** con controles para cambiar los datos simulados.
 
-Cada episodio tiene la misma organización: **preguntas y objetivos**, **explicación paso a paso** (qué se hace, por qué, y el código comentado), preguntas rápidas (**para pensar** y **comprueba**) antes de seguir, un **ejercicio** y los **puntos clave**. Al final hay un **glosario**.
+Cada episodio tiene la misma organización: **preguntas y objetivos**, **explicación paso a paso** (qué se hace, por qué, y el código comentado), preguntas rápidas (**para pensar** y **comprueba**) antes de seguir, un **ejercicio** (a partir del Episodio 2) y los **puntos clave**. El último episodio termina con el **cierre** del taller, una guía de qué prueba usar, y después hay un **glosario**.
 
 ## Cómo usar este cuaderno
 

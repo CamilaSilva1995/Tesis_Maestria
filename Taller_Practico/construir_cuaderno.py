@@ -215,6 +215,7 @@ fig, ax = plt.subplots()   # una figura (fig) con un solo panel (ax)
 for g, sub in datos.groupby("grupo"):
     ax.bar(sub.index, sub.lecturas_clasificadas / 1e6, color=COLORES[g], label=g)   # 1e6: pasa a millones
 ax.set_ylabel("Millones de lecturas clasificadas"); ax.set_xticks([])   # sin marcas en x: 53 nombres no caben
+ax.set_xlabel("Muestras (una barra por muestra, agrupadas por estado de la planta)")
 ax.set_title("Las muestras saludables tienen, en promedio, más lecturas"); ax.legend()
 plt.show()
 # Promedio de lecturas clasificadas en cada grupo
@@ -255,6 +256,9 @@ md(r"""
 
 El índice de Shannon de una muestra es $H = -\sum_i p_i \ln p_i$, donde $p_i$ es la proporción de lecturas del taxón $i$. Resume en un número la riqueza (cuántos taxones hay) y la equidad (qué tan repartidas están las lecturas). Ya está calculado en la columna `shannon`; comprobemos la fórmula con una muestra usando la tabla de géneros.
 """)
+pausa(r"""
+La columna `shannon` se calculó sobre 9 003 taxones y nosotros vamos a calcularlo sobre 1 795 géneros. ¿El valor que obtengamos será mayor, menor o igual que el de la columna? Piensa en qué pasa con $H$ cuando hay menos categorías entre las que repartir las lecturas.
+""")
 code(r"""
 def shannon(conteos):
     "Índice de Shannon, H = -sum(p_i ln p_i), a partir de los conteos de una muestra."
@@ -266,6 +270,9 @@ def shannon(conteos):
 print("Shannon de MD2055 sobre la tabla de géneros:", round(shannon(generos["MD2055"]), 3))
 print("Shannon de MD2055 sobre los 9 003 taxones (phyloseq):", datos.loc["MD2055", "shannon"].round(3))
 print("Son distintos porque la tabla de géneros agrupa taxones; la columna 'shannon' se calculó con la tabla completa.")
+""")
+md(r"""
+Sobre los géneros sale 5.07 y sobre los 9 003 taxones, 7.47: al agrupar taxones hay menos categorías y el índice baja. Un índice de diversidad depende del nivel taxonómico al que se calcula, así que siempre hay que decir sobre qué tabla se obtuvo. En el resto del taller usamos la columna `shannon`, que es la de la tesis.
 """)
 md(r"""
 ### 1.5 El caso ideal: datos simulados
@@ -457,6 +464,11 @@ Tres ideas que vale la pena fijar:
 - Un p mayor que 0.05 **no demuestra** que los grupos sean iguales. Solo dice que no tenemos evidencia suficiente para distinguirlos.
 - El umbral $\alpha = 0.05$ se fija **antes** de mirar los datos.
 """)
+quiz("Una prueba da $p = 0.03$. ¿Cuál de estas frases es correcta?",
+     ["Hay un 3 % de probabilidad de que la hipótesis nula sea cierta.",
+      "Si la hipótesis nula fuera cierta, un resultado al menos tan extremo como el observado aparecería en el 3 % de los estudios.",
+      "La diferencia entre los grupos es grande."], 1,
+     "La A invierte la condicional: el valor p se calcula suponiendo que $H_0$ es cierta, no dice qué tan probable es $H_0$. La C confunde significancia con tamaño del efecto: con muchas muestras, una diferencia diminuta puede dar un valor p pequeño, como verás en el laboratorio al subir el número de muestras a 100.")
 laboratorio("¿De qué depende el valor p?", 5,
 r"""
 Ahora decides tú la verdad. La celda siguiente simula un estudio nuevo con los tres valores de arriba y le aplica la prueba de permutaciones. **En Colab aparecen tres controles deslizantes** y la celda se vuelve a ejecutar sola cada vez que mueves uno; fuera de Colab, cambia el número y ejecuta la celda con Shift + Enter. Nada de esto modifica los datos del taller.
@@ -691,6 +703,7 @@ porcentajes = [100 * v for v in falsas_alarmas.values()]
 ax.barh(list(falsas_alarmas), porcentajes, color=["#D9534F" if abs(v - 5) > 2 else "#4C9F70" for v in porcentajes])
 ax.axvline(5, color="black", ls="--", label="5 %: lo esperado con α = 0.05")
 ax.set_xlabel("% de estudios en los que la prueba ve una diferencia que no existe")
+ax.set_title(f"Sin diferencia real: {n_saludables} y {n_no_saludables} muestras, desviaciones {desviacion_saludables} y {desviacion_no_saludables}")
 ax.invert_yaxis(); ax.legend(); plt.show()
 """)
 quiz("Tienes dos grupos de 20 y 8 muestras. Shapiro-Wilk no rechaza la normalidad en ninguno ($p = 0.40$ y $0.62$) y la prueba F da $p = 0.002$. ¿Qué prueba corresponde para comparar las medias?",
@@ -713,8 +726,8 @@ r"""
 # Chao1 de cada grupo
 xc = datos.loc[datos.grupo == "Saludable", "chao1"].to_numpy()
 yc = datos.loc[datos.grupo == "No saludable", "chao1"].to_numpy()
-# la misma función del episodio, ahora con otro índice
-display(pd.DataFrame({"Chao1, datos reales": comparar_medias(xc, yc)}))
+# la misma función del episodio, ahora con otro índice (pd.Series conserva el orden de las filas)
+display(pd.Series(comparar_medias(xc, yc), name="Chao1, datos reales").to_frame())
 """)
 puntos_clave([
     "La prueba t compara dos medias: divide la diferencia entre su error estándar.",
@@ -785,7 +798,13 @@ grafica_rangos(datos, "shannon", "Índice de Shannon", "Datos reales: los colore
 """, figuras=1)
 md(r"""
 Los dos colores aparecen mezclados en todo el recorrido y el valor p lo confirma: $U = 376$ está cerca de 315, la mitad de los $35 \times 18 = 630$ pares. Mann-Whitney coincide con Welch. La planta atípica ocupa el rango 1 y no pesa más que cualquier otra.
-
+""")
+quiz("Imagina que la planta atípica tuviera un Shannon de 5.0 en vez de 6.82 (todo lo demás igual). ¿Qué pasaría con los resultados?",
+     ["Cambiarían los valores p de las dos pruebas, la t de Welch y Mann-Whitney.",
+      "Cambiaría el de la t de Welch; el de Mann-Whitney sería exactamente el mismo.",
+      "No cambiaría ninguno: una sola muestra no puede mover una prueba."], 1,
+     "Con 5.0 esa planta seguiría siendo la más pequeña, con rango 1, así que $U$ y el valor p de Mann-Whitney no se moverían ni una milésima. La media y la varianza del grupo no saludable sí cambiarían, y con ellas la t de Welch: por eso la A no es correcta. La C es falsa en general, y aquí lo acabas de ver con la media: un valor extremo puede arrastrarla.")
+md(r"""
 ### 4.3 ¿Y la de rangos con signo?
 
 Solo tiene sentido con **datos pareados**. Un ejemplo legítimo con los datos reales: para cada una de las 53 muestras tenemos dos medidas de la misma cosa, el Shannon calculado sobre toda la tabla de géneros y el Shannon calculado solo sobre los géneros bacterianos. ¿Difieren? Aquí cada muestra es su propio control, así que la prueba correcta es la de rangos con signo.
@@ -932,7 +951,7 @@ Escribe una función `porcentaje(genero)` que devuelva el porcentaje de lecturas
 ¿Alguno difiere significativamente? Si hicieras esta prueba para los 1 795 géneros, ¿qué problema tendrías?
 """,
 r"""
-*Ralstonia* y *Streptomyces* no difieren. *Phytophthora* sí sale significativo ($p \approx 0.013$), pero mira la dirección: es ligeramente **más** abundante en las plantas saludables (0.060 % frente a 0.055 %), lo contrario de lo que esperaríamos de un patógeno. Antes de celebrarlo, piensa en esto: acabamos de hacer tres pruebas, y en el taller llevamos ya más de diez. Si probáramos los 1 795 géneros, por puro azar unos 90 saldrían «significativos» con p < 0.05 aunque ningún género difiriera de verdad. Eso se llama el problema de las **comparaciones múltiples**, y se corrige ajustando los valores p, por ejemplo con el método de Benjamini-Hochberg (`statsmodels.stats.multitest.multipletests`). Con esa corrección, el resultado de *Phytophthora* no sobrevive. Un p aislado de 0.013 entre muchas pruebas es una hipótesis para un estudio nuevo, no un hallazgo.
+*Ralstonia* y *Streptomyces* no difieren. *Phytophthora* sí sale significativo ($p \approx 0.013$), pero mira la dirección: es ligeramente **más** abundante en las plantas saludables (0.060 % frente a 0.055 %), lo contrario de lo que esperaríamos de un patógeno. Antes de celebrarlo, piensa en esto: acabamos de hacer tres pruebas, y en el taller llevamos ya más de diez. Si probáramos los 1 795 géneros, por puro azar unos 90 saldrían «significativos» con p < 0.05 aunque ningún género difiriera de verdad. Eso se llama el problema de las **comparaciones múltiples**, y se corrige ajustando los valores p, por ejemplo con el método de Benjamini-Hochberg, que en scipy es `stats.false_discovery_control`. La segunda parte del código lo hace para los 1 795 géneros: 134 salen con $p < 0.05$, más de los 90 que daría el puro azar, pero después de la corrección **ninguno** queda por debajo de 0.05 (el valor ajustado de *Phytophthora* sube a 0.59). Un p aislado de 0.013 entre muchas pruebas es una hipótesis para un estudio nuevo, no un hallazgo.
 """,
 r"""
 def porcentaje(genero):
@@ -946,6 +965,16 @@ for g in ["Phytophthora", "Ralstonia", "Streptomyces"]:
     a, b = v[datos.grupo == "Saludable"], v[datos.grupo == "No saludable"]
     r = stats.mannwhitneyu(a, b, alternative="two-sided", method="exact")
     print(f"{g:14s} media sal = {a.mean():.3f}%  media no sal = {b.mean():.3f}%  p = {r.pvalue:.3f}")
+
+# Los 1 795 géneros a la vez (método asintótico, más rápido) y la corrección de Benjamini-Hochberg
+pct = 100 * generos / datos.lecturas_clasificadas.to_numpy()          # % de cada género en cada muestra
+sal, no_sal = (datos.grupo == "Saludable").to_numpy(), (datos.grupo == "No saludable").to_numpy()
+p_todos = np.array([stats.mannwhitneyu(fila[sal], fila[no_sal], alternative="two-sided").pvalue
+                    for fila in pct.to_numpy()])
+p_ajustados = stats.false_discovery_control(p_todos)                   # Benjamini-Hochberg (scipy >= 1.11)
+print(f"\nGéneros con p < 0.05: {np.sum(p_todos < 0.05)} de {len(p_todos)}; tras la corrección: {np.sum(p_ajustados < 0.05)}")
+i = list(generos.index.get_level_values("genero")).index("Phytophthora")
+print(f"Phytophthora: p = {p_todos[i]:.3f}, p ajustado = {p_ajustados[i]:.2f}")
 """)
 puntos_clave([
     "La abundancia de un taxón se compara como proporción de las lecturas de cada muestra, cuidando el denominador.",
@@ -1007,6 +1036,8 @@ etiquetas = datos.grupo.to_numpy()
 print("Matrices de distancias:", D_sim.shape, "simulados |", D.shape, "reales")
 """)
 md(r"""
+La fórmula a mano y `pdist` coinciden (0.147 para el primer par de muestras simuladas). Cada matriz tiene una fila y una columna por muestra, ceros en la diagonal (la distancia de una muestra a sí misma) y es simétrica. De aquí en adelante las pruebas trabajan solo con esa matriz y con la etiqueta de grupo: ya no vuelven a mirar la tabla de conteos.
+
 ### 6.2 Paso 2: el pseudo-F
 """)
 code(r"""
@@ -1062,7 +1093,7 @@ grafica_nula(F_perm, F_obs, "pseudo-F con las etiquetas barajadas",
              f"Datos reales: p = {p:.3f}, el pseudo-F observado no es raro bajo H0", bilateral=False)
 """, figuras=1)
 md(r"""
-En los datos simulados ninguna de las 999 barajadas alcanza el pseudo-F observado: $p = 0.001$, el valor más pequeño posible con 999 permutaciones. En los datos reales el estado de la planta explica alrededor del 2 % de la variación en la composición, y ese 2 % no se distingue de lo que produce el azar. Calculado sobre los 9 003 taxones en lugar de los géneros, la conclusión es la misma: $R^2 = 0.024$, $p = 0.20$.
+En los datos simulados ninguna de las 999 barajadas alcanza el pseudo-F observado: $p = 0.001$, el valor más pequeño posible con 999 permutaciones. En los datos reales el estado de la planta explica alrededor del 2 % de la variación en la composición, y ese 2 % no se distingue de lo que produce el azar. Calculado sobre los 9 003 taxones en lugar de los géneros, como se hace en la tesis, la conclusión es la misma: $R^2 = 0.024$, $p = 0.167$.
 
 ### 6.4 Una advertencia que casi siempre se olvida: la dispersión
 
@@ -1106,6 +1137,8 @@ for caso, matriz, grupo in [("Datos simulados", D_sim, etiquetas_sim), ("Datos r
     print(f"   PERMDISP: F = {F_disp:.3f}, p = {p_disp:.3f}")
 """)
 md(r"""
+**Lee la salida.** En los datos simulados las muestras de los dos grupos están igual de lejos de su centroide (0.104 y 0.105) y PERMDISP no rechaza. En los reales las no saludables están más lejos del suyo (0.092 frente a 0.069) y PERMDISP lo declara significativo. Antes de interpretarlo, dibujemos las muestras.
+
 ### 6.5 Ver para entender: una ordenación
 
 Una ordenación (aquí, un análisis de coordenadas principales o PCoA) dibuja las muestras en un plano de modo que las distancias en el dibujo se parezcan lo más posible a las de Bray-Curtis. No es una prueba: es la figura que acompaña al PERMANOVA y al PERMDISP.
@@ -1204,7 +1237,7 @@ Con los datos reales:
 r"""
 1. Con Jaccard binaria el $R^2$ sube a cerca del 4 % y el valor p baja a 0.12, pero sigue sin ser significativo. La presencia o ausencia de géneros tampoco separa a los grupos.
 2. En los eucariotas el $R^2$ es algo mayor (2.5 %), porque hay solo 58 géneros y cada uno pesa más, pero el valor p (0.22) sigue sin ser significativo.
-3. Con 99 permutaciones el valor p solo puede tomar valores en múltiplos de 0.01 y varía bastante entre semillas. Con 999 la variación es de milésimas. Por eso lo habitual es usar al menos 999.
+3. Con 99 permutaciones el valor p solo puede tomar valores en múltiplos de 0.01 y cambia en centésimas de una semilla a otra (0.29, 0.28 y 0.26 con las semillas 1, 2 y 3). Con 999 la variación es de milésimas. Aquí no importa, porque el valor p está lejos de 0.05, pero si estuviera cerca del umbral esa variación podría cambiar la conclusión: por eso lo habitual es usar al menos 999.
 """,
 r"""
 # 1. Jaccard binaria
@@ -1299,6 +1332,11 @@ md(r"""
 
 En todos los casos: se elige la prueba **antes** de ver los valores p, se comprueban sus supuestos y se reporta el **tamaño del efecto**, es decir, cuánto difieren los grupos (diferencia de medias, $R^2$), junto con el estadístico y el valor p.
 """)
+quiz("Un estudio nuevo compara la riqueza observada entre 12 plantas tratadas con un biocontrol y otras 12 sin tratar. Shapiro-Wilk rechaza la normalidad en el grupo tratado ($p = 0.01$). ¿Qué prueba corresponde?",
+     ["La t de Student, porque los grupos tienen el mismo tamaño.",
+      "Wilcoxon de rangos con signo, porque hay 12 y 12.",
+      "Mann-Whitney: dos grupos independientes y un supuesto de normalidad que no se cumple."], 2,
+     "La A ignora que la normalidad falló, y con solo 12 muestras por grupo la t no es robusta a eso. La B confunde «mismo tamaño» con «pareados»: son plantas distintas, no dos medidas de la misma planta, así que no hay pares que restar.")
 ejercicio("Redactar el resultado", 8,
 r"""
 Escribe, en un párrafo de no más de cinco frases, el resultado de la comparación del índice de Shannon entre grupos en los **datos reales**, como lo pondrías en la sección de resultados de un artículo. Debe incluir: las medias, la prueba usada y por qué, el estadístico con sus grados de libertad, el valor p y la conclusión.
@@ -1328,18 +1366,24 @@ CIERRE.append(nbf.v4.new_markdown_cell(r"""
 | **Atípico (valor)** | Un valor muy alejado del resto de su grupo. |
 | **Bray-Curtis** | Medida de cuánto difiere la composición de dos muestras: 0 si son iguales y 1 si no comparten ningún taxón. |
 | **Centroide** | El punto medio de un grupo de muestras; PERMDISP mide la distancia de cada muestra a él. |
+| **Comparaciones múltiples** | Hacer muchas pruebas a la vez: con $\alpha = 0.05$, una de cada veinte sale significativa por azar; se corrige ajustando los valores p (Benjamini-Hochberg). |
 | **Composicional (dato)** | Proporciones que suman un total fijo: si una sube, las demás bajan. |
 | **Cuartiles** | Los tres valores que parten los datos ordenados en cuatro partes iguales; el segundo es la mediana. |
+| **Desviación estándar** | Cuánto se alejan, en promedio, los valores de su media; su cuadrado es la varianza. |
+| **Distribución normal** | La campana simétrica que suponen la prueba t y la F; se comprueba con Shapiro-Wilk y con una gráfica. |
 | **Diversidad alfa** | La diversidad dentro de una muestra, resumida en un índice (riqueza, Chao1, Shannon, Simpson). |
 | **Error estándar** | Cuánto cambiaría una estimación, como una diferencia de medias, de una muestra a otra por puro azar. |
 | **Grados de libertad** | Con cuánta información se estimó la variabilidad; aumentan con el número de muestras. |
 | **Hipótesis nula ($H_0$)** | La afirmación de que el grupo no importa; es la que se pone a prueba. |
 | **Hipótesis alternativa ($H_1$)** | La afirmación contraria: el grupo sí importa. |
+| **Independientes (muestras)** | Muestras que no están emparejadas ni se influyen: plantas distintas. Lo contrario son los datos pareados, dos medidas de la misma unidad. |
 | **Lectura** | Cada fragmento de ADN que produce el secuenciador. |
+| **Mediana** | El valor del centro cuando se ordenan los datos: la mitad queda por debajo; a diferencia de la media, no la arrastran los atípicos. |
 | **Nivel de significancia ($\alpha$)** | El umbral, fijado antes de mirar los datos, por debajo del cual se rechaza $H_0$; lo habitual es 0.05. |
 | **Ordenación** | Figura que ubica las muestras en un plano respetando lo mejor posible las distancias entre ellas. |
 | **Permutación** | Reordenar al azar las etiquetas de grupo para ver qué produce el azar cuando el grupo no importa. |
 | **Potencia** | La probabilidad de detectar una diferencia que sí existe; crece con el número de muestras. |
+| **Pseudo-F** | El estadístico del PERMANOVA: variación entre grupos dividida entre variación dentro de los grupos, calculadas a partir de distancias. |
 | **Rango** | La posición de un valor cuando se ordenan todos de menor a mayor. |
 | **Tamaño del efecto** | Cuánto difieren los grupos: una diferencia de medias, un $R^2$. |
 | **Taxón** | Un grupo de organismos de cualquier nivel: reino, filo, género, especie. |
@@ -1393,7 +1437,7 @@ CIERRE.append(nbf.v4.new_markdown_cell(r"""
 
 **Fuente de los datos y del análisis**
 
-- Silva Gómez, P. C. (2026). *Análisis estadístico de la diversidad microbiana a distintos niveles taxonómicos en el microbioma rizosférico de plantas de fresa saludables y no saludables*. Tesis de Maestría en Ciencias Matemáticas, Posgrado Conjunto UMSNH-UNAM. Código y datos: https://github.com/CamilaSilva1995/Tesis_Maestria. Datos metagenómicos facilitados por Solena Ag.
+- Silva Gomez, P. C. (2026). *Análisis estadístico de la diversidad microbiana a distintos niveles taxonómicos en el microbioma rizosférico de plantas de fresa saludables y no saludables*. Tesis de Maestría en Ciencias Matemáticas, Posgrado Conjunto UMSNH-UNAM. Código y datos: https://github.com/CamilaSilva1995/Tesis_Maestria. Datos metagenómicos facilitados por Solena Ag.
 - Solena Ag. (2023). [Metagenomas *shotgun* de la rizósfera de plantas de fresa saludables y no saludables] [Conjunto de datos no publicado]. https://www.solena.ag
 """.strip()))
 

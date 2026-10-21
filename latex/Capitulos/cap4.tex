@@ -739,9 +739,11 @@ tablas de texto que se descargan desde el repositorio con una sola instrucción:
 por género y por filo. El segundo es un conjunto simulado dentro del cuaderno, de 60 muestras que
 cumplen los supuestos de las pruebas y en el que la verdad se conoce porque la elige quien simula; el
 contraste entre ambos es lo que permite ver qué hace cada prueba cuando los supuestos se cumplen y
-cuando no. Todos los resultados que obtiene el estudiante con los datos reales coinciden con los de
-la Tabla \ref{tab:resumen-pruebas}, y los procedimientos aleatorios usan la misma semilla que la
-tesis. El taller recoge además las dos lecciones que más pesaron en este trabajo: la comprobación de
+cuando no. Los resultados que obtiene el estudiante con los datos reales coinciden con los de la
+Tabla \ref{tab:resumen-pruebas}; la única excepción es el PERMANOVA, que en el taller se calcula
+sobre la tabla de géneros para que el cómputo sea rápido en Colab, y por eso da $R^2 = 0.022$ y
+$p = 0.28$ en lugar de los valores de la tabla completa, con la misma conclusión. Los procedimientos
+aleatorios usan la misma semilla que la tesis. El taller recoge además las dos lecciones que más pesaron en este trabajo: la comprobación de
 que los identificadores de muestra coinciden antes de unir dos tablas, y el hecho de que los mismos
 datos producen valores $p$ de 0.04, 0.058, 0.15 y 0.26 según la prueba que se aplique, de modo que la
 respuesta válida es la de la prueba cuyos supuestos se cumplen y no la que da el valor $p$ más
